@@ -1,0 +1,228 @@
+\documentclass[runningheads]{llncs}
+
+%%% Paper-specific HEADERS
+% uses this flag to customise loading of packages inside header resource files
+\def\acm{0}
+
+% for java code listing
+\usepackage{xcolor}
+\usepackage{listings}
+\include{resources/header-codelisting}
+% make code listing text smaller
+
+\include{resources/header}
+% customise title font
+\def\titlefont{\fontsize{12pt}{14.4pt}\selectfont}
+
+%% common header
+\usepackage{amssymb}
+\usepackage{pifont}  % for circled numbers
+\include{resources/headercommon-basic}
+
+% OO-related header
+\include{resources/headeroop}
+
+\begin{document}
+\title{\titlefont My Title}
+
+\author{Duc Minh Le\inst{1} \and
+Author 2\inst{2}}
+%
+\authorrunning{Duc M L and Ha T V}
+% First names are abbreviated in the running head.
+% If there are more than two authors, 'et al.' is used.
+%
+\institute{Department of Information Technology,\\Swinburne Vietnam, FPT University\\
+\email{duclm20@fe.edu.vn}\\ \and
+Organisation 2, Hanoi, Vietnam\\
+\email{author2@org2.vn}}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pdfbookmark[1]{Abstract}{abstract}
+\begin{abstract}
+% todo: abstract 
+Domain-driven design (DDD) has widely been used to develop RESTful software in a range of programming language platforms. The use of code generators in these technologies helps significantly increase productivity and achieve large scale software reuse.
+%\textbf{Problem/Challenges:}
+However, there been no work that address incremental construction of RESTful full stack software (RFS) at both the module and software levels.
+%\textbf{Proposal/Contributions:}
+In this paper, we propose a generative module-based method for RFS to bridge this gap.
+%\textbf{Method}: 
+We characterise RFS and realise this in a module-based DDD software architecture, named \mosar. Our method takes as input a software configuration and the required software assets and automatically generates a module-based RFS software. We present algorithms for the frontend and backend generation functions. The backend software consist of web service modules. The frontend software consists of modules that are designed with single-page views. Each view can be nested to reflect the containment tree of the module.
+%\textbf{Result}:
+We demonstrate by implementing the generators for two popular platforms (React and Spring Boot). The evaluation shows that the generators are able to support large software.
+
+\keywords{kw1, kw2.}
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Content
+
+\section{Introduction} \label{sect:intro}
+% todo: intro
+
+The rest of the paper is structured as follows. Section...
+%
+\section{Background} \label{sect:background}
+% todo: background
+In this section, we present a motivating software example named \courseman and a number of key concepts of the paper.
+
+\textbf{Example: \courseman.} %\label{sect:example}
+% + todo: example
+% update
+To illustrate the concepts presented in this paper, we adopt the software example, named course management (\courseman), that we used in previous works~\cite{le_jdomainapp_2019,le_generative_2020}. This example is scoped around a domain model whose elements are represented by the following fundamental UML \cite{omg_unified_2015} meta-concepts: class, attribute, operation, association, association class and generalisation.
+%
+The \courseman's domain model consists of six domain classes and associations between them.
+Class \clazz{Student} represents the domain concept Student
+Class \clazz{CourseModule} represents the \clazz{CourseModule}s
+that are offered to students.
+%We specifically label the \clazz{Student}'s end of the many-many association between this class and \clazz{CourseModule} with the role ``students''.
+Class \clazz{Address} represents the addresses where \clazz{Student}s live as they undertake their studies. The study arrangement involves enrolling each \clazz{Student} into one or more \clazz{CourseModule}s. Class \clazz{Enrolment} represents the enrollment records.
+
+
+\begin{lstcode}{}{lst:code1}
+(@\hterm{@RFSGenDesc}@)(
+  stackSpec = StackSpec.FS,
+  execSpec = ExecSpec.Gen,
+  genMode = GenerationMode.SOURCE_CODE,
+  feProjPath = "/home/ducmle/tmp/restfstool-fe",
+  feProjName = "fe-courseman",
+  feProjResource = "src/main/resources/vuejs",
+  fePlatform = FEPlatform.VUE_JS,
+  feOutputPath = "/home/projects/jda//CourseManVueJs_Gen",
+  feServerPort = 5000,  // default: 3000
+  feAppClass = FEApp.class,
+  feThreaded = true,
+  beLangPlatform = LangPlatform.SPRING,
+  bePackage = "org.jda.example.coursemanrestful.modules",
+  beOutputPath = "/home/projects/jda/examples/courseman/mosar/src/main/java",
+  beTargetPackage = "org.jda.example.coursemanrestful.backend"
+  , beAppClass = BESpringApp.class,
+  beServerPort = 8080  // default: 8080
+)
+(@\hterm{@SystemDesc}@)(
+  appName = "Courseman",
+  splashScreenLogo = "coursemanapplogo.jpg",
+  modules = {
+    ModuleMain.class,
+    ModuleCourseModule.class,
+    ModuleEnrolment.class,
+    ModuleStudent.class,
+    ModuleAddress.class,
+    ModuleStudentClass.class
+  }
+public class (@\hterm{SCCCourseMan}@) { }
+\end{lstcode}
+
+
+\begin{lstcode}{}{lst:code2}
+@(@\hterm{@RFSGenDesc}@)((
+  stackSpec = StackSpec.FE,
+  execSpec = ExecSpec.Gen,
+  genMode = GenerationMode.SOURCE_CODE,
+  feProjPath = "/home/ducmle/tmp/restfstool-fe",
+  feProjName = "fe-courseman",
+  feProjResource = "src/main/resources/angular",
+  fePlatform = FEPlatform.VUE_JS,
+  feOutputPath = "/home/projects/jda//CourseManVueJs_Gen",
+  feServerPort = 5000,  // default: 3000
+  feAppClass = FEApp.class,
+  feThreaded = true,
+  beLangPlatform = LangPlatform.SPRING,
+  bePackage = "org.jda.example.coursemanrestful.modules",
+  beOutputPath = "/home/projects/jda/examples/courseman/mosar/src/main/java",
+  beTargetPackage = "org.jda.example.coursemanrestful.backend"
+  , beAppClass = BESpringApp.class,
+  beServerPort = 8080  // default: 8080
+)
+(@\hterm{@SystemDesc}@)(
+  appName = "Courseman",
+  splashScreenLogo = "coursemanapplogo.jpg",
+  language = Language.English,
+  orgDesc = @OrgDesc(name = "Faculty of IT",
+          address = "Hanoi, Vietnam",
+          logo = "hanu.gif",
+          url = "http://swinburne.edu.vn"),
+  dsDesc = @DSDesc(
+          type = "derby",
+          dsUrl = "data/domainds",
+          user = "admin",
+          password = "password",
+          dsmType = DSM.class,
+          domType = DOM.class,
+          osmType = JavaDbOSM.class,
+          connType = ConnectionType.Embedded),
+  modules = {
+          ModuleMain.class,
+          ModuleCourseModule.class,
+          ModuleEnrolment.class,
+          ModuleStudent.class,
+          ModuleAddress.class,
+          ModuleStudentClass.class
+  },
+  sysModules = {},
+  setUpDesc = @SysSetUpDesc(setUpConfigType = SetUpConfig.class),
+  securityDesc = @SecurityDesc(isEnabled = false))
+public class (@\hterm{SCCCourseMan}@) { }
+\end{lstcode}
+
+\textbf{Concept 1.}
+
+For example, ...
+
+\textbf{Concept 2.}
+
+For example, ...
+
+%
+%
+\section{Content 1} \label{sect:content1}
+% todo: content 1
+
+\section{Content 2} \label{sect:content2}
+% todo: content 2
+
+%
+\section{Tool Support and Evaluation} \label{sect:evaluation}
+% todo: evaluation
+We implemented our method ...
+
+\textbf{\textbf{Evaluation 1.}}
+We analyse the time complexities of two generator functions (\func{FEGen} and \func{BEGen}) to show that they run in \textbf{quadractic time}. This is scalable to support software with large domain models. Due to space restriction, we do not present the proofs in this paper. Refer to our extended paper for details.
+
+\textbf{\textbf{Discussion.}}
+
+%
+\section{Related Work} \label{sect:relatedwork}
+% todo: relatedwork
+Our work in this paper is positioned at the intersections among three areas: ...
+
+
+\subsection*{Area 1}
+
+\subsection*{Area 2}
+
+%
+\section{Conclusion} \label{sect:conclusion}
+% todo: conclusion
+% rewrite
+In this paper, we proposed a solution to address the problem of ...
+
+%
+Our method is novel in ...
+
+We contend that our contributions in this paper constitute a novel contribution to ....
+
+In future work, we plan to ...
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% todo: references
+\pdfbookmark[1]{References}{references}
+% References
+% + todo: bib
+% + update all the \cite{x} in the paper
+\bibliographystyle{splncs04}
+\bibliography{resources/bib/this.bib,resources/bib/seng.bib,resources/bib/ddd.bib,resources/bib/mypubs.bib}
+
+\end{document}

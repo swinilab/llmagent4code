@@ -1,0 +1,291 @@
+%%%% default header %%%%
+%REQUIRES packages: amssymb, pifont
+
+%%custom marcros
+
+% common stuff
+%\def\ie{{\em i.e.~}}
+%\def\eg{{\em e.g.~}}
+\def\ie{i.e.\xspace}
+\def\eg{e.g.\xspace}
+\def\st{s{.}t\xspace}
+\def\cf{{\em c.f.}\xspace}
+\def\etc{{\em etc.}\xspace}
+\def\etal{{et al.}\xspace}
+\def\aka{{a.k.a}\xspace}
+\def\wrt{{\em w.r.t}\xspace}
+\def\resp{{\em resp.}\xspace}
+\def\esp{{\em esp.}\xspace}
+
+% % abbreviations
+\def\abbr#1{{\em abbr.} #1}
+\def\abbrv#1#2{\noindent{\textbf{#1} (\textbf{#2})}}
+% USED for textsc-typed abbreviation: similar to \abbrv but does not bolden #2
+\def\abbrvs#1#2{\noindent{\textbf{#1} (#2)}}
+
+% % logic
+\def\ifff{\noindent\ensuremath{\leftrightarrow}}
+
+% general function for names, e.g. \Name{JDomainApp}
+\def\Name#1{{\footnotesize \textsc{#1}}}
+% same as \Name but using standard font
+\def\name#1{\textsc{#1}}
+
+% annotation symbol, <<a>>
+\def\anosymbol{\noindent{\footnotesize \it \ensuremath{\left\langle\!\left\langle{a}\right\rangle\!\right\rangle}}}
+
+% complexity notation
+\def\bigO{\textit{O}}
+% probability complexity notation
+%\def\bigP{\textit{P}}
+
+%string literals
+% typewriter font (\tt) in normal mode
+\def\str#1{{`{\tt #1}'}}
+\def\attribval#1#2#3{\noindent\ensuremath{{\tt #1{.}#2{=}#3}}}
+% string quoted string in typewriter font & math mode
+\def\strs#1{\noindent\ensuremath{\texttt{`#1'}}}
+% double quoted string in typewriter font & math mode
+\def\strq#1{\noindent\ensuremath{``{\tt #1}"}}
+
+% short cut to \code
+\newcommand{\ce}[1]{\code{#1}}
+% for writing Java code in-line with text
+\newcommand\jcode[1]{\noindent\ensuremath{{\tt #1}}} % \texttt{#1}
+% mutiple line set definition: {x | P}
+% #1: x, #2: P, #3: width
+\newcommand\Set[3]{\ensuremath{\{\text{#1 $|$ \parbox[t]{#3}{#2\}}}}}
+% set with code-specific font
+\def\set#1{\noindent\ensuremath{\left\lbrace\code{#1}\right\rbrace}}
+%set with standard math font
+\def\sets#1{\noindent\ensuremath{\left\lbrace#1\right\rbrace}}
+% power set of a set
+\def\powerset#1{\noindent\ensuremath{{\mathcal P}(#1)}}
+% math tuple with mathsf font, e.g. <x,y> (mathsf)
+\def\tuple#1{\noindent\ensuremath{\left\langle\code{#1}\right\rangle}}
+% tuple with normal font, e.g. <a,b> (normal)
+\def\tuplex#1{\noindent\ensuremath{\left\langle#1\right\rangle}}
+% tuple with type prefix (normal font), e.g: A:<a,b> (normal font)
+% 1: tuple type (e.g. A), type separator (e.g ':'), tuple elements (e.g. a,b)
+\newcommand\tupleT[3]{\noindent\ensuremath{#1\!{#2}\!\left\langle#3\right\rangle}}
+% variable (in listing-typed font) with subscripts, e.g. v_1, etc.
+\newcommand\var[2]{\noindent\lstinline{#1}$_#2$}
+% % math box (used inside tables)
+%1: width, 2: content, 3: vertical ident at top
+\def\rulebox#1#2#3{ %
+\rule{0pt}{#3} %
+\begin{minipage}[t]{#1}\raggedright %
+\noindent#2\end{minipage} %
+}
+
+% % % FUNCTIONS 
+% function definition: #1: func. name, #2: domain, #3: range
+\newcommand\funcdef[3]{\noindent\ensuremath{{\tt #1}{:~}#2 \rightarrow #3}}
+%
+%hdm stuff %
+%\def\hdmopenscheme{\mbox{\ensuremath{\langle\!\langle}}}
+%\def\hdmclosescheme{\mbox{\ensuremath{\rangle\!\rangle}}}
+%% denotes an HDM scheme, use in maths mode
+%\def\hdm#1{\hdmopenscheme#1\hdmclosescheme}
+%\def\hdmexl{\ensuremath{\mathbin{\not\!\cap}}}
+%\def\hdminc{\ensuremath{\mathbin{\subseteq}}}
+%\def\hdmuni{\ensuremath{\mathbin{\cup}}}
+%END hdm stuff %
+%%%%%%
+%%%% JDomainApp/JDA ABBREVIATIONS 
+% for putting a flexible extra space after acronyms
+\usepackage{xspace}
+%
+\def\mosa{MOSA\xspace}
+\def\plus{\ensuremath{^{\star}}}
+\def\mosar{MOSA$ ^{R} $\xspace}
+\def\mdsa{MDSA\xspace}
+\def\tmsa{TMSA\xspace}
+\def\courseman{\textsc{CourseMan}\xspace}
+\def\opasys{\textsc{OPASys}\xspace}
+\def\jda{\textsc{JDA}\xspace}
+\def\jdomainapp{\textsc{jDomainApp}\xspace}
+\def\domainapptool{{\textsc{DomainAppTool}}\xspace}
+\def\dcsl{\textsc{DCSL}\xspace}
+\def\agl{\textsc{AGL}\xspace}
+% combination of DCSL & AGL
+\def\dcslplus{\textsc{DCSL}$^{\star}$\xspace}
+\def\mccl{\textsc{MCCL}\xspace}
+\def\sccl{\textsc{SCCL}\xspace}
+\def\mccplus{MCC\plus\xspace}
+% combination of \mccl, \sccl
+\def\scclplus{\textsc{SCCL}$^{\star}$\xspace}
+\def\tasl{\textsc{TASL}\xspace}
+\def\agcl{\textsc{AGCL}\xspace}
+\def\mdsd{\textsc{MDSD}\xspace}
+%
+%\def\code#1{\noindent\ensuremath{\mathsf{#1}}}
+% % % bold and italic
+\def\bi#1{\textbf{\textit{#1}}}
+\def\img#1{\imgscale{#1}{0.7}}
+\def\imgscale#1#2{\includegraphics[scale=#2]{images/#1.eps}}
+%
+% indent by #1
+%\def\indent#1{\noindent\parbox{#1}{~}}
+% tab 
+%\def\tab{\hspace{2em}}
+\def\parhead#1{\noindent\textbf{#1}} % paragraph heading
+% paragraph heading using mini page (with next line supported)
+% 1: text width, 2: content 
+\def\parheadbox#1#2{\noindent\begin{minipage}{#1}~\\[0.2em]\textbf{#2}\\[-0.5em]\end{minipage}} 
+% similar to \parheadbox except that it uses italic rather than bold font
+% 1: text width, 2: content 
+\def\parheadboxit#1#2{\noindent\begin{minipage}{#1}~\\[0.2em]\textit{#2}\\[-0.5em]
+\end{minipage}} 
+
+% bold and italic
+\newcommand\bfit[1]{\textbf{\textit{#1}}}
+
+% % Table stuff
+% column header with custom alignment
+% #1: column align (e.g. c|), #2 column text 
+\def\colheader#1#2{\multicolumn{1}{#1}{#2}}
+% wrapped column header with custom alignment
+% #1: column align spec (e.g. c|) 
+% #2: header width (e.g. 1cm), #3 column text (possibly with nextline character(s))
+\def\colheaderwrap#1#2#3{\multicolumn{1}{#1}{\parbox{#2}{\vspace{0.2em} #3 \\[0.2em]}}}
+% wrapped table cell text with custom alignment
+% #1: align spec (e.g. c|) 
+% #2: cell width (e.g. 1cm), #3 cell text (possibly with nextline character(s))
+\def\cellwrap#1#2#3{\multicolumn{1}{#1}{\parbox{#2}{\vspace{0.2em} #3 \\[0.2em]}}}
+
+% % END: table stuff
+
+% rotate text box
+% #1: text, #2: rotation angle
+\def\rotatetext#1#2{\noindent\rotatebox[origin=c]{#2}{#1}}
+
+% reflect: model reflect domain class
+\def\reflect{\curvearrowleft}
+
+% % special symbol tables 
+\def\Bigdiamond{\lozenge}
+\def\Bigfilleddiamond{\blacklozenge}
+
+% % END symbol tables
+
+% % circled numbers 
+% % Requires: package pifont
+\def\circledOne{\ding{182}}
+\def\circledTwo{\ding{183}}
+\def\circledThree{\ding{184}}
+\def\circledFour{\ding{185}}
+\def\circledFive{\ding{186}}
+\def\circledSix{\ding{187}}
+\def\circledSeven{\ding{188}}
+\def\circledEight{\ding{189}}
+\def\circledNine{\ding{190}}
+\def\circledTen{\ding{191}}
+% requires package tikz
+\def\circleHalfFull{
+\begin{tikzpicture}
+\draw (0,0) arc (0:180:0.1cm); % top half (an arc)
+\filldraw (0,0) arc (0:-180:0.1cm); % bottom half (a filled arc)
+\end{tikzpicture}
+}
+\def\circleHalfFullCell{
+\begin{tikzpicture}
+\draw (0,0) arc (0:180:0.1cm); % top half (an arc)
+\filldraw (0,0) arc (0:-180:0.1cm); % bottom half (a filled arc)
+\end{tikzpicture}\vspace{-2pt}
+}
+% requires-package: pifont
+% unfilled numbers
+% shortcuts to the longer versions below
+\def\uone{\unfilledCircledOne}
+\def\utwo{\unfilledCircledTwo}
+\def\uthree{\unfilledCircledThree}
+\def\ufour{\unfilledCircledFour}
+\def\ufive{\unfilledCircledFive}
+\def\usix{\unfilledCircledSix}
+\def\useven{\unfilledCircledSeven}
+\def\ueight{\unfilledCircledEight}
+\def\unine{\unfilledCircledNine}
+\def\uten{\unfilledCircledTen}
+%
+\def\unfilledCircledOne{\ding{172}\xspace} % 192,...
+\def\unfilledCircledTwo{\ding{173}\xspace}
+\def\unfilledCircledThree{\ding{174}\xspace}
+\def\unfilledCircledFour{\ding{175}\xspace}
+\def\unfilledCircledFive{\ding{176}\xspace}
+\def\unfilledCircledSix{\ding{177}\xspace}
+\def\unfilledCircledSeven{\ding{178}\xspace}
+\def\unfilledCircledEight{\ding{179}\xspace}
+\def\unfilledCircledNine{\ding{180}\xspace}
+\def\unfilledCircledTen{\ding{181}\xspace}
+% filled numbers
+\def\fone{\ding{202}\xspace} % 182,...
+\def\ftwo{\ding{203}\xspace}
+\def\fthree{\ding{204}\xspace}
+\def\ffour{\ding{205}\xspace}
+\def\ffive{\ding{206}\xspace}
+\def\fsix{\ding{207}\xspace}
+\def\fseven{\ding{208}\xspace}
+\def\feight{\ding{209}\xspace}
+\def\fnine{\ding{210}\xspace}
+\def\ften{\ding{211}\xspace}
+%
+\def\tick{{\normalsize \ding{51}}}
+\def\tickbold{{\normalsize \ding{52}}}
+\def\cross{{\small \ding{56}}}
+\def\tickcell{{\normalsize \ding{51}}\vspace{-2pt}}
+\def\tickboldcell{{\normalsize \ding{52}}\vspace{-2pt}}
+\def\crosscell{{\small \ding{56}}\vspace{-3pt}}
+% end requires pifont
+
+%caligraphy
+\def\calA{\noindent\ensuremath{\mathcal{A}}}
+\def\calN{\noindent\ensuremath{\mathcal{N}}}
+\def\calT{\noindent\ensuremath{\mathcal{T}}}
+\def\calR{\noindent\ensuremath{\mathcal{R}}}
+
+%special symbols
+\def\Tau{\noindent\ensuremath{\tau}}
+% language extension symbol
+\def\lext{\noindent\rotatebox[origin=c]{270}{\ensuremath{\Lsh}}}
+
+% % number sets: requires either amsfonts or amssymb
+% natural numbers
+\def\Nat{\noindent\ensuremath{\mathbb{N}}}
+% integer numbers
+\def\Int{\noindent\ensuremath{\mathbb{Z}}}
+% rational numbers
+\def\Rat{\noindent\ensuremath{\mathbb{Q}}}
+% irrational numbers
+\def\Irat{\noindent\ensuremath{\mathbb{I}}}
+% real numbers
+\def\Real{\noindent\ensuremath{\mathbb{R}}}
+% complex numbers
+\def\Complex{\noindent\ensuremath{\mathbb{C}}}
+% prime numbers
+\def\Prime{\noindent\ensuremath{\mathbb{P}}}
+
+% % text lable definition
+% the following defines a template for rules. They should be used with the rule counter names that
+% are defined above this section
+% #1: "ruleno-counter" name, #2: rule label name
+\newcommand{\itemlbldef}[2]{\refstepcounter{#1}\label{#2}}
+% define a labelled rule
+% #1: rule counter name, #2: label prefix (e.g. 'R'), #3: rule label name (used as input for \itemlbldef)
+\newcommand{\itemdef}[3]{\noindent\itemlbldef{#1}{#3}\ensuremath{#2_{\ref{#3}}}}
+% used in the text to the map-rule defined by \maprule
+% #1: rule label prefix (e.g. 'R'), #2: rule label name (same as used in \itemdef}
+\newcommand{\itemref}[2]{\noindent\ensuremath{#1_{\ref{#2}}}}
+
+% font sizes
+\def\fontsizesix{\fontsize{6pt}{7.2pt}}
+\def\fontsizeeight{\fontsize{8pt}{9.6pt}}
+\def\fontsizenine{\fontsize{9pt}{10.8pt}}
+\def\fontsizeten{\fontsize{10pt}{12pt}}
+\def\fontsizetwelve{\fontsize{12pt}{14.4pt}}
+
+% footnote
+\newcommand{\footnotesmall}[1]{\footnote{\scriptsize\raggedright{#1}}}
+
+% note commands
+\newcommand{\todo}[1]{\noindent{\it \color{red}{#1}}}

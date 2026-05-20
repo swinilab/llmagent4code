@@ -1,0 +1,627 @@
+% REQUIRED PACKAGES:
+%		listings, xcolor
+\ifdefined\acm
+  % acm: do nothing here
+\else 
+  % non-acm
+  \usepackage{lmodern}
+\fi
+
+\usepackage[T1]{fontenc}
+
+\def\codelistingtextsizessmall{\fontsize{6pt}{7.2pt}}
+\def\codelistingtextsizesmall{\fontsize{8pt}{9.6pt}}
+\def\codelistingtextsize{\fontsize{9pt}{10.8pt}}
+\def\inlinetextsize{\fontsize{12pt}{14.4pt}}
+\def\ruletextsize{\fontsize{9pt}{10.8pt}}
+\def\rulecelltextsize{\fontsize{8pt}{9.6pt}}
+
+\def\jmltextsize{\fontsize{10pt}{12pt}}
+\def\codeListPresentTextSize{\fontsize{10pt}{12pt}}
+\def\codeinlinetextsize{\fontsize{9pt}{10.8pt}}
+
+% some special purpose text sizes (used in papers, reports, etc.)
+\def\inlinepapertextsize{\fontsize{9pt}{10.8pt}}
+\def\paperruletextsize{\fontsize{8pt}{9.6pt}}
+
+%styles:
+\def\codeListPresentSmall{\fontsize{7pt}{8.4pt}\ttfamily}
+
+%% emphasised code listing text
+\def\codemcolor{\color{green!70!black}}
+\def\ccommentcolor{\color{green!80!black}}
+\newcommand{\codem}[1]{\textbf{\codemcolor#1}}
+% extends \codem to allow color parameter (param #2)
+\newcommand{\codemx}[2]{\textbf{\color{#2}#1}}
+
+%highlighted technical term (e.g. used in code listing)
+\newcommand{\hterm}[1]{\codemx{#1}{blue}}
+
+% technical term with bold face
+\newcommand{\bfterm}[1]{\codemx{#1}{black}}
+
+\newcommand{\ccomment}[1]{\textbf{\color{\commentcolor}#1}}
+
+% Code listing set up for Java language
+
+% code-style character
+\newcommand{\cchar}[1]{`\lstinline|#1|'}
+
+% code-style strings
+\newcommand{\cstr}[1]{``\lstinline|#1|''}
+
+% listing style: Java presentation (used in presentation slides)
+\lstdefinestyle{JavaListingNormal}{
+ xleftmargin=0.3cm,
+ frame=lines,
+ language=Java,
+ basicstyle=\codelistingtextsize\ttfamily,
+ otherkeywords={@DClass, @DomainConstraint, @DAttr, @DOpt, @AttrRef,
+            @DAssoc, @Associate, AssocType, AssocEndType,
+                @ModuleDesc, @ModelDesc, @ViewDesc, @AttributeDesc, @ControllerDesc, 
+                @ContainmentTree, @SubTree1L, @Child, @ScopeDesc, @PropertyDesc},
+ deletekeywords={class, int,boolean,import,true,false, public, private, label,if, else},
+ keywordstyle=\color{blue}\fontseries{b},
+ numbers=left,
+ numbersep=1em,
+ numberstyle=\tiny, %\color{darkgray},
+ commentstyle=\fontshape{n}\color{green!50!black},
+ %identifierstyle=\fontseries{b}\color{blue},
+% stringstyle=\itshape, %\color{orange}, 
+ tabsize=2,
+ breaklines=true, % automatic line breaking
+% keepspaces=false,
+ breakatwhitespace=false, % break line at white space
+ showstringspaces=false,	% remove space markers in strings
+}
+
+\lstdefinestyle{JavaListingNormalSmall}{
+ xleftmargin=0.3cm,
+ frame=lines,
+ language=Java,
+ basicstyle=\codelistingtextsizesmall\ttfamily,
+ otherkeywords={@DClass, @DomainConstraint, @DAttr, @DOpt, @AttrRef,
+            @DAssoc, @Associate, AssocType, AssocEndType,
+                @ModuleDesc, @ModelDesc, @ViewDesc, @AttributeDesc, @ControllerDesc, 
+                @ContainmentTree, @SubTree1L, @Child, @ScopeDesc, @PropertyDesc},
+ deletekeywords={class, int,boolean,import,true,false, public, private, label,if, else},
+ keywordstyle=\color{blue}\fontseries{b},
+ numbers=left,
+ numbersep=1em,
+ numberstyle=\tiny, %\color{darkgray},
+ commentstyle=\fontshape{n}\color{green!50!black},
+ %identifierstyle=\fontseries{b}\color{blue},
+% stringstyle=\itshape, %\color{orange}, 
+ tabsize=2,
+ breaklines=true, % automatic line breaking
+% keepspaces=false,
+ breakatwhitespace=false, % break line at white space
+ showstringspaces=false,	% remove space markers in strings
+}
+
+\lstdefinestyle{JavaListingNormalSSmall}{
+ xleftmargin=0.3cm,
+ frame=lines,
+ language=Java,
+ basicstyle=\codelistingtextsizessmall\ttfamily,
+ otherkeywords={@DClass, @DomainConstraint, @DAttr, @DOpt, @AttrRef,
+            @DAssoc, @Associate, AssocType, AssocEndType,
+                @ModuleDesc, @ModelDesc, @ViewDesc, @AttributeDesc, @ControllerDesc, 
+                @ContainmentTree, @SubTree1L, @Child, @ScopeDesc, @PropertyDesc},
+ deletekeywords={class, int,boolean,import,true,false, public, private, label,if, else},
+ keywordstyle=\color{blue}\fontseries{b},
+ numbers=left,
+ numbersep=1em,
+ numberstyle=\tiny, %\color{darkgray},
+ commentstyle=\fontshape{n}\color{green!50!black},
+ %identifierstyle=\fontseries{b}\color{blue},
+% stringstyle=\itshape, %\color{orange}, 
+ tabsize=2,
+ breaklines=true, % automatic line breaking
+% keepspaces=false,
+ breakatwhitespace=false, % break line at white space
+ showstringspaces=false,	% remove space markers in strings
+}
+
+% Java listing style for really ``normal'' Java code
+\lstdefinestyle{JavaListingTrulyNormal}{
+ xleftmargin=0.5cm,
+ frame=lines,
+ basicstyle=\codelistingtextsize\ttfamily,
+ otherkeywords={DClass, DAttr, DOpt, DAssoc, AttrRef,
+                ModuleDesc, ModelDesc, ViewDesc, AttributeDesc, ControllerDesc, 
+                ContainmentTree, SubTree1L, Child, ScopeDesc, PropertyDesc,
+                import, static},
+% deletekeywords={class,int,boolean,import,true,false, public, private, label,if, else},
+ keywordstyle=\color{blue}\fontseries{b},
+ numbers=left,
+ numbersep=1em,
+ numberstyle=\tiny, %\color{darkgray},
+ commentstyle=\fontshape{n}\color{green!50!black},
+ %identifierstyle=\fontseries{b}\color{blue},
+% stringstyle=\itshape, %\color{orange}, 
+ tabsize=2,
+ breaklines=true, % automatic line breaking
+% keepspaces=false,
+ breakatwhitespace=false, % break line at white space
+ showstringspaces=false,	% remove space markers in strings
+}
+
+% listing style for plain Java code (no keyword highlighting, no numbering)
+\lstdefinestyle{JavaListingPlain}{
+ xleftmargin=0cm,
+ frame=lines,
+ basicstyle=\codelistingtextsize\ttfamily,
+ keywordstyle=, % no keyword highlighting
+ numbers=none,  % no numbering
+% numbersep=1em,
+% numberstyle=\tiny, %\color{darkgray},
+ commentstyle=\fontshape{n}\color{green!50!black},
+ %identifierstyle=\fontseries{b}\color{blue},
+% stringstyle=\itshape, %\color{orange}, 
+ tabsize=2,
+ breaklines=true, % automatic line breaking
+% keepspaces=false,
+ breakatwhitespace=false, % break line at white space
+ showstringspaces=false,	% remove space markers in strings
+}
+
+% does not work (lack font family)
+%% listing style for plain Java code (no keyword highlighting, no numbering)
+%\lstdefinestyle{JavaListingMath}{
+% xleftmargin=0cm,
+% frame=lines,
+% basicstyle=\codelistingtextsize\sfmath,
+% keywordstyle=, % no keyword highlighting
+% numbers=none,  % no numbering
+%% numbersep=1em,
+%% numberstyle=\tiny, %\color{darkgray},
+% commentstyle=\fontshape{n}\color{green!50!black},
+% %identifierstyle=\fontseries{b}\color{blue},
+%% stringstyle=\itshape, %\color{orange}, 
+% tabsize=2,
+% breaklines=true, % automatic line breaking
+%% keepspaces=false,
+% breakatwhitespace=false, % break line at white space
+% showstringspaces=false,	% remove space markers in strings
+%}
+
+% JavaListingPlain with very small font size
+\lstdefinestyle{JavaListingPlainSmall}{
+ xleftmargin=0cm,
+ frame=lines,
+ basicstyle=\codelistingtextsizesmall\ttfamily,
+ keywordstyle=, % no keyword highlighting
+ numbers=none,  % no numbering
+% numbersep=1em,
+% numberstyle=\tiny, %\color{darkgray},
+ commentstyle=\fontshape{n}\color{green!50!black},
+ %identifierstyle=\fontseries{b}\color{blue},
+% stringstyle=\itshape, %\color{orange}, 
+ tabsize=2,
+ breaklines=true, % automatic line breaking
+% keepspaces=false,
+ breakatwhitespace=false, % break line at white space
+ showstringspaces=false,	% remove space markers in strings
+}
+
+\lstdefinestyle{JavaListingPlainSSmall}{
+ xleftmargin=0cm,
+ frame=lines,
+ basicstyle=\codelistingtextsizessmall\ttfamily,
+ keywordstyle=, % no keyword highlighting
+ numbers=none,  % no numbering
+ commentstyle=\fontshape{n}\color{green!50!black},
+ tabsize=2,
+ breaklines=true, % automatic line breaking
+ breakatwhitespace=false, % break line at white space
+ showstringspaces=false,	% remove space markers in strings
+}
+
+% listing style: Java grammar production rule
+\lstdefinestyle{JavaGrammarListing}{
+ xleftmargin=0.5cm,
+ frame=lines,
+ basicstyle=\codelistingtextsize\ttfamily,
+% deletekeywords={class,int,boolean,import,true,false, public, private, label,if, else},
+ keywordstyle=, % no keywords
+ numbers=none,
+% numbersep=1em,
+% numberstyle=\tiny, %\color{darkgray},
+ commentstyle=\fontshape{n},%\color{green!70!black},
+ %identifierstyle=\fontseries{b}\color{blue},
+% stringstyle=\itshape, %\color{orange}, 
+ tabsize=2,
+ breaklines=true, % automatic line breaking
+% keepspaces=false,
+ breakatwhitespace=false, % break line at white space
+ showstringspaces=false,	% remove space markers in strings
+}
+
+\lstdefinestyle{JavaGrammarListingSmall}{
+ xleftmargin=0.5cm,
+ frame=lines,
+ basicstyle=\codelistingtextsizesmall\ttfamily,
+% deletekeywords={class,int,boolean,import,true,false, public, private, label,if, else},
+ keywordstyle=, % no keywords
+ numbers=none,
+% numbersep=1em,
+% numberstyle=\tiny, %\color{darkgray},
+ commentstyle=\fontshape{n},%\color{green!70!black},
+ %identifierstyle=\fontseries{b}\color{blue},
+% stringstyle=\itshape, %\color{orange}, 
+ tabsize=2,
+ breaklines=true, % automatic line breaking
+% keepspaces=false,
+ breakatwhitespace=false, % break line at white space
+ showstringspaces=false,	% remove space markers in strings
+}
+
+\lstdefinestyle{Jml}{
+ xleftmargin=0.5cm,
+% frame=lines,
+ basicstyle=\fontsize{10pt}{12pt}\ttfamily,
+ otherkeywords={requires, ensures, pure, \\result, \\old, invariant, initially, spec_public, non_null, assignable, assert, loop_invariant, decreasing},
+ deletekeywords={class,int,boolean,import,true,false,public,private,label, if,else,this,new,break,return,null,static,final},
+ keywordstyle=\color{blue}\fontseries{b},
+ numbers=left,
+ stepnumber=2,
+% numbersep=1em,
+ numberstyle=\fontshape{n}, %\color{darkgray},
+ commentstyle=\fontshape{n},%\color{green!70!black},
+ %identifierstyle=\fontseries{b}\color{blue},
+% stringstyle=\itshape, %\color{orange}, 
+ tabsize=2,
+ breaklines=true, % automatic line breaking
+% keepspaces=false,
+% literate = *{\ \ }{\ }1, % reduce indentation from 4 spaces to 2 spaces
+ breakatwhitespace=false, % break line at white space
+ showstringspaces=false,	% remove space markers in strings
+}
+
+% listing style: Java presentation (used in presentation slides)
+\lstdefinestyle{JavaListingPresent}{
+ xleftmargin=0.5cm,
+ frame=none,
+ basicstyle=\fontsize{10pt}{12pt}\ttfamily,
+ language=Java,
+ otherkeywords={DClass, DAttr, DOpt, DAssoc, AttrRef,
+                ModuleDesc, ModelDesc, ViewDesc, AttributeDesc, ControllerDesc, ContainmentTree},
+ deletekeywords={class,int,boolean,import,private,true,false},
+ keywordstyle=\color{blue}\fontseries{b},
+ numbers=left,
+ numbersep=5pt,
+ numberstyle=\tiny\color{darkgray},
+ commentstyle=\fontshape{n}, %\color{purple!40!black},
+ %identifierstyle=\fontseries{b}\color{blue},
+ stringstyle=\itshape, %\color{orange}, 
+ showstringspaces=false,	% remove space markers in strings
+}
+
+%\lstset{
+%% frame=lines,
+% basicstyle=\codelistingtextsize\ttfamily,
+%% otherkeywords={DClass, DAttr, DOpt, DAssoc, AttrRef,
+%%                ModuleDesc, ModelDesc, ViewDesc, AttributeDesc, ControllerDesc, ContainmentTree},
+%% deletekeywords={class,int,boolean,import,true,false, public, private, label},
+% keywordstyle=\color{blue}\fontseries{b},
+% numbers=left,
+% stepnumber=2,
+%% numbersep=1em,
+%% numberstyle=\tiny, %\color{darkgray},
+% commentstyle=\fontshape{n}\color{green!70!black},
+% %identifierstyle=\fontseries{b}\color{blue},
+% stringstyle=\itshape, %\color{orange}, 
+% tabsize=2,
+% breaklines=true, % automatic line breaking
+%% keepspaces=false,
+%% literate = *{\ \ }{\ }1, % reduce indentation from 4 spaces to 2 spaces
+% breakatwhitespace=false % break line at white space
+%}
+
+% default listing style to use
+\lstset{style=JavaListingNormal}
+
+
+\lstnewenvironment{lstcommand}{\lstset{style=JavaListingNormal,frame=none,numbers=none
+} %
+}{}
+
+\lstnewenvironment{lstoutput}{\lstset{style=JavaListingNormal,frame=lines
+} %
+}{}
+
+%%%%% Code Listings
+% #1: caption, #2: label
+\lstnewenvironment{lstcode}[2]{ %\renewcommand{\lstlistingname}{Bản kê}% Listing -> Bản kê
+\lstset{style=JavaListingNormal,frame=lines,caption={#1},label={#2},captionpos=top,abovecaptionskip=-0.5em,escapeinside={(@}{@)}
+} %
+}{}
+
+% lstcode with small font size
+% #1: caption, #2: label
+\lstnewenvironment{lstcodesm}[2]{ %\renewcommand{\lstlistingname}{Bản kê}% Listing -> Bản kê
+\lstset{style=JavaListingNormalSmall,frame=lines,caption={#1},label={#2},captionpos=top,abovecaptionskip=-0.5em,escapeinside={(@}{@)}
+} %
+}{}
+
+% lstcode with very small font size
+% #1: caption, #2: label
+\lstnewenvironment{lstcodessm}[2]{ %\renewcommand{\lstlistingname}{Bản kê}% Listing -> Bản kê
+%\lstset{style=JavaListingNormalSSmall,frame=lines,caption={#1},label={#2},captionpos=top,abovecaptionskip=-0.5em,escapeinside={(@}{@)}
+\lstset{style=JavaListingNormalSSmall,frame=lines,caption={#1},label={#2},captionpos=top,escapeinside={(@}{@)}
+} %
+}{}
+
+% same as lstcodessm but has noskip, i.e. no parameter 'abovecaptionskip'
+\lstnewenvironment{lstcodessmnoskip}[2]{ %\renewcommand{\lstlistingname}{Bản kê}% Listing -> Bản kê
+\lstset{style=JavaListingNormalSSmall,frame=lines,caption={#1},label={#2},captionpos=top,escapeinside={(@}{@)}
+} %
+}{}
+
+% similar to lstcode but without frame borders
+\lstnewenvironment{lstcodenob}[2]{ %\renewcommand{\lstlistingname}{Bản kê}% Listing -> Bản kê
+\lstset{style=JavaListingNormal,frame=none,caption={#1},label={#2},captionpos=top,abovecaptionskip=-0.5em,escapeinside={(@}{@)}
+} %
+}{}
+
+% lstcodenob with very small font size
+\lstnewenvironment{lstcodessmnob}[2]{ %\renewcommand{\lstlistingname}{Bản kê}% Listing -> Bản kê
+\lstset{style=JavaListingNormalSSmall,frame=none,caption={#1},label={#2},captionpos=top,abovecaptionskip=-0.5em,escapeinside={(@}{@)}
+} %
+}{}
+
+% lstcodenob with very small font size and no line numbering
+\lstnewenvironment{lstcodessmnobnoline}[2]{ %\renewcommand{\lstlistingname}{Bản kê}% Listing -> Bản kê
+\lstset{style=JavaListingNormalSSmall,frame=none,xleftmargin=0pt,numbers=none,caption={#1},label={#2},captionpos=top,abovecaptionskip=-0.5em,escapeinside={(@}{@)}
+} %
+}{}
+
+% no-keywoard-highlight version of lstcode (selective keyword highlighting, etc.)
+% #1: caption, #2: label
+\lstnewenvironment{lstcodeplain}[2]{ %\renewcommand{\lstlistingname}{Bản kê}% Listing -> Bản kê
+\lstset{style=JavaListingPlain,frame=lines,caption={#1},label={#2},captionpos=top,abovecaptionskip=-0.5em,escapeinside={(@}{@)}
+} %
+}{}
+
+% similar to lstcodeplain but without frame borders
+\lstnewenvironment{lstcodeplainnob}[2]{ %\renewcommand{\lstlistingname}{Bản kê}% Listing -> Bản kê
+\lstset{style=JavaListingPlain,frame=none,caption={#1},label={#2},captionpos=top,abovecaptionskip=-0.5em,escapeinside={(@}{@)}
+} %
+}{}
+
+% similar to lstcodeplain but small text font
+\lstnewenvironment{lstcodeplainssm}[2]{ 
+\lstset{style=JavaListingPlainSSmall,frame=lines,caption={#1},label={#2},captionpos=top,abovecaptionskip=-0.5em,escapeinside={(@}{@)}
+} %
+}{}
+
+% similar to lstcodeplainssm but only has top border (useful for displaying listings side by side)
+\lstnewenvironment{lstcodeplaintobssm}[2]{ 
+\lstset{style=JavaListingPlainSSmall,frame=top,caption={#1},label={#2},captionpos=top,abovecaptionskip=-0.5em,escapeinside={(@}{@)}
+} %
+}{}
+
+% native version of lstcode without support for escape (used for raw Java code listing, e.g. listing a class implementation)
+% #1: caption, #2: label
+\lstnewenvironment{lstcodenative}[2]{ %\renewcommand{\lstlistingname}{Bản kê}% Listing -> Bản kê
+\lstset{style=JavaListingNormal,frame=lines,caption={#1},label={#2},captionpos=top,abovecaptionskip=-0.5em,escapeinside={}
+} %
+}{}
+
+\lstnewenvironment{lstcodeinline}{
+\lstset{style=JavaListingNormal,frame=none,numbers=none,language=Java} %
+}{}
+
+% #1: capture, #2: label
+\lstnewenvironment{lstcodePresent}[2]{ %\renewcommand{\lstlistingname}{Bản kê}% Listing -> Bản kê
+\lstset{style=JavaListingPlain,frame=lines,caption={#1},label={#2}
+,basicstyle=\codeListPresentSmall
+,captionpos=top,abovecaptionskip=-0.5em,escapeinside={(@}{@)}
+} %
+}{}
+
+% #1: capture, #2: label, #3: frame, #4: firstnumber
+\lstnewenvironment{lstcodePresentStart}[4]{ %\renewcommand{\lstlistingname}{Bản kê}% Listing -> Bản kê
+\lstset{style=JavaListingNormal,language=Java
+,caption={#1},label={#2}
+,frame=#3
+,firstnumber=#4
+,basicstyle=\codeListPresentSmall
+,captionpos=top,abovecaptionskip=-0.5em
+} %
+}{}
+
+% #1: frame, #2: firstnumber
+\lstnewenvironment{lstcodePresentNext}[2]{ \lstset{style=JavaListingNormal,language=Java
+,frame=#1
+,firstnumber=#2
+,basicstyle=\codeListPresentSmall
+,captionpos=top,abovecaptionskip=-0.5em
+} %
+}{}
+
+\lstnewenvironment{lstcodeinlinePresent}{
+\lstset{style=JavaListingNormal,frame=none,numbers=none,
+basicstyle=\fontsize{9pt}{10.8pt}\ttfamily,} %
+}{}
+
+\lstnewenvironment{lstothers}[2]{ %\renewcommand{\lstlistingname}{Bản kê}% Listing -> Bản kê
+\lstset{style=JavaListingNormal,frame=lines,caption={#1},label={#2}
+} %
+}{}
+
+% Java grammar production rule
+% #1: caption, #2: label
+\lstnewenvironment{lstjgram}[2]{ %\renewcommand{\lstlistingname}{Bản kê}% Listing -> Bản kê
+\lstset{style=JavaGrammarListing,frame=lines,caption={#1},label={#2},captionpos=top,abovecaptionskip=-0.5em,escapeinside={(@}{@)}
+} %
+}{}
+
+% lstjgram with small text size
+% #1: caption, #2: label
+\lstnewenvironment{lstjgramsm}[2]{ %\renewcommand{\lstlistingname}{Bản kê}% Listing -> Bản kê
+\lstset{style=JavaGrammarListingSmall,frame=lines,caption={#1},label={#2},captionpos=top,abovecaptionskip=-0.5em,escapeinside={(@}{@)}
+} %
+}{}
+
+% for listing rules like OCL 
+\lstdefinestyle{RuleCellStyle}{
+ xleftmargin=0.5cm,
+% frame=none,	% % THIS RESULTS IN ERROR
+ rulecolor=\color{white},
+ basicstyle=\fontsize{8pt}{9.6pt}\ttfamily,
+% language=OCL,
+% otherkeywords={context,inv, and,not,if,then, else, endif, let, in, implies,exists,forall},
+ keywords=, % no keyword highlighting
+% keywordstyle=\color{blue}\fontseries{b},
+% numbers=left,	% % THIS RESULTS IN ERROR
+ numbersep=5pt,
+ numberstyle=\tiny\color{darkgray},
+ commentstyle=\fontshape{n}, %\color{purple!40!black},
+ %identifierstyle=\fontseries{b}\color{blue},
+% stringstyle=\itshape, %\color{orange}, 
+ showstringspaces=false,	% remove space markers in strings
+}
+
+% for listing rules like OCL 
+\lstdefinestyle{RuleStyle}{
+ xleftmargin=0.5cm,
+ frame=none,
+% rulecolor=\color{white},
+ basicstyle=\fontsize{8pt}{9.6pt}\ttfamily,
+% language=OCL,
+% otherkeywords={context,inv, and,not,if,then, else, endif, let, in, implies,exists,forall},
+ keywords=, % no keyword highlighting
+% keywordstyle=\color{blue}\fontseries{b},
+% numbers=left,
+ numbersep=5pt,
+ numberstyle=\tiny\color{darkgray},
+ commentstyle=\fontshape{n}, %\color{purple!40!black},
+ %identifierstyle=\fontseries{b}\color{blue},
+ % stringstyle=\itshape, %\color{orange}, 
+ showstringspaces=false,	% remove space markers in strings 
+}
+
+% = RuleStyle + small font size
+\lstdefinestyle{RuleStyleSmall}{
+ xleftmargin=0.5cm,
+ frame=none,
+% rulecolor=\color{white},
+ basicstyle=\codelistingtextsizessmall\ttfamily,
+% language=OCL,
+% otherkeywords={context,inv, and,not,if,then, else, endif, let, in, implies,exists,forall},
+ keywords=, % no keyword highlighting
+% keywordstyle=\color{blue}\fontseries{b},
+% numbers=left,
+ numbersep=5pt,
+ numberstyle=\tiny\color{darkgray},
+ commentstyle=\fontshape{n}, %\color{purple!40!black},
+ %identifierstyle=\fontseries{b}\color{blue},
+ % stringstyle=\itshape, %\color{orange}, 
+ showstringspaces=false,	% remove space markers in strings 
+}
+
+\lstnewenvironment{lstrulecell}
+  {\lstset{style=RuleCellStyle} %
+  }
+  {}
+
+\lstnewenvironment{lstrule}
+  {\lstset{style=RuleStyle} %
+  }
+  {}
+
+% extension of lstrule to allow the escape sequence (@@)
+\lstnewenvironment{lstrulex}
+  {\lstset{style=RuleStyle,escapeinside={(@}{@)}
+  }
+  }
+  {}
+
+% = lsrulex + small font size
+\lstnewenvironment{lstrulexsm}
+  {\lstset{style=RuleStyleSmall,escapeinside={(@}{@)}
+  }
+  }
+  {}
+
+% % similar to lstrule but supports label and caption
+% #1 = caption, #2 = label
+\lstnewenvironment{lstrulelbl}[2]
+  {\lstset{style=RuleStyle,caption={#1},label={#2},captionpos=top,abovecaptionskip=-0.5em} %
+  }
+  {}
+
+% similar to lstruleex but supports label and caption
+% #1 = caption, #2 = label
+\lstnewenvironment{lstrulexlbl}[2]
+  {\lstset{style=RuleStyle,caption={#1},label={#2},captionpos=top,escapeinside={(@}{@)}
+  }
+  }
+  {}
+
+% similar to lstrulexlbl but with small text size
+% #1 = caption, #2 = label
+\lstnewenvironment{lstrulexlblsm}[2]
+  {\lstset{style=RuleStyleSmall,caption={#1},label={#2},captionpos=top,escapeinside={(@}{@)}
+  }
+  }
+  {}
+ 
+\lstnewenvironment{lstruleinline}{
+\lstset{style=RuleStyle,numbers=none} %
+}{}
+
+%%%
+%% lstinline versions of the above environments  
+%%%
+%% customised the default lstinline to use plain code (no highligting)
+\newcommand{\codelst}[1]{\lstinline[style=JavaListingPlain]{#1}}
+
+\newcommand{\codelstsm}[1]{\lstinline[style=JavaListingPlainSmall]{#1}}
+
+\newcommand{\codelstssm}[1]{\lstinline[style=JavaListingPlainSSmall]{#1}}
+
+%\newenvironment{lstcode}{\begin{lstlisting}[\frame=lines,language=Java]
+%}{\end{lstlisting}}
+
+
+%%%%%% Domain pattern %%%%%%
+% listing style for plain Java code (no keyword highlighting, no numbering)
+\lstdefinestyle{JavaListingDomPattern}{
+ xleftmargin=0cm,
+ frame=lines,
+ basicstyle=\codelistingtextsize\ttfamily,
+ otherkeywords = {addDClass, addDField, addDAssoc, addDField, addDAssoc },
+ deletekeywords={null},
+ keywordstyle=\color{blue}\fontseries{b},
+% keywordstyle=, % no keyword highlighting
+ numbers=none,  % no numbering
+% numbersep=1em,
+% numberstyle=\tiny, %\color{darkgray},
+ commentstyle=\fontshape{n}\color{green!50!black},
+ %identifierstyle=\fontseries{b}\color{blue},
+% stringstyle=\itshape, %\color{orange}, 
+ tabsize=2,
+ breaklines=true, % automatic line breaking
+% keepspaces=false,
+ breakatwhitespace=false, % break line at white space
+ showstringspaces=false,	% remove space markers in strings
+}
+
+% no-keywoard-highlight version of lstcode (selective keyword highlighting, etc.)
+% #1: caption, #2: label
+\lstnewenvironment{lstcodepattern}[2]{ %\renewcommand{\lstlistingname}{Bản kê}% Listing -> Bản kê
+\lstset{style=JavaListingPlain,frame=lines,caption={#1},label={#2},captionpos=top,abovecaptionskip=-0.5em,escapeinside={(@}{@)}
+} %
+}{}
+
+% lstcodepattern with small text font
+% #1: caption, #2: label
+\lstnewenvironment{lstcodepatternsm}[2]{ %\renewcommand{\lstlistingname}{Bản kê}% Listing -> Bản kê
+\lstset{style=JavaListingPlainSmall,frame=lines,caption={#1},label={#2},captionpos=top,abovecaptionskip=-0.5em,escapeinside={(@}{@)}
+} %
+}{}
+
+%%% END domain pattern
