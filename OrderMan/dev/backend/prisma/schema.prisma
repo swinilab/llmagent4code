@@ -1,0 +1,127 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum OrderStatus {
+  pending
+  accepted
+  paid
+  shipped
+  closed
+}
+
+enum InvoiceStatus {
+  pending
+  issued
+  paid
+}
+
+enum PaymentStatus {
+  pending
+  completed
+  failed
+}
+
+enum PaymentMethod {
+  bank
+  card
+  cash
+}
+
+model Customer {
+  id          Int     @id @default(autoincrement())
+  name        String
+  address     String
+  phone       String
+  bankAccount String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+
+  orders Order[]
+
+  @@map("customers")
+}
+
+
+model Product {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String
+  price       Decimal  @db.Decimal(10, 2)
+  image       String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  orderItems OrderItem[]
+
+  @@map("products")
+}
+
+model Order {
+  id          Int           @id @default(autoincrement())
+  customerId  Int
+  totalAmount Decimal       @db.Decimal(10, 2)
+  status      OrderStatus   @default(pending)
+  method      PaymentMethod
+  orderDate   DateTime      @default(now())
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  customer Customer    @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  items    OrderItem[]
+  invoice  Invoice?
+
+  @@map("orders")
+}
+
+model OrderItem {
+  id        Int     @id @default(autoincrement())
+  orderId   Int
+  productId Int
+  quantity  Int
+  unitPrice Decimal @db.Decimal(10, 2)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  order   Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@map("order_items")
+}
+
+model Invoice {
+  id        Int           @id @default(autoincrement())
+  orderId   Int           @unique
+  date      DateTime      @default(now())
+  amount    Decimal       @db.Decimal(10, 2)
+  status    InvoiceStatus @default(pending)
+  method    PaymentMethod
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  order    Order     @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  payments Payment[]
+
+  @@map("invoices")
+}
+
+model Payment {
+  id        Int           @id @default(autoincrement())
+  invoiceId Int
+  amount    Decimal       @db.Decimal(10, 2)
+  date      DateTime      @default(now())
+  status    PaymentStatus @default(pending)
+  method    PaymentMethod
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  invoice Invoice @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+
+  @@map("payments")
+}

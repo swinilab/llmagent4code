@@ -1,0 +1,25 @@
+{
+  "customers": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "address": "123 Main St",
+      "phone": "123-456-7890"
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "customerId": 1,
+      "items": ["Product A", "Product B"],
+      "amounts": [10.99, 5.99]
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "description": "Product A",
+      "pricing": 10.99
+    }
+  ]
+}

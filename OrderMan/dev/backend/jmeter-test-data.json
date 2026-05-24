@@ -1,0 +1,111 @@
+{
+  "testData": {
+    "customers": [
+      {
+        "name": "John Doe",
+        "address": "123 Main Street, Anytown, USA",
+        "phone": "555-0101",
+        "bankAccount": "1234567890"
+      },
+      {
+        "name": "Jane Smith", 
+        "address": "456 Oak Avenue, Somewhere, USA",
+        "phone": "555-0102",
+        "bankAccount": "2345678901"
+      },
+      {
+        "name": "Bob Johnson",
+        "address": "789 Pine Road, Elsewhere, USA", 
+        "phone": "555-0103",
+        "bankAccount": "3456789012"
+      }
+    ],
+    "products": [
+      {
+        "name": "Laptop Computer",
+        "description": "High-performance laptop for business and gaming",
+        "price": 999.99,
+        "image": "https://via.placeholder.com/300x300?text=Laptop"
+      },
+      {
+        "name": "Wireless Mouse",
+        "description": "Ergonomic wireless mouse with precision tracking",
+        "price": 29.99,
+        "image": "https://via.placeholder.com/300x300?text=Mouse"
+      },
+      {
+        "name": "Mechanical Keyboard",
+        "description": "RGB backlit mechanical keyboard for gaming",
+        "price": 149.99,
+        "image": "https://via.placeholder.com/300x300?text=Keyboard"
+      },
+      {
+        "name": "USB-C Hub",
+        "description": "Multi-port USB-C hub with HDMI and ethernet",
+        "price": 79.99,
+        "image": "https://via.placeholder.com/300x300?text=Hub"
+      },
+      {
+        "name": "Webcam HD",
+        "description": "1080p HD webcam for video conferencing",
+        "price": 59.99,
+        "image": "https://via.placeholder.com/300x300?text=Webcam"
+      }
+    ],
+    "orderItems": [
+      {
+        "name": "Laptop Computer",
+        "quantity": 1,
+        "price": 999.99
+      },
+      {
+        "name": "Wireless Mouse", 
+        "quantity": 2,
+        "price": 29.99
+      }
+    ],
+    "paymentMethods": ["card", "bank", "cash"],
+    "testScenarios": {
+      "smallOrder": {
+        "totalAmount": 59.98,
+        "itemCount": 2
+      },
+      "mediumOrder": {
+        "totalAmount": 239.97,
+        "itemCount": 3
+      },
+      "largeOrder": {
+        "totalAmount": 1299.95,
+        "itemCount": 5
+      }
+    }
+  },
+  "jmeterVariables": {
+    "BASE_URL": "http://localhost:3000/api",
+    "CONTENT_TYPE": "application/json",
+    "THREAD_COUNTS": {
+      "light_load": 5,
+      "normal_load": 10,
+      "heavy_load": 25,
+      "stress_test": 50
+    },
+    "RAMP_UP_TIMES": {
+      "light_load": 10,
+      "normal_load": 30,
+      "heavy_load": 60,
+      "stress_test": 120
+    }
+  },
+  "expectedResponseTimes": {
+    "GET_requests": 100,
+    "POST_requests": 200,
+    "PUT_requests": 150,
+    "DELETE_requests": 100,
+    "workflow_operations": 300
+  },
+  "statusCodes": {
+    "success": [200, 201, 204],
+    "client_error": [400, 404],
+    "server_error": [500, 502, 503]
+  }
+}

@@ -1,0 +1,743 @@
+{
+	"info": {
+		"_postman_id": "b0f7fbc0-40a8-467d-a456-0d375ff2a395",
+		"name": "OrderMan",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "27492594",
+		"_collection_link": "https://www.postman.com/workspace/ICIIT-Paper~b2ce8ef1-e098-445f-ba78-3ece1dff5174/collection/27492594-b0f7fbc0-40a8-467d-a456-0d375ff2a395?action=share&source=collection_link&creator=27492594"
+	},
+	"item": [
+		{
+			"name": "customer",
+			"item": [
+				{
+					"name": "POST customer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "{{BASE_URL}}/customers"
+					},
+					"response": []
+				},
+				{
+					"name": "GET customers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{BASE_URL}}/customers"
+					},
+					"response": []
+				},
+				{
+					"name": "GET customer by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/customers/:id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"customers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT customer",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/customers/:id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"customers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE customer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/customers/:id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"customers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST orders",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "{{BASE_URL}}/customers/orders"
+					},
+					"response": []
+				},
+				{
+					"name": "GET orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{BASE_URL}}/customers/orders"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE order",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/customers/orders/:id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"customers",
+								"orders",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "invoice",
+			"item": [
+				{
+					"name": "GET invoices",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{BASE_URL}}/invoices"
+					},
+					"response": []
+				},
+				{
+					"name": "POST invoice",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "{{BASE_URL}}/invoices"
+					},
+					"response": []
+				},
+				{
+					"name": "GET invoice by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/invoices/:id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"invoices",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET order by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/invoices/order/:orderId",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"invoices",
+								"order",
+								":orderId"
+							],
+							"variable": [
+								{
+									"key": "orderId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT invoice",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/invoices/:id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"invoices",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE invoice",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/invoices/:id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"invoices",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST send order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/invoices/send/:orderId",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"invoices",
+								"send",
+								":orderId"
+							],
+							"variable": [
+								{
+									"key": "orderId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "order",
+			"item": [
+				{
+					"name": "GET orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{BASE_URL}}/orders"
+					},
+					"response": []
+				},
+				{
+					"name": "POST order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "{{BASE_URL}}/orders"
+					},
+					"response": []
+				},
+				{
+					"name": "GET order by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/orders/:id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"orders",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET order by user ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/orders/user/:userId",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"orders",
+								"user",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT order",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/orders/:id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"orders",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE order",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/orders/:id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"orders",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST receive order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/orders/:id/receive",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"orders",
+								":id",
+								"receive"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST ship order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/orders/:id/ship",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"orders",
+								":id",
+								"ship"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST close order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/orders/:id/close",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"orders",
+								":id",
+								"close"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "payment",
+			"item": [
+				{
+					"name": "POST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "{{BASE_URL}}/payments"
+					},
+					"response": []
+				},
+				{
+					"name": "PUT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/payments/:Id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"payments",
+								":Id"
+							],
+							"variable": [
+								{
+									"key": "Id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{BASE_URL}}/payments"
+					},
+					"response": []
+				},
+				{
+					"name": "GET by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/payments/:Id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"payments",
+								":Id"
+							],
+							"variable": [
+								{
+									"key": "Id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET by invoiceID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/payments/invoices/:invoiceId",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"payments",
+								"invoices",
+								":invoiceId"
+							],
+							"variable": [
+								{
+									"key": "invoiceId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/payments/:Id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"payments",
+								":Id"
+							],
+							"variable": [
+								{
+									"key": "Id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST accept payment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/payments/accept/:id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"payments",
+								"accept",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "product",
+			"item": [
+				{
+					"name": "GET products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{BASE_URL}}/products"
+					},
+					"response": []
+				},
+				{
+					"name": "POST product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "{{BASE_URL}}/products"
+					},
+					"response": []
+				},
+				{
+					"name": "GET product by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/products/:id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/products/:id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/products/:id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "health_check",
+			"item": [
+				{
+					"name": "ping",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{BASE_URL}}/ping"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

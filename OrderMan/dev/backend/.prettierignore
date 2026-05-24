@@ -1,0 +1,6 @@
+dist/
+node_modules/
+.nuxt/
+coverage/
+*.min.js
+*.min.css

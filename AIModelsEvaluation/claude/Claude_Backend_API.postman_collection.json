@@ -1,0 +1,1294 @@
+{
+	"info": {
+		"_postman_id": "09727931-bde5-4a22-a455-662a151efae8",
+		"name": "Claude Backend API",
+		"description": "Postman collection for the Claude backend routes (customers, invoices, orders, payments, products). Adjust the `base_url` collection variable before running.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27492594",
+		"_collection_link": "https://www.postman.com/speeding-equinox-340784/workspace/iciit-paper/collection/27492594-09727931-bde5-4a22-a455-662a151efae8?action=share&source=collection_link&creator=27492594"
+	},
+	"item": [
+		{
+			"name": "Customers",
+			"item": [
+				{
+					"name": "Get All Customers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/customers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Customers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/customers/search?q=ACME",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"customers",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "ACME"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Customers by Role",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/customers/role/customer",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"customers",
+								"role",
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Customer by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/customers/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"customers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "9f220191-24a7-4118-9cd2-5caed1467172"
+								}
+							]
+						},
+						"description": "Replace :id with a real customer id (e.g. 123)"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Customer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"ACME Corp\",\n  \"email\": \"contact@example.com\",\n  \"role\": \"customer\",\n  \"phone\": \"123123123123\",\n  \"address\": { \"street\": \"123 Main St\", \"state\": \"State\", \"zipCode\": \"3122\", \"city\": \"City\", \"country\": \"Country\" },\n  \"bankingDetails\": {\n    \"accountNumber\": \"123123123\",\n    \"routingNumber\": \"123\",\n    \"bankName\": \"Bank\"\n  }\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/customers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Customer",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"ACME\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/customers/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"customers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "9f220191-24a7-4118-9cd2-5caed1467172"
+								}
+							]
+						},
+						"description": "Replace :id with customer id"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Customer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/customers/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"customers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "9f220191-24a7-4118-9cd2-5caed1467172"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Invoices",
+			"item": [
+				{
+					"name": "Get All Invoices",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/invoices",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"invoices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Overdue Invoices",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/invoices/overdue",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"invoices",
+								"overdue"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Invoices by Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/invoices/status/draft",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"invoices",
+								"status",
+								"draft"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Invoices by Customer ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/invoices/customer/:customerId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"invoices",
+								"customer",
+								":customerId"
+							],
+							"variable": [
+								{
+									"key": "customerId",
+									"value": "9f220191-24a7-4118-9cd2-5caed1467172"
+								}
+							]
+						},
+						"description": "Replace :customerId"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Invoice by Order ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/invoices/order/:orderId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"invoices",
+								"order",
+								":orderId"
+							],
+							"variable": [
+								{
+									"key": "orderId",
+									"value": "f43659fb-ec1c-4ad1-977f-dd52b4620559"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Invoice by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/invoices/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"invoices",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "f87a4275-541a-458b-999c-00f95a094b84"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Invoice",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"orderId\": \"f43659fb-ec1c-4ad1-977f-dd52b4620559\",\n  \"dueDate\": \"2025-11-15\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/invoices",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"invoices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Invoice",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"status\": \"draft\" }"
+						},
+						"url": {
+							"raw": "{{base_url}}/invoices/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"invoices",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "f87a4275-541a-458b-999c-00f95a094b84"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mark Invoice As Paid",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/invoices/:id/pay",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"invoices",
+								":id",
+								"pay"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "f87a4275-541a-458b-999c-00f95a094b84"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Invoice",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/invoices/:id/send",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"invoices",
+								":id",
+								"send"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "f87a4275-541a-458b-999c-00f95a094b84"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Invoice",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/invoices/:id/cancel",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"invoices",
+								":id",
+								"cancel"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "f87a4275-541a-458b-999c-00f95a094b84"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Invoice",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/invoices/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"invoices",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "f87a4275-541a-458b-999c-00f95a094b84"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "Get All Orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/orders",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Orders by Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/orders/status/pending",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"orders",
+								"status",
+								"pending"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Orders by Customer ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/orders/customer/:customerId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"orders",
+								"customer",
+								":customerId"
+							],
+							"variable": [
+								{
+									"key": "customerId",
+									"value": "9f220191-24a7-4118-9cd2-5caed1467172"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/orders/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"orders",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "f43659fb-ec1c-4ad1-977f-dd52b4620559"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerId\": \"9f220191-24a7-4118-9cd2-5caed1467172\",\n    \"items\": [{ \"productId\": \"f0efcf55-8a2a-4cfa-8bb7-9ef4f2a5d6dd\", \"quantity\": 1 }],\n    \"shippingAddress\": {\n            \"street\": \"123 Main St\",\n            \"state\": \"State\",\n            \"zipCode\": \"3122\",\n            \"city\": \"City\",\n            \"country\": \"Country\"\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/orders",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Order",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"status\": \"accepted\" }"
+						},
+						"url": {
+							"raw": "{{base_url}}/orders/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"orders",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "f43659fb-ec1c-4ad1-977f-dd52b4620559"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Accept Order",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/orders/:id/accept",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"orders",
+								":id",
+								"accept"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "f43659fb-ec1c-4ad1-977f-dd52b4620559"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ship Order",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/orders/:id/ship",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"orders",
+								":id",
+								"ship"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "f43659fb-ec1c-4ad1-977f-dd52b4620559"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Complete Order",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/orders/:id/complete",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"orders",
+								":id",
+								"complete"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "f43659fb-ec1c-4ad1-977f-dd52b4620559"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Order",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/orders/:id/cancel",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"orders",
+								":id",
+								"cancel"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "f43659fb-ec1c-4ad1-977f-dd52b4620559"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Order",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/orders/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"orders",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payments",
+			"item": [
+				{
+					"name": "Get All Payments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/payments",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"payments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Payment Summary",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/payments/summary",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"payments",
+								"summary"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Payments by Date Range",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/payments/date-range?startDate=2025-01-01&endDate=2025-12-31",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"payments",
+								"date-range"
+							],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "2025-01-01"
+								},
+								{
+									"key": "endDate",
+									"value": "2025-12-31"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Payments by Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/payments/status/pending",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"payments",
+								"status",
+								"pending"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Payments by Customer ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/payments/customer/:customerId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"payments",
+								"customer",
+								":customerId"
+							],
+							"variable": [
+								{
+									"key": "customerId",
+									"value": "9f220191-24a7-4118-9cd2-5caed1467172"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Payments by Invoice ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/payments/invoice/:invoiceId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"payments",
+								"invoice",
+								":invoiceId"
+							],
+							"variable": [
+								{
+									"key": "invoiceId",
+									"value": "f87a4275-541a-458b-999c-00f95a094b84"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Payment by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/payments/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"payments",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6ff36aba-735c-455e-84ed-db3de28bf590"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Payment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"invoiceId\": \"f87a4275-541a-458b-999c-00f95a094b84\",\n  \"amount\": 44.99,\n  \"paymentMethod\": \"credit_card\",\n  \"paymentDetails\": {\n  }\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/payments",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"payments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Payment",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"status\": \"pending\" }"
+						},
+						"url": {
+							"raw": "{{base_url}}/payments/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"payments",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6ff36aba-735c-455e-84ed-db3de28bf590"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Process Payment",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/payments/:id/process",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"payments",
+								":id",
+								"process"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6ff36aba-735c-455e-84ed-db3de28bf590"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Payment",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/payments/:id/cancel",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"payments",
+								":id",
+								"cancel"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6ff36aba-735c-455e-84ed-db3de28bf590"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Payment",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/payments/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"payments",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6ff36aba-735c-455e-84ed-db3de28bf590"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Get All Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/products",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Active Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/products/active",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"active"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/products/search?q=gadget",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "gadget"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Products by Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/products/category/gadgets",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"category",
+								"gadgets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product by SKU",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/products/sku/WIDGET-PRO-01",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"sku",
+								"WIDGET-PRO-01"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/products/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "f0efcf55-8a2a-4cfa-8bb7-9ef4f2a5d6dd"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Widget Pro\",\n  \"description\": \"Description\",\n  \"sku\": \"WIDGET-PRO-01\",\n  \"price\": 49.99,\n  \"stockQuantity\": 100,\n  \"weight\": 10,\n  \"dimensions\": {\n    \"length\": 10,\n    \"width\": 5,\n    \"height\": 3\n  },\n  \"category\": \"gadgets\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/products",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"price\": 44.99 }"
+						},
+						"url": {
+							"raw": "{{base_url}}/products/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "f0efcf55-8a2a-4cfa-8bb7-9ef4f2a5d6dd"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product Stock",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"quantity\": 90 }"
+						},
+						"url": {
+							"raw": "{{base_url}}/products/:id/stock",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								":id",
+								"stock"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "f0efcf55-8a2a-4cfa-8bb7-9ef4f2a5d6dd"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/products/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "f0efcf55-8a2a-4cfa-8bb7-9ef4f2a5d6dd"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}
