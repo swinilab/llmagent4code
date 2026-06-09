@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Error - URL Shortener</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-brand">URL Shortener</div>
+      <div class="nav-menu">
+        <a href="/">Home</a>
+        <a href="/login">Login</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="error-container">
+      <h2>An Error Occurred</h2>
+      <p><%= error || 'Something went wrong' %></p>
+      <a href="/" class="btn btn-primary">Go Home</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2024 URL Shortener. All rights reserved.</p>
+  </footer>
+</body>
+</html>

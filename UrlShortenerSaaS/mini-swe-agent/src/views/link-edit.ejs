@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Link - URL Shortener</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-brand">URL Shortener</div>
+      <div class="nav-menu">
+        <span class="user-email"><%= user.email %></span>
+        <a href="/dashboard">Dashboard</a>
+        <form method="POST" action="/auth/logout" style="display: inline;">
+          <button type="submit" class="btn-logout">Logout</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="edit-container">
+      <h2>Edit Link: <%= link.shortCode %></h2>
+
+      <form method="POST" action="/links/<%= link.shortCode %>/edit">
+        <div class="form-group">
+          <label>Short Code (Read-only)</label>
+          <input type="text" value="<%= link.shortCode %>" readonly>
+        </div>
+
+        <div class="form-group">
+          <label>Destination URL</label>
+          <input type="url" name="destinationUrl" value="<%= link.destinationUrl %>" required>
+        </div>
+
+        <% if (user.tier === 'pro') { %>
+          <div class="form-group">
+            <label>Expires At (Optional)</label>
+            <input type="datetime-local" name="expiresAt" 
+                   value="<%= link.expiresAt ? link.expiresAt.toISOString().slice(0, 16) : '' %>">
+          </div>
+        <% } %>
+
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+        <a href="/dashboard" class="btn btn-secondary">Cancel</a>
+      </form>
+
+      <div class="qr-section">
+        <h3>QR Code</h3>
+        <img src="/links/<%= link.shortCode %>/qr" alt="QR Code">
+        <a href="/links/<%= link.shortCode %>/qr" download="qr-<%= link.shortCode %>.png" class="btn btn-small">Download QR</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2024 URL Shortener. All rights reserved.</p>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>

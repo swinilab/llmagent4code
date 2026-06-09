@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - URL Shortener</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-brand">URL Shortener</div>
+      <div class="nav-menu">
+        <span class="user-email"><%= user.email %></span>
+        <a href="/account">Account</a>
+        <form method="POST" action="/auth/logout" style="display: inline;">
+          <button type="submit" class="btn-logout">Logout</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="dashboard-container">
+      <div class="dashboard-header">
+        <h2>Dashboard</h2>
+        <div class="quota-info">
+          <% if (user.tier === 'free') { %>
+            <p>Active links: <strong><%= quota %></strong></p>
+            <div class="upgrade-banner">
+              <p>Upgrade to Pro for unlimited links, custom slugs, and more!</p>
+              <a href="/account" class="btn btn-secondary">Upgrade Now</a>
+            </div>
+          <% } else { %>
+            <p class="badge-pro">Pro Account</p>
+          <% } %>
+        </div>
+      </div>
+
+      <div class="dashboard-actions">
+        <a href="/" class="btn btn-primary">Create New Link</a>
+        <div class="search-box">
+          <input type="text" id="search" placeholder="Search links..." value="<%= q %>">
+        </div>
+      </div>
+
+      <div class="filters">
+        <select id="status" onchange="updateFilter()">
+          <option value="all" <%= status === 'all' ? 'selected' : '' %>>All Links</option>
+          <option value="active" <%= status === 'active' ? 'selected' : '' %>>Active</option>
+          <option value="expired" <%= status === 'expired' ? 'selected' : '' %>>Expired</option>
+        </select>
+
+        <select id="sort" onchange="updateFilter()">
+          <option value="createdAt" <%= sort === 'createdAt' ? 'selected' : '' %>>Newest First</option>
+          <option value="clicks" <%= sort === 'clicks' ? 'selected' : '' %>>Most Clicks</option>
+        </select>
+      </div>
+
+      <% if (links && links.length > 0) { %>
+        <div class="links-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Short URL</th>
+                <th>Destination</th>
+                <th>Clicks</th>
+                <th>Created</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% links.forEach(link => { %>
+                <tr>
+                  <td>
+                    <a href="/<%= link.shortCode %>" target="_blank"><%= link.shortCode %></a>
+                  </td>
+                  <td class="truncate" title="<%= link.destinationUrl %>">
+                    <%= link.destinationUrl.substring(0, 60) %>
+                  </td>
+                  <td><%= link.totalClicks %></td>
+                  <td><%= new Date(link.createdAt).toLocaleDateString() %></td>
+                  <td><span class="status <%= link.status.toLowerCase() %>"><%= link.status %></span></td>
+                  <td class="actions">
+                    <a href="/links/<%= link.shortCode %>/stats" class="btn-small">Stats</a>
+                    <a href="/links/<%= link.shortCode %>/edit" class="btn-small">Edit</a>
+                    <form method="POST" action="/links/<%= link.shortCode %>/delete" style="display: inline;">
+                      <button type="submit" class="btn-small btn-danger" onclick="return confirm('Delete this link?')">Delete</button>
+                    </form>
+                  </td>
+                </tr>
+              <% }); %>
+            </tbody>
+          </table>
+        </div>
+
+        <% if (total > perPage) { %>
+          <div class="pagination">
+            <% for (let i = 1; i <= Math.ceil(total / perPage); i++) { %>
+              <a href="?page=<%= i %>&sort=<%= sort %>&status=<%= status %>" 
+                 class="page-link <%= page === i ? 'active' : '' %>">
+                <%= i %>
+              </a>
+            <% } %>
+          </div>
+        <% } %>
+      <% } else { %>
+        <p>No links yet. <a href="/">Create your first short link</a></p>
+      <% } %>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2024 URL Shortener. All rights reserved.</p>
+  </footer>
+
+  <script src="/app.js"></script>
+  <script>
+    function updateFilter() {
+      const search = document.getElementById('search').value;
+      const status = document.getElementById('status').value;
+      const sort = document.getElementById('sort').value;
+      window.location.href = `?q=${encodeURIComponent(search)}&status=${status}&sort=${sort}`;
+    }
+
+    document.getElementById('search').addEventListener('keyup', (e) => {
+      if (e.key === 'Enter') updateFilter();
+    });
+  </script>
+</body>
+</html>

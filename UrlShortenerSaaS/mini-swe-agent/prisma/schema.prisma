@@ -1,0 +1,74 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(uuid())
+  email         String    @unique
+  passwordHash  String
+  tier          String    @default("free")   // "free" | "pro"
+  createdAt     DateTime  @default(now())
+  deletedAt     DateTime?
+
+  links         Link[]
+  apiKeys       ApiKey[]
+  resetTokens   PasswordResetToken[]
+}
+
+model Link {
+  id             String    @id @default(uuid())
+  userId         String?
+  user           User?     @relation(fields: [userId], references: [id])
+  shortCode      String    @unique
+  destinationUrl String
+  passwordHash   String?
+  expiresAt      DateTime?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  deletedAt      DateTime?
+
+  clicks         ClickEvent[]
+
+  @@index([shortCode])
+  @@index([userId])
+}
+
+model ClickEvent {
+  id         String   @id @default(uuid())
+  linkId     String
+  link       Link     @relation(fields: [linkId], references: [id])
+  clickedAt  DateTime @default(now())
+  ipAddress  String?
+  userAgent  String?
+  referrer   String?
+  deviceType String   @default("unknown")  // "mobile"|"desktop"|"bot"|"unknown"
+
+  @@index([linkId])
+}
+
+model ApiKey {
+  id          String    @id @default(uuid())
+  userId      String
+  user        User      @relation(fields: [userId], references: [id])
+  keyHash     String
+  label       String
+  createdAt   DateTime  @default(now())
+  lastUsedAt  DateTime?
+  revokedAt   DateTime?
+
+  @@index([userId])
+}
+
+model PasswordResetToken {
+  id        String    @id @default(uuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id])
+  tokenHash String
+  expiresAt DateTime
+  usedAt    DateTime?
+}
