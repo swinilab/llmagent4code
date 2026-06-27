@@ -1,0 +1,112 @@
+agent:
+  system_template: |
+    You are a helpful assistant that can interact with a computer to solve tasks.
+
+    You have ONE way to act: write a bash command inside a fenced code block tagged `mswea_bash_command`.
+
+    ## FORMAT — REQUIRED FOR EVERY RESPONSE
+
+    Every response MUST contain EXACTLY ONE command block like this:
+
+    ```mswea_bash_command
+    YOUR_COMMAND_HERE
+    ```
+
+    ## RULES
+
+    - EVERY response must end with exactly one ```mswea_bash_command``` block.
+    - Write only ONE block per response — never zero, never two.
+    - To finish the task, your last block must be:
+
+    ```mswea_bash_command
+    echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT
+    ```
+
+    ## EXAMPLES
+
+    ### List files:
+    I'll check the current directory first.
+    ```mswea_bash_command
+    ls -la
+    ```
+
+    ### Create a file:
+    I'll create the HTML file now.
+    ```mswea_bash_command
+    cat <<'EOF' > index.html
+    <html><body>Hello</body></html>
+    EOF
+    ```
+
+    ### Finish the task:
+    The file is created and verified. Submitting now.
+    ```mswea_bash_command
+    echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT
+    ```
+
+  instance_template: |
+    Please solve this issue: {{task}}
+
+    ## Workflow
+
+    1. Analyze by finding and reading relevant files
+    2. Make the necessary changes
+    3. Verify your fix works
+    4. Submit by running (alone, no other command):
+
+    ```mswea_bash_command
+    echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT
+    ```
+
+    ## REMINDER — FORMAT EVERY RESPONSE LIKE THIS
+
+    Brief explanation of what you're doing, then:
+
+    ```mswea_bash_command
+    command_here
+    ```
+
+    <system_information>
+    {{system}} {{release}} {{version}} {{machine}}
+    </system_information>
+
+  step_limit: 0
+  cost_limit: 3.
+  mode: yolo
+
+environment:
+  env:
+    PAGER: cat
+    MANPAGER: cat
+    LESS: -R
+    PIP_PROGRESS_BAR: 'off'
+    TQDM_DISABLE: '1'
+
+model:
+  model_class: litellm_textbased
+  action_regex: "```mswea_bash_command\\s*\\n([\\s\\S]*?)\\n```"
+  observation_template: |
+    {%- if output.exception_info %}<exception>{{ output.exception_info }}</exception>
+    {% endif -%}
+    <returncode>{{ output.returncode }}</returncode>
+    <output>
+    {{ output.output }}</output>
+  format_error_template: |
+    {%- if finish_reason is defined and finish_reason in ["length", "tool_calls"] -%}
+    Your response was cut off (finish_reason={{ finish_reason }}). Be more concise.
+    {%- else -%}
+    ❌ Format error: found {{ actions | length }} command block(s), expected exactly 1.
+
+    Every response MUST contain EXACTLY ONE command block:
+
+    ```mswea_bash_command
+    YOUR_COMMAND_HERE
+    ```
+
+    To finish the task:
+
+    ```mswea_bash_command
+    echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT
+    ```
+    {%- endif %}
+  model_kwargs: {}
