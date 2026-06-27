@@ -42,6 +42,23 @@ Design and implement a full-stack web application following this structure: **Co
   - Data source design must be compatible with the shared domain model
 - **Shared Domain Models** Create reusable domain model definitions for both front-end and back-end logics which can be used for consistent data handling and API communication.
 
+**Non-functional requirements:**
+
+- Performance:
+  - NFR 1.1 (Response Time): The API response round-trip time for core user journeys (e.g., product search, cart updates, checkout initiation) must be as short as possible under expected load.
+  - NFR 1.2 (Resource Utilization & Concurrency): The system must process concurrent user requests up to the maximum capacity of the available server resources (leveraging the 98GB RAM) with minimal queuing delay.
+  - NFR 1.3 (Queue Management): During sudden traffic spikes, the system must prevent request queue overflow by bounding the size of incoming request queues and rejecting or delaying excess requests gracefully rather than crashing.
+- Modifiability
+  - NFR 2.1 (Localization of Changes): Modifications to specific business rules (e.g., tax calculations, discount logic, or shipping rates) must be isolatable to dedicated modules without requiring changes to the core order processing engine.
+  - NFR 2.2 (Interface Stability): Updates to the frontend user interface or the addition of new client applications must not require recompilation or structural changes to the existing backend API contracts.
+  - NFR 2.3 (Deferred Binding): System parameters (e.g., feature flags, cache expiration times, database connection pool limits) must be modifiable at runtime or via external configuration files without requiring a full application restart.
+- Reliability
+  - NFR 3.1 (Graceful Degradation): Under extreme resource contention (e.g., CPU or RAM saturation), the system must gracefully degrade non-essential features (e.g., personalized product recommendations, heavy analytics logging) to ensure core checkout functionality remains available with minimum downtime.
+  - NFR 3.2 (Fault Detection and Recovery): The application must detect internal component failures (e.g., temporary database connection drops or GPU driver hiccups) and automatically attempt to recover or reconnect within the shortest possible time, minimizing user-facing errors.
+  - NFR 3.3 (State Preservation): In the event of an unexpected application process crash, the system must be able to restore its operational state and resume processing pending orders upon restart with minimal data loss.
+
+
+
 **Output Requirements:**
 
 - Complete, working implementations for every component mentioned. No shortcuts, placeholders, or pattern repetition instructions
