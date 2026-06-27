@@ -13,7 +13,7 @@ class Config:
         self.pipeline_data_dir = self.base_dir / "data"
         self.prompts_dir = self.pipeline_data_dir / "prompts"
         self.config_dir = self.pipeline_data_dir / "config"
-        self.output_dir = self.pipeline_data_dir / "generated"
+        self.output_dir = self.pipeline_data_dir / "generated1"
 
         self.prompts_dir.mkdir(parents=True, exist_ok=True)
         self.config_dir.mkdir(parents=True, exist_ok=True)
