@@ -1,0 +1,6852 @@
+{
+  "workflow_id": "sdk_chatdev_20260627221554",
+  "total_usage": {
+    "input_tokens": 14082783,
+    "output_tokens": 165986,
+    "total_tokens": 14248769
+  },
+  "node_usages": {
+    "Programmer Coding": {
+      "input_tokens": 1970256,
+      "output_tokens": 57694,
+      "total_tokens": 2027950
+    },
+    "Programmer Code Complete": {
+      "input_tokens": 5969327,
+      "output_tokens": 19577,
+      "total_tokens": 5988904
+    },
+    "Code Reviewer": {
+      "input_tokens": 4478292,
+      "output_tokens": 54398,
+      "total_tokens": 4532690
+    },
+    "Programmer Code Review": {
+      "input_tokens": 519548,
+      "output_tokens": 16207,
+      "total_tokens": 535755
+    },
+    "Programmer Test Error Summary": {
+      "input_tokens": 755417,
+      "output_tokens": 7020,
+      "total_tokens": 762437
+    },
+    "Programmer Test Modification": {
+      "input_tokens": 35455,
+      "output_tokens": 1244,
+      "total_tokens": 36699
+    },
+    "Chief Product Officer": {
+      "input_tokens": 189156,
+      "output_tokens": 7946,
+      "total_tokens": 197102
+    },
+    "Chief Executive Officer": {
+      "input_tokens": 165332,
+      "output_tokens": 1900,
+      "total_tokens": 167232
+    }
+  },
+  "model_usages": {
+    "qwen3.5:cloud": {
+      "input_tokens": 14082783,
+      "output_tokens": 165986,
+      "total_tokens": 14248769
+    }
+  },
+  "node_execution_counts": {
+    "Programmer Coding": 51,
+    "Programmer Code Complete": 95,
+    "Code Reviewer": 143,
+    "Programmer Code Review": 63,
+    "Programmer Test Error Summary": 25,
+    "Programmer Test Modification": 4,
+    "Chief Product Officer": 8,
+    "Chief Executive Officer": 10
+  },
+  "call_history": [
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 4021,
+      "output_tokens": 1452,
+      "total_tokens": 5473,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 4021,
+        "output_tokens": 1452,
+        "total_tokens": 5473
+      },
+      "timestamp": "2026-06-27T22:16:13.930749",
+      "execution_number": 1,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 4333,
+      "output_tokens": 140,
+      "total_tokens": 4473,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 4333,
+        "output_tokens": 140,
+        "total_tokens": 4473
+      },
+      "timestamp": "2026-06-27T22:16:26.694641",
+      "execution_number": 2,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 4760,
+      "output_tokens": 704,
+      "total_tokens": 5464,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 4760,
+        "output_tokens": 704,
+        "total_tokens": 5464
+      },
+      "timestamp": "2026-06-27T22:16:37.315595",
+      "execution_number": 3,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 5419,
+      "output_tokens": 696,
+      "total_tokens": 6115,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 5419,
+        "output_tokens": 696,
+        "total_tokens": 6115
+      },
+      "timestamp": "2026-06-27T22:16:47.906334",
+      "execution_number": 4,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 5791,
+      "output_tokens": 2543,
+      "total_tokens": 8334,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 5791,
+        "output_tokens": 2543,
+        "total_tokens": 8334
+      },
+      "timestamp": "2026-06-27T22:17:14.722493",
+      "execution_number": 5,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 8393,
+      "output_tokens": 226,
+      "total_tokens": 8619,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 8393,
+        "output_tokens": 226,
+        "total_tokens": 8619
+      },
+      "timestamp": "2026-06-27T22:17:17.761396",
+      "execution_number": 6,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 8685,
+      "output_tokens": 312,
+      "total_tokens": 8997,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 8685,
+        "output_tokens": 312,
+        "total_tokens": 8997
+      },
+      "timestamp": "2026-06-27T22:17:21.060533",
+      "execution_number": 7,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 9070,
+      "output_tokens": 2209,
+      "total_tokens": 11279,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 9070,
+        "output_tokens": 2209,
+        "total_tokens": 11279
+      },
+      "timestamp": "2026-06-27T22:17:40.271116",
+      "execution_number": 8,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 11343,
+      "output_tokens": 165,
+      "total_tokens": 11508,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 11343,
+        "output_tokens": 165,
+        "total_tokens": 11508
+      },
+      "timestamp": "2026-06-27T22:17:43.267460",
+      "execution_number": 9,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 11572,
+      "output_tokens": 1362,
+      "total_tokens": 12934,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 11572,
+        "output_tokens": 1362,
+        "total_tokens": 12934
+      },
+      "timestamp": "2026-06-27T22:17:55.884748",
+      "execution_number": 10,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 13002,
+      "output_tokens": 1669,
+      "total_tokens": 14671,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 13002,
+        "output_tokens": 1669,
+        "total_tokens": 14671
+      },
+      "timestamp": "2026-06-27T22:18:12.361745",
+      "execution_number": 11,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 14748,
+      "output_tokens": 3225,
+      "total_tokens": 17973,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 14748,
+        "output_tokens": 3225,
+        "total_tokens": 17973
+      },
+      "timestamp": "2026-06-27T22:18:40.214642",
+      "execution_number": 12,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 18044,
+      "output_tokens": 2905,
+      "total_tokens": 20949,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 18044,
+        "output_tokens": 2905,
+        "total_tokens": 20949
+      },
+      "timestamp": "2026-06-27T22:19:26.153255",
+      "execution_number": 13,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 21029,
+      "output_tokens": 2651,
+      "total_tokens": 23680,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 21029,
+        "output_tokens": 2651,
+        "total_tokens": 23680
+      },
+      "timestamp": "2026-06-27T22:19:49.495585",
+      "execution_number": 14,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 23743,
+      "output_tokens": 160,
+      "total_tokens": 23903,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 23743,
+        "output_tokens": 160,
+        "total_tokens": 23903
+      },
+      "timestamp": "2026-06-27T22:19:52.931721",
+      "execution_number": 15,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 23972,
+      "output_tokens": 689,
+      "total_tokens": 24661,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 23972,
+        "output_tokens": 689,
+        "total_tokens": 24661
+      },
+      "timestamp": "2026-06-27T22:20:00.526759",
+      "execution_number": 16,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 24730,
+      "output_tokens": 919,
+      "total_tokens": 25649,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 24730,
+        "output_tokens": 919,
+        "total_tokens": 25649
+      },
+      "timestamp": "2026-06-27T22:20:17.410780",
+      "execution_number": 17,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 25726,
+      "output_tokens": 1400,
+      "total_tokens": 27126,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 25726,
+        "output_tokens": 1400,
+        "total_tokens": 27126
+      },
+      "timestamp": "2026-06-27T22:20:36.200695",
+      "execution_number": 18,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 27176,
+      "output_tokens": 1478,
+      "total_tokens": 28654,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 27176,
+        "output_tokens": 1478,
+        "total_tokens": 28654
+      },
+      "timestamp": "2026-06-27T22:20:52.987802",
+      "execution_number": 19,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 28716,
+      "output_tokens": 1232,
+      "total_tokens": 29948,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 28716,
+        "output_tokens": 1232,
+        "total_tokens": 29948
+      },
+      "timestamp": "2026-06-27T22:21:06.059698",
+      "execution_number": 20,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 30025,
+      "output_tokens": 177,
+      "total_tokens": 30202,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 30025,
+        "output_tokens": 177,
+        "total_tokens": 30202
+      },
+      "timestamp": "2026-06-27T22:21:09.863936",
+      "execution_number": 21,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 30264,
+      "output_tokens": 1064,
+      "total_tokens": 31328,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 30264,
+        "output_tokens": 1064,
+        "total_tokens": 31328
+      },
+      "timestamp": "2026-06-27T22:21:25.128384",
+      "execution_number": 22,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 31394,
+      "output_tokens": 1274,
+      "total_tokens": 32668,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 31394,
+        "output_tokens": 1274,
+        "total_tokens": 32668
+      },
+      "timestamp": "2026-06-27T22:21:40.408478",
+      "execution_number": 23,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 32744,
+      "output_tokens": 1624,
+      "total_tokens": 34368,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 32744,
+        "output_tokens": 1624,
+        "total_tokens": 34368
+      },
+      "timestamp": "2026-06-27T22:21:55.608063",
+      "execution_number": 24,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 34430,
+      "output_tokens": 1715,
+      "total_tokens": 36145,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 34430,
+        "output_tokens": 1715,
+        "total_tokens": 36145
+      },
+      "timestamp": "2026-06-27T22:22:39.412227",
+      "execution_number": 25,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 36223,
+      "output_tokens": 1412,
+      "total_tokens": 37635,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 36223,
+        "output_tokens": 1412,
+        "total_tokens": 37635
+      },
+      "timestamp": "2026-06-27T22:23:06.064954",
+      "execution_number": 26,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 37711,
+      "output_tokens": 2113,
+      "total_tokens": 39824,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 37711,
+        "output_tokens": 2113,
+        "total_tokens": 39824
+      },
+      "timestamp": "2026-06-27T22:23:45.684319",
+      "execution_number": 27,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 39877,
+      "output_tokens": 1948,
+      "total_tokens": 41825,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 39877,
+        "output_tokens": 1948,
+        "total_tokens": 41825
+      },
+      "timestamp": "2026-06-27T22:24:04.329844",
+      "execution_number": 28,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 41878,
+      "output_tokens": 3521,
+      "total_tokens": 45399,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 41878,
+        "output_tokens": 3521,
+        "total_tokens": 45399
+      },
+      "timestamp": "2026-06-27T22:24:40.231352",
+      "execution_number": 29,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 45472,
+      "output_tokens": 1753,
+      "total_tokens": 47225,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 45472,
+        "output_tokens": 1753,
+        "total_tokens": 47225
+      },
+      "timestamp": "2026-06-27T22:25:01.222437",
+      "execution_number": 30,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 47278,
+      "output_tokens": 1714,
+      "total_tokens": 48992,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 47278,
+        "output_tokens": 1714,
+        "total_tokens": 48992
+      },
+      "timestamp": "2026-06-27T22:25:40.050515",
+      "execution_number": 31,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 49058,
+      "output_tokens": 1987,
+      "total_tokens": 51045,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 49058,
+        "output_tokens": 1987,
+        "total_tokens": 51045
+      },
+      "timestamp": "2026-06-27T22:26:00.138061",
+      "execution_number": 32,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 51118,
+      "output_tokens": 3313,
+      "total_tokens": 54431,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 51118,
+        "output_tokens": 3313,
+        "total_tokens": 54431
+      },
+      "timestamp": "2026-06-27T22:26:36.244191",
+      "execution_number": 33,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 54481,
+      "output_tokens": 2201,
+      "total_tokens": 56682,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 54481,
+        "output_tokens": 2201,
+        "total_tokens": 56682
+      },
+      "timestamp": "2026-06-27T22:27:04.196963",
+      "execution_number": 34,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 56757,
+      "output_tokens": 2223,
+      "total_tokens": 58980,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 56757,
+        "output_tokens": 2223,
+        "total_tokens": 58980
+      },
+      "timestamp": "2026-06-27T22:27:26.543354",
+      "execution_number": 35,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 59044,
+      "output_tokens": 1908,
+      "total_tokens": 60952,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 59044,
+        "output_tokens": 1908,
+        "total_tokens": 60952
+      },
+      "timestamp": "2026-06-27T22:27:55.468081",
+      "execution_number": 36,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 61015,
+      "output_tokens": 114,
+      "total_tokens": 61129,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 61015,
+        "output_tokens": 114,
+        "total_tokens": 61129
+      },
+      "timestamp": "2026-06-27T22:27:58.419391",
+      "execution_number": 37,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 61179,
+      "output_tokens": 77,
+      "total_tokens": 61256,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 61179,
+        "output_tokens": 77,
+        "total_tokens": 61256
+      },
+      "timestamp": "2026-06-27T22:28:03.488585",
+      "execution_number": 38,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 61260,
+      "output_tokens": 59,
+      "total_tokens": 61319,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 61260,
+        "output_tokens": 59,
+        "total_tokens": 61319
+      },
+      "timestamp": "2026-06-27T22:28:20.960135",
+      "execution_number": 39,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 62356,
+      "output_tokens": 137,
+      "total_tokens": 62493,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 62356,
+        "output_tokens": 137,
+        "total_tokens": 62493
+      },
+      "timestamp": "2026-06-27T22:28:28.616441",
+      "execution_number": 40,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 62549,
+      "output_tokens": 108,
+      "total_tokens": 62657,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 62549,
+        "output_tokens": 108,
+        "total_tokens": 62657
+      },
+      "timestamp": "2026-06-27T22:28:31.564183",
+      "execution_number": 41,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 62797,
+      "output_tokens": 63,
+      "total_tokens": 62860,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 62797,
+        "output_tokens": 63,
+        "total_tokens": 62860
+      },
+      "timestamp": "2026-06-27T22:28:33.779924",
+      "execution_number": 42,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 66137,
+      "output_tokens": 92,
+      "total_tokens": 66229,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 66137,
+        "output_tokens": 92,
+        "total_tokens": 66229
+      },
+      "timestamp": "2026-06-27T22:28:43.238562",
+      "execution_number": 43,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 66757,
+      "output_tokens": 218,
+      "total_tokens": 66975,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 66757,
+        "output_tokens": 218,
+        "total_tokens": 66975
+      },
+      "timestamp": "2026-06-27T22:28:48.262890",
+      "execution_number": 44,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 66987,
+      "output_tokens": 59,
+      "total_tokens": 67046,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 66987,
+        "output_tokens": 59,
+        "total_tokens": 67046
+      },
+      "timestamp": "2026-06-27T22:28:51.974112",
+      "execution_number": 45,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 70327,
+      "output_tokens": 77,
+      "total_tokens": 70404,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 70327,
+        "output_tokens": 77,
+        "total_tokens": 70404
+      },
+      "timestamp": "2026-06-27T22:28:57.068871",
+      "execution_number": 46,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 70849,
+      "output_tokens": 189,
+      "total_tokens": 71038,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 70849,
+        "output_tokens": 189,
+        "total_tokens": 71038
+      },
+      "timestamp": "2026-06-27T22:29:01.704425",
+      "execution_number": 47,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 71077,
+      "output_tokens": 76,
+      "total_tokens": 71153,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 71077,
+        "output_tokens": 76,
+        "total_tokens": 71153
+      },
+      "timestamp": "2026-06-27T22:29:04.751351",
+      "execution_number": 48,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 71374,
+      "output_tokens": 132,
+      "total_tokens": 71506,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 71374,
+        "output_tokens": 132,
+        "total_tokens": 71506
+      },
+      "timestamp": "2026-06-27T22:29:07.826987",
+      "execution_number": 49,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 71586,
+      "output_tokens": 76,
+      "total_tokens": 71662,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 71586,
+        "output_tokens": 76,
+        "total_tokens": 71662
+      },
+      "timestamp": "2026-06-27T22:29:11.659428",
+      "execution_number": 50,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 71979,
+      "output_tokens": 133,
+      "total_tokens": 72112,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 71979,
+        "output_tokens": 133,
+        "total_tokens": 72112
+      },
+      "timestamp": "2026-06-27T22:29:14.930290",
+      "execution_number": 51,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 3897,
+      "output_tokens": 111,
+      "total_tokens": 4008,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 3897,
+        "output_tokens": 111,
+        "total_tokens": 4008
+      },
+      "timestamp": "2026-06-27T22:29:17.539923",
+      "execution_number": 1,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 13712,
+      "output_tokens": 352,
+      "total_tokens": 14064,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 13712,
+        "output_tokens": 352,
+        "total_tokens": 14064
+      },
+      "timestamp": "2026-06-27T22:29:23.886069",
+      "execution_number": 2,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 16916,
+      "output_tokens": 242,
+      "total_tokens": 17158,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 16916,
+        "output_tokens": 242,
+        "total_tokens": 17158
+      },
+      "timestamp": "2026-06-27T22:29:27.913940",
+      "execution_number": 3,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 21274,
+      "output_tokens": 203,
+      "total_tokens": 21477,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 21274,
+        "output_tokens": 203,
+        "total_tokens": 21477
+      },
+      "timestamp": "2026-06-27T22:29:34.256674",
+      "execution_number": 4,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 24933,
+      "output_tokens": 197,
+      "total_tokens": 25130,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 24933,
+        "output_tokens": 197,
+        "total_tokens": 25130
+      },
+      "timestamp": "2026-06-27T22:29:38.597102",
+      "execution_number": 5,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 28041,
+      "output_tokens": 189,
+      "total_tokens": 28230,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 28041,
+        "output_tokens": 189,
+        "total_tokens": 28230
+      },
+      "timestamp": "2026-06-27T22:29:42.926954",
+      "execution_number": 6,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 30910,
+      "output_tokens": 192,
+      "total_tokens": 31102,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 30910,
+        "output_tokens": 192,
+        "total_tokens": 31102
+      },
+      "timestamp": "2026-06-27T22:29:47.893121",
+      "execution_number": 7,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 35756,
+      "output_tokens": 240,
+      "total_tokens": 35996,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 35756,
+        "output_tokens": 240,
+        "total_tokens": 35996
+      },
+      "timestamp": "2026-06-27T22:29:53.064931",
+      "execution_number": 8,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 39400,
+      "output_tokens": 196,
+      "total_tokens": 39596,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 39400,
+        "output_tokens": 196,
+        "total_tokens": 39596
+      },
+      "timestamp": "2026-06-27T22:30:00.208832",
+      "execution_number": 9,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 42295,
+      "output_tokens": 266,
+      "total_tokens": 42561,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 42295,
+        "output_tokens": 266,
+        "total_tokens": 42561
+      },
+      "timestamp": "2026-06-27T22:30:06.183215",
+      "execution_number": 10,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 45966,
+      "output_tokens": 234,
+      "total_tokens": 46200,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 45966,
+        "output_tokens": 234,
+        "total_tokens": 46200
+      },
+      "timestamp": "2026-06-27T22:30:19.706303",
+      "execution_number": 11,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 49139,
+      "output_tokens": 194,
+      "total_tokens": 49333,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 49139,
+        "output_tokens": 194,
+        "total_tokens": 49333
+      },
+      "timestamp": "2026-06-27T22:30:26.243923",
+      "execution_number": 12,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 53131,
+      "output_tokens": 260,
+      "total_tokens": 53391,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 53131,
+        "output_tokens": 260,
+        "total_tokens": 53391
+      },
+      "timestamp": "2026-06-27T22:30:32.610656",
+      "execution_number": 13,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 55077,
+      "output_tokens": 201,
+      "total_tokens": 55278,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 55077,
+        "output_tokens": 201,
+        "total_tokens": 55278
+      },
+      "timestamp": "2026-06-27T22:30:40.393360",
+      "execution_number": 14,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 58796,
+      "output_tokens": 196,
+      "total_tokens": 58992,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 58796,
+        "output_tokens": 196,
+        "total_tokens": 58992
+      },
+      "timestamp": "2026-06-27T22:30:45.008546",
+      "execution_number": 15,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 62690,
+      "output_tokens": 205,
+      "total_tokens": 62895,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 62690,
+        "output_tokens": 205,
+        "total_tokens": 62895
+      },
+      "timestamp": "2026-06-27T22:30:50.293390",
+      "execution_number": 16,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 66191,
+      "output_tokens": 287,
+      "total_tokens": 66478,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 66191,
+        "output_tokens": 287,
+        "total_tokens": 66478
+      },
+      "timestamp": "2026-06-27T22:30:55.673401",
+      "execution_number": 17,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 67781,
+      "output_tokens": 622,
+      "total_tokens": 68403,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 67781,
+        "output_tokens": 622,
+        "total_tokens": 68403
+      },
+      "timestamp": "2026-06-27T22:31:41.974776",
+      "execution_number": 18,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 68771,
+      "output_tokens": 134,
+      "total_tokens": 68905,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 68771,
+        "output_tokens": 134,
+        "total_tokens": 68905
+      },
+      "timestamp": "2026-06-27T22:31:46.076096",
+      "execution_number": 19,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 68862,
+      "output_tokens": 79,
+      "total_tokens": 68941,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 68862,
+        "output_tokens": 79,
+        "total_tokens": 68941
+      },
+      "timestamp": "2026-06-27T22:31:48.762182",
+      "execution_number": 20,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 71612,
+      "output_tokens": 252,
+      "total_tokens": 71864,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 71612,
+        "output_tokens": 252,
+        "total_tokens": 71864
+      },
+      "timestamp": "2026-06-27T22:31:58.848090",
+      "execution_number": 21,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 72655,
+      "output_tokens": 638,
+      "total_tokens": 73293,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 72655,
+        "output_tokens": 638,
+        "total_tokens": 73293
+      },
+      "timestamp": "2026-06-27T22:32:11.763988",
+      "execution_number": 22,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 73115,
+      "output_tokens": 81,
+      "total_tokens": 73196,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 73115,
+        "output_tokens": 81,
+        "total_tokens": 73196
+      },
+      "timestamp": "2026-06-27T22:32:29.243128",
+      "execution_number": 23,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 73845,
+      "output_tokens": 200,
+      "total_tokens": 74045,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 73845,
+        "output_tokens": 200,
+        "total_tokens": 74045
+      },
+      "timestamp": "2026-06-27T22:32:33.500767",
+      "execution_number": 24,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 74075,
+      "output_tokens": 93,
+      "total_tokens": 74168,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 74075,
+        "output_tokens": 93,
+        "total_tokens": 74168
+      },
+      "timestamp": "2026-06-27T22:32:36.985310",
+      "execution_number": 25,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 74799,
+      "output_tokens": 170,
+      "total_tokens": 74969,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 74799,
+        "output_tokens": 170,
+        "total_tokens": 74969
+      },
+      "timestamp": "2026-06-27T22:32:41.209067",
+      "execution_number": 26,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 75007,
+      "output_tokens": 93,
+      "total_tokens": 75100,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 75007,
+        "output_tokens": 93,
+        "total_tokens": 75100
+      },
+      "timestamp": "2026-06-27T22:32:50.267874",
+      "execution_number": 27,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 75556,
+      "output_tokens": 486,
+      "total_tokens": 76042,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 75556,
+        "output_tokens": 486,
+        "total_tokens": 76042
+      },
+      "timestamp": "2026-06-27T22:33:05.486683",
+      "execution_number": 28,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 76012,
+      "output_tokens": 68,
+      "total_tokens": 76080,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 76012,
+        "output_tokens": 68,
+        "total_tokens": 76080
+      },
+      "timestamp": "2026-06-27T22:33:36.282640",
+      "execution_number": 29,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 76497,
+      "output_tokens": 74,
+      "total_tokens": 76571,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 76497,
+        "output_tokens": 74,
+        "total_tokens": 76571
+      },
+      "timestamp": "2026-06-27T22:33:39.971411",
+      "execution_number": 30,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 76881,
+      "output_tokens": 127,
+      "total_tokens": 77008,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 76881,
+        "output_tokens": 127,
+        "total_tokens": 77008
+      },
+      "timestamp": "2026-06-27T22:33:43.587875",
+      "execution_number": 31,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 77081,
+      "output_tokens": 58,
+      "total_tokens": 77139,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 77081,
+        "output_tokens": 58,
+        "total_tokens": 77139
+      },
+      "timestamp": "2026-06-27T22:33:45.863957",
+      "execution_number": 32,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 77565,
+      "output_tokens": 72,
+      "total_tokens": 77637,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 77565,
+        "output_tokens": 72,
+        "total_tokens": 77637
+      },
+      "timestamp": "2026-06-27T22:33:58.542786",
+      "execution_number": 33,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 77938,
+      "output_tokens": 130,
+      "total_tokens": 78068,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 77938,
+        "output_tokens": 130,
+        "total_tokens": 78068
+      },
+      "timestamp": "2026-06-27T22:34:02.061498",
+      "execution_number": 34,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 78139,
+      "output_tokens": 78,
+      "total_tokens": 78217,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 78139,
+        "output_tokens": 78,
+        "total_tokens": 78217
+      },
+      "timestamp": "2026-06-27T22:34:04.724950",
+      "execution_number": 35,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 78478,
+      "output_tokens": 122,
+      "total_tokens": 78600,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 78478,
+        "output_tokens": 122,
+        "total_tokens": 78600
+      },
+      "timestamp": "2026-06-27T22:34:08.742610",
+      "execution_number": 36,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 78680,
+      "output_tokens": 58,
+      "total_tokens": 78738,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 78680,
+        "output_tokens": 58,
+        "total_tokens": 78738
+      },
+      "timestamp": "2026-06-27T22:34:12.260924",
+      "execution_number": 37,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 82022,
+      "output_tokens": 101,
+      "total_tokens": 82123,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 82022,
+        "output_tokens": 101,
+        "total_tokens": 82123
+      },
+      "timestamp": "2026-06-27T22:34:17.647094",
+      "execution_number": 38,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 82438,
+      "output_tokens": 219,
+      "total_tokens": 82657,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 82438,
+        "output_tokens": 219,
+        "total_tokens": 82657
+      },
+      "timestamp": "2026-06-27T22:34:23.179711",
+      "execution_number": 39,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 82688,
+      "output_tokens": 69,
+      "total_tokens": 82757,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 82688,
+        "output_tokens": 69,
+        "total_tokens": 82757
+      },
+      "timestamp": "2026-06-27T22:34:31.774678",
+      "execution_number": 40,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 83104,
+      "output_tokens": 95,
+      "total_tokens": 83199,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 83104,
+        "output_tokens": 95,
+        "total_tokens": 83199
+      },
+      "timestamp": "2026-06-27T22:34:36.090768",
+      "execution_number": 41,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 83281,
+      "output_tokens": 58,
+      "total_tokens": 83339,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 83281,
+        "output_tokens": 58,
+        "total_tokens": 83339
+      },
+      "timestamp": "2026-06-27T22:34:38.532421",
+      "execution_number": 42,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 83746,
+      "output_tokens": 76,
+      "total_tokens": 83822,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 83746,
+        "output_tokens": 76,
+        "total_tokens": 83822
+      },
+      "timestamp": "2026-06-27T22:34:42.495601",
+      "execution_number": 43,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 84457,
+      "output_tokens": 128,
+      "total_tokens": 84585,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 84457,
+        "output_tokens": 128,
+        "total_tokens": 84585
+      },
+      "timestamp": "2026-06-27T22:34:45.523458",
+      "execution_number": 44,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 84659,
+      "output_tokens": 73,
+      "total_tokens": 84732,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 84659,
+        "output_tokens": 73,
+        "total_tokens": 84732
+      },
+      "timestamp": "2026-06-27T22:34:48.638445",
+      "execution_number": 45,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 85147,
+      "output_tokens": 99,
+      "total_tokens": 85246,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 85147,
+        "output_tokens": 99,
+        "total_tokens": 85246
+      },
+      "timestamp": "2026-06-27T22:34:56.068781",
+      "execution_number": 46,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 85323,
+      "output_tokens": 59,
+      "total_tokens": 85382,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 85323,
+        "output_tokens": 59,
+        "total_tokens": 85382
+      },
+      "timestamp": "2026-06-27T22:34:58.891899",
+      "execution_number": 47,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 88073,
+      "output_tokens": 207,
+      "total_tokens": 88280,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 88073,
+        "output_tokens": 207,
+        "total_tokens": 88280
+      },
+      "timestamp": "2026-06-27T22:35:06.105344",
+      "execution_number": 48,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 88463,
+      "output_tokens": 306,
+      "total_tokens": 88769,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 88463,
+        "output_tokens": 306,
+        "total_tokens": 88769
+      },
+      "timestamp": "2026-06-27T22:35:20.311922",
+      "execution_number": 49,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 88700,
+      "output_tokens": 160,
+      "total_tokens": 88860,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 88700,
+        "output_tokens": 160,
+        "total_tokens": 88860
+      },
+      "timestamp": "2026-06-27T22:35:23.879817",
+      "execution_number": 50,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 88907,
+      "output_tokens": 72,
+      "total_tokens": 88979,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 88907,
+        "output_tokens": 72,
+        "total_tokens": 88979
+      },
+      "timestamp": "2026-06-27T22:35:26.823302",
+      "execution_number": 51,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 3897,
+      "output_tokens": 132,
+      "total_tokens": 4029,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 3897,
+        "output_tokens": 132,
+        "total_tokens": 4029
+      },
+      "timestamp": "2026-06-27T22:35:30.804387",
+      "execution_number": 52,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 13652,
+      "output_tokens": 216,
+      "total_tokens": 13868,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 13652,
+        "output_tokens": 216,
+        "total_tokens": 13868
+      },
+      "timestamp": "2026-06-27T22:35:39.237508",
+      "execution_number": 53,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 15956,
+      "output_tokens": 217,
+      "total_tokens": 16173,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 15956,
+        "output_tokens": 217,
+        "total_tokens": 16173
+      },
+      "timestamp": "2026-06-27T22:35:47.648786",
+      "execution_number": 54,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 18668,
+      "output_tokens": 184,
+      "total_tokens": 18852,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 18668,
+        "output_tokens": 184,
+        "total_tokens": 18852
+      },
+      "timestamp": "2026-06-27T22:35:55.442583",
+      "execution_number": 55,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 21401,
+      "output_tokens": 190,
+      "total_tokens": 21591,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 21401,
+        "output_tokens": 190,
+        "total_tokens": 21591
+      },
+      "timestamp": "2026-06-27T22:35:59.353841",
+      "execution_number": 56,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 24444,
+      "output_tokens": 191,
+      "total_tokens": 24635,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 24444,
+        "output_tokens": 191,
+        "total_tokens": 24635
+      },
+      "timestamp": "2026-06-27T22:36:04.687985",
+      "execution_number": 57,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 27360,
+      "output_tokens": 244,
+      "total_tokens": 27604,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 27360,
+        "output_tokens": 244,
+        "total_tokens": 27604
+      },
+      "timestamp": "2026-06-27T22:36:09.756287",
+      "execution_number": 58,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 30140,
+      "output_tokens": 201,
+      "total_tokens": 30341,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 30140,
+        "output_tokens": 201,
+        "total_tokens": 30341
+      },
+      "timestamp": "2026-06-27T22:36:14.463511",
+      "execution_number": 59,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 32756,
+      "output_tokens": 195,
+      "total_tokens": 32951,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 32756,
+        "output_tokens": 195,
+        "total_tokens": 32951
+      },
+      "timestamp": "2026-06-27T22:36:18.171686",
+      "execution_number": 60,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 35621,
+      "output_tokens": 195,
+      "total_tokens": 35816,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 35621,
+        "output_tokens": 195,
+        "total_tokens": 35816
+      },
+      "timestamp": "2026-06-27T22:36:22.870275",
+      "execution_number": 61,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 38201,
+      "output_tokens": 208,
+      "total_tokens": 38409,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 38201,
+        "output_tokens": 208,
+        "total_tokens": 38409
+      },
+      "timestamp": "2026-06-27T22:36:34.770481",
+      "execution_number": 62,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 39546,
+      "output_tokens": 190,
+      "total_tokens": 39736,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 39546,
+        "output_tokens": 190,
+        "total_tokens": 39736
+      },
+      "timestamp": "2026-06-27T22:36:38.356823",
+      "execution_number": 63,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 42619,
+      "output_tokens": 212,
+      "total_tokens": 42831,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 42619,
+        "output_tokens": 212,
+        "total_tokens": 42831
+      },
+      "timestamp": "2026-06-27T22:36:45.359689",
+      "execution_number": 64,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 44742,
+      "output_tokens": 215,
+      "total_tokens": 44957,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 44742,
+        "output_tokens": 215,
+        "total_tokens": 44957
+      },
+      "timestamp": "2026-06-27T22:36:49.673638",
+      "execution_number": 65,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 46320,
+      "output_tokens": 207,
+      "total_tokens": 46527,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 46320,
+        "output_tokens": 207,
+        "total_tokens": 46527
+      },
+      "timestamp": "2026-06-27T22:36:54.349815",
+      "execution_number": 66,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 49374,
+      "output_tokens": 214,
+      "total_tokens": 49588,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 49374,
+        "output_tokens": 214,
+        "total_tokens": 49588
+      },
+      "timestamp": "2026-06-27T22:36:59.035648",
+      "execution_number": 67,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 51598,
+      "output_tokens": 215,
+      "total_tokens": 51813,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 51598,
+        "output_tokens": 215,
+        "total_tokens": 51813
+      },
+      "timestamp": "2026-06-27T22:37:03.009063",
+      "execution_number": 68,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 54378,
+      "output_tokens": 253,
+      "total_tokens": 54631,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 54378,
+        "output_tokens": 253,
+        "total_tokens": 54631
+      },
+      "timestamp": "2026-06-27T22:37:09.889358",
+      "execution_number": 69,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 56992,
+      "output_tokens": 207,
+      "total_tokens": 57199,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 56992,
+        "output_tokens": 207,
+        "total_tokens": 57199
+      },
+      "timestamp": "2026-06-27T22:37:15.388086",
+      "execution_number": 70,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 59922,
+      "output_tokens": 219,
+      "total_tokens": 60141,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 59922,
+        "output_tokens": 219,
+        "total_tokens": 60141
+      },
+      "timestamp": "2026-06-27T22:37:20.041817",
+      "execution_number": 71,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 63833,
+      "output_tokens": 299,
+      "total_tokens": 64132,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 63833,
+        "output_tokens": 299,
+        "total_tokens": 64132
+      },
+      "timestamp": "2026-06-27T22:37:27.632102",
+      "execution_number": 72,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 66451,
+      "output_tokens": 234,
+      "total_tokens": 66685,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 66451,
+        "output_tokens": 234,
+        "total_tokens": 66685
+      },
+      "timestamp": "2026-06-27T22:37:32.045679",
+      "execution_number": 73,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 68816,
+      "output_tokens": 215,
+      "total_tokens": 69031,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 68816,
+        "output_tokens": 215,
+        "total_tokens": 69031
+      },
+      "timestamp": "2026-06-27T22:37:37.652113",
+      "execution_number": 74,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 70687,
+      "output_tokens": 224,
+      "total_tokens": 70911,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 70687,
+        "output_tokens": 224,
+        "total_tokens": 70911
+      },
+      "timestamp": "2026-06-27T22:37:42.249408",
+      "execution_number": 75,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 73194,
+      "output_tokens": 213,
+      "total_tokens": 73407,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 73194,
+        "output_tokens": 213,
+        "total_tokens": 73407
+      },
+      "timestamp": "2026-06-27T22:37:47.545024",
+      "execution_number": 76,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 74826,
+      "output_tokens": 103,
+      "total_tokens": 74929,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 74826,
+        "output_tokens": 103,
+        "total_tokens": 74929
+      },
+      "timestamp": "2026-06-27T22:37:50.993369",
+      "execution_number": 77,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 75307,
+      "output_tokens": 215,
+      "total_tokens": 75522,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 75307,
+        "output_tokens": 215,
+        "total_tokens": 75522
+      },
+      "timestamp": "2026-06-27T22:37:57.841383",
+      "execution_number": 78,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 77531,
+      "output_tokens": 188,
+      "total_tokens": 77719,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 77531,
+        "output_tokens": 188,
+        "total_tokens": 77719
+      },
+      "timestamp": "2026-06-27T22:38:02.294724",
+      "execution_number": 79,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 78892,
+      "output_tokens": 113,
+      "total_tokens": 79005,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 78892,
+        "output_tokens": 113,
+        "total_tokens": 79005
+      },
+      "timestamp": "2026-06-27T22:38:07.243736",
+      "execution_number": 80,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 79329,
+      "output_tokens": 207,
+      "total_tokens": 79536,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 79329,
+        "output_tokens": 207,
+        "total_tokens": 79536
+      },
+      "timestamp": "2026-06-27T22:38:11.582093",
+      "execution_number": 81,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 79790,
+      "output_tokens": 534,
+      "total_tokens": 80324,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 79790,
+        "output_tokens": 534,
+        "total_tokens": 80324
+      },
+      "timestamp": "2026-06-27T22:38:18.615216",
+      "execution_number": 82,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 79841,
+      "output_tokens": 83,
+      "total_tokens": 79924,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 79841,
+        "output_tokens": 83,
+        "total_tokens": 79924
+      },
+      "timestamp": "2026-06-27T22:38:21.687681",
+      "execution_number": 83,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 82827,
+      "output_tokens": 347,
+      "total_tokens": 83174,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 82827,
+        "output_tokens": 347,
+        "total_tokens": 83174
+      },
+      "timestamp": "2026-06-27T22:39:01.935219",
+      "execution_number": 84,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 83062,
+      "output_tokens": 67,
+      "total_tokens": 83129,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 83062,
+        "output_tokens": 67,
+        "total_tokens": 83129
+      },
+      "timestamp": "2026-06-27T22:39:05.914769",
+      "execution_number": 85,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 83670,
+      "output_tokens": 1792,
+      "total_tokens": 85462,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 83670,
+        "output_tokens": 1792,
+        "total_tokens": 85462
+      },
+      "timestamp": "2026-06-27T22:39:36.191624",
+      "execution_number": 86,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 85513,
+      "output_tokens": 108,
+      "total_tokens": 85621,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 85513,
+        "output_tokens": 108,
+        "total_tokens": 85621
+      },
+      "timestamp": "2026-06-27T22:39:40.840112",
+      "execution_number": 87,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 85611,
+      "output_tokens": 114,
+      "total_tokens": 85725,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 85611,
+        "output_tokens": 114,
+        "total_tokens": 85725
+      },
+      "timestamp": "2026-06-27T22:39:45.020714",
+      "execution_number": 88,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 85877,
+      "output_tokens": 112,
+      "total_tokens": 85989,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 85877,
+        "output_tokens": 112,
+        "total_tokens": 85989
+      },
+      "timestamp": "2026-06-27T22:39:49.384915",
+      "execution_number": 89,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 86194,
+      "output_tokens": 90,
+      "total_tokens": 86284,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 86194,
+        "output_tokens": 90,
+        "total_tokens": 86284
+      },
+      "timestamp": "2026-06-27T22:40:01.094644",
+      "execution_number": 90,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 87847,
+      "output_tokens": 120,
+      "total_tokens": 87967,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 87847,
+        "output_tokens": 120,
+        "total_tokens": 87967
+      },
+      "timestamp": "2026-06-27T22:40:05.474633",
+      "execution_number": 91,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 89510,
+      "output_tokens": 128,
+      "total_tokens": 89638,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 89510,
+        "output_tokens": 128,
+        "total_tokens": 89638
+      },
+      "timestamp": "2026-06-27T22:40:10.838313",
+      "execution_number": 92,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 89985,
+      "output_tokens": 156,
+      "total_tokens": 90141,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 89985,
+        "output_tokens": 156,
+        "total_tokens": 90141
+      },
+      "timestamp": "2026-06-27T22:40:15.619649",
+      "execution_number": 93,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 90078,
+      "output_tokens": 135,
+      "total_tokens": 90213,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 90078,
+        "output_tokens": 135,
+        "total_tokens": 90213
+      },
+      "timestamp": "2026-06-27T22:40:20.464251",
+      "execution_number": 94,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 90588,
+      "output_tokens": 553,
+      "total_tokens": 91141,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 90588,
+        "output_tokens": 553,
+        "total_tokens": 91141
+      },
+      "timestamp": "2026-06-27T22:40:29.638804",
+      "execution_number": 95,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 3124,
+      "output_tokens": 202,
+      "total_tokens": 3326,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 3124,
+        "output_tokens": 202,
+        "total_tokens": 3326
+      },
+      "timestamp": "2026-06-27T22:40:33.309699",
+      "execution_number": 1,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 12990,
+      "output_tokens": 342,
+      "total_tokens": 13332,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 12990,
+        "output_tokens": 342,
+        "total_tokens": 13332
+      },
+      "timestamp": "2026-06-27T22:40:39.499108",
+      "execution_number": 2,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 16087,
+      "output_tokens": 247,
+      "total_tokens": 16334,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 16087,
+        "output_tokens": 247,
+        "total_tokens": 16334
+      },
+      "timestamp": "2026-06-27T22:40:43.564917",
+      "execution_number": 3,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 20171,
+      "output_tokens": 235,
+      "total_tokens": 20406,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 20171,
+        "output_tokens": 235,
+        "total_tokens": 20406
+      },
+      "timestamp": "2026-06-27T22:40:57.899670",
+      "execution_number": 4,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 27169,
+      "output_tokens": 268,
+      "total_tokens": 27437,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 27169,
+        "output_tokens": 268,
+        "total_tokens": 27437
+      },
+      "timestamp": "2026-06-27T22:41:04.742615",
+      "execution_number": 5,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 33327,
+      "output_tokens": 212,
+      "total_tokens": 33539,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 33327,
+        "output_tokens": 212,
+        "total_tokens": 33539
+      },
+      "timestamp": "2026-06-27T22:41:09.602080",
+      "execution_number": 6,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 39782,
+      "output_tokens": 257,
+      "total_tokens": 40039,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 39782,
+        "output_tokens": 257,
+        "total_tokens": 40039
+      },
+      "timestamp": "2026-06-27T22:41:16.604048",
+      "execution_number": 7,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 42484,
+      "output_tokens": 323,
+      "total_tokens": 42807,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 42484,
+        "output_tokens": 323,
+        "total_tokens": 42807
+      },
+      "timestamp": "2026-06-27T22:41:21.717369",
+      "execution_number": 8,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 49130,
+      "output_tokens": 200,
+      "total_tokens": 49330,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 49130,
+        "output_tokens": 200,
+        "total_tokens": 49330
+      },
+      "timestamp": "2026-06-27T22:41:26.517307",
+      "execution_number": 9,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 54628,
+      "output_tokens": 619,
+      "total_tokens": 55247,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 54628,
+        "output_tokens": 619,
+        "total_tokens": 55247
+      },
+      "timestamp": "2026-06-27T22:41:35.381306",
+      "execution_number": 10,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 57083,
+      "output_tokens": 647,
+      "total_tokens": 57730,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 57083,
+        "output_tokens": 647,
+        "total_tokens": 57730
+      },
+      "timestamp": "2026-06-27T22:41:54.084953",
+      "execution_number": 11,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 57191,
+      "output_tokens": 97,
+      "total_tokens": 57288,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 57191,
+        "output_tokens": 97,
+        "total_tokens": 57288
+      },
+      "timestamp": "2026-06-27T22:41:59.515678",
+      "execution_number": 12,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 58164,
+      "output_tokens": 234,
+      "total_tokens": 58398,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 58164,
+        "output_tokens": 234,
+        "total_tokens": 58398
+      },
+      "timestamp": "2026-06-27T22:42:03.867615",
+      "execution_number": 13,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 60562,
+      "output_tokens": 1579,
+      "total_tokens": 62141,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 60562,
+        "output_tokens": 1579,
+        "total_tokens": 62141
+      },
+      "timestamp": "2026-06-27T22:42:25.478346",
+      "execution_number": 14,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 61989,
+      "output_tokens": 736,
+      "total_tokens": 62725,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 61989,
+        "output_tokens": 736,
+        "total_tokens": 62725
+      },
+      "timestamp": "2026-06-27T22:42:37.416924",
+      "execution_number": 15,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 62749,
+      "output_tokens": 604,
+      "total_tokens": 63353,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 62749,
+        "output_tokens": 604,
+        "total_tokens": 63353
+      },
+      "timestamp": "2026-06-27T22:42:46.066412",
+      "execution_number": 16,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 64075,
+      "output_tokens": 786,
+      "total_tokens": 64861,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 64075,
+        "output_tokens": 786,
+        "total_tokens": 64861
+      },
+      "timestamp": "2026-06-27T22:43:10.139175",
+      "execution_number": 17,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 64676,
+      "output_tokens": 1737,
+      "total_tokens": 66413,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 64676,
+        "output_tokens": 1737,
+        "total_tokens": 66413
+      },
+      "timestamp": "2026-06-27T22:43:29.751470",
+      "execution_number": 18,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 4993,
+      "output_tokens": 294,
+      "total_tokens": 5287,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 4993,
+        "output_tokens": 294,
+        "total_tokens": 5287
+      },
+      "timestamp": "2026-06-27T22:43:33.861121",
+      "execution_number": 1,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 9125,
+      "output_tokens": 535,
+      "total_tokens": 9660,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 9125,
+        "output_tokens": 535,
+        "total_tokens": 9660
+      },
+      "timestamp": "2026-06-27T22:43:41.148413",
+      "execution_number": 2,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 9640,
+      "output_tokens": 89,
+      "total_tokens": 9729,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 9640,
+        "output_tokens": 89,
+        "total_tokens": 9729
+      },
+      "timestamp": "2026-06-27T22:43:43.804220",
+      "execution_number": 3,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 10015,
+      "output_tokens": 150,
+      "total_tokens": 10165,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 10015,
+        "output_tokens": 150,
+        "total_tokens": 10165
+      },
+      "timestamp": "2026-06-27T22:44:12.820825",
+      "execution_number": 4,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 10216,
+      "output_tokens": 152,
+      "total_tokens": 10368,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 10216,
+        "output_tokens": 152,
+        "total_tokens": 10368
+      },
+      "timestamp": "2026-06-27T22:44:15.203513",
+      "execution_number": 5,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 10443,
+      "output_tokens": 172,
+      "total_tokens": 10615,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 10443,
+        "output_tokens": 172,
+        "total_tokens": 10615
+      },
+      "timestamp": "2026-06-27T22:44:17.927069",
+      "execution_number": 6,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 10687,
+      "output_tokens": 198,
+      "total_tokens": 10885,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 10687,
+        "output_tokens": 198,
+        "total_tokens": 10885
+      },
+      "timestamp": "2026-06-27T22:44:20.735250",
+      "execution_number": 7,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 11882,
+      "output_tokens": 782,
+      "total_tokens": 12664,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 11882,
+        "output_tokens": 782,
+        "total_tokens": 12664
+      },
+      "timestamp": "2026-06-27T22:44:30.758693",
+      "execution_number": 8,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 3124,
+      "output_tokens": 128,
+      "total_tokens": 3252,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 3124,
+        "output_tokens": 128,
+        "total_tokens": 3252
+      },
+      "timestamp": "2026-06-27T22:44:37.299501",
+      "execution_number": 19,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 12991,
+      "output_tokens": 273,
+      "total_tokens": 13264,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 12991,
+        "output_tokens": 273,
+        "total_tokens": 13264
+      },
+      "timestamp": "2026-06-27T22:44:43.034107",
+      "execution_number": 20,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 15285,
+      "output_tokens": 200,
+      "total_tokens": 15485,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 15285,
+        "output_tokens": 200,
+        "total_tokens": 15485
+      },
+      "timestamp": "2026-06-27T22:44:46.287998",
+      "execution_number": 21,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 18876,
+      "output_tokens": 195,
+      "total_tokens": 19071,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 18876,
+        "output_tokens": 195,
+        "total_tokens": 19071
+      },
+      "timestamp": "2026-06-27T22:44:49.647020",
+      "execution_number": 22,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 21998,
+      "output_tokens": 188,
+      "total_tokens": 22186,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 21998,
+        "output_tokens": 188,
+        "total_tokens": 22186
+      },
+      "timestamp": "2026-06-27T22:44:55.321025",
+      "execution_number": 23,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 25723,
+      "output_tokens": 243,
+      "total_tokens": 25966,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 25723,
+        "output_tokens": 243,
+        "total_tokens": 25966
+      },
+      "timestamp": "2026-06-27T22:45:01.406148",
+      "execution_number": 24,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 29503,
+      "output_tokens": 218,
+      "total_tokens": 29721,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 29503,
+        "output_tokens": 218,
+        "total_tokens": 29721
+      },
+      "timestamp": "2026-06-27T22:45:06.209816",
+      "execution_number": 25,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 33250,
+      "output_tokens": 396,
+      "total_tokens": 33646,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 33250,
+        "output_tokens": 396,
+        "total_tokens": 33646
+      },
+      "timestamp": "2026-06-27T22:45:13.897967",
+      "execution_number": 26,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 35672,
+      "output_tokens": 382,
+      "total_tokens": 36054,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 35672,
+        "output_tokens": 382,
+        "total_tokens": 36054
+      },
+      "timestamp": "2026-06-27T22:45:25.180560",
+      "execution_number": 27,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 37655,
+      "output_tokens": 296,
+      "total_tokens": 37951,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 37655,
+        "output_tokens": 296,
+        "total_tokens": 37951
+      },
+      "timestamp": "2026-06-27T22:45:35.122696",
+      "execution_number": 28,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 40598,
+      "output_tokens": 659,
+      "total_tokens": 41257,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 40598,
+        "output_tokens": 659,
+        "total_tokens": 41257
+      },
+      "timestamp": "2026-06-27T22:45:43.947279",
+      "execution_number": 29,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 42330,
+      "output_tokens": 151,
+      "total_tokens": 42481,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 42330,
+        "output_tokens": 151,
+        "total_tokens": 42481
+      },
+      "timestamp": "2026-06-27T22:45:47.073043",
+      "execution_number": 30,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 43169,
+      "output_tokens": 271,
+      "total_tokens": 43440,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 43169,
+        "output_tokens": 271,
+        "total_tokens": 43440
+      },
+      "timestamp": "2026-06-27T22:45:52.913249",
+      "execution_number": 31,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 44507,
+      "output_tokens": 201,
+      "total_tokens": 44708,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 44507,
+        "output_tokens": 201,
+        "total_tokens": 44708
+      },
+      "timestamp": "2026-06-27T22:45:56.541095",
+      "execution_number": 32,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 45636,
+      "output_tokens": 663,
+      "total_tokens": 46299,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 45636,
+        "output_tokens": 663,
+        "total_tokens": 46299
+      },
+      "timestamp": "2026-06-27T22:46:06.293882",
+      "execution_number": 33,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 46084,
+      "output_tokens": 1124,
+      "total_tokens": 47208,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 46084,
+        "output_tokens": 1124,
+        "total_tokens": 47208
+      },
+      "timestamp": "2026-06-27T22:46:16.496956",
+      "execution_number": 34,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 4520,
+      "output_tokens": 146,
+      "total_tokens": 4666,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 4520,
+        "output_tokens": 146,
+        "total_tokens": 4666
+      },
+      "timestamp": "2026-06-27T22:46:22.231517",
+      "execution_number": 9,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 6653,
+      "output_tokens": 300,
+      "total_tokens": 6953,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 6653,
+        "output_tokens": 300,
+        "total_tokens": 6953
+      },
+      "timestamp": "2026-06-27T22:46:32.949369",
+      "execution_number": 10,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 6838,
+      "output_tokens": 131,
+      "total_tokens": 6969,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 6838,
+        "output_tokens": 131,
+        "total_tokens": 6969
+      },
+      "timestamp": "2026-06-27T22:46:35.621738",
+      "execution_number": 11,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 7029,
+      "output_tokens": 149,
+      "total_tokens": 7178,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 7029,
+        "output_tokens": 149,
+        "total_tokens": 7178
+      },
+      "timestamp": "2026-06-27T22:46:38.095523",
+      "execution_number": 12,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 7331,
+      "output_tokens": 82,
+      "total_tokens": 7413,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 7331,
+        "output_tokens": 82,
+        "total_tokens": 7413
+      },
+      "timestamp": "2026-06-27T22:46:39.883095",
+      "execution_number": 13,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 7677,
+      "output_tokens": 568,
+      "total_tokens": 8245,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 7677,
+        "output_tokens": 568,
+        "total_tokens": 8245
+      },
+      "timestamp": "2026-06-27T22:46:49.823593",
+      "execution_number": 14,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 3124,
+      "output_tokens": 105,
+      "total_tokens": 3229,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 3124,
+        "output_tokens": 105,
+        "total_tokens": 3229
+      },
+      "timestamp": "2026-06-27T22:46:52.078700",
+      "execution_number": 35,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 12991,
+      "output_tokens": 256,
+      "total_tokens": 13247,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 12991,
+        "output_tokens": 256,
+        "total_tokens": 13247
+      },
+      "timestamp": "2026-06-27T22:47:03.658675",
+      "execution_number": 36,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 15970,
+      "output_tokens": 187,
+      "total_tokens": 16157,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 15970,
+        "output_tokens": 187,
+        "total_tokens": 16157
+      },
+      "timestamp": "2026-06-27T22:47:08.137044",
+      "execution_number": 37,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 18820,
+      "output_tokens": 202,
+      "total_tokens": 19022,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 18820,
+        "output_tokens": 202,
+        "total_tokens": 19022
+      },
+      "timestamp": "2026-06-27T22:47:11.605972",
+      "execution_number": 38,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 22196,
+      "output_tokens": 198,
+      "total_tokens": 22394,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 22196,
+        "output_tokens": 198,
+        "total_tokens": 22394
+      },
+      "timestamp": "2026-06-27T22:47:23.434749",
+      "execution_number": 39,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 25077,
+      "output_tokens": 226,
+      "total_tokens": 25303,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 25077,
+        "output_tokens": 226,
+        "total_tokens": 25303
+      },
+      "timestamp": "2026-06-27T22:47:27.457811",
+      "execution_number": 40,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 27285,
+      "output_tokens": 207,
+      "total_tokens": 27492,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 27285,
+        "output_tokens": 207,
+        "total_tokens": 27492
+      },
+      "timestamp": "2026-06-27T22:47:32.464674",
+      "execution_number": 41,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 29891,
+      "output_tokens": 197,
+      "total_tokens": 30088,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 29891,
+        "output_tokens": 197,
+        "total_tokens": 30088
+      },
+      "timestamp": "2026-06-27T22:47:36.836754",
+      "execution_number": 42,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 32800,
+      "output_tokens": 261,
+      "total_tokens": 33061,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 32800,
+        "output_tokens": 261,
+        "total_tokens": 33061
+      },
+      "timestamp": "2026-06-27T22:47:41.055739",
+      "execution_number": 43,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 35886,
+      "output_tokens": 263,
+      "total_tokens": 36149,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 35886,
+        "output_tokens": 263,
+        "total_tokens": 36149
+      },
+      "timestamp": "2026-06-27T22:47:47.982078",
+      "execution_number": 44,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 37880,
+      "output_tokens": 404,
+      "total_tokens": 38284,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 37880,
+        "output_tokens": 404,
+        "total_tokens": 38284
+      },
+      "timestamp": "2026-06-27T22:47:54.218306",
+      "execution_number": 45,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 40381,
+      "output_tokens": 254,
+      "total_tokens": 40635,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 40381,
+        "output_tokens": 254,
+        "total_tokens": 40635
+      },
+      "timestamp": "2026-06-27T22:48:00.540345",
+      "execution_number": 46,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 42919,
+      "output_tokens": 256,
+      "total_tokens": 43175,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 42919,
+        "output_tokens": 256,
+        "total_tokens": 43175
+      },
+      "timestamp": "2026-06-27T22:48:05.076979",
+      "execution_number": 47,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 45191,
+      "output_tokens": 1151,
+      "total_tokens": 46342,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 45191,
+        "output_tokens": 1151,
+        "total_tokens": 46342
+      },
+      "timestamp": "2026-06-27T22:48:28.095543",
+      "execution_number": 48,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 4587,
+      "output_tokens": 308,
+      "total_tokens": 4895,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 4587,
+        "output_tokens": 308,
+        "total_tokens": 4895
+      },
+      "timestamp": "2026-06-27T22:48:32.091916",
+      "execution_number": 15,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 6599,
+      "output_tokens": 443,
+      "total_tokens": 7042,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 6599,
+        "output_tokens": 443,
+        "total_tokens": 7042
+      },
+      "timestamp": "2026-06-27T22:48:37.351757",
+      "execution_number": 16,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 6991,
+      "output_tokens": 140,
+      "total_tokens": 7131,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 6991,
+        "output_tokens": 140,
+        "total_tokens": 7131
+      },
+      "timestamp": "2026-06-27T22:48:39.412883",
+      "execution_number": 17,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 7632,
+      "output_tokens": 141,
+      "total_tokens": 7773,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 7632,
+        "output_tokens": 141,
+        "total_tokens": 7773
+      },
+      "timestamp": "2026-06-27T22:48:41.767042",
+      "execution_number": 18,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 7799,
+      "output_tokens": 76,
+      "total_tokens": 7875,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 7799,
+        "output_tokens": 76,
+        "total_tokens": 7875
+      },
+      "timestamp": "2026-06-27T22:48:43.463320",
+      "execution_number": 19,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 8136,
+      "output_tokens": 230,
+      "total_tokens": 8366,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 8136,
+        "output_tokens": 230,
+        "total_tokens": 8366
+      },
+      "timestamp": "2026-06-27T22:48:48.299322",
+      "execution_number": 20,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 8804,
+      "output_tokens": 692,
+      "total_tokens": 9496,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 8804,
+        "output_tokens": 692,
+        "total_tokens": 9496
+      },
+      "timestamp": "2026-06-27T22:48:56.614776",
+      "execution_number": 21,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 3124,
+      "output_tokens": 155,
+      "total_tokens": 3279,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 3124,
+        "output_tokens": 155,
+        "total_tokens": 3279
+      },
+      "timestamp": "2026-06-27T22:48:59.402521",
+      "execution_number": 49,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 12991,
+      "output_tokens": 248,
+      "total_tokens": 13239,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 12991,
+        "output_tokens": 248,
+        "total_tokens": 13239
+      },
+      "timestamp": "2026-06-27T22:49:03.962109",
+      "execution_number": 50,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 14456,
+      "output_tokens": 145,
+      "total_tokens": 14601,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 14456,
+        "output_tokens": 145,
+        "total_tokens": 14601
+      },
+      "timestamp": "2026-06-27T22:49:07.279604",
+      "execution_number": 51,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 15788,
+      "output_tokens": 239,
+      "total_tokens": 16027,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 15788,
+        "output_tokens": 239,
+        "total_tokens": 16027
+      },
+      "timestamp": "2026-06-27T22:49:12.497898",
+      "execution_number": 52,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 18680,
+      "output_tokens": 246,
+      "total_tokens": 18926,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 18680,
+        "output_tokens": 246,
+        "total_tokens": 18926
+      },
+      "timestamp": "2026-06-27T22:49:21.478399",
+      "execution_number": 53,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 21522,
+      "output_tokens": 196,
+      "total_tokens": 21718,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 21522,
+        "output_tokens": 196,
+        "total_tokens": 21718
+      },
+      "timestamp": "2026-06-27T22:49:25.395546",
+      "execution_number": 54,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 23737,
+      "output_tokens": 233,
+      "total_tokens": 23970,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 23737,
+        "output_tokens": 233,
+        "total_tokens": 23970
+      },
+      "timestamp": "2026-06-27T22:49:30.868416",
+      "execution_number": 55,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 25972,
+      "output_tokens": 160,
+      "total_tokens": 26132,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 25972,
+        "output_tokens": 160,
+        "total_tokens": 26132
+      },
+      "timestamp": "2026-06-27T22:49:34.028034",
+      "execution_number": 56,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 27588,
+      "output_tokens": 362,
+      "total_tokens": 27950,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 27588,
+        "output_tokens": 362,
+        "total_tokens": 27950
+      },
+      "timestamp": "2026-06-27T22:49:39.960964",
+      "execution_number": 57,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 29637,
+      "output_tokens": 173,
+      "total_tokens": 29810,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 29637,
+        "output_tokens": 173,
+        "total_tokens": 29810
+      },
+      "timestamp": "2026-06-27T22:49:45.157695",
+      "execution_number": 58,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 31625,
+      "output_tokens": 178,
+      "total_tokens": 31803,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 31625,
+        "output_tokens": 178,
+        "total_tokens": 31803
+      },
+      "timestamp": "2026-06-27T22:49:48.898883",
+      "execution_number": 59,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 33554,
+      "output_tokens": 143,
+      "total_tokens": 33697,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 33554,
+        "output_tokens": 143,
+        "total_tokens": 33697
+      },
+      "timestamp": "2026-06-27T22:49:52.813406",
+      "execution_number": 60,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 35349,
+      "output_tokens": 266,
+      "total_tokens": 35615,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 35349,
+        "output_tokens": 266,
+        "total_tokens": 35615
+      },
+      "timestamp": "2026-06-27T22:49:57.840365",
+      "execution_number": 61,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 38634,
+      "output_tokens": 584,
+      "total_tokens": 39218,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 38634,
+        "output_tokens": 584,
+        "total_tokens": 39218
+      },
+      "timestamp": "2026-06-27T22:50:15.397014",
+      "execution_number": 62,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 39138,
+      "output_tokens": 833,
+      "total_tokens": 39971,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 39138,
+        "output_tokens": 833,
+        "total_tokens": 39971
+      },
+      "timestamp": "2026-06-27T22:50:25.125752",
+      "execution_number": 63,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 4379,
+      "output_tokens": 252,
+      "total_tokens": 4631,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 4379,
+        "output_tokens": 252,
+        "total_tokens": 4631
+      },
+      "timestamp": "2026-06-27T22:50:43.003527",
+      "execution_number": 22,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 14646,
+      "output_tokens": 184,
+      "total_tokens": 14830,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 14646,
+        "output_tokens": 184,
+        "total_tokens": 14830
+      },
+      "timestamp": "2026-06-27T22:50:47.382496",
+      "execution_number": 23,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 16019,
+      "output_tokens": 305,
+      "total_tokens": 16324,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 16019,
+        "output_tokens": 305,
+        "total_tokens": 16324
+      },
+      "timestamp": "2026-06-27T22:50:52.444494",
+      "execution_number": 24,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 16230,
+      "output_tokens": 219,
+      "total_tokens": 16449,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 16230,
+        "output_tokens": 219,
+        "total_tokens": 16449
+      },
+      "timestamp": "2026-06-27T22:50:58.962136",
+      "execution_number": 25,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 16680,
+      "output_tokens": 120,
+      "total_tokens": 16800,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 16680,
+        "output_tokens": 120,
+        "total_tokens": 16800
+      },
+      "timestamp": "2026-06-27T22:51:03.772871",
+      "execution_number": 26,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 16861,
+      "output_tokens": 84,
+      "total_tokens": 16945,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 16861,
+        "output_tokens": 84,
+        "total_tokens": 16945
+      },
+      "timestamp": "2026-06-27T22:51:05.658840",
+      "execution_number": 27,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 17262,
+      "output_tokens": 207,
+      "total_tokens": 17469,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 17262,
+        "output_tokens": 207,
+        "total_tokens": 17469
+      },
+      "timestamp": "2026-06-27T22:51:08.673098",
+      "execution_number": 28,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 17700,
+      "output_tokens": 444,
+      "total_tokens": 18144,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 17700,
+        "output_tokens": 444,
+        "total_tokens": 18144
+      },
+      "timestamp": "2026-06-27T22:51:18.820733",
+      "execution_number": 29,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 3124,
+      "output_tokens": 155,
+      "total_tokens": 3279,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 3124,
+        "output_tokens": 155,
+        "total_tokens": 3279
+      },
+      "timestamp": "2026-06-27T22:51:22.350467",
+      "execution_number": 64,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 12991,
+      "output_tokens": 266,
+      "total_tokens": 13257,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 12991,
+        "output_tokens": 266,
+        "total_tokens": 13257
+      },
+      "timestamp": "2026-06-27T22:51:26.111043",
+      "execution_number": 65,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 14481,
+      "output_tokens": 287,
+      "total_tokens": 14768,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 14481,
+        "output_tokens": 287,
+        "total_tokens": 14768
+      },
+      "timestamp": "2026-06-27T22:51:31.434905",
+      "execution_number": 66,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 16405,
+      "output_tokens": 237,
+      "total_tokens": 16642,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 16405,
+        "output_tokens": 237,
+        "total_tokens": 16642
+      },
+      "timestamp": "2026-06-27T22:51:47.896055",
+      "execution_number": 67,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 18305,
+      "output_tokens": 238,
+      "total_tokens": 18543,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 18305,
+        "output_tokens": 238,
+        "total_tokens": 18543
+      },
+      "timestamp": "2026-06-27T22:51:52.797010",
+      "execution_number": 68,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 20771,
+      "output_tokens": 263,
+      "total_tokens": 21034,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 20771,
+        "output_tokens": 263,
+        "total_tokens": 21034
+      },
+      "timestamp": "2026-06-27T22:51:57.855057",
+      "execution_number": 69,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 23999,
+      "output_tokens": 241,
+      "total_tokens": 24240,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 23999,
+        "output_tokens": 241,
+        "total_tokens": 24240
+      },
+      "timestamp": "2026-06-27T22:52:02.736220",
+      "execution_number": 70,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 25148,
+      "output_tokens": 225,
+      "total_tokens": 25373,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 25148,
+        "output_tokens": 225,
+        "total_tokens": 25373
+      },
+      "timestamp": "2026-06-27T22:52:07.948306",
+      "execution_number": 71,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 27538,
+      "output_tokens": 247,
+      "total_tokens": 27785,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 27538,
+        "output_tokens": 247,
+        "total_tokens": 27785
+      },
+      "timestamp": "2026-06-27T22:52:11.367995",
+      "execution_number": 72,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 29161,
+      "output_tokens": 313,
+      "total_tokens": 29474,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 29161,
+        "output_tokens": 313,
+        "total_tokens": 29474
+      },
+      "timestamp": "2026-06-27T22:52:18.154621",
+      "execution_number": 73,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 32008,
+      "output_tokens": 245,
+      "total_tokens": 32253,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 32008,
+        "output_tokens": 245,
+        "total_tokens": 32253
+      },
+      "timestamp": "2026-06-27T22:52:23.083818",
+      "execution_number": 74,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 34918,
+      "output_tokens": 277,
+      "total_tokens": 35195,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 34918,
+        "output_tokens": 277,
+        "total_tokens": 35195
+      },
+      "timestamp": "2026-06-27T22:52:28.587210",
+      "execution_number": 75,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 37600,
+      "output_tokens": 448,
+      "total_tokens": 38048,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 37600,
+        "output_tokens": 448,
+        "total_tokens": 38048
+      },
+      "timestamp": "2026-06-27T22:52:36.187504",
+      "execution_number": 76,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 38951,
+      "output_tokens": 190,
+      "total_tokens": 39141,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 38951,
+        "output_tokens": 190,
+        "total_tokens": 39141
+      },
+      "timestamp": "2026-06-27T22:52:41.990313",
+      "execution_number": 77,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 40337,
+      "output_tokens": 491,
+      "total_tokens": 40828,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 40337,
+        "output_tokens": 491,
+        "total_tokens": 40828
+      },
+      "timestamp": "2026-06-27T22:52:47.601857",
+      "execution_number": 78,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 43093,
+      "output_tokens": 734,
+      "total_tokens": 43827,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 43093,
+        "output_tokens": 734,
+        "total_tokens": 43827
+      },
+      "timestamp": "2026-06-27T22:52:56.088222",
+      "execution_number": 79,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 43903,
+      "output_tokens": 1154,
+      "total_tokens": 45057,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 43903,
+        "output_tokens": 1154,
+        "total_tokens": 45057
+      },
+      "timestamp": "2026-06-27T22:53:09.658121",
+      "execution_number": 80,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 45013,
+      "output_tokens": 714,
+      "total_tokens": 45727,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 45013,
+        "output_tokens": 714,
+        "total_tokens": 45727
+      },
+      "timestamp": "2026-06-27T22:53:18.401572",
+      "execution_number": 81,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 45933,
+      "output_tokens": 1319,
+      "total_tokens": 47252,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 45933,
+        "output_tokens": 1319,
+        "total_tokens": 47252
+      },
+      "timestamp": "2026-06-27T22:53:32.788031",
+      "execution_number": 82,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 4754,
+      "output_tokens": 193,
+      "total_tokens": 4947,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 4754,
+        "output_tokens": 193,
+        "total_tokens": 4947
+      },
+      "timestamp": "2026-06-27T22:53:36.226652",
+      "execution_number": 30,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 6891,
+      "output_tokens": 659,
+      "total_tokens": 7550,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 6891,
+        "output_tokens": 659,
+        "total_tokens": 7550
+      },
+      "timestamp": "2026-06-27T22:53:43.378920",
+      "execution_number": 31,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 7461,
+      "output_tokens": 138,
+      "total_tokens": 7599,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 7461,
+        "output_tokens": 138,
+        "total_tokens": 7599
+      },
+      "timestamp": "2026-06-27T22:53:45.945926",
+      "execution_number": 32,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 8088,
+      "output_tokens": 536,
+      "total_tokens": 8624,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 8088,
+        "output_tokens": 536,
+        "total_tokens": 8624
+      },
+      "timestamp": "2026-06-27T22:53:53.554413",
+      "execution_number": 33,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 3124,
+      "output_tokens": 156,
+      "total_tokens": 3280,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 3124,
+        "output_tokens": 156,
+        "total_tokens": 3280
+      },
+      "timestamp": "2026-06-27T22:53:56.662590",
+      "execution_number": 83,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 12991,
+      "output_tokens": 177,
+      "total_tokens": 13168,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 12991,
+        "output_tokens": 177,
+        "total_tokens": 13168
+      },
+      "timestamp": "2026-06-27T22:54:00.351018",
+      "execution_number": 84,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 14433,
+      "output_tokens": 173,
+      "total_tokens": 14606,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 14433,
+        "output_tokens": 173,
+        "total_tokens": 14606
+      },
+      "timestamp": "2026-06-27T22:54:09.844718",
+      "execution_number": 85,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 16685,
+      "output_tokens": 256,
+      "total_tokens": 16941,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 16685,
+        "output_tokens": 256,
+        "total_tokens": 16941
+      },
+      "timestamp": "2026-06-27T22:54:13.808973",
+      "execution_number": 86,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 19935,
+      "output_tokens": 156,
+      "total_tokens": 20091,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 19935,
+        "output_tokens": 156,
+        "total_tokens": 20091
+      },
+      "timestamp": "2026-06-27T22:54:16.573356",
+      "execution_number": 87,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 21643,
+      "output_tokens": 197,
+      "total_tokens": 21840,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 21643,
+        "output_tokens": 197,
+        "total_tokens": 21840
+      },
+      "timestamp": "2026-06-27T22:54:22.229083",
+      "execution_number": 88,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 24410,
+      "output_tokens": 256,
+      "total_tokens": 24666,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 24410,
+        "output_tokens": 256,
+        "total_tokens": 24666
+      },
+      "timestamp": "2026-06-27T22:54:25.531350",
+      "execution_number": 89,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 28049,
+      "output_tokens": 183,
+      "total_tokens": 28232,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 28049,
+        "output_tokens": 183,
+        "total_tokens": 28232
+      },
+      "timestamp": "2026-06-27T22:54:28.955964",
+      "execution_number": 90,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 31113,
+      "output_tokens": 263,
+      "total_tokens": 31376,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 31113,
+        "output_tokens": 263,
+        "total_tokens": 31376
+      },
+      "timestamp": "2026-06-27T22:54:32.923561",
+      "execution_number": 91,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 34354,
+      "output_tokens": 349,
+      "total_tokens": 34703,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 34354,
+        "output_tokens": 349,
+        "total_tokens": 34703
+      },
+      "timestamp": "2026-06-27T22:54:40.664099",
+      "execution_number": 92,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 38527,
+      "output_tokens": 495,
+      "total_tokens": 39022,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 38527,
+        "output_tokens": 495,
+        "total_tokens": 39022
+      },
+      "timestamp": "2026-06-27T22:54:53.509049",
+      "execution_number": 93,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 38866,
+      "output_tokens": 679,
+      "total_tokens": 39545,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 38866,
+        "output_tokens": 679,
+        "total_tokens": 39545
+      },
+      "timestamp": "2026-06-27T22:55:30.950783",
+      "execution_number": 94,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 4305,
+      "output_tokens": 154,
+      "total_tokens": 4459,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 4305,
+        "output_tokens": 154,
+        "total_tokens": 4459
+      },
+      "timestamp": "2026-06-27T22:55:33.818159",
+      "execution_number": 34,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 4697,
+      "output_tokens": 202,
+      "total_tokens": 4899,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 4697,
+        "output_tokens": 202,
+        "total_tokens": 4899
+      },
+      "timestamp": "2026-06-27T22:55:36.820410",
+      "execution_number": 35,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 4931,
+      "output_tokens": 107,
+      "total_tokens": 5038,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 4931,
+        "output_tokens": 107,
+        "total_tokens": 5038
+      },
+      "timestamp": "2026-06-27T22:55:38.825763",
+      "execution_number": 36,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 5350,
+      "output_tokens": 283,
+      "total_tokens": 5633,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 5350,
+        "output_tokens": 283,
+        "total_tokens": 5633
+      },
+      "timestamp": "2026-06-27T22:55:42.693141",
+      "execution_number": 37,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 3124,
+      "output_tokens": 109,
+      "total_tokens": 3233,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 3124,
+        "output_tokens": 109,
+        "total_tokens": 3233
+      },
+      "timestamp": "2026-06-27T22:55:45.380593",
+      "execution_number": 95,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 12991,
+      "output_tokens": 254,
+      "total_tokens": 13245,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 12991,
+        "output_tokens": 254,
+        "total_tokens": 13245
+      },
+      "timestamp": "2026-06-27T22:55:50.182494",
+      "execution_number": 96,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 16046,
+      "output_tokens": 188,
+      "total_tokens": 16234,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 16046,
+        "output_tokens": 188,
+        "total_tokens": 16234
+      },
+      "timestamp": "2026-06-27T22:55:53.604339",
+      "execution_number": 97,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 20033,
+      "output_tokens": 203,
+      "total_tokens": 20236,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 20033,
+        "output_tokens": 203,
+        "total_tokens": 20236
+      },
+      "timestamp": "2026-06-27T22:55:59.242065",
+      "execution_number": 98,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 24369,
+      "output_tokens": 184,
+      "total_tokens": 24553,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 24369,
+        "output_tokens": 184,
+        "total_tokens": 24553
+      },
+      "timestamp": "2026-06-27T22:56:02.973808",
+      "execution_number": 99,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 28349,
+      "output_tokens": 279,
+      "total_tokens": 28628,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 28349,
+        "output_tokens": 279,
+        "total_tokens": 28628
+      },
+      "timestamp": "2026-06-27T22:56:09.138127",
+      "execution_number": 100,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 38256,
+      "output_tokens": 201,
+      "total_tokens": 38457,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 38256,
+        "output_tokens": 201,
+        "total_tokens": 38457
+      },
+      "timestamp": "2026-06-27T22:56:14.705491",
+      "execution_number": 101,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 41728,
+      "output_tokens": 236,
+      "total_tokens": 41964,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 41728,
+        "output_tokens": 236,
+        "total_tokens": 41964
+      },
+      "timestamp": "2026-06-27T22:56:19.232028",
+      "execution_number": 102,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 49276,
+      "output_tokens": 308,
+      "total_tokens": 49584,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 49276,
+        "output_tokens": 308,
+        "total_tokens": 49584
+      },
+      "timestamp": "2026-06-27T22:56:25.877946",
+      "execution_number": 103,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 59442,
+      "output_tokens": 901,
+      "total_tokens": 60343,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 59442,
+        "output_tokens": 901,
+        "total_tokens": 60343
+      },
+      "timestamp": "2026-06-27T22:56:39.597810",
+      "execution_number": 104,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 68072,
+      "output_tokens": 1041,
+      "total_tokens": 69113,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 68072,
+        "output_tokens": 1041,
+        "total_tokens": 69113
+      },
+      "timestamp": "2026-06-27T22:56:58.688306",
+      "execution_number": 105,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 4399,
+      "output_tokens": 265,
+      "total_tokens": 4664,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 4399,
+        "output_tokens": 265,
+        "total_tokens": 4664
+      },
+      "timestamp": "2026-06-27T22:57:02.168219",
+      "execution_number": 38,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 8985,
+      "output_tokens": 466,
+      "total_tokens": 9451,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 8985,
+        "output_tokens": 466,
+        "total_tokens": 9451
+      },
+      "timestamp": "2026-06-27T22:57:14.965702",
+      "execution_number": 39,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 9380,
+      "output_tokens": 670,
+      "total_tokens": 10050,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 9380,
+        "output_tokens": 670,
+        "total_tokens": 10050
+      },
+      "timestamp": "2026-06-27T22:57:22.867999",
+      "execution_number": 40,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 3124,
+      "output_tokens": 156,
+      "total_tokens": 3280,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 3124,
+        "output_tokens": 156,
+        "total_tokens": 3280
+      },
+      "timestamp": "2026-06-27T22:57:25.695091",
+      "execution_number": 106,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 12991,
+      "output_tokens": 270,
+      "total_tokens": 13261,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 12991,
+        "output_tokens": 270,
+        "total_tokens": 13261
+      },
+      "timestamp": "2026-06-27T22:57:32.758738",
+      "execution_number": 107,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 14456,
+      "output_tokens": 207,
+      "total_tokens": 14663,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 14456,
+        "output_tokens": 207,
+        "total_tokens": 14663
+      },
+      "timestamp": "2026-06-27T22:57:36.237828",
+      "execution_number": 108,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 16322,
+      "output_tokens": 187,
+      "total_tokens": 16509,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 16322,
+        "output_tokens": 187,
+        "total_tokens": 16509
+      },
+      "timestamp": "2026-06-27T22:57:39.100120",
+      "execution_number": 109,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 18568,
+      "output_tokens": 274,
+      "total_tokens": 18842,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 18568,
+        "output_tokens": 274,
+        "total_tokens": 18842
+      },
+      "timestamp": "2026-06-27T22:57:43.342469",
+      "execution_number": 110,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 21887,
+      "output_tokens": 368,
+      "total_tokens": 22255,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 21887,
+        "output_tokens": 368,
+        "total_tokens": 22255
+      },
+      "timestamp": "2026-06-27T22:57:51.374778",
+      "execution_number": 111,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 26056,
+      "output_tokens": 252,
+      "total_tokens": 26308,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 26056,
+        "output_tokens": 252,
+        "total_tokens": 26308
+      },
+      "timestamp": "2026-06-27T22:58:04.593473",
+      "execution_number": 112,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 29238,
+      "output_tokens": 265,
+      "total_tokens": 29503,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 29238,
+        "output_tokens": 265,
+        "total_tokens": 29503
+      },
+      "timestamp": "2026-06-27T22:58:10.289828",
+      "execution_number": 113,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 32213,
+      "output_tokens": 318,
+      "total_tokens": 32531,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 32213,
+        "output_tokens": 318,
+        "total_tokens": 32531
+      },
+      "timestamp": "2026-06-27T22:58:16.543339",
+      "execution_number": 114,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 35091,
+      "output_tokens": 370,
+      "total_tokens": 35461,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 35091,
+        "output_tokens": 370,
+        "total_tokens": 35461
+      },
+      "timestamp": "2026-06-27T22:58:22.396473",
+      "execution_number": 115,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 38680,
+      "output_tokens": 478,
+      "total_tokens": 39158,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 38680,
+        "output_tokens": 478,
+        "total_tokens": 39158
+      },
+      "timestamp": "2026-06-27T22:58:29.696831",
+      "execution_number": 116,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 41863,
+      "output_tokens": 1273,
+      "total_tokens": 43136,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 41863,
+        "output_tokens": 1273,
+        "total_tokens": 43136
+      },
+      "timestamp": "2026-06-27T22:58:45.265353",
+      "execution_number": 117,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 4744,
+      "output_tokens": 191,
+      "total_tokens": 4935,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 4744,
+        "output_tokens": 191,
+        "total_tokens": 4935
+      },
+      "timestamp": "2026-06-27T22:58:48.318367",
+      "execution_number": 41,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 6534,
+      "output_tokens": 506,
+      "total_tokens": 7040,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 6534,
+        "output_tokens": 506,
+        "total_tokens": 7040
+      },
+      "timestamp": "2026-06-27T22:59:04.928768",
+      "execution_number": 42,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 6907,
+      "output_tokens": 91,
+      "total_tokens": 6998,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 6907,
+        "output_tokens": 91,
+        "total_tokens": 6998
+      },
+      "timestamp": "2026-06-27T22:59:06.974789",
+      "execution_number": 43,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 7499,
+      "output_tokens": 250,
+      "total_tokens": 7749,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 7499,
+        "output_tokens": 250,
+        "total_tokens": 7749
+      },
+      "timestamp": "2026-06-27T22:59:10.171483",
+      "execution_number": 44,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 7679,
+      "output_tokens": 83,
+      "total_tokens": 7762,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 7679,
+        "output_tokens": 83,
+        "total_tokens": 7762
+      },
+      "timestamp": "2026-06-27T22:59:12.054681",
+      "execution_number": 45,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 8230,
+      "output_tokens": 125,
+      "total_tokens": 8355,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 8230,
+        "output_tokens": 125,
+        "total_tokens": 8355
+      },
+      "timestamp": "2026-06-27T22:59:14.305169",
+      "execution_number": 46,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 8415,
+      "output_tokens": 77,
+      "total_tokens": 8492,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 8415,
+        "output_tokens": 77,
+        "total_tokens": 8492
+      },
+      "timestamp": "2026-06-27T22:59:16.113083",
+      "execution_number": 47,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 9005,
+      "output_tokens": 86,
+      "total_tokens": 9091,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 9005,
+        "output_tokens": 86,
+        "total_tokens": 9091
+      },
+      "timestamp": "2026-06-27T22:59:18.078741",
+      "execution_number": 48,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 11496,
+      "output_tokens": 189,
+      "total_tokens": 11685,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 11496,
+        "output_tokens": 189,
+        "total_tokens": 11685
+      },
+      "timestamp": "2026-06-27T22:59:21.453532",
+      "execution_number": 49,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 11681,
+      "output_tokens": 89,
+      "total_tokens": 11770,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 11681,
+        "output_tokens": 89,
+        "total_tokens": 11770
+      },
+      "timestamp": "2026-06-27T22:59:23.598281",
+      "execution_number": 50,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 12237,
+      "output_tokens": 741,
+      "total_tokens": 12978,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 12237,
+        "output_tokens": 741,
+        "total_tokens": 12978
+      },
+      "timestamp": "2026-06-27T22:59:33.497795",
+      "execution_number": 51,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 3124,
+      "output_tokens": 112,
+      "total_tokens": 3236,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 3124,
+        "output_tokens": 112,
+        "total_tokens": 3236
+      },
+      "timestamp": "2026-06-27T22:59:36.277989",
+      "execution_number": 118,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 12991,
+      "output_tokens": 315,
+      "total_tokens": 13306,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 12991,
+        "output_tokens": 315,
+        "total_tokens": 13306
+      },
+      "timestamp": "2026-06-27T23:00:09.677191",
+      "execution_number": 119,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 16312,
+      "output_tokens": 229,
+      "total_tokens": 16541,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 16312,
+        "output_tokens": 229,
+        "total_tokens": 16541
+      },
+      "timestamp": "2026-06-27T23:00:16.304274",
+      "execution_number": 120,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 20665,
+      "output_tokens": 341,
+      "total_tokens": 21006,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 20665,
+        "output_tokens": 341,
+        "total_tokens": 21006
+      },
+      "timestamp": "2026-06-27T23:00:21.843681",
+      "execution_number": 121,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 31764,
+      "output_tokens": 344,
+      "total_tokens": 32108,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 31764,
+        "output_tokens": 344,
+        "total_tokens": 32108
+      },
+      "timestamp": "2026-06-27T23:00:36.369833",
+      "execution_number": 122,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 42922,
+      "output_tokens": 253,
+      "total_tokens": 43175,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 42922,
+        "output_tokens": 253,
+        "total_tokens": 43175
+      },
+      "timestamp": "2026-06-27T23:00:48.891849",
+      "execution_number": 123,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 47624,
+      "output_tokens": 244,
+      "total_tokens": 47868,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 47624,
+        "output_tokens": 244,
+        "total_tokens": 47868
+      },
+      "timestamp": "2026-06-27T23:00:53.708709",
+      "execution_number": 124,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 52524,
+      "output_tokens": 436,
+      "total_tokens": 52960,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 52524,
+        "output_tokens": 436,
+        "total_tokens": 52960
+      },
+      "timestamp": "2026-06-27T23:01:00.861772",
+      "execution_number": 125,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 65102,
+      "output_tokens": 1202,
+      "total_tokens": 66304,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 65102,
+        "output_tokens": 1202,
+        "total_tokens": 66304
+      },
+      "timestamp": "2026-06-27T23:01:21.243418",
+      "execution_number": 126,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 76779,
+      "output_tokens": 975,
+      "total_tokens": 77754,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 76779,
+        "output_tokens": 975,
+        "total_tokens": 77754
+      },
+      "timestamp": "2026-06-27T23:01:41.566469",
+      "execution_number": 127,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 82885,
+      "output_tokens": 990,
+      "total_tokens": 83875,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 82885,
+        "output_tokens": 990,
+        "total_tokens": 83875
+      },
+      "timestamp": "2026-06-27T23:01:56.349861",
+      "execution_number": 128,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 85056,
+      "output_tokens": 2062,
+      "total_tokens": 87118,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 85056,
+        "output_tokens": 2062,
+        "total_tokens": 87118
+      },
+      "timestamp": "2026-06-27T23:02:23.740573",
+      "execution_number": 129,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 4595,
+      "output_tokens": 172,
+      "total_tokens": 4767,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 4595,
+        "output_tokens": 172,
+        "total_tokens": 4767
+      },
+      "timestamp": "2026-06-27T23:02:26.888476",
+      "execution_number": 52,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 6332,
+      "output_tokens": 321,
+      "total_tokens": 6653,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 6332,
+        "output_tokens": 321,
+        "total_tokens": 6653
+      },
+      "timestamp": "2026-06-27T23:02:31.586157",
+      "execution_number": 53,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 6642,
+      "output_tokens": 103,
+      "total_tokens": 6745,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 6642,
+        "output_tokens": 103,
+        "total_tokens": 6745
+      },
+      "timestamp": "2026-06-27T23:02:34.295601",
+      "execution_number": 54,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 7984,
+      "output_tokens": 629,
+      "total_tokens": 8613,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 7984,
+        "output_tokens": 629,
+        "total_tokens": 8613
+      },
+      "timestamp": "2026-06-27T23:02:42.462055",
+      "execution_number": 55,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 3124,
+      "output_tokens": 171,
+      "total_tokens": 3295,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 3124,
+        "output_tokens": 171,
+        "total_tokens": 3295
+      },
+      "timestamp": "2026-06-27T23:02:54.636881",
+      "execution_number": 130,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 13053,
+      "output_tokens": 272,
+      "total_tokens": 13325,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 13053,
+        "output_tokens": 272,
+        "total_tokens": 13325
+      },
+      "timestamp": "2026-06-27T23:02:59.910914",
+      "execution_number": 131,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 16032,
+      "output_tokens": 230,
+      "total_tokens": 16262,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 16032,
+        "output_tokens": 230,
+        "total_tokens": 16262
+      },
+      "timestamp": "2026-06-27T23:03:05.756887",
+      "execution_number": 132,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 19911,
+      "output_tokens": 224,
+      "total_tokens": 20135,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 19911,
+        "output_tokens": 224,
+        "total_tokens": 20135
+      },
+      "timestamp": "2026-06-27T23:03:10.245831",
+      "execution_number": 133,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 23977,
+      "output_tokens": 200,
+      "total_tokens": 24177,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 23977,
+        "output_tokens": 200,
+        "total_tokens": 24177
+      },
+      "timestamp": "2026-06-27T23:03:14.538827",
+      "execution_number": 134,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 27343,
+      "output_tokens": 203,
+      "total_tokens": 27546,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 27343,
+        "output_tokens": 203,
+        "total_tokens": 27546
+      },
+      "timestamp": "2026-06-27T23:03:18.126215",
+      "execution_number": 135,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 30460,
+      "output_tokens": 205,
+      "total_tokens": 30665,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 30460,
+        "output_tokens": 205,
+        "total_tokens": 30665
+      },
+      "timestamp": "2026-06-27T23:03:44.595476",
+      "execution_number": 136,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 33822,
+      "output_tokens": 200,
+      "total_tokens": 34022,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 33822,
+        "output_tokens": 200,
+        "total_tokens": 34022
+      },
+      "timestamp": "2026-06-27T23:03:49.018743",
+      "execution_number": 137,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 37090,
+      "output_tokens": 189,
+      "total_tokens": 37279,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 37090,
+        "output_tokens": 189,
+        "total_tokens": 37279
+      },
+      "timestamp": "2026-06-27T23:03:53.848224",
+      "execution_number": 138,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 38673,
+      "output_tokens": 202,
+      "total_tokens": 38875,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 38673,
+        "output_tokens": 202,
+        "total_tokens": 38875
+      },
+      "timestamp": "2026-06-27T23:03:58.692990",
+      "execution_number": 139,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 39329,
+      "output_tokens": 188,
+      "total_tokens": 39517,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 39329,
+        "output_tokens": 188,
+        "total_tokens": 39517
+      },
+      "timestamp": "2026-06-27T23:04:03.211728",
+      "execution_number": 140,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 40861,
+      "output_tokens": 122,
+      "total_tokens": 40983,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 40861,
+        "output_tokens": 122,
+        "total_tokens": 40983
+      },
+      "timestamp": "2026-06-27T23:04:38.471685",
+      "execution_number": 141,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 41272,
+      "output_tokens": 533,
+      "total_tokens": 41805,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 41272,
+        "output_tokens": 533,
+        "total_tokens": 41805
+      },
+      "timestamp": "2026-06-27T23:04:45.592548",
+      "execution_number": 142,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 41625,
+      "output_tokens": 1009,
+      "total_tokens": 42634,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 41625,
+        "output_tokens": 1009,
+        "total_tokens": 42634
+      },
+      "timestamp": "2026-06-27T23:04:56.373206",
+      "execution_number": 143,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 4381,
+      "output_tokens": 165,
+      "total_tokens": 4546,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 4381,
+        "output_tokens": 165,
+        "total_tokens": 4546
+      },
+      "timestamp": "2026-06-27T23:04:59.559112",
+      "execution_number": 56,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 4734,
+      "output_tokens": 158,
+      "total_tokens": 4892,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 4734,
+        "output_tokens": 158,
+        "total_tokens": 4892
+      },
+      "timestamp": "2026-06-27T23:05:02.135813",
+      "execution_number": 57,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 4919,
+      "output_tokens": 150,
+      "total_tokens": 5069,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 4919,
+        "output_tokens": 150,
+        "total_tokens": 5069
+      },
+      "timestamp": "2026-06-27T23:05:04.365405",
+      "execution_number": 58,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 5289,
+      "output_tokens": 109,
+      "total_tokens": 5398,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 5289,
+        "output_tokens": 109,
+        "total_tokens": 5398
+      },
+      "timestamp": "2026-06-27T23:05:06.877077",
+      "execution_number": 59,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 5458,
+      "output_tokens": 71,
+      "total_tokens": 5529,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 5458,
+        "output_tokens": 71,
+        "total_tokens": 5529
+      },
+      "timestamp": "2026-06-27T23:05:23.252878",
+      "execution_number": 60,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 5823,
+      "output_tokens": 119,
+      "total_tokens": 5942,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 5823,
+        "output_tokens": 119,
+        "total_tokens": 5942
+      },
+      "timestamp": "2026-06-27T23:05:58.580984",
+      "execution_number": 61,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 5994,
+      "output_tokens": 71,
+      "total_tokens": 6065,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 5994,
+        "output_tokens": 71,
+        "total_tokens": 6065
+      },
+      "timestamp": "2026-06-27T23:06:00.353853",
+      "execution_number": 62,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 6355,
+      "output_tokens": 445,
+      "total_tokens": 6800,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 6355,
+        "output_tokens": 445,
+        "total_tokens": 6800
+      },
+      "timestamp": "2026-06-27T23:06:08.636612",
+      "execution_number": 63,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Error Summary",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 3195,
+      "output_tokens": 463,
+      "total_tokens": 3658,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 3195,
+        "output_tokens": 463,
+        "total_tokens": 3658
+      },
+      "timestamp": "2026-06-27T23:06:51.295948",
+      "execution_number": 1,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Error Summary",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 3607,
+      "output_tokens": 146,
+      "total_tokens": 3753,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 3607,
+        "output_tokens": 146,
+        "total_tokens": 3753
+      },
+      "timestamp": "2026-06-27T23:06:54.030554",
+      "execution_number": 2,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Error Summary",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 13460,
+      "output_tokens": 235,
+      "total_tokens": 13695,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 13460,
+        "output_tokens": 235,
+        "total_tokens": 13695
+      },
+      "timestamp": "2026-06-27T23:06:59.019940",
+      "execution_number": 3,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Error Summary",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 14902,
+      "output_tokens": 76,
+      "total_tokens": 14978,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 14902,
+        "output_tokens": 76,
+        "total_tokens": 14978
+      },
+      "timestamp": "2026-06-27T23:07:01.029822",
+      "execution_number": 4,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Error Summary",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 16581,
+      "output_tokens": 78,
+      "total_tokens": 16659,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 16581,
+        "output_tokens": 78,
+        "total_tokens": 16659
+      },
+      "timestamp": "2026-06-27T23:07:02.957196",
+      "execution_number": 5,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Error Summary",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 17124,
+      "output_tokens": 125,
+      "total_tokens": 17249,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 17124,
+        "output_tokens": 125,
+        "total_tokens": 17249
+      },
+      "timestamp": "2026-06-27T23:07:07.181149",
+      "execution_number": 6,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Error Summary",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 17713,
+      "output_tokens": 382,
+      "total_tokens": 18095,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 17713,
+        "output_tokens": 382,
+        "total_tokens": 18095
+      },
+      "timestamp": "2026-06-27T23:07:21.945419",
+      "execution_number": 7,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Error Summary",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 20049,
+      "output_tokens": 241,
+      "total_tokens": 20290,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 20049,
+        "output_tokens": 241,
+        "total_tokens": 20290
+      },
+      "timestamp": "2026-06-27T23:07:26.212737",
+      "execution_number": 8,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Error Summary",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 22905,
+      "output_tokens": 347,
+      "total_tokens": 23252,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 22905,
+        "output_tokens": 347,
+        "total_tokens": 23252
+      },
+      "timestamp": "2026-06-27T23:07:31.368257",
+      "execution_number": 9,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Error Summary",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 24279,
+      "output_tokens": 119,
+      "total_tokens": 24398,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 24279,
+        "output_tokens": 119,
+        "total_tokens": 24398
+      },
+      "timestamp": "2026-06-27T23:07:34.082735",
+      "execution_number": 10,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Error Summary",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 26180,
+      "output_tokens": 220,
+      "total_tokens": 26400,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 26180,
+        "output_tokens": 220,
+        "total_tokens": 26400
+      },
+      "timestamp": "2026-06-27T23:07:37.814156",
+      "execution_number": 11,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Error Summary",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 29253,
+      "output_tokens": 75,
+      "total_tokens": 29328,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 29253,
+        "output_tokens": 75,
+        "total_tokens": 29328
+      },
+      "timestamp": "2026-06-27T23:07:40.570414",
+      "execution_number": 12,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Error Summary",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 30154,
+      "output_tokens": 361,
+      "total_tokens": 30515,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 30154,
+        "output_tokens": 361,
+        "total_tokens": 30515
+      },
+      "timestamp": "2026-06-27T23:07:45.843888",
+      "execution_number": 13,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Error Summary",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 33053,
+      "output_tokens": 560,
+      "total_tokens": 33613,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 33053,
+        "output_tokens": 560,
+        "total_tokens": 33613
+      },
+      "timestamp": "2026-06-27T23:07:54.716135",
+      "execution_number": 14,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Error Summary",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 35938,
+      "output_tokens": 206,
+      "total_tokens": 36144,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 35938,
+        "output_tokens": 206,
+        "total_tokens": 36144
+      },
+      "timestamp": "2026-06-27T23:07:58.859357",
+      "execution_number": 15,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Error Summary",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 39956,
+      "output_tokens": 186,
+      "total_tokens": 40142,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 39956,
+        "output_tokens": 186,
+        "total_tokens": 40142
+      },
+      "timestamp": "2026-06-27T23:08:03.081622",
+      "execution_number": 16,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Error Summary",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 40655,
+      "output_tokens": 578,
+      "total_tokens": 41233,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 40655,
+        "output_tokens": 578,
+        "total_tokens": 41233
+      },
+      "timestamp": "2026-06-27T23:08:10.824872",
+      "execution_number": 17,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Error Summary",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 41894,
+      "output_tokens": 169,
+      "total_tokens": 42063,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 41894,
+        "output_tokens": 169,
+        "total_tokens": 42063
+      },
+      "timestamp": "2026-06-27T23:08:15.487944",
+      "execution_number": 18,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Error Summary",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 45350,
+      "output_tokens": 80,
+      "total_tokens": 45430,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 45350,
+        "output_tokens": 80,
+        "total_tokens": 45430
+      },
+      "timestamp": "2026-06-27T23:08:18.943690",
+      "execution_number": 19,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Error Summary",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 45827,
+      "output_tokens": 155,
+      "total_tokens": 45982,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 45827,
+        "output_tokens": 155,
+        "total_tokens": 45982
+      },
+      "timestamp": "2026-06-27T23:08:22.640658",
+      "execution_number": 20,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Error Summary",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 46332,
+      "output_tokens": 569,
+      "total_tokens": 46901,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 46332,
+        "output_tokens": 569,
+        "total_tokens": 46901
+      },
+      "timestamp": "2026-06-27T23:08:30.887252",
+      "execution_number": 21,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Error Summary",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 46419,
+      "output_tokens": 130,
+      "total_tokens": 46549,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 46419,
+        "output_tokens": 130,
+        "total_tokens": 46549
+      },
+      "timestamp": "2026-06-27T23:08:34.146326",
+      "execution_number": 22,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Error Summary",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 46499,
+      "output_tokens": 64,
+      "total_tokens": 46563,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 46499,
+        "output_tokens": 64,
+        "total_tokens": 46563
+      },
+      "timestamp": "2026-06-27T23:08:36.660247",
+      "execution_number": 23,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Error Summary",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 46802,
+      "output_tokens": 146,
+      "total_tokens": 46948,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 46802,
+        "output_tokens": 146,
+        "total_tokens": 46948
+      },
+      "timestamp": "2026-06-27T23:08:40.189695",
+      "execution_number": 24,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Error Summary",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 47290,
+      "output_tokens": 1309,
+      "total_tokens": 48599,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 47290,
+        "output_tokens": 1309,
+        "total_tokens": 48599
+      },
+      "timestamp": "2026-06-27T23:08:55.159554",
+      "execution_number": 25,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Modification",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 4666,
+      "output_tokens": 232,
+      "total_tokens": 4898,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 4666,
+        "output_tokens": 232,
+        "total_tokens": 4898
+      },
+      "timestamp": "2026-06-27T23:08:58.800932",
+      "execution_number": 1,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Modification",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 9783,
+      "output_tokens": 528,
+      "total_tokens": 10311,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 9783,
+        "output_tokens": 528,
+        "total_tokens": 10311
+      },
+      "timestamp": "2026-06-27T23:09:05.142536",
+      "execution_number": 2,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Modification",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 10239,
+      "output_tokens": 150,
+      "total_tokens": 10389,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 10239,
+        "output_tokens": 150,
+        "total_tokens": 10389
+      },
+      "timestamp": "2026-06-27T23:09:08.890498",
+      "execution_number": 3,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Modification",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 10767,
+      "output_tokens": 334,
+      "total_tokens": 11101,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 10767,
+        "output_tokens": 334,
+        "total_tokens": 11101
+      },
+      "timestamp": "2026-06-27T23:09:13.166774",
+      "execution_number": 4,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Chief Product Officer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 3801,
+      "output_tokens": 99,
+      "total_tokens": 3900,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 3801,
+        "output_tokens": 99,
+        "total_tokens": 3900
+      },
+      "timestamp": "2026-06-27T23:09:15.570083",
+      "execution_number": 1,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Chief Product Officer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 13732,
+      "output_tokens": 313,
+      "total_tokens": 14045,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 13732,
+        "output_tokens": 313,
+        "total_tokens": 14045
+      },
+      "timestamp": "2026-06-27T23:09:24.457141",
+      "execution_number": 2,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Chief Product Officer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 17100,
+      "output_tokens": 186,
+      "total_tokens": 17286,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 17100,
+        "output_tokens": 186,
+        "total_tokens": 17286
+      },
+      "timestamp": "2026-06-27T23:09:27.487142",
+      "execution_number": 3,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Chief Product Officer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 23006,
+      "output_tokens": 205,
+      "total_tokens": 23211,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 23006,
+        "output_tokens": 205,
+        "total_tokens": 23211
+      },
+      "timestamp": "2026-06-27T23:09:34.843865",
+      "execution_number": 4,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Chief Product Officer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 26376,
+      "output_tokens": 196,
+      "total_tokens": 26572,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 26376,
+        "output_tokens": 196,
+        "total_tokens": 26572
+      },
+      "timestamp": "2026-06-27T23:09:42.021196",
+      "execution_number": 5,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Chief Product Officer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 29023,
+      "output_tokens": 215,
+      "total_tokens": 29238,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 29023,
+        "output_tokens": 215,
+        "total_tokens": 29238
+      },
+      "timestamp": "2026-06-27T23:09:46.073945",
+      "execution_number": 6,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Chief Product Officer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 34997,
+      "output_tokens": 6135,
+      "total_tokens": 41132,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 34997,
+        "output_tokens": 6135,
+        "total_tokens": 41132
+      },
+      "timestamp": "2026-06-27T23:11:16.658336",
+      "execution_number": 7,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Chief Product Officer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 41121,
+      "output_tokens": 597,
+      "total_tokens": 41718,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 41121,
+        "output_tokens": 597,
+        "total_tokens": 41718
+      },
+      "timestamp": "2026-06-27T23:11:24.739523",
+      "execution_number": 8,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Chief Executive Officer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 4207,
+      "output_tokens": 241,
+      "total_tokens": 4448,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 4207,
+        "output_tokens": 241,
+        "total_tokens": 4448
+      },
+      "timestamp": "2026-06-27T23:11:28.000796",
+      "execution_number": 1,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Chief Executive Officer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 14269,
+      "output_tokens": 151,
+      "total_tokens": 14420,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 14269,
+        "output_tokens": 151,
+        "total_tokens": 14420
+      },
+      "timestamp": "2026-06-27T23:11:31.408791",
+      "execution_number": 2,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Chief Executive Officer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 15275,
+      "output_tokens": 135,
+      "total_tokens": 15410,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 15275,
+        "output_tokens": 135,
+        "total_tokens": 15410
+      },
+      "timestamp": "2026-06-27T23:11:35.841747",
+      "execution_number": 3,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Chief Executive Officer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 15941,
+      "output_tokens": 105,
+      "total_tokens": 16046,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 15941,
+        "output_tokens": 105,
+        "total_tokens": 16046
+      },
+      "timestamp": "2026-06-27T23:11:41.976995",
+      "execution_number": 4,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Chief Executive Officer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 16794,
+      "output_tokens": 90,
+      "total_tokens": 16884,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 16794,
+        "output_tokens": 90,
+        "total_tokens": 16884
+      },
+      "timestamp": "2026-06-27T23:11:44.016161",
+      "execution_number": 5,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Chief Executive Officer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 17655,
+      "output_tokens": 190,
+      "total_tokens": 17845,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 17655,
+        "output_tokens": 190,
+        "total_tokens": 17845
+      },
+      "timestamp": "2026-06-27T23:11:47.736152",
+      "execution_number": 6,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Chief Executive Officer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 18586,
+      "output_tokens": 133,
+      "total_tokens": 18719,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 18586,
+        "output_tokens": 133,
+        "total_tokens": 18719
+      },
+      "timestamp": "2026-06-27T23:11:50.618490",
+      "execution_number": 7,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Chief Executive Officer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 19757,
+      "output_tokens": 82,
+      "total_tokens": 19839,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 19757,
+        "output_tokens": 82,
+        "total_tokens": 19839
+      },
+      "timestamp": "2026-06-27T23:11:52.631696",
+      "execution_number": 8,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Chief Executive Officer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 20704,
+      "output_tokens": 84,
+      "total_tokens": 20788,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 20704,
+        "output_tokens": 84,
+        "total_tokens": 20788
+      },
+      "timestamp": "2026-06-27T23:11:54.786625",
+      "execution_number": 9,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Chief Executive Officer",
+      "model_name": "qwen3.5:cloud",
+      "input_tokens": 22144,
+      "output_tokens": 689,
+      "total_tokens": 22833,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 22144,
+        "output_tokens": 689,
+        "total_tokens": 22833
+      },
+      "timestamp": "2026-06-27T23:12:03.232740",
+      "execution_number": 10,
+      "provider": "openai"
+    }
+  ]
+}

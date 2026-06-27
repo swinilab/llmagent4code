@@ -7,7 +7,7 @@ CONFIG = {
     "prompt_name": "prompt.md",
     "agent_name": "chatdev",
     "api_base": "https://ollama.com/v1",
-    "llm": "gemma4:cloud"
+    "llm": "qwen3.5:cloud"
 }
 
 def main():
@@ -23,7 +23,6 @@ def main():
         CONFIG["llm"]
     )
 
-    # Invoke your agent caller utilizing the encapsulated instance paths
     # success = mini.run(config)
     success = chatdev.run(config)
 

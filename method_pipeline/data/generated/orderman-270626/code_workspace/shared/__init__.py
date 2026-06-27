@@ -1,0 +1,48 @@
+"""
+Shared domain models module for consistent data handling between frontend and backend.
+"""
+from shared.models import (
+    Customer,
+    CustomerCreate,
+    CustomerUpdate,
+    Order,
+    OrderCreate,
+    OrderUpdate,
+    OrderItem,
+    Product,
+    ProductCreate,
+    ProductUpdate,
+    Payment,
+    PaymentCreate,
+    PaymentUpdate,
+    Invoice,
+    InvoiceCreate,
+    InvoiceUpdate,
+    OrderStatus,
+    PaymentStatus,
+    InvoiceStatus,
+    UserRole,
+)
+
+__all__ = [
+    "Customer",
+    "CustomerCreate",
+    "CustomerUpdate",
+    "Order",
+    "OrderCreate",
+    "OrderUpdate",
+    "OrderItem",
+    "Product",
+    "ProductCreate",
+    "ProductUpdate",
+    "Payment",
+    "PaymentCreate",
+    "PaymentUpdate",
+    "Invoice",
+    "InvoiceCreate",
+    "InvoiceUpdate",
+    "OrderStatus",
+    "PaymentStatus",
+    "InvoiceStatus",
+    "UserRole",
+]
