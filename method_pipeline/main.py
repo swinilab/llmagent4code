@@ -4,10 +4,10 @@ from agents.chat_dev_caller import ChatDev
 
 
 CONFIG = {
-    "prompt_name": "prompt.md",
-    "agent_name": "chatdev",
+    "prompt_name": "prompt_orderman_order_pipeline.md",
+    "agent_name": "mini",
     "api_base": "https://ollama.com/v1",
-    "llm": "qwen3.5:cloud"
+    "llm": "ollama/qwen3.5:cloud"
 }
 
 def main():
@@ -23,8 +23,8 @@ def main():
         CONFIG["llm"]
     )
 
-    # success = mini.run(config)
-    success = chatdev.run(config)
+    success = mini.run(config)
+    # success = chatdev.run(config)
 
     if success:
         print("Pipeline code generation phase completed successfully.")

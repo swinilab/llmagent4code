@@ -13,7 +13,7 @@ class Config:
         self.pipeline_data_dir = self.base_dir / "data"
         self.prompts_dir = self.pipeline_data_dir / "prompts"
         self.config_dir = self.pipeline_data_dir / "config"
-        self.output_dir = self.pipeline_data_dir / "generated"
+        self.output_dir = self.base_dir / "generated"
 
         self.prompts_dir.mkdir(parents=True, exist_ok=True)
         self.config_dir.mkdir(parents=True, exist_ok=True)
@@ -29,13 +29,7 @@ class Config:
             print("Error: API_KEY is missing. Please check your .env file.")
             exit(1)
         self.api_key = api_key
-        self.llm = llm
-
-
-if __name__ == "__main__":
-    con = Config("prompt.md", "mini")
-    print(con.base_dir)
-    print(con.prompts_dir)
-    print(con.config_dir)
-    print(con.output_dir)
-    print(con.prompt_path)
+        if agent_name == "mini":
+            self.llm = "ollama/" + llm
+        else:
+            self.llm = llm
