@@ -1,16 +1,15 @@
 # Overview
-Design and implement a production-grade, full-stack e-commerce Order Management System (OMS).
+Design and implement a production-grade, backend-only e-commerce Order Management System (OMS).
 Structure your response strictly as: Context → Architecture → Tasks → Deliverables → Output.
 
 ---
 
 # Context
-You are building a comprehensive OMS that handles the complete workflow: customer ordering → payment processing → invoicing → shipping → closure. The system serves three roles (Customer, Order Staff, Accountant) and must be designed as if it will be deployed to a Kubernetes cluster handling non-trivial traffic. No authentication is required.
+You are building a OMS backend that serves the APIs for the complete workflow: customer ordering → payment processing → invoicing → shipping → closure. The system serves three roles (Customer, Order Staff, Accountant) and must be designed as if it will be deployed to a Kubernetes cluster handling non-trivial traffic. No authentication is required.
 
 ---
 
 # Tech Stack (Fixed — do not substitute)
-- **Frontend:** ReactJS (functional components, hooks, Context API or lightweight state management)
 - **Backend:** Spring Boot 3.x (Java 17+, records where appropriate)
 - **Containerization:** Docker (multi-stage builds)
 - **Orchestration:** Kubernetes (raw manifests or Helm — your choice, justify)
@@ -38,16 +37,11 @@ Non-Functional Requirements to satisfy:
 - **NFR 1.2 Concurrency & Resource Utilization:** system must exploit available server resources (up to 98GB RAM class) with minimal queuing.
 - **NFR 1.3 Queue Management:** sudden spikes must not crash the system — bound inbound queues, apply back-pressure, reject/delay excess gracefully.
 - **NFR 2.1 Localization of Changes:** business rules (tax, discount, shipping) must be changeable without touching the core order engine.
-- **NFR 2.2 Interface Stability:** frontend evolution must never force backend API recompilation or contract breakage.
+- **NFR 2.2 Interface Stability:** backend evolution must never force frontend redesign or contract breakage.
 - **NFR 2.3 Deferred Binding:** feature flags, cache TTLs, pool sizes, and similar parameters must be changeable at runtime or via external config without restart.
 - **NFR 3.1 Graceful Degradation:** under CPU/RAM saturation, non-essential features (recommendations, analytics) must shed load while checkout stays alive.
 - **NFR 3.2 Fault Detection & Recovery:** transient failures (DB drops, downstream hiccups) must auto-recover with minimal user-visible errors.
 - **NFR 3.3 State Preservation:** process crash → restart must resume pending orders with minimal data loss.
-
-## 3. Module Structure
-Follow RESTful, module-based Domain-Driven Design:
-- Three layers: **UI (React)**, **Server (Spring Boot)**, **Shared Domain Models** (used by both sides via REST contracts).
-- Each bounded context (Customer, Order, Product, Payment, Invoice) owns its own slice in all three layers.
 
 ---
 
@@ -60,7 +54,7 @@ Follow RESTful, module-based Domain-Driven Design:
 
 ---
 
-# User Workflow (must be implemented end-to-end)
+# User Workflow (must be implemented)
 1. Customer places order.
 2. Order Staff reviews & accepts.
 3. Accountant creates invoice for accepted order.
@@ -68,16 +62,6 @@ Follow RESTful, module-based Domain-Driven Design:
 5. Accountant verifies payment.
 6. Order Staff ships paid order.
 7. Order Staff closes completed order.
-
----
-
-# Frontend Requirements (ReactJS)
-Per entity produce three **complete** components:
-- **Overview** (entry/dashboard)
-- **List** (paginated, filterable collection)
-- **Form** (create/edit with validation)
-
-Use idiomatic React: hooks, composition, a shared API client, and error/loading states.
 
 ---
 
@@ -91,7 +75,7 @@ Per entity produce three **complete** layers:
 
 # Infrastructure Requirements
 Provide complete, runnable artifacts:
-- **Dockerfiles** (multi-stage, minimal final images) for frontend and backend.
+- **Dockerfiles** (multi-stage, minimal final images) for the backend.
 - **docker-compose.yml** for one-command local dev (all services + chosen data stores).
 - **Kubernetes manifests** (or Helm chart): Deployments, Services, ConfigMaps, Secrets, HPA, liveness/readiness probes, and any StatefulSets/Jobs required by your chosen data stores.
 - **Deployment guide** for local execution on minikube or kind, step-by-step, including how to verify each NFR is active.
@@ -112,11 +96,10 @@ Provide complete, runnable artifacts:
 3. Data architecture narrative + complete schema.
 4. Shared domain models (used by both FE and BE).
 5. Complete backend code: entities, repositories, services, controllers, config (cache, queues, resilience, externalized config), OpenAPI spec.
-6. Complete frontend code: API client, all Overview/List/Form components per entity, routing.
-7. Dockerfiles + docker-compose.yml.
-8. Kubernetes manifests (or Helm chart) with HPA, probes, ConfigMaps.
-9. Local deployment guide (docker-compose path AND minikube/kind path).
-10. Verification steps showing how to observe each NFR being satisfied.
+6. Dockerfiles + docker-compose.yml.
+7. Kubernetes manifests (or Helm chart) with HPA, probes, ConfigMaps.
+8. Local deployment guide (docker-compose path AND minikube/kind path).
+9. Verification steps showing how to observe each NFR being satisfied.
 
 ---
 
