@@ -1,7 +1,6 @@
 import os
 from pathlib import Path
 from dotenv import load_dotenv
-import yaml
 
 load_dotenv()
 
@@ -13,7 +12,7 @@ class Config:
         self.pipeline_data_dir = self.base_dir / "data"
         self.prompts_dir = self.pipeline_data_dir / "prompts"
         self.config_dir = self.pipeline_data_dir / "config"
-        self.output_dir = self.base_dir / "generated"
+        self.output_dir = self.base_dir / "generated" / "chatdev-300626"
 
         self.prompts_dir.mkdir(parents=True, exist_ok=True)
         self.config_dir.mkdir(parents=True, exist_ok=True)

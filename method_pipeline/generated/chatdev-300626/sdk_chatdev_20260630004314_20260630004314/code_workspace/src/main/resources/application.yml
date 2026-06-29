@@ -1,0 +1,137 @@
+spring:
+  application:
+    name: order-management-system
+
+  # Default profile: H2 for development
+  datasource:
+    url: jdbc:h2:mem:omsdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driverClassName: org.h2.Driver
+    username: sa
+    password: 
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          batch_size: 50
+        order_inserts: true
+        order_updates: true
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    default-property-inclusion: non_null
+
+# Actuator endpoints for health checks (NFR 3.2)
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: always
+      probes:
+        enabled: true
+  health:
+    db:
+      enabled: true
+
+# App properties for NFR 2.3 (Deferred Binding)
+app:
+  version: 1.0.0
+  features:
+    recommendations-enabled: true
+    analytics-enabled: true
+    caching-enabled: true
+  business-rules:
+    tax-rate: 0.10
+    bulk-discount-threshold: 1000.0
+    bulk-discount-rate: 0.05
+    invoice-due-date-offset-days: 30
+  performance:
+    cache-ttl-seconds: 300
+    max-connections: 50
+    connection-timeout-ms: 5000
+
+# Resilience4j configuration (NFR 3.2)
+resilience4j:
+  circuitbreaker:
+    instances:
+      backend:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 5s
+        failureRateThreshold: 50
+        eventConsumerBufferSize: 10
+  timelimiter:
+    instances:
+      backend:
+        timeoutDuration: 3s
+        cancelRunningFuture: true
+
+# Server configuration
+server:
+  port: 8080
+  servlet:
+    context-path: /
+  tomcat:
+    max-threads: 200
+    min-spare-threads: 10
+    connection-timeout: 20000
+    accept-count: 100
+
+# Logging
+logging:
+  level:
+    root: INFO
+    com.chatdev.oms: DEBUG
+    org.springframework.web: INFO
+    org.hibernate.SQL: WARN
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %logger{36} - %msg%n"
+
+---
+# PostgreSQL Profile
+spring:
+  config:
+    activate:
+      on-profile: docker,postgres,kubernetes
+  datasource:
+    url: jdbc:postgresql://localhost:5432/omsdb
+    driverClassName: org.postgresql.Driver
+    username: oms
+    password: omspassword
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+      connection-timeout: 30000
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+
+  h2:
+    console:
+      enabled: false

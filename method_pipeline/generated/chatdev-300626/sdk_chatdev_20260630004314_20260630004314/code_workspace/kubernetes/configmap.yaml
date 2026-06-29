@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: oms-config
+  namespace: oms
+data:
+  # Application configuration (NFR 2.3 - Deferred Binding)
+  application.yml: |
+    spring:
+      datasource:
+        url: jdbc:postgresql://postgres-service:5432/omsdb
+        username: oms
+        password: ${POSTGRES_PASSWORD}
+        hikari:
+          maximum-pool-size: 20
+          minimum-idle: 5
+          connection-timeout: 30000
+      
+      jpa:
+        database-platform: org.hibernate.dialect.PostgreSQLDialect
+        hibernate:
+          ddl-auto: update
+        show-sql: false
+    
+    app:
+      version: 1.0.0
+      features:
+        recommendations-enabled: true
+        analytics-enabled: true
+        caching-enabled: true
+      business-rules:
+        tax-rate: 0.10
+        bulk-discount-threshold: 1000.0
+        bulk-discount-rate: 0.05
+        invoice-due-date-offset-days: 30
+    
+    management:
+      endpoints:
+        web:
+          exposure:
+            include: health,info,metrics,prometheus
+    
+    server:
+      port: 8080
+      tomcat:
+        max-threads: 200
+        min-spare-threads: 10

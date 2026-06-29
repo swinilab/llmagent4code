@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-deployment
+spec:
+  replicas: 3 # Chạy cùng lúc 3 bản sao để chịu tải và tăng tính reliability
+  selector:
+    matchLabels:
+      app: flask-app
+  template:
+    metadata:
+      labels:
+        app: flask-app
+    spec:
+      containers:
+      - name: flask
+        image: flask-app:v_1782753568 # Image bạn build ở bước 1
+        imagePullPolicy: Never # Bảo K8s lấy image dưới máy local (Minikube), không cần pull từ mạng
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-service
+spec:
+  type: NodePort # Tạo một cổng công khai để máy ngoài (hoặc JMeter) gọi vào được
+  selector:
+    app: flask-app
+  ports:
+    - port: 5000
+      targetPort: 5000
+      nodePort: 30001 # Bạn sẽ gọi test vào port này
