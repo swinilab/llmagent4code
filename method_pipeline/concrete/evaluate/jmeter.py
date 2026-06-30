@@ -3,49 +3,19 @@ import subprocess
 import csv
 import time
 import threading
-from datetime import datetime
-from pathlib import Path
-
-class JMeterConfig:
-    """Configuration holder for the test environment."""
-    def __init__(self, 
-                 target_host: str = "localhost", 
-                 target_port: int = 8080,
-                 jmeter_xml: str = "template.xml", 
-                 jmeter_path: str = "jmeter",   
-                 threads: int = 5, 
-                 loops: int = 10,
-                ):
-        self.base_dir = Path(__file__).resolve().parent.parent
-        
-        self.output_dir = self.base_dir / "eval_results" / "jmeter"
-        self.output_dir.mkdir(parents=True, exist_ok=True)
-        self.test_scenarios = self.base_dir / "data" / "jmeter_scenarios"
-        
-        self.target_host = target_host
-        self.target_port = target_port
-        self.jmeter_xml = jmeter_xml
-        self.jmeter_path = jmeter_path
-        self.threads = threads
-        self.loops = loops
-        self.timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        
-        self.jmx_file = os.path.join(self.output_dir, f"test_plan_{self.timestamp}.jmx")
-        self.jtl_file = os.path.join(self.output_dir, f"results_{self.timestamp}.jtl")
-        self.report_dir = os.path.join(self.output_dir, f"report_{self.timestamp}")
-        self.log_file = os.path.join(self.output_dir, f"log_{self.timestamp}.log")
+from config import Config
 
 class JMeterTestPlanBuilder:
     """Responsible for generating the JMeter XML (.jmx) file."""
     
-    def __init__(self, config: JMeterConfig):
+    def __init__(self, config: Config):
         self.config = config
 
     def generate(self) -> str:
         template_path = self.config.test_scenarios / self.config.jmeter_xml
         
         if not template_path.exists():
-            raise FileNotFoundError(f"Không tìm thấy file template tại: {template_path}")
+            raise FileNotFoundError(f"Can't find the .jmx scenario at: {template_path}")
             
         with open(template_path, 'r', encoding='utf-8') as f:
             xml_template = f.read()
@@ -59,6 +29,7 @@ class JMeterTestPlanBuilder:
         )
         
         return xml_content
+
 
 class LiveProgressMonitor:
     """Monitors the .jtl file in real-time to output progress metrics."""
@@ -100,22 +71,22 @@ class LiveProgressMonitor:
         except Exception as e:
             print(f"\n[WARN] Error during live monitoring: {e}")
     
+
 class JMeterMain:
     """Main Orchestrator class to manage the test lifecycle."""
     
-    def __init__(self, config: JMeterConfig):
+    def __init__(self, config: Config):
         self.config = config
         self.builder = JMeterTestPlanBuilder(config)
         self._ensure_output_dir()
         
-        # Số lượng Sampler cố định trong template kịch bản (mặc định là 3: /, /items, /orders)
         self.num_samplers_in_template = 3 
         self.total_requests = self.config.threads * self.config.loops * self.num_samplers_in_template
 
     def _ensure_output_dir(self):
-        if not os.path.exists(self.config.output_dir):
-            os.makedirs(self.config.output_dir)
-            print(f"[INFO] Created output directory: {self.config.output_dir}")
+        if not os.path.exists(self.config.jmeter_output_dir):
+            os.makedirs(self.config.jmeter_output_dir)
+            print(f"[INFO] Created output directory: {self.config.jmeter_output_dir}")
 
     def prepare_test_plan(self):
         """Writes the .jmx file to disk."""
@@ -138,14 +109,12 @@ class JMeterMain:
         print(f"[INFO] Running JMeter Command: {' '.join(cmd)}")
         print(f"[INFO] Target Total Requests: {self.total_requests} ({self.config.threads} threads x {self.config.loops} loops x {self.num_samplers_in_template} endpoints)")
         
-        # Khởi chạy Monitor luồng nền
         monitor = LiveProgressMonitor(self.config.jtl_file, self.total_requests)
         monitor.start()
 
         try:
             result = subprocess.run(cmd, capture_output=True, text=True)
             
-            # Dừng monitor sau khi subprocess chạy xong
             monitor.stop()
 
             if result.returncode == 0:
@@ -215,17 +184,3 @@ class JMeterMain:
             self.summarize_results()
         else:
             print("[ABORT] Skipping summary due to execution failure.")
-
-if __name__ == "__main__":
-    config = JMeterConfig(
-        target_host="localhost",
-        target_port=5000,
-        jmeter_xml="template.jmx", 
-        jmeter_path="jmeter",
-        threads=500,
-        loops=5
-    )
-
-    runner = JMeterMain(config)
-    print(f"Starting Load Test against {config.target_host}:{config.target_port}...")
-    runner.execute_full_cycle()

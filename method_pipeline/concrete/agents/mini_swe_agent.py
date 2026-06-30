@@ -1,11 +1,9 @@
 import os
 import subprocess
 from pathlib import Path
-from agents.agent import Agent
 from config import Config
 
-
-class MiniSweAgent(Agent):
+class MiniSweAgent():
     def __init__(self) -> None:
         pass
 

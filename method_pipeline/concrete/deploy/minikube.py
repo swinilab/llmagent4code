@@ -2,40 +2,11 @@ import os
 import subprocess
 import time
 import re
-import threading
-from pathlib import Path
-
-class MinikubeDeployConfig:
-    """Configuration holder for the packaging and deployment process on Minikube."""
-    def __init__(self, 
-                 app_dir: Path | None = None,
-                 manifest_file: str = "flask-k8s.yaml", 
-                 image_name: str = "flask-app",
-                 version_tag: str | None = None,
-                 local_port: int = 8080,
-                 service_port: int = 5000,
-                 service_name: str = "flask-service"):
-        
-        # Base setup pointing to generated folders
-        self.base_dir = Path(__file__).resolve().parent.parent
-        self.app_dir = Path(app_dir) if app_dir else self.base_dir / "generated"
-        self.manifest_dir = self.base_dir / "data" / "k8s_manifests"
-        self.manifest_path = self.manifest_dir / manifest_file
-        
-        self.image_name = image_name
-        self.service_name = service_name
-        
-        # Port mapping configurations for port forwarding
-        self.local_port = local_port
-        self.service_port = service_port
-        
-        # If no tag is specified, generate a unique timestamp-based tag to bypass image cache
-        self.version_tag = version_tag if version_tag else f"v_{int(time.time())}"
-        self.full_image_tag = f"{self.image_name}:{self.version_tag}"
+from config import Config
 
 class MinikubeDeployer:
     """Manages the lifecycle of building images, updating manifests, and deploying to Minikube from WSL."""
-    def __init__(self, config: MinikubeDeployConfig):
+    def __init__(self, config: Config):
         self.config = config
         self.port_forward_proc = None
 
@@ -149,13 +120,10 @@ class MinikubeDeployer:
         ]
 
         try:
-            # Popen spawns the process in the background without blocking the script execution
             self.port_forward_proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
             
-            # Give the tunnel 2 seconds to establish network socket interfaces
             time.sleep(2)
             
-            # Check if the process died immediately (e.g., Address already in use)
             if self.port_forward_proc.poll() is not None:
                 _, stderr = self.port_forward_proc.communicate()
                 print(f"[ERROR] Port forward failed to start immediately.\nSTDERR: {stderr}")
@@ -203,13 +171,12 @@ class MinikubeDeployer:
         if not self.wait_for_deployment():
             return False
         
-        # Establish the static route path before handing over control to testing suites
         return self.start_port_forward()
     
 if __name__ == "__main__":
-    # Custom test configuration block
-    conf = MinikubeDeployConfig(local_port=8080)
-    deployer = MinikubeDeployer(conf)
+    # Khởi tạo thông qua master Config khi test độc lập file này
+    master_conf = Config("master_config.json")
+    deployer = MinikubeDeployer(master_conf)
     try:
         success = deployer.execute_deploy_flow()
         if success:
@@ -219,5 +186,4 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print("\n[INFO] Script interrupted by user.")
     finally:
-        # Guarantee network cleanup even if execution fails
         deployer.stop_port_forward()

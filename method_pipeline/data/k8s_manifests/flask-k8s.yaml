@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: flask
-        image: flask-app:v_1782753568 # Image bạn build ở bước 1
+        image: flask-app:v_1782819626 # Image bạn build ở bước 1
         imagePullPolicy: Never # Bảo K8s lấy image dưới máy local (Minikube), không cần pull từ mạng
         ports:
         - containerPort: 5000

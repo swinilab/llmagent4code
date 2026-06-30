@@ -1,0 +1,24 @@
+{
+  "agent": {
+    "prompt_name": "prompt_v2_simplified.md",
+    "agent_name": "chatdev",
+    "api_base": "https://ollama.com/v1",
+    "llm": "qwen3.5:cloud",
+    "out": "generated"
+  },
+  "minikube": {
+    "manifest_file": "flask-k8s.yaml",
+    "image_name": "flask-app",
+    "local_port": 8080,
+    "service_port": 5000,
+    "service_name": "flask-service"
+  },
+  "jmeter": {
+    "target_host": "localhost",
+    "target_port": 8080,
+    "jmeter_xml": "template.jmx",
+    "jmeter_path": "jmeter",
+    "threads": 10,
+    "loops": 5
+  }
+}

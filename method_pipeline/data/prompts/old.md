@@ -1,1 +1,0 @@
-Create a C file that print from 1 to 100, do not execute it. Do not create python env like uv, etc. Only a C file

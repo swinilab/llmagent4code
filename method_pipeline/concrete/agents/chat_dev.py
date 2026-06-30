@@ -1,13 +1,12 @@
-from chatdev import run_workflow, AgentConfig
 import chatdev.sdk
 import os
 from pathlib import Path
 from dotenv import load_dotenv
-from agents.agent import Agent
+from chatdev import run_workflow, AgentConfig
 from config import Config
+from pprint import pprint
 
-
-class ChatDev(Agent):
+class ChatDev():
     def __init__(self) -> None:
         pass
 
@@ -24,4 +23,4 @@ class ChatDev(Agent):
                 "MODEL_NAME": config.llm
             },
         )
-        return result
+        pprint(result)
