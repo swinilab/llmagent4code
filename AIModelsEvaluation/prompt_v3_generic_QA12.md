@@ -20,7 +20,7 @@ For every major architectural choice you MUST provide a short ADR entry containi
 
 ## 2. NFR Traceability Matrix (MANDATORY)
 Before writing any code, produce a table mapping every NFR below to:
-- The **architectural mechanism** you will use to satisfy it (e.g., a caching layer, an async queue, a circuit breaker, a specific DB engine, a K8s resource)
+- The **architectural mechanism** you will use to satisfy it.
 - The **module/component** where it lives
 - A one-line **verification method** (how a reviewer would confirm it works)
 
