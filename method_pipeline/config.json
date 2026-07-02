@@ -1,10 +1,10 @@
 {
   "agent": {
-    "prompt_name": "prompt_v2_simplified.md",
+    "prompt_name": "prompt_v3_generic_QA12.md",
     "agent_name": "chatdev",
     "api_base": "https://ollama.com/v1",
-    "llm": "qwen3.5:cloud",
-    "out": "generated"
+    "llm": "gpt-oss:120b-cloud",
+    "out": "generated/chatdev-030726-QA12"
   },
   "minikube": {
     "manifest_file": "flask-k8s.yaml",

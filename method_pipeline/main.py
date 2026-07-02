@@ -13,18 +13,18 @@ def main():
     evaluator = JMeterEvaluatorAdapter(config)
     
     print("========== Code Generation Phase ==========")
-    # if not agent.gen_code(config):
-    #     return
-
-    print("========== Minikube Deploying Phase ==========")
-    if not deployer.deploy():
+    if not agent.gen_code(config):
         return
 
-    try:
-        print("========== Evaluation Phase ==========")
-        evaluator.evaluate()
-    finally:
-        deployer.cleanup()
+    # print("========== Minikube Deploying Phase ==========")
+    # if not deployer.deploy():
+    #     return
+
+    # try:
+    #     print("========== Evaluation Phase ==========")
+    #     evaluator.evaluate()
+    # finally:
+    #     deployer.cleanup()
 
 if __name__ == "__main__":
     main()
