@@ -3,8 +3,8 @@
     "prompt_name": "prompt_v3_generic_QA12.md",
     "agent_name": "chatdev",
     "api_base": "https://ollama.com/v1",
-    "llm": "gpt-oss:120b-cloud",
-    "out": "generated/chatdev-030726-QA12"
+    "llm": "deepseek-v4-flash:cloud",
+    "out": "generated/DeepSeek/chatdev-040726-QA12"
   },
   "minikube": {
     "manifest_file": "flask-k8s.yaml",

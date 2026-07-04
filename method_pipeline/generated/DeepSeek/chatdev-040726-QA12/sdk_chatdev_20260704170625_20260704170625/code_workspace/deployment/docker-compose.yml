@@ -1,0 +1,49 @@
+﻿# Docker Compose — local production-like deployment.
+
+services:
+  oms-backend:
+    build:
+      context: ..
+      dockerfile: deployment/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://oms:oms_password@db:5432/oms
+      - DATABASE_POOL_SIZE=20
+      - DATABASE_MAX_OVERFLOW=10
+      - QUEUE_MAX_SIZE=10000
+      - QUEUE_BATCH_SIZE=50
+      - LOG_LEVEL=INFO
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "4.0"
+          memory: 4096M
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: oms
+      POSTGRES_PASSWORD: oms_password
+      POSTGRES_DB: oms
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U oms -d oms"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    deploy:
+      resources:
+        limits:
+          cpus: "2.0"
+          memory: 2048M
+
+volumes:
+  pgdata:
