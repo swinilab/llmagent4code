@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  oms-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: oms-backend
+    ports:
+      - "8000:8000"
+    environment:
+      OMS_DATABASE_URL: "sqlite:///./oms.db"
+      OMS_DEBUG: "false"
+      OMS_MAX_WORKERS: "8"
+      OMS_DB_POOL_SIZE: "20"
+      OMS_DB_MAX_OVERFLOW: "10"
+      OMS_RATE_LIMIT_PER_MINUTE: "100"
+      OMS_UVICORN_WORKERS: "4"
+    volumes:
+      - oms_data:/app
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+        reservations:
+          memory: 256M
+
+volumes:
+  oms_data:
