@@ -1,0 +1,109 @@
+# ── Docker Compose for local development ───────────────────────────────
+# Spins up PostgreSQL, Redis, RabbitMQ, and the OMS backend.
+# Resource limits reflect the target hardware class (4 cores, 98 GB RAM).
+
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: oms
+      POSTGRES_PASSWORD: oms
+      POSTGRES_DB: oms
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: "2G"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U oms"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: "1G"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: "1G"
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "check_port_connectivity"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      OMS_DB_URL: "postgresql+asyncpg://oms:oms@postgres:5432/oms"
+      OMS_REDIS_URL: "redis://redis:6379/0"
+      OMS_RABBITMQ_URL: "amqp://guest:guest@rabbitmq:5672/"
+      OMS_LOG_LEVEL: "INFO"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          cpus: "4"
+          memory: "4G"
+    restart: unless-stopped
+
+  worker:
+    build: .
+    command: python -m app.worker
+    environment:
+      OMS_DB_URL: "postgresql+asyncpg://oms:oms@postgres:5432/oms"
+      OMS_REDIS_URL: "redis://redis:6379/0"
+      OMS_RABBITMQ_URL: "amqp://guest:guest@rabbitmq:5672/"
+      OMS_LOG_LEVEL: "INFO"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: "2G"
+    restart: unless-stopped
+
+volumes:
+  pgdata:

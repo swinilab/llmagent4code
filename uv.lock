@@ -2077,7 +2077,7 @@ wheels = [
 
 [[package]]
 name = "mini-swe-agent"
-version = "2.4.2"
+version = "2.4.4"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "datasets" },
@@ -2095,9 +2095,9 @@ dependencies = [
     { name = "textual" },
     { name = "typer" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/ef/7e/7456c53c8e39aa83f758e7a6c9f64eb366879ab58897ae18006df97cacce/mini_swe_agent-2.4.2.tar.gz", hash = "sha256:badee9ae788b99a07d933dcdfc44a650f5369570da7a379f5195df9237023b60", size = 66569, upload-time = "2026-06-18T21:37:33.531Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/2e/f0/08b52653fc2163e1a72b3f843e3fc17b976075ee3a06f8ae212b0775f251/mini_swe_agent-2.4.4.tar.gz", hash = "sha256:6012527c18fa9c8c165618e053eb80d7bf3e35a08edd16a81cb1b4ae3abf47ed", size = 66855, upload-time = "2026-07-02T16:52:27.47Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/a1/41/83646bd34f2011bf6ca5412e3d3dd67bd975657d60ea947163534c52dd52/mini_swe_agent-2.4.2-py3-none-any.whl", hash = "sha256:ecd4832b5951d21953a9cac406ba42bca764da6775dd5d31f3e6a3b32c686e25", size = 114751, upload-time = "2026-06-18T21:37:32.358Z" },
+    { url = "https://files.pythonhosted.org/packages/51/ed/266596dcd91240d00c3c69cce3a580139e67c71748556054a91a90b284c1/mini_swe_agent-2.4.4-py3-none-any.whl", hash = "sha256:8956ca81d19d5cb2bb727dea718db51518d6ae0a4fa63c1d46d9536a4941bfc2", size = 114789, upload-time = "2026-07-02T16:52:26.386Z" },
 ]
 
 [[package]]

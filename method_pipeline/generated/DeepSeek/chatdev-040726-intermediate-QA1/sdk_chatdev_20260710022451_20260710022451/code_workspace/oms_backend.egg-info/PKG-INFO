@@ -1,0 +1,21 @@
+Metadata-Version: 2.4
+Name: oms-backend
+Version: 1.0.0
+Summary: Production-grade e-commerce Order Management System backend
+Requires-Python: >=3.12
+Requires-Dist: fastapi>=0.139.0
+Requires-Dist: uvicorn[standard]>=0.51.0
+Requires-Dist: sqlalchemy[asyncio]>=2.0.51
+Requires-Dist: asyncpg>=0.31.0
+Requires-Dist: alembic>=1.18.5
+Requires-Dist: redis[hiredis]>=8.0.1
+Requires-Dist: aio-pika>=10.0.1
+Requires-Dist: pydantic>=2.13.4
+Requires-Dist: pydantic-settings>=2.14.2
+Requires-Dist: python-json-logger>=4.1.0
+Requires-Dist: httptools>=0.8.0
+Requires-Dist: psutil>=7.2.2
+Provides-Extra: dev
+Requires-Dist: pytest>=9.1.1; extra == "dev"
+Requires-Dist: pytest-asyncio>=0.25.0; extra == "dev"
+Requires-Dist: locust>=2.45.0; extra == "dev"
