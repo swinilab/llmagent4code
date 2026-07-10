@@ -5,7 +5,7 @@ Structure your response strictly as: Context → Architecture → Tasks → Deli
 ---
 
 # Context
-You are building a OMS backend that serves the APIs for the complete workflow: customer ordering → payment processing → invoicing → shipping → closure. The system serves three roles (Customer, Order Staff, Accountant) and must be designed as if it will be deployed to a Kubernetes cluster handling non-trivial traffic. No authentication is required.
+You are building a OMS backend that serves the APIs for the complete workflow: customer ordering → payment processing → invoicing → shipping → closure. The system serves three roles (Customer, Order Staff, Accountant) and must handle non-trivial traffic. No authentication is required.
 
 ---
 
@@ -51,7 +51,7 @@ Non-Functional Requirements to satisfy:
 
 ---
 
-# Backend Requirements (Spring Boot)
+# Backend Requirements
 Per entity produce three **complete** layers:
 - **Service** (business logic, transaction boundaries, orchestration of cross-cutting concerns)
 - **Controller** (REST endpoints, request/response mapping, validation)

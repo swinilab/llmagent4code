@@ -5,7 +5,7 @@ Structure your response strictly as: Context → Architecture → Tasks → Deli
 ---
 
 # Context
-You are building a OMS backend that serves the APIs for the complete workflow: customer ordering → payment processing → invoicing → shipping → closure. The system serves three roles (Customer, Order Staff, Accountant) and must be designed as if it will be deployed to a Kubernetes cluster handling non-trivial traffic. No authentication is required.
+You are building a OMS backend that serves the APIs for the complete workflow: customer ordering → payment processing → invoicing → shipping → closure. The system serves three roles (Customer, Order Staff, Accountant) and must handle non-trivial traffic. No authentication is required.
 
 ---
 
@@ -25,9 +25,9 @@ Before writing any code, produce a table mapping every NFR below to:
 - A one-line **verification method** (how a reviewer would confirm it works)
 
 Non-Functional Requirements to satisfy:
-- **NFR 2.1 Localization of Changes:** Use domain driven component base design that is built with boundaries defined by the domain models structure of business logics.
-- **NFR 2.2 Interface Stability:** backend evolution must never force frontend redesign or contract breakage.
-- **NFR 2.3 Deferred Binding:** Config, Environment variable, and/or parameters must be changeable at runtime or via external config without restart.
+- **NFR 2.1 Graceful Degradation:** Under extreme resource contention, the system must degrade non-essential features to ensure core checkout functionality remains available.
+- **NFR 2.2 Fault Detection and Recovery:** The application must detect internal component failures and automatically attempt to recover or reconnect, minimizing user-facing errors.
+- **NFR 2.3 State Preservation:** In the event of an unexpected application process crash, the system must be able to restore its operational state and resume processing pending orders upon restart with minimal data loss.
 
 ---
 
@@ -51,11 +51,11 @@ Non-Functional Requirements to satisfy:
 
 ---
 
-# Backend Requirements (Spring Boot)
+# Backend Requirements
 Per entity produce three **complete** layers:
 - **Service** (business logic, transaction boundaries, orchestration of cross-cutting concerns)
 - **Controller** (REST endpoints, request/response mapping, validation)
-- **Routing / API definition** (OpenAPI-friendly, versioned paths to satisfy NFR 2.2)
+- **Routing / API definition** (OpenAPI-friendly, versioned paths)
 
 ---
 
