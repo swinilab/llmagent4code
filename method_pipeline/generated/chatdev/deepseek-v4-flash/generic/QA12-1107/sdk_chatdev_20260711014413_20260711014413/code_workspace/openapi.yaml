@@ -1,0 +1,746 @@
+﻿openapi: "3.1.0"
+info:
+  title: Order Management System (OMS)
+  version: "1.0.0"
+  description: Production-grade e-commerce Order Management System backend.
+
+servers:
+  - url: http://localhost:8000
+    description: Local development server
+
+paths:
+  /api/v1/customers:
+    post:
+      tags: [Customers]
+      summary: Create a new customer
+      operationId: createCustomer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerCreate'
+      responses:
+        '201':
+          description: Customer created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerResponse'
+    get:
+      tags: [Customers]
+      summary: List customers
+      operationId: listCustomers
+      parameters:
+        - name: skip
+          in: query
+          schema:
+            type: integer
+            default: 0
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 100
+      responses:
+        '200':
+          description: Customer list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerListResponse'
+
+  /api/v1/customers/{customer_id}:
+    get:
+      tags: [Customers]
+      summary: Get customer by ID
+      operationId: getCustomer
+      parameters:
+        - name: customer_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Customer found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerResponse'
+        '404':
+          description: Customer not found
+
+  /api/v1/products:
+    get:
+      tags: [Products]
+      summary: Search products
+      operationId: searchProducts
+      parameters:
+        - name: q
+          in: query
+          schema:
+            type: string
+          description: Search query
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: size
+          in: query
+          schema:
+            type: integer
+            default: 20
+      responses:
+        '200':
+          description: Product search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductSearchResponse'
+        '503':
+          description: Service degraded
+    post:
+      tags: [Products]
+      summary: Create a product
+      operationId: createProduct
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductCreate'
+      responses:
+        '201':
+          description: Product created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResponse'
+
+  /api/v1/products/{product_id}:
+    get:
+      tags: [Products]
+      summary: Get product by ID
+      operationId: getProduct
+      parameters:
+        - name: product_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Product found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResponse'
+        '404':
+          description: Product not found
+
+  /api/v1/orders:
+    post:
+      tags: [Orders]
+      summary: Place a new order (Customer)
+      operationId: placeOrder
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderCreate'
+      responses:
+        '202':
+          description: Order queued for processing
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: accepted
+                  message:
+                    type: string
+                    example: Order queued for processing
+        '503':
+          description: System busy
+    get:
+      tags: [Orders]
+      summary: List orders
+      operationId: listOrders
+      parameters:
+        - name: status
+          in: query
+          schema:
+            $ref: '#/components/schemas/OrderStatus'
+        - name: skip
+          in: query
+          schema:
+            type: integer
+            default: 0
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 100
+      responses:
+        '200':
+          description: Order list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderListResponse'
+
+  /api/v1/orders/{order_id}:
+    get:
+      tags: [Orders]
+      summary: Get order by ID
+      operationId: getOrder
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Order found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
+        '404':
+          description: Order not found
+
+  /api/v1/orders/{order_id}/review:
+    put:
+      tags: [Orders]
+      summary: Review order (Order Staff)
+      operationId: reviewOrder
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Order reviewed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
+        '400':
+          description: Invalid state transition
+
+  /api/v1/orders/{order_id}/accept:
+    put:
+      tags: [Orders]
+      summary: Accept order (Order Staff)
+      operationId: acceptOrder
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Order accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
+        '400':
+          description: Invalid state transition
+
+  /api/v1/orders/{order_id}/cancel:
+    put:
+      tags: [Orders]
+      summary: Cancel order (Order Staff)
+      operationId: cancelOrder
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Order cancelled
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
+        '400':
+          description: Cannot cancel after shipping
+
+  /api/v1/orders/{order_id}/ship:
+    put:
+      tags: [Orders]
+      summary: Ship order (Order Staff)
+      operationId: shipOrder
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Order shipped
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
+        '400':
+          description: Invalid state transition
+
+  /api/v1/orders/{order_id}/close:
+    put:
+      tags: [Orders]
+      summary: Close order (Order Staff)
+      operationId: closeOrder
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Order closed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
+        '400':
+          description: Invalid state transition
+
+  /api/v1/payments:
+    post:
+      tags: [Payments]
+      summary: Process payment (Customer)
+      operationId: processPayment
+        '202':
+          description: Payment queued for processing
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: accepted
+                  message:
+                    type: string
+                    example: Payment queued for processing
+        '503':
+          description: System busy
+          description: Payment processed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+        '400':
+          description: Invalid payment (amount mismatch, duplicate)
+    get:
+      tags: [Payments]
+      summary: List payments
+      operationId: listPayments
+      parameters:
+        - name: status
+          in: query
+          schema:
+            $ref: '#/components/schemas/PaymentStatus'
+        - name: skip
+          in: query
+          schema:
+            type: integer
+            default: 0
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 100
+      responses:
+        '200':
+          description: Payment list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentListResponse'
+
+  /api/v1/payments/{payment_id}:
+    get:
+      tags: [Payments]
+      summary: Get payment by ID
+      operationId: getPayment
+      parameters:
+        - name: payment_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Payment found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+        '404':
+          description: Payment not found
+
+  /api/v1/payments/{payment_id}/verify:
+    put:
+      tags: [Payments]
+      summary: Verify payment (Accountant)
+      operationId: verifyPayment
+      parameters:
+        - name: payment_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Payment verified
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+        '400':
+        '202':
+          description: Invoice creation queued for processing
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: accepted
+                  message:
+                    type: string
+                    example: Invoice creation queued for processing
+        '503':
+          description: System busy
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InvoiceCreate'
+      responses:
+        '201':
+          description: Invoice created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceResponse'
+        '400':
+          description: Invalid request (duplicate invoice, wrong order state)
+    get:
+      tags: [Invoices]
+      summary: List invoices
+      operationId: listInvoices
+      parameters:
+        - name: status
+          in: query
+          schema:
+            $ref: '#/components/schemas/InvoiceStatus'
+        - name: skip
+          in: query
+          schema:
+            type: integer
+            default: 0
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 100
+      responses:
+        '200':
+          description: Invoice list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceListResponse'
+
+  /api/v1/invoices/{invoice_id}:
+    get:
+      tags: [Invoices]
+      summary: Get invoice by ID
+      operationId: getInvoice
+      parameters:
+        - name: invoice_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Invoice found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceResponse'
+        '404':
+          description: Invoice not found
+
+  /health/live:
+    get:
+      tags: [Health]
+      summary: Liveness probe
+      operationId: liveness
+      responses:
+        '200':
+          description: Service is alive
+
+  /health/ready:
+    get:
+      tags: [Health]
+      summary: Readiness probe
+      operationId: readiness
+      responses:
+        '200':
+          description: Service is ready
+        '503':
+          description: Service not ready
+
+  /health/degradation:
+    get:
+      tags: [Health]
+      summary: Degradation status
+      operationId: degradationStatus
+      responses:
+        '200':
+          description: Degradation state
+
+  /health/queue:
+    get:
+      tags: [Health]
+      summary: Queue metrics
+      operationId: queueStatus
+      responses:
+        '200':
+          description: Queue metrics
+
+  /health/state:
+    get:
+      tags: [Health]
+      summary: State manager info
+      operationId: stateStatus
+      responses:
+        '200':
+          description: State info
+
+components:
+  schemas:
+    CustomerCreate:
+      type: object
+      required: [name, address, phone, banking_details]
+      properties:
+        name: { type: string }
+        address: { type: string }
+        phone: { type: string }
+        banking_details: { type: string }
+        role:
+          $ref: '#/components/schemas/UserRole'
+
+    CustomerResponse:
+      type: object
+      properties:
+        id: { type: string }
+        name: { type: string }
+        address: { type: string }
+        phone: { type: string }
+        banking_details: { type: string }
+        role:
+          $ref: '#/components/schemas/UserRole'
+        created_at: { type: string, format: date-time }
+        updated_at: { type: string, format: date-time }
+
+    CustomerListResponse:
+      type: object
+      properties:
+        customers:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerResponse'
+        total: { type: integer }
+
+    ProductCreate:
+      type: object
+      required: [name, base_price]
+      properties:
+        name: { type: string }
+        description: { type: string }
+        base_price: { type: number }
+        currency: { type: string, default: USD }
+        stock_quantity: { type: integer, default: 0 }
+
+    ProductResponse:
+      type: object
+      properties:
+        id: { type: string }
+        name: { type: string }
+        description: { type: string }
+        base_price: { type: number }
+        currency: { type: string }
+        stock_quantity: { type: integer }
+        created_at: { type: string, format: date-time }
+
+    ProductSearchResponse:
+      type: object
+      properties:
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductResponse'
+        total: { type: integer }
+        page: { type: integer }
+        size: { type: integer }
+
+    OrderCreate:
+      type: object
+      required: [customer_id, items]
+      properties:
+        customer_id: { type: string }
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderItemCreate'
+
+    OrderItemCreate:
+      type: object
+      required: [product_id, quantity]
+      properties:
+        product_id: { type: string }
+        quantity: { type: integer, minimum: 1 }
+
+    OrderResponse:
+      type: object
+      properties:
+        id: { type: string }
+        customer_id: { type: string }
+        customer_name: { type: string }
+        status:
+          $ref: '#/components/schemas/OrderStatus'
+        total_amount: { type: number }
+        currency: { type: string }
+        invoice_id: { type: string, nullable: true }
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderItemResponse'
+        created_at: { type: string, format: date-time }
+        updated_at: { type: string, format: date-time }
+
+    OrderItemResponse:
+      type: object
+      properties:
+        id: { type: string }
+        product_id: { type: string }
+        product_name: { type: string }
+        quantity: { type: integer }
+        unit_price: { type: number }
+        total_price: { type: number }
+
+    OrderListResponse:
+      type: object
+      properties:
+        orders:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderResponse'
+        total: { type: integer }
+
+    PaymentCreate:
+      type: object
+      required: [order_id, amount, method]
+      properties:
+        order_id: { type: string }
+        amount: { type: number }
+        currency: { type: string, default: USD }
+        method:
+          $ref: '#/components/schemas/PaymentMethod'
+
+    PaymentResponse:
+      type: object
+      properties:
+        id: { type: string }
+        order_id: { type: string }
+        amount: { type: number }
+        currency: { type: string }
+        method:
+          $ref: '#/components/schemas/PaymentMethod'
+        status:
+          $ref: '#/components/schemas/PaymentStatus'
+        transaction_id: { type: string, nullable: true }
+        timestamp: { type: string, format: date-time }
+
+    PaymentListResponse:
+      type: object
+      properties:
+        payments:
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentResponse'
+        total: { type: integer }
+
+    InvoiceCreate:
+      type: object
+      required: [order_id, billing_info]
+      properties:
+        order_id: { type: string }
+        billing_info: { type: string }
+        due_days: { type: integer, default: 30 }
+
+    InvoiceResponse:
+      type: object
+      properties:
+        id: { type: string }
+        order_id: { type: string }
+        customer_id: { type: string }
+        billing_info: { type: string }
+        total_amount: { type: number }
+        currency: { type: string }
+        issue_date: { type: string, format: date-time }
+        due_date: { type: string, format: date-time }
+        status:
+          $ref: '#/components/schemas/InvoiceStatus'
+        paid_at: { type: string, format: date-time, nullable: true }
+        created_at: { type: string, format: date-time }
+
+    InvoiceListResponse:
+      type: object
+      properties:
+        invoices:
+          type: array
+          items:
+            $ref: '#/components/schemas/InvoiceResponse'
+        total: { type: integer }
+
+    OrderStatus:
+      type: string
+      enum: [PENDING, REVIEWED, ACCEPTED, INVOICED, PAID, SHIPPED, CLOSED, CANCELLED]
+
+    PaymentStatus:
+      type: string
+      enum: [PENDING, COMPLETED, FAILED, REFUNDED]
+
+    PaymentMethod:
+      type: string
+      enum: [CREDIT_CARD, DEBIT_CARD, BANK_TRANSFER, DIGITAL_WALLET]
+
+    InvoiceStatus:
+      type: string
+      enum: [DRAFT, ISSUED, PAID, OVERDUE, CANCELLED]
+
+    UserRole:
+      type: string
+      enum: [CUSTOMER, ORDER_STAFF, ACCOUNTANT]

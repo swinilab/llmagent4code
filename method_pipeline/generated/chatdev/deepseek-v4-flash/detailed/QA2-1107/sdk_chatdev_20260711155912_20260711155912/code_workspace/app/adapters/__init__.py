@@ -1,0 +1,1 @@
+"""Adapters: repositories, outbox, recovery."""

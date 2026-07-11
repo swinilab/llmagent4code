@@ -1,0 +1,26 @@
+[project]
+name = "code-workspace"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "aio-pika>=10.0.1",
+    "alembic>=1.18.5",
+    "asyncpg>=0.31.0",
+    "fastapi>=0.139.0",
+    "httpx>=0.28.1",
+    "orjson>=3.11.9",
+    "pydantic>=2.13.4",
+    "pydantic-settings>=2.14.2",
+    "python-multipart>=0.0.32",
+    "redis[hiredis]>=8.0.1",
+    "sqlalchemy[asyncio]>=2.0.51",
+    "tenacity>=9.1.4",
+    "uvicorn[standard]>=0.51.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "locust>=2.32.0",
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.24.0",
+]

@@ -1,0 +1,36 @@
+# ──────────────────────────────────────────────────────────────────────
+# Docker Compose – Order Management System
+# Uses restart: always to ensure process restarts on crash (NFR 2.3).
+# ──────────────────────────────────────────────────────────────────────
+version: "3.9"
+
+services:
+  oms-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: oms-backend
+    ports:
+      - "8000:8000"
+    environment:
+      OMS_DATABASE_URL: "sqlite:////app/data/oms_data.db"
+      OMS_HOST: "0.0.0.0"
+      OMS_PORT: "8000"
+      OMS_CB_FAILURE_THRESHOLD: "5"
+      OMS_CB_RECOVERY_TIMEOUT: "30.0"
+      OMS_DEGRADATION_CPU_THRESHOLD: "80.0"
+      OMS_DEGRADATION_MEM_THRESHOLD: "85.0"
+      OMS_OUTBOX_POLL_INTERVAL: "2.0"
+    volumes:
+      - oms-data:/app/data
+    restart: always
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/v1/health/ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+
+volumes:
+  oms-data:
+    driver: local

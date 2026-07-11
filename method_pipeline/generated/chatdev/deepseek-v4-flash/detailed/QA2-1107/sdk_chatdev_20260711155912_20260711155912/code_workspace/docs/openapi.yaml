@@ -1,0 +1,728 @@
+﻿openapi: "3.0.3"
+info:
+  title: Order Management System
+  description: Production-grade e-commerce OMS backend with graceful degradation, automated fault recovery, and crash-safe state preservation.
+  version: "1.0.0"
+  contact:
+    name: ChatDev OMS Team
+
+servers:
+  - url: http://localhost:8000/api/v1
+    description: Local development server
+
+paths:
+  /health:
+    get:
+      tags: [health]
+      summary: Health check endpoint
+      operationId: healthCheck
+      responses:
+        "200":
+          description: System health status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+
+  /customers:
+    post:
+      tags: [customers]
+      summary: Create a new customer
+      operationId: createCustomer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerCreate'
+      responses:
+        "201":
+          description: Customer created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerResponse'
+    get:
+      tags: [customers]
+      summary: List all customers
+      operationId: listCustomers
+      responses:
+        "200":
+          description: List of customers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CustomerResponse'
+
+  /customers/{customer_id}:
+    get:
+      tags: [customers]
+      summary: Get customer by ID
+      operationId: getCustomer
+      parameters:
+        - name: customer_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Customer found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerResponse'
+        "404":
+          description: Customer not found
+
+  /products:
+    post:
+      tags: [products]
+      summary: Create a new product
+      operationId: createProduct
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductCreate'
+      responses:
+        "201":
+          description: Product created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResponse'
+    get:
+      tags: [products]
+      summary: List available products
+      operationId: listProducts
+      responses:
+        "200":
+          description: List of products
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductResponse'
+
+  /products/{product_id}:
+    get:
+      tags: [products]
+      summary: Get product by ID
+      operationId: getProduct
+      parameters:
+        - name: product_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Product found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResponse'
+        "404":
+          description: Product not found
+
+  /orders:
+    post:
+      tags: [orders]
+      summary: Place a new order (Workflow Step 1)
+      operationId: createOrder
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderCreate'
+      responses:
+        "201":
+          description: Order created (status=CREATED)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
+    get:
+      tags: [orders]
+      summary: List orders with optional filters
+      operationId: listOrders
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [CREATED, ACCEPTED, INVOICED, PAID, SHIPPED, CLOSED, CANCELLED]
+        - name: customer_id
+          in: query
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: List of orders
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrderResponse'
+
+  /orders/{order_id}:
+    get:
+      tags: [orders]
+      summary: Get order by ID
+      operationId: getOrder
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Order found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
+        "404":
+          description: Order not found
+
+  /orders/{order_id}/transition:
+    post:
+      tags: [orders]
+      summary: Apply state transition to order (Workflow Steps 2-7)
+      operationId: transitionOrder
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderTransitionRequest'
+      responses:
+        "200":
+          description: Transition applied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
+        "409":
+          description: Illegal transition or optimistic lock conflict
+
+  /payments:
+    post:
+      tags: [payments]
+      summary: Process payment (Workflow Step 4)
+      operationId: processPayment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentCreate'
+      responses:
+        "201":
+          description: Payment processed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+
+  /payments/{payment_id}:
+    get:
+      tags: [payments]
+      summary: Get payment by ID
+      operationId: getPayment
+      parameters:
+        - name: payment_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Payment found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+        "404":
+          description: Payment not found
+
+  /payments/{payment_id}/verify:
+    post:
+      tags: [payments]
+      summary: Verify payment (Workflow Step 5)
+      operationId: verifyPayment
+      parameters:
+        - name: payment_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Payment verified
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+
+  /payments/by-order/{order_id}:
+    get:
+      tags: [payments]
+      summary: Get payments by order
+      operationId: getPaymentsByOrder
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Payments found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PaymentResponse'
+
+  /invoices:
+    post:
+      tags: [invoices]
+      summary: Create invoice (Workflow Step 3)
+      operationId: createInvoice
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InvoiceCreate'
+      responses:
+        "201":
+          description: Invoice created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceResponse'
+
+  /invoices/{invoice_id}:
+    get:
+      tags: [invoices]
+      summary: Get invoice by ID
+      operationId: getInvoice
+      parameters:
+        - name: invoice_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Invoice found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceResponse'
+        "404":
+          description: Invoice not found
+
+  /invoices/by-order/{order_id}:
+    get:
+      tags: [invoices]
+      summary: Get invoices by order
+      operationId: getInvoicesByOrder
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Invoices found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InvoiceResponse'
+
+  /recommendations/{customer_id}:
+    get:
+      tags: [recommendations]
+      summary: Get product recommendations (NON-ESSENTIAL)
+      operationId: getRecommendations
+      parameters:
+        - name: customer_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Recommendations (may be fallback)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  recommendations:
+                    type: array
+                    items:
+                      type: object
+                  fallback:
+                    type: boolean
+
+components:
+  schemas:
+    HealthResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [healthy, degraded]
+        database:
+          type: string
+          enum: [connected, disconnected]
+        uptime_seconds:
+          type: number
+          nullable: true
+
+    CustomerCreate:
+      type: object
+      required: [name, address, phone, banking_details]
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 255
+        address:
+          type: string
+          minLength: 1
+        phone:
+          type: string
+          minLength: 1
+          maxLength: 50
+        banking_details:
+          type: string
+          minLength: 1
+        role:
+          type: string
+          enum: [CUSTOMER, ORDER_STAFF, ACCOUNTANT]
+          default: CUSTOMER
+
+    CustomerResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        address:
+          type: string
+        phone:
+          type: string
+        banking_details:
+          type: string
+        role:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        version:
+          type: integer
+
+    ProductCreate:
+      type: object
+      required: [description, base_price]
+      properties:
+        description:
+          type: string
+          minLength: 1
+        base_price:
+          type: number
+          exclusiveMinimum: 0
+        currency:
+          type: string
+          enum: [USD, EUR, GBP]
+          default: USD
+        available:
+          type: boolean
+          default: true
+
+    ProductResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        description:
+          type: string
+        base_price:
+          type: number
+        currency:
+          type: string
+        available:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        version:
+          type: integer
+
+    OrderLineItemCreate:
+      type: object
+      required: [product_id, unit_price]
+      properties:
+        product_id:
+          type: string
+          format: uuid
+        quantity:
+          type: integer
+          minimum: 1
+          default: 1
+        unit_price:
+          type: number
+          exclusiveMinimum: 0
+        currency:
+          type: string
+          enum: [USD, EUR, GBP]
+          default: USD
+
+    OrderCreate:
+      type: object
+      required: [customer_id, line_items]
+      properties:
+        customer_id:
+          type: string
+          format: uuid
+        line_items:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/OrderLineItemCreate'
+        currency:
+          type: string
+          enum: [USD, EUR, GBP]
+          default: USD
+
+    OrderResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        customer_id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum: [CREATED, ACCEPTED, INVOICED, PAID, SHIPPED, CLOSED, CANCELLED]
+        total_amount:
+          type: number
+        currency:
+          type: string
+        invoice_ref:
+          type: string
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        version:
+          type: integer
+        accepted_at_ts:
+          type: string
+          format: date-time
+          nullable: true
+        invoiced_at_ts:
+          type: string
+          format: date-time
+          nullable: true
+        paid_at_ts:
+          type: string
+          format: date-time
+          nullable: true
+        shipped_at_ts:
+          type: string
+          format: date-time
+          nullable: true
+        closed_at_ts:
+          type: string
+          format: date-time
+          nullable: true
+        cancelled_at_ts:
+          type: string
+          format: date-time
+          nullable: true
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderLineItemResponse'
+
+    OrderLineItemResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        order_id:
+          type: string
+          format: uuid
+        product_id:
+          type: string
+          format: uuid
+        quantity:
+          type: integer
+        unit_price:
+          type: number
+        currency:
+          type: string
+
+    OrderTransitionRequest:
+      type: object
+      required: [event]
+      properties:
+        event:
+          type: string
+          enum: [review_accept, create_invoice, pay, ship, close, cancel]
+        invoice_ref:
+          type: string
+          nullable: true
+        payment_id:
+          type: string
+          nullable: true
+
+    PaymentCreate:
+      type: object
+      required: [order_id, amount, method, idempotency_key]
+      properties:
+        order_id:
+          type: string
+          format: uuid
+        amount:
+          type: number
+          exclusiveMinimum: 0
+        method:
+          type: string
+          enum: [CREDIT_CARD, DEBIT_CARD, BANK_TRANSFER, DIGITAL_WALLET]
+        idempotency_key:
+          type: string
+          minLength: 1
+
+    PaymentResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        order_id:
+          type: string
+          format: uuid
+        amount:
+          type: number
+        payment_timestamp:
+          type: string
+          format: date-time
+        status:
+          type: string
+          enum: [PENDING, COMPLETED, FAILED, REFUNDED]
+        method:
+          type: string
+        idempotency_key:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        version:
+          type: integer
+
+    InvoiceCreate:
+      type: object
+      required: [order_id, billing_info, amount, due_date]
+      properties:
+        order_id:
+          type: string
+          format: uuid
+        billing_info:
+          type: string
+          minLength: 1
+        amount:
+          type: number
+          exclusiveMinimum: 0
+        currency:
+          type: string
+          enum: [USD, EUR, GBP]
+          default: USD
+        due_date:
+          type: string
+          format: date-time
+
+    InvoiceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        order_id:
+          type: string
+          format: uuid
+        billing_info:
+          type: string
+        amount:
+          type: number
+        currency:
+          type: string
+        issue_date:
+          type: string
+          format: date-time
+        due_date:
+          type: string
+          format: date-time
+        status:
+          type: string
+          enum: [DRAFT, ISSUED, PAID, OVERDUE, CANCELLED]
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        version:
+          type: integer

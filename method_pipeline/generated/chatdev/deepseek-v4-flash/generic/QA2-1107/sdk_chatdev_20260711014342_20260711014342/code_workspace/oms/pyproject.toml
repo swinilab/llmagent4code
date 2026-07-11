@@ -1,0 +1,16 @@
+[project]
+name = "oms-backend"
+version = "1.0.0"
+description = "Production-grade Order Management System backend"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.139.0",
+    "uvicorn[standard]>=0.51.0",
+    "sqlalchemy>=2.0.51",
+    "pydantic>=2.13.4",
+    "pydantic-settings>=2.14.2",
+    "pyyaml>=6.0.3",
+]
+
+[project.scripts]
+oms = "app.main:run"

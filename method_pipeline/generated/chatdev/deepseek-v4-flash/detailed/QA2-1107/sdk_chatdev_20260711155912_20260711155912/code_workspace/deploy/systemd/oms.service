@@ -1,0 +1,45 @@
+[Unit]
+Description=Order Management System API
+Documentation=https://github.com/chatdev/oms
+After=network.target postgresql.service
+Wants=postgresql.service
+
+[Service]
+Type=simple
+User=oms
+Group=oms
+WorkingDirectory=/opt/oms
+
+# Environment variables
+Environment=DB_HOST=localhost
+Environment=DB_PORT=5432
+Environment=DB_USER=oms
+Environment=DB_PASSWORD=oms_secret
+Environment=DB_NAME=oms_db
+Environment=HOST=0.0.0.0
+Environment=PORT=8000
+
+# ExecStart with the virtual environment Python
+ExecStart=/opt/oms/.venv/bin/uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 1
+
+# Restart policy (NFR 2.3 — auto-restart on crash)
+Restart=always
+RestartSec=5
+
+# Resource limits (target: 2 vCPU / 4 GB RAM)
+CPUQuota=200%
+MemoryMax=4G
+MemoryHigh=3.5G
+
+# Security hardening
+NoNewPrivileges=true
+ProtectSystem=full
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+
+# Health check
+ExecStartPost=/bin/sh -c 'sleep 5 && curl -f http://localhost:8000/api/v1/health || exit 1'
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,54 @@
+# systemd unit file for OMS service (bare-metal deployment).
+#
+# Assumptions:
+#   - Python 3.12 installed at /usr/local/bin/python3
+#   - Application installed at /opt/oms
+#   - Virtual environment at /opt/oms/.venv
+#   - 16 CPU cores, 98GB RAM
+#
+# Resource limits:
+#   - CPUQuota: 400% (4 cores out of 16)
+#   - MemoryMax: 4G (out of 98GB)
+#   - TasksMax: 1024
+#
+# Pool sizing formulas (NFR 1.2):
+#   Workers = CPU cores * 0.5 = 16 * 0.5 = 8 (async workers)
+#   DB pool = 20 (shared across workers)
+#   Redis pool = 16 (2 per worker)
+[Unit]
+Description=Order Management System (OMS) API
+After=network.target postgresql.service redis.service rabbitmq.service
+Wants=postgresql.service redis.service rabbitmq.service
+
+[Service]
+Type=simple
+User=oms
+Group=oms
+WorkingDirectory=/opt/oms
+Environment=PATH=/opt/oms/.venv/bin:/usr/local/bin:/usr/bin
+Environment=DATABASE_URL=postgresql+asyncpg://oms:oms@localhost:5432/oms
+Environment=REDIS_URL=redis://localhost:6379/0
+Environment=RABBITMQ_URL=amqp://guest:guest@localhost:5672/
+Environment=APP_HOST=0.0.0.0
+Environment=APP_PORT=8000
+Environment=WORKERS=8
+ExecStart=/opt/oms/.venv/bin/uvicorn oms.main:app --host 0.0.0.0 --port 8000 --workers 8 --loop uvloop --http httptools
+Restart=always
+RestartSec=5
+StartLimitInterval=60
+StartLimitBurst=3
+
+# Resource limits
+CPUQuota=400%
+MemoryMax=4G
+TasksMax=1024
+LimitNOFILE=65536
+
+# Security
+NoNewPrivileges=true
+ProtectSystem=full
+ProtectHome=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

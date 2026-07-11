@@ -1,0 +1,685 @@
+openapi: "3.1.0"
+info:
+  title: Order Management System
+  version: "1.0.0"
+  description: Production-grade Order Management System backend API
+servers:
+  - url: http://localhost:8000
+    description: Local development server
+paths:
+  /health:
+    get:
+      tags: [Health]
+      summary: Health check
+      operationId: healthCheck
+      responses:
+        "200":
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status: { type: string }
+                  service: { type: string }
+                  version: { type: string }
+  /api/v1/customers/:
+    post:
+      tags: [Customers]
+      summary: Create a new customer
+      operationId: createCustomer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CustomerCreate"
+      responses:
+        "201":
+          description: Customer created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CustomerRead"
+    get:
+      tags: [Customers]
+      summary: List customers with pagination
+      operationId: listCustomers
+      parameters:
+        - name: skip
+          in: query
+          schema: { type: integer, default: 0 }
+        - name: limit
+          in: query
+          schema: { type: integer, default: 100 }
+      responses:
+        "200":
+          description: List of customers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CustomerRead"
+  /api/v1/customers/{customer_id}:
+    get:
+      tags: [Customers]
+      summary: Get customer by ID
+      operationId: getCustomer
+      parameters:
+        - name: customer_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Customer found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CustomerRead"
+        "404":
+          description: Customer not found
+    patch:
+      tags: [Customers]
+      summary: Update customer
+      operationId: updateCustomer
+      parameters:
+        - name: customer_id
+          in: path
+          required: true
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CustomerUpdate"
+      responses:
+        "200":
+          description: Customer updated
+    delete:
+      tags: [Customers]
+      summary: Delete customer
+      operationId: deleteCustomer
+      parameters:
+        - name: customer_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "204":
+          description: Customer deleted
+  /api/v1/products/:
+    post:
+      tags: [Products]
+      summary: Create a new product
+      operationId: createProduct
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProductCreate"
+      responses:
+        "201":
+          description: Product created
+    get:
+      tags: [Products]
+      summary: List/search products
+      operationId: listProducts
+      parameters:
+        - name: skip
+          in: query
+          schema: { type: integer, default: 0 }
+        - name: limit
+          in: query
+          schema: { type: integer, default: 100 }
+        - name: search
+          in: query
+          schema: { type: string }
+      responses:
+        "200":
+          description: List of products
+  /api/v1/products/{product_id}:
+    get:
+      tags: [Products]
+      summary: Get product by ID
+      operationId: getProduct
+      parameters:
+        - name: product_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Product found
+    patch:
+      tags: [Products]
+      summary: Update product
+      operationId: updateProduct
+      parameters:
+        - name: product_id
+          in: path
+          required: true
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProductUpdate"
+      responses:
+        "200":
+          description: Product updated
+    delete:
+      tags: [Products]
+      summary: Delete product
+      operationId: deleteProduct
+      parameters:
+        - name: product_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "204":
+          description: Product deleted
+  /api/v1/orders/:
+    post:
+      tags: [Orders]
+      summary: Place a new order (Step 1)
+      operationId: createOrder
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OrderCreate"
+      responses:
+        "201":
+          description: Order created
+    get:
+      tags: [Orders]
+      summary: List orders with filters
+      operationId: listOrders
+      parameters:
+        - name: skip
+          in: query
+          schema: { type: integer, default: 0 }
+        - name: limit
+          in: query
+          schema: { type: integer, default: 100 }
+        - name: status
+          in: query
+          schema: { type: string }
+        - name: customer_id
+          in: query
+          schema: { type: string }
+      responses:
+        "200":
+          description: List of orders
+  /api/v1/orders/{order_id}:
+    get:
+      tags: [Orders]
+      summary: Get order by ID
+      operationId: getOrder
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Order found
+    patch:
+      tags: [Orders]
+      summary: Update order
+      operationId: updateOrder
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OrderUpdate"
+      responses:
+        "200":
+          description: Order updated
+    delete:
+      tags: [Orders]
+      summary: Delete order
+      operationId: deleteOrder
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "204":
+          description: Order deleted
+  /api/v1/orders/{order_id}/review:
+    post:
+      tags: [Orders]
+      summary: Review order (Step 2a)
+      operationId: reviewOrder
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Order reviewed
+  /api/v1/orders/{order_id}/accept:
+    post:
+      tags: [Orders]
+      summary: Accept order (Step 2b)
+      operationId: acceptOrder
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Order accepted
+  /api/v1/orders/{order_id}/ship:
+    post:
+      tags: [Orders]
+      summary: Ship order (Step 6)
+      operationId: shipOrder
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Order shipped
+  /api/v1/orders/{order_id}/close:
+    post:
+      tags: [Orders]
+      summary: Close order (Step 7)
+      operationId: closeOrder
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Order closed
+  /api/v1/invoices/:
+    post:
+      tags: [Invoices]
+      summary: Create invoice (Step 3)
+      operationId: createInvoice
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InvoiceCreate"
+      responses:
+        "201":
+          description: Invoice created
+    get:
+      tags: [Invoices]
+      summary: List invoices
+      operationId: listInvoices
+      parameters:
+        - name: skip
+          in: query
+          schema: { type: integer, default: 0 }
+        - name: limit
+          in: query
+          schema: { type: integer, default: 100 }
+      responses:
+        "200":
+          description: List of invoices
+  /api/v1/invoices/{invoice_id}:
+    get:
+      tags: [Invoices]
+      summary: Get invoice by ID
+      operationId: getInvoice
+      parameters:
+        - name: invoice_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Invoice found
+    patch:
+      tags: [Invoices]
+      summary: Update invoice
+      operationId: updateInvoice
+      parameters:
+        - name: invoice_id
+          in: path
+          required: true
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InvoiceUpdate"
+      responses:
+        "200":
+          description: Invoice updated
+    delete:
+      tags: [Invoices]
+      summary: Delete invoice
+      operationId: deleteInvoice
+      parameters:
+        - name: invoice_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "204":
+          description: Invoice deleted
+  /api/v1/invoices/by-order/{order_id}:
+    get:
+      tags: [Invoices]
+      summary: Get invoices by order
+      operationId: getInvoicesByOrder
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: List of invoices for order
+  /api/v1/invoices/{invoice_id}/issue:
+    post:
+      tags: [Invoices]
+      summary: Issue invoice (DRAFT -> ISSUED)
+      operationId: issueInvoice
+      parameters:
+        - name: invoice_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Invoice issued
+  /api/v1/invoices/{invoice_id}/mark-paid:
+    post:
+      tags: [Invoices]
+      summary: Mark invoice as paid
+      operationId: markInvoicePaid
+      parameters:
+        - name: invoice_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Invoice marked paid
+  /api/v1/payments/:
+    post:
+      tags: [Payments]
+      summary: Record payment (Step 4)
+      operationId: createPayment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PaymentCreate"
+      responses:
+        "201":
+          description: Payment created
+    get:
+      tags: [Payments]
+      summary: List payments
+      operationId: listPayments
+      parameters:
+        - name: skip
+          in: query
+          schema: { type: integer, default: 0 }
+        - name: limit
+          in: query
+          schema: { type: integer, default: 100 }
+      responses:
+        "200":
+          description: List of payments
+  /api/v1/payments/{payment_id}:
+    get:
+      tags: [Payments]
+      summary: Get payment by ID
+      operationId: getPayment
+      parameters:
+        - name: payment_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Payment found
+    patch:
+      tags: [Payments]
+      summary: Update payment
+      operationId: updatePayment
+      parameters:
+        - name: payment_id
+          in: path
+          required: true
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PaymentUpdate"
+      responses:
+        "200":
+          description: Payment updated
+    delete:
+      tags: [Payments]
+      summary: Delete payment
+      operationId: deletePayment
+      parameters:
+        - name: payment_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "204":
+          description: Payment deleted
+  /api/v1/payments/by-order/{order_id}:
+    get:
+      tags: [Payments]
+      summary: Get payments by order
+      operationId: getPaymentsByOrder
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: List of payments for order
+  /api/v1/payments/{payment_id}/verify:
+    post:
+      tags: [Payments]
+      summary: Verify payment (Step 5)
+      operationId: verifyPayment
+      parameters:
+        - name: payment_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Payment verified
+components:
+  schemas:
+    CustomerCreate:
+      type: object
+      required: [name, address, phone]
+      properties:
+        name: { type: string }
+        address: { type: string }
+        phone: { type: string }
+        banking_details: { type: object }
+        role: { type: string, default: "CUSTOMER" }
+    CustomerRead:
+      type: object
+      properties:
+        id: { type: string }
+        name: { type: string }
+        address: { type: string }
+        phone: { type: string }
+        banking_details: { type: object }
+        role: { type: string }
+        created_at: { type: string, format: date-time }
+        updated_at: { type: string, format: date-time }
+    CustomerUpdate:
+      type: object
+      properties:
+        name: { type: string }
+        address: { type: string }
+        phone: { type: string }
+        banking_details: { type: object }
+        role: { type: string }
+    ProductCreate:
+      type: object
+      required: [description]
+      properties:
+        description: { type: string }
+        pricing: { type: object }
+    ProductRead:
+      type: object
+      properties:
+        id: { type: string }
+        description: { type: string }
+        pricing: { type: object }
+        created_at: { type: string, format: date-time }
+        updated_at: { type: string, format: date-time }
+    ProductUpdate:
+      type: object
+      properties:
+        description: { type: string }
+        pricing: { type: object }
+    OrderCreate:
+      type: object
+      required: [customer_id, line_items]
+      properties:
+        customer_id: { type: string }
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/OrderLineItemCreate"
+        notes: { type: string }
+    OrderLineItemCreate:
+      type: object
+      required: [product_id, product_description, quantity, unit_price]
+      properties:
+        product_id: { type: string }
+        product_description: { type: string }
+        quantity: { type: integer }
+        unit_price: { type: number }
+        currency: { type: string, default: "USD" }
+    OrderRead:
+      type: object
+      properties:
+        id: { type: string }
+        customer_id: { type: string }
+        status: { type: string }
+        subtotal: { type: number }
+        tax_amount: { type: number }
+        shipping_cost: { type: number }
+        total_amount: { type: number }
+        currency: { type: string }
+        invoice_ref: { type: string, nullable: true }
+        notes: { type: string, nullable: true }
+        created_at: { type: string, format: date-time }
+        updated_at: { type: string, format: date-time }
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/OrderLineItemRead"
+    OrderLineItemRead:
+      type: object
+      properties:
+        id: { type: string }
+        order_id: { type: string }
+        product_id: { type: string }
+        product_description: { type: string }
+        quantity: { type: integer }
+        unit_price: { type: number }
+        currency: { type: string }
+        line_total: { type: number }
+    OrderUpdate:
+      type: object
+      properties:
+        status: { type: string }
+        notes: { type: string }
+        invoice_ref: { type: string }
+    InvoiceCreate:
+      type: object
+      required: [order_id, issue_date, due_date]
+      properties:
+        order_id: { type: string }
+        billing_info: { type: object }
+        issue_date: { type: string, format: date }
+        due_date: { type: string, format: date }
+    InvoiceRead:
+      type: object
+      properties:
+        id: { type: string }
+        order_id: { type: string }
+        invoice_number: { type: string }
+        billing_info: { type: object }
+        subtotal: { type: number }
+        tax_amount: { type: number }
+        shipping_cost: { type: number }
+        total_amount: { type: number }
+        currency: { type: string }
+        status: { type: string }
+        issue_date: { type: string, format: date }
+        due_date: { type: string, format: date }
+        paid_at: { type: string, format: date-time, nullable: true }
+        created_at: { type: string, format: date-time }
+        updated_at: { type: string, format: date-time }
+    InvoiceUpdate:
+      type: object
+      properties:
+        status: { type: string }
+        billing_info: { type: object }
+        due_date: { type: string, format: date }
+    PaymentCreate:
+      type: object
+      required: [order_id, amount, method]
+      properties:
+        order_id: { type: string }
+        amount: { type: number }
+        currency: { type: string, default: "USD" }
+        method: { type: string }
+        transaction_ref: { type: string }
+    PaymentRead:
+      type: object
+      properties:
+        id: { type: string }
+        order_id: { type: string }
+        amount: { type: number }
+        currency: { type: string }
+        status: { type: string }
+        method: { type: string }
+        transaction_ref: { type: string, nullable: true }
+        paid_at: { type: string, format: date-time, nullable: true }
+        created_at: { type: string, format: date-time }
+        updated_at: { type: string, format: date-time }
+    PaymentUpdate:
+      type: object
+      properties:
+        status: { type: string }
+        transaction_ref: { type: string }
