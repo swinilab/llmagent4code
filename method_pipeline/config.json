@@ -1,10 +1,10 @@
 {
   "agent": {
-    "prompt_name": "detailed/prompt_v3_detailed_QA12.md",
+    "prompt_name": "generic/prompt_v3_generic_QA12.md",
     "agent_name": "chatdev",
     "api_base": "https://ollama.com/v1",
-    "llm": "deepseek-v4-flash:cloud",
-    "out": "generated/chatdev/deepseek-v4-flash/detailed/QA12-1107"
+    "llm": "minimax-m2.7:cloud",
+    "out": "generated/chatdev/minimax-m2.7/generic/QA12-1207"
   },
   "minikube": {
     "manifest_file": "flask-k8s.yaml",

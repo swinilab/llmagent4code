@@ -1,0 +1,37 @@
+[project]
+name = "oms-backend"
+version = "1.0.0"
+description = "Order Management System — production-grade backend"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.32.0",
+    "pydantic>=2.10.0",
+    "sqlalchemy[asyncio]>=2.0.36",
+    "databases>=0.9.0",
+    "databases>=0.10.0",
+    "redis>=5.2.0",
+    "arq>=0.26.0",
+    "pyyaml>=6.0.2",
+    "python-multipart>=0.0.20",
+    "gunicorn>=23.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3.0",
+    "pytest-asyncio>=0.25.0",
+    "httpx>=0.28.0",
+    "locust>=2.32.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["."]
