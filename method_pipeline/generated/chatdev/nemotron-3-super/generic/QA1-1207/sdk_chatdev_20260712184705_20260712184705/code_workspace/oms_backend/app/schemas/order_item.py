@@ -1,0 +1,31 @@
+from pydantic import BaseModel
+from typing import Optional
+from datetime import datetime
+
+class OrderItemBase(BaseModel):
+    product_id: int
+    quantity: int
+    unit_price: float
+    total_price: float
+
+class OrderItemCreate(OrderItemBase):
+    pass
+
+class OrderItemUpdate(BaseModel):
+    product_id: Optional[int] = None
+    quantity: Optional[int] = None
+    unit_price: Optional[float] = None
+    total_price: Optional[float] = None
+
+class OrderItemInDBBase(OrderItemBase):
+    id: int
+    order_id: int
+
+    class Config:
+        orm_mode = True
+
+class OrderItemInDB(OrderItemInDBBase):
+    pass
+
+class OrderItem(OrderItemInDBBase):
+    pass

@@ -55,7 +55,7 @@ Non-Functional Requirements to satisfy:
 Per entity produce three **complete** layers:
 - **Service** (business logic, transaction boundaries, orchestration of cross-cutting concerns)
 - **Controller** (REST endpoints, request/response mapping, validation)
-- **Routing / API definition** (OpenAPI-friendly, versioned paths to satisfy NFR 2.2)
+- **Routing / API definition** (OpenAPI-friendly, versioned paths)
 
 ---
 

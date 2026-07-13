@@ -3,8 +3,8 @@
     "prompt_name": "generic/prompt_v3_generic_QA12.md",
     "agent_name": "chatdev",
     "api_base": "https://ollama.com/v1",
-    "llm": "minimax-m2.7:cloud",
-    "out": "generated/chatdev/minimax-m2.7/generic/QA12-1207"
+    "llm": "nemotron-3-super:cloud",
+    "out": "generated/chatdev/nemotron-3-super/generic/QA12-1207"
   },
   "minikube": {
     "manifest_file": "flask-k8s.yaml",
