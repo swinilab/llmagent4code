@@ -1,3 +1,0 @@
-"""
-OMS - Order Management System
-"""

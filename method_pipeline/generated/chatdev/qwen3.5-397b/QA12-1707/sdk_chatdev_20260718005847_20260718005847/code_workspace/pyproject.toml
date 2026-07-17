@@ -1,0 +1,22 @@
+[project]
+name = "oms"
+version = "1.0.0"
+description = "Order Management System - Production-grade e-commerce order management backend"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.139.2",
+    "uvicorn>=0.51.0",
+    "sqlalchemy>=2.0.51",
+    "pydantic>=2.13.4",
+    "alembic>=1.18.5",
+    "python-multipart>=0.0.32",
+    "httpx>=0.28.1",
+    "aiosqlite>=0.22.1",
+]
+
+[project.scripts]
+oms = "oms.server:run"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
