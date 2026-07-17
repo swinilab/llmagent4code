@@ -9,14 +9,6 @@ You are building a OMS backend that serves the APIs for the complete workflow: c
 
 ---
 
-# Tech Stack (Fixed — do not substitute)
-- **Backend:** Spring Boot 3.x (Java 17+, records where appropriate)
-- **Containerization:** Docker (multi-stage builds)
-- **Orchestration:** Kubernetes (raw manifests or Helm — your choice, justify)
-- **Local runtime:** docker-compose for dev, minikube/kind for K8s
-
----
-
 # Architectural Design Requirements
 
 ## 1. Architectural Decision Records (ADR)
@@ -35,12 +27,12 @@ Before writing any code, produce a table mapping every NFR below to:
 Non-Functional Requirements to satisfy:
 - **NFR 1.1 Response Time:** core journeys (product search, cart, checkout) must minimize round-trip latency under load.
 - **NFR 1.2 Concurrency & Resource Utilization:** system must exploit available server resources (up to 98GB RAM class) with minimal queuing.
-- **NFR 1.3 Queue Management:** sudden spikes must not crash the system — bound inbound queues, apply back-pressure, reject/delay excess gracefully.
+- **NFR 1.3 Queue Management:** sudden spikes must not crash the system.
 - **NFR 2.1 Localization of Changes:** business rules (tax, discount, shipping) must be changeable without touching the core order engine.
 - **NFR 2.2 Interface Stability:** backend evolution must never force frontend redesign or contract breakage.
-- **NFR 2.3 Deferred Binding:** feature flags, cache TTLs, pool sizes, and similar parameters must be changeable at runtime or via external config without restart.
+- **NFR 2.3 Deferred Binding:** Config, Environment variable, and/or parameters must be changeable at runtime or via external config without restart.
 - **NFR 3.1 Graceful Degradation:** under CPU/RAM saturation, non-essential features (recommendations, analytics) must shed load while checkout stays alive.
-- **NFR 3.2 Fault Detection & Recovery:** transient failures (DB drops, downstream hiccups) must auto-recover with minimal user-visible errors.
+- **NFR 3.2 Fault Detection & Recovery:** transient failures must auto-recover with minimal user-visible errors.
 - **NFR 3.3 State Preservation:** process crash → restart must resume pending orders with minimal data loss.
 
 ---
@@ -74,19 +66,14 @@ Per entity produce three **complete** layers:
 ---
 
 # Infrastructure Requirements
-Provide complete, runnable artifacts:
-- **Dockerfiles** (multi-stage, minimal final images) for the backend.
-- **docker-compose.yml** for one-command local dev (all services + chosen data stores).
-- **Kubernetes manifests** (or Helm chart): Deployments, Services, ConfigMaps, Secrets, HPA, liveness/readiness probes, and any StatefulSets/Jobs required by your chosen data stores.
-- **Deployment guide** for local execution on minikube or kind, step-by-step, including how to verify each NFR is active.
+Provide complete, runnable artifacts to install and deploy on local machine as a production environment.
 
 ---
 
 # Code Quality & Conciseness Rules
 - **No placeholders, no "repeat this pattern", no `// ... similar for other fields`.** Every file must be complete and runnable.
-- **Be concise:** use Java records, Lombok where appropriate, Spring Data repository derivation, and React hook composition. Do not pad with boilerplate.
+- **Be concise:** Do not pad with boilerplate.
 - **Prefer composition over inheritance.** Extract shared behavior into utilities/hooks/base classes rather than duplicating.
-- **Show the actual wiring** of cross-cutting concerns (e.g., the `@Cacheable` / cache manager config, the retry/circuit-breaker config, the queue listener) — not just the business methods.
 
 ---
 
@@ -95,11 +82,10 @@ Provide complete, runnable artifacts:
 2. ADRs for major decisions.
 3. Data architecture narrative + complete schema.
 4. Shared domain models (used by both FE and BE).
-5. Complete backend code: entities, repositories, services, controllers, config (cache, queues, resilience, externalized config), OpenAPI spec.
-6. Dockerfiles + docker-compose.yml.
-7. Kubernetes manifests (or Helm chart) with HPA, probes, ConfigMaps.
-8. Local deployment guide (docker-compose path AND minikube/kind path).
-9. Verification steps showing how to observe each NFR being satisfied.
+5. Complete backend code: entities, repositories, services, controllers, config, OpenAPI spec.
+6. IaC config and documents.
+7. Local deployment guide.
+8. Verification steps showing how to observe each NFR being satisfied.
 
 ---
 
