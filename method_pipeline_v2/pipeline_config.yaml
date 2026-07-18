@@ -1,0 +1,63 @@
+# ─────────────────────────────────────────────
+#  Empirical Study Pipeline – Configuration
+# ─────────────────────────────────────────────
+
+workdir: "."
+
+# ── Generation ────────────────────────────────
+agent:
+  type: "chatdev"
+  model: "gemma4:31b"                      
+  api_key: "YOUR API KEY"
+  api_base: "https://ollama.com/v1"
+  temperature: 0.2
+  workflow: "agents/chatdev.yaml"             # ChatDev's coding workflow
+  prompt_template: "promtps/simple.md"        # path to the generation prompt
+  report_template: "promtps/repair.md"
+  generated_dir: "generated"
+
+# ── Validation ────────────────────────────────
+validation:
+  # Stage 1 – Compilability
+  docker:
+    image: "python:3.11-slim"
+    timeout_seconds: 60
+    workdir: "/app"
+
+  # Stage 2 – Functional tests (HTTP)
+  http:
+    base_url: "http://localhost:8000"
+    timeout_seconds: 10
+    endpoints:                          # list of test cases
+      - id: "health_check"
+        method: GET
+        path: "/health"
+        expected_status: 200
+
+      - id: "create_item"
+        method: POST
+        path: "/items"
+        body: { "name": "test_item", "value": 42 }
+        expected_status: 201
+
+      - id: "get_item"
+        method: GET
+        path: "/items/1"
+        expected_status: 200
+
+      - id: "invalid_item"
+        method: GET
+        path: "/items/9999"
+        expected_status: 404
+
+# ── Repair Loop ───────────────────────────────
+repair:
+  max_iterations: 3           # k — maximum repair attempts
+  repair_model: "gpt-4o"      # may differ from generation model
+  temperature: 0.1            # lower = more conservative fixes
+
+# ── Output ────────────────────────────────────
+output:
+  report_path: "reports/report.txt"
+  generated_code_path: "output/generated_code.py"
+  verbose: true

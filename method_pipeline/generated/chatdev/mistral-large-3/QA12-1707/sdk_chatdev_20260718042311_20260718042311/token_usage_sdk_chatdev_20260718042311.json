@@ -1,0 +1,4030 @@
+{
+  "workflow_id": "sdk_chatdev_20260718042311",
+  "total_usage": {
+    "input_tokens": 3842629,
+    "output_tokens": 122328,
+    "total_tokens": 3964957
+  },
+  "node_usages": {
+    "Programmer Coding": {
+      "input_tokens": 1449862,
+      "output_tokens": 36042,
+      "total_tokens": 1485904
+    },
+    "Programmer Code Complete": {
+      "input_tokens": 416551,
+      "output_tokens": 6198,
+      "total_tokens": 422749
+    },
+    "Code Reviewer": {
+      "input_tokens": 173199,
+      "output_tokens": 17709,
+      "total_tokens": 190908
+    },
+    "Programmer Code Review": {
+      "input_tokens": 1331455,
+      "output_tokens": 41872,
+      "total_tokens": 1373327
+    },
+    "Programmer Test Error Summary": {
+      "input_tokens": 13864,
+      "output_tokens": 7086,
+      "total_tokens": 20950
+    },
+    "Programmer Test Modification": {
+      "input_tokens": 444886,
+      "output_tokens": 5522,
+      "total_tokens": 450408
+    },
+    "Chief Product Officer": {
+      "input_tokens": 9676,
+      "output_tokens": 4559,
+      "total_tokens": 14235
+    },
+    "Chief Executive Officer": {
+      "input_tokens": 3136,
+      "output_tokens": 3340,
+      "total_tokens": 6476
+    }
+  },
+  "model_usages": {
+    "mistral-large-3:675b-cloud": {
+      "input_tokens": 3842629,
+      "output_tokens": 122328,
+      "total_tokens": 3964957
+    }
+  },
+  "node_execution_counts": {
+    "Programmer Coding": 50,
+    "Programmer Code Complete": 25,
+    "Code Reviewer": 22,
+    "Programmer Code Review": 110,
+    "Programmer Test Error Summary": 3,
+    "Programmer Test Modification": 20,
+    "Chief Product Officer": 2,
+    "Chief Executive Officer": 1
+  },
+  "call_history": [
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 2877,
+      "output_tokens": 1668,
+      "total_tokens": 4545,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 2877,
+        "output_tokens": 1668,
+        "total_tokens": 4545
+      },
+      "timestamp": "2026-07-18T04:23:36.868301",
+      "execution_number": 1,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 3194,
+      "output_tokens": 172,
+      "total_tokens": 3366,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 3194,
+        "output_tokens": 172,
+        "total_tokens": 3366
+      },
+      "timestamp": "2026-07-18T04:23:41.259716",
+      "execution_number": 2,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 4161,
+      "output_tokens": 1730,
+      "total_tokens": 5891,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 4161,
+        "output_tokens": 1730,
+        "total_tokens": 5891
+      },
+      "timestamp": "2026-07-18T04:24:07.064844",
+      "execution_number": 3,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 5227,
+      "output_tokens": 4444,
+      "total_tokens": 9671,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 5227,
+        "output_tokens": 4444,
+        "total_tokens": 9671
+      },
+      "timestamp": "2026-07-18T04:25:02.656558",
+      "execution_number": 4,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 5503,
+      "output_tokens": 392,
+      "total_tokens": 5895,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 5503,
+        "output_tokens": 392,
+        "total_tokens": 5895
+      },
+      "timestamp": "2026-07-18T04:25:09.017363",
+      "execution_number": 5,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 5997,
+      "output_tokens": 225,
+      "total_tokens": 6222,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 5997,
+        "output_tokens": 225,
+        "total_tokens": 6222
+      },
+      "timestamp": "2026-07-18T04:25:13.317623",
+      "execution_number": 6,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 6327,
+      "output_tokens": 160,
+      "total_tokens": 6487,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 6327,
+        "output_tokens": 160,
+        "total_tokens": 6487
+      },
+      "timestamp": "2026-07-18T04:25:16.305059",
+      "execution_number": 7,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 6588,
+      "output_tokens": 358,
+      "total_tokens": 6946,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 6588,
+        "output_tokens": 358,
+        "total_tokens": 6946
+      },
+      "timestamp": "2026-07-18T04:25:21.164351",
+      "execution_number": 8,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 7050,
+      "output_tokens": 301,
+      "total_tokens": 7351,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 7050,
+        "output_tokens": 301,
+        "total_tokens": 7351
+      },
+      "timestamp": "2026-07-18T04:25:26.939057",
+      "execution_number": 9,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 7454,
+      "output_tokens": 14295,
+      "total_tokens": 21749,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 7454,
+        "output_tokens": 14295,
+        "total_tokens": 21749
+      },
+      "timestamp": "2026-07-18T04:28:26.095913",
+      "execution_number": 10,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 27441,
+      "output_tokens": 53,
+      "total_tokens": 27494,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 27441,
+        "output_tokens": 53,
+        "total_tokens": 27494
+      },
+      "timestamp": "2026-07-18T04:28:30.239001",
+      "execution_number": 11,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 27595,
+      "output_tokens": 203,
+      "total_tokens": 27798,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 27595,
+        "output_tokens": 203,
+        "total_tokens": 27798
+      },
+      "timestamp": "2026-07-18T04:28:36.383594",
+      "execution_number": 12,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 27903,
+      "output_tokens": 144,
+      "total_tokens": 28047,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 27903,
+        "output_tokens": 144,
+        "total_tokens": 28047
+      },
+      "timestamp": "2026-07-18T04:28:43.961697",
+      "execution_number": 13,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 28154,
+      "output_tokens": 144,
+      "total_tokens": 28298,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 28154,
+        "output_tokens": 144,
+        "total_tokens": 28298
+      },
+      "timestamp": "2026-07-18T04:28:47.563813",
+      "execution_number": 14,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 28399,
+      "output_tokens": 256,
+      "total_tokens": 28655,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 28399,
+        "output_tokens": 256,
+        "total_tokens": 28655
+      },
+      "timestamp": "2026-07-18T04:28:52.973429",
+      "execution_number": 15,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 28758,
+      "output_tokens": 375,
+      "total_tokens": 29133,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 28758,
+        "output_tokens": 375,
+        "total_tokens": 29133
+      },
+      "timestamp": "2026-07-18T04:29:00.514804",
+      "execution_number": 16,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 29239,
+      "output_tokens": 289,
+      "total_tokens": 29528,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 29239,
+        "output_tokens": 289,
+        "total_tokens": 29528
+      },
+      "timestamp": "2026-07-18T04:29:07.923473",
+      "execution_number": 17,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 29632,
+      "output_tokens": 181,
+      "total_tokens": 29813,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 29632,
+        "output_tokens": 181,
+        "total_tokens": 29813
+      },
+      "timestamp": "2026-07-18T04:29:12.225203",
+      "execution_number": 18,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 29916,
+      "output_tokens": 163,
+      "total_tokens": 30079,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 29916,
+        "output_tokens": 163,
+        "total_tokens": 30079
+      },
+      "timestamp": "2026-07-18T04:29:17.447553",
+      "execution_number": 19,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 30184,
+      "output_tokens": 270,
+      "total_tokens": 30454,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 30184,
+        "output_tokens": 270,
+        "total_tokens": 30454
+      },
+      "timestamp": "2026-07-18T04:29:23.086757",
+      "execution_number": 20,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 30553,
+      "output_tokens": 175,
+      "total_tokens": 30728,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 30553,
+        "output_tokens": 175,
+        "total_tokens": 30728
+      },
+      "timestamp": "2026-07-18T04:29:29.255107",
+      "execution_number": 21,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 30831,
+      "output_tokens": 307,
+      "total_tokens": 31138,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 30831,
+        "output_tokens": 307,
+        "total_tokens": 31138
+      },
+      "timestamp": "2026-07-18T04:29:35.190054",
+      "execution_number": 22,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 31240,
+      "output_tokens": 171,
+      "total_tokens": 31411,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 31240,
+        "output_tokens": 171,
+        "total_tokens": 31411
+      },
+      "timestamp": "2026-07-18T04:29:39.224211",
+      "execution_number": 23,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 31516,
+      "output_tokens": 462,
+      "total_tokens": 31978,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 31516,
+        "output_tokens": 462,
+        "total_tokens": 31978
+      },
+      "timestamp": "2026-07-18T04:29:48.371458",
+      "execution_number": 24,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 32080,
+      "output_tokens": 429,
+      "total_tokens": 32509,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 32080,
+        "output_tokens": 429,
+        "total_tokens": 32509
+      },
+      "timestamp": "2026-07-18T04:29:56.133829",
+      "execution_number": 25,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 32613,
+      "output_tokens": 284,
+      "total_tokens": 32897,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 32613,
+        "output_tokens": 284,
+        "total_tokens": 32897
+      },
+      "timestamp": "2026-07-18T04:30:02.402121",
+      "execution_number": 26,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 32998,
+      "output_tokens": 133,
+      "total_tokens": 33131,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 32998,
+        "output_tokens": 133,
+        "total_tokens": 33131
+      },
+      "timestamp": "2026-07-18T04:30:08.648607",
+      "execution_number": 27,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 33234,
+      "output_tokens": 174,
+      "total_tokens": 33408,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 33234,
+        "output_tokens": 174,
+        "total_tokens": 33408
+      },
+      "timestamp": "2026-07-18T04:30:13.256190",
+      "execution_number": 28,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 33509,
+      "output_tokens": 728,
+      "total_tokens": 34237,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 33509,
+        "output_tokens": 728,
+        "total_tokens": 34237
+      },
+      "timestamp": "2026-07-18T04:30:24.931240",
+      "execution_number": 29,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 34335,
+      "output_tokens": 189,
+      "total_tokens": 34524,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 34335,
+        "output_tokens": 189,
+        "total_tokens": 34524
+      },
+      "timestamp": "2026-07-18T04:30:30.256068",
+      "execution_number": 30,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 34627,
+      "output_tokens": 330,
+      "total_tokens": 34957,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 34627,
+        "output_tokens": 330,
+        "total_tokens": 34957
+      },
+      "timestamp": "2026-07-18T04:30:36.297780",
+      "execution_number": 31,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 35065,
+      "output_tokens": 408,
+      "total_tokens": 35473,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 35065,
+        "output_tokens": 408,
+        "total_tokens": 35473
+      },
+      "timestamp": "2026-07-18T04:30:43.057235",
+      "execution_number": 32,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 35577,
+      "output_tokens": 1013,
+      "total_tokens": 36590,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 35577,
+        "output_tokens": 1013,
+        "total_tokens": 36590
+      },
+      "timestamp": "2026-07-18T04:31:02.922913",
+      "execution_number": 33,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 36714,
+      "output_tokens": 260,
+      "total_tokens": 36974,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 36714,
+        "output_tokens": 260,
+        "total_tokens": 36974
+      },
+      "timestamp": "2026-07-18T04:31:21.382693",
+      "execution_number": 34,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 37079,
+      "output_tokens": 363,
+      "total_tokens": 37442,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 37079,
+        "output_tokens": 363,
+        "total_tokens": 37442
+      },
+      "timestamp": "2026-07-18T04:31:29.719585",
+      "execution_number": 35,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 37548,
+      "output_tokens": 311,
+      "total_tokens": 37859,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 37548,
+        "output_tokens": 311,
+        "total_tokens": 37859
+      },
+      "timestamp": "2026-07-18T04:31:35.433616",
+      "execution_number": 36,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 37963,
+      "output_tokens": 368,
+      "total_tokens": 38331,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 37963,
+        "output_tokens": 368,
+        "total_tokens": 38331
+      },
+      "timestamp": "2026-07-18T04:31:44.450408",
+      "execution_number": 37,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 38433,
+      "output_tokens": 400,
+      "total_tokens": 38833,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 38433,
+        "output_tokens": 400,
+        "total_tokens": 38833
+      },
+      "timestamp": "2026-07-18T04:31:56.858558",
+      "execution_number": 38,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 38937,
+      "output_tokens": 263,
+      "total_tokens": 39200,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 38937,
+        "output_tokens": 263,
+        "total_tokens": 39200
+      },
+      "timestamp": "2026-07-18T04:32:04.185286",
+      "execution_number": 39,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 39301,
+      "output_tokens": 347,
+      "total_tokens": 39648,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 39301,
+        "output_tokens": 347,
+        "total_tokens": 39648
+      },
+      "timestamp": "2026-07-18T04:32:13.082975",
+      "execution_number": 40,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 39752,
+      "output_tokens": 441,
+      "total_tokens": 40193,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 39752,
+        "output_tokens": 441,
+        "total_tokens": 40193
+      },
+      "timestamp": "2026-07-18T04:32:23.088130",
+      "execution_number": 41,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 40297,
+      "output_tokens": 178,
+      "total_tokens": 40475,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 40297,
+        "output_tokens": 178,
+        "total_tokens": 40475
+      },
+      "timestamp": "2026-07-18T04:32:31.308429",
+      "execution_number": 42,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 40578,
+      "output_tokens": 361,
+      "total_tokens": 40939,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 40578,
+        "output_tokens": 361,
+        "total_tokens": 40939
+      },
+      "timestamp": "2026-07-18T04:32:39.348828",
+      "execution_number": 43,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 41045,
+      "output_tokens": 205,
+      "total_tokens": 41250,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 41045,
+        "output_tokens": 205,
+        "total_tokens": 41250
+      },
+      "timestamp": "2026-07-18T04:32:47.747501",
+      "execution_number": 44,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 41359,
+      "output_tokens": 91,
+      "total_tokens": 41450,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 41359,
+        "output_tokens": 91,
+        "total_tokens": 41450
+      },
+      "timestamp": "2026-07-18T04:32:51.247861",
+      "execution_number": 45,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 41547,
+      "output_tokens": 234,
+      "total_tokens": 41781,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 41547,
+        "output_tokens": 234,
+        "total_tokens": 41781
+      },
+      "timestamp": "2026-07-18T04:32:57.269298",
+      "execution_number": 46,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 41884,
+      "output_tokens": 341,
+      "total_tokens": 42225,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 41884,
+        "output_tokens": 341,
+        "total_tokens": 42225
+      },
+      "timestamp": "2026-07-18T04:33:08.241878",
+      "execution_number": 47,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 42324,
+      "output_tokens": 108,
+      "total_tokens": 42432,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 42324,
+        "output_tokens": 108,
+        "total_tokens": 42432
+      },
+      "timestamp": "2026-07-18T04:33:14.360590",
+      "execution_number": 48,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 42531,
+      "output_tokens": 161,
+      "total_tokens": 42692,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 42531,
+        "output_tokens": 161,
+        "total_tokens": 42692
+      },
+      "timestamp": "2026-07-18T04:33:20.018254",
+      "execution_number": 49,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Coding",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 42793,
+      "output_tokens": 984,
+      "total_tokens": 43777,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 42793,
+        "output_tokens": 984,
+        "total_tokens": 43777
+      },
+      "timestamp": "2026-07-18T04:33:38.846243",
+      "execution_number": 50,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 2759,
+      "output_tokens": 12,
+      "total_tokens": 2771,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 2759,
+        "output_tokens": 12,
+        "total_tokens": 2771
+      },
+      "timestamp": "2026-07-18T04:33:40.485449",
+      "execution_number": 1,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 11234,
+      "output_tokens": 238,
+      "total_tokens": 11472,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 11234,
+        "output_tokens": 238,
+        "total_tokens": 11472
+      },
+      "timestamp": "2026-07-18T04:33:48.062106",
+      "execution_number": 2,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 11282,
+      "output_tokens": 25,
+      "total_tokens": 11307,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 11282,
+        "output_tokens": 25,
+        "total_tokens": 11307
+      },
+      "timestamp": "2026-07-18T04:33:50.490697",
+      "execution_number": 3,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 11794,
+      "output_tokens": 163,
+      "total_tokens": 11957,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 11794,
+        "output_tokens": 163,
+        "total_tokens": 11957
+      },
+      "timestamp": "2026-07-18T04:33:55.845281",
+      "execution_number": 4,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 11941,
+      "output_tokens": 79,
+      "total_tokens": 12020,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 11941,
+        "output_tokens": 79,
+        "total_tokens": 12020
+      },
+      "timestamp": "2026-07-18T04:33:58.608487",
+      "execution_number": 5,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 12109,
+      "output_tokens": 60,
+      "total_tokens": 12169,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 12109,
+        "output_tokens": 60,
+        "total_tokens": 12169
+      },
+      "timestamp": "2026-07-18T04:34:01.101777",
+      "execution_number": 6,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 12257,
+      "output_tokens": 68,
+      "total_tokens": 12325,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 12257,
+        "output_tokens": 68,
+        "total_tokens": 12325
+      },
+      "timestamp": "2026-07-18T04:34:04.241528",
+      "execution_number": 7,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 12414,
+      "output_tokens": 219,
+      "total_tokens": 12633,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 12414,
+        "output_tokens": 219,
+        "total_tokens": 12633
+      },
+      "timestamp": "2026-07-18T04:34:09.444624",
+      "execution_number": 8,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 12920,
+      "output_tokens": 33,
+      "total_tokens": 12953,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 12920,
+        "output_tokens": 33,
+        "total_tokens": 12953
+      },
+      "timestamp": "2026-07-18T04:34:11.511935",
+      "execution_number": 9,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 13519,
+      "output_tokens": 34,
+      "total_tokens": 13553,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 13519,
+        "output_tokens": 34,
+        "total_tokens": 13553
+      },
+      "timestamp": "2026-07-18T04:34:13.285831",
+      "execution_number": 10,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 14004,
+      "output_tokens": 34,
+      "total_tokens": 14038,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 14004,
+        "output_tokens": 34,
+        "total_tokens": 14038
+      },
+      "timestamp": "2026-07-18T04:34:15.677439",
+      "execution_number": 11,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 14550,
+      "output_tokens": 623,
+      "total_tokens": 15173,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 14550,
+        "output_tokens": 623,
+        "total_tokens": 15173
+      },
+      "timestamp": "2026-07-18T04:34:25.131521",
+      "execution_number": 12,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 16282,
+      "output_tokens": 35,
+      "total_tokens": 16317,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 16282,
+        "output_tokens": 35,
+        "total_tokens": 16317
+      },
+      "timestamp": "2026-07-18T04:34:27.553913",
+      "execution_number": 13,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 16797,
+      "output_tokens": 571,
+      "total_tokens": 17368,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 16797,
+        "output_tokens": 571,
+        "total_tokens": 17368
+      },
+      "timestamp": "2026-07-18T04:34:39.012004",
+      "execution_number": 14,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 18385,
+      "output_tokens": 34,
+      "total_tokens": 18419,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 18385,
+        "output_tokens": 34,
+        "total_tokens": 18419
+      },
+      "timestamp": "2026-07-18T04:34:40.768349",
+      "execution_number": 15,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 18952,
+      "output_tokens": 533,
+      "total_tokens": 19485,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 18952,
+        "output_tokens": 533,
+        "total_tokens": 19485
+      },
+      "timestamp": "2026-07-18T04:34:48.427572",
+      "execution_number": 16,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 20429,
+      "output_tokens": 32,
+      "total_tokens": 20461,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 20429,
+        "output_tokens": 32,
+        "total_tokens": 20461
+      },
+      "timestamp": "2026-07-18T04:34:50.546163",
+      "execution_number": 17,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 20847,
+      "output_tokens": 1003,
+      "total_tokens": 21850,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 20847,
+        "output_tokens": 1003,
+        "total_tokens": 21850
+      },
+      "timestamp": "2026-07-18T04:35:06.513708",
+      "execution_number": 18,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 21778,
+      "output_tokens": 451,
+      "total_tokens": 22229,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 21778,
+        "output_tokens": 451,
+        "total_tokens": 22229
+      },
+      "timestamp": "2026-07-18T04:35:16.129064",
+      "execution_number": 19,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 22318,
+      "output_tokens": 561,
+      "total_tokens": 22879,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 22318,
+        "output_tokens": 561,
+        "total_tokens": 22879
+      },
+      "timestamp": "2026-07-18T04:35:26.770553",
+      "execution_number": 20,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 22969,
+      "output_tokens": 416,
+      "total_tokens": 23385,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 22969,
+        "output_tokens": 416,
+        "total_tokens": 23385
+      },
+      "timestamp": "2026-07-18T04:35:33.946713",
+      "execution_number": 21,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 23474,
+      "output_tokens": 536,
+      "total_tokens": 24010,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 23474,
+        "output_tokens": 536,
+        "total_tokens": 24010
+      },
+      "timestamp": "2026-07-18T04:35:42.650873",
+      "execution_number": 22,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 24099,
+      "output_tokens": 406,
+      "total_tokens": 24505,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 24099,
+        "output_tokens": 406,
+        "total_tokens": 24505
+      },
+      "timestamp": "2026-07-18T04:35:50.127152",
+      "execution_number": 23,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 24595,
+      "output_tokens": 25,
+      "total_tokens": 24620,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 24595,
+        "output_tokens": 25,
+        "total_tokens": 24620
+      },
+      "timestamp": "2026-07-18T04:35:52.999783",
+      "execution_number": 24,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Complete",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 24843,
+      "output_tokens": 7,
+      "total_tokens": 24850,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 24843,
+        "output_tokens": 7,
+        "total_tokens": 24850
+      },
+      "timestamp": "2026-07-18T04:35:55.553304",
+      "execution_number": 25,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 2242,
+      "output_tokens": 18,
+      "total_tokens": 2260,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 2242,
+        "output_tokens": 18,
+        "total_tokens": 2260
+      },
+      "timestamp": "2026-07-18T04:35:57.060669",
+      "execution_number": 1,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 10723,
+      "output_tokens": 1467,
+      "total_tokens": 12190,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 10723,
+        "output_tokens": 1467,
+        "total_tokens": 12190
+      },
+      "timestamp": "2026-07-18T04:36:24.328708",
+      "execution_number": 2,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 4201,
+      "output_tokens": 12,
+      "total_tokens": 4213,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 4201,
+        "output_tokens": 12,
+        "total_tokens": 4213
+      },
+      "timestamp": "2026-07-18T04:36:25.864398",
+      "execution_number": 1,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 12676,
+      "output_tokens": 95,
+      "total_tokens": 12771,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 12676,
+        "output_tokens": 95,
+        "total_tokens": 12771
+      },
+      "timestamp": "2026-07-18T04:36:29.549283",
+      "execution_number": 2,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 14903,
+      "output_tokens": 525,
+      "total_tokens": 15428,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 14903,
+        "output_tokens": 525,
+        "total_tokens": 15428
+      },
+      "timestamp": "2026-07-18T04:36:38.153805",
+      "execution_number": 3,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 15290,
+      "output_tokens": 618,
+      "total_tokens": 15908,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 15290,
+        "output_tokens": 618,
+        "total_tokens": 15908
+      },
+      "timestamp": "2026-07-18T04:36:49.942039",
+      "execution_number": 4,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 16103,
+      "output_tokens": 180,
+      "total_tokens": 16283,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 16103,
+        "output_tokens": 180,
+        "total_tokens": 16283
+      },
+      "timestamp": "2026-07-18T04:36:54.762041",
+      "execution_number": 5,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 16371,
+      "output_tokens": 243,
+      "total_tokens": 16614,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 16371,
+        "output_tokens": 243,
+        "total_tokens": 16614
+      },
+      "timestamp": "2026-07-18T04:36:59.769181",
+      "execution_number": 6,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 16704,
+      "output_tokens": 130,
+      "total_tokens": 16834,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 16704,
+        "output_tokens": 130,
+        "total_tokens": 16834
+      },
+      "timestamp": "2026-07-18T04:37:03.285937",
+      "execution_number": 7,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 16924,
+      "output_tokens": 177,
+      "total_tokens": 17101,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 16924,
+        "output_tokens": 177,
+        "total_tokens": 17101
+      },
+      "timestamp": "2026-07-18T04:37:08.388381",
+      "execution_number": 8,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 17206,
+      "output_tokens": 708,
+      "total_tokens": 17914,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 17206,
+        "output_tokens": 708,
+        "total_tokens": 17914
+      },
+      "timestamp": "2026-07-18T04:37:22.288329",
+      "execution_number": 9,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 2242,
+      "output_tokens": 12,
+      "total_tokens": 2254,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 2242,
+        "output_tokens": 12,
+        "total_tokens": 2254
+      },
+      "timestamp": "2026-07-18T04:37:24.438453",
+      "execution_number": 3,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 10864,
+      "output_tokens": 1670,
+      "total_tokens": 12534,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 10864,
+        "output_tokens": 1670,
+        "total_tokens": 12534
+      },
+      "timestamp": "2026-07-18T04:37:57.116619",
+      "execution_number": 4,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 4404,
+      "output_tokens": 221,
+      "total_tokens": 4625,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 4404,
+        "output_tokens": 221,
+        "total_tokens": 4625
+      },
+      "timestamp": "2026-07-18T04:38:00.666957",
+      "execution_number": 10,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 7186,
+      "output_tokens": 351,
+      "total_tokens": 7537,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 7186,
+        "output_tokens": 351,
+        "total_tokens": 7537
+      },
+      "timestamp": "2026-07-18T04:38:06.013545",
+      "execution_number": 11,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 7547,
+      "output_tokens": 677,
+      "total_tokens": 8224,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 7547,
+        "output_tokens": 677,
+        "total_tokens": 8224
+      },
+      "timestamp": "2026-07-18T04:38:14.922541",
+      "execution_number": 12,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 8314,
+      "output_tokens": 125,
+      "total_tokens": 8439,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 8314,
+        "output_tokens": 125,
+        "total_tokens": 8439
+      },
+      "timestamp": "2026-07-18T04:38:18.609983",
+      "execution_number": 13,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 8529,
+      "output_tokens": 290,
+      "total_tokens": 8819,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 8529,
+        "output_tokens": 290,
+        "total_tokens": 8819
+      },
+      "timestamp": "2026-07-18T04:38:26.187151",
+      "execution_number": 14,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 8911,
+      "output_tokens": 277,
+      "total_tokens": 9188,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 8911,
+        "output_tokens": 277,
+        "total_tokens": 9188
+      },
+      "timestamp": "2026-07-18T04:38:31.411052",
+      "execution_number": 15,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 9278,
+      "output_tokens": 186,
+      "total_tokens": 9464,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 9278,
+        "output_tokens": 186,
+        "total_tokens": 9464
+      },
+      "timestamp": "2026-07-18T04:38:36.940870",
+      "execution_number": 16,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 9553,
+      "output_tokens": 19,
+      "total_tokens": 9572,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 9553,
+        "output_tokens": 19,
+        "total_tokens": 9572
+      },
+      "timestamp": "2026-07-18T04:38:38.766101",
+      "execution_number": 17,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 9666,
+      "output_tokens": 291,
+      "total_tokens": 9957,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 9666,
+        "output_tokens": 291,
+        "total_tokens": 9957
+      },
+      "timestamp": "2026-07-18T04:38:44.211342",
+      "execution_number": 18,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 10064,
+      "output_tokens": 1033,
+      "total_tokens": 11097,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 10064,
+        "output_tokens": 1033,
+        "total_tokens": 11097
+      },
+      "timestamp": "2026-07-18T04:39:02.437684",
+      "execution_number": 19,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 2242,
+      "output_tokens": 18,
+      "total_tokens": 2260,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 2242,
+        "output_tokens": 18,
+        "total_tokens": 2260
+      },
+      "timestamp": "2026-07-18T04:39:05.203548",
+      "execution_number": 5,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 11023,
+      "output_tokens": 1579,
+      "total_tokens": 12602,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 11023,
+        "output_tokens": 1579,
+        "total_tokens": 12602
+      },
+      "timestamp": "2026-07-18T04:39:34.594229",
+      "execution_number": 6,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 4313,
+      "output_tokens": 17,
+      "total_tokens": 4330,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 4313,
+        "output_tokens": 17,
+        "total_tokens": 4330
+      },
+      "timestamp": "2026-07-18T04:39:36.899822",
+      "execution_number": 20,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 5332,
+      "output_tokens": 18,
+      "total_tokens": 5350,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 5332,
+        "output_tokens": 18,
+        "total_tokens": 5350
+      },
+      "timestamp": "2026-07-18T04:39:38.441561",
+      "execution_number": 21,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 12034,
+      "output_tokens": 234,
+      "total_tokens": 12268,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 12034,
+        "output_tokens": 234,
+        "total_tokens": 12268
+      },
+      "timestamp": "2026-07-18T04:39:45.038545",
+      "execution_number": 22,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 12628,
+      "output_tokens": 33,
+      "total_tokens": 12661,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 12628,
+        "output_tokens": 33,
+        "total_tokens": 12661
+      },
+      "timestamp": "2026-07-18T04:39:47.188495",
+      "execution_number": 23,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 13577,
+      "output_tokens": 34,
+      "total_tokens": 13611,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 13577,
+        "output_tokens": 34,
+        "total_tokens": 13611
+      },
+      "timestamp": "2026-07-18T04:39:49.238744",
+      "execution_number": 24,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 14053,
+      "output_tokens": 63,
+      "total_tokens": 14116,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 14053,
+        "output_tokens": 63,
+        "total_tokens": 14116
+      },
+      "timestamp": "2026-07-18T04:39:52.411993",
+      "execution_number": 25,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 16819,
+      "output_tokens": 312,
+      "total_tokens": 17131,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 16819,
+        "output_tokens": 312,
+        "total_tokens": 17131
+      },
+      "timestamp": "2026-07-18T04:39:59.212966",
+      "execution_number": 26,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 17601,
+      "output_tokens": 27,
+      "total_tokens": 17628,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 17601,
+        "output_tokens": 27,
+        "total_tokens": 17628
+      },
+      "timestamp": "2026-07-18T04:40:01.220466",
+      "execution_number": 27,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 17728,
+      "output_tokens": 37,
+      "total_tokens": 17765,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 17728,
+        "output_tokens": 37,
+        "total_tokens": 17765
+      },
+      "timestamp": "2026-07-18T04:40:04.068604",
+      "execution_number": 28,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 17875,
+      "output_tokens": 244,
+      "total_tokens": 18119,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 17875,
+        "output_tokens": 244,
+        "total_tokens": 18119
+      },
+      "timestamp": "2026-07-18T04:40:11.039422",
+      "execution_number": 29,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 18230,
+      "output_tokens": 281,
+      "total_tokens": 18511,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 18230,
+        "output_tokens": 281,
+        "total_tokens": 18511
+      },
+      "timestamp": "2026-07-18T04:40:15.554820",
+      "execution_number": 30,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 18600,
+      "output_tokens": 1076,
+      "total_tokens": 19676,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 18600,
+        "output_tokens": 1076,
+        "total_tokens": 19676
+      },
+      "timestamp": "2026-07-18T04:40:32.120177",
+      "execution_number": 31,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 19767,
+      "output_tokens": 276,
+      "total_tokens": 20043,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 19767,
+        "output_tokens": 276,
+        "total_tokens": 20043
+      },
+      "timestamp": "2026-07-18T04:40:36.957464",
+      "execution_number": 32,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 20132,
+      "output_tokens": 248,
+      "total_tokens": 20380,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 20132,
+        "output_tokens": 248,
+        "total_tokens": 20380
+      },
+      "timestamp": "2026-07-18T04:40:41.077980",
+      "execution_number": 33,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 20470,
+      "output_tokens": 249,
+      "total_tokens": 20719,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 20470,
+        "output_tokens": 249,
+        "total_tokens": 20719
+      },
+      "timestamp": "2026-07-18T04:40:45.004978",
+      "execution_number": 34,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 20809,
+      "output_tokens": 294,
+      "total_tokens": 21103,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 20809,
+        "output_tokens": 294,
+        "total_tokens": 21103
+      },
+      "timestamp": "2026-07-18T04:40:52.300477",
+      "execution_number": 35,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 21195,
+      "output_tokens": 61,
+      "total_tokens": 21256,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 21195,
+        "output_tokens": 61,
+        "total_tokens": 21256
+      },
+      "timestamp": "2026-07-18T04:40:56.416205",
+      "execution_number": 36,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 21703,
+      "output_tokens": 109,
+      "total_tokens": 21812,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 21703,
+        "output_tokens": 109,
+        "total_tokens": 21812
+      },
+      "timestamp": "2026-07-18T04:40:59.485242",
+      "execution_number": 37,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 21900,
+      "output_tokens": 30,
+      "total_tokens": 21930,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 21900,
+        "output_tokens": 30,
+        "total_tokens": 21930
+      },
+      "timestamp": "2026-07-18T04:41:03.274296",
+      "execution_number": 38,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 22372,
+      "output_tokens": 95,
+      "total_tokens": 22467,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 22372,
+        "output_tokens": 95,
+        "total_tokens": 22467
+      },
+      "timestamp": "2026-07-18T04:41:05.937572",
+      "execution_number": 39,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 22554,
+      "output_tokens": 539,
+      "total_tokens": 23093,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 22554,
+        "output_tokens": 539,
+        "total_tokens": 23093
+      },
+      "timestamp": "2026-07-18T04:41:16.996652",
+      "execution_number": 40,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 23191,
+      "output_tokens": 557,
+      "total_tokens": 23748,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 23191,
+        "output_tokens": 557,
+        "total_tokens": 23748
+      },
+      "timestamp": "2026-07-18T04:41:27.044426",
+      "execution_number": 41,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 2242,
+      "output_tokens": 18,
+      "total_tokens": 2260,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 2242,
+        "output_tokens": 18,
+        "total_tokens": 2260
+      },
+      "timestamp": "2026-07-18T04:41:28.670599",
+      "execution_number": 7,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 11474,
+      "output_tokens": 1704,
+      "total_tokens": 13178,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 11474,
+        "output_tokens": 1704,
+        "total_tokens": 13178
+      },
+      "timestamp": "2026-07-18T04:41:58.433854",
+      "execution_number": 8,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 4438,
+      "output_tokens": 18,
+      "total_tokens": 4456,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 4438,
+        "output_tokens": 18,
+        "total_tokens": 4456
+      },
+      "timestamp": "2026-07-18T04:42:00.045455",
+      "execution_number": 42,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 13670,
+      "output_tokens": 98,
+      "total_tokens": 13768,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 13670,
+        "output_tokens": 98,
+        "total_tokens": 13768
+      },
+      "timestamp": "2026-07-18T04:42:03.591005",
+      "execution_number": 43,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 16434,
+      "output_tokens": 481,
+      "total_tokens": 16915,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 16434,
+        "output_tokens": 481,
+        "total_tokens": 16915
+      },
+      "timestamp": "2026-07-18T04:42:11.885672",
+      "execution_number": 44,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 16875,
+      "output_tokens": 286,
+      "total_tokens": 17161,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 16875,
+        "output_tokens": 286,
+        "total_tokens": 17161
+      },
+      "timestamp": "2026-07-18T04:42:18.335790",
+      "execution_number": 45,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 17249,
+      "output_tokens": 234,
+      "total_tokens": 17483,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 17249,
+        "output_tokens": 234,
+        "total_tokens": 17483
+      },
+      "timestamp": "2026-07-18T04:42:23.866279",
+      "execution_number": 46,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 17573,
+      "output_tokens": 626,
+      "total_tokens": 18199,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 17573,
+        "output_tokens": 626,
+        "total_tokens": 18199
+      },
+      "timestamp": "2026-07-18T04:42:32.979145",
+      "execution_number": 47,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 18289,
+      "output_tokens": 98,
+      "total_tokens": 18387,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 18289,
+        "output_tokens": 98,
+        "total_tokens": 18387
+      },
+      "timestamp": "2026-07-18T04:42:35.644054",
+      "execution_number": 48,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 18474,
+      "output_tokens": 648,
+      "total_tokens": 19122,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 18474,
+        "output_tokens": 648,
+        "total_tokens": 19122
+      },
+      "timestamp": "2026-07-18T04:42:53.256617",
+      "execution_number": 49,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 2242,
+      "output_tokens": 18,
+      "total_tokens": 2260,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 2242,
+        "output_tokens": 18,
+        "total_tokens": 2260
+      },
+      "timestamp": "2026-07-18T04:42:54.895606",
+      "execution_number": 9,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 11473,
+      "output_tokens": 1464,
+      "total_tokens": 12937,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 11473,
+        "output_tokens": 1464,
+        "total_tokens": 12937
+      },
+      "timestamp": "2026-07-18T04:43:19.824329",
+      "execution_number": 10,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 4198,
+      "output_tokens": 18,
+      "total_tokens": 4216,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 4198,
+        "output_tokens": 18,
+        "total_tokens": 4216
+      },
+      "timestamp": "2026-07-18T04:43:21.363233",
+      "execution_number": 50,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 13429,
+      "output_tokens": 128,
+      "total_tokens": 13557,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 13429,
+        "output_tokens": 128,
+        "total_tokens": 13557
+      },
+      "timestamp": "2026-07-18T04:43:24.945822",
+      "execution_number": 51,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 16395,
+      "output_tokens": 309,
+      "total_tokens": 16704,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 16395,
+        "output_tokens": 309,
+        "total_tokens": 16704
+      },
+      "timestamp": "2026-07-18T04:43:31.259860",
+      "execution_number": 52,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 16649,
+      "output_tokens": 1308,
+      "total_tokens": 17957,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 16649,
+        "output_tokens": 1308,
+        "total_tokens": 17957
+      },
+      "timestamp": "2026-07-18T04:43:48.630881",
+      "execution_number": 53,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 18227,
+      "output_tokens": 381,
+      "total_tokens": 18608,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 18227,
+        "output_tokens": 381,
+        "total_tokens": 18608
+      },
+      "timestamp": "2026-07-18T04:43:55.002382",
+      "execution_number": 54,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 18795,
+      "output_tokens": 435,
+      "total_tokens": 19230,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 18795,
+        "output_tokens": 435,
+        "total_tokens": 19230
+      },
+      "timestamp": "2026-07-18T04:44:03.605408",
+      "execution_number": 55,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 19320,
+      "output_tokens": 300,
+      "total_tokens": 19620,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 19320,
+        "output_tokens": 300,
+        "total_tokens": 19620
+      },
+      "timestamp": "2026-07-18T04:44:10.134799",
+      "execution_number": 56,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 19710,
+      "output_tokens": 246,
+      "total_tokens": 19956,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 19710,
+        "output_tokens": 246,
+        "total_tokens": 19956
+      },
+      "timestamp": "2026-07-18T04:44:16.129900",
+      "execution_number": 57,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 20061,
+      "output_tokens": 246,
+      "total_tokens": 20307,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 20061,
+        "output_tokens": 246,
+        "total_tokens": 20307
+      },
+      "timestamp": "2026-07-18T04:44:21.321294",
+      "execution_number": 58,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 20412,
+      "output_tokens": 516,
+      "total_tokens": 20928,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 20412,
+        "output_tokens": 516,
+        "total_tokens": 20928
+      },
+      "timestamp": "2026-07-18T04:44:31.152595",
+      "execution_number": 59,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 2242,
+      "output_tokens": 18,
+      "total_tokens": 2260,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 2242,
+        "output_tokens": 18,
+        "total_tokens": 2260
+      },
+      "timestamp": "2026-07-18T04:44:32.893538",
+      "execution_number": 11,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 11769,
+      "output_tokens": 954,
+      "total_tokens": 12723,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 11769,
+        "output_tokens": 954,
+        "total_tokens": 12723
+      },
+      "timestamp": "2026-07-18T04:44:51.370677",
+      "execution_number": 12,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 3688,
+      "output_tokens": 17,
+      "total_tokens": 3705,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 3688,
+        "output_tokens": 17,
+        "total_tokens": 3705
+      },
+      "timestamp": "2026-07-18T04:44:53.033100",
+      "execution_number": 60,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 4707,
+      "output_tokens": 18,
+      "total_tokens": 4725,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 4707,
+        "output_tokens": 18,
+        "total_tokens": 4725
+      },
+      "timestamp": "2026-07-18T04:44:54.390168",
+      "execution_number": 61,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 6091,
+      "output_tokens": 19,
+      "total_tokens": 6110,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 6091,
+        "output_tokens": 19,
+        "total_tokens": 6110
+      },
+      "timestamp": "2026-07-18T04:44:55.890741",
+      "execution_number": 62,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 6985,
+      "output_tokens": 22,
+      "total_tokens": 7007,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 6985,
+        "output_tokens": 22,
+        "total_tokens": 7007
+      },
+      "timestamp": "2026-07-18T04:44:57.393342",
+      "execution_number": 63,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 7331,
+      "output_tokens": 17,
+      "total_tokens": 7348,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 7331,
+        "output_tokens": 17,
+        "total_tokens": 7348
+      },
+      "timestamp": "2026-07-18T04:44:59.826653",
+      "execution_number": 64,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 7838,
+      "output_tokens": 34,
+      "total_tokens": 7872,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 7838,
+        "output_tokens": 34,
+        "total_tokens": 7872
+      },
+      "timestamp": "2026-07-18T04:45:01.882639",
+      "execution_number": 65,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 7889,
+      "output_tokens": 33,
+      "total_tokens": 7922,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 7889,
+        "output_tokens": 33,
+        "total_tokens": 7922
+      },
+      "timestamp": "2026-07-18T04:45:03.559491",
+      "execution_number": 66,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 8843,
+      "output_tokens": 35,
+      "total_tokens": 8878,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 8843,
+        "output_tokens": 35,
+        "total_tokens": 8878
+      },
+      "timestamp": "2026-07-18T04:45:05.183516",
+      "execution_number": 67,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 10006,
+      "output_tokens": 21,
+      "total_tokens": 10027,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 10006,
+        "output_tokens": 21,
+        "total_tokens": 10027
+      },
+      "timestamp": "2026-07-18T04:45:06.893310",
+      "execution_number": 68,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 10483,
+      "output_tokens": 31,
+      "total_tokens": 10514,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 10483,
+        "output_tokens": 31,
+        "total_tokens": 10514
+      },
+      "timestamp": "2026-07-18T04:45:09.050240",
+      "execution_number": 69,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 11168,
+      "output_tokens": 32,
+      "total_tokens": 11200,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 11168,
+        "output_tokens": 32,
+        "total_tokens": 11200
+      },
+      "timestamp": "2026-07-18T04:45:10.786549",
+      "execution_number": 70,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 12273,
+      "output_tokens": 32,
+      "total_tokens": 12305,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 12273,
+        "output_tokens": 32,
+        "total_tokens": 12305
+      },
+      "timestamp": "2026-07-18T04:45:12.762029",
+      "execution_number": 71,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 13000,
+      "output_tokens": 33,
+      "total_tokens": 13033,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 13000,
+        "output_tokens": 33,
+        "total_tokens": 13033
+      },
+      "timestamp": "2026-07-18T04:45:14.776334",
+      "execution_number": 72,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 13509,
+      "output_tokens": 2788,
+      "total_tokens": 16297,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 13509,
+        "output_tokens": 2788,
+        "total_tokens": 16297
+      },
+      "timestamp": "2026-07-18T04:45:49.687809",
+      "execution_number": 73,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 14883,
+      "output_tokens": 384,
+      "total_tokens": 15267,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 14883,
+        "output_tokens": 384,
+        "total_tokens": 15267
+      },
+      "timestamp": "2026-07-18T04:45:57.559752",
+      "execution_number": 74,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 15361,
+      "output_tokens": 136,
+      "total_tokens": 15497,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 15361,
+        "output_tokens": 136,
+        "total_tokens": 15497
+      },
+      "timestamp": "2026-07-18T04:46:01.473587",
+      "execution_number": 75,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 15587,
+      "output_tokens": 223,
+      "total_tokens": 15810,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 15587,
+        "output_tokens": 223,
+        "total_tokens": 15810
+      },
+      "timestamp": "2026-07-18T04:46:06.489344",
+      "execution_number": 76,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 15900,
+      "output_tokens": 822,
+      "total_tokens": 16722,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 15900,
+        "output_tokens": 822,
+        "total_tokens": 16722
+      },
+      "timestamp": "2026-07-18T04:46:21.183223",
+      "execution_number": 77,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 2242,
+      "output_tokens": 18,
+      "total_tokens": 2260,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 2242,
+        "output_tokens": 18,
+        "total_tokens": 2260
+      },
+      "timestamp": "2026-07-18T04:46:22.734692",
+      "execution_number": 13,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 11769,
+      "output_tokens": 271,
+      "total_tokens": 12040,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 11769,
+        "output_tokens": 271,
+        "total_tokens": 12040
+      },
+      "timestamp": "2026-07-18T04:46:28.808712",
+      "execution_number": 14,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 12312,
+      "output_tokens": 1884,
+      "total_tokens": 14196,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 12312,
+        "output_tokens": 1884,
+        "total_tokens": 14196
+      },
+      "timestamp": "2026-07-18T04:47:09.231424",
+      "execution_number": 15,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 15687,
+      "output_tokens": 1811,
+      "total_tokens": 17498,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 15687,
+        "output_tokens": 1811,
+        "total_tokens": 17498
+      },
+      "timestamp": "2026-07-18T04:47:36.196053",
+      "execution_number": 16,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 4545,
+      "output_tokens": 1818,
+      "total_tokens": 6363,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 4545,
+        "output_tokens": 1818,
+        "total_tokens": 6363
+      },
+      "timestamp": "2026-07-18T04:48:01.329460",
+      "execution_number": 78,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 6384,
+      "output_tokens": 2626,
+      "total_tokens": 9010,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 6384,
+        "output_tokens": 2626,
+        "total_tokens": 9010
+      },
+      "timestamp": "2026-07-18T04:48:48.019413",
+      "execution_number": 79,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 6636,
+      "output_tokens": 292,
+      "total_tokens": 6928,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 6636,
+        "output_tokens": 292,
+        "total_tokens": 6928
+      },
+      "timestamp": "2026-07-18T04:48:53.021691",
+      "execution_number": 80,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 7031,
+      "output_tokens": 98,
+      "total_tokens": 7129,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 7031,
+        "output_tokens": 98,
+        "total_tokens": 7129
+      },
+      "timestamp": "2026-07-18T04:48:56.069451",
+      "execution_number": 81,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 7232,
+      "output_tokens": 201,
+      "total_tokens": 7433,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 7232,
+        "output_tokens": 201,
+        "total_tokens": 7433
+      },
+      "timestamp": "2026-07-18T04:49:00.268354",
+      "execution_number": 82,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 7538,
+      "output_tokens": 209,
+      "total_tokens": 7747,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 7538,
+        "output_tokens": 209,
+        "total_tokens": 7747
+      },
+      "timestamp": "2026-07-18T04:49:04.056633",
+      "execution_number": 83,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 7852,
+      "output_tokens": 174,
+      "total_tokens": 8026,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 7852,
+        "output_tokens": 174,
+        "total_tokens": 8026
+      },
+      "timestamp": "2026-07-18T04:49:07.540386",
+      "execution_number": 84,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 8133,
+      "output_tokens": 182,
+      "total_tokens": 8315,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 8133,
+        "output_tokens": 182,
+        "total_tokens": 8315
+      },
+      "timestamp": "2026-07-18T04:49:10.815555",
+      "execution_number": 85,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 8422,
+      "output_tokens": 40,
+      "total_tokens": 8462,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 8422,
+        "output_tokens": 40,
+        "total_tokens": 8462
+      },
+      "timestamp": "2026-07-18T04:49:12.779797",
+      "execution_number": 86,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 8564,
+      "output_tokens": 2393,
+      "total_tokens": 10957,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 8564,
+        "output_tokens": 2393,
+        "total_tokens": 10957
+      },
+      "timestamp": "2026-07-18T04:49:49.114123",
+      "execution_number": 87,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 2242,
+      "output_tokens": 12,
+      "total_tokens": 2254,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 2242,
+        "output_tokens": 12,
+        "total_tokens": 2254
+      },
+      "timestamp": "2026-07-18T04:49:50.547455",
+      "execution_number": 17,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 14261,
+      "output_tokens": 1960,
+      "total_tokens": 16221,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 14261,
+        "output_tokens": 1960,
+        "total_tokens": 16221
+      },
+      "timestamp": "2026-07-18T04:50:28.642633",
+      "execution_number": 18,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 4694,
+      "output_tokens": 18,
+      "total_tokens": 4712,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 4694,
+        "output_tokens": 18,
+        "total_tokens": 4712
+      },
+      "timestamp": "2026-07-18T04:50:30.217181",
+      "execution_number": 88,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 6078,
+      "output_tokens": 15,
+      "total_tokens": 6093,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 6078,
+        "output_tokens": 15,
+        "total_tokens": 6093
+      },
+      "timestamp": "2026-07-18T04:50:31.817502",
+      "execution_number": 89,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 6507,
+      "output_tokens": 17,
+      "total_tokens": 6524,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 6507,
+        "output_tokens": 17,
+        "total_tokens": 6524
+      },
+      "timestamp": "2026-07-18T04:50:34.171506",
+      "execution_number": 90,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 7050,
+      "output_tokens": 619,
+      "total_tokens": 7669,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 7050,
+        "output_tokens": 619,
+        "total_tokens": 7669
+      },
+      "timestamp": "2026-07-18T04:50:44.105216",
+      "execution_number": 91,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 7686,
+      "output_tokens": 50,
+      "total_tokens": 7736,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 7686,
+        "output_tokens": 50,
+        "total_tokens": 7736
+      },
+      "timestamp": "2026-07-18T04:50:46.255784",
+      "execution_number": 92,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 7753,
+      "output_tokens": 33,
+      "total_tokens": 7786,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 7753,
+        "output_tokens": 33,
+        "total_tokens": 7786
+      },
+      "timestamp": "2026-07-18T04:50:47.893918",
+      "execution_number": 93,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 8315,
+      "output_tokens": 34,
+      "total_tokens": 8349,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 8315,
+        "output_tokens": 34,
+        "total_tokens": 8349
+      },
+      "timestamp": "2026-07-18T04:50:50.555200",
+      "execution_number": 94,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 8526,
+      "output_tokens": 18,
+      "total_tokens": 8544,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 8526,
+        "output_tokens": 18,
+        "total_tokens": 8544
+      },
+      "timestamp": "2026-07-18T04:50:52.501143",
+      "execution_number": 95,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 8559,
+      "output_tokens": 19,
+      "total_tokens": 8578,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 8559,
+        "output_tokens": 19,
+        "total_tokens": 8578
+      },
+      "timestamp": "2026-07-18T04:50:53.997593",
+      "execution_number": 96,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 9186,
+      "output_tokens": 19,
+      "total_tokens": 9205,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 9186,
+        "output_tokens": 19,
+        "total_tokens": 9205
+      },
+      "timestamp": "2026-07-18T04:50:55.471595",
+      "execution_number": 97,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 9709,
+      "output_tokens": 2016,
+      "total_tokens": 11725,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 9709,
+        "output_tokens": 2016,
+        "total_tokens": 11725
+      },
+      "timestamp": "2026-07-18T04:51:30.801026",
+      "execution_number": 98,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 10187,
+      "output_tokens": 15,
+      "total_tokens": 10202,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 10187,
+        "output_tokens": 15,
+        "total_tokens": 10202
+      },
+      "timestamp": "2026-07-18T04:51:32.635791",
+      "execution_number": 99,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 10300,
+      "output_tokens": 64,
+      "total_tokens": 10364,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 10300,
+        "output_tokens": 64,
+        "total_tokens": 10364
+      },
+      "timestamp": "2026-07-18T04:51:35.277960",
+      "execution_number": 100,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 10473,
+      "output_tokens": 276,
+      "total_tokens": 10749,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 10473,
+        "output_tokens": 276,
+        "total_tokens": 10749
+      },
+      "timestamp": "2026-07-18T04:51:41.347740",
+      "execution_number": 101,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 10858,
+      "output_tokens": 1565,
+      "total_tokens": 12423,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 10858,
+        "output_tokens": 1565,
+        "total_tokens": 12423
+      },
+      "timestamp": "2026-07-18T04:52:01.214332",
+      "execution_number": 102,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 12515,
+      "output_tokens": 1015,
+      "total_tokens": 13530,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 12515,
+        "output_tokens": 1015,
+        "total_tokens": 13530
+      },
+      "timestamp": "2026-07-18T04:52:18.316192",
+      "execution_number": 103,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 2242,
+      "output_tokens": 18,
+      "total_tokens": 2260,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 2242,
+        "output_tokens": 18,
+        "total_tokens": 2260
+      },
+      "timestamp": "2026-07-18T04:52:19.851275",
+      "execution_number": 19,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 14712,
+      "output_tokens": 1293,
+      "total_tokens": 16005,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 14712,
+        "output_tokens": 1293,
+        "total_tokens": 16005
+      },
+      "timestamp": "2026-07-18T04:52:43.609197",
+      "execution_number": 20,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 4027,
+      "output_tokens": 123,
+      "total_tokens": 4150,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 4027,
+        "output_tokens": 123,
+        "total_tokens": 4150
+      },
+      "timestamp": "2026-07-18T04:52:46.476760",
+      "execution_number": 104,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 6521,
+      "output_tokens": 1341,
+      "total_tokens": 7862,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 6521,
+        "output_tokens": 1341,
+        "total_tokens": 7862
+      },
+      "timestamp": "2026-07-18T04:53:03.014833",
+      "execution_number": 105,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 2242,
+      "output_tokens": 18,
+      "total_tokens": 2260,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 2242,
+        "output_tokens": 18,
+        "total_tokens": 2260
+      },
+      "timestamp": "2026-07-18T04:53:04.463445",
+      "execution_number": 21,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Code Reviewer",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 14712,
+      "output_tokens": 1484,
+      "total_tokens": 16196,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 14712,
+        "output_tokens": 1484,
+        "total_tokens": 16196
+      },
+      "timestamp": "2026-07-18T04:53:35.182003",
+      "execution_number": 22,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 4218,
+      "output_tokens": 130,
+      "total_tokens": 4348,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 4218,
+        "output_tokens": 130,
+        "total_tokens": 4348
+      },
+      "timestamp": "2026-07-18T04:53:38.292372",
+      "execution_number": 106,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 5443,
+      "output_tokens": 116,
+      "total_tokens": 5559,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 5443,
+        "output_tokens": 116,
+        "total_tokens": 5559
+      },
+      "timestamp": "2026-07-18T04:53:41.511303",
+      "execution_number": 107,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 7121,
+      "output_tokens": 3185,
+      "total_tokens": 10306,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 7121,
+        "output_tokens": 3185,
+        "total_tokens": 10306
+      },
+      "timestamp": "2026-07-18T04:54:23.965382",
+      "execution_number": 108,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 10150,
+      "output_tokens": 546,
+      "total_tokens": 10696,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 10150,
+        "output_tokens": 546,
+        "total_tokens": 10696
+      },
+      "timestamp": "2026-07-18T04:54:32.462509",
+      "execution_number": 109,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Code Review",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 10789,
+      "output_tokens": 540,
+      "total_tokens": 11329,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 10789,
+        "output_tokens": 540,
+        "total_tokens": 11329
+      },
+      "timestamp": "2026-07-18T04:54:42.899936",
+      "execution_number": 110,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Error Summary",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 2330,
+      "output_tokens": 1921,
+      "total_tokens": 4251,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 2330,
+        "output_tokens": 1921,
+        "total_tokens": 4251
+      },
+      "timestamp": "2026-07-18T04:55:16.702161",
+      "execution_number": 1,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Error Summary",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 2773,
+      "output_tokens": 2139,
+      "total_tokens": 4912,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 2773,
+        "output_tokens": 2139,
+        "total_tokens": 4912
+      },
+      "timestamp": "2026-07-18T04:55:55.355034",
+      "execution_number": 2,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Error Summary",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 8761,
+      "output_tokens": 3026,
+      "total_tokens": 11787,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 8761,
+        "output_tokens": 3026,
+        "total_tokens": 11787
+      },
+      "timestamp": "2026-07-18T04:56:47.021474",
+      "execution_number": 3,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Modification",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 5764,
+      "output_tokens": 18,
+      "total_tokens": 5782,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 5764,
+        "output_tokens": 18,
+        "total_tokens": 5782
+      },
+      "timestamp": "2026-07-18T04:56:49.376119",
+      "execution_number": 1,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Modification",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 18235,
+      "output_tokens": 160,
+      "total_tokens": 18395,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 18235,
+        "output_tokens": 160,
+        "total_tokens": 18395
+      },
+      "timestamp": "2026-07-18T04:56:53.576401",
+      "execution_number": 2,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Modification",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 21103,
+      "output_tokens": 2051,
+      "total_tokens": 23154,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 21103,
+        "output_tokens": 2051,
+        "total_tokens": 23154
+      },
+      "timestamp": "2026-07-18T04:57:30.644989",
+      "execution_number": 3,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Modification",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 21483,
+      "output_tokens": 64,
+      "total_tokens": 21547,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 21483,
+        "output_tokens": 64,
+        "total_tokens": 21547
+      },
+      "timestamp": "2026-07-18T04:57:33.417854",
+      "execution_number": 4,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Modification",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 21639,
+      "output_tokens": 56,
+      "total_tokens": 21695,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 21639,
+        "output_tokens": 56,
+        "total_tokens": 21695
+      },
+      "timestamp": "2026-07-18T04:57:37.506679",
+      "execution_number": 5,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Modification",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 21786,
+      "output_tokens": 54,
+      "total_tokens": 21840,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 21786,
+        "output_tokens": 54,
+        "total_tokens": 21840
+      },
+      "timestamp": "2026-07-18T04:57:40.679809",
+      "execution_number": 6,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Modification",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 21932,
+      "output_tokens": 55,
+      "total_tokens": 21987,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 21932,
+        "output_tokens": 55,
+        "total_tokens": 21987
+      },
+      "timestamp": "2026-07-18T04:57:44.735840",
+      "execution_number": 7,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Modification",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 22079,
+      "output_tokens": 53,
+      "total_tokens": 22132,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 22079,
+        "output_tokens": 53,
+        "total_tokens": 22132
+      },
+      "timestamp": "2026-07-18T04:57:48.053332",
+      "execution_number": 8,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Modification",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 22224,
+      "output_tokens": 53,
+      "total_tokens": 22277,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 22224,
+        "output_tokens": 53,
+        "total_tokens": 22277
+      },
+      "timestamp": "2026-07-18T04:57:50.817971",
+      "execution_number": 9,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Modification",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 22369,
+      "output_tokens": 54,
+      "total_tokens": 22423,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 22369,
+        "output_tokens": 54,
+        "total_tokens": 22423
+      },
+      "timestamp": "2026-07-18T04:57:52.866756",
+      "execution_number": 10,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Modification",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 22515,
+      "output_tokens": 61,
+      "total_tokens": 22576,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 22515,
+        "output_tokens": 61,
+        "total_tokens": 22576
+      },
+      "timestamp": "2026-07-18T04:57:56.040758",
+      "execution_number": 11,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Modification",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 22667,
+      "output_tokens": 1442,
+      "total_tokens": 24109,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 22667,
+        "output_tokens": 1442,
+        "total_tokens": 24109
+      },
+      "timestamp": "2026-07-18T04:58:18.668839",
+      "execution_number": 12,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Modification",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 24200,
+      "output_tokens": 81,
+      "total_tokens": 24281,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 24200,
+        "output_tokens": 81,
+        "total_tokens": 24281
+      },
+      "timestamp": "2026-07-18T04:58:22.482189",
+      "execution_number": 13,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Modification",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 24374,
+      "output_tokens": 118,
+      "total_tokens": 24492,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 24374,
+        "output_tokens": 118,
+        "total_tokens": 24492
+      },
+      "timestamp": "2026-07-18T04:58:25.951046",
+      "execution_number": 14,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Modification",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 24585,
+      "output_tokens": 341,
+      "total_tokens": 24926,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 24585,
+        "output_tokens": 341,
+        "total_tokens": 24926
+      },
+      "timestamp": "2026-07-18T04:58:32.099482",
+      "execution_number": 15,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Modification",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 25016,
+      "output_tokens": 51,
+      "total_tokens": 25067,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 25016,
+        "output_tokens": 51,
+        "total_tokens": 25067
+      },
+      "timestamp": "2026-07-18T04:58:34.161642",
+      "execution_number": 16,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Modification",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 25157,
+      "output_tokens": 395,
+      "total_tokens": 25552,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 25157,
+        "output_tokens": 395,
+        "total_tokens": 25552
+      },
+      "timestamp": "2026-07-18T04:58:43.250385",
+      "execution_number": 17,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Modification",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 25641,
+      "output_tokens": 120,
+      "total_tokens": 25761,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 25641,
+        "output_tokens": 120,
+        "total_tokens": 25761
+      },
+      "timestamp": "2026-07-18T04:58:47.550991",
+      "execution_number": 18,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Modification",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 25851,
+      "output_tokens": 288,
+      "total_tokens": 26139,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 25851,
+        "output_tokens": 288,
+        "total_tokens": 26139
+      },
+      "timestamp": "2026-07-18T04:58:54.061574",
+      "execution_number": 19,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Programmer Test Modification",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 26266,
+      "output_tokens": 7,
+      "total_tokens": 26273,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 26266,
+        "output_tokens": 7,
+        "total_tokens": 26273
+      },
+      "timestamp": "2026-07-18T04:58:57.788858",
+      "execution_number": 20,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Chief Product Officer",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 2661,
+      "output_tokens": 4150,
+      "total_tokens": 6811,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 2661,
+        "output_tokens": 4150,
+        "total_tokens": 6811
+      },
+      "timestamp": "2026-07-18T04:59:52.455826",
+      "execution_number": 1,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Chief Product Officer",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 7015,
+      "output_tokens": 409,
+      "total_tokens": 7424,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 7015,
+        "output_tokens": 409,
+        "total_tokens": 7424
+      },
+      "timestamp": "2026-07-18T04:59:59.565881",
+      "execution_number": 2,
+      "provider": "openai"
+    },
+    {
+      "node_id": "Chief Executive Officer",
+      "model_name": "mistral-large-3:675b-cloud",
+      "input_tokens": 3136,
+      "output_tokens": 3340,
+      "total_tokens": 6476,
+      "metadata": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "input_tokens": 3136,
+        "output_tokens": 3340,
+        "total_tokens": 6476
+      },
+      "timestamp": "2026-07-18T05:00:43.083208",
+      "execution_number": 1,
+      "provider": "openai"
+    }
+  ]
+}
