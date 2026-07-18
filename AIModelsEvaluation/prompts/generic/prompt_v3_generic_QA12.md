@@ -91,3 +91,4 @@ Provide complete, runnable artifacts to install and deploy on local machine as a
 - Organize the response with clear headers matching the sections above.
 - Where a file is long, still emit it in full; do not truncate.
 - Every cross-cutting concern must be **visible in code**, not only described in prose.
+- For automation testing purpose, a text file named "/start_command.txt" that contains a single command to start the whole project (docker or other command)
