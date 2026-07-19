@@ -8,8 +8,13 @@ scenarios so the pipeline logic can be exercised without Docker or a
 running server.
 
 Real implementations would:
-  • CompilabilityValidator  → docker run …, capture exit code + stderr
-  • FunctionalValidator     → httpx / requests against a live container
+  - CompilabilityValidator:  
+    + Start Docker using the command in /start_command.txt
+    + Wait for Docker start command to completed running
+    + Capture any exit code/stderr
+    + Return ValidationResult
+  - FunctionalValidator     
+    + httpx / requests against a live container
 """
 
 from __future__ import annotations

@@ -31,12 +31,12 @@ def run_generation(components: PipelineComponents, prompt: str) -> GenerationRes
     print("  ✅ done")
     return result
 
-def run_validation(components: PipelineComponents, code: str, indent: int = 1) -> list[ValidationResult]:
+def run_validation(components: PipelineComponents, gen_result: GenerationResult, code: str, indent: int = 1) -> list[ValidationResult]:
     pad = "  " * indent
     results: list[ValidationResult] = []
 
     print(f"{pad}validate > compilability")
-    compile_result = components.compilability_validator.validate(code)
+    compile_result = components.compilability_validator.validate(gen_result, code)
     results.append(compile_result)
 
     if not compile_result.passed:
@@ -45,7 +45,7 @@ def run_validation(components: PipelineComponents, code: str, indent: int = 1) -
     print(f"{pad}  ✅ passed")
 
     print(f"{pad}validate > functional tests")
-    functional_result = components.functional_validator.validate(code)
+    functional_result = components.functional_validator.validate(gen_result, code)
     results.append(functional_result)
 
     if not functional_result.passed:
@@ -57,6 +57,7 @@ def run_validation(components: PipelineComponents, code: str, indent: int = 1) -
 
 def run_repair_loop(
     components: PipelineComponents,
+    generation_result: GenerationResult,
     code: str,
     first_failure: ValidationResult,
     max_iterations: int,
@@ -74,7 +75,7 @@ def run_repair_loop(
             iteration=iteration,
         )
 
-        iter_results = run_validation(components, current_code, indent=2)
+        iter_results = run_validation(components,generation_result, current_code, indent=2)
         all_passed   = all(vr.passed for vr in iter_results)
 
         repair_history.append(RepairResult(
@@ -108,15 +109,19 @@ def run_pipeline(components: PipelineComponents, phase: str = "all") -> None:
     if phase in ("gen", "all"):
         generation = run_generation(components, prompt)
 
+# TODO: Remove this test line
+    generation.output_dir = "sdk_chatdev_20260711014413_20260711014413"
+
     if phase in ("val", "all"):
         print("PHASE 2: VALIDATION")
-        validation_results = run_validation(components, code, indent=1)
+        validation_results = run_validation(components, generation, code, indent=1)
         first_failure      = next((vr for vr in validation_results if not vr.passed), None)
 
     if phase in ("re", "all") and first_failure is not None:
         print("PHASE 3: REPARATION")
         code, repair_history = run_repair_loop(
             components=components,
+            generation_result=generation,
             code=code,
             first_failure=first_failure,
             max_iterations=max_iterations,

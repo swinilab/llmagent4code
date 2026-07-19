@@ -46,13 +46,13 @@ def build(config_path: str, scenario: str = "default") -> PipelineComponents:
 
     from agents.mock_repair_agent      import MockRepairAgent
     from repairers.report_writer       import TextReportWriter
-    from validators.mock_validators    import MockCompilabilityValidator, MockFunctionalValidator
+    from validators.validators    import CompilabilityValidator, FunctionalValidator
     endpoints = cfg.get("validation", {}).get("http", {}).get("endpoints")
 
     return PipelineComponents(
         generation_agent        = _build_generation_agent(cfg, scenario),
-        compilability_validator = MockCompilabilityValidator(),
-        functional_validator    = MockFunctionalValidator(endpoints=endpoints),
+        compilability_validator = CompilabilityValidator(),
+        functional_validator    = FunctionalValidator(endpoints=endpoints),
         repair_agent            = MockRepairAgent(scenario=scenario),
         report_writer           = TextReportWriter(
             report_path=cfg.get("output", {}).get("report_path", "reports/report.txt")

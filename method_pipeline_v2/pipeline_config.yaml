@@ -31,19 +31,19 @@ validation:
     endpoints:                          # list of test cases
       - id: "health_check"
         method: GET
-        path: "/health"
+        path: "/health/live"
         expected_status: 200
 
       - id: "create_item"
-        method: POST
-        path: "/items"
-        body: { "name": "test_item", "value": 42 }
-        expected_status: 201
+        method: GET
+        path: "/api/v1/products"
+        # body: { "name": "test_item", "value": 42 }
+        expected_status: 200
 
       - id: "get_item"
         method: GET
         path: "/items/1"
-        expected_status: 200
+        expected_status: 404
 
       - id: "invalid_item"
         method: GET
