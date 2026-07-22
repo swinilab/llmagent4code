@@ -1,0 +1,61 @@
+model,file_path,nfr_id,nfr_name,library,tactic,match_status,has_imports,has_calls
+Gemma,AIModelsEvaluation\Gemma\backend\app.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\app.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\app.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\app.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\app.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\app.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\app.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\app.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\app.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\app.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\app.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\app.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\app.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\app.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\app.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\app.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\app.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\app.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\app.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\app.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\app.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\app.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\app.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\app.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\app.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\app.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\app.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\app.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\app.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\app.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\domain_models.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\domain_models.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\domain_models.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\domain_models.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\domain_models.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\domain_models.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\domain_models.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\domain_models.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\domain_models.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\domain_models.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\domain_models.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\domain_models.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\domain_models.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\domain_models.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\domain_models.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\domain_models.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\domain_models.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\domain_models.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\domain_models.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\domain_models.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\domain_models.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\domain_models.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\domain_models.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\domain_models.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\domain_models.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\domain_models.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\domain_models.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\domain_models.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\domain_models.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+Gemma,AIModelsEvaluation\Gemma\backend\domain_models.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
