@@ -9,14 +9,17 @@ import subprocess
 import httpx
 import os
 from pathlib import Path
+import json
 
 from interfaces.base import (
     ICompilabilityValidator,
     IFunctionalValidator,
     Status,
+    TestResult,
     ValidationResult,
     GenerationResult
 )
+from validators.tests.CustomerTestGroup import CustomerTestGroup
 
 
 class CompilabilityValidator(ICompilabilityValidator):
@@ -117,69 +120,31 @@ class FunctionalValidator(IFunctionalValidator):
         config = config or {}
         self._base_url = config.get("validator", {}).get("base_url", "http://localhost:8000")
         self._timeout = config.get("validator", {}).get("timeout", 10.0)
-        
-        # Fallback endpoints if none are provided
-        self._endpoints = endpoints or config.get("validator", {}).get("endpoints", [
-            {"id": "health_check", "method": "GET", "path": "/health", "expected_status": 200},
-            {"id": "create_item", "method": "POST", "path": "/items", "expected_status": 201, "body": {"name": "test_item"}},
-            {"id": "get_item", "method": "GET", "path": "/items/1", "expected_status": 200},
-            {"id": "invalid_item", "method": "GET", "path": "/items/9999", "expected_status": 404},
-        ])
+        self._generated_dir = Path(
+            config.get("agent", {}).get("generated_dir", "generated")
+        )
+        # Default to /start_command.txt as requested, but allow override via config
+        self._start_command_file = config.get("validator", {}).get("start_command_file", "start_command.txt")
 
     def validate(self, generation_result: GenerationResult, code: str) -> ValidationResult:
-        results = []
+        workdir = os.path.join(
+                self._generated_dir,
+                generation_result.output_dir,
+                "code_workspace")
+        create_api_paths = dict()
+        with open(os.path.join(workdir, 'create_apis.json'), 'r', encoding='utf-8') as file:
+            create_api_paths = json.load(file)
         
-        # Use a single httpx client session for connection pooling/efficiency
-        with httpx.Client(timeout=self._timeout) as client:
-            for ep in self._endpoints:
-                url = f"{self._base_url.rstrip('/')}{ep['path']}"
-                method = ep["method"].upper()
-                expected_status = ep["expected_status"]
-                body = ep.get("body")
-                
-                try:
-                    # Fire the correct HTTP method
-                    if method == "GET":
-                        response = client.get(url)
-                    elif method == "POST":
-                        response = client.post(url, json=body)
-                    elif method == "PUT":
-                        response = client.put(url, json=body)
-                    elif method == "DELETE":
-                        response = client.delete(url)
-                    else:
-                        response = client.request(method, url)
-                        
-                    actual_status = response.status_code
+        results = list[TestResult]()
+
+# TODO: add similar blocks for the remaining entities
+        customer_create_api = "/api/v1/customers"
+        if create_api_paths["customer"] is not None and create_api_paths["customer"]["path"] is not None:
+            customer_create_api = create_api_paths["customer"]["path"]
+        customer_group = CustomerTestGroup(api = self._base_url + customer_create_api)
+        results.extend(customer_group.run_all())
                     
-                    # Evaluate results
-                    if actual_status != expected_status:
-                        results.append({
-                            "id": ep["id"],
-                            "status": "FAIL",
-                            "expected": expected_status,
-                            "actual": actual_status,
-                            "error": f"Expected {expected_status}, got {actual_status}",
-                            "response_text": response.text[:200], # Truncate large responses
-                        })
-                    else:
-                        results.append({
-                            "id": ep["id"],
-                            "status": "PASS",
-                            "expected": expected_status,
-                            "actual": actual_status,
-                        })
-                except Exception as e:
-                    # Catch network errors, timeouts, or container crashes
-                    results.append({
-                        "id": ep["id"],
-                        "status": "FAIL",
-                        "expected": expected_status,
-                        "actual": None,
-                        "error": str(e),
-                    })
-                    
-        failed = [r for r in results if r["status"] == "FAIL"]
+        failed = [r for r in results if r.result == False]
         if failed:
             return ValidationResult(
                 stage="functional",

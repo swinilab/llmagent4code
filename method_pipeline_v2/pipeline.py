@@ -106,10 +106,11 @@ def run_pipeline(components: PipelineComponents, phase: str = "all") -> None:
     first_failure      = None
     code               = ""
 
-    if phase in ("gen", "all"):
-        generation = run_generation(components, prompt)
+    # if phase in ("gen", "all"):
+    #     generation = run_generation(components, prompt)
 
 # TODO: Remove this test line
+    generation = GenerationResult("","","")
     generation.output_dir = "sdk_chatdev_20260711014413_20260711014413"
 
     if phase in ("val", "all"):
