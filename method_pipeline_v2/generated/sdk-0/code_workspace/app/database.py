@@ -1,4 +1,4 @@
-﻿"""
+"""
 Database engine, session factory, and lifecycle helpers.
 Uses SQLite WAL mode for crash-safe writes (NFR 2.3).
 """

@@ -41,8 +41,8 @@ class ValidationResult:
 class GenerationResult:
     """Returned by the generation agent."""
     model: str
-    prompt: str
     output_dir: str
+    completion: bool
 
 @dataclass
 class RepairResult:

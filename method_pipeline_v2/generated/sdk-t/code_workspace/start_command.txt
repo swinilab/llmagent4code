@@ -1,0 +1,1 @@
+docker build -t test-broken-app . && docker run --rm test-broken-app

@@ -140,6 +140,7 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 execution_logs.json
 node_outputs.yaml
+pipeline_config.yaml
 
 
 __pycache__/*

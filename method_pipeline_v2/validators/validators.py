@@ -7,7 +7,7 @@ from __future__ import annotations
 
 import subprocess
 import httpx
-import os
+import os, re
 from pathlib import Path
 import json
 
@@ -34,15 +34,22 @@ class CompilabilityValidator(ICompilabilityValidator):
         self._generated_dir = Path(
             config.get("agent", {}).get("generated_dir", "generated")
         )
-        # Default to /start_command.txt as requested, but allow override via config
         self._start_command_file = config.get("validator", {}).get("start_command_file", "start_command.txt")
 
-    def validate(self, generation_result: GenerationResult, code: str) -> ValidationResult:
-        workdir = os.path.join(
-                self._generated_dir,
-                generation_result.output_dir,
-                "code_workspace")
-        # 1. Read the Docker start command
+    def _clean_logs(self, raw_text: str) -> str:
+        if not raw_text:
+            return ""
+        lines = raw_text.splitlines()
+        clean_lines = [
+            line for line in lines 
+            if line.strip() and not line.strip().startswith('#')
+        ]
+        return "\n".join(clean_lines)
+
+    def validate(self, gen_result: str, code: str) -> ValidationResult:
+        # workdir = self._generated_dir / gen_result.output_dir / "code_workspace"
+        workdir = Path(code)
+
         try:
             command = Path(os.path.join(
                 workdir,
@@ -63,48 +70,65 @@ class CompilabilityValidator(ICompilabilityValidator):
                 details={"error": str(e)},
             )
 
-        # 2. Execute the command and wait for completion
         try:
-            proc = subprocess.run(
+            # THUẬT TOÁN ÉP CHỜ:
+            # Chạy lệnh trong foreground (không dùng cờ -d của docker).
+            # Ép quá trình chờ tối đa 10 giây (timeout=10).
+            # Nếu là web server (FastAPI), nó sẽ block luồng mãi mãi -> văng lỗi TimeoutExpired.
+            # TimeoutExpired trong trường hợp này lại là TIN TỐT (nghĩa là server không bị crash).
+            
+            process = subprocess.run(
                 command,
-                shell=True,            # Allows pipes, redirects, etc.
-                capture_output=True,   # Captures stdout/stderr
-                text=True,             # Decodes output to string
                 cwd=workdir,
+                shell=True,
+                capture_output=True,
+                text=True,
+                timeout=60 # Quan trọng: Chờ 10 giây xem app có crash không
+            )
+            
+            # Nếu lệnh kết thúc sớm hơn 10 giây và trả về lỗi (!= 0) -> Chắc chắn app đã crash
+            if process.returncode != 0:
+                return ValidationResult(
+                    status=Status.FAIL, 
+                    stage="compilability",
+                    message="Runtime error or crash detected during startup", 
+                    details={"stderr": process.stderr, "stdout": process.stdout}
+                )
+            
+            # (Trường hợp lệnh là script chạy ngắn, chạy xong thành công trả về 0)
+            return ValidationResult(
+                status=Status.PASS, 
+                stage="compilability",
+                message="Executed successfully without crashing",
+                details={}
             )
 
-            # 3. Check exit code and return appropriate ValidationResult
-            if proc.returncode != 0:
-                return ValidationResult(
-                    stage="compilability",
-                    status=Status.FAIL,
-                    message=f"Docker start command failed with exit code {proc.returncode}.",
-                    details={
-                        "command": command,
-                        "exit_code": proc.returncode,
-                        "stderr": proc.stderr,
-                        "stdout": proc.stdout,
-                    },
-                )
-
+        except subprocess.TimeoutExpired as e:
+            # 1. DỌN DẸP CONTAINER: 
+            # Bắt buộc phải tắt container đang chạy ngầm để giải phóng Port cho lần kiểm tra sau
+            subprocess.run(
+                "docker compose down", 
+                cwd=workdir, 
+                shell=True, 
+                capture_output=True
+            )
+            
+            # 2. KHỞI TẠO ĐÚNG THAM SỐ:
+            # Tạm thời gọi bằng positional arguments (bỏ chữ passed=, message=)
+            # LƯU Ý: Đổi thứ tự/số lượng biến dưới đây cho khớp với interfaces/base.py của bạn
             return ValidationResult(
-                stage="compilability",
-                status=Status.PASS,
-                message="Docker start command completed successfully.",
-                details={
-                    "command": command,
-                    "exit_code": proc.returncode,
-                    "stdout": proc.stdout,
-                },
+                status=Status.PASS,                                                    
+                stage="Compilability",
+                message="Server started and remained stable (Timeout reached)", 
+                details={}
             )
         except Exception as e:
             return ValidationResult(
+                status=Status.FAIL, 
                 stage="compilability",
-                status=Status.FAIL,
-                message=f"Exception while running start command: {e}",
-                details={"error": str(e), "command": command},
+                message=f"Validator internal error: {str(e)}", 
+                details={"stderr": str(e)}
             )
-
 
 class FunctionalValidator(IFunctionalValidator):
     """

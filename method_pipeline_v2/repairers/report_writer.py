@@ -25,8 +25,9 @@ from interfaces.base import (
 
 class TextReportWriter(IReportWriter):
 
-    def __init__(self, report_path: str = "reports/report.txt") -> None:
-        self._path = report_path
+    def __init__(self, report_dir: str = "reports/") -> None:
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        self._path = os.path.join(report_dir, f"report_{timestamp}.txt")
 
     def write(
     self,
@@ -43,7 +44,7 @@ class TextReportWriter(IReportWriter):
         lines.append("")
 
         lines.append("GENERATION")
-        if generation:
+        if generation.completion:
             model_name = getattr(generation, 'model', 'N/A')
             output_dir = getattr(generation, 'output_dir', 'N/A')
             
@@ -51,7 +52,7 @@ class TextReportWriter(IReportWriter):
             lines.append(f"output: {output_dir}")
             lines.append("")
         else:
-            lines.append("Generation failed.")
+            lines.append("❌ Generation failed.")
             lines.append("")
 
 
@@ -60,6 +61,8 @@ class TextReportWriter(IReportWriter):
             for vr in validation_results:
                 icon = "✅" if vr.passed else "❌"
                 lines.append(f"  {icon} {vr.stage} : {vr.message}")
+                lines.append(f"  Error detail : {vr.details.get('stderr')}")
+                # lines.append(f"  Fail at : {vr.details["failed_files"]}")
             lines.append("")
 
         if repair_history:

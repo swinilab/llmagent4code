@@ -16,7 +16,6 @@ from interfaces.base import (
     IReportWriter,
 )
 
-
 @dataclass
 class PipelineComponents:
     generation_agent:        IGenerationAgent
@@ -30,7 +29,7 @@ def _build_generation_agent(cfg: dict, scenario: str) -> IGenerationAgent:
     agent_type = cfg.get("agent", {}).get("type", "mock")
 
     if agent_type == "chatdev":
-        from agents.chatdev import ChatDevGenerationAgent
+        from agents.gen import ChatDevGenerationAgent
         return ChatDevGenerationAgent(config=cfg)
 
     if agent_type == "mock":
@@ -39,6 +38,18 @@ def _build_generation_agent(cfg: dict, scenario: str) -> IGenerationAgent:
 
     raise ValueError(f"Unknown agent type: {agent_type}")
 
+def _build_repair_agent(cfg: dict, scenario: str) -> IRepairAgent:
+    agent_type = cfg.get("repair", {}).get("type", "mock")
+
+    if agent_type == "mini":
+        from agents.repair import MiniRepairAgent
+        return MiniRepairAgent(config=cfg)
+
+    if agent_type == "mock":
+        from agents.mock_generation_agent import MockGenerationAgent
+        return MockGenerationAgent(scenario=scenario)
+
+    raise ValueError(f"Unknown agent type: {agent_type}")
 
 def build(config_path: str, scenario: str = "default") -> PipelineComponents:
     with open(config_path) as f:
@@ -53,39 +64,9 @@ def build(config_path: str, scenario: str = "default") -> PipelineComponents:
         generation_agent        = _build_generation_agent(cfg, scenario),
         compilability_validator = CompilabilityValidator(),
         functional_validator    = FunctionalValidator(endpoints=endpoints),
-        repair_agent            = MockRepairAgent(scenario=scenario),
+        repair_agent            = _build_repair_agent(cfg, scenario),
         report_writer           = TextReportWriter(
-            report_path=cfg.get("output", {}).get("report_path", "reports/report.txt")
+            report_dir=cfg.get("output", {}).get("report_dir", "reports/")
         ),
         config=cfg,
     )
-
-# def build(config_path: str = "pipeline_config.yaml", scenario: str = "default") -> PipelineComponents:
-#     """
-#     Load config and return all wired components.
-
-#     `scenario` selects which mock data set is used during testing.
-#     In production you would branch here on config["agent"]["model"]
-#     to pick real LLM / Docker / HTTP implementations instead.
-#     """
-#     with open(config_path) as f:
-#         cfg = yaml.safe_load(f)
-
-#     # ── Lazy imports keep concrete classes out of main.py ────────────────────
-#     from agents.mock_generation_agent  import MockGenerationAgent
-#     from agents.mock_repair_agent      import MockRepairAgent
-#     from repairers.report_writer       import TextReportWriter
-#     from validators.mock_validators    import MockCompilabilityValidator, MockFunctionalValidator
-
-#     endpoints = cfg.get("validation", {}).get("http", {}).get("endpoints")
-
-#     return PipelineComponents(
-#         generation_agent        = MockGenerationAgent(scenario=scenario),
-#         compilability_validator = MockCompilabilityValidator(),
-#         functional_validator    = MockFunctionalValidator(endpoints=endpoints),
-#         repair_agent            = MockRepairAgent(scenario=scenario),
-#         report_writer           = TextReportWriter(
-#             report_path=cfg.get("output", {}).get("report_path", "reports/report.txt")
-#         ),
-#         config=cfg,
-#     )

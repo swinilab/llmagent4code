@@ -8,7 +8,7 @@ def _parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Empirical Study Pipeline")
     parser.add_argument(
         "--phase",
-        choices=["gen", "val", "re", "all"],
+        choices=["gen", "val", "all"],
         default="all",
     )
     parser.add_argument(

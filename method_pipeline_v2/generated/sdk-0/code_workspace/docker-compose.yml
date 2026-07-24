@@ -23,7 +23,7 @@ services:
       OMS_REQUEST_TIMEOUT_SECONDS: "30"
     volumes:
       - oms_data:/app/data
-    restart: unless-stopped
+    restart: "no"
     healthcheck:
       test: ["CMD", "python", "-c", "import urllib.request, sys; sys.exit(0 if urllib.request.urlopen('http://localhost:8000/health/live').status == 200 else 1)"]
       interval: 30s
