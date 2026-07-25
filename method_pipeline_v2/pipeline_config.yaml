@@ -7,12 +7,12 @@ workdir: "."
 # ── Generation ────────────────────────────────
 agent:
   type: "chatdev"
-  model: "gemma4:31b"                      
-  api_key: ""
+  model: "qwen3.5:cloud"                      
+  api_key: "ok"
   api_base: "https://ollama.com/v1"
   temperature: 0.2
   workflow: "agents/chatdev.yaml"             # ChatDev's coding workflow
-  prompt_template: "prompts/simple.md"        # path to the generation prompt
+  prompt_template: "prompts/latest.md"        # path to the generation prompt
   generated_dir: "generated"
 
 # ── Validation ────────────────────────────────
@@ -53,8 +53,8 @@ validation:
 repair:
   max_iterations: 5           # k — maximum repair attempts
   type: "mini"
-  model: "gemma4:31b"                      
-  api_key: ""
+  model: "gpt-oss:120b-cloud"                      
+  api_key: "ok"
   api_base: "https://ollama.com/v1"
   temperature: 0.2
   workflow: "agents/mini.yaml"             

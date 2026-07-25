@@ -20,6 +20,10 @@ from interfaces.base import (
     GenerationResult
 )
 from validators.tests.CustomerTestGroup import CustomerTestGroup
+from validators.tests.InvoiceTestGroup import InvoiceTestGroup
+from validators.tests.OrderTestGroup import OrderTestGroup
+from validators.tests.PaymentTestGroup import PaymentTestGroup
+from validators.tests.ProductTestGroup import ProductTestGroup
 
 
 class CompilabilityValidator(ICompilabilityValidator):
@@ -150,6 +154,19 @@ class FunctionalValidator(IFunctionalValidator):
         # Default to /start_command.txt as requested, but allow override via config
         self._start_command_file = config.get("validator", {}).get("start_command_file", "start_command.txt")
 
+    def _resolve_create_api_path(
+        self,
+        create_api_paths: dict,
+        entity_key: str,
+        default_path: str,
+    ) -> str:
+        """Resolve the create-endpoint path for an entity from create_apis.json,
+        falling back to a sensible default if the key/path is missing or null."""
+        entry = create_api_paths.get(entity_key)
+        if entry is not None and entry.get("path") is not None:
+            return entry["path"]
+        return default_path
+
     def validate(self, generation_result: GenerationResult, code: str) -> ValidationResult:
         workdir = os.path.join(
                 self._generated_dir,
@@ -161,13 +178,36 @@ class FunctionalValidator(IFunctionalValidator):
         
         results = list[TestResult]()
 
-# TODO: add similar blocks for the remaining entities
-        customer_create_api = "/api/v1/customers"
-        if create_api_paths["customer"] is not None and create_api_paths["customer"]["path"] is not None:
-            customer_create_api = create_api_paths["customer"]["path"]
-        customer_group = CustomerTestGroup(api = self._base_url + customer_create_api)
+        customer_create_api = self._resolve_create_api_path(
+            create_api_paths, "customer", "/api/v1/customers"
+        )
+        customer_group = CustomerTestGroup(api=self._base_url + customer_create_api)
         results.extend(customer_group.run_all())
-                    
+
+        product_create_api = self._resolve_create_api_path(
+            create_api_paths, "product", "/api/v1/products"
+        )
+        product_group = ProductTestGroup(api=self._base_url + product_create_api)
+        results.extend(product_group.run_all())
+
+        order_create_api = self._resolve_create_api_path(
+            create_api_paths, "order", "/api/v1/orders"
+        )
+        order_group = OrderTestGroup(api=self._base_url + order_create_api)
+        results.extend(order_group.run_all())
+
+        payment_create_api = self._resolve_create_api_path(
+            create_api_paths, "payment", "/api/v1/payments"
+        )
+        payment_group = PaymentTestGroup(api=self._base_url + payment_create_api)
+        results.extend(payment_group.run_all())
+
+        invoice_create_api = self._resolve_create_api_path(
+            create_api_paths, "invoice", "/api/v1/invoices"
+        )
+        invoice_group = InvoiceTestGroup(api=self._base_url + invoice_create_api)
+        results.extend(invoice_group.run_all())
+
         failed = [r for r in results if r.result == False]
         if failed:
             return ValidationResult(
@@ -183,3 +223,108 @@ class FunctionalValidator(IFunctionalValidator):
             message=f"All {len(results)} HTTP functional tests passed.",
             details={"results": results},
         )
+
+if __name__ == "__main__":
+    """
+    Quick manual smoke-test entry point.
+ 
+    Assumes the OMS app is ALREADY RUNNING at http://localhost:8000 (started
+    manually by you) - this block does NOT start/stop any process, it just
+    drives FunctionalValidator.validate() against it and prints a readable
+    PASS/FAIL report.
+ 
+    Usage (run from the project root, NOT from inside validators/ - this file
+    uses package-relative imports like `from interfaces.base import ...`,
+    so it must be invoked as a module):
+        python -m validators.real_validators
+ 
+    Running `python validators/real_validators.py` directly will fail with
+    `ModuleNotFoundError: No module named 'interfaces'`.
+ 
+    It expects (and will auto-create if missing) a create_apis.json at:
+        generated/run1/code_workspace/create_apis.json
+    Edit CREATE_APIS_JSON below if your endpoint paths differ.
+    """
+    import sys
+ 
+    CREATE_APIS_JSON = {
+        "customer": {"method": "POST", "path": "/api/v1/customers"},
+        "product":  {"method": "POST", "path": "/api/v1/products"},
+        "order":    {"method": "POST", "path": "/api/v1/orders"},
+        "payment":  {"method": "POST", "path": "/api/v1/payments"},
+        "invoice":  {"method": "POST", "path": "/api/v1/invoices"},
+    }
+ 
+    GENERATED_DIR = "/mnt/c/Users/Admin/Desktop"
+    OUTPUT_DIR = "sdk-test"
+    BASE_URL = "http://localhost:8000"
+
+    workdir = os.path.join(GENERATED_DIR, OUTPUT_DIR, "code_workspace")
+    os.makedirs(workdir, exist_ok=True)
+
+    create_apis_path = os.path.join(workdir, "create_apis.json")
+    if not os.path.exists(create_apis_path):
+        with open(create_apis_path, "w", encoding="utf-8") as f:
+            json.dump(CREATE_APIS_JSON, f, indent=2, ensure_ascii=False)
+        print(f"[setup] Wrote default create_apis.json to {create_apis_path}")
+
+    start_command_path = os.path.join(workdir, "start_command.txt")
+    if not os.path.exists(start_command_path):
+        with open(start_command_path, "w", encoding="utf-8") as f:
+            f.write("echo 'app already running - nothing to start'\n")
+ 
+    config = {
+        "validator": {
+            "base_url": BASE_URL,
+            "timeout": 10.0,
+            "start_command_file": "start_command.txt",
+        },
+        "agent": {
+            "generated_dir": GENERATED_DIR,
+        },
+    }
+ 
+    generation_result = GenerationResult(output_dir=OUTPUT_DIR, model="ok", completion=True)
+ 
+    validator = FunctionalValidator(config=config)
+    result = validator.validate(generation_result=generation_result, code="unused")
+ 
+    print("=" * 70)
+    print(f"STAGE   : {result.stage}")
+    print(f"STATUS  : {result.status}")
+    print(f"MESSAGE : {result.message}")
+    print("=" * 70)
+ 
+    all_results = result.details.get("results", [])
+    failed_results = result.details.get("failed", [])
+    passed_count = len(all_results) - len(failed_results)
+    print(f"\nPassed: {passed_count} / {len(all_results)}\n")
+ 
+    if failed_results:
+        print("Failed test cases:")
+        print("-" * 70)
+        for r in failed_results:
+            print(f"[FAIL] {r.testcase_id}: {r.message}")
+        print("-" * 70)
+    else:
+        print("All test cases passed.")
+ 
+    report = {
+        "stage": result.stage,
+        "status": str(result.status),
+        "message": result.message,
+        "total": len(all_results),
+        "passed": passed_count,
+        "failed": len(failed_results),
+        "results": [
+            {"testcase_id": r.testcase_id, "result": r.result, "message": r.message}
+            for r in all_results
+        ],
+    }
+    report_path = Path("functional_test_report.json")
+    report_path.write_text(
+        json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8"
+    )
+    print(f"\nFull report written to {report_path.resolve()}")
+ 
+    sys.exit(0 if result.status == Status.PASS else 1)

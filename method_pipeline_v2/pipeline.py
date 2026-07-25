@@ -104,12 +104,12 @@ def run_pipeline(components: PipelineComponents, phase: str = "all") -> None:
     prompt         = _read_prompt(cfg)
 
     # Khởi tạo mặc định nếu bỏ qua pha Generation
-    generation         = GenerationResult("lol", "sdk-0", True)
+    generation         = None
     validation_results = []
     repair_history     = []
     
     generated_dir = Path(cfg.get("agent", {}).get("generated_dir", "generated"))
-    code          = str(generated_dir / generation.output_dir / "code_workspace")
+    code          = str(generated_dir / "code_workspace")
 
     # 1. GENERATION PHASE
     if phase in ("gen", "all"):

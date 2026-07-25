@@ -1,0 +1,978 @@
+openapi: 3.0.3
+info:
+  title: Order Management System (OMS)
+  description: Production-grade backend-only e-commerce Order Management System
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8000/api/v1
+    description: Local development server
+
+tags:
+  - name: customers
+    description: Customer management
+  - name: products
+    description: Product catalog
+  - name: orders
+    description: Order lifecycle management
+  - name: invoices
+    description: Invoice management
+  - name: payments
+    description: Payment processing
+  - name: health
+    description: Health checks and monitoring
+
+paths:
+  /customers:
+    post:
+      tags: [customers]
+      summary: Create a new customer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerCreateRequest'
+      responses:
+        '201':
+          description: Customer created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerResponse'
+        '400':
+          description: Validation error
+    get:
+      tags: [customers]
+      summary: List all customers
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 100
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            default: 0
+      responses:
+        '200':
+          description: List of customers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CustomerResponse'
+
+  /customers/{customer_id}:
+    get:
+      tags: [customers]
+      summary: Get customer by ID
+      parameters:
+        - name: customer_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Customer details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerResponse'
+        '404':
+          description: Customer not found
+
+  /products:
+    post:
+      tags: [products]
+      summary: Create a new product
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductCreateRequest'
+      responses:
+        '201':
+          description: Product created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResponse'
+        '400':
+          description: Validation error
+    get:
+      tags: [products]
+      summary: List all products
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 100
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            default: 0
+      responses:
+        '200':
+          description: List of products
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductResponse'
+
+  /products/{product_id}:
+    get:
+      tags: [products]
+      summary: Get product by ID
+      parameters:
+        - name: product_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Product details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResponse'
+        '404':
+          description: Product not found
+
+  /orders:
+    post:
+      tags: [orders]
+      summary: Create a new order (async, returns 202)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderCreateRequest'
+      responses:
+        '202':
+          description: Order accepted for processing
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
+        '503':
+          description: Server overloaded
+    get:
+      tags: [orders]
+      summary: List all orders
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 100
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            default: 0
+      responses:
+        '200':
+          description: List of orders
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrderResponse'
+
+  /orders/recent:
+    get:
+      tags: [orders]
+      summary: Get most recent orders
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 1
+      responses:
+        '200':
+          description: List of recent orders
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrderResponse'
+
+  /orders/{order_id}:
+    get:
+      tags: [orders]
+      summary: Get order by ID
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Order details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
+        '404':
+          description: Order not found
+
+  /orders/{order_id}/review:
+    put:
+      tags: [orders]
+      summary: Review order
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Order reviewed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
+        '400':
+          description: Validation error
+        '409':
+          description: Invalid state transition
+
+  /orders/{order_id}/accept:
+    put:
+      tags: [orders]
+      summary: Accept order (PLACED -> ACCEPTED)
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Order accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
+        '400':
+          description: Validation error
+        '409':
+          description: Invalid state transition
+
+  /orders/{order_id}/cancel:
+    put:
+      tags: [orders]
+      summary: Cancel order
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Order cancelled
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
+        '400':
+          description: Validation error
+        '409':
+          description: Invalid state transition
+
+  /orders/{order_id}/ship:
+    put:
+      tags: [orders]
+      summary: Ship order (VERIFIED -> SHIPPED)
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Order shipped
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
+        '400':
+          description: Validation error
+        '409':
+          description: Invalid state transition
+
+  /orders/{order_id}/close:
+    put:
+      tags: [orders]
+      summary: Close order (SHIPPED -> CLOSED)
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Order closed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
+        '400':
+          description: Validation error
+        '409':
+          description: Invalid state transition
+
+  /invoices:
+    post:
+      tags: [invoices]
+      summary: Create a new invoice
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InvoiceCreateRequest'
+      responses:
+        '201':
+          description: Invoice created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceResponse'
+        '400':
+          description: Validation error
+        '409':
+          description: Invalid state transition
+    get:
+      tags: [invoices]
+      summary: List all invoices
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 100
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            default: 0
+      responses:
+        '200':
+          description: List of invoices
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InvoiceResponse'
+
+  /invoices/{invoice_id}:
+    get:
+      tags: [invoices]
+      summary: Get invoice by ID
+      parameters:
+        - name: invoice_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Invoice details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceResponse'
+        '404':
+          description: Invoice not found
+
+  /invoices/order/{order_ref}:
+    get:
+      tags: [invoices]
+      summary: Get invoice by order reference
+      parameters:
+        - name: order_ref
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Invoice details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceResponse'
+        '404':
+          description: Invoice not found
+
+  /invoices/{invoice_id}/cancel:
+    put:
+      tags: [invoices]
+      summary: Cancel invoice
+      parameters:
+        - name: invoice_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Invoice cancelled
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceResponse'
+        '400':
+          description: Validation error
+        '409':
+          description: Invalid state transition
+
+  /payments:
+    post:
+      tags: [payments]
+      summary: Create a new payment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentCreateRequest'
+      responses:
+        '201':
+          description: Payment created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+        '400':
+          description: Validation error
+        '409':
+          description: Invalid state transition
+    get:
+      tags: [payments]
+      summary: List all payments
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 100
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            default: 0
+      responses:
+        '200':
+          description: List of payments
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PaymentResponse'
+
+  /payments/{payment_id}:
+    get:
+      tags: [payments]
+      summary: Get payment by ID
+      parameters:
+        - name: payment_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Payment details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+        '404':
+          description: Payment not found
+
+  /payments/order/{order_ref}:
+    get:
+      tags: [payments]
+      summary: Get payment by order reference
+      parameters:
+        - name: order_ref
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Payment details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+        '404':
+          description: Payment not found
+
+  /payments/{payment_id}/verify:
+    put:
+      tags: [payments]
+      summary: Verify payment (PENDING -> VERIFIED)
+      parameters:
+        - name: payment_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Payment verified
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+        '400':
+          description: Validation error
+        '409':
+          description: Invalid state transition
+
+  /payments/{payment_id}/reject:
+    put:
+      tags: [payments]
+      summary: Reject payment (PENDING -> REJECTED)
+      parameters:
+        - name: payment_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Payment rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+        '400':
+          description: Validation error
+        '409':
+          description: Invalid state transition
+
+  /health/live:
+    get:
+      tags: [health]
+      summary: Liveness probe
+      responses:
+        '200':
+          description: Application is alive
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+
+  /health/ready:
+    get:
+      tags: [health]
+      summary: Readiness probe
+      responses:
+        '200':
+          description: Application is ready
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReadinessResponse'
+
+  /health:
+    get:
+      tags: [health]
+      summary: Comprehensive health check
+      responses:
+        '200':
+          description: Health status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthCheckResponse'
+
+  /health/queue:
+    get:
+      tags: [health]
+      summary: Queue status
+      responses:
+        '200':
+          description: Queue statistics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueueStatsResponse'
+
+  /health/degradation:
+    get:
+      tags: [health]
+      summary: Degradation status
+      responses:
+        '200':
+          description: Degradation status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DegradationStatusResponse'
+
+components:
+  schemas:
+    CustomerCreateRequest:
+      type: object
+      required: [name, address, phone, accountNumber, bankName]
+      properties:
+        name:
+          type: string
+          minLength: 2
+          maxLength: 100
+        address:
+          type: string
+          minLength: 5
+          maxLength: 255
+        phone:
+          type: string
+          minLength: 8
+          maxLength: 15
+        accountNumber:
+          type: string
+          minLength: 6
+          maxLength: 20
+        bankName:
+          type: string
+          minLength: 2
+          maxLength: 100
+        role:
+          type: string
+          enum: [CUSTOMER, ORDER_STAFF, ACCOUNTANT]
+          default: CUSTOMER
+
+    CustomerResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        address:
+          type: string
+        phone:
+          type: string
+        bankingDetails:
+          type: object
+          properties:
+            accountNumber:
+              type: string
+            bankName:
+              type: string
+        role:
+          type: string
+        orderHistory:
+          type: array
+          items:
+            type: string
+            format: uuid
+
+    ProductCreateRequest:
+      type: object
+      required: [description, price]
+      properties:
+        description:
+          type: string
+          minLength: 3
+          maxLength: 500
+        price:
+          type: object
+          required: [amount, currency]
+          properties:
+            amount:
+              type: number
+              format: decimal
+              minimum: 0.01
+              maximum: 999999.99
+            currency:
+              type: string
+              minLength: 3
+              maxLength: 3
+              enum: [USD, VND, EUR]
+
+    ProductResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        description:
+          type: string
+        price:
+          type: object
+          properties:
+            amount:
+              type: number
+              format: decimal
+            currency:
+              type: string
+
+    OrderCreateRequest:
+      type: object
+      required: [customerRef, lineItems]
+      properties:
+        customerRef:
+          type: string
+          format: uuid
+        lineItems:
+          type: array
+          minItems: 1
+          maxItems: 100
+          items:
+            type: object
+            required: [productRef, quantity]
+            properties:
+              productRef:
+                type: string
+                format: uuid
+              quantity:
+                type: integer
+                minimum: 1
+                maximum: 1000
+
+    OrderResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        customerRef:
+          type: string
+          format: uuid
+        lineItems:
+          type: array
+          items:
+            type: object
+            properties:
+              productRef:
+                type: string
+                format: uuid
+              quantity:
+                type: integer
+              unitPriceSnapshot:
+                type: number
+                format: decimal
+        totalAmount:
+          type: number
+          format: decimal
+        status:
+          type: string
+          enum: [PLACED, ACCEPTED, INVOICED, PAID, VERIFIED, SHIPPED, CLOSED, CANCELLED]
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        invoiceRef:
+          type: string
+          format: uuid
+          nullable: true
+
+    InvoiceCreateRequest:
+      type: object
+      required: [orderRef]
+      properties:
+        orderRef:
+          type: string
+          format: uuid
+        issueDate:
+          type: string
+          pattern: '^\\d{2}/\\d{2}/\\d{4}$'
+        dueDate:
+          type: string
+          pattern: '^\\d{2}/\\d{2}/\\d{4}$'
+
+    InvoiceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        orderRef:
+          type: string
+          format: uuid
+        billingInfo:
+          type: object
+          properties:
+            name:
+              type: string
+            address:
+              type: string
+        totalAmount:
+          type: number
+          format: decimal
+        issueDate:
+          type: string
+        dueDate:
+          type: string
+        status:
+          type: string
+          enum: [ISSUED, PAID, OVERDUE, CANCELLED]
+
+    PaymentCreateRequest:
+      type: object
+      required: [orderRef, amount, method]
+      properties:
+        orderRef:
+          type: string
+          format: uuid
+        amount:
+          type: number
+          format: decimal
+          minimum: 0.01
+          maximum: 99999999.99
+        method:
+          type: string
+          enum: [CREDIT_CARD, BANK_TRANSFER, E_WALLET]
+
+    PaymentResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        orderRef:
+          type: string
+          format: uuid
+        amount:
+          type: number
+          format: decimal
+        timestamp:
+          type: string
+          format: date-time
+        status:
+          type: string
+          enum: [PENDING, VERIFIED, REJECTED]
+        method:
+          type: string
+          enum: [CREDIT_CARD, BANK_TRANSFER, E_WALLET]
+
+    HealthResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+
+    ReadinessResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        checks:
+          type: object
+          properties:
+            database:
+              type: string
+            queue_size:
+              type: integer
+            degradation_level:
+              type: string
+
+    HealthCheckResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        components:
+          type: object
+          properties:
+            database:
+              type: object
+            queue:
+              type: object
+            degradation:
+              type: object
+
+    QueueStatsResponse:
+      type: object
+      properties:
+        queue_size:
+          type: integer
+        max_size:
+          type: integer
+        is_full:
+          type: boolean
+        processing:
+          type: boolean
+        worker_count:
+          type: integer
+        processed_count:
+          type: integer
+        failed_count:
+          type: integer
+        last_processed_at:
+          type: string
+          format: date-time
+          nullable: true
+
+    DegradationStatusResponse:
+      type: object
+      properties:
+        level:
+          type: string
+          enum: [NORMAL, DEGRADED, CRITICAL]
+        current_load:
+          type: number
+        disabled_endpoints:
+          type: array
+          items:
+            type: string
+        core_endpoints_available:
+          type: integer
+        last_check:
+          type: string
+          format: date-time
