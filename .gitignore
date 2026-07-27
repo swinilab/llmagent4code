@@ -145,3 +145,5 @@ pipeline_config.yaml
 
 __pycache__/*
 execution_logs.json
+*.pyc
+fucntional_test_report.json

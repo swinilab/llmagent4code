@@ -255,8 +255,8 @@ if __name__ == "__main__":
         "invoice":  {"method": "POST", "path": "/api/v1/invoices"},
     }
  
-    GENERATED_DIR = "/mnt/c/Users/Admin/Desktop"
-    OUTPUT_DIR = "sdk-test"
+    GENERATED_DIR = "generated"
+    OUTPUT_DIR = "sdk-test-hope"
     BASE_URL = "http://localhost:8000"
 
     workdir = os.path.join(GENERATED_DIR, OUTPUT_DIR, "code_workspace")
