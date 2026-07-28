@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28T09:25:05",
+  "generated_at": "2026-07-28T10:24:03",
   "trace_file": "C:\\Swinburne Class\\SwinLab\\llmgenmt\\llmagent4code\\qa-test\\sdk-0\\code_workspace\\nfr-trace.json",
   "repo_root": "C:\\Swinburne Class\\SwinLab\\llmgenmt\\llmagent4code\\qa-test\\sdk-0\\code_workspace",
   "exit_code": 1,
@@ -12,7 +12,7 @@
       "nfr": "NFR 1.1 Response Time",
       "status": "PRESENT",
       "stage": "existence",
-      "evidence": "functions[get=PRESENT; set=PRESENT; list_products=PRESENT] libraries[fastapi=PRESENT; aiocache=PRESENT]",
+      "evidence": "functions[get=PRESENT; set=PRESENT; list_products=PRESENT] libraries[fastapi=PRESENT; aiocache=PRESENT] fn-uses-lib[level1=PRESENT; get->none; set->none; list_products->['fastapi']]",
       "tactics": [
         "Maintain Multiple Copies of Computations"
       ],
@@ -44,13 +44,38 @@
           "status": "PRESENT",
           "detail": "'aiocache' imported and used"
         }
-      ]
+      ],
+      "function_library_usage": {
+        "level1": "PRESENT",
+        "per_function": [
+          {
+            "ref": "app/cache/response_cache.py::get",
+            "libs_used": [],
+            "uses_any": false,
+            "note": ""
+          },
+          {
+            "ref": "app/cache/response_cache.py::set",
+            "libs_used": [],
+            "uses_any": false,
+            "note": ""
+          },
+          {
+            "ref": "app/api/v1/routers/product.py::list_products",
+            "libs_used": [
+              "fastapi"
+            ],
+            "uses_any": true,
+            "note": ""
+          }
+        ]
+      }
     },
     {
       "nfr": "NFR 1.2 Concurrency & Resource Utilization",
       "status": "ABSENT",
       "stage": "existence",
-      "evidence": "functions[create_app=PRESENT; on_startup=PRESENT; create_order=PRESENT; process_payment=PRESENT; create_invoice=PRESENT] libraries[uvicorn=ABSENT; asyncio=PRESENT]",
+      "evidence": "functions[create_app=PRESENT; on_startup=PRESENT; create_order=PRESENT; process_payment=PRESENT; create_invoice=PRESENT] libraries[uvicorn=ABSENT; asyncio=PRESENT] fn-uses-lib[level1=PRESENT; create_app->['asyncio']; on_startup->['asyncio']; create_order->none; process_payment->none; create_invoice->none]",
       "tactics": [
         "Introduce Concurrency"
       ],
@@ -92,13 +117,52 @@
           "status": "PRESENT",
           "detail": "'asyncio' imported and used"
         }
-      ]
+      ],
+      "function_library_usage": {
+        "level1": "PRESENT",
+        "per_function": [
+          {
+            "ref": "app/main.py::create_app",
+            "libs_used": [
+              "asyncio"
+            ],
+            "uses_any": true,
+            "note": ""
+          },
+          {
+            "ref": "app/main.py::on_startup",
+            "libs_used": [
+              "asyncio"
+            ],
+            "uses_any": true,
+            "note": ""
+          },
+          {
+            "ref": "app/services/order_service.py::create_order",
+            "libs_used": [],
+            "uses_any": false,
+            "note": ""
+          },
+          {
+            "ref": "app/services/payment_service.py::process_payment",
+            "libs_used": [],
+            "uses_any": false,
+            "note": ""
+          },
+          {
+            "ref": "app/services/invoice_service.py::create_invoice",
+            "libs_used": [],
+            "uses_any": false,
+            "note": ""
+          }
+        ]
+      }
     },
     {
       "nfr": "NFR 1.3 Queue Management",
       "status": "PRESENT",
       "stage": "existence",
-      "evidence": "functions[enqueue_order_task=PRESENT; get_queue_depth=PRESENT; worker=PRESENT] libraries[asyncio.Queue=PRESENT]",
+      "evidence": "functions[enqueue_order_task=PRESENT; get_queue_depth=PRESENT; worker=PRESENT] libraries[asyncio.Queue=PRESENT] fn-uses-lib[level1=PRESENT; enqueue_order_task->['asyncio.Queue']; get_queue_depth->none; worker->['asyncio.Queue']]",
       "tactics": [
         "Bound Queue Sizes"
       ],
@@ -125,13 +189,40 @@
           "status": "PRESENT",
           "detail": "'asyncio.Queue' imported and used"
         }
-      ]
+      ],
+      "function_library_usage": {
+        "level1": "PRESENT",
+        "per_function": [
+          {
+            "ref": "app/queue/queue_manager.py::enqueue_order_task",
+            "libs_used": [
+              "asyncio.Queue"
+            ],
+            "uses_any": true,
+            "note": ""
+          },
+          {
+            "ref": "app/queue/queue_manager.py::get_queue_depth",
+            "libs_used": [],
+            "uses_any": false,
+            "note": ""
+          },
+          {
+            "ref": "app/queue/queue_manager.py::worker",
+            "libs_used": [
+              "asyncio.Queue"
+            ],
+            "uses_any": true,
+            "note": ""
+          }
+        ]
+      }
     },
     {
       "nfr": "NFR 2.1 Graceful Degradation",
       "status": "PRESENT",
       "stage": "existence",
-      "evidence": "functions[enable_degradation=PRESENT; disable_degradation=PRESENT; on_startup=PRESENT] libraries[]",
+      "evidence": "functions[enable_degradation=PRESENT; disable_degradation=PRESENT; on_startup=PRESENT] libraries[] fn-uses-lib[level1=PRESENT; enable_degradation->none; disable_degradation->none; on_startup->none]",
       "tactics": [
         "Degradation"
       ],
@@ -152,13 +243,36 @@
           "detail": "non-trivial body"
         }
       ],
-      "libraries": []
+      "libraries": [],
+      "function_library_usage": {
+        "level1": "PRESENT",
+        "per_function": [
+          {
+            "ref": "app/degradation/degradation_manager.py::enable_degradation",
+            "libs_used": [],
+            "uses_any": false,
+            "note": ""
+          },
+          {
+            "ref": "app/degradation/degradation_manager.py::disable_degradation",
+            "libs_used": [],
+            "uses_any": false,
+            "note": ""
+          },
+          {
+            "ref": "app/main.py::on_startup",
+            "libs_used": [],
+            "uses_any": false,
+            "note": ""
+          }
+        ]
+      }
     },
     {
       "nfr": "NFR 2.2 Fault Detection and Recovery",
       "status": "PRESENT",
       "stage": "existence",
-      "evidence": "functions[check_db_liveness=PRESENT; get_connection_with_retry=PRESENT; _call_gateway_with_retry=PRESENT] libraries[tenacity=PRESENT]",
+      "evidence": "functions[check_db_liveness=PRESENT; get_connection_with_retry=PRESENT; _call_gateway_with_retry=PRESENT] libraries[tenacity=PRESENT] fn-uses-lib[level1=PRESENT; check_db_liveness->['tenacity']; get_connection_with_retry->['tenacity']; _call_gateway_with_retry->['tenacity']]",
       "tactics": [
         "Ping/Echo",
         "Retry"
@@ -186,13 +300,42 @@
           "status": "PRESENT",
           "detail": "'tenacity' imported and used"
         }
-      ]
+      ],
+      "function_library_usage": {
+        "level1": "PRESENT",
+        "per_function": [
+          {
+            "ref": "app/health/liveness.py::check_db_liveness",
+            "libs_used": [
+              "tenacity"
+            ],
+            "uses_any": true,
+            "note": ""
+          },
+          {
+            "ref": "app/db/connection_pool.py::get_connection_with_retry",
+            "libs_used": [
+              "tenacity"
+            ],
+            "uses_any": true,
+            "note": ""
+          },
+          {
+            "ref": "app/services/payment_service.py::_call_gateway_with_retry",
+            "libs_used": [
+              "tenacity"
+            ],
+            "uses_any": true,
+            "note": ""
+          }
+        ]
+      }
     },
     {
       "nfr": "NFR 2.3 State Preservation",
       "status": "ABSENT",
       "stage": "existence",
-      "evidence": "functions[run_migrations=PRESENT; append_to_wal=PRESENT; replay_wal_on_startup=PRESENT] libraries[sqlite3=ABSENT]",
+      "evidence": "functions[run_migrations=PRESENT; append_to_wal=PRESENT; replay_wal_on_startup=PRESENT] libraries[sqlite3=ABSENT] fn-uses-lib[level1=ABSENT; run_migrations->none; append_to_wal->none; replay_wal_on_startup->none]",
       "tactics": [
         "State Resynchronization"
       ],
@@ -219,7 +362,30 @@
           "status": "ABSENT",
           "detail": "'sqlite3' not imported in any claimed file"
         }
-      ]
+      ],
+      "function_library_usage": {
+        "level1": "ABSENT",
+        "per_function": [
+          {
+            "ref": "app/db/migrations.py::run_migrations",
+            "libs_used": [],
+            "uses_any": false,
+            "note": ""
+          },
+          {
+            "ref": "app/persistence/wal.py::append_to_wal",
+            "libs_used": [],
+            "uses_any": false,
+            "note": ""
+          },
+          {
+            "ref": "app/persistence/wal.py::replay_wal_on_startup",
+            "libs_used": [],
+            "uses_any": false,
+            "note": ""
+          }
+        ]
+      }
     }
   ]
 }
