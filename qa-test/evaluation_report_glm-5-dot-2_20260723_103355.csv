@@ -1,0 +1,1501 @@
+model,file_path,nfr_id,nfr_name,library,tactic,match_status,has_imports,has_calls
+glm-5-dot-2,config.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,config.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,config.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,config.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,config.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,config.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,config.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,config.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,config.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,config.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,config.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,config.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,config.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,config.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,config.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,config.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,config.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,config.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,config.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,config.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,config.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,config.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,config.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,config.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,config.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,config.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,config.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,config.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,config.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,config.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,database.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,database.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,database.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,database.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,database.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,database.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,database.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,database.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,database.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,database.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,database.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,database.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,database.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,database.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,database.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,database.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,database.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,database.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,database.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,database.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,database.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,database.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,database.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,database.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,database.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,database.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,database.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,database.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,database.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,database.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,enums.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,enums.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,enums.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,enums.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,enums.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,enums.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,enums.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,enums.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,enums.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,enums.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,enums.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,enums.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,enums.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,enums.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,enums.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,enums.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,enums.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,enums.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,enums.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,enums.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,enums.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,enums.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,enums.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,enums.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,enums.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,enums.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,enums.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,enums.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,enums.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,enums.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,main.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,main.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,main.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,main.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,main.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,main.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,main.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,main.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,main.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,main.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,main.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,main.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,main.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,main.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,main.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,main.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,main.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,main.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,main.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,main.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,main.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,main.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,main.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,main.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,main.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,main.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,main.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,main.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,main.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,main.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,__init__.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,__init__.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,__init__.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,__init__.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,__init__.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,__init__.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,__init__.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,__init__.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,__init__.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,__init__.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,__init__.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,__init__.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,__init__.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,__init__.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,__init__.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,__init__.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,__init__.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,__init__.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,__init__.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,__init__.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,__init__.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,__init__.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,__init__.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,__init__.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,__init__.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,__init__.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,__init__.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,__init__.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,__init__.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,__init__.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,controllers\customer.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,controllers\customer.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,controllers\customer.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,controllers\customer.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,controllers\customer.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,controllers\customer.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,controllers\customer.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,controllers\customer.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,controllers\customer.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,controllers\customer.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,controllers\customer.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,controllers\customer.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,controllers\customer.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,controllers\customer.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,controllers\customer.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,controllers\customer.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,controllers\customer.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,controllers\customer.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,controllers\customer.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,controllers\customer.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,controllers\customer.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,controllers\customer.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,controllers\customer.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,controllers\customer.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,controllers\customer.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,controllers\customer.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,controllers\customer.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,controllers\customer.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,controllers\customer.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,controllers\customer.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,controllers\invoice.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,controllers\invoice.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,controllers\invoice.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,controllers\invoice.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,controllers\invoice.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,controllers\invoice.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,controllers\invoice.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,controllers\invoice.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,controllers\invoice.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,controllers\invoice.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,controllers\invoice.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,controllers\invoice.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,controllers\invoice.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,controllers\invoice.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,controllers\invoice.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,controllers\invoice.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,controllers\invoice.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,controllers\invoice.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,controllers\invoice.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,controllers\invoice.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,controllers\invoice.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,controllers\invoice.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,controllers\invoice.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,controllers\invoice.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,controllers\invoice.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,controllers\invoice.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,controllers\invoice.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,controllers\invoice.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,controllers\invoice.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,controllers\invoice.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,controllers\order.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,controllers\order.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,controllers\order.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,controllers\order.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,controllers\order.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,controllers\order.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,controllers\order.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,controllers\order.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,controllers\order.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,controllers\order.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,controllers\order.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,controllers\order.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,controllers\order.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,controllers\order.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,controllers\order.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,controllers\order.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,controllers\order.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,controllers\order.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,controllers\order.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,controllers\order.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,controllers\order.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,controllers\order.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,controllers\order.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,controllers\order.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,controllers\order.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,controllers\order.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,controllers\order.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,controllers\order.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,controllers\order.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,controllers\order.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,controllers\payment.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,controllers\payment.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,controllers\payment.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,controllers\payment.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,controllers\payment.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,controllers\payment.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,controllers\payment.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,controllers\payment.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,controllers\payment.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,controllers\payment.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,controllers\payment.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,controllers\payment.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,controllers\payment.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,controllers\payment.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,controllers\payment.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,controllers\payment.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,controllers\payment.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,controllers\payment.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,controllers\payment.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,controllers\payment.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,controllers\payment.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,controllers\payment.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,controllers\payment.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,controllers\payment.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,controllers\payment.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,controllers\payment.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,controllers\payment.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,controllers\payment.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,controllers\payment.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,controllers\payment.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,controllers\product.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,controllers\product.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,controllers\product.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,controllers\product.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,controllers\product.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,controllers\product.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,controllers\product.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,controllers\product.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,controllers\product.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,controllers\product.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,controllers\product.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,controllers\product.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,controllers\product.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,controllers\product.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,controllers\product.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,controllers\product.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,controllers\product.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,controllers\product.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,controllers\product.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,controllers\product.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,controllers\product.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,controllers\product.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,controllers\product.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,controllers\product.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,controllers\product.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,controllers\product.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,controllers\product.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,controllers\product.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,controllers\product.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,controllers\product.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,controllers\__init__.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,controllers\__init__.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,controllers\__init__.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,controllers\__init__.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,controllers\__init__.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,controllers\__init__.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,controllers\__init__.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,controllers\__init__.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,controllers\__init__.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,controllers\__init__.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,controllers\__init__.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,controllers\__init__.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,controllers\__init__.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,controllers\__init__.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,controllers\__init__.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,controllers\__init__.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,controllers\__init__.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,controllers\__init__.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,controllers\__init__.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,controllers\__init__.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,controllers\__init__.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,controllers\__init__.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,controllers\__init__.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,controllers\__init__.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,controllers\__init__.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,controllers\__init__.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,controllers\__init__.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,controllers\__init__.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,controllers\__init__.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,controllers\__init__.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,core\middleware.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,core\middleware.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,core\middleware.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,core\middleware.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,core\middleware.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,core\middleware.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,core\middleware.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,core\middleware.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,core\middleware.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,core\middleware.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,core\middleware.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,core\middleware.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,core\middleware.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,core\middleware.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,core\middleware.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,core\middleware.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,core\middleware.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,core\middleware.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,core\middleware.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,core\middleware.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,core\middleware.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,core\middleware.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,core\middleware.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,core\middleware.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,True,False
+glm-5-dot-2,core\middleware.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,core\middleware.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,core\middleware.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,core\middleware.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,core\middleware.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,core\middleware.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,core\queue_manager.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,core\queue_manager.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,core\queue_manager.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,core\queue_manager.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,core\queue_manager.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,core\queue_manager.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,core\queue_manager.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,core\queue_manager.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,core\queue_manager.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,core\queue_manager.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,core\queue_manager.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,core\queue_manager.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,core\queue_manager.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,core\queue_manager.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,core\queue_manager.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,core\queue_manager.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,core\queue_manager.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,core\queue_manager.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,core\queue_manager.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,core\queue_manager.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,core\queue_manager.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,core\queue_manager.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,core\queue_manager.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,core\queue_manager.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,core\queue_manager.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,core\queue_manager.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,core\queue_manager.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,core\queue_manager.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,core\queue_manager.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,core\queue_manager.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,core\recovery.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,core\recovery.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,core\recovery.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,core\recovery.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,core\recovery.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,core\recovery.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,core\recovery.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,core\recovery.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,core\recovery.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,core\recovery.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,core\recovery.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,core\recovery.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,core\recovery.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,core\recovery.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,core\recovery.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,core\recovery.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,core\recovery.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,core\recovery.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,core\recovery.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,core\recovery.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,core\recovery.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,core\recovery.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,core\recovery.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,core\recovery.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,core\recovery.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,core\recovery.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,core\recovery.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,core\recovery.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,core\recovery.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,core\recovery.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,core\resilience.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,core\resilience.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,core\resilience.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,core\resilience.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,core\resilience.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,core\resilience.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,True,False
+glm-5-dot-2,core\resilience.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,core\resilience.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,core\resilience.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,core\resilience.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,core\resilience.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,core\resilience.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,core\resilience.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,core\resilience.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,core\resilience.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,core\resilience.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,core\resilience.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,core\resilience.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,core\resilience.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,core\resilience.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,core\resilience.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,core\resilience.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,core\resilience.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,core\resilience.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,core\resilience.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,core\resilience.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,core\resilience.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,core\resilience.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,core\resilience.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,core\resilience.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,core\__init__.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,core\__init__.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,core\__init__.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,core\__init__.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,core\__init__.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,core\__init__.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,core\__init__.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,core\__init__.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,core\__init__.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,core\__init__.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,core\__init__.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,core\__init__.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,core\__init__.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,core\__init__.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,core\__init__.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,core\__init__.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,core\__init__.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,core\__init__.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,core\__init__.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,core\__init__.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,core\__init__.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,core\__init__.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,core\__init__.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,core\__init__.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,core\__init__.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,core\__init__.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,core\__init__.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,core\__init__.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,core\__init__.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,core\__init__.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,models\base.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,models\base.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,models\base.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,models\base.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,models\base.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,models\base.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,models\base.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,models\base.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,models\base.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,models\base.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,models\base.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,models\base.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,models\base.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,models\base.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,models\base.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,models\base.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,models\base.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,models\base.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,models\base.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,models\base.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,models\base.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,models\base.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,models\base.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,models\base.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,models\base.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,models\base.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,models\base.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,models\base.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,models\base.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,models\base.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,models\customer.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,models\customer.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,models\customer.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,models\customer.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,models\customer.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,models\customer.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,models\customer.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,models\customer.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,models\customer.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,models\customer.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,models\customer.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,models\customer.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,models\customer.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,models\customer.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,models\customer.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,models\customer.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,models\customer.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,models\customer.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,models\customer.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,models\customer.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,models\customer.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,models\customer.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,models\customer.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,models\customer.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,models\customer.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,models\customer.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,models\customer.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,models\customer.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,models\customer.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,models\customer.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,models\invoice.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,models\invoice.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,models\invoice.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,models\invoice.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,models\invoice.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,models\invoice.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,models\invoice.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,models\invoice.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,models\invoice.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,models\invoice.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,models\invoice.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,models\invoice.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,models\invoice.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,models\invoice.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,models\invoice.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,models\invoice.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,models\invoice.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,models\invoice.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,models\invoice.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,models\invoice.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,models\invoice.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,models\invoice.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,models\invoice.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,models\invoice.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,models\invoice.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,models\invoice.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,models\invoice.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,models\invoice.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,models\invoice.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,models\invoice.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,models\order.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,models\order.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,models\order.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,models\order.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,models\order.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,models\order.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,models\order.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,models\order.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,models\order.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,models\order.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,models\order.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,models\order.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,models\order.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,models\order.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,models\order.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,models\order.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,models\order.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,models\order.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,models\order.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,models\order.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,models\order.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,models\order.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,models\order.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,models\order.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,models\order.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,models\order.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,models\order.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,models\order.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,models\order.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,models\order.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,models\payment.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,models\payment.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,models\payment.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,models\payment.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,models\payment.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,models\payment.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,models\payment.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,models\payment.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,models\payment.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,models\payment.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,models\payment.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,models\payment.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,models\payment.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,models\payment.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,models\payment.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,models\payment.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,models\payment.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,models\payment.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,models\payment.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,models\payment.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,models\payment.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,models\payment.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,models\payment.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,models\payment.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,models\payment.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,models\payment.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,models\payment.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,models\payment.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,models\payment.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,models\payment.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,models\product.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,models\product.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,models\product.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,models\product.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,models\product.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,models\product.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,models\product.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,models\product.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,models\product.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,models\product.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,models\product.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,models\product.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,models\product.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,models\product.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,models\product.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,models\product.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,models\product.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,models\product.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,models\product.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,models\product.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,models\product.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,models\product.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,models\product.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,models\product.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,models\product.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,models\product.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,models\product.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,models\product.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,models\product.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,models\product.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,models\__init__.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,models\__init__.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,models\__init__.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,models\__init__.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,models\__init__.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,models\__init__.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,models\__init__.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,models\__init__.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,models\__init__.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,models\__init__.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,models\__init__.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,models\__init__.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,models\__init__.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,models\__init__.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,models\__init__.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,models\__init__.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,models\__init__.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,models\__init__.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,models\__init__.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,models\__init__.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,models\__init__.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,models\__init__.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,models\__init__.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,models\__init__.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,models\__init__.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,models\__init__.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,models\__init__.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,models\__init__.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,models\__init__.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,models\__init__.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,repositories\base.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,repositories\base.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,repositories\base.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,repositories\base.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,repositories\base.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,repositories\base.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,repositories\base.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,repositories\base.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,repositories\base.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,repositories\base.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,repositories\base.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,repositories\base.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,repositories\base.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,repositories\base.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,repositories\base.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,repositories\base.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,repositories\base.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,repositories\base.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,repositories\base.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,repositories\base.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,repositories\base.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,repositories\base.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,repositories\base.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,repositories\base.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,repositories\base.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,repositories\base.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,repositories\base.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,repositories\base.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,repositories\base.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,repositories\base.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,repositories\customer.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,repositories\customer.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,repositories\customer.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,repositories\customer.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,repositories\customer.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,repositories\customer.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,repositories\customer.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,repositories\customer.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,repositories\customer.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,repositories\customer.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,repositories\customer.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,repositories\customer.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,repositories\customer.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,repositories\customer.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,repositories\customer.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,repositories\customer.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,repositories\customer.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,repositories\customer.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,repositories\customer.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,repositories\customer.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,repositories\customer.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,repositories\customer.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,repositories\customer.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,repositories\customer.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,repositories\customer.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,repositories\customer.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,repositories\customer.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,repositories\customer.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,repositories\customer.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,repositories\customer.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,repositories\invoice.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,repositories\invoice.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,repositories\invoice.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,repositories\invoice.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,repositories\invoice.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,repositories\invoice.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,repositories\invoice.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,repositories\invoice.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,repositories\invoice.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,repositories\invoice.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,repositories\invoice.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,repositories\invoice.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,repositories\invoice.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,repositories\invoice.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,repositories\invoice.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,repositories\invoice.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,repositories\invoice.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,repositories\invoice.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,repositories\invoice.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,repositories\invoice.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,repositories\invoice.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,repositories\invoice.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,repositories\invoice.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,repositories\invoice.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,repositories\invoice.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,repositories\invoice.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,repositories\invoice.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,repositories\invoice.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,repositories\invoice.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,repositories\invoice.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,repositories\order.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,repositories\order.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,repositories\order.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,repositories\order.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,repositories\order.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,repositories\order.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,repositories\order.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,repositories\order.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,repositories\order.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,repositories\order.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,repositories\order.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,repositories\order.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,repositories\order.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,repositories\order.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,repositories\order.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,repositories\order.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,repositories\order.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,repositories\order.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,repositories\order.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,repositories\order.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,repositories\order.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,repositories\order.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,repositories\order.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,repositories\order.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,repositories\order.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,repositories\order.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,repositories\order.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,repositories\order.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,repositories\order.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,repositories\order.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,repositories\payment.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,repositories\payment.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,repositories\payment.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,repositories\payment.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,repositories\payment.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,repositories\payment.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,repositories\payment.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,repositories\payment.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,repositories\payment.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,repositories\payment.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,repositories\payment.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,repositories\payment.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,repositories\payment.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,repositories\payment.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,repositories\payment.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,repositories\payment.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,repositories\payment.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,repositories\payment.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,repositories\payment.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,repositories\payment.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,repositories\payment.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,repositories\payment.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,repositories\payment.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,repositories\payment.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,repositories\payment.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,repositories\payment.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,repositories\payment.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,repositories\payment.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,repositories\payment.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,repositories\payment.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,repositories\product.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,repositories\product.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,repositories\product.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,repositories\product.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,repositories\product.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,repositories\product.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,repositories\product.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,repositories\product.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,repositories\product.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,repositories\product.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,repositories\product.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,repositories\product.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,repositories\product.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,repositories\product.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,repositories\product.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,repositories\product.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,repositories\product.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,repositories\product.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,repositories\product.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,repositories\product.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,repositories\product.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,repositories\product.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,repositories\product.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,repositories\product.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,repositories\product.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,repositories\product.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,repositories\product.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,repositories\product.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,repositories\product.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,repositories\product.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,repositories\__init__.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,repositories\__init__.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,repositories\__init__.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,repositories\__init__.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,repositories\__init__.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,repositories\__init__.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,repositories\__init__.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,repositories\__init__.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,repositories\__init__.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,repositories\__init__.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,repositories\__init__.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,repositories\__init__.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,repositories\__init__.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,repositories\__init__.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,repositories\__init__.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,repositories\__init__.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,repositories\__init__.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,repositories\__init__.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,repositories\__init__.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,repositories\__init__.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,repositories\__init__.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,repositories\__init__.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,repositories\__init__.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,repositories\__init__.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,repositories\__init__.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,repositories\__init__.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,repositories\__init__.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,repositories\__init__.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,repositories\__init__.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,repositories\__init__.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,routers\customer.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,routers\customer.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,routers\customer.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,routers\customer.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,routers\customer.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,routers\customer.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,routers\customer.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,routers\customer.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,routers\customer.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,routers\customer.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,routers\customer.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,routers\customer.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,routers\customer.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,routers\customer.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,routers\customer.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,routers\customer.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,routers\customer.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,routers\customer.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,routers\customer.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,routers\customer.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,routers\customer.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,routers\customer.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,routers\customer.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,routers\customer.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,routers\customer.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,routers\customer.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,routers\customer.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,routers\customer.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,routers\customer.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,routers\customer.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,routers\invoice.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,routers\invoice.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,routers\invoice.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,routers\invoice.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,routers\invoice.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,routers\invoice.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,routers\invoice.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,routers\invoice.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,routers\invoice.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,routers\invoice.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,routers\invoice.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,routers\invoice.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,routers\invoice.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,routers\invoice.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,routers\invoice.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,routers\invoice.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,routers\invoice.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,routers\invoice.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,routers\invoice.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,routers\invoice.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,routers\invoice.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,routers\invoice.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,routers\invoice.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,routers\invoice.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,routers\invoice.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,routers\invoice.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,routers\invoice.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,routers\invoice.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,routers\invoice.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,routers\invoice.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,routers\order.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,routers\order.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,routers\order.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,routers\order.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,routers\order.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,routers\order.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,routers\order.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,routers\order.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,routers\order.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,routers\order.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,routers\order.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,routers\order.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,routers\order.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,routers\order.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,routers\order.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,routers\order.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,routers\order.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,routers\order.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,routers\order.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,routers\order.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,routers\order.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,routers\order.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,routers\order.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,routers\order.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,routers\order.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,routers\order.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,routers\order.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,routers\order.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,routers\order.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,routers\order.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,routers\payment.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,routers\payment.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,routers\payment.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,routers\payment.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,routers\payment.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,routers\payment.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,routers\payment.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,routers\payment.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,routers\payment.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,routers\payment.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,routers\payment.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,routers\payment.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,routers\payment.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,routers\payment.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,routers\payment.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,routers\payment.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,routers\payment.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,routers\payment.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,routers\payment.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,routers\payment.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,routers\payment.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,routers\payment.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,routers\payment.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,routers\payment.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,routers\payment.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,routers\payment.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,routers\payment.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,routers\payment.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,routers\payment.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,routers\payment.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,routers\product.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,routers\product.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,routers\product.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,routers\product.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,routers\product.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,routers\product.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,routers\product.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,routers\product.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,routers\product.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,routers\product.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,routers\product.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,routers\product.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,routers\product.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,routers\product.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,routers\product.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,routers\product.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,routers\product.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,routers\product.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,routers\product.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,routers\product.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,routers\product.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,routers\product.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,routers\product.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,routers\product.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,routers\product.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,routers\product.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,routers\product.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,routers\product.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,routers\product.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,routers\product.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,routers\v1.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,routers\v1.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,routers\v1.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,routers\v1.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,routers\v1.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,routers\v1.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,routers\v1.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,routers\v1.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,routers\v1.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,routers\v1.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,routers\v1.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,routers\v1.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,routers\v1.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,routers\v1.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,routers\v1.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,routers\v1.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,routers\v1.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,routers\v1.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,routers\v1.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,routers\v1.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,routers\v1.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,routers\v1.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,routers\v1.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,routers\v1.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,routers\v1.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,routers\v1.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,routers\v1.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,routers\v1.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,routers\v1.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,routers\v1.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,routers\__init__.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,routers\__init__.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,routers\__init__.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,routers\__init__.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,routers\__init__.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,routers\__init__.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,routers\__init__.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,routers\__init__.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,routers\__init__.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,routers\__init__.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,routers\__init__.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,routers\__init__.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,routers\__init__.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,routers\__init__.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,routers\__init__.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,routers\__init__.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,routers\__init__.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,routers\__init__.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,routers\__init__.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,routers\__init__.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,routers\__init__.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,routers\__init__.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,routers\__init__.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,routers\__init__.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,routers\__init__.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,routers\__init__.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,routers\__init__.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,routers\__init__.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,routers\__init__.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,routers\__init__.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,schemas\common.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,schemas\common.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,schemas\common.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,schemas\common.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,schemas\common.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,schemas\common.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,schemas\common.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,schemas\common.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,schemas\common.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,schemas\common.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,schemas\common.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,schemas\common.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,schemas\common.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,schemas\common.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,schemas\common.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,schemas\common.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,schemas\common.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,schemas\common.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,schemas\common.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,schemas\common.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,schemas\common.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,schemas\common.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,schemas\common.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,schemas\common.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,schemas\common.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,schemas\common.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,schemas\common.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,schemas\common.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,schemas\common.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,schemas\common.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,schemas\customer.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,schemas\customer.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,schemas\customer.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,schemas\customer.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,schemas\customer.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,schemas\customer.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,schemas\customer.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,schemas\customer.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,schemas\customer.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,schemas\customer.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,schemas\customer.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,schemas\customer.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,schemas\customer.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,schemas\customer.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,schemas\customer.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,schemas\customer.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,schemas\customer.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,schemas\customer.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,schemas\customer.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,schemas\customer.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,schemas\customer.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,schemas\customer.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,schemas\customer.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,schemas\customer.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,schemas\customer.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,schemas\customer.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,schemas\customer.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,schemas\customer.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,schemas\customer.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,schemas\customer.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,schemas\invoice.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,schemas\invoice.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,schemas\invoice.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,schemas\invoice.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,schemas\invoice.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,schemas\invoice.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,schemas\invoice.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,schemas\invoice.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,schemas\invoice.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,schemas\invoice.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,schemas\invoice.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,schemas\invoice.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,schemas\invoice.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,schemas\invoice.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,schemas\invoice.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,schemas\invoice.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,schemas\invoice.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,schemas\invoice.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,schemas\invoice.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,schemas\invoice.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,schemas\invoice.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,schemas\invoice.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,schemas\invoice.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,schemas\invoice.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,schemas\invoice.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,schemas\invoice.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,schemas\invoice.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,schemas\invoice.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,schemas\invoice.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,schemas\invoice.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,schemas\order.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,schemas\order.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,schemas\order.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,schemas\order.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,schemas\order.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,schemas\order.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,schemas\order.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,schemas\order.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,schemas\order.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,schemas\order.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,schemas\order.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,schemas\order.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,schemas\order.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,schemas\order.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,schemas\order.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,schemas\order.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,schemas\order.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,schemas\order.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,schemas\order.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,schemas\order.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,schemas\order.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,schemas\order.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,schemas\order.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,schemas\order.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,schemas\order.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,schemas\order.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,schemas\order.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,schemas\order.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,schemas\order.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,schemas\order.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,schemas\payment.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,schemas\payment.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,schemas\payment.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,schemas\payment.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,schemas\payment.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,schemas\payment.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,schemas\payment.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,schemas\payment.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,schemas\payment.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,schemas\payment.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,schemas\payment.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,schemas\payment.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,schemas\payment.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,schemas\payment.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,schemas\payment.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,schemas\payment.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,schemas\payment.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,schemas\payment.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,schemas\payment.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,schemas\payment.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,schemas\payment.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,schemas\payment.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,schemas\payment.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,schemas\payment.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,schemas\payment.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,schemas\payment.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,schemas\payment.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,schemas\payment.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,schemas\payment.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,schemas\payment.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,schemas\product.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,schemas\product.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,schemas\product.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,schemas\product.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,schemas\product.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,schemas\product.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,schemas\product.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,schemas\product.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,schemas\product.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,schemas\product.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,schemas\product.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,schemas\product.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,schemas\product.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,schemas\product.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,schemas\product.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,schemas\product.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,schemas\product.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,schemas\product.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,schemas\product.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,schemas\product.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,schemas\product.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,schemas\product.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,schemas\product.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,schemas\product.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,schemas\product.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,schemas\product.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,schemas\product.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,schemas\product.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,schemas\product.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,schemas\product.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,schemas\__init__.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,schemas\__init__.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,schemas\__init__.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,schemas\__init__.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,schemas\__init__.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,schemas\__init__.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,schemas\__init__.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,schemas\__init__.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,schemas\__init__.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,schemas\__init__.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,schemas\__init__.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,schemas\__init__.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,schemas\__init__.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,schemas\__init__.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,schemas\__init__.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,schemas\__init__.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,schemas\__init__.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,schemas\__init__.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,schemas\__init__.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,schemas\__init__.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,schemas\__init__.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,schemas\__init__.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,schemas\__init__.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,schemas\__init__.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,schemas\__init__.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,schemas\__init__.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,schemas\__init__.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,schemas\__init__.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,schemas\__init__.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,schemas\__init__.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,services\customer.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,services\customer.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,services\customer.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,services\customer.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,services\customer.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,services\customer.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,services\customer.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,services\customer.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,services\customer.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,services\customer.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,services\customer.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,services\customer.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,services\customer.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,services\customer.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,services\customer.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,services\customer.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,services\customer.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,services\customer.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,services\customer.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,services\customer.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,services\customer.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,services\customer.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,services\customer.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,services\customer.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,services\customer.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,services\customer.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,services\customer.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,services\customer.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,services\customer.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,services\customer.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,services\invoice.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,services\invoice.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,services\invoice.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,services\invoice.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,services\invoice.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,services\invoice.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,services\invoice.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,services\invoice.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,services\invoice.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,services\invoice.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,services\invoice.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,services\invoice.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,services\invoice.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,services\invoice.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,services\invoice.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,services\invoice.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,services\invoice.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,services\invoice.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,services\invoice.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,services\invoice.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,services\invoice.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,services\invoice.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,services\invoice.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,services\invoice.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,services\invoice.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,services\invoice.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,services\invoice.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,services\invoice.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,services\invoice.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,services\invoice.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,services\order.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,services\order.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,services\order.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,services\order.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,services\order.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,services\order.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,services\order.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,services\order.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,services\order.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,services\order.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,services\order.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,services\order.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,services\order.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,services\order.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,services\order.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,services\order.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,services\order.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,services\order.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,services\order.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,services\order.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,services\order.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,services\order.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,services\order.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,services\order.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,services\order.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,services\order.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,services\order.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,services\order.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,services\order.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,services\order.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,services\payment.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,services\payment.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,services\payment.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,services\payment.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,services\payment.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,services\payment.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,services\payment.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,services\payment.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,services\payment.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,services\payment.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,services\payment.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,services\payment.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,services\payment.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,services\payment.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,services\payment.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,services\payment.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,services\payment.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,services\payment.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,services\payment.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,services\payment.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,services\payment.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,services\payment.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,services\payment.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,services\payment.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,services\payment.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,services\payment.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,services\payment.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,services\payment.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,services\payment.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,services\payment.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,services\product.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,services\product.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,services\product.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,services\product.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,services\product.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,services\product.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,services\product.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,services\product.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,services\product.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,services\product.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,services\product.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,services\product.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,services\product.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,services\product.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,services\product.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,services\product.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,services\product.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,services\product.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,services\product.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,services\product.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,services\product.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,services\product.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,services\product.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,services\product.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,services\product.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,services\product.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,services\product.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,services\product.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,services\product.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,services\product.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,services\__init__.py,NFR 1.1,Response Time,redis-py,Server-side Caching,Fail,False,False
+glm-5-dot-2,services\__init__.py,NFR 1.1,Response Time,pymemcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,services\__init__.py,NFR 1.1,Response Time,diskcache,Server-side Caching,Fail,False,False
+glm-5-dot-2,services\__init__.py,NFR 1.1,Response Time,aiocache,Server-side Caching,Fail,False,False
+glm-5-dot-2,services\__init__.py,NFR 1.1,Response Time,cashews,Server-side Caching,Fail,False,False
+glm-5-dot-2,services\__init__.py,NFR 1.2,Concurrency & Resource Utilization,asyncio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,services\__init__.py,NFR 1.2,Concurrency & Resource Utilization,uvloop,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,services\__init__.py,NFR 1.2,Concurrency & Resource Utilization,trio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,services\__init__.py,NFR 1.2,Concurrency & Resource Utilization,gevent,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,services\__init__.py,NFR 1.2,Concurrency & Resource Utilization,anyio,Asynchronous I/O,Fail,False,False
+glm-5-dot-2,services\__init__.py,NFR 1.3,Queue Management,celery,Message Queues,Fail,False,False
+glm-5-dot-2,services\__init__.py,NFR 1.3,Queue Management,rq,Message Queues,Fail,False,False
+glm-5-dot-2,services\__init__.py,NFR 1.3,Queue Management,pika,Message Queues,Fail,False,False
+glm-5-dot-2,services\__init__.py,NFR 1.3,Queue Management,confluent-kafka,Message Queues,Fail,False,False
+glm-5-dot-2,services\__init__.py,NFR 1.3,Queue Management,boto3,Message Queues,Fail,False,False
+glm-5-dot-2,services\__init__.py,NFR 2.1,Graceful Degradation,pybreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,services\__init__.py,NFR 2.1,Graceful Degradation,circuitbreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,services\__init__.py,NFR 2.1,Graceful Degradation,aiobreaker,Circuit Breaker,Fail,False,False
+glm-5-dot-2,services\__init__.py,NFR 2.1,Graceful Degradation,purgatory,Circuit Breaker,Fail,False,False
+glm-5-dot-2,services\__init__.py,NFR 2.1,Graceful Degradation,tenacity,Circuit Breaker,Fail,False,False
+glm-5-dot-2,services\__init__.py,NFR 2.2,Fault Detection and Recovery,python-consul,Health Checks,Fail,False,False
+glm-5-dot-2,services\__init__.py,NFR 2.2,Fault Detection and Recovery,kazoo,Health Checks,Fail,False,False
+glm-5-dot-2,services\__init__.py,NFR 2.2,Fault Detection and Recovery,etcd3,Health Checks,Fail,False,False
+glm-5-dot-2,services\__init__.py,NFR 2.2,Fault Detection and Recovery,psutil,Health Checks,Fail,False,False
+glm-5-dot-2,services\__init__.py,NFR 2.2,Fault Detection and Recovery,supervisor,Health Checks,Fail,False,False
+glm-5-dot-2,services\__init__.py,NFR 2.3,State Preservation,sqlite3,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,services\__init__.py,NFR 2.3,State Preservation,psycopg2,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,services\__init__.py,NFR 2.3,State Preservation,zodb,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,services\__init__.py,NFR 2.3,State Preservation,redis-py,Event Sourcing / WAL,Fail,False,False
+glm-5-dot-2,services\__init__.py,NFR 2.3,State Preservation,pymongo,Event Sourcing / WAL,Fail,False,False

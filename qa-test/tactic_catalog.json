@@ -1,0 +1,39 @@
+{
+  "tactics": {
+    "Maintain Multiple Copies of Computations": {
+      "anchor": "A cache read/write: an @cached decorator (aiocache), a .get()/.set() call on a cache object, or functools.lru_cache.",
+      "discriminator": "The cache is consulted before the expensive computation (get-or-compute pattern). PRESENT = a cache lookup gates the computation; WEAK = cache instantiated/imported but never read on the path; ABSENT = no cache at all.",
+      "verification_implementation": "detectors/detect_maintain_multiple_copies.py"
+    },
+    "Introduce Concurrency": {
+      "anchor": "An async def handler, or a worker/pool configuration (workers=, ThreadPoolExecutor, asyncio.gather).",
+      "discriminator": "Concurrency is real: an async function that awaits actual I/O, or workers > 1. WEAK = async def whose body contains a blocking call (time.sleep, sync DB) and thus serializes despite being async; ABSENT = no async and no worker pool.",
+      "verification_implementation": "detectors/detect_introduce_concurrency.py"
+    },
+    "Bound Queue Sizes": {
+      "anchor": "A Queue(...) construction (asyncio.Queue, queue.Queue, or similar).",
+      "discriminator": "A maxsize keyword present and set to a positive integer literal. PRESENT = maxsize=N with N>0; ABSENT = maxsize=0 or omitted (unbounded); WEAK = maxsize=<variable/expr> that cannot be resolved statically.",
+      "verification_implementation": "detectors/detect_bound_queue_sizes.py"
+    },
+    "Degradation": {
+      "anchor": "A conditional branch that returns or raises 503 (a service-unavailable / shed path).",
+      "discriminator": "The 503 is gated on a degradation or health condition (e.g. if should_degrade / load flag). PRESENT = conditional shed on a real flag; WEAK = a 503 path exists but is ungated/unconditional; ABSENT = no 503 path.",
+      "verification_implementation": "detectors/detect_degradation.py"
+    },
+    "Ping/Echo": {
+      "anchor": "A health/liveness route or a ping call.",
+      "discriminator": "It probes a real check and returns status accordingly. PRESENT = status derived from an actual check; WEAK = a bare return \"ok\" with no underlying probe; ABSENT = no health/ping endpoint.",
+      "verification_implementation": "detectors/detect_ping_echo.py"
+    },
+    "Retry": {
+      "anchor": "A @retry decorator (tenacity) or an explicit retry loop.",
+      "discriminator": "Has a stop condition (stop_after_attempt / max retries) so it will not loop forever, and wraps the failing I/O call. PRESENT = retry with stop condition around the I/O; WEAK = bare @retry with no stop condition; ABSENT = no retry mechanism.",
+      "verification_implementation": "detectors/detect_retry.py"
+    },
+    "State Resynchronization": {
+      "anchor": "A read of persisted/WAL state that runs at startup.",
+      "discriminator": "The persisted-state read is wired into a startup path AND feeds recovery (re-enqueue / restore). PRESENT = replay reads persisted state and is invoked on startup; WEAK = a replay function exists but is never called at boot, or state is only written and never read back; ABSENT = no persisted-state read.",
+      "verification_implementation": "detectors/detect_state_resynchronization.py"
+    }
+  }
+}

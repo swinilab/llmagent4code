@@ -1,0 +1,103 @@
+{
+  "nfrTrace": [
+    {
+      "nfr": "NFR 1.1 Response Time",
+      "librariesUsed": ["fastapi", "aiocache"],
+      "tacticUsed": "Performance > Manage Resources > Maintain Multiple Copies of Computations",
+      "verificationMethod": "Load test with k6 shows p95 latency < 200ms for checkout endpoint",
+      "expertValidation": [{
+        "library": "fastapi",
+        "references": "https://docs.python.org/3/library/asyncio.html, https://fastapi.tiangolo.com/",
+        "validation": "fastapi must go with async supported by asyncio",
+        "verdict": 0.5
+      }, 
+      {
+        
+        "library": "aiocache",
+        "references": "https://pypi.org/project/aiocache/",
+        "validation": "aiocache must be used for caching to improve response time ",
+        "verdict": 1
+      }]
+    },
+    {
+      "nfr": "NFR 1.2 Concurrency & Resource Utilization",
+      "filesImplemented": [
+        "app/main.py",
+        "app/services/order_service.py",
+        "app/services/payment_service.py",
+        "app/services/invoice_service.py"
+      ],
+      "librariesUsed": ["uvicorn", "asyncio"],
+      "functionNames": [
+        "app/main.py::create_app",
+        "app/main.py::on_startup",
+        "app/services/order_service.py::create_order",
+        "app/services/payment_service.py::process_payment",
+        "app/services/invoice_service.py::create_invoice"
+      ],
+      "tacticUsed": "Performance > Manage Resources > Introduce Concurrency",
+      "verificationMethod": "ab -c 100 shows throughput scales near‑linearly up to worker count"
+    },
+    {
+      "nfr": "NFR 1.3 Queue Management",
+      "filesImplemented": [
+        "app/queue/queue_manager.py"
+      ],
+      "librariesUsed": ["asyncio.Queue"],
+      "functionNames": [
+        "app/queue/queue_manager.py::enqueue_order_task",
+        "app/queue/queue_manager.py::get_queue_depth",
+        "app/queue/queue_manager.py::worker"
+      ],
+      "tacticUsed": "Performance > Control Resource Demand > Bound Queue Sizes",
+      "verificationMethod": "Burst of 1000 requests returns 202 without dropped connections; queue_size bounded per /health/queue"
+    },
+    {
+      "nfr": "NFR 2.1 Graceful Degradation",
+      "filesImplemented": [
+        "app/degradation/degradation_manager.py",
+        "app/main.py"
+      ],
+      "librariesUsed": [],
+      "functionNames": [
+        "app/degradation/degradation_manager.py::enable_degradation",
+        "app/degradation/degradation_manager.py::disable_degradation",
+        "app/main.py::on_startup"  
+      ],
+      "tacticUsed": "Availability > Recover from Faults > Degradation",
+      "verificationMethod": "Kill background worker under load; checkout endpoint still returns 2xx while non‑essential endpoints return 503"
+    },
+    {
+      "nfr": "NFR 2.2 Fault Detection and Recovery",
+      "filesImplemented": [
+        "app/health/liveness.py",
+        "app/db/connection_pool.py",
+        "app/services/payment_service.py"
+      ],
+      "librariesUsed": ["tenacity"],
+      "functionNames": [
+        "app/health/liveness.py::check_db_liveness",
+        "app/db/connection_pool.py::get_connection_with_retry",
+        "app/services/payment_service.py::_call_gateway_with_retry"
+      ],
+      "tacticUsed": "Availability > Detect Faults > Ping/Echo; Availability > Recover from Faults > Retry",
+      "verificationMethod": "Kill DB connection mid‑request; observe automatic reconnect within N seconds via /health/ready"
+    },
+    {
+      "nfr": "NFR 2.3 State Preservation",
+      "filesImplemented": [
+        "app/db/migrations.py",
+        "app/persistence/wal.py"
+      ],
+      "librariesUsed": ["sqlite3"],
+      "functionNames": [
+        "app/db/migrations.py::run_migrations",
+        "app/persistence/wal.py::append_to_wal",
+        "app/persistence/wal.py::replay_wal_on_startup"
+      ],
+      "tacticUsed": "Availability > Recover from Faults > State Resynchronization",
+      "verificationMethod": "Kill process mid‑queue‑processing, restart, confirm pending orders resume from persisted state with no loss"
+    }
+  ]
+}
+

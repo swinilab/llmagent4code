@@ -40,13 +40,19 @@ def extract_features_from_code(code: str):
 def main():
     parser = argparse.ArgumentParser(description="Verify QA test tactics in generated code.")
     parser.add_argument("model", help="Name of the model folder (e.g. claude)")
+    parser.add_argument("--target-dir", default=None,
+                        help="Explicit folder to scan; overrides AIModelsEvaluation/<model>")
     args = parser.parse_args()
     
     model_name = args.model
     # Assumes the script is inside the qa-test folder
-    project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    target_dir = os.path.join(project_root, "AIModelsEvaluation", model_name)
-    tactics_file = os.path.join(project_root, "qa-test", "tactics.xlsx")
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    project_root = os.path.dirname(script_dir)
+    
+    # --target-dir bypasses the AIModelsEvaluation/<model> convention
+    target_dir = args.target_dir or os.path.join(project_root, "AIModelsEvaluation", model_name)
+    target_dir = os.path.abspath(target_dir)
+    tactics_file = os.path.join(script_dir, "tactics.xlsx")
     
     if not os.path.exists(target_dir):
         print(f"Error: Target directory {target_dir} does not exist.")
@@ -101,7 +107,8 @@ def main():
             
             results.append({
                 'model': model_name,
-                'file_path': os.path.relpath(py_file, project_root),
+                # Relative to target_dir so external folders don't produce ..\..\ paths
+                'file_path': os.path.relpath(py_file, target_dir),
                 'nfr_id': tactic['nfr_id'],
                 'nfr_name': tactic['nfr_name'],
                 'library': tactic['library'],
@@ -120,7 +127,7 @@ def main():
         df_results = pd.DataFrame(results)
         
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    out_csv = os.path.join(project_root, "qa-test", f"evaluation_report_{model_name}_{timestamp}.csv")
+    out_csv = os.path.join(script_dir, f"evaluation_report_{model_name}_{timestamp}.csv")
     
     df_results.to_csv(out_csv, index=False)
     print(f"Report successfully saved to {out_csv}")

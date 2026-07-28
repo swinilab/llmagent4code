@@ -1,0 +1,107 @@
+{
+  "_comment": "Hand-written ground truth. 'imports' = module names that count as importing this library. 'api' = call names that constitute real use of the library (constructors, methods, decorators). No builtins, no snippet-local function names.",
+  "nfrs": [
+    {
+      "nfr_id": "NFR 1.1",
+      "nfr_name": "Response Time",
+      "mechanism": "Server-side Caching",
+      "libraries": [
+        {"library": "redis-py",   "imports": ["redis"],      "api": ["Redis", "StrictRedis", "ConnectionPool", "from_url", "setex", "getset", "expire", "pipeline", "mget", "mset"]},
+        {"library": "pymemcache", "imports": ["pymemcache"], "api": ["Client", "HashClient", "PooledClient", "set_many", "get_many", "add", "cas"]},
+        {"library": "diskcache",  "imports": ["diskcache"],  "api": ["Cache", "FanoutCache", "Deque", "Index", "memoize", "expire", "evict"]},
+        {"library": "aiocache",   "imports": ["aiocache"],   "api": ["Cache", "SimpleMemoryCache", "RedisCache", "cached", "cached_stampede", "multi_cached", "JsonSerializer", "PickleSerializer"]},
+        {"library": "cashews",    "imports": ["cashews"],    "api": ["Cache", "setup", "early", "hit", "rate_limit", "circuit_breaker", "invalidate"]}
+      ],
+      "mechanism_fallback": {
+        "label": "stdlib/hand-rolled cache",
+        "imports": ["functools", "cachetools"],
+        "api": ["lru_cache", "cache", "cached_property", "TTLCache", "LRUCache", "LFUCache"]
+      }
+    },
+    {
+      "nfr_id": "NFR 1.2",
+      "nfr_name": "Concurrency & Resource Utilization",
+      "mechanism": "Asynchronous I/O",
+      "libraries": [
+        {"library": "asyncio", "imports": ["asyncio"], "api": ["run", "gather", "create_task", "wait_for", "sleep", "Queue", "Semaphore", "Lock", "Event", "as_completed", "to_thread", "get_event_loop", "new_event_loop", "run_until_complete", "TaskGroup"]},
+        {"library": "uvloop",  "imports": ["uvloop"],  "api": ["install", "new_event_loop", "EventLoopPolicy", "run"]},
+        {"library": "trio",    "imports": ["trio"],    "api": ["run", "open_nursery", "start_soon", "sleep", "CapacityLimiter", "open_memory_channel", "move_on_after", "fail_after"]},
+        {"library": "gevent",  "imports": ["gevent"],  "api": ["spawn", "joinall", "patch_all", "monkey", "sleep", "Greenlet", "getcurrent"]},
+        {"library": "anyio",   "imports": ["anyio"],   "api": ["run", "create_task_group", "start_soon", "sleep", "to_thread", "create_memory_object_stream", "CapacityLimiter", "move_on_after"]}
+      ],
+      "mechanism_fallback": {
+        "label": "thread/process pool concurrency",
+        "imports": ["concurrent", "threading", "multiprocessing"],
+        "api": ["ThreadPoolExecutor", "ProcessPoolExecutor", "submit", "map", "Thread", "Pool"]
+      }
+    },
+    {
+      "nfr_id": "NFR 1.3",
+      "nfr_name": "Queue Management",
+      "mechanism": "Message Queues",
+      "libraries": [
+        {"library": "celery",          "imports": ["celery"],          "api": ["Celery", "task", "shared_task", "delay", "apply_async", "chain", "group", "chord"]},
+        {"library": "rq",              "imports": ["rq"],              "api": ["Queue", "Worker", "Connection", "enqueue", "enqueue_call", "enqueue_at", "Retry"]},
+        {"library": "pika",            "imports": ["pika"],            "api": ["BlockingConnection", "ConnectionParameters", "URLParameters", "BasicProperties", "channel", "basic_publish", "basic_consume", "queue_declare", "exchange_declare", "basic_qos"]},
+        {"library": "confluent-kafka", "imports": ["confluent_kafka"], "api": ["Producer", "Consumer", "AdminClient", "produce", "poll", "subscribe", "flush", "commit"]},
+        {"library": "boto3",           "imports": ["boto3"],           "api": ["client", "resource", "send_message", "send_message_batch", "receive_message", "delete_message", "get_queue_url"]}
+      ],
+      "mechanism_fallback": {
+        "label": "stdlib bounded queue / backpressure",
+        "imports": ["queue", "asyncio"],
+        "api": ["Queue", "LifoQueue", "PriorityQueue", "put_nowait", "get_nowait", "task_done", "join", "QueueFull", "maxsize", "qsize", "full"]
+      }
+    },
+    {
+      "nfr_id": "NFR 2.1",
+      "nfr_name": "Graceful Degradation",
+      "mechanism": "Circuit Breaker",
+      "libraries": [
+        {"library": "pybreaker",      "imports": ["pybreaker"],      "api": ["CircuitBreaker", "CircuitBreakerListener", "CircuitBreakerError", "CircuitRedisStorage", "call", "call_async"]},
+        {"library": "circuitbreaker", "imports": ["circuitbreaker"], "api": ["circuit", "CircuitBreaker", "CircuitBreakerError", "CircuitBreakerMonitor"]},
+        {"library": "aiobreaker",     "imports": ["aiobreaker"],     "api": ["CircuitBreaker", "AioCircuitBreaker", "CircuitBreakerError", "CircuitBreakerListener", "call_async"]},
+        {"library": "purgatory",      "imports": ["purgatory"],      "api": ["AsyncCircuitBreakerFactory", "SyncCircuitBreakerFactory", "OpenedState", "get_breaker"]},
+        {"library": "tenacity",       "imports": ["tenacity"],       "api": ["retry", "Retrying", "AsyncRetrying", "stop_after_attempt", "stop_after_delay", "wait_exponential", "wait_fixed", "retry_if_exception_type", "before_sleep_log"]}
+      ],
+      "mechanism_fallback": {
+        "label": "hand-rolled breaker/retry",
+        "imports": [],
+        "api": ["CircuitBreaker", "CircuitState", "half_open", "failure_threshold", "reset_timeout", "trip", "record_failure", "record_success"]
+      }
+    },
+    {
+      "nfr_id": "NFR 2.2",
+      "nfr_name": "Fault Detection and Recovery",
+      "mechanism": "Health Checks",
+      "libraries": [
+        {"library": "python-consul", "imports": ["consul"],     "api": ["Consul", "register", "deregister", "agent", "health", "checks"]},
+        {"library": "kazoo",         "imports": ["kazoo"],      "api": ["KazooClient", "ensure_path", "create", "exists", "get_children", "ChildrenWatch", "Lock", "start"]},
+        {"library": "etcd3",         "imports": ["etcd3"],      "api": ["client", "lease", "put", "get", "watch", "refresh", "revoke"]},
+        {"library": "psutil",        "imports": ["psutil"],     "api": ["cpu_percent", "virtual_memory", "disk_usage", "net_io_counters", "Process", "boot_time", "cpu_count"]},
+        {"library": "supervisor",    "imports": ["xmlrpc", "supervisor"], "api": ["ServerProxy", "getProcessInfo", "getAllProcessInfo", "startProcess", "stopProcess", "restart"]}
+      ],
+      "mechanism_fallback": {
+        "label": "hand-rolled health endpoint / probe",
+        "imports": [],
+        "api": ["health_check", "healthcheck", "liveness", "readiness", "ping", "heartbeat", "probe"]
+      }
+    },
+    {
+      "nfr_id": "NFR 2.3",
+      "nfr_name": "State Preservation",
+      "mechanism": "Event Sourcing / WAL",
+      "libraries": [
+        {"library": "sqlite3",  "imports": ["sqlite3"],             "api": ["connect", "cursor", "execute", "executemany", "commit", "rollback", "Row"]},
+        {"library": "psycopg2", "imports": ["psycopg2"],            "api": ["connect", "cursor", "execute", "executemany", "commit", "rollback", "copy_from"]},
+        {"library": "zodb",     "imports": ["ZODB", "transaction"], "api": ["DB", "FileStorage", "commit", "abort", "savepoint"]},
+        {"library": "redis-py", "imports": ["redis"],               "api": ["Redis", "hset", "hgetall", "xadd", "xread", "rpush", "lrange", "persist"]},
+        {"library": "pymongo",  "imports": ["pymongo"],             "api": ["MongoClient", "insert_one", "insert_many", "update_one", "find_one_and_update", "bulk_write"]}
+      ],
+      "mechanism_fallback": {
+        "label": "ORM / append-only event log",
+        "imports": ["sqlalchemy", "sqlmodel"],
+        "api": ["append_event", "event_log", "EventStore", "write_ahead", "journal", "snapshot", "replay"]
+      }
+    }
+  ]
+}
