@@ -6,7 +6,6 @@ Concrete IReportWriter — writes a human-readable report.txt.
 The report covers:
   • generation summary
   • validation results (waterfall: shows where it stopped)
-  • repair loop history
   • final verdict
 """
 
@@ -18,7 +17,7 @@ from datetime import datetime
 from interfaces.base import (
     GenerationResult,
     IReportWriter,
-    RepairResult,
+    Status,
     ValidationResult,
 )
 
@@ -30,11 +29,10 @@ class TextReportWriter(IReportWriter):
         self._path = os.path.join(report_dir, f"report_{timestamp}.txt")
 
     def write(
-    self,
-    generation:         GenerationResult | None,
-    validation_results: list[ValidationResult],
-    repair_history:     list[RepairResult],
-    all_passed:         bool,
+        self,
+        generation:         GenerationResult | None,
+        validation_results: list[ValidationResult],
+        all_passed:         bool,
     ) -> str:
         os.makedirs(os.path.dirname(self._path), exist_ok=True)
 
@@ -44,35 +42,25 @@ class TextReportWriter(IReportWriter):
         lines.append("")
 
         lines.append("GENERATION")
-        if generation.completion:
-            model_name = getattr(generation, 'model', 'N/A')
-            output_dir = getattr(generation, 'output_dir', 'N/A')
-            
-            lines.append(f"model: {model_name}")
-            lines.append(f"output: {output_dir}")
+        if generation is None:
+            lines.append("skipped (phase not run)")
+            lines.append("")
+        elif generation.status is Status.PASS:
+            lines.append(f"model: {generation.model}")
+            lines.append(f"code: {generation.code}")
             lines.append("")
         else:
             lines.append("❌ Generation failed.")
+            lines.append(f"model: {generation.model}")
             lines.append("")
-
 
         if validation_results:
             lines.append("VALIDATION")
             for vr in validation_results:
                 icon = "✅" if vr.passed else "❌"
                 lines.append(f"  {icon} {vr.stage} : {vr.message}")
-                lines.append(f"  Error detail : {vr.details.get('stderr')}")
-                # lines.append(f"  Fail at : {vr.details["failed_files"]}")
-            lines.append("")
-
-        if repair_history:
-            lines.append("REPAIR")
-            for rr in repair_history:
-                icon = "✅" if rr.all_passed else "❌"
-                lines.append(f"  {icon} iteration {rr.iteration}")
-                for vr in rr.validation_results:
-                    icon = "✅" if vr.passed else "❌"
-                    lines.append(f"      {icon} {vr.stage} : {vr.message}")
+                if vr.details.get("stderr"):
+                    lines.append(f"  Error detail : {vr.details.get('stderr')}")
             lines.append("")
 
         lines.append("RESULT")
@@ -86,7 +74,7 @@ class TextReportWriter(IReportWriter):
                 lines.append(f"  error          : {blocking.message}")
 
         report_text = "\n".join(lines)
-        with open(self._path, "w") as f:
+        with open(self._path, "w", encoding="utf-8") as f:
             f.write(report_text)
 
         return self._path

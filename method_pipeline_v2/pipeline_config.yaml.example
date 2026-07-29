@@ -49,20 +49,6 @@ validation:
         path: "/items/9999"
         expected_status: 404
 
-# ── Repair Loop ───────────────────────────────
-repair:
-  max_iterations: 5           # k — maximum repair attempts
-  type: "mini"
-  model: "gemma4:31b"                      
-  api_key: "YOUR KEY"  
-  api_base: "https://ollama.com/v1"
-  temperature: 0.2
-  workflow: "agents/mini.yaml"             
-  prompt_template: "prompts/simple.md"        # path to the generation prompt
-  generated_dir: "generated"
-
 # ── Output ────────────────────────────────────
 output:
   report_dir: "reports/"
-  generated_code_path: "output/generated_code.py"
-  verbose: true

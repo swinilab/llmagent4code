@@ -4,7 +4,7 @@ interfaces/base.py
 Abstract contracts for every pipeline component.
 
 main.py only imports these types; concrete behaviour lives in the
-subclasses under agents/, validators/, repairers/.
+subclasses under agents/, validators/
 """
 
 from __future__ import annotations
@@ -40,17 +40,9 @@ class ValidationResult:
 @dataclass
 class GenerationResult:
     """Returned by the generation agent."""
+    status: Status
     model: str
-    output_dir: str
-    completion: bool
-
-@dataclass
-class RepairResult:
-    """Returned after one repair iteration."""
-    iteration:          int
-    repaired_code:      str
-    validation_results: list[ValidationResult]
-    all_passed:         bool
+    code: str           # folder where agent generated app (generated/...)
 
 @dataclass
 class TestResult:
@@ -63,14 +55,12 @@ class TestResult:
 # ─────────────────────────────────────────────────────────────────────────────
 #  Abstract interfaces
 # ─────────────────────────────────────────────────────────────────────────────
-
 class IGenerationAgent(ABC):
-    """Calls an LLM (or mock) and returns generated code."""
+    """Calls an LLM Agent and returns generated code."""
 
     @abstractmethod
     def generate(self, prompt: str) -> GenerationResult:
         ...
-
 
 class ICompilabilityValidator(ABC):
     """Stage 1 – checks whether the code compiles/runs inside Docker."""
@@ -79,7 +69,6 @@ class ICompilabilityValidator(ABC):
     def validate(self, code: str) -> ValidationResult:
         ...
 
-
 class IFunctionalValidator(ABC):
     """Stage 2 – fires HTTP requests and checks expected responses."""
 
@@ -87,32 +76,14 @@ class IFunctionalValidator(ABC):
     def validate(self, code: str) -> ValidationResult:
         ...
 
-
-class IRepairAgent(ABC):
-    """
-    Given the current code and a failing ValidationResult, produces a
-    repaired version of the code.
-    """
-
-    @abstractmethod
-    def repair(
-        self,
-        code:              str,
-        validation_result: ValidationResult,
-        iteration:         int,
-    ) -> str:
-        ...
-
-
 class IReportWriter(ABC):
     """Serialises the final pipeline outcome to report.txt."""
 
     @abstractmethod
     def write(
         self,
-        generation:         GenerationResult,
+        generation:         GenerationResult | None,
         validation_results: list[ValidationResult],
-        repair_history:     list[RepairResult],
         all_passed:         bool,
     ) -> str:                           # returns the path written
         ...

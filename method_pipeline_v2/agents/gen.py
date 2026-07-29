@@ -1,9 +1,7 @@
-from interfaces.base import GenerationResult, IGenerationAgent
+from interfaces.base import GenerationResult, IGenerationAgent, Status
 import chatdev.sdk
-import os
 from pathlib import Path
 from chatdev import run_workflow
-import shutil
 
 
 class ChatDevGenerationAgent(IGenerationAgent):
@@ -25,37 +23,10 @@ class ChatDevGenerationAgent(IGenerationAgent):
             },
         )
 
-        # Find the latest ChatDev's generated workspace
-        final_output_dir = str(generated_dir)
-        if result:
-            # 1. Plan A: try to take directly from ChatDev's return
-            if hasattr(result, "output_dir"):
-                potential_dir = Path(result.output_dir) / "code_workspace"
-            else:
-                potential_dir = generated_dir / str(result) / "code_workspace"
-
-            if potential_dir.exists() and potential_dir.is_dir():
-                latest_dir = potential_dir.parent
-            else:
-                # 2. Plan B: Find the latest 'sdk-*' folder that contains 'workspace'
-                subdirs = [d for d in generated_dir.iterdir() if d.is_dir() and d.name.startswith("sdk")]
-                if subdirs:
-                    # Sort chronologically
-                    latest_dir = max(subdirs, key=lambda os_path: os_path.stat().st_mtime)
-                else:
-                    latest_dir = None
-
-            if latest_dir:
-                target_dir = generated_dir / "sdk-0"
-                if target_dir.exists():
-                    shutil.rmtree(target_dir)
-                latest_dir.rename(target_dir)
-                workspace_dir = target_dir / "code_workspace"
-                if workspace_dir.exists():
-                    final_output_dir = str(workspace_dir)
+        code = str(result.output_dir / "code_workspace") if result.output_dir else str(generated_dir)
 
         return GenerationResult(
+            status=Status.PASS if result.success else Status.FAIL,
             model=self._config.get("model"),
-            output_dir=final_output_dir,
-            completion=True if result else False
+            code=code,
         )
