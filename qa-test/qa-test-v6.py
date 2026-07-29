@@ -20,6 +20,7 @@ Verdicts: PRESENT / WEAK / ABSENT (+ OUT_OF_CATALOG at resolve).
 A JSON report is written to ./outputs/<trace-stem>.report.json next to this script.
 """
 
+
 #python qa-test-v6.py "C:\Swinburne Class\SwinLab\llmgenmt\llmagent4code\qa-test\sdk-0\code_workspace\nfr-trace.json"
 
 import ast
@@ -30,6 +31,7 @@ from pathlib import Path
 
 HERE = Path(__file__).parent
 CATALOG_PATH = HERE / "tactic_catalog.json"
+HISTORY_PATH = HERE / "outputs" / "tactic_lib_history.json"   # <- ADD here
 
 # --- verdict labels ---
 OK = "RESOLVED_OK"
@@ -435,6 +437,28 @@ def write_report(out_dir, trace_path, repo_root, results, counts, code):
     out_path.write_text(json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8")
     return out_path
 
+def update_history(trace, history_path=HISTORY_PATH):
+    """Accumulate  tactic -> [all claimed libraries]  across every run.
+    Records ALL libraries claimed in each entry's librariesUsed, regardless of
+    verdict. Unions with prior runs, dedupes, keeps sorted. Returns the path."""
+    history_path.parent.mkdir(parents=True, exist_ok=True)
+    history = {}
+    if history_path.is_file():
+        try:
+            history = json.loads(history_path.read_text(encoding="utf-8"))
+        except Exception:
+            history = {}
+    for entry in trace["nfrTrace"]:
+        tactics = split_tactics(entry.get("tacticUsed", ""))
+        libs = entry.get("librariesUsed", [])
+        for tactic in tactics:
+            existing = set(history.get(tactic, []))
+            existing.update(libs)
+            history[tactic] = sorted(existing)
+    history_path.write_text(json.dumps(history, indent=2, ensure_ascii=False),
+                            encoding="utf-8")
+    return history_path
+
 
 def main():
     if len(sys.argv) != 2:
@@ -477,6 +501,8 @@ def main():
     out_path = write_report(HERE / "outputs", trace_path, repo_root, results, counts, code)
     print(f"report written: {out_path}")
 
+    hist_path = update_history(trace)                  # <- ADD
+    print(f"history updated: {hist_path}")             # <- ADD
     sys.exit(code)
 
 
