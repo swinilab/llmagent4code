@@ -1,8 +1,11 @@
 from __future__ import annotations
 import subprocess
 import os
+import time
 from pathlib import Path
+import requests
 from interfaces.base import (
+    GenerationResult,
     ICompilabilityValidator,
     Status,
     ValidationResult,
@@ -12,8 +15,11 @@ class CompilabilityValidator(ICompilabilityValidator):
     """
     Real Compilability Validator:
     - Reads the startup command from /start_command.txt
-    - Executes it via subprocess (e.g. starting a Docker container)
+    - Executes it via subprocess (e.g. starting a Docker container / uvicorn server)
     - Captures exit codes, stdout, and stderr
+    - For long-running servers (e.g. uvicorn) that stay up, also fires a smoke
+      HTTP request so a server that boots fine but 500s on every request
+      (broken imports, bad DB config, etc.) still fails compilability.
     """
     def __init__(self, config: dict | None = None) -> None:
         config = config or {}
@@ -21,19 +27,51 @@ class CompilabilityValidator(ICompilabilityValidator):
             config.get("agent", {}).get("generated_dir", "generated")
         )
         self._start_command_file = config.get("validator", {}).get("start_command_file", "start_command.txt")
+        self._base_url = config.get("validator", {}).get("base_url", "http://localhost:8000")
+        self._boot_wait_seconds = config.get("validator", {}).get("boot_wait_seconds", 15)
+        self._smoke_path = config.get("validator", {}).get("smoke_path", "/")
+        self._smoke_timeout = config.get("validator", {}).get("smoke_timeout", 10)
 
     def _clean_logs(self, raw_text: str) -> str:
         if not raw_text:
             return ""
         lines = raw_text.splitlines()
         clean_lines = [
-            line for line in lines 
+            line for line in lines
             if line.strip() and not line.strip().startswith('#')
         ]
         return "\n".join(clean_lines)
 
-    def validate(self, code: str) -> ValidationResult:
-        workdir = Path(code)
+    def _smoke_test(self) -> ValidationResult:
+        """Fire a lightweight HTTP request against the still-running server to catch
+        startup-time errors that don't crash the process (e.g. every request 500s)."""
+        try:
+            resp = requests.get(f"{self._base_url}{self._smoke_path}", timeout=self._smoke_timeout)
+        except requests.RequestException as e:
+            return ValidationResult(
+                status=Status.FAIL,
+                stage="compilability",
+                message="Server process is running but not reachable via HTTP",
+                details={"error": str(e)},
+            )
+
+        if resp.status_code >= 500:
+            return ValidationResult(
+                status=Status.FAIL,
+                stage="compilability",
+                message=f"Server started but returned HTTP {resp.status_code} on smoke request",
+                details={"status_code": resp.status_code, "body": resp.text},
+            )
+
+        return ValidationResult(
+            status=Status.PASS,
+            stage="compilability",
+            message=f"Server started and responded successfully (HTTP {resp.status_code})",
+            details={},
+        )
+
+    def validate(self, generation_result: GenerationResult) -> ValidationResult:
+        workdir = Path(generation_result.code)
 
         try:
             command = Path(os.path.join(
@@ -55,62 +93,51 @@ class CompilabilityValidator(ICompilabilityValidator):
                 details={"error": str(e)},
             )
 
+        # Launch the start command in the background so we can both watch for an
+        # early crash and, once it's still alive, smoke-test it over HTTP —
+        # a plain subprocess.run(timeout=...) can't do the latter since it blocks.
         try:
-            # THUẬT TOÁN ÉP CHỜ:
-            # Chạy lệnh trong foreground (không dùng cờ -d của docker).
-            # Ép quá trình chờ tối đa 10 giây (timeout=10).
-            # Nếu là web server (FastAPI), nó sẽ block luồng mãi mãi -> văng lỗi TimeoutExpired.
-            # TimeoutExpired trong trường hợp này lại là TIN TỐT (nghĩa là server không bị crash).
-            
-            process = subprocess.run(
+            process = subprocess.Popen(
                 command,
                 cwd=workdir,
                 shell=True,
-                capture_output=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
                 text=True,
-                timeout=60 # Quan trọng: Chờ 10 giây xem app có crash không
-            )
-            
-            # Nếu lệnh kết thúc sớm hơn 10 giây và trả về lỗi (!= 0) -> Chắc chắn app đã crash
-            if process.returncode != 0:
-                return ValidationResult(
-                    status=Status.FAIL, 
-                    stage="compilability",
-                    message="Runtime error or crash detected during startup", 
-                    details={"stderr": process.stderr, "stdout": process.stdout}
-                )
-            
-            # (Trường hợp lệnh là script chạy ngắn, chạy xong thành công trả về 0)
-            return ValidationResult(
-                status=Status.PASS, 
-                stage="compilability",
-                message="Executed successfully without crashing",
-                details={}
-            )
-
-        except subprocess.TimeoutExpired as e:
-            # 1. DỌN DẸP CONTAINER: 
-            # Bắt buộc phải tắt container đang chạy ngầm để giải phóng Port cho lần kiểm tra sau
-            subprocess.run(
-                "docker compose down", 
-                cwd=workdir, 
-                shell=True, 
-                capture_output=True
-            )
-            
-            # 2. KHỞI TẠO ĐÚNG THAM SỐ:
-            # Tạm thời gọi bằng positional arguments
-            # LƯU Ý: Đổi thứ tự/số lượng biến dưới đây cho khớp với interfaces/base.py của bạn
-            return ValidationResult(
-                status=Status.PASS,                                                    
-                stage="Compilability",
-                message="Server started and remained stable (Timeout reached)", 
-                details={}
             )
         except Exception as e:
             return ValidationResult(
-                status=Status.FAIL, 
+                status=Status.FAIL,
                 stage="compilability",
-                message=f"Validator internal error: {str(e)}", 
-                details={"stderr": str(e)}
+                message=f"Failed to launch start command: {e}",
+                details={"error": str(e)},
             )
+
+        deadline = time.time() + self._boot_wait_seconds
+        while time.time() < deadline:
+            if process.poll() is not None:
+                break
+            time.sleep(0.5)
+
+        if process.poll() is not None:
+            # Process exited on its own within the boot window -> crashed
+            stdout, stderr = process.communicate()
+            if process.returncode == 0:
+                # Short-lived script that finished successfully (not a server)
+                return ValidationResult(
+                    status=Status.PASS,
+                    stage="compilability",
+                    message="Executed successfully without crashing",
+                    details={},
+                )
+            return ValidationResult(
+                status=Status.FAIL,
+                stage="compilability",
+                message="Runtime error or crash detected during startup",
+                details={"stderr": stderr, "stdout": stdout},
+            )
+
+        # Process is still running past the boot window (good sign, not a crash).
+        # Leave it running so later validation stages (e.g. functional) can reach
+        # it too — but probe it now to catch requests that fail with 5xx.
+        return self._smoke_test()

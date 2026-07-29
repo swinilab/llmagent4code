@@ -17,6 +17,11 @@ agent:
 
 # ── Validation ────────────────────────────────
 validation:
+  # Code path to validate when running `--phase val` standalone
+  # (ignored when running `--phase all`, where the code path comes from
+  # the generation phase's GenerationResult instead).
+  code: "generated/code_workspace"
+
   # Stage 1 – Compilability
   docker:
     image: "python:3.11-slim"
@@ -48,6 +53,17 @@ validation:
         method: GET
         path: "/items/9999"
         expected_status: 404
+
+# ── Validator settings ─────────────────────────
+# Read directly by the validator classes (validators/*.py), as opposed to
+# `validation` above which mostly configures generic test-case data.
+validator:
+  base_url: "http://localhost:8000"
+  start_command_file: "start_command.txt"
+  boot_wait_seconds: 15          # Stage 1 – how long to wait for the server to crash on boot
+  smoke_path: "/"                # Stage 1 – path probed after boot to catch startup-time 5xx
+  smoke_timeout: 10
+  nfr_trace_filename: "nfr-trace.json"   # Stage 3 – NFR trace file name inside the code dir
 
 # ── Output ────────────────────────────────────
 output:

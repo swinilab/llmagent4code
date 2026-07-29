@@ -66,14 +66,21 @@ class ICompilabilityValidator(ABC):
     """Stage 1 – checks whether the code compiles/runs inside Docker."""
 
     @abstractmethod
-    def validate(self, code: str) -> ValidationResult:
+    def validate(self, generation_result: GenerationResult) -> ValidationResult:
         ...
 
 class IFunctionalValidator(ABC):
     """Stage 2 – fires HTTP requests and checks expected responses."""
 
     @abstractmethod
-    def validate(self, code: str) -> ValidationResult:
+    def validate(self, generation_result: GenerationResult) -> ValidationResult:
+        ...
+
+class IStaticQualityValidator(ABC):
+    """Stage 3 – verifies the NFR trace's claims (files/functions/libraries) exist."""
+
+    @abstractmethod
+    def validate(self, generation_result: GenerationResult) -> ValidationResult:
         ...
 
 class IReportWriter(ABC):

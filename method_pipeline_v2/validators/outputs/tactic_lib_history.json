@@ -1,0 +1,23 @@
+{
+  "Maintain Multiple Copies of Computations": [
+    "aiocache",
+    "fastapi"
+  ],
+  "Introduce Concurrency": [
+    "asyncio",
+    "uvicorn"
+  ],
+  "Bound Queue Sizes": [
+    "asyncio"
+  ],
+  "Degradation": [],
+  "Ping/Echo": [
+    "tenacity"
+  ],
+  "Retry": [
+    "tenacity"
+  ],
+  "State Resynchronization": [
+    "sqlite3"
+  ]
+}

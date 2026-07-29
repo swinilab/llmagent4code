@@ -2,6 +2,7 @@ from __future__ import annotations
 import subprocess
 import os, re
 from pathlib import Path
+from datetime import datetime
 import json
 from interfaces.base import (
     IFunctionalValidator,
@@ -16,25 +17,34 @@ from validators.tests.OrderTestGroup import OrderTestGroup
 from validators.tests.PaymentTestGroup import PaymentTestGroup
 from validators.tests.ProductTestGroup import ProductTestGroup
 
+# group name -> (TestGroup class, entity key in create_apis.json, default create path)
+TEST_GROUPS = {
+    "customer": (CustomerTestGroup, "customer", "/apiX/vX/customers"),
+    "product":  (ProductTestGroup,  "product",  "/apiX/vX/products"),
+    "order":    (OrderTestGroup,    "order",    "/apiX/vX/orders"),
+    "payment":  (PaymentTestGroup,  "payment",  "/apiX/vX/payments"),
+    "invoice":  (InvoiceTestGroup,  "invoice",  "/apiX/vX/invoices"),
+}
+
 class FunctionalValidator(IFunctionalValidator):
     """
     Real Functional Validator:
     - Fires live HTTP requests using httpx against the running container
     - Validates actual HTTP status codes against expected status codes
+    - Exports the full per-testcase results to a JSON report and returns a
+      per-test-group summary so the pipeline's .txt report can stay concise
     """
     def __init__(
-        self, 
-        endpoints: list[dict] | None = None, 
+        self,
+        endpoints: list[dict] | None = None,
         config: dict | None = None
     ) -> None:
         config = config or {}
         self._base_url = config.get("validator", {}).get("base_url", "http://localhost:8000")
         self._timeout = config.get("validator", {}).get("timeout", 10.0)
-        self._generated_dir = Path(
-            config.get("agent", {}).get("generated_dir", "generated")
-        )
         # Default to /start_command.txt as requested, but allow override via config
         self._start_command_file = config.get("validator", {}).get("start_command_file", "start_command.txt")
+        self._report_dir = config.get("output", {}).get("report_dir", "reports/")
 
     def _resolve_create_api_path(
         self,
@@ -49,59 +59,76 @@ class FunctionalValidator(IFunctionalValidator):
             return entry["path"]
         return default_path
 
-    def validate(self, generation_result: GenerationResult, code: str) -> ValidationResult:
-        workdir = os.path.join(
-                self._generated_dir,
-                generation_result.output_dir,
-                "code_workspace")
-        create_api_paths = dict()
+    def _write_json_report(
+        self,
+        status: Status,
+        message: str,
+        results: list[TestResult],
+        summary: list[dict],
+    ) -> str:
+        os.makedirs(self._report_dir, exist_ok=True)
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        path = os.path.join(self._report_dir, f"functional_test_report_{timestamp}.json")
+
+        payload = {
+            "stage": "functional",
+            "status": status.name,
+            "message": message,
+            "total": len(results),
+            "passed": len([r for r in results if r.result]),
+            "failed": len([r for r in results if not r.result]),
+            "summary": summary,
+            "results": [
+                {"testcase_id": r.testcase_id, "result": r.result, "message": r.message}
+                for r in results
+            ],
+        }
+
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(payload, f, indent=2, ensure_ascii=False)
+
+        return path
+
+    def validate(self, generation_result: GenerationResult) -> ValidationResult:
+        workdir = generation_result.code
         with open(os.path.join(workdir, 'create_apis.json'), 'r', encoding='utf-8') as file:
             create_api_paths = json.load(file)
-        
-        results = list[TestResult]()
 
-        customer_create_api = self._resolve_create_api_path(
-            create_api_paths, "customer", "/apiX/vX/customers"
+        results: list[TestResult] = []
+        summary: list[dict] = []
+
+        for group_name, (group_cls, entity_key, default_path) in TEST_GROUPS.items():
+            api_path = self._resolve_create_api_path(create_api_paths, entity_key, default_path)
+            group_results = group_cls(api=self._base_url + api_path).run_all()
+            results.extend(group_results)
+
+            failed_count = sum(1 for r in group_results if not r.result)
+            summary.append({
+                "group": group_name,
+                "total": len(group_results),
+                "passed": len(group_results) - failed_count,
+                "failed": failed_count,
+            })
+
+        failed_count = sum(1 for r in results if not r.result)
+        status = Status.FAIL if failed_count else Status.PASS
+        message = (
+            f"{failed_count} of {len(results)} HTTP test(s) failed."
+            if failed_count
+            else f"All {len(results)} HTTP functional tests passed."
         )
-        customer_group = CustomerTestGroup(api=self._base_url + customer_create_api)
-        results.extend(customer_group.run_all())
 
-        product_create_api = self._resolve_create_api_path(
-            create_api_paths, "product", "/apiX/vX/products"
-        )
-        product_group = ProductTestGroup(api=self._base_url + product_create_api)
-        results.extend(product_group.run_all())
+        report_path = self._write_json_report(status, message, results, summary)
 
-        order_create_api = self._resolve_create_api_path(
-            create_api_paths, "order", "/apiX/vX/orders"
-        )
-        order_group = OrderTestGroup(api=self._base_url + order_create_api)
-        results.extend(order_group.run_all())
-
-        payment_create_api = self._resolve_create_api_path(
-            create_api_paths, "payment", "/apiX/vX/payments"
-        )
-        payment_group = PaymentTestGroup(api=self._base_url + payment_create_api)
-        results.extend(payment_group.run_all())
-
-        invoice_create_api = self._resolve_create_api_path(
-            create_api_paths, "invoice", "/apiX/vX/invoices"
-        )
-        invoice_group = InvoiceTestGroup(api=self._base_url + invoice_create_api)
-        results.extend(invoice_group.run_all())
-
-        failed = [r for r in results if r.result == False]
-        if failed:
-            return ValidationResult(
-                stage="functional",
-                status=Status.FAIL,
-                message=f"{len(failed)} of {len(results)} HTTP test(s) failed.",
-                details={"results": results, "failed": failed},
-            )
-            
         return ValidationResult(
             stage="functional",
-            status=Status.PASS,
-            message=f"All {len(results)} HTTP functional tests passed.",
-            details={"results": results},
+            status=status,
+            message=message,
+            details={
+                "total": len(results),
+                "passed": len(results) - failed_count,
+                "failed": failed_count,
+                "summary": summary,
+                "report_path": report_path,
+            },
         )

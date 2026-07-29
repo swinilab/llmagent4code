@@ -13,15 +13,17 @@ from interfaces.base import (
     IFunctionalValidator,
     IGenerationAgent,
     IReportWriter,
+    IStaticQualityValidator,
 )
 
 @dataclass
 class PipelineComponents:
-    generation_agent:        IGenerationAgent
-    compilability_validator: ICompilabilityValidator
-    functional_validator:    IFunctionalValidator
-    report_writer:           IReportWriter
-    config:                  dict
+    generation_agent:         IGenerationAgent
+    compilability_validator:  ICompilabilityValidator
+    functional_validator:     IFunctionalValidator
+    static_quality_validator: IStaticQualityValidator
+    report_writer:            IReportWriter
+    config:                   dict
 
 def _build_generation_agent(cfg: dict) -> IGenerationAgent:
     agent_type = cfg.get("agent", {}).get("type", "chatdev")
@@ -36,16 +38,18 @@ def build(config_path: str) -> PipelineComponents:
     with open(config_path) as f:
         cfg = yaml.safe_load(f)
 
-    from repairers.report_writer  import TextReportWriter
-    from validators.CompilabilityValidator import CompilabilityValidator
-    from validators.FunctionalValidator    import FunctionalValidator
+    from report_writer            import TextReportWriter
+    from validators.CompilabilityValidator        import CompilabilityValidator
+    from validators.FunctionalValidator            import FunctionalValidator
+    from validators.StaticQualityAttributeValidator import StaticQualityAttributeValidator
     endpoints = cfg.get("validation", {}).get("http", {}).get("endpoints")
 
     return PipelineComponents(
-        generation_agent        = _build_generation_agent(cfg),
-        compilability_validator = CompilabilityValidator(config=cfg),
-        functional_validator    = FunctionalValidator(endpoints=endpoints, config=cfg),
-        report_writer           = TextReportWriter(
+        generation_agent         = _build_generation_agent(cfg),
+        compilability_validator  = CompilabilityValidator(config=cfg),
+        functional_validator     = FunctionalValidator(endpoints=endpoints, config=cfg),
+        static_quality_validator = StaticQualityAttributeValidator(config=cfg),
+        report_writer            = TextReportWriter(
             report_dir=cfg.get("output", {}).get("report_dir", "reports/")
         ),
         config=cfg,

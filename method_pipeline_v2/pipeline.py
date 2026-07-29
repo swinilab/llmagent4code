@@ -36,39 +36,80 @@ def run_generation(components: PipelineComponents, prompt: str) -> GenerationRes
     print(f"  code   : {result.code}")
     return result
 
-def run_validation(components: PipelineComponents, code: str, indent: int = 1) -> list[ValidationResult]:
+def _generation_result_from_config(cfg: dict) -> GenerationResult:
+    """Build a stand-in GenerationResult for standalone `--phase val` runs,
+    reading the code path to validate from the pipeline config."""
+    code = cfg.get("validation", {}).get("code", "")
+    return GenerationResult(status=Status.PASS, model="None", code=code)
+
+# stage number -> human-readable name (1-3 are implemented, 4 is a placeholder)
+VALIDATION_STAGES = {
+    1: "compilability",
+    2: "functional",
+    3: "static QA",
+    4: "QA",
+}
+
+def run_validation(
+    components: PipelineComponents,
+    generation: GenerationResult,
+    stage: int | None = None,
+    indent: int = 1,
+) -> list[ValidationResult]:
+    """Run the validation waterfall, or a single isolated sub-stage.
+
+    stage=None runs stages 1→3 in a waterfall (stops at the first failure).
+    stage=1|2|3|4 runs only that sub-stage, regardless of pass/fail.
+    """
     pad = "  " * indent
     results: list[ValidationResult] = []
+    stages = [stage] if stage is not None else [1, 2, 3]
+    waterfall = stage is None
 
-    print(f"{pad}validate > compilability")
-    compile_result = components.compilability_validator.validate(code)
-    results.append(compile_result)
+    for s in stages:
+        name = VALIDATION_STAGES[s]
 
-    if not compile_result.passed:
-        print(f"{pad}  ❌ {compile_result.message}")
-        return results
-    print(f"{pad}  ✅ passed")
+        if s == 1:
+            print(f"{pad}validate > {name}")
+            result = components.compilability_validator.validate(generation)
+        elif s == 2:
+            print(f"{pad}validate > {name}")
+            result = components.functional_validator.validate(generation)
+        elif s == 3:
+            print(f"{pad}validate > {name}")
+            result = components.static_quality_validator.validate(generation)
+        else:
+            print(f"{pad}validate > {name} (not implemented yet, skipping)")
+            continue
+
+        results.append(result)
+        if result.passed:
+            print(f"{pad}  ✅ passed")
+        else:
+            print(f"{pad}  ❌ {result.message}")
+            if waterfall:
+                break
+
     return results
 
-def run_pipeline(components: PipelineComponents, phase: str = "all") -> None:
+def run_pipeline(components: PipelineComponents, phase: str = "all", stage: int | None = None) -> None:
     cfg    = components.config
     prompt = _read_prompt(cfg)
 
     generation: GenerationResult | None = None
     validation_results: list[ValidationResult] = []
 
-    generated_dir = Path(cfg.get("agent", {}).get("generated_dir", "generated"))
-    code          = str(generated_dir / "code_workspace")
-
     # 1. GENERATION PHASE
     if phase in ("gen", "all"):
         generation = run_generation(components, prompt)
-        code = generation.code
 
     # 2. VALIDATION PHASE
     if phase in ("val", "all"):
         print("PHASE 2: VALIDATION")
-        validation_results = run_validation(components, code, indent=1)
+        if generation is None:
+            # standalone `--phase val` run: build the GenerationResult from config
+            generation = _generation_result_from_config(cfg)
+        validation_results = run_validation(components, generation, stage=stage, indent=1)
 
     # 3. EXPORT REPORT
     print("EXPORTING REPORT")

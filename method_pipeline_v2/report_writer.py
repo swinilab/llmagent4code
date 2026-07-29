@@ -1,6 +1,6 @@
 """
-repairers/report_writer.py
-───────────────────────────
+report_writer.py
+─────────────────
 Concrete IReportWriter — writes a human-readable report.txt.
 
 The report covers:
@@ -59,8 +59,28 @@ class TextReportWriter(IReportWriter):
             for vr in validation_results:
                 icon = "✅" if vr.passed else "❌"
                 lines.append(f"  {icon} {vr.stage} : {vr.message}")
+
                 if vr.details.get("stderr"):
-                    lines.append(f"  Error detail : {vr.details.get('stderr')}")
+                    lines.append(f"    error detail : {vr.details.get('stderr')}")
+
+                summary = vr.details.get("summary")
+                if summary:
+                    total  = vr.details.get("total")
+                    passed = vr.details.get("passed")
+                    failed = vr.details.get("failed")
+                    lines.append(f"    {failed}/{total} failed ({passed} passed)")
+                    for group in summary:
+                        lines.append(
+                            f"    - {group['group']} : {group['failed']}/{group['total']} failed"
+                        )
+                    report_path = vr.details.get("report_path")
+                    if report_path:
+                        lines.append(f"    full report : {report_path}")
+                elif vr.details.get("tally"):
+                    lines.append(f"    tally : {vr.details.get('tally')}")
+                    report_path = vr.details.get("report_path")
+                    if report_path:
+                        lines.append(f"    full report : {report_path}")
             lines.append("")
 
         lines.append("RESULT")
