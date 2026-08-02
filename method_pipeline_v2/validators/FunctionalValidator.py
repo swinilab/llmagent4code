@@ -45,6 +45,9 @@ class FunctionalValidator(IFunctionalValidator):
         # Default to /start_command.txt as requested, but allow override via config
         self._start_command_file = config.get("validator", {}).get("start_command_file", "start_command.txt")
         self._report_dir = config.get("output", {}).get("report_dir", "reports/")
+        self._generated_dir = Path(
+            config.get("agent", {}).get("generated_dir", "generated")
+        )
 
     def _resolve_create_api_path(
         self,
@@ -90,7 +93,11 @@ class FunctionalValidator(IFunctionalValidator):
         return path
 
     def validate(self, generation_result: GenerationResult) -> ValidationResult:
-        workdir = generation_result.code
+        workdir = Path(os.path.join(
+            self._generated_dir,
+            generation_result.code,
+            "code_workspace"
+        ))
         with open(os.path.join(workdir, 'create_apis.json'), 'r', encoding='utf-8') as file:
             create_api_paths = json.load(file)
 

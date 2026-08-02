@@ -71,18 +71,22 @@ class CompilabilityValidator(ICompilabilityValidator):
         )
 
     def validate(self, generation_result: GenerationResult) -> ValidationResult:
-        workdir = Path(generation_result.code)
-
+        workdir = Path(os.path.join(
+            self._generated_dir,
+            generation_result.code,
+            "code_workspace"
+        ))
+        command_file = Path(os.path.join(
+            workdir,
+            self._start_command_file
+        ))
         try:
-            command = Path(os.path.join(
-                workdir,
-                self._start_command_file
-            )).read_text().strip()
+            command = command_file.read_text().strip()
         except FileNotFoundError:
             return ValidationResult(
                 stage="compilability",
                 status=Status.FAIL,
-                message=f"Start command file not found: {self._start_command_file}",
+                message=f"Start command file not found: {command}",
                 details={"error": "FileNotFoundError"},
             )
         except Exception as e:
@@ -97,44 +101,26 @@ class CompilabilityValidator(ICompilabilityValidator):
         # early crash and, once it's still alive, smoke-test it over HTTP —
         # a plain subprocess.run(timeout=...) can't do the latter since it blocks.
         try:
-            process = subprocess.Popen(
+            process = subprocess.run(
                 command,
                 cwd=workdir,
                 shell=True,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE,
+                capture_output=True,
                 text=True,
             )
+            if process.returncode != 0:
+                return ValidationResult(
+                    status=Status.FAIL,
+                    stage="compilability",
+                    message=f"Failed to launch start command: Return code is {process.returncode} \n {process.stderr}",
+                    details={"error": str(process.stderr)},
+                )
         except Exception as e:
             return ValidationResult(
                 status=Status.FAIL,
                 stage="compilability",
                 message=f"Failed to launch start command: {e}",
                 details={"error": str(e)},
-            )
-
-        deadline = time.time() + self._boot_wait_seconds
-        while time.time() < deadline:
-            if process.poll() is not None:
-                break
-            time.sleep(0.5)
-
-        if process.poll() is not None:
-            # Process exited on its own within the boot window -> crashed
-            stdout, stderr = process.communicate()
-            if process.returncode == 0:
-                # Short-lived script that finished successfully (not a server)
-                return ValidationResult(
-                    status=Status.PASS,
-                    stage="compilability",
-                    message="Executed successfully without crashing",
-                    details={},
-                )
-            return ValidationResult(
-                status=Status.FAIL,
-                stage="compilability",
-                message="Runtime error or crash detected during startup",
-                details={"stderr": stderr, "stdout": stdout},
             )
 
         # Process is still running past the boot window (good sign, not a crash).
