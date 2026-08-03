@@ -1,0 +1,160 @@
+# Single source of truth for every numeric acceptance threshold.
+#
+# Every value here is transcribed verbatim from prompts/generate.md, the same
+# document handed to the coding agents. If the two ever disagree, generate.md
+# wins and this file is the defect: we must not score an agent against a
+# criterion it was never given.
+#
+# The results tables in the paper are rendered from this file, so a threshold
+# can never silently drift between the prompt, the evaluator and the write-up.
+
+# ── Configuration the application is required to accept (generate.md §2) ──
+# The evaluator asserts these are the effective values, via the startup log
+# line the prompt mandates. A run against a differently-configured app is not
+# comparable and is aborted rather than scored.
+app_config:
+  APP_PORT: 8080
+  MAX_IN_FLIGHT_REQUESTS: 10
+  DB_OPERATION_TIMEOUT_MS: 1000
+  DB_MAX_ATTEMPTS: 3
+  DB_RETRY_BACKOFF_MS: 100
+  CACHE_TTL_SECONDS: 5
+  ENABLE_TEST_HOOKS: true          # evaluation deployment overrides the false default
+
+# ── Toxiproxy deployment contract (generate.md §6) ──
+toxiproxy:
+  api_port: 8474
+  proxy_name: postgres
+  listen: "0.0.0.0:8666"
+  upstream: "db:5432"
+
+# ── Observation-path availability (generate.md §5) ──
+# The specification requires these paths to stay servable under overload and
+# during a database outage: outside admission control, needing no database
+# round-trip, undelayed by X-Test-Delay-Ms.
+#
+# Losing them mid-fault is scored as a scenario FAIL, not NOT_EXERCISABLE. An
+# application that answered before the fault and stopped answering after it has
+# demonstrably routed its own observability through the dependency it was meant
+# to survive without. NOT_EXERCISABLE is reserved for paths that were never
+# usable, where we genuinely never had the ability to measure.
+observation_paths:
+  must_survive_fault:
+    - /health/live
+    - /internal/metrics
+  # Expected to report unready during an outage, but must still answer.
+  must_answer_but_may_report_unready:
+    - /health/ready
+
+# ── Controlled error codes (generate.md §4) ──
+error_codes:
+  timeout: DEPENDENCY_TIMEOUT
+  unavailable: DEPENDENCY_UNAVAILABLE
+  overload: OVERLOAD_REJECTED
+  transaction: TRANSACTION_FAILED
+
+# ── ASR-P1: cached product-read performance ──
+asr_p1:
+  pre_expiry_description: CACHE_VERSION_A
+  post_expiry_description: CACHE_VERSION_B
+  measured_reads: 1000
+  # Kept at or below MAX_IN_FLIGHT_REQUESTS. This scenario measures the
+  # maintained copy, not the admission policy -- ASR-P2 measures that. Driving
+  # it above the in-flight limit would make a correctly implemented system
+  # reject part of its own measurement workload with 429, and the resulting
+  # error rate and latency would describe admission control rather than the
+  # cache. The two scenarios have to be able to fail independently.
+  concurrency: 10
+  cache_hit_rate_min: 0.95
+  db_product_reads_max: 100
+  p95_ms_max: 200
+  error_rate_max: 0.01
+
+# ── ASR-P2: controlled response under overload ──
+asr_p2:
+  concurrent_requests: 200
+  test_delay_ms: 250
+  successes_min: 1
+  controlled_rejections_min: 150
+  # Measured relative to a floor, not absolutely. The same burst is first fired
+  # at an exempt no-op path to establish what opening this many sockets costs
+  # the harness; only latency above that is attributed to admission control.
+  # On the calibration host the floor alone was ~1.4 s p95 while the server was
+  # in fact refusing in ~9 ms, so an absolute comparison would fail a correct
+  # implementation for the client's own overhead.
+  rejection_p95_ms_max: 500
+  unhandled_500_max: 0
+  restart_count_max: 0
+  ready_recovery_seconds_max: 2
+
+# ── ASR-A1: dependency timeout detection ──
+asr_a1:
+  injected_latency_ms: 5000
+  per_attempt_timeout_seconds_max: 1.2
+  total_response_seconds_max: 4.5
+  hanging_requests_max: 0
+  accepted_statuses: [503, 504]
+
+# ── ASR-A2: recovery from transient database faults ──
+asr_a2:
+  injected_failures: 2
+  expected_status: 200
+  expected_attempt_delta: 3        # db_product_read_attempts_total
+  expected_retry_delta: 2          # retry_attempts_total
+  # Cross-check: only the third attempt should actually reach PostgreSQL.
+  expected_db_read_delta: 1
+  max_attempts_ceiling: 3          # equals DB_MAX_ATTEMPTS
+
+# ── ASR-A3: graceful degradation during database outage ──
+asr_a3:
+  outage_seconds: 60
+  warmed_reads: 600
+  unwarmed_reads: 1
+  state_changing_requests: 20
+  warmed_success_rate_min: 0.99
+  warmed_p95_ms_max: 200
+  unhandled_500_max: 0
+  restart_count_max: 0
+  # Measured from re-enabling the proxy until a real business write succeeds.
+  # Readiness alone is too optimistic a signal to anchor this on.
+  recovery_seconds_max: 10
+  accepted_read_statuses: [503, 504]
+  accepted_write_statuses: [503]
+
+# ── ASR-A4: atomic payment verification ──
+asr_a4:
+  accepted_fault_statuses: [500, 503]
+  post_rollback_state:
+    payment: PENDING
+    invoice: ISSUED
+    order: PAID
+  post_success_state:
+    payment: VERIFIED
+    invoice: PAID
+    order: VERIFIED
+  partial_commits_max: 0
+
+# ── Repetition and result classification (III §5.5, §6) ──
+repetition:
+  runs_per_scenario: 5
+  # Retry and Transactions are deterministic: any flake is a real defect.
+  required_passes:
+    ASR-P1: 4
+    ASR-P2: 4
+    ASR-A1: 4
+    ASR-A2: 5
+    ASR-A3: 4
+    ASR-A4: 5
+  # Reset policy, per the agreed protocol:
+  #   between runs      -> POST /internal/test/reset
+  #   between scenarios -> docker compose down -v && up (clean database)
+  reset_between_runs: test_reset
+  reset_between_scenarios: compose_recreate
+
+# ── Environment invariants the harness enforces before scoring ──
+environment:
+  # p95 thresholds are absolute wall-clock numbers, so the three applications
+  # must be measured on the same host, sequentially, with nothing else running.
+  require_sequential_execution: true
+  app_cpus: 2.0
+  app_mem_limit: "2g"

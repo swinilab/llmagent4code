@@ -1,0 +1,135 @@
+{
+  "nfrTrace": [
+    {
+      "scenarioId": "ASR-P1",
+      "nfr": "Cached product-read performance",
+      "tacticUsed": "Performance > Manage Resources > Maintain Multiple Copies of Data",
+      "filesImplemented": [
+        "app/core/cache.py",
+        "app/services/product_service.py",
+        "app/api/routes_business.py"
+      ],
+      "functionNames": [
+        "app/core/cache.py::TtlCache.get_or_load",
+        "app/core/cache.py::TtlCache._lock_for",
+        "app/core/cache.py::TtlCache.invalidate",
+        "app/services/product_service.py::get_product",
+        "app/services/product_service.py::_load_product",
+        "app/api/routes_business.py::get_product"
+      ],
+      "configurationKeys": ["CACHE_TTL_SECONDS"],
+      "librariesUsed": [],
+      "metrics": ["cache_hits_total", "cache_misses_total", "db_product_reads_total"],
+      "verificationMethod": "tests/test_asr_performance.py::test_asrp1_stale_within_ttl_then_fresh_after_ttl updates a Product row directly in PostgreSQL and asserts the API returns the cached value within CACHE_TTL_SECONDS and the updated value after it. ::test_asrp1_concurrent_reads_hit_rate_latency_and_db_bound drives 8 concurrent readers for two TTL intervals and asserts hit rate >= 95%, p95 <= 200 ms, error rate <= 1%, and TTL-bounded database reads. ::test_asrp1_single_flight_bounds_concurrent_misses asserts 8 simultaneous cold misses for one key produce at most 2 database reads."
+    },
+    {
+      "scenarioId": "ASR-P2",
+      "nfr": "Controlled response under overload",
+      "tacticUsed": "Performance > Control Resource Demand > Manage Work Requests > Limit Event Response",
+      "filesImplemented": [
+        "app/core/admission.py",
+        "app/api/middleware.py",
+        "app/api/routes_ops.py"
+      ],
+      "functionNames": [
+        "app/core/admission.py::AdmissionController.slot",
+        "app/core/admission.py::AdmissionController._try_acquire",
+        "app/core/admission.py::AdmissionController._release",
+        "app/api/middleware.py::AdmissionControlMiddleware.dispatch",
+        "app/api/middleware.py::is_exempt",
+        "app/api/routes_ops.py::get_admission_state"
+      ],
+      "configurationKeys": ["MAX_IN_FLIGHT_REQUESTS"],
+      "librariesUsed": [],
+      "metrics": ["requests_accepted_total", "requests_rejected_total"],
+      "verificationMethod": "tests/test_asr_performance.py::test_asrp2_admission_control_under_overload releases a 60-request simultaneous burst over pre-warmed connections through a barrier and asserts peak concurrent admission <= MAX_IN_FLIGHT_REQUESTS (read from /internal/admission), that admitted requests still succeed, that every rejection is 429/503 with error.code OVERLOAD_REJECTED, rejection p95 <= 500 ms, zero unhandled 500s, and /health/ready answering within 2 s. ::test_asrp2_retry_after_header_on_rejection asserts Retry-After is present. ::test_observation_paths_bypass_admission_control asserts health and metrics stay servable during the burst."
+    },
+    {
+      "scenarioId": "ASR-A1",
+      "nfr": "Dependency timeout detection",
+      "tacticUsed": "Availability > Detect Faults > Timeout",
+      "filesImplemented": [
+        "app/persistence/database.py",
+        "app/core/config.py",
+        "app/core/errors.py"
+      ],
+      "functionNames": [
+        "app/persistence/database.py::_run_attempt",
+        "app/persistence/database.py::run_with_resilience",
+        "app/persistence/database.py::_is_timeout_error",
+        "app/persistence/database.py::_classify",
+        "app/core/errors.py::DependencyTimeoutError.__init__"
+      ],
+      "configurationKeys": ["DB_OPERATION_TIMEOUT_MS", "DB_MAX_ATTEMPTS"],
+      "librariesUsed": ["sqlalchemy", "psycopg2-binary"],
+      "metrics": ["timeouts_total"],
+      "verificationMethod": "tests/test_asr_availability.py::test_asra1_timeout_detection injects 5000 ms of latency through the Toxiproxy control API on an uncached Product read and asserts the total client response time is <= 4.5 s, the status is a controlled 503/504 with error.code DEPENDENCY_TIMEOUT, timeouts_total increases, and /health/live still returns 200. ::test_asra1_no_request_hangs_beyond_budget asserts no request exceeds the 4.5 s budget under sustained latency."
+    },
+    {
+      "scenarioId": "ASR-A2",
+      "nfr": "Recovery from transient database faults",
+      "tacticUsed": "Availability > Recover from Faults > Preparation and Repair > Retry",
+      "filesImplemented": [
+        "app/persistence/database.py",
+        "app/persistence/repositories.py",
+        "app/core/test_hooks.py"
+      ],
+      "functionNames": [
+        "app/persistence/database.py::run_with_resilience",
+        "app/persistence/database.py::is_retryable",
+        "app/persistence/repositories.py::ProductRepository.get",
+        "app/core/test_hooks.py::consume_transient_db_failure"
+      ],
+      "configurationKeys": ["DB_MAX_ATTEMPTS", "DB_RETRY_BACKOFF_MS", "ENABLE_TEST_HOOKS"],
+      "librariesUsed": [],
+      "metrics": ["retry_attempts_total", "db_product_read_attempts_total", "db_product_reads_total"],
+      "verificationMethod": "tests/test_asr_availability.py::test_asra2_retry_recovers_after_two_transient_faults sends X-Test-Fault: transient-db-failures=2 on an uncached Product GET and asserts HTTP 200, db_product_read_attempts_total increasing by exactly 3, and retry_attempts_total by exactly 2. ::test_asra2_attempts_never_exceed_max asserts attempts stop at DB_MAX_ATTEMPTS with no infinite loop. ::test_asra2_non_transient_failures_are_not_retried and ::test_asra2_workflow_conflict_is_not_retried assert malformed UUIDs, unknown IDs, and 409 conflicts leave retry_attempts_total at zero."
+    },
+    {
+      "scenarioId": "ASR-A3",
+      "nfr": "Graceful degradation during database outage",
+      "tacticUsed": "Availability > Recover from Faults > Preparation and Repair > Graceful Degradation",
+      "filesImplemented": [
+        "app/core/cache.py",
+        "app/persistence/database.py",
+        "app/services/product_service.py",
+        "app/api/routes_ops.py"
+      ],
+      "functionNames": [
+        "app/core/cache.py::TtlCache.get_or_load",
+        "app/persistence/database.py::DependencyHealthGate.should_fail_fast",
+        "app/persistence/database.py::DependencyHealthGate.record_unavailable",
+        "app/persistence/database.py::DependencyHealthGate.record_success",
+        "app/persistence/database.py::_recovery_prober",
+        "app/persistence/database.py::_is_unavailable_error",
+        "app/persistence/database.py::check_database_ready",
+        "app/api/routes_ops.py::health_ready"
+      ],
+      "configurationKeys": ["CACHE_TTL_SECONDS", "DB_OPERATION_TIMEOUT_MS"],
+      "librariesUsed": [],
+      "metrics": ["cache_hits_total", "cache_misses_total"],
+      "verificationMethod": "tests/test_asr_availability.py::test_asra3_graceful_degradation_during_outage warms one Product, leaves another unread, disables the postgres Toxiproxy proxy for 3x CACHE_TTL_SECONDS, and asserts warmed-read success >= 99% at p95 <= 200 ms, unwarmed reads returning 503/504 with error.code DEPENDENCY_UNAVAILABLE, every state-changing request returning 503 with DEPENDENCY_UNAVAILABLE and none reporting success, zero unhandled 500s, /health/live and /internal/metrics still 200 while /health/ready reports 503, recovery within 10 s, and post-recovery smoke tests passing. ::test_asra3_state_changing_workflow_transitions_fail_safely asserts a workflow transition fails safely and did not take effect."
+    },
+    {
+      "scenarioId": "ASR-A4",
+      "nfr": "Atomic payment verification",
+      "tacticUsed": "Availability > Prevent Faults > Transactions",
+      "filesImplemented": [
+        "app/persistence/database.py",
+        "app/services/order_service.py",
+        "app/core/test_hooks.py"
+      ],
+      "functionNames": [
+        "app/persistence/database.py::session_scope",
+        "app/services/order_service.py::verify_payment",
+        "app/services/order_service.py::create_invoice",
+        "app/services/order_service.py::create_payment",
+        "app/core/test_hooks.py::should_fault_after_payment_update"
+      ],
+      "configurationKeys": ["ENABLE_TEST_HOOKS"],
+      "librariesUsed": ["sqlalchemy"],
+      "metrics": ["transaction_rollbacks_total"],
+      "verificationMethod": "tests/test_asr_availability.py::test_asra4_transaction_rollback_leaves_no_partial_state drives an order to PAID, sends X-Test-Fault: after-payment-update to POST /api/v1/payments/{id}/verify, and asserts a controlled 500/503 with error.code TRANSACTION_FAILED, transaction_rollbacks_total increasing, post-rollback states of Payment=PENDING / Invoice=ISSUED / Order=PAID, and a subsequent clean verification reaching Payment=VERIFIED / Invoice=PAID / Order=VERIFIED. ::test_asra4_invoice_creation_is_atomic asserts invoice creation advances both Invoice and Order together."
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+# Tactic traceability — reference application
+
+One row per ASR. Tactic strings are verbatim; the traceability gate compares
+them literally against `nfr-trace.json` and the ADRs, so a paraphrase here would
+register as a contradiction between documents.
+
+| ASR ID | QA | Exact tactic | Mechanism | Component/module | Files | Functions/configuration | Runtime metrics | Verification scenario |
+|---|---|---|---|---|---|---|---|---|
+| ASR-P1 | Performance | Performance > Manage Resources > Maintain Multiple Copies of Data | TTL cache with per-key single-flight refill | cache | `app/cache.py`, `app/services.py` | `ProductCache.get`, `get_product`, `CACHE_TTL_SECONDS` | `cache_hits_total`, `cache_misses_total`, `db_product_reads_total` | Direct SQL mutation then API read; 1,000 reads at concurrency 50 with pg_stat scan delta |
+| ASR-P2 | Performance | Performance > Control Resource Demand > Manage Work Requests > Limit Event Response | Counting semaphore refusing immediately when full | admission | `app/admission.py` | `AdmissionController.try_acquire`, `AdmissionMiddleware.dispatch`, `MAX_IN_FLIGHT_REQUESTS` | `requests_accepted_total`, `requests_rejected_total` | 200 simultaneous delayed searches; rejection count and rejection p95 measured client-side |
+| ASR-A1 | Availability | Availability > Detect Faults > Timeout | PostgreSQL `statement_timeout` plus bounded connect timeout | database | `app/database.py` | `_apply_statement_timeout`, `classify`, `DB_OPERATION_TIMEOUT_MS` | `timeouts_total` | 5,000 ms Toxiproxy latency; client-side elapsed time bounded and `DEPENDENCY_TIMEOUT` asserted |
+| ASR-A2 | Availability | Availability > Recover from Faults > Preparation and Repair > Retry | Bounded retry with explicit fault classification | database | `app/database.py`, `app/services.py` | `with_retry`, `_load_product`, `DB_MAX_ATTEMPTS`, `DB_RETRY_BACKOFF_MS` | `db_product_read_attempts_total`, `retry_attempts_total` | Two injected transient failures; three attempts, two retries, one pg_stat scan |
+| ASR-A3 | Availability | Availability > Recover from Faults > Preparation and Repair > Graceful Degradation | Stale copy served while the database is unreachable, under a horizon separate from the TTL | cache | `app/cache.py` | `ProductCache._load_and_store`, `Entry.is_servable_when_degraded`, `CACHE_TTL_SECONDS` | `cache_hits_total` | 60 s proxy outage; warmed reads succeed while the unwarmed read and all writes return `DEPENDENCY_UNAVAILABLE` |
+| ASR-A4 | Availability | Availability > Prevent Faults > Transactions | One transaction spanning payment, invoice and order with no intermediate commit | services | `app/services.py`, `app/database.py` | `verify_payment`, `session_scope`, `DATABASE_URL` | `transaction_rollbacks_total` | Fault after payment update; three row statuses read directly from PostgreSQL |

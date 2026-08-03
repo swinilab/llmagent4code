@@ -1,0 +1,22 @@
+# Evaluation-only overlay. Not part of the submission's deployment contract.
+#
+# Three scenarios (ASR-A2, ASR-A4, ASR-P1) take their decisive evidence straight
+# out of PostgreSQL rather than over the API, because asking the application
+# whether it rolled back lets a cache answer on the database's behalf. That
+# requires a host-side connection, and the submission -- correctly, since the
+# specification never asks for it -- publishes only the application and the
+# Toxiproxy API.
+#
+# Publishing the port here keeps the observation possible without editing the
+# submission's own docker-compose.yml. Nothing inside the network changes: the
+# application still reaches PostgreSQL only through toxiproxy:8666, so the
+# outage scenarios sever exactly what they severed before.
+#
+# The host side is 15432 rather than 5432 because a PostgreSQL server already
+# runs on this machine; binding the standard port would fail, and -- worse if it
+# had succeeded -- pointing the evaluator at the wrong database would have it
+# read a schema the application never wrote.
+services:
+  db:
+    ports:
+      - "15432:5432"

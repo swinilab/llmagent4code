@@ -12,13 +12,13 @@ def main():
     deployer = MinikubeDeployerAdapter(config)
     evaluator = JMeterEvaluatorAdapter(config)
     
-    print("========== Code Generation Phase ==========")
-    if not agent.gen_code(config):
-        return
-
-    # print("========== Minikube Deploying Phase ==========")
-    # if not deployer.deploy():
+    # print("========== Code Generation Phase ==========")
+    # if not agent.gen_code(config):
     #     return
+
+    print("========== Minikube Deploying Phase ==========")
+    if not deployer.deploy():
+        return
 
     # try:
     #     print("========== Evaluation Phase ==========")

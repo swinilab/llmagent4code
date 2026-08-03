@@ -1,0 +1,18 @@
+{
+  "acceptOrder": {
+    "method": "POST",
+    "pathTemplate": "/api/v1/orders/{id}/accept"
+  },
+  "verifyPayment": {
+    "method": "POST",
+    "pathTemplate": "/api/v1/payments/{id}/verify"
+  },
+  "shipOrder": {
+    "method": "POST",
+    "pathTemplate": "/api/v1/orders/{id}/ship"
+  },
+  "closeOrder": {
+    "method": "POST",
+    "pathTemplate": "/api/v1/orders/{id}/close"
+  }
+}

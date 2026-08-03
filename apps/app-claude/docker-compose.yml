@@ -1,0 +1,84 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: orderman
+      POSTGRES_PASSWORD: orderman
+      POSTGRES_DB: orderman
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U orderman -d orderman"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    networks:
+      - orderman
+
+  toxiproxy:
+    image: ghcr.io/shopify/toxiproxy:2.11.0
+    command: ["-host", "0.0.0.0", "-config", "/config/toxiproxy.json"]
+    ports:
+      # Toxiproxy control API, used by the acceptance scenarios to inject
+      # latency (ASR-A1) and to disable the proxy entirely (ASR-A3).
+      - "8474:8474"
+    volumes:
+      - ./toxiproxy/toxiproxy.json:/config/toxiproxy.json:ro
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - orderman
+
+  # Confirms the `postgres` proxy exists and is listening before the app starts.
+  # The proxy itself is created declaratively from the mounted config above.
+  toxiproxy-init:
+    image: curlimages/curl:8.11.1
+    depends_on:
+      - toxiproxy
+    entrypoint:
+      - sh
+      - -c
+      - |
+        for i in $$(seq 1 60); do
+          if curl -sf http://toxiproxy:8474/proxies/postgres > /dev/null; then
+            echo "toxiproxy proxy 'postgres' is ready"
+            exit 0
+          fi
+          echo "waiting for toxiproxy proxy 'postgres' ($$i)"
+          sleep 1
+        done
+        echo "toxiproxy proxy 'postgres' did not become ready"
+        exit 1
+    networks:
+      - orderman
+
+  app:
+    build: .
+    environment:
+      APP_PORT: 8080
+      MAX_IN_FLIGHT_REQUESTS: 10
+      DB_OPERATION_TIMEOUT_MS: 1000
+      DB_MAX_ATTEMPTS: 3
+      DB_RETRY_BACKOFF_MS: 100
+      CACHE_TTL_SECONDS: 5
+      ENABLE_TEST_HOOKS: "true"
+      # All PostgreSQL traffic traverses Toxiproxy; db:5432 is never used directly.
+      DATABASE_URL: postgresql+psycopg2://orderman:orderman@toxiproxy:8666/orderman
+    ports:
+      - "8080:8080"
+    depends_on:
+      toxiproxy-init:
+        condition: service_completed_successfully
+    cpus: 2.0
+    mem_limit: 2g
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:8080/health/live || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 20s
+    networks:
+      - orderman
+
+networks:
+  orderman:
+    driver: bridge
