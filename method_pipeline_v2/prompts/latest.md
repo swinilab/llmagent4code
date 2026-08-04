@@ -25,12 +25,13 @@ Before writing any code, produce a table mapping every NFR below to:
 - A one-line **verification method** (how a reviewer would confirm it works)
 
 Non-Functional Requirements to satisfy:
-- **NFR 1.1 Response Time:** core journeys (product search, cart, checkout) must minimize round-trip latency under load.
-- **NFR 1.2 Concurrency & Resource Utilization:** system must exploit available server resources with minimal queuing.
-- **NFR 1.3 Queue Management:** sudden spikes must not crash the system.
-- **NFR 2.1 Graceful Degradation:** Under extreme resource contention, the system must degrade non-essential features to ensure core checkout functionality remains available.
-- **NFR 2.2 Fault Detection and Recovery:** The application must detect internal component failures and automatically attempt to recover or reconnect, minimizing user-facing errors.
-- **NFR 2.3 State Preservation:** In the event of an unexpected application process crash, the system must be able to restore its operational state and resume processing pending orders upon restart with minimal data loss.
+- **NFR 1.1 Limit Event Response:** process events only up to a set maximum rate.
+- **NFR 1.2 Maintain Multiple copies of Data:** Two common examples of maintaining multiple copies of data are data replication and caching.
+- **NFR 2.1 Exception detection:** detect a system condition that alters
+the normal flow of execution. Two common types of exception detection tactics are System exceptions and time out.
+- **NFR 2.2 Graceful Degradation:** maintain the most critical system functions in the presence of component failures, while dropping less critical functions.
+- **NFR 2.3 State Resynchronization:** the states of the active and standby components are periodically compared to ensure synchronization.
+- **NFR 2.4 Transactions:** leverage transactional semantics to ensure that asynchronous messages exchanged between distributed components are atomic, consistent, isolated, and durable (a.k.a ACID properties)
 
 ## 3. NFR Trace JSON (mandatory deliverable — machine-readable)
 
@@ -38,100 +39,21 @@ In addition to the human-readable NFR Traceability Matrix (Markdown table), you 
 separate, machine-readable file named `nfr-trace.json` at the project root. This file lets an
 automated reviewer verify that every NFR is backed by real, locatable code — not just prose.
 
-For **every** NFR listed above, provide one entry with:
-- **`nfr`** — the NFR ID and short name exactly as written above (e.g. `"NFR 2.2 Fault Detection and Recovery"`).
-- **`filesImplemented`** — array of actual file paths (relative to project root) where this NFR
-  is implemented. No placeholders; every path must correspond to a real file you delivered.
-- **`librariesUsed`** — array of third-party libraries/frameworks that provide the mechanism
-  (e.g. `"tenacity"`, `"circuitbreaker"`, `"asyncio.Queue"`, `"redis"`). Use `[]` if none — do not
-  omit the key.
-- **`functionNames`** — array of the actual function/method names (as written in code, e.g.
-  `"reconnect_with_backoff"`, not a paraphrase) that call or configure the library/mechanism named
-  in `librariesUsed` to satisfy this specific NFR. Each entry MUST be qualified with its file so
-  it is unambiguous which of the `filesImplemented` it lives in, using the form
-  `"<relative/file/path>::<function_or_method_name>"` (e.g.
-  `"app/db/connection_pool.py::get_connection_with_retry"`). Every function listed must actually
-  exist in the delivered file and must be the function that directly invokes the library — not a
-  caller several layers up. If a mechanism is implemented without a third-party library (so
-  `librariesUsed` is `[]`), still list the hand-written function(s) that implement the tactic. Do
-  not omit the key; use `[]` only if genuinely no dedicated function exists (e.g. the mechanism is
-  purely declarative configuration with no executable code, such as a Docker healthcheck directive).
-- **`tacticUsed`** — the specific architectural tactic from Bass, Clements & Kazman,
-  *Software Architecture in Practice*, that this implementation realizes. Use the tactic's
-  category and exact name from the book (e.g. `"Availability > Detect Faults > Ping/Echo"`,
-  `"Performance > Manage Resources > Introduce Concurrency"`). Do not invent tactic names; if
-  no tactic from the book cleanly applies, state `"tacticUsed": "N/A — <one-line justification>"`.
-- **`verificationMethod`** — one line describing how a reviewer confirms this in practice
-  (should match the Verification Method column in the Markdown matrix).
-
-### Required structure of `nfr-trace.json`
-
+The file has the following content format: 
 ```json
 {
   "nfrTrace": [
     {
-      "nfr": "NFR 1.1 Response Time",
-      "filesImplemented": ["app/services/order_service.py", "app/cache/response_cache.py"],
-      "librariesUsed": ["fastapi", "aiocache"],
+      "nfr": "NFR: name",
+      "filesImplemented": ["path/to/file1.py", "path/to/file2.py"],
+      "librariesUsed": ["library1", "library2"],
       "functionNames": [
-        "app/cache/response_cache.py::get_or_set_cached_product_list",
-        "app/services/order_service.py::get_checkout_summary"
+        "path/to/file1.py::function1",
+        "path/to/file2.py::function2"
       ],
-      "tacticUsed": "Performance > Manage Resources > Maintain Multiple Copies of Computations",
-      "verificationMethod": "Load test with k6 shows p95 latency < 200ms for checkout endpoint"
+      "tacticUsed": "QA /path/to/tactic",
     },
-    {
-      "nfr": "NFR 1.2 Concurrency & Resource Utilization",
-      "filesImplemented": ["app/main.py"],
-      "librariesUsed": ["uvicorn", "asyncio"],
-      "functionNames": ["app/main.py::create_app", "app/main.py::run_with_worker_pool"],
-      "tacticUsed": "Performance > Manage Resources > Introduce Concurrency",
-      "verificationMethod": "ab -c 100 shows throughput scales near-linearly up to worker count"
-    },
-    {
-      "nfr": "NFR 1.3 Queue Management",
-      "filesImplemented": ["app/queue/queue_manager.py"],
-      "librariesUsed": ["asyncio.Queue"],
-      "functionNames": [
-        "app/queue/queue_manager.py::enqueue_order_task",
-        "app/queue/queue_manager.py::get_queue_depth"
-      ],
-      "tacticUsed": "Performance > Control Resource Demand > Bound Queue Sizes",
-      "verificationMethod": "Burst of 1000 requests returns 202 without dropped connections; queue_size bounded per /health/queue"
-    },
-    {
-      "nfr": "NFR 2.1 Graceful Degradation",
-      "filesImplemented": ["app/degradation/degradation_manager.py"],
-      "librariesUsed": [],
-      "functionNames": [
-        "app/degradation/degradation_manager.py::should_degrade_feature",
-        "app/degradation/degradation_manager.py::disable_non_essential_endpoints"
-      ],
-      "tacticUsed": "Availability > Recover from Faults > Degradation",
-      "verificationMethod": "Kill background worker under load; checkout endpoint still returns 2xx while non-essential endpoints return 503"
-    },
-    {
-      "nfr": "NFR 2.2 Fault Detection and Recovery",
-      "filesImplemented": ["app/health/liveness.py", "app/db/connection_pool.py"],
-      "librariesUsed": ["tenacity"],
-      "functionNames": [
-        "app/health/liveness.py::check_db_liveness",
-        "app/db/connection_pool.py::get_connection_with_retry"
-      ],
-      "tacticUsed": "Availability > Detect Faults > Ping/Echo; Availability > Recover from Faults > Retry",
-      "verificationMethod": "Kill DB connection mid-request; observe automatic reconnect within N seconds via /health/ready"
-    },
-    {
-      "nfr": "NFR 2.3 State Preservation",
-      "filesImplemented": ["app/persistence/wal.py"],
-      "librariesUsed": ["sqlite3"],
-      "functionNames": [
-        "app/persistence/wal.py::append_to_wal",
-        "app/persistence/wal.py::replay_wal_on_startup"
-      ],
-      "tacticUsed": "Availability > Recover from Faults > State Resynchronization",
-      "verificationMethod": "Kill process mid-queue-processing, restart, confirm pending orders resume from persisted state with no loss"
-    }
+    // other NFR entries follow the same structure, one per NFR
   ]
 }
 ```
@@ -150,8 +72,7 @@ For **every** NFR listed above, provide one entry with:
 4. `tacticUsed` must cite real tactic names from Bass/Clements/Kazman's tactic categories
    (Availability, Performance, and any other quality attribute chapter tactics you draw on) —
    do not paraphrase or invent tactic names not in the book.
-5. This file must stay consistent with the Markdown NFR Traceability Matrix — same NFRs, same
-   verification methods, no contradictions.
+5. This file must stay consistent with the Markdown NFR Traceability Matrix — same NFRs.
 6. Place this file at the project root alongside `create_apis.json` and `/start_command.txt`.
 
 ---
@@ -236,87 +157,7 @@ This table is the authoritative source for all field-level validation rules. Eve
 4. **Date fields** (`dd/MM/yyyy`) require two independent validation layers: (a) regex format check, and (b) calendar semantic validity check (reject non-existent dates such as 31/02 or 30/02 even if they match the regex).
 5. **Decimal amount fields** must enforce exactly 2 decimal places — reject additional precision rather than silently rounding.
 
----
-
-# API Manifest (mandatory deliverable — required for automated test generation)
-
-In addition to the OpenAPI spec, you MUST produce a separate, machine-readable file named
-`create_apis.json` at the project root. This file is the single source of truth a downstream,
-fully automated functional test harness (the BVA/EP `ITestGroup` validators — `CustomerTestGroup`,
-`ProductTestGroup`, `OrderTestGroup`, `PaymentTestGroup`, `InvoiceTestGroup`) uses to know which
-URL to POST each entity's creation request to. The harness does NOT parse source code and does
-NOT guess paths — each test group is constructed with a single `api` string (the full create-
-endpoint URL) that it passes straight to `requests.post(self.api, json=body)`; anything not
-declared here is untestable.
-
-## Required structure of `create_apis.json`
-
-```json
-{
-  "customer": {
-    "method": "POST",
-    "path": "/api/v1/customers"
-  },
-  "product": {
-    "method": "POST",
-    "path": "/api/v1/products"
-  },
-  "order": {
-    "method": "POST",
-    "path": "/api/v1/orders"
-  },
-  "payment": {
-    "method": "POST",
-    "path": "/api/v1/payments"
-  },
-  "invoice": {
-    "method": "POST",
-    "path": "/api/v1/invoices"
-  }
-}
-```
-
-## Rules for populating this file
-1. **Exactly these five top-level keys** — `customer`, `product`, `order`, `payment`, `invoice`
-   (lowercase, singular) — one entry per entity from the Domain Model. No omissions, no extra
-   keys, no nesting beyond `method`/`path`.
-2. **`method`** — the actual HTTP verb the create endpoint accepts. Must be `"POST"` for all five
-   entities per the Backend Requirements (create = POST to the collection endpoint).
-3. **`path`** — the actual, real, versioned route path (e.g. `/api/v1/customers`) exactly as
-   registered in the routing layer, including any version prefix. Do not include the host/port;
-   `path` is appended to the service's base URL by the test harness. No placeholders, no `{id}`.
-4. **Synchronous creation only** — every path declared here MUST return the created resource
-   directly (`201 Created` with the resource body) in the same response, since the test harness
-   reads `resp.status_code` and `resp.json()` immediately after the POST with no polling step. If
-   your implementation queues creation asynchronously, this file is the wrong contract for it —
-   make these five endpoints synchronous.
-5. This file must stay consistent with the OpenAPI spec and the actual running code — it will be
-   spot-checked against both; any mismatch (wrong path, wrong method, wrong status code) is
-   treated as a defect.
-6. Place this file at the project root alongside `nfr-trace.json` and `/start_command.txt`.
-
-## Automated Test Compatibility (mandatory)
-
-Your API implementation MUST be drivable end-to-end by the `ITestGroup`-based functional test
-harness using only `create_apis.json` plus the pre-existing BVA/EP test-case spreadsheet
-(`OMS_TestCases_BVA_EP_EN.xlsx`, one sheet per entity: Customer, Product, Order, Payment,
-Invoice). Concretely, this means:
-
-- For each entity, `POST {baseUrl}{create_apis.json[entity].path}` with the `validSeed`-equivalent
-  request body MUST return `201` with the created resource in the JSON body — matching the
-  `_check(testcase_id, expected_status, actual_status, body)` assertions already encoded in each
-  test group (e.g. `TC_CUS_NAME_02` expects `201`, `TC_CUS_NAME_01` expects `400`).
-- Every field referenced in the Field Constraint Table for that entity must be reachable by
-  sending it under its literal attribute name (dot-notation preserved as nested JSON objects,
-  e.g. `bankingDetails.accountNumber`) in the POST body — the test groups build request bodies
-  by mutating a standard body using exactly these field names.
-- `GET {baseUrl}{create_apis.json[entity].path}/{id}` must return `200` for an existing id,
-  `404` for a well-formed but non-existent id, and `400` for a malformed id — matching the
-  `TC_*_ID_*` test cases that call `_get(id)`.
-
----
-
-# User Workflow (must be implemented)
+## Behavior Workflow (must be implemented)
 1. Customer places order.
 2. Order Staff reviews & accepts.
 3. Accountant creates invoice for accepted order.
@@ -324,6 +165,43 @@ Invoice). Concretely, this means:
 5. Accountant verifies payment.
 6. Order Staff ships paid order.
 7. Order Staff closes completed order.
+
+---
+
+# API Manifest (mandatory deliverable — required for automated test generation)
+
+In addition to the OpenAPI spec, you MUST produce a separate, machine-readable file named `create_apis.json` at the project root. This file is the single source of truth a downstream, fully automated functional test harness (eg. the BVA/EP `ITestGroup` validators, one for each entity, eg. `CustomerTestGroup`) to know which URL to POST each entity's creation request to. The harness does NOT parse source code and does NOT guess paths — each test group is constructed with a single `api` string (the full create- endpoint URL) that it passes straight to `requests.post(self.api, json=body)`; anything not declared here is untestable.
+
+## Required structure of `create_apis.json`
+
+```json
+{
+  "<entity_name>": {
+    "method": "<http_method>",
+    "path": "/api/v1/<entity_name>"
+  },
+  // other entities follow the same structure, one per entity
+}
+```
+
+## Rules for populating this file
+1. **Exactly top-level keys must match with entities in the Domain Model** — (lowercase, singular) — one entry per entity from the Domain Model. No omissions, no extra keys, no nesting beyond `method`/`path`.
+2. **`method`** — the actual HTTP verb the create endpoint accepts. Must be `"POST"` for all entities per the Backend Requirements (create = POST to the collection endpoint).
+3. **`path`** — the actual, real, versioned route path (e.g. `/api/v1/customers`) exactly as
+   registered in the routing layer, including any version prefix. Do not include the host/port;
+   `path` is appended to the service's base URL by the test harness. No placeholders, no `{id}`.
+4. **Synchronous creation only** — every path declared here MUST return the created resource
+   directly (eg. `201 Created` with the resource body) in the same response, since the test harness reads `resp.status_code` and `resp.json()` immediately after the POST with no polling step. Only consider synchronous creation endpoints.
+5. This file must stay consistent with the OpenAPI spec and the actual running code. Any mismatch (wrong path, wrong method, wrong status code) is treated as a defect.
+6. Place this file at the project root alongside `nfr-trace.json` and `/start_command.txt`.
+
+## Automated Test Compatibility (mandatory)
+
+Your API implementation MUST be drivable end-to-end by the `ITestGroup`-based functional test harness using only `create_apis.json` plus the pre-existing BVA/EP test-case spreadsheet (`OMS_TestCases_BVA_EP_EN.xlsx`, one sheet per entity in the Domain Model). Concretely, this means:
+
+- For each entity, `POST {baseUrl}{create_apis.json[entity].path}` with the `validSeed`-equivalent request body MUST return `201` with the created resource in the JSON body — matching the `_check(testcase_id, expected_status, actual_status, body)` assertions already encoded in each test group (e.g. `TC_CUS_NAME_02` expects `201`, `TC_CUS_NAME_01` expects `400`).
+- Every field referenced in the Field Constraint Table for that entity must be reachable by sending it under its literal attribute name (dot-notation preserved as nested JSON objects, e.g. `bankingDetails.accountNumber`) in the POST body — the test groups build request bodies by mutating a standard body using exactly these field names.
+- `GET {baseUrl}{create_apis.json[entity].path}/{id}` must return `200` for an existing id, `404` for a well-formed but non-existent id, and `400` for a malformed id — matching the `TC_*_ID_*` test cases that call `_get(id)`.
 
 ---
 

@@ -17,11 +17,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
+from evaluator.common.trace_check import function_exists as _function_exists
 from evaluator.gates.g2_traceability import (
     EXPECTED_TACTICS,
     SCENARIO_ORDER,
     _check_traceability,
-    _function_exists,
 )
 
 SAMPLE = '''

@@ -17,12 +17,12 @@ whether the mechanism behind it exists.
 
 from __future__ import annotations
 
-import ast
 import json
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
+from ..common.trace_check import function_exists
 from ..harness.appmetrics import REQUIRED_KEYS, AppMetrics, MetricsContractError
 from ..harness.httpclient import HttpHarness
 from ..report.schema import Assertion, Evidence, GateResult, assert_that
@@ -142,7 +142,7 @@ def _check_traceability(app_dir: Path) -> tuple[list[Assertion], list[TraceIssue
                 issues.append(TraceIssue(scenario, "file_not_found", str(rel)))
 
         for ref in entry.get("functionNames", []) or []:
-            if _function_exists(app_dir, str(ref)):
+            if function_exists(app_dir, str(ref)):
                 resolved["functions"] += 1
             else:
                 resolved["functions_missing"] += 1
@@ -182,49 +182,6 @@ def _check_traceability(app_dir: Path) -> tuple[list[Assertion], list[TraceIssue
 
     out.append(_tactics_consistent_across_documents(app_dir))
     return out, issues, resolved
-
-
-def _function_exists(app_dir: Path, reference: str) -> bool:
-    """Resolve a 'relative/path.py::qualified.name' reference by parsing the file.
-
-    Parsed rather than imported: importing would execute module-level code from
-    an application we are evaluating, and would fail for anything that expects a
-    live database at import time. Nested names are matched on their qualified
-    path, so Class.method resolves only inside that class.
-    """
-    if "::" not in reference:
-        return False
-    rel, _, qualified = reference.partition("::")
-    source = app_dir / rel.strip()
-    if not source.is_file():
-        return False
-
-    try:
-        tree = ast.parse(source.read_text(encoding="utf-8"))
-    except (SyntaxError, UnicodeDecodeError):
-        return False
-
-    wanted = qualified.strip()
-    return wanted in _qualified_names(tree)
-
-
-def _qualified_names(tree: ast.AST) -> set[str]:
-    names: set[str] = set()
-
-    def walk(node: ast.AST, prefix: str) -> None:
-        for child in ast.iter_child_nodes(node):
-            if isinstance(child, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
-                qualified = f"{prefix}.{child.name}" if prefix else child.name
-                names.add(qualified)
-                # Also accept the bare name, since a method is unambiguous when
-                # the class carries no same-named sibling.
-                names.add(child.name)
-                walk(child, qualified)
-            else:
-                walk(child, prefix)
-
-    walk(tree, "")
-    return names
 
 
 def _tactics_consistent_across_documents(app_dir: Path) -> Assertion:
