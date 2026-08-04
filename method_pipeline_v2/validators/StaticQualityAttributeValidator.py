@@ -60,16 +60,24 @@ def _split_tactics(tactic_field):
 
 def _parse_file(path):
     try:
-        return ast.parse(Path(path).read_text(encoding="utf-8")), None
+        return ast.parse(Path(path).read_text(encoding="utf-8-sig")), None
     except (SyntaxError, UnicodeDecodeError) as e:
         return None, f"parse error: {e}"
 
 
 def _function_defs(tree):
+    """name -> node for every function/method. Methods are registered under
+    both their bare name ('place_order') and their qualified name
+    ('OrderService.place_order') so traces can use either form."""
     out = {}
     for node in ast.walk(tree):
         if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
             out.setdefault(node.name, node)
+    for cls in ast.walk(tree):
+        if isinstance(cls, ast.ClassDef):
+            for item in cls.body:
+                if isinstance(item, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                    out.setdefault(f"{cls.name}.{item.name}", item)
     return out
 
 
@@ -210,6 +218,61 @@ def _names_in_node(node):
                 names.add(base.id)
     return names
 
+def _call_base_name(value):
+    """If `value` is a call like `asyncio.Queue(...)` or `Queue(...)`, return
+    the base identifier ('asyncio' or 'Queue'); else None."""
+    if not isinstance(value, ast.Call):
+        return None
+    func = value.func
+    if isinstance(func, ast.Name):
+        return func.id
+    while isinstance(func, ast.Attribute):
+        func = func.value
+    return func.id if isinstance(func, ast.Name) else None
+
+def _class_attr_library_map(classdef, libs, tree):
+    """For one ClassDef, map self.<attr> -> claimed lib, from assignments like
+    `self._queue = asyncio.Queue(...)` (Assign and AnnAssign)."""
+    attr_map = {}
+    for node in ast.walk(classdef):
+        target = value = None
+        if isinstance(node, ast.Assign) and len(node.targets) == 1:
+            target, value = node.targets[0], node.value
+        elif isinstance(node, ast.AnnAssign) and node.value is not None:
+            target, value = node.target, node.value
+        if not (isinstance(target, ast.Attribute)
+                and isinstance(target.value, ast.Name) and target.value.id == "self"):
+            continue
+        base = _call_base_name(value)
+        if base is None:
+            continue
+        for lib in libs:
+            if base in _library_bindings(lib, tree):
+                attr_map[target.attr] = lib
+                break
+    return attr_map
+
+
+def _self_attrs_used(func_node):
+    """Set of attr names accessed via self.<attr> inside the function."""
+    attrs = set()
+    for sub in ast.walk(func_node):
+        if isinstance(sub, ast.Attribute) and isinstance(sub.value, ast.Name) \
+                and sub.value.id == "self":
+            attrs.add(sub.attr)
+    return attrs
+
+
+def _method_class_index(tree):
+    """method-name -> its enclosing ClassDef (first match wins)."""
+    index = {}
+    for cls in ast.walk(tree):
+        if isinstance(cls, ast.ClassDef):
+            for item in cls.body:
+                if isinstance(item, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                    index.setdefault(item.name, cls)
+    return index
+
 
 def _library_bindings(lib, tree):
     """Return the set of bound identifiers in `tree` that correspond to `lib`."""
@@ -227,8 +290,9 @@ def _library_bindings(lib, tree):
 
 
 def _check_function_uses_library(entry, located):
-    """For each claimed function, determine which claimed libraries it DIRECTLY
-    references (the library's bound name appears in the function body)."""
+    """For each claimed function, determine which claimed libraries it references —
+    either directly (the library's bound name appears in the body) or via a
+    self.<attr> whose class-scope assignment resolves to a claimed library."""
     libs = entry.get("librariesUsed", [])
     per_function = []
     any_link = False
@@ -244,6 +308,16 @@ def _check_function_uses_library(entry, located):
         tree = located[rel][0]
 
         used_here = [lib for lib in libs if _library_bindings(lib, tree) & body_names]
+
+        # Tier 1: credit self.<attr> whose class-scope assignment resolves to a lib
+        class_index = _method_class_index(tree)
+        if func in class_index:
+            attr_map = _class_attr_library_map(class_index[func], libs, tree)
+            for attr in _self_attrs_used(node):
+                lib = attr_map.get(attr)
+                if lib and lib not in used_here:
+                    used_here.append(lib)
+
         if used_here:
             any_link = True
         per_function.append({"ref": ref, "libs_used": used_here,
@@ -257,6 +331,57 @@ def _combine(statuses):
     if not statuses:
         return PRESENT
     return min(statuses, key=lambda s: RANK.get(s, 1))
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+#  Scoring
+#
+#  Per-NFR score uses a FUNCTION GATE + LIBRARY FRACTION model:
+#
+#    • Gate — the claimed functions are a precondition. If any claimed function
+#      is ABSENT (not found), the libraries it was meant to use are moot, so the
+#      NFR scores 0 outright regardless of how many libraries are imported.
+#      An entry that never reached the existence stage (missing file at locate,
+#      or out-of-catalog tactic at resolve) also fails the gate → 0.
+#      NOTE: WEAK stub functions currently PASS the gate (gate trips on ABSENT
+#      only). To also fail hollow stubs, add WEAK to the gate condition below.
+#
+#    • Score — once the gate passes, the score is the fraction of claimed
+#      libraries that are PRESENT: libs_present / libs_total. WEAK libraries
+#      (imported-but-unused) count as NOT present. An NFR that claims zero
+#      libraries has nothing missing, so it scores 1.0.
+#
+#  Per-tactic-group point is the mean of its NFRs' scores, grouped by the nfr
+#  prefix: "1.x" = Performance, "2.x" = Availability.
+# ─────────────────────────────────────────────────────────────────────────────
+def _score_entry(fn_details, lib_details, gated):
+    """Return a 0..1 score for one NFR entry."""
+    if gated:
+        return 0.0
+    if any(st == ABSENT for _, st, _ in fn_details):   # function gate
+        return 0.0
+    if not lib_details:                                # nothing claimed → nothing missing
+        return 1.0
+    present = sum(1 for _, st, _ in lib_details if st == PRESENT)
+    return present / len(lib_details)
+
+
+def _tactic_group(nfr_name):
+    """'NFR 1.2 ...' -> 'performance'; 'NFR 2.1 ...' -> 'availability'."""
+    for tok in nfr_name.split():
+        if tok.startswith("1."):
+            return "performance"
+        if tok.startswith("2."):
+            return "availability"
+    return "other"
+
+
+def _group_scores(results):
+    """Average per-NFR scores within each tactic group."""
+    buckets: dict[str, list] = {}
+    for r in results:
+        buckets.setdefault(_tactic_group(r["nfr"]), []).append(r["score"])
+    return {g: round(sum(v) / len(v), 4) for g, v in buckets.items()}
 
 
 class StaticQualityAttributeValidator(IStaticQualityValidator):
@@ -313,6 +438,7 @@ class StaticQualityAttributeValidator(IStaticQualityValidator):
             r_status, r_ev, tactics = self._resolve(entry, known_tactics)
             if r_status != OK:
                 results.append({"nfr": entry["nfr"], "status": r_status, "stage": "resolve",
+                                "score": 0.0,
                                 "evidence": r_ev, "tactics": tactics,
                                 "functions": [], "libraries": []})
                 continue
@@ -320,6 +446,7 @@ class StaticQualityAttributeValidator(IStaticQualityValidator):
             l_status, l_ev, located = self._locate(entry, repo_root)
             if l_status != OK:
                 results.append({"nfr": entry["nfr"], "status": l_status, "stage": "locate",
+                                "score": 0.0,
                                 "evidence": l_ev, "tactics": tactics,
                                 "functions": [], "libraries": []})
                 continue
@@ -331,6 +458,22 @@ class StaticQualityAttributeValidator(IStaticQualityValidator):
             all_statuses = [st for _, st, _ in fn_details] + [st for _, st, _ in lib_details] + [level1]
             combined = _combine(all_statuses)
 
+            # Merge per-function library linkage into each function object, so the
+            # "which libs does this function touch" info lives with the function
+            # it describes rather than in a separate parallel block.
+            link_by_ref = {i["ref"]: i for i in fn_lib}
+            functions = []
+            for r, s, e in fn_details:
+                link = link_by_ref.get(r, {})
+                functions.append({
+                    "ref": r, "status": s, "detail": e,
+                    "libraries_used": link.get("libs_used", []),
+                    "uses_any": link.get("uses_any", False),
+                })
+
+            # Function gate + library fraction (see _score_entry).
+            score = _score_entry(fn_details, lib_details, gated=False)
+
             fn_str = "; ".join(f"{ref.split('::')[-1]}={st}" for ref, st, _ in fn_details)
             lib_str = "; ".join(f"{lib}={st}" for lib, st, _ in lib_details)
             link_str = "; ".join(f"{i['ref'].split('::')[-1]}->{i['libs_used'] or 'none'}" for i in fn_lib)
@@ -340,11 +483,12 @@ class StaticQualityAttributeValidator(IStaticQualityValidator):
                 "nfr": entry["nfr"],
                 "status": combined,
                 "stage": "existence",
+                "score": round(score, 4),
                 "evidence": evidence,
                 "tactics": tactics,
-                "functions": [{"ref": r, "status": s, "detail": e} for r, s, e in fn_details],
+                "functions": functions,
                 "libraries": [{"lib": l, "status": s, "detail": e} for l, s, e in lib_details],
-                "function_library_usage": {"level1": level1, "per_function": fn_lib},
+                # "function_library_link": level1,   # rollup of per-function linkage (was function_library_usage.level1)
             })
         return results
 
@@ -405,15 +549,28 @@ class StaticQualityAttributeValidator(IStaticQualityValidator):
         known_tactics = self._load_known_tactics()
         results = self._verify(trace, repo_root, known_tactics)
 
-        counts: dict[str, int] = {}
+        # Per-QA tally: group results by quality attribute (Performance = NFR 1.x,
+        # Availability = NFR 2.x). Each group carries its averaged score and, per
+        # NFR, the claimed libraries with their existence status.
+        group_scores = _group_scores(results)
+        counts: dict[str, dict] = {}
         for r in results:
-            counts[r["status"]] = counts.get(r["status"], 0) + 1
+            g = _tactic_group(r["nfr"])
+            bucket = counts.setdefault(g, {"score": group_scores.get(g, 0.0), "nfrs": []})
+            bucket["nfrs"].append({
+                "nfr": r["nfr"],
+                "score": r["score"],
+                "libraries": [{"lib": lib["lib"], "status": lib["status"]}
+                              for lib in r.get("libraries", [])],
+            })
 
-        statuses = set(counts)
-        if ABSENT in statuses or OUT_OF_CATALOG in statuses:
+        # Overall pass/fail scans each entry's combined verdict directly (statuses
+        # no longer live in the tally, which is now library-centric).
+        all_statuses = {r["status"] for r in results}
+        if ABSENT in all_statuses or OUT_OF_CATALOG in all_statuses:
             status = Status.FAIL
             message = f"NFR trace has absent/out-of-catalog claim(s): {counts}"
-        elif WEAK in statuses:
+        elif WEAK in all_statuses:
             status = Status.FAIL
             message = f"NFR trace has weak claim(s) needing review: {counts}"
         else:
