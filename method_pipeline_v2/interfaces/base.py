@@ -83,6 +83,17 @@ class IStaticQualityValidator(ABC):
     def validate(self, generation_result: GenerationResult) -> ValidationResult:
         ...
 
+class INFRValidator(ABC):
+    """Stage 4 – runs runtime NFR checks (load, spike, fault injection)
+    against a live instance of the generated app and compares measured
+    values to fixed thresholds owned by the test harness (not by the
+    candidate's own nfr-trace.json claims — those are verified separately
+    by IStaticQualityValidator at stage 3)."""
+
+    @abstractmethod
+    def validate(self, generation_result: GenerationResult) -> ValidationResult:
+        ...
+
 class IReportWriter(ABC):
     """Serialises the final pipeline outcome to report.txt."""
 

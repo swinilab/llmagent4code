@@ -1,0 +1,69 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: oms_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: oms_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - oms_network
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: oms_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - oms_network
+
+  # OMS Backend Application
+  oms_backend:
+    build:
+      context: ..
+      dockerfile: iac/Dockerfile
+    container_name: oms_backend
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/oms_db
+      REDIS_URL: redis://redis:6379/0
+      DEBUG: "false"
+      ENABLE_CACHING: "true"
+      ENABLE_RATE_LIMITING: "true"
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - oms_network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  oms_network:
+    driver: bridge

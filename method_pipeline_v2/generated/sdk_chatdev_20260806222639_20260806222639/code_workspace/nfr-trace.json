@@ -1,0 +1,68 @@
+﻿{
+  "nfrTrace": [
+    {
+      "nfr": "NFR 1.1 Limit Event Response",
+      "filesImplemented": ["oms_backend/utils/rate_limiter.py", "oms_backend/controller/customer_controller.py"],
+      "librariesUsed": ["redis"],
+      "functionNames": [
+        "oms_backend/utils/rate_limiter.py::RateLimiter.is_allowed",
+        "oms_backend/utils/rate_limiter.py::RateLimiter._in_memory_check"
+      ],
+      "tacticUsed": "Rate Limiting"
+    },
+    {
+      "nfr": "NFR 1.2 Maintain Multiple copies of Data",
+      "filesImplemented": ["oms_backend/utils/cache.py", "oms_backend/repository/base.py"],
+      "librariesUsed": ["redis"],
+      "functionNames": [
+        "oms_backend/utils/cache.py::CacheManager.get",
+        "oms_backend/utils/cache.py::CacheManager.set",
+        "oms_backend/repository/base.py::BaseRepository.get_by_id"
+      ],
+      "tacticUsed": "Caching"
+    },
+    {
+      "nfr": "NFR 2.1 Exception detection",
+      "filesImplemented": ["oms_backend/utils/exceptions.py", "oms_backend/utils/retry.py"],
+      "librariesUsed": ["tenacity"],
+      "functionNames": [
+        "oms_backend/utils/exceptions.py::OMSException.__init__",
+        "oms_backend/utils/exceptions.py::TimeoutException.__init__",
+        "oms_backend/utils/retry.py::execute_with_retry"
+      ],
+      "tacticUsed": "Exception Detection"
+    },
+    {
+      "nfr": "NFR 2.2 Graceful Degradation",
+      "filesImplemented": ["oms_backend/utils/cache.py", "oms_backend/utils/rate_limiter.py"],
+      "librariesUsed": ["redis", "tenacity"],
+      "functionNames": [
+        "oms_backend/utils/cache.py::CacheManager.get",
+        "oms_backend/utils/cache.py::CacheManager.set",
+        "oms_backend/utils/rate_limiter.py::RateLimiter.is_allowed"
+      ],
+      "tacticUsed": "Graceful Degradation"
+    },
+    {
+      "nfr": "NFR 2.3 State Resynchronization",
+      "filesImplemented": ["oms_backend/utils/retry.py", "oms_backend/repository/base.py"],
+      "librariesUsed": ["tenacity"],
+      "functionNames": [
+        "oms_backend/utils/retry.py::synchronize_state",
+        "oms_backend/repository/base.py::BaseRepository.resynchronize"
+      ],
+      "tacticUsed": "State Resynchronization"
+    },
+    {
+      "nfr": "NFR 2.4 Transactions",
+      "filesImplemented": ["oms_backend/infrastructure/database.py", "oms_backend/service/order_service.py"],
+      "librariesUsed": ["sqlalchemy"],
+      "functionNames": [
+        "oms_backend/infrastructure/database.py::TransactionManager.__enter__",
+        "oms_backend/infrastructure/database.py::TransactionManager.__exit__",
+        "oms_backend/service/order_service.py::OrderService.create_order"
+      ],
+      "tacticUsed": "Transactions"
+    }
+  ]
+}
