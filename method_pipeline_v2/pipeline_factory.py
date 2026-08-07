@@ -40,15 +40,14 @@ def build(config_path: str) -> PipelineComponents:
 
     from report_writer            import TextReportWriter
     from validators.CompilabilityValidator        import CompilabilityValidator
-    # from validators.FunctionalValidator            import FunctionalValidator
+    from validators.FunctionalValidator            import FunctionalValidator
     from validators.StaticQualityAttributeValidator import StaticQualityAttributeValidator
     endpoints = cfg.get("validation", {}).get("http", {}).get("endpoints")
 
     return PipelineComponents(
         generation_agent         = _build_generation_agent(cfg),
         compilability_validator  = CompilabilityValidator(config=cfg),
-        # functional_validator     = FunctionalValidator(endpoints=endpoints, config=cfg),
-        functional_validator = None,
+        functional_validator     = FunctionalValidator(endpoints=endpoints, config=cfg),
         static_quality_validator = StaticQualityAttributeValidator(config=cfg),
         report_writer            = TextReportWriter(
             report_dir=cfg.get("output", {}).get("report_dir", "reports/")

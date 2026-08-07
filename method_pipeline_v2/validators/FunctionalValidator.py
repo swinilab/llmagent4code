@@ -11,11 +11,11 @@ from interfaces.base import (
     ValidationResult,
     GenerationResult
 )
-from validators.tests.CustomerTestGroup import CustomerTestGroup
-from validators.tests.InvoiceTestGroup import InvoiceTestGroup
-from validators.tests.OrderTestGroup import OrderTestGroup
-from validators.tests.PaymentTestGroup import PaymentTestGroup
-from validators.tests.ProductTestGroup import ProductTestGroup
+from validators.tests.test_groups.CustomerTestGroup import CustomerTestGroup
+from validators.tests.test_groups.InvoiceTestGroup import InvoiceTestGroup
+from validators.tests.test_groups.OrderTestGroup import OrderTestGroup
+from validators.tests.test_groups.PaymentTestGroup import PaymentTestGroup
+from validators.tests.test_groups.ProductTestGroup import ProductTestGroup
 
 # group name -> (TestGroup class, entity key in create_apis.json, default create path)
 TEST_GROUPS = {
@@ -95,8 +95,7 @@ class FunctionalValidator(IFunctionalValidator):
     def validate(self, generation_result: GenerationResult) -> ValidationResult:
         workdir = Path(os.path.join(
             self._generated_dir,
-            generation_result.code,
-            "code_workspace"
+            generation_result.code
         ))
         with open(os.path.join(workdir, 'create_apis.json'), 'r', encoding='utf-8') as file:
             create_api_paths = json.load(file)
@@ -117,6 +116,10 @@ class FunctionalValidator(IFunctionalValidator):
                 "failed": failed_count,
             })
 
+        case_specific_message = ""
+        for result in results:
+            case_specific_message += f"""testcase_id:        {result.testcase_id}\nresult:             {"PASS" if result.result else "FALSE"}\nmessage:            {result.message}\n\n"""
+
         failed_count = sum(1 for r in results if not r.result)
         status = Status.FAIL if failed_count else Status.PASS
         message = (
@@ -130,7 +133,7 @@ class FunctionalValidator(IFunctionalValidator):
         return ValidationResult(
             stage="functional",
             status=status,
-            message=message,
+            message=message + "\n" + case_specific_message,
             details={
                 "total": len(results),
                 "passed": len(results) - failed_count,

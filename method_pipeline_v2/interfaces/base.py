@@ -14,6 +14,7 @@ from dataclasses import dataclass, field
 from enum import Enum, auto
 from typing import Any
 import copy
+import json
 import requests
 
 
@@ -150,16 +151,18 @@ class ITestGroup(ABC):
     def _check(
         testcase_id: str,
         expected_status: int,
+        input: Any,
         actual_status: int,
         body: Any,
     ) -> TestResult:
         """Build a TestResult by comparing expected vs actual HTTP status."""
         passed = actual_status == expected_status
         msg = (
-            f"Expected {expected_status}, got {actual_status}. Body: {body}"
+            f"Expected {expected_status}, got {actual_status}.\nInput: {json.dumps(input)} \nBody: {body}"
             if not passed
             else "OK"
         )
+        print(testcase_id + "\n" + msg)
         return TestResult(result=passed, testcase_id=testcase_id, message=msg)
 
     @abstractmethod

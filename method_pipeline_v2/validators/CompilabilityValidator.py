@@ -73,8 +73,7 @@ class CompilabilityValidator(ICompilabilityValidator):
     def validate(self, generation_result: GenerationResult) -> ValidationResult:
         workdir = Path(os.path.join(
             self._generated_dir,
-            generation_result.code,
-            "code_workspace"
+            generation_result.code
         ))
         command_file = Path(os.path.join(
             workdir,
