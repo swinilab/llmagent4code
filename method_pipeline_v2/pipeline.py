@@ -12,6 +12,7 @@ import sys
 from pathlib import Path
 from interfaces.base import GenerationResult, Status, ValidationResult
 from pipeline_factory import PipelineComponents
+import json
 
 
 def _read_prompt(config: dict) -> str:
@@ -86,9 +87,12 @@ def run_validation(
         if result.passed:
             print(f"{pad}  ✅ passed")
         else:
-            print(f"{pad}  ❌ {result.message}")
-            if waterfall:
-                break
+            if s == 2:
+                print(f"{pad}  ❌ {json.dumps(result.details)}")
+            else:
+                print(f"{pad}  ❌ {result.message}")
+            # if waterfall:
+            #     break
 
     return results
 
@@ -100,8 +104,11 @@ def run_pipeline(components: PipelineComponents, phase: str = "all", stage: int 
     validation_results: list[ValidationResult] = []
 
     # 1. GENERATION PHASE
-    if phase in ("gen", "all"):
-        generation = run_generation(components, prompt)
+    # if phase in ("gen", "all"):
+    #     generation = run_generation(components, prompt)
+
+    generation = GenerationResult('','','')
+    generation.code = 'generated/sdk_chatdev_20260806222639_20260806222639/code_workspace'
 
     # 2. VALIDATION PHASE
     if phase in ("val", "all"):

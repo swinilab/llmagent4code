@@ -126,28 +126,28 @@ class OrderTestGroup(ITestGroup):
         body = self._body()
         body["customerRef"] = self.seed_customer_id
         status, resp = self._post(body)
-        return self._check("TC_ORD_CUSTREF_01", 201, status, resp)
+        return self._check("TC_ORD_CUSTREF_01", 201, body, status, resp)
 
     def tc_ord_custref_02(self) -> TestResult:
         """EC-Invalid-1 (Not Found): well-formed UUID that does not exist -> 404."""
         body = self._body()
         body["customerRef"] = NOT_FOUND_UUID
         status, resp = self._post(body)
-        return self._check("TC_ORD_CUSTREF_02", 404, status, resp)
+        return self._check("TC_ORD_CUSTREF_02", 404, body, status, resp)
 
     def tc_ord_custref_03(self) -> TestResult:
         """EC-Invalid-2 (Wrong Format): malformed UUID string -> 400."""
         body = self._body()
         body["customerRef"] = "cust-1"
         status, resp = self._post(body)
-        return self._check("TC_ORD_CUSTREF_03", 400, status, resp)
+        return self._check("TC_ORD_CUSTREF_03", 400, body, status, resp)
 
     def tc_ord_custref_04(self) -> TestResult:
         """EC-Invalid-3 (Empty): empty/null -> 400."""
         body = self._body()
         body["customerRef"] = None
         status, resp = self._post(body)
-        return self._check("TC_ORD_CUSTREF_04", 400, status, resp)
+        return self._check("TC_ORD_CUSTREF_04", 400, body, status, resp)
 
     # ------------------------------------------------------------------ #
     # lineItems
@@ -157,14 +157,14 @@ class OrderTestGroup(ITestGroup):
         body = self._body()
         body["lineItems"] = []
         status, resp = self._post(body)
-        return self._check("TC_ORD_LINEITEMS_01", 400, status, resp)
+        return self._check("TC_ORD_LINEITEMS_01", 400, body, status, resp)
 
     def tc_ord_lineitems_02(self) -> TestResult:
         """BC-Min: item count at minimum (1 item) -> 201."""
         body = self._body()
         body["lineItems"] = [{"productRef": self.seed_product_id, "quantity": 1}]
         status, resp = self._post(body)
-        return self._check("TC_ORD_LINEITEMS_02", 201, status, resp)
+        return self._check("TC_ORD_LINEITEMS_02", 201, body, status, resp)
 
     def tc_ord_lineitems_03(self) -> TestResult:
         """BC-Max: item count at maximum (100 distinct productRef items) -> 201.
@@ -178,7 +178,7 @@ class OrderTestGroup(ITestGroup):
             {"productRef": self.seed_product_id, "quantity": 1} for _ in range(100)
         ]
         status, resp = self._post(body)
-        return self._check("TC_ORD_LINEITEMS_03", 201, status, resp)
+        return self._check("TC_ORD_LINEITEMS_03", 201, body, status, resp)
 
     def tc_ord_lineitems_04(self) -> TestResult:
         """BC-Max+1: item count one above maximum (101 items) -> 400."""
@@ -187,21 +187,21 @@ class OrderTestGroup(ITestGroup):
             {"productRef": self.seed_product_id, "quantity": 1} for _ in range(101)
         ]
         status, resp = self._post(body)
-        return self._check("TC_ORD_LINEITEMS_04", 400, status, resp)
+        return self._check("TC_ORD_LINEITEMS_04", 400, body, status, resp)
 
     def tc_ord_lineitems_05(self) -> TestResult:
         """EC-Invalid-1 (Non-Existent Product): item references a non-existent product -> 404."""
         body = self._body()
         body["lineItems"] = [{"productRef": NOT_FOUND_UUID, "quantity": 1}]
         status, resp = self._post(body)
-        return self._check("TC_ORD_LINEITEMS_05", 404, status, resp)
+        return self._check("TC_ORD_LINEITEMS_05", 404, body, status, resp)
 
     def tc_ord_lineitems_06(self) -> TestResult:
         """EC-Invalid-2 (Missing): lineItems null/missing entirely -> 400."""
         body = self._body()
         body["lineItems"] = None
         status, resp = self._post(body)
-        return self._check("TC_ORD_LINEITEMS_06", 400, status, resp)
+        return self._check("TC_ORD_LINEITEMS_06", 400, body, status, resp)
 
     def tc_ord_lineitems_07(self) -> TestResult:
         """EC-Invalid-3 (Duplicate Product): two items reference the same
@@ -213,7 +213,7 @@ class OrderTestGroup(ITestGroup):
             {"productRef": self.seed_product_id, "quantity": 2},
         ]
         status, resp = self._post(body)
-        return self._check("TC_ORD_LINEITEMS_07", 400, status, resp)
+        return self._check("TC_ORD_LINEITEMS_07", 400, body, status, resp)
 
     # ------------------------------------------------------------------ #
     # lineItems[].quantity
@@ -223,49 +223,49 @@ class OrderTestGroup(ITestGroup):
         body = self._body()
         body["lineItems"] = [{"productRef": self.seed_product_id, "quantity": 0}]
         status, resp = self._post(body)
-        return self._check("TC_ORD_QTY_01", 400, status, resp)
+        return self._check("TC_ORD_QTY_01", 400, body, status, resp)
 
     def tc_ord_qty_02(self) -> TestResult:
         """BC-Min: value at minimum (1) -> 201."""
         body = self._body()
         body["lineItems"] = [{"productRef": self.seed_product_id, "quantity": 1}]
         status, resp = self._post(body)
-        return self._check("TC_ORD_QTY_02", 201, status, resp)
+        return self._check("TC_ORD_QTY_02", 201, body, status, resp)
 
     def tc_ord_qty_03(self) -> TestResult:
         """BC-Max: value at maximum (1000) -> 201."""
         body = self._body()
         body["lineItems"] = [{"productRef": self.seed_product_id, "quantity": 1000}]
         status, resp = self._post(body)
-        return self._check("TC_ORD_QTY_03", 201, status, resp)
+        return self._check("TC_ORD_QTY_03", 201, body, status, resp)
 
     def tc_ord_qty_04(self) -> TestResult:
         """BC-Max+1: value one above maximum (1001) -> 400."""
         body = self._body()
         body["lineItems"] = [{"productRef": self.seed_product_id, "quantity": 1001}]
         status, resp = self._post(body)
-        return self._check("TC_ORD_QTY_04", 400, status, resp)
+        return self._check("TC_ORD_QTY_04", 400, body, status, resp)
 
     def tc_ord_qty_05(self) -> TestResult:
         """EC-Invalid-1 (Negative): negative value -> 400."""
         body = self._body()
         body["lineItems"] = [{"productRef": self.seed_product_id, "quantity": -5}]
         status, resp = self._post(body)
-        return self._check("TC_ORD_QTY_05", 400, status, resp)
+        return self._check("TC_ORD_QTY_05", 400, body, status, resp)
 
     def tc_ord_qty_06(self) -> TestResult:
         """EC-Invalid-2 (Decimal): non-integer value -> 400."""
         body = self._body()
         body["lineItems"] = [{"productRef": self.seed_product_id, "quantity": 1.5}]
         status, resp = self._post(body)
-        return self._check("TC_ORD_QTY_06", 400, status, resp)
+        return self._check("TC_ORD_QTY_06", 400, body, status, resp)
 
     def tc_ord_qty_07(self) -> TestResult:
         """EC-Invalid-3 (Non-Numeric): non-numeric value -> 400."""
         body = self._body()
         body["lineItems"] = [{"productRef": self.seed_product_id, "quantity": "abc"}]
         status, resp = self._post(body)
-        return self._check("TC_ORD_QTY_07", 400, status, resp)
+        return self._check("TC_ORD_QTY_07", 400, body, status, resp)
 
     # ------------------------------------------------------------------ #
     # lineItems[].unitPriceSnapshot (server-computed)
@@ -276,7 +276,7 @@ class OrderTestGroup(ITestGroup):
         body = self._body()
         body["lineItems"] = [{"productRef": self.seed_product_id, "quantity": 1}]
         status, resp = self._post(body)
-        return self._check("TC_ORD_UNITPRICE_01", 201, status, resp)
+        return self._check("TC_ORD_UNITPRICE_01", 201, body, status, resp)
 
     def tc_ord_unitprice_02(self) -> TestResult:
         """EC-Invalid-1 (Tampered Value): client supplies a price different
@@ -291,7 +291,7 @@ class OrderTestGroup(ITestGroup):
             }
         ]
         status, resp = self._post(body)
-        return self._check("TC_ORD_UNITPRICE_02", 400, status, resp)
+        return self._check("TC_ORD_UNITPRICE_02", 400, body, status, resp)
 
     # ------------------------------------------------------------------ #
     # totalAmount (server-computed)
@@ -300,7 +300,7 @@ class OrderTestGroup(ITestGroup):
         """EC-Valid-1: server correctly computes total = sum(quantity * unitPrice) -> 201."""
         body = self._body()
         status, resp = self._post(body)
-        return self._check("TC_ORD_TOTALAMT_01", 201, status, resp)
+        return self._check("TC_ORD_TOTALAMT_01", 201, body, status, resp)
 
     def tc_ord_totalamt_02(self) -> TestResult:
         """EC-Invalid-1 (Client-Supplied Mismatch): client supplies a
@@ -309,7 +309,7 @@ class OrderTestGroup(ITestGroup):
         body = self._body()
         body["totalAmount"] = "999999.99"
         status, resp = self._post(body)
-        return self._check("TC_ORD_TOTALAMT_02", 400, status, resp)
+        return self._check("TC_ORD_TOTALAMT_02", 400, body, status, resp)
 
     # ------------------------------------------------------------------ #
     # status
@@ -318,7 +318,7 @@ class OrderTestGroup(ITestGroup):
         """EC-Valid-1: default status on creation is PLACED -> 201."""
         body = self._body()
         status, resp = self._post(body)
-        result = self._check("TC_ORD_STATUS_01", 201, status, resp)
+        result = self._check("TC_ORD_STATUS_01", 201, body, status, resp)
         if result.result and isinstance(resp, dict) and resp.get("status") != "PLACED":
             return TestResult(
                 result=False,
@@ -333,14 +333,14 @@ class OrderTestGroup(ITestGroup):
         body = self._body()
         body["status"] = "SHIPPED"
         status, resp = self._post(body)
-        return self._check("TC_ORD_STATUS_02", 400, status, resp)
+        return self._check("TC_ORD_STATUS_02", 400, body, status, resp)
 
     def tc_ord_status_03(self) -> TestResult:
         """EC-Invalid-2 (Unknown Value): value not part of enum -> 400."""
         body = self._body()
         body["status"] = "DONE"
         status, resp = self._post(body)
-        return self._check("TC_ORD_STATUS_03", 400, status, resp)
+        return self._check("TC_ORD_STATUS_03", 400, body, status, resp)
 
     # ------------------------------------------------------------------ #
     # invoiceRef (read-only / server-derived; verified via GET)
@@ -348,7 +348,7 @@ class OrderTestGroup(ITestGroup):
     def tc_ord_invref_01(self) -> TestResult:
         """EC-Valid-1: invoiceRef null prior to invoicing (e.g. PLACED/ACCEPTED) -> 200."""
         status, resp = self._get(self.seed_order_placed_id)
-        result = self._check("TC_ORD_INVREF_01", 200, status, resp)
+        result = self._check("TC_ORD_INVREF_01", 200, {}, status, resp)
         if result.result and isinstance(resp, dict) and resp.get("invoiceRef") is not None:
             return TestResult(
                 result=False,
@@ -360,7 +360,7 @@ class OrderTestGroup(ITestGroup):
     def tc_ord_invref_02(self) -> TestResult:
         """EC-Valid-2: invoiceRef valid after invoice creation -> 200."""
         status, resp = self._get(self.seed_order_with_invoice_id)
-        result = self._check("TC_ORD_INVREF_02", 200, status, resp)
+        result = self._check("TC_ORD_INVREF_02", 200, {}, status, resp)
         if result.result and isinstance(resp, dict) and not resp.get("invoiceRef"):
             return TestResult(
                 result=False,
@@ -383,4 +383,4 @@ class OrderTestGroup(ITestGroup):
             resp = resp_obj.json()
         except ValueError:
             resp = resp_obj.text
-        return self._check("TC_ORD_INVREF_03", 404, resp_obj.status_code, resp)
+        return self._check("TC_ORD_INVREF_03", 404, {}, resp_obj.status_code, resp)

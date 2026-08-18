@@ -97,7 +97,7 @@ class PaymentTestGroup(ITestGroup):
         body = self._body()
         body["orderRef"] = self.seed_order_invoiced_id
         status, resp = self._post(body)
-        return self._check("TC_PAY_ORDERREF_01", 201, status, resp)
+        return self._check("TC_PAY_ORDERREF_01", 201, body, status, resp)
 
     def tc_pay_orderref_02(self) -> TestResult:
         """EC-Invalid-1 (Wrong State): orderRef exists but order status is
@@ -105,21 +105,21 @@ class PaymentTestGroup(ITestGroup):
         body = self._body()
         body["orderRef"] = self.seed_order_placed_id
         status, resp = self._post(body)
-        return self._check("TC_PAY_ORDERREF_02", 409, status, resp)
+        return self._check("TC_PAY_ORDERREF_02", 409, body, status, resp)
 
     def tc_pay_orderref_03(self) -> TestResult:
         """EC-Invalid-2 (Not Found): orderRef does not exist -> 404."""
         body = self._body()
         body["orderRef"] = NOT_FOUND_UUID
         status, resp = self._post(body)
-        return self._check("TC_PAY_ORDERREF_03", 404, status, resp)
+        return self._check("TC_PAY_ORDERREF_03", 404, body, status, resp)
 
     def tc_pay_orderref_04(self) -> TestResult:
         """EC-Invalid-3 (Wrong Format): malformed UUID string -> 400."""
         body = self._body()
         body["orderRef"] = "order-1"
         status, resp = self._post(body)
-        return self._check("TC_PAY_ORDERREF_04", 400, status, resp)
+        return self._check("TC_PAY_ORDERREF_04", 400, body, status, resp)
 
     # ------------------------------------------------------------------ #
     # amount
@@ -129,42 +129,42 @@ class PaymentTestGroup(ITestGroup):
         body = self._body()
         body["amount"] = str(self.seed_invoice_total_amount)
         status, resp = self._post(body)
-        return self._check("TC_PAY_AMOUNT_01", 201, status, resp)
+        return self._check("TC_PAY_AMOUNT_01", 201, body, status, resp)
 
     def tc_pay_amount_02(self) -> TestResult:
         """EC-Invalid-1 (Underpayment): amount less than invoice.totalAmount -> 400."""
         body = self._body()
         body["amount"] = str(self.seed_invoice_total_amount - Decimal("0.01"))
         status, resp = self._post(body)
-        return self._check("TC_PAY_AMOUNT_02", 400, status, resp)
+        return self._check("TC_PAY_AMOUNT_02", 400, body, status, resp)
 
     def tc_pay_amount_03(self) -> TestResult:
         """EC-Invalid-2 (Overpayment): amount greater than invoice.totalAmount -> 400."""
         body = self._body()
         body["amount"] = str(self.seed_invoice_total_amount + Decimal("0.01"))
         status, resp = self._post(body)
-        return self._check("TC_PAY_AMOUNT_03", 400, status, resp)
+        return self._check("TC_PAY_AMOUNT_03", 400, body, status, resp)
 
     def tc_pay_amount_04(self) -> TestResult:
         """EC-Invalid-3 (Zero): amount equal to zero -> 400."""
         body = self._body()
         body["amount"] = "0.00"
         status, resp = self._post(body)
-        return self._check("TC_PAY_AMOUNT_04", 400, status, resp)
+        return self._check("TC_PAY_AMOUNT_04", 400, body, status, resp)
 
     def tc_pay_amount_05(self) -> TestResult:
         """EC-Invalid-4 (Negative): negative value -> 400."""
         body = self._body()
         body["amount"] = "-50.00"
         status, resp = self._post(body)
-        return self._check("TC_PAY_AMOUNT_05", 400, status, resp)
+        return self._check("TC_PAY_AMOUNT_05", 400, body, status, resp)
 
     def tc_pay_amount_06(self) -> TestResult:
         """EC-Invalid-5 (Empty): empty/null -> 400."""
         body = self._body()
         body["amount"] = None
         status, resp = self._post(body)
-        return self._check("TC_PAY_AMOUNT_06", 400, status, resp)
+        return self._check("TC_PAY_AMOUNT_06", 400, body, status, resp)
 
     # ------------------------------------------------------------------ #
     # status
@@ -173,7 +173,7 @@ class PaymentTestGroup(ITestGroup):
         """EC-Valid-1: default status on creation is PENDING -> 201."""
         body = self._body()
         status, resp = self._post(body)
-        result = self._check("TC_PAY_STATUS_01", 201, status, resp)
+        result = self._check("TC_PAY_STATUS_01", 201, body, status, resp)
         if result.result and isinstance(resp, dict) and resp.get("status") != "PENDING":
             return TestResult(
                 result=False,
@@ -188,14 +188,14 @@ class PaymentTestGroup(ITestGroup):
         body = self._body()
         body["status"] = "VERIFIED"
         status, resp = self._post(body)
-        return self._check("TC_PAY_STATUS_02", 400, status, resp)
+        return self._check("TC_PAY_STATUS_02", 400, body, status, resp)
 
     def tc_pay_status_03(self) -> TestResult:
         """EC-Invalid-2 (Unknown Value): value not part of enum -> 400."""
         body = self._body()
         body["status"] = "DONE"
         status, resp = self._post(body)
-        return self._check("TC_PAY_STATUS_03", 400, status, resp)
+        return self._check("TC_PAY_STATUS_03", 400, body, status, resp)
 
     # ------------------------------------------------------------------ #
     # method
@@ -205,32 +205,32 @@ class PaymentTestGroup(ITestGroup):
         body = self._body()
         body["method"] = "CREDIT_CARD"
         status, resp = self._post(body)
-        return self._check("TC_PAY_METHOD_01", 201, status, resp)
+        return self._check("TC_PAY_METHOD_01", 201, body, status, resp)
 
     def tc_pay_method_02(self) -> TestResult:
         """EC-Valid-2: valid method - BANK_TRANSFER -> 201."""
         body = self._body()
         body["method"] = "BANK_TRANSFER"
         status, resp = self._post(body)
-        return self._check("TC_PAY_METHOD_02", 201, status, resp)
+        return self._check("TC_PAY_METHOD_02", 201, body, status, resp)
 
     def tc_pay_method_03(self) -> TestResult:
         """EC-Valid-3: valid method - E_WALLET -> 201."""
         body = self._body()
         body["method"] = "E_WALLET"
         status, resp = self._post(body)
-        return self._check("TC_PAY_METHOD_03", 201, status, resp)
+        return self._check("TC_PAY_METHOD_03", 201, body, status, resp)
 
     def tc_pay_method_04(self) -> TestResult:
         """EC-Invalid-1 (Unknown Value): value not part of enum -> 400."""
         body = self._body()
         body["method"] = "CASH"
         status, resp = self._post(body)
-        return self._check("TC_PAY_METHOD_04", 400, status, resp)
+        return self._check("TC_PAY_METHOD_04", 400, body, status, resp)
 
     def tc_pay_method_05(self) -> TestResult:
         """EC-Invalid-2 (Empty): empty/null -> 400."""
         body = self._body()
         body["method"] = None
         status, resp = self._post(body)
-        return self._check("TC_PAY_METHOD_05", 400, status, resp)
+        return self._check("TC_PAY_METHOD_05", 400, body, status, resp)
