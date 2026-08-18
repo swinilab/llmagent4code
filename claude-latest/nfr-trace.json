@@ -1,0 +1,99 @@
+{
+  "nfrTrace": [
+    {
+      "nfr": "NFR 1.1: Limit Event Response",
+      "filesImplemented": [
+        "app/infra/rate_limiter.py",
+        "app/core/middleware.py"
+      ],
+      "librariesUsed": ["redis", "starlette"],
+      "functionNames": [
+        "app/infra/rate_limiter.py::TokenBucketRateLimiter.allow",
+        "app/core/middleware.py::RateLimitMiddleware.dispatch"
+      ],
+      "tacticUsed": "QA Performance/Manage Resources/Limit Event Response"
+    },
+    {
+      "nfr": "NFR 1.2: Maintain Multiple Copies of Data",
+      "filesImplemented": [
+        "app/infra/cache.py",
+        "app/infra/database.py",
+        "app/services/services.py"
+      ],
+      "librariesUsed": ["redis", "sqlalchemy"],
+      "functionNames": [
+        "app/infra/cache.py::EntityCache.get",
+        "app/infra/cache.py::EntityCache.set",
+        "app/infra/cache.py::EntityCache.invalidate",
+        "app/infra/database.py::_build_engine",
+        "app/infra/database.py::read_session",
+        "app/services/services.py::BaseService._cached_read"
+      ],
+      "tacticUsed": "QA Performance/Manage Resources/Maintain Multiple Copies of Data"
+    },
+    {
+      "nfr": "NFR 2.1: Exception Detection",
+      "filesImplemented": [
+        "app/core/middleware.py",
+        "app/infra/degradation.py",
+        "app/infra/cache.py"
+      ],
+      "librariesUsed": ["asyncio", "starlette", "sqlalchemy"],
+      "functionNames": [
+        "app/core/middleware.py::ExceptionDetectionMiddleware.dispatch",
+        "app/infra/degradation.py::CircuitBreaker.call",
+        "app/infra/cache.py::EntityCache.get"
+      ],
+      "tacticUsed": "QA Availability/Detect Faults/Exception Detection"
+    },
+    {
+      "nfr": "NFR 2.2: Graceful Degradation",
+      "filesImplemented": [
+        "app/infra/degradation.py",
+        "app/infra/database.py",
+        "app/services/services.py"
+      ],
+      "librariesUsed": ["sqlalchemy", "redis"],
+      "functionNames": [
+        "app/infra/degradation.py::FeatureRegistry.shed",
+        "app/infra/degradation.py::FeatureRegistry.is_available",
+        "app/infra/database.py::_open_replica_session",
+        "app/services/services.py::BaseService._cached_read"
+      ],
+      "tacticUsed": "QA Availability/Recover from Faults/Preparation and Repair/Degradation"
+    },
+    {
+      "nfr": "NFR 2.3: State Resynchronization",
+      "filesImplemented": [
+        "app/infra/resync.py",
+        "app/api/v1/ops.py"
+      ],
+      "librariesUsed": ["sqlalchemy", "asyncio", "redis"],
+      "functionNames": [
+        "app/infra/resync.py::StateResynchronizer.compare_active_and_standby",
+        "app/infra/resync.py::StateResynchronizer.run_once",
+        "app/infra/resync.py::StateResynchronizer._replication_lag",
+        "app/api/v1/ops.py::force_resync"
+      ],
+      "tacticUsed": "QA Availability/Recover from Faults/Preparation and Repair/State Resynchronization"
+    },
+    {
+      "nfr": "NFR 2.4: Transactions",
+      "filesImplemented": [
+        "app/infra/database.py",
+        "app/services/services.py",
+        "app/repositories/repositories.py"
+      ],
+      "librariesUsed": ["sqlalchemy"],
+      "functionNames": [
+        "app/infra/database.py::unit_of_work",
+        "app/services/services.py::InvoiceService.create",
+        "app/services/services.py::PaymentService.create",
+        "app/services/services.py::PaymentService.verify",
+        "app/services/services.py::OrderService.transition",
+        "app/repositories/repositories.py::SQLAlchemyRepository.get_for_update"
+      ],
+      "tacticUsed": "QA Availability/Prevent Faults/Transactions"
+    }
+  ]
+}
