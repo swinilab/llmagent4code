@@ -104,11 +104,11 @@ def run_pipeline(components: PipelineComponents, phase: str = "all", stage: int 
     validation_results: list[ValidationResult] = []
 
     # 1. GENERATION PHASE
-    # if phase in ("gen", "all"):
-    #     generation = run_generation(components, prompt)
+    if phase in ("gen", "all"):
+        generation = run_generation(components, prompt)
 
-    generation = GenerationResult('','','')
-    generation.code = 'generated/sdk_chatdev_20260806222639_20260806222639/code_workspace'
+    # generation = GenerationResult('','','')
+    # generation.code = 'generated/sdk_chatdev_20260806222639_20260806222639/code_workspace'
 
     # 2. VALIDATION PHASE
     if phase in ("val", "all"):

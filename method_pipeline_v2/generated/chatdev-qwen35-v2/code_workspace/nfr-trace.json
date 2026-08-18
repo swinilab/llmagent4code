@@ -1,0 +1,81 @@
+﻿{
+  "nfrTrace": [
+    {
+      "nfr": "NFR 1.1 Limit Event Response",
+      "filesImplemented": ["oms/infrastructure/event/rate_limiter.py", "oms/controller/customer_controller.py", "oms/controller/product_controller.py", "oms/controller/order_controller.py", "oms/controller/payment_controller.py", "oms/controller/invoice_controller.py"],
+      "librariesUsed": ["asyncio"],
+      "functionNames": [
+        "oms/infrastructure/event/rate_limiter.py::RateLimiter.is_allowed",
+        "oms/controller/customer_controller.py::create_customer",
+        "oms/controller/product_controller.py::create_product",
+        "oms/controller/order_controller.py::create_order",
+        "oms/controller/payment_controller.py::create_payment",
+        "oms/controller/invoice_controller.py::create_invoice"
+      ],
+      "tacticUsed": "Throttling"
+    },
+    {
+      "nfr": "NFR 1.2 Maintain Multiple copies of Data",
+      "filesImplemented": ["oms/infrastructure/cache/memory_cache.py", "oms/service/customer_service.py", "oms/service/product_service.py", "oms/service/order_service.py", "oms/service/payment_service.py", "oms/service/invoice_service.py"],
+      "librariesUsed": ["asyncio"],
+      "functionNames": [
+        "oms/infrastructure/cache/memory_cache.py::MemoryCache.get",
+        "oms/infrastructure/cache/memory_cache.py::MemoryCache.set",
+        "oms/service/customer_service.py::CustomerService.get_by_id",
+        "oms/service/product_service.py::ProductService.get_by_id",
+        "oms/service/order_service.py::OrderService.get_by_id",
+        "oms/service/payment_service.py::PaymentService.get_by_id",
+        "oms/service/invoice_service.py::InvoiceService.get_by_id"
+      ],
+      "tacticUsed": "Maintain Multiple Copies"
+    },
+    {
+      "nfr": "NFR 2.1 Exception detection",
+      "filesImplemented": ["oms/infrastructure/exceptions.py", "oms/app.py", "oms/domain/models.py", "oms/service/order_service.py"],
+      "librariesUsed": ["fastapi", "pydantic"],
+      "functionNames": [
+        "oms/infrastructure/exceptions.py::oms_exception_handler",
+        "oms/infrastructure/exceptions.py::validation_exception_handler",
+        "oms/infrastructure/exceptions.py::sqlalchemy_exception_handler",
+        "oms/infrastructure/exceptions.py::generic_exception_handler",
+        "oms/service/order_service.py::OrderService.create"
+      ],
+      "tacticUsed": "Detect Faults"
+    },
+    {
+      "nfr": "NFR 2.2 Graceful Degradation",
+      "filesImplemented": ["oms/infrastructure/exceptions.py", "oms/app.py"],
+      "librariesUsed": ["fastapi"],
+      "functionNames": [
+        "oms/infrastructure/exceptions.py::sqlalchemy_exception_handler",
+        "oms/infrastructure/exceptions.py::generic_exception_handler",
+        "oms/infrastructure/exceptions.py::ServiceUnavailableException"
+      ],
+      "tacticUsed": "Graceful Degradation"
+    },
+    {
+      "nfr": "NFR 2.3 State Resynchronization",
+      "filesImplemented": ["oms/infrastructure/cache/memory_cache.py", "oms/service/customer_service.py", "oms/service/product_service.py", "oms/service/order_service.py"],
+      "librariesUsed": ["asyncio"],
+      "functionNames": [
+        "oms/infrastructure/cache/memory_cache.py::MemoryCache.get",
+        "oms/infrastructure/cache/memory_cache.py::MemoryCache.set",
+        "oms/infrastructure/cache/memory_cache.py::MemoryCache.delete",
+        "oms/service/customer_service.py::CustomerService.get_by_id"
+      ],
+      "tacticUsed": "Resynchronize State"
+    },
+    {
+      "nfr": "NFR 2.4 Transactions",
+      "filesImplemented": ["oms/infrastructure/database.py", "oms/service/order_service.py", "oms/service/payment_service.py", "oms/service/invoice_service.py"],
+      "librariesUsed": ["sqlalchemy"],
+      "functionNames": [
+        "oms/infrastructure/database.py::transaction_session",
+        "oms/service/order_service.py::OrderService.create",
+        "oms/service/payment_service.py::PaymentService.create",
+        "oms/service/invoice_service.py::InvoiceService.create"
+      ],
+      "tacticUsed": "Atomicity"
+    }
+  ]
+}
