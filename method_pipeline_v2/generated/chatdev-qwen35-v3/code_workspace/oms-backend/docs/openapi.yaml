@@ -1,0 +1,621 @@
+openapi: 3.1.0
+info:
+  title: Order Management System (OMS)
+  description: |
+    Production-grade backend-only e-commerce Order Management System.
+    
+    ## Roles
+    - **Customer**: Can place orders, make payments
+    - **Order Staff**: Can accept orders, ship orders, close orders
+    - **Accountant**: Can create invoices, verify/reject payments
+    
+    ## Order Status Flow
+    PLACED → ACCEPTED → INVOICED → PAID → VERIFIED → SHIPPED → CLOSED
+                                         ↓
+                                    CANCELLED (from PLACED or ACCEPTED)
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8000
+    description: Local development server
+
+paths:
+  /api/v1/customers:
+    post:
+      summary: Create Customer
+      operationId: createCustomer
+      tags:
+        - Customer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerCreate'
+      responses:
+        '201':
+          description: Customer created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '400':
+          description: Invalid request body
+        '429':
+          description: Rate limit exceeded
+
+  /api/v1/customers/{customer_id}:
+    get:
+      summary: Get Customer by ID
+      operationId: getCustomer
+      tags:
+        - Customer
+      parameters:
+        - name: customer_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Customer found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '404':
+          description: Customer not found
+
+  /api/v1/products:
+    post:
+      summary: Create Product
+      operationId: createProduct
+      tags:
+        - Product
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductCreate'
+      responses:
+        '201':
+          description: Product created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '400':
+          description: Invalid request body
+
+  /api/v1/products/{product_id}:
+    get:
+      summary: Get Product by ID
+      operationId: getProduct
+      tags:
+        - Product
+      parameters:
+        - name: product_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Product found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '404':
+          description: Product not found
+
+  /api/v1/orders:
+    post:
+      summary: Create Order
+      operationId: createOrder
+      tags:
+        - Order
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderCreate'
+      responses:
+        '201':
+          description: Order created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '400':
+          description: Invalid request body or referenced entities not found
+
+  /api/v1/orders/{order_id}:
+    get:
+      summary: Get Order by ID
+      operationId: getOrder
+      tags:
+        - Order
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Order found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '404':
+          description: Order not found
+
+  /api/v1/orders/{order_id}/accept:
+    post:
+      summary: Accept Order
+      operationId: acceptOrder
+      tags:
+        - Order Workflow
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Order accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '404':
+          description: Order not found
+        '409':
+          description: Order not in PLACED status
+
+  /api/v1/orders/{order_id}/ship:
+    post:
+      summary: Ship Order
+      operationId: shipOrder
+      tags:
+        - Order Workflow
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Order shipped
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '404':
+          description: Order not found
+        '409':
+          description: Order not in PAID status
+
+  /api/v1/orders/{order_id}/close:
+    post:
+      summary: Close Order
+      operationId: closeOrder
+      tags:
+        - Order Workflow
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Order closed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '404':
+          description: Order not found
+        '409':
+          description: Order not in SHIPPED status
+
+  /api/v1/invoices:
+    post:
+      summary: Create Invoice
+      operationId: createInvoice
+      tags:
+        - Invoice
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InvoiceCreate'
+      responses:
+        '201':
+          description: Invoice created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+        '400':
+          description: Invalid request body or order not in ACCEPTED status
+
+  /api/v1/invoices/{invoice_id}:
+    get:
+      summary: Get Invoice by ID
+      operationId: getInvoice
+      tags:
+        - Invoice
+      parameters:
+        - name: invoice_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Invoice found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+        '404':
+          description: Invoice not found
+
+  /api/v1/payments:
+    post:
+      summary: Create Payment
+      operationId: createPayment
+      tags:
+        - Payment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentCreate'
+      responses:
+        '201':
+          description: Payment created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+        '400':
+          description: Invalid request body or order not in INVOICED status
+
+  /api/v1/payments/{payment_id}:
+    get:
+      summary: Get Payment by ID
+      operationId: getPayment
+      tags:
+        - Payment
+      parameters:
+        - name: payment_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Payment found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+        '404':
+          description: Payment not found
+
+  /api/v1/payments/{payment_id}/verify:
+    post:
+      summary: Verify Payment
+      operationId: verifyPayment
+      tags:
+        - Payment Workflow
+      parameters:
+        - name: payment_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Payment verified
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+        '404':
+          description: Payment not found
+        '409':
+          description: Payment not in PENDING status
+
+components:
+  schemas:
+    CustomerRole:
+      type: string
+      enum:
+        - CUSTOMER
+        - ORDER_STAFF
+        - ACCOUNTANT
+
+    BankingDetails:
+      type: object
+      required:
+        - accountNumber
+        - bankName
+      properties:
+        accountNumber:
+          type: string
+          pattern: '^\d{6,20}$'
+          minLength: 6
+          maxLength: 20
+        bankName:
+          type: string
+          minLength: 2
+          maxLength: 100
+
+    CustomerCreate:
+      type: object
+      required:
+        - name
+        - address
+        - phone
+        - bankingDetails
+        - role
+      properties:
+        name:
+          type: string
+          minLength: 2
+          maxLength: 100
+          pattern: '^[\p{L} .''\-]+$'
+        address:
+          type: string
+          minLength: 5
+          maxLength: 255
+        phone:
+          type: string
+          minLength: 8
+          maxLength: 15
+          pattern: '^\+?[1-9]\d{7,14}$'
+        bankingDetails:
+          $ref: '#/components/schemas/BankingDetails'
+        role:
+          $ref: '#/components/schemas/CustomerRole'
+
+    Customer:
+      allOf:
+        - $ref: '#/components/schemas/CustomerCreate'
+        - type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            orderHistory:
+              type: array
+              items:
+                type: string
+                format: uuid
+
+    Price:
+      type: object
+      required:
+        - amount
+        - currency
+      properties:
+        amount:
+          type: string
+          pattern: '^\d{1,6}\.\d{2}$'
+        currency:
+          type: string
+          enum:
+            - USD
+            - VND
+            - EUR
+
+    ProductCreate:
+      type: object
+      required:
+        - description
+        - price
+      properties:
+        description:
+          type: string
+          minLength: 3
+          maxLength: 500
+        price:
+          $ref: '#/components/schemas/Price'
+
+    Product:
+      allOf:
+        - $ref: '#/components/schemas/ProductCreate'
+        - type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+
+    LineItem:
+      type: object
+      required:
+        - productRef
+        - quantity
+      properties:
+        productRef:
+          type: string
+          format: uuid
+        quantity:
+          type: integer
+          minimum: 1
+          maximum: 1000
+        unitPriceSnapshot:
+          type: string
+          pattern: '^\d{1,6}\.\d{2}$'
+
+    OrderStatus:
+      type: string
+      enum:
+        - PLACED
+        - ACCEPTED
+        - INVOICED
+        - PAID
+        - VERIFIED
+        - SHIPPED
+        - CLOSED
+        - CANCELLED
+
+    OrderCreate:
+      type: object
+      required:
+        - customerRef
+        - lineItems
+      properties:
+        customerRef:
+          type: string
+          format: uuid
+        lineItems:
+          type: array
+          minItems: 1
+          maxItems: 100
+          items:
+            $ref: '#/components/schemas/LineItem'
+
+    Order:
+      allOf:
+        - $ref: '#/components/schemas/OrderCreate'
+        - type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            totalAmount:
+              type: string
+              pattern: '^\d{1,8}\.\d{2}$'
+            status:
+              $ref: '#/components/schemas/OrderStatus'
+            createdAt:
+              type: string
+              format: date-time
+            updatedAt:
+              type: string
+              format: date-time
+            invoiceRef:
+              type: string
+              format: uuid
+              nullable: true
+
+    InvoiceStatus:
+      type: string
+      enum:
+        - ISSUED
+        - PAID
+        - OVERDUE
+        - CANCELLED
+
+    BillingInfo:
+      type: object
+      required:
+        - name
+        - address
+      properties:
+        name:
+          type: string
+          minLength: 2
+          maxLength: 100
+        address:
+          type: string
+          minLength: 5
+          maxLength: 255
+
+    InvoiceCreate:
+      type: object
+      required:
+        - orderRef
+        - billingInfo
+      properties:
+        orderRef:
+          type: string
+          format: uuid
+        billingInfo:
+          $ref: '#/components/schemas/BillingInfo'
+        totalAmount:
+          type: string
+          pattern: '^\d{1,8}\.\d{2}$'
+        issueDate:
+          type: string
+          pattern: '^\d{2}/\d{2}/\d{4}$'
+        dueDate:
+          type: string
+          pattern: '^\d{2}/\d{2}/\d{4}$'
+
+    Invoice:
+      allOf:
+        - $ref: '#/components/schemas/InvoiceCreate'
+        - type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            status:
+              $ref: '#/components/schemas/InvoiceStatus'
+
+    PaymentStatus:
+      type: string
+      enum:
+        - PENDING
+        - VERIFIED
+        - REJECTED
+
+    PaymentMethod:
+      type: string
+      enum:
+        - CREDIT_CARD
+        - BANK_TRANSFER
+        - E_WALLET
+
+    PaymentCreate:
+      type: object
+      required:
+        - orderRef
+        - amount
+        - method
+      properties:
+        orderRef:
+          type: string
+          format: uuid
+        amount:
+          type: string
+          pattern: '^\d{1,8}\.\d{2}$'
+        method:
+          $ref: '#/components/schemas/PaymentMethod'
+
+    Payment:
+      allOf:
+        - $ref: '#/components/schemas/PaymentCreate'
+        - type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            timestamp:
+              type: string
+              format: date-time
+            status:
+              $ref: '#/components/schemas/PaymentStatus'
