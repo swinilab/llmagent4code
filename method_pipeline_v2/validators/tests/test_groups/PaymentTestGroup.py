@@ -86,7 +86,12 @@ class PaymentTestGroup(ITestGroup):
                 return TestResult(
                     result=False,
                     testcase_id=testcase_id,
-                    message=f"Unknown testcase id: {testcase_id}",
+                    method="",
+                    url="",
+                    expected_status=0,
+                    actual_status=0,
+                    request_body=None,
+                    response_body=f"Unknown testcase id: {testcase_id}",
                 )
 
     # ------------------------------------------------------------------ #
@@ -175,11 +180,7 @@ class PaymentTestGroup(ITestGroup):
         status, resp = self._post(body)
         result = self._check("TC_PAY_STATUS_01", 201, body, status, resp)
         if result.result and isinstance(resp, dict) and resp.get("status") != "PENDING":
-            return TestResult(
-                result=False,
-                testcase_id="TC_PAY_STATUS_01",
-                message=f"Expected default status PENDING, got {resp.get('status')!r}",
-            )
+            result.result = False
         return result
 
     def tc_pay_status_02(self) -> TestResult:

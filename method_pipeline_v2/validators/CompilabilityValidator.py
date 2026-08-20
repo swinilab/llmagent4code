@@ -85,7 +85,7 @@ class CompilabilityValidator(ICompilabilityValidator):
             return ValidationResult(
                 stage="compilability",
                 status=Status.FAIL,
-                message=f"Start command file not found: {command}",
+                message=f"Start command file not found: {command_file}",
                 details={"error": "FileNotFoundError"},
             )
         except Exception as e:

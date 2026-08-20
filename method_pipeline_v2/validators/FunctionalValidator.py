@@ -1,6 +1,5 @@
 from __future__ import annotations
-import subprocess
-import os, re
+import os
 from pathlib import Path
 from datetime import datetime
 import json
@@ -82,7 +81,16 @@ class FunctionalValidator(IFunctionalValidator):
             "failed": len([r for r in results if not r.result]),
             "summary": summary,
             "results": [
-                {"testcase_id": r.testcase_id, "result": r.result, "message": r.message}
+                {
+                    "testcase_id": r.testcase_id,
+                    "result": r.result,
+                    "method": r.method,
+                    "url": r.url,
+                    "expected_status": r.expected_status,
+                    "actual_status": r.actual_status,
+                    "request_body": r.request_body,
+                    "response_body": r.response_body,
+                }
                 for r in results
             ],
         }
@@ -116,10 +124,6 @@ class FunctionalValidator(IFunctionalValidator):
                 "failed": failed_count,
             })
 
-        case_specific_message = ""
-        for result in results:
-            case_specific_message += f"""testcase_id:        {result.testcase_id}\nresult:             {"PASS" if result.result else "FALSE"}\nmessage:            {result.message}\n\n"""
-
         failed_count = sum(1 for r in results if not r.result)
         status = Status.FAIL if failed_count else Status.PASS
         message = (
@@ -133,7 +137,7 @@ class FunctionalValidator(IFunctionalValidator):
         return ValidationResult(
             stage="functional",
             status=status,
-            message=message + "\n" + case_specific_message,
+            message=message,
             details={
                 "total": len(results),
                 "passed": len(results) - failed_count,

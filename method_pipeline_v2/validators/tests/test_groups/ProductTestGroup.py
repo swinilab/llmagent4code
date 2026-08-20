@@ -87,7 +87,12 @@ class ProductTestGroup(ITestGroup):
                 return TestResult(
                     result=False,
                     testcase_id=testcase_id,
-                    message=f"Unknown testcase id: {testcase_id}",
+                    method="",
+                    url="",
+                    expected_status=0,
+                    actual_status=0,
+                    request_body=None,
+                    response_body=f"Unknown testcase id: {testcase_id}",
                 )
 
     # ------------------------------------------------------------------ #

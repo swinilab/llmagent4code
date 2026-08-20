@@ -115,7 +115,12 @@ class OrderTestGroup(ITestGroup):
                 return TestResult(
                     result=False,
                     testcase_id=testcase_id,
-                    message=f"Unknown testcase id: {testcase_id}",
+                    method="",
+                    url="",
+                    expected_status=0,
+                    actual_status=0,
+                    request_body=None,
+                    response_body=f"Unknown testcase id: {testcase_id}",
                 )
 
     # ------------------------------------------------------------------ #
@@ -320,11 +325,7 @@ class OrderTestGroup(ITestGroup):
         status, resp = self._post(body)
         result = self._check("TC_ORD_STATUS_01", 201, body, status, resp)
         if result.result and isinstance(resp, dict) and resp.get("status") != "PLACED":
-            return TestResult(
-                result=False,
-                testcase_id="TC_ORD_STATUS_01",
-                message=f"Expected default status PLACED, got {resp.get('status')!r}",
-            )
+            result.result = False
         return result
 
     def tc_ord_status_02(self) -> TestResult:
@@ -350,11 +351,7 @@ class OrderTestGroup(ITestGroup):
         status, resp = self._get(self.seed_order_placed_id)
         result = self._check("TC_ORD_INVREF_01", 200, {}, status, resp)
         if result.result and isinstance(resp, dict) and resp.get("invoiceRef") is not None:
-            return TestResult(
-                result=False,
-                testcase_id="TC_ORD_INVREF_01",
-                message=f"Expected invoiceRef=null, got {resp.get('invoiceRef')!r}",
-            )
+            result.result = False
         return result
 
     def tc_ord_invref_02(self) -> TestResult:
@@ -362,11 +359,7 @@ class OrderTestGroup(ITestGroup):
         status, resp = self._get(self.seed_order_with_invoice_id)
         result = self._check("TC_ORD_INVREF_02", 200, {}, status, resp)
         if result.result and isinstance(resp, dict) and not resp.get("invoiceRef"):
-            return TestResult(
-                result=False,
-                testcase_id="TC_ORD_INVREF_02",
-                message="Expected invoiceRef to be set, got empty/null",
-            )
+            result.result = False
         return result
 
     def tc_ord_invref_03(self) -> TestResult:

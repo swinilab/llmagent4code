@@ -101,7 +101,12 @@ class InvoiceTestGroup(ITestGroup):
                 return TestResult(
                     result=False,
                     testcase_id=testcase_id,
-                    message=f"Unknown testcase id: {testcase_id}",
+                    method="",
+                    url="",
+                    expected_status=0,
+                    actual_status=0,
+                    request_body=None,
+                    response_body=f"Unknown testcase id: {testcase_id}",
                 )
 
     # ------------------------------------------------------------------ #
@@ -173,15 +178,7 @@ class InvoiceTestGroup(ITestGroup):
             and isinstance(resp, dict)
             and str(resp.get("totalAmount")) != str(self.seed_order_accepted_total_amount)
         ):
-            return TestResult(
-                result=False,
-                testcase_id="TC_INV_TOTALAMT_01",
-                message=(
-                    f"Expected totalAmount to match order.totalAmount "
-                    f"({self.seed_order_accepted_total_amount!r}), got "
-                    f"{resp.get('totalAmount')!r}"
-                ),
-            )
+            result.result = False
         return result
 
     def tc_inv_totalamt_02(self) -> TestResult:
@@ -308,11 +305,7 @@ class InvoiceTestGroup(ITestGroup):
         status, resp = self._post(body)
         result = self._check("TC_INV_STATUS_01", 201, body, status, resp)
         if result.result and isinstance(resp, dict) and resp.get("status") != "ISSUED":
-            return TestResult(
-                result=False,
-                testcase_id="TC_INV_STATUS_01",
-                message=f"Expected default status ISSUED, got {resp.get('status')!r}",
-            )
+            result.result = False
         return result
 
     def tc_inv_status_02(self) -> TestResult:

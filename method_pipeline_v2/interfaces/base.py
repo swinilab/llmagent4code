@@ -45,12 +45,24 @@ class GenerationResult:
     model: str
     code: str           # folder where agent generated app (generated/...)
 
+# @dataclass
+# class TestResult:
+#     """Functional test result."""
+#     result:             bool
+#     testcase_id:        str
+#     message:            str
+
 @dataclass
 class TestResult:
     """Functional test result."""
     result:             bool
     testcase_id:        str
-    message:            str
+    method:             str
+    url:                str
+    expected_status:    int
+    actual_status:      int
+    request_body:       Any
+    response_body:      Any
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -132,6 +144,8 @@ class ITestGroup(ABC):
 
     def _post(self, body: dict[str, Any]) -> tuple[int, Any]:
         """POST to the collection endpoint; return (status_code, json|text)."""
+        self._last_method = "POST"
+        self._last_url = self.api
         resp = requests.post(self.api, json=body, timeout=10)
         try:
             return resp.status_code, resp.json()
@@ -141,29 +155,35 @@ class ITestGroup(ABC):
     def _get(self, id: str) -> tuple[int, Any]:
         """GET a single object by id; return (status_code, json|text)."""
         url = f"{self.api}/{id}"
+        self._last_method = "GET"
+        self._last_url = url
         resp = requests.get(url, timeout=10)
         try:
             return resp.status_code, resp.json()
         except ValueError:
             return resp.status_code, resp.text
 
-    @staticmethod
     def _check(
+        self,
         testcase_id: str,
         expected_status: int,
-        input: Any,
+        request_body: Any,
         actual_status: int,
-        body: Any,
+        response_body: Any,
     ) -> TestResult:
         """Build a TestResult by comparing expected vs actual HTTP status."""
         passed = actual_status == expected_status
-        msg = (
-            f"Expected {expected_status}, got {actual_status}.\nInput: {json.dumps(input)} \nBody: {body}"
-            if not passed
-            else "OK"
+
+        return TestResult(
+            result=passed,
+            testcase_id=testcase_id,
+            method=getattr(self, "_last_method", ""),
+            url=getattr(self, "_last_url", ""),
+            expected_status=expected_status,
+            actual_status=actual_status,
+            request_body=request_body,
+            response_body=response_body,
         )
-        print(testcase_id + "\n" + msg)
-        return TestResult(result=passed, testcase_id=testcase_id, message=msg)
 
     @abstractmethod
     def run_testcase(

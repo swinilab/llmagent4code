@@ -1,8 +1,4 @@
-import copy
-import requests
-from dataclasses import dataclass, field
 from typing import Any
-from abc import ABC, abstractmethod
 
 from interfaces.base import ITestGroup, TestResult
 
@@ -122,13 +118,6 @@ class CustomerTestGroup(ITestGroup):
             case "TC_CUS_ORDERHIST_01": return self._tc_cus_orderhist_01()
             case "TC_CUS_ORDERHIST_02": return self._tc_cus_orderhist_02()
             case "TC_CUS_ORDERHIST_03": return self._tc_cus_orderhist_03()
-            # ---- Fallback -------------------------------------------------
-            case _:
-                return TestResult(
-                    result=False,
-                    testcase_id=testcase_id,
-                    message=f"Unknown testcase_id: {testcase_id}",
-                )
 
     # =======================================================================
     #  ID  (GET – retrieve by path parameter)
