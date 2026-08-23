@@ -27,7 +27,7 @@ class CompilabilityValidator(ICompilabilityValidator):
             config.get("agent", {}).get("generated_dir", "generated")
         )
         self._start_command_file = config.get("validator", {}).get("start_command_file", "start_command.txt")
-        self._base_url = config.get("validator", {}).get("base_url", "http://localhost:8000")
+        self._base_url = config.get("validation", {}).get("http", {}).get("base_url", "http://localhost:8000")
         self._boot_wait_seconds = config.get("validator", {}).get("boot_wait_seconds", 15)
         self._smoke_path = config.get("validator", {}).get("smoke_path", "/")
         self._smoke_timeout = config.get("validator", {}).get("smoke_timeout", 10)

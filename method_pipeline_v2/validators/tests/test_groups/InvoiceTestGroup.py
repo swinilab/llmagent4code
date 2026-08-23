@@ -50,6 +50,7 @@ class InvoiceTestGroup(ITestGroup):
 
         self.testcases: list[str] = [
             "TC_INV_ORDERREF_01", "TC_INV_ORDERREF_02", "TC_INV_ORDERREF_03",
+            "TC_INV_ORDERREF_04",
             "TC_INV_BILLNAME_01", "TC_INV_BILLNAME_02", "TC_INV_BILLNAME_03",
             "TC_INV_BILLNAME_04",
             "TC_INV_TOTALAMT_01", "TC_INV_TOTALAMT_02", "TC_INV_TOTALAMT_03",
@@ -69,6 +70,7 @@ class InvoiceTestGroup(ITestGroup):
             case "TC_INV_ORDERREF_01": return self.tc_inv_orderref_01()
             case "TC_INV_ORDERREF_02": return self.tc_inv_orderref_02()
             case "TC_INV_ORDERREF_03": return self.tc_inv_orderref_03()
+            case "TC_INV_ORDERREF_04": return self.tc_inv_orderref_04()
 
             case "TC_INV_BILLNAME_01": return self.tc_inv_billname_01()
             case "TC_INV_BILLNAME_02": return self.tc_inv_billname_02()
@@ -133,6 +135,13 @@ class InvoiceTestGroup(ITestGroup):
         body["orderRef"] = NOT_FOUND_UUID
         status, resp = self._post(body)
         return self._check("TC_INV_ORDERREF_03", 404, body, status, resp)
+
+    def tc_inv_orderref_04(self) -> TestResult:
+        """EC-Invalid-3 (Wrong Format): malformed UUID string -> 400."""
+        body = self._body()
+        body["orderRef"] = "order-1"
+        status, resp = self._post(body)
+        return self._check("TC_INV_ORDERREF_04", 400, body, status, resp)
 
     # ------------------------------------------------------------------ #
     # billingInfo.name

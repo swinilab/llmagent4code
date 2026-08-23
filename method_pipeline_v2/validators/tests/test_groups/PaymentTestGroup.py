@@ -137,18 +137,18 @@ class PaymentTestGroup(ITestGroup):
         return self._check("TC_PAY_AMOUNT_01", 201, body, status, resp)
 
     def tc_pay_amount_02(self) -> TestResult:
-        """EC-Invalid-1 (Underpayment): amount less than invoice.totalAmount -> 400."""
+        """EC-Invalid-1 (Underpayment): amount less than invoice.totalAmount -> 409."""
         body = self._body()
         body["amount"] = str(self.seed_invoice_total_amount - Decimal("0.01"))
         status, resp = self._post(body)
-        return self._check("TC_PAY_AMOUNT_02", 400, body, status, resp)
+        return self._check("TC_PAY_AMOUNT_02", 409, body, status, resp)
 
     def tc_pay_amount_03(self) -> TestResult:
-        """EC-Invalid-2 (Overpayment): amount greater than invoice.totalAmount -> 400."""
+        """EC-Invalid-2 (Overpayment): amount greater than invoice.totalAmount -> 409."""
         body = self._body()
         body["amount"] = str(self.seed_invoice_total_amount + Decimal("0.01"))
         status, resp = self._post(body)
-        return self._check("TC_PAY_AMOUNT_03", 400, body, status, resp)
+        return self._check("TC_PAY_AMOUNT_03", 409, body, status, resp)
 
     def tc_pay_amount_04(self) -> TestResult:
         """EC-Invalid-3 (Zero): amount equal to zero -> 400."""

@@ -12,7 +12,7 @@ COPY pyproject.toml ./
 COPY app ./app
 COPY alembic.ini ./
 COPY alembic ./alembic
-
+COPY create_apis.json openapi.yaml nfr-trace.json start_command.txt ./
 RUN pip install --upgrade pip && pip install .
 
 USER oms

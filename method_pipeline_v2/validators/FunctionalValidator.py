@@ -15,6 +15,7 @@ from validators.tests.test_groups.InvoiceTestGroup import InvoiceTestGroup
 from validators.tests.test_groups.OrderTestGroup import OrderTestGroup
 from validators.tests.test_groups.PaymentTestGroup import PaymentTestGroup
 from validators.tests.test_groups.ProductTestGroup import ProductTestGroup
+from validators.tests.seed_context import build_seed_context, SeedContext
 
 # group name -> (TestGroup class, entity key in create_apis.json, default create path)
 TEST_GROUPS = {
@@ -39,8 +40,9 @@ class FunctionalValidator(IFunctionalValidator):
         config: dict | None = None
     ) -> None:
         config = config or {}
-        self._base_url = config.get("validator", {}).get("base_url", "http://localhost:8000")
-        self._timeout = config.get("validator", {}).get("timeout", 10.0)
+        http_config = config.get("validation", {}).get("http", {})
+        self._base_url = http_config.get("base_url", "http://localhost:8000")
+        self._timeout = http_config.get("timeout_seconds", 10.0)
         # Default to /start_command.txt as requested, but allow override via config
         self._start_command_file = config.get("validator", {}).get("start_command_file", "start_command.txt")
         self._report_dir = config.get("output", {}).get("report_dir", "reports/")
@@ -67,6 +69,7 @@ class FunctionalValidator(IFunctionalValidator):
         message: str,
         results: list[TestResult],
         summary: list[dict],
+        seed_warnings: list[str],
     ) -> str:
         os.makedirs(self._report_dir, exist_ok=True)
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -79,6 +82,7 @@ class FunctionalValidator(IFunctionalValidator):
             "total": len(results),
             "passed": len([r for r in results if r.result]),
             "failed": len([r for r in results if not r.result]),
+            "seed_warnings": seed_warnings,
             "summary": summary,
             "results": [
                 {
@@ -108,12 +112,54 @@ class FunctionalValidator(IFunctionalValidator):
         with open(os.path.join(workdir, 'create_apis.json'), 'r', encoding='utf-8') as file:
             create_api_paths = json.load(file)
 
+        workflow_api_paths: dict = {}
+        workflow_apis_file = os.path.join(workdir, 'workflow_apis.json')
+        if os.path.exists(workflow_apis_file):
+            with open(workflow_apis_file, 'r', encoding='utf-8') as file:
+                workflow_api_paths = json.load(file)
+
+        api_paths = {
+            entity_key: self._resolve_create_api_path(create_api_paths, entity_key, default_path)
+            for _, entity_key, default_path in TEST_GROUPS.values()
+        }
+
+        try:
+            seed = build_seed_context(self._base_url, api_paths, workflow_api_paths, self._timeout)
+        except Exception as exc:
+            seed = SeedContext(warnings=[f"seed setup phase crashed: {exc}"])
+
+        for warning in seed.warnings:
+            print(f"[FunctionalValidator] seed setup warning: {warning}")
+
+        group_seed_kwargs = {
+            "customer": {"seed_customer_id": seed.customer_id or ""},
+            "product": {"seed_product_id": seed.product_id},
+            "order": {
+                "seed_customer_id": seed.customer_id,
+                "seed_product_id": seed.product_id,
+                "seed_invoice_id": seed.invoice_id,
+                "seed_order_placed_id": seed.order_placed_id,
+                "seed_order_with_invoice_id": seed.order_invoiced_id,
+            },
+            "payment": {
+                "seed_order_invoiced_id": seed.order_invoiced_id,
+                "seed_order_placed_id": seed.order_placed_id,
+                "seed_invoice_total_amount": seed.invoice_total_amount,
+            },
+            "invoice": {
+                "seed_order_accepted_id": seed.order_accepted_id,
+                "seed_order_placed_id": seed.order_placed_id,
+                "seed_order_accepted_total_amount": seed.order_total_amount,
+            },
+        }
+
         results: list[TestResult] = []
         summary: list[dict] = []
 
         for group_name, (group_cls, entity_key, default_path) in TEST_GROUPS.items():
-            api_path = self._resolve_create_api_path(create_api_paths, entity_key, default_path)
-            group_results = group_cls(api=self._base_url + api_path).run_all()
+            api_path = api_paths[entity_key]
+            kwargs = group_seed_kwargs.get(group_name, {})
+            group_results = group_cls(api=self._base_url + api_path, **kwargs).run_all()
             results.extend(group_results)
 
             failed_count = sum(1 for r in group_results if not r.result)
@@ -132,7 +178,7 @@ class FunctionalValidator(IFunctionalValidator):
             else f"All {len(results)} HTTP functional tests passed."
         )
 
-        report_path = self._write_json_report(status, message, results, summary)
+        report_path = self._write_json_report(status, message, results, summary, seed.warnings)
 
         return ValidationResult(
             stage="functional",
