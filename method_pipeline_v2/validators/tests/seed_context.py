@@ -38,16 +38,37 @@ from validators.tests.test_groups.ProductTestGroup import ProductTestGroup
 from validators.tests.test_groups.InvoiceTestGroup import InvoiceTestGroup
 
 
+BULK_PRODUCT_COUNT = 100
+
+# ORDERREF_01, AMOUNT_01, STATUS_01, METHOD_01/02/03 in PaymentTestGroup are
+# each a happy-path payment against an INVOICED order - paying one is a
+# one-time INVOICED -> PAID transition, so sharing a single seeded order
+# across all of them means only the first can ever succeed and the rest see
+# a false 409. Each needs its own untouched INVOICED order.
+PAYMENT_HAPPY_PATH_ORDER_COUNT = 6
+
+# ORDERREF_01, TOTALAMT_01, ISSUEDATE_01, DUEDATE_01/02, STATUS_01 in
+# InvoiceTestGroup are each a happy-path invoice creation against an
+# ACCEPTED order - invoicing one is a one-time ACCEPTED -> INVOICED
+# transition, so they can't share ctx.order_accepted_id (which is also
+# already consumed by the seed's own INVOICED-order provisioning). Each
+# needs its own untouched ACCEPTED order.
+INVOICE_HAPPY_PATH_ORDER_COUNT = 6
+
+
 @dataclass
 class SeedContext:
     customer_id: str | None = None
     product_id: str | None = None
+    bulk_product_ids: list[str] = field(default_factory=list)
     order_placed_id: str | None = None
     order_accepted_id: str | None = None
     order_invoiced_id: str | None = None
     invoice_id: str | None = None
     order_total_amount: str | None = None
     invoice_total_amount: Decimal | None = None
+    bulk_invoiced_orders: list[dict[str, Any]] = field(default_factory=list)
+    bulk_accepted_order_ids: list[str] = field(default_factory=list)
     warnings: list[str] = field(default_factory=list)
     calls: list[dict[str, Any]] = field(default_factory=list)
 
@@ -104,12 +125,15 @@ def _write_seed_log(
         "seed_ids": {
             "customer_id": ctx.customer_id,
             "product_id": ctx.product_id,
+            "bulk_product_ids": ctx.bulk_product_ids,
             "order_placed_id": ctx.order_placed_id,
             "order_accepted_id": ctx.order_accepted_id,
             "order_invoiced_id": ctx.order_invoiced_id,
             "invoice_id": ctx.invoice_id,
             "order_total_amount": ctx.order_total_amount,
             "invoice_total_amount": ctx.invoice_total_amount,
+            "bulk_invoiced_orders": ctx.bulk_invoiced_orders,
+            "bulk_accepted_order_ids": ctx.bulk_accepted_order_ids,
         },
         "warnings": ctx.warnings,
         "calls": ctx.calls,
@@ -134,6 +158,102 @@ def _find_accept_order_step(workflow_api_paths: dict[str, Any]) -> dict[str, Any
         ):
             return entry
     return None
+
+
+def _provision_accepted_order(
+    ctx: SeedContext,
+    base_url: str,
+    order_api: str,
+    accept_step: dict[str, Any],
+    timeout: float,
+    label: str,
+) -> tuple[Any, str] | None:
+    """Create one order and walk it PLACED -> ACCEPTED; return
+    (order_group, order_id) or None (with a warning appended) if any step
+    fails. The returned order_group is reused by callers that need to
+    GET/verify the same order afterward."""
+    order_group = OrderTestGroup(
+        api=order_api,
+        seed_customer_id=ctx.customer_id,
+        seed_product_id=ctx.product_id,
+    )
+    body = order_group._body()
+    status, resp = order_group._post(body)
+    _record_group_call(ctx, f"create_{label}_order", order_group, body, status, resp)
+    if not (status == 201 and isinstance(resp, dict) and resp.get("id")):
+        ctx.warnings.append(f"seed {label} order creation failed: {status} {resp}")
+        return None
+    order_id = resp["id"]
+
+    accept_method = accept_step.get("method", "POST")
+    accept_url = base_url + str(accept_step["pathTemplate"]).replace("{id}", order_id)
+    try:
+        accept_resp = requests.request(accept_method, accept_url, timeout=timeout)
+    except requests.RequestException as exc:
+        _record_call(ctx, f"accept_{label}_order", accept_method, accept_url, None, None, f"request failed: {exc}")
+        ctx.warnings.append(f"acceptOrder call failed for {label} order: {exc}")
+        return None
+
+    try:
+        accept_body = accept_resp.json()
+    except ValueError:
+        accept_body = accept_resp.text
+    _record_call(
+        ctx, f"accept_{label}_order", accept_method, accept_url, None,
+        accept_resp.status_code, accept_body,
+    )
+    if accept_resp.status_code >= 400:
+        ctx.warnings.append(
+            f"acceptOrder returned {accept_resp.status_code} for {label} order; order stays PLACED"
+        )
+        return None
+
+    return order_group, order_id
+
+
+def _provision_invoiced_order(
+    ctx: SeedContext,
+    base_url: str,
+    api_paths: dict[str, str],
+    order_api: str,
+    accept_step: dict[str, Any],
+    timeout: float,
+    label: str,
+) -> dict[str, Any] | None:
+    """Create one order and walk it PLACED -> ACCEPTED -> INVOICED; return
+    {"order_id", "invoice_id", "invoice_total_amount"} or None (with a
+    warning appended) if any step fails. Mirrors the main lifecycle-order
+    flow in _provision() but is reusable so each caller gets its own
+    untouched INVOICED order instead of sharing one."""
+    accepted = _provision_accepted_order(ctx, base_url, order_api, accept_step, timeout, label)
+    if accepted is None:
+        return None
+    order_group, order_id = accepted
+
+    invoice_group = InvoiceTestGroup(
+        api=base_url + api_paths["invoice"],
+        seed_order_accepted_id=order_id,
+    )
+    body = invoice_group._body()
+    status, resp = invoice_group._post(body)
+    _record_group_call(ctx, f"create_{label}_invoice", invoice_group, body, status, resp)
+    if not (status == 201 and isinstance(resp, dict) and resp.get("id")):
+        ctx.warnings.append(f"seed {label} invoice creation failed: {status} {resp}")
+        return None
+    invoice_id = resp["id"]
+    try:
+        invoice_total_amount = Decimal(str(resp.get("totalAmount")))
+    except (InvalidOperation, TypeError):
+        ctx.warnings.append(f"seed {label} invoice totalAmount missing/unparseable")
+        return None
+
+    get_status, get_resp = order_group._get(order_id)
+    _record_group_call(ctx, f"verify_{label}_order_invoiced", order_group, None, get_status, get_resp)
+    if not (get_status == 200 and isinstance(get_resp, dict) and get_resp.get("status") == "INVOICED"):
+        ctx.warnings.append(f"{label} order did not transition to INVOICED after invoice creation")
+        return None
+
+    return {"order_id": order_id, "invoice_id": invoice_id, "invoice_total_amount": invoice_total_amount}
 
 
 def build_seed_context(
@@ -185,6 +305,27 @@ def _provision(
     else:
         ctx.warnings.append(f"seed product creation failed: {status} {resp}")
         return
+
+    # BULK_PRODUCT_COUNT distinct products, so LINEITEMS BC-Max tests can
+    # send that many *distinct* productRef items (an order rejecting a
+    # repeated productRef as a duplicate must not be confused with an order
+    # rejecting too many items). Best-effort: stop and keep whatever
+    # succeeded so far if the app starts failing partway through.
+    for i in range(BULK_PRODUCT_COUNT):
+        bulk_body = product_group._body()
+        bulk_body["description"] = f"{bulk_body['description']} (bulk seed #{i + 1})"
+        status, resp = product_group._post(bulk_body)
+        _record_group_call(ctx, f"create_bulk_product_{i + 1:03d}", product_group, bulk_body, status, resp)
+        if status == 201 and isinstance(resp, dict) and resp.get("id"):
+            ctx.bulk_product_ids.append(resp["id"])
+        else:
+            ctx.warnings.append(
+                f"seed bulk product #{i + 1}/{BULK_PRODUCT_COUNT} creation failed: "
+                f"{status} {resp}; only {len(ctx.bulk_product_ids)} distinct products "
+                "seeded - LINEITEMS BC-Max test(s) needing 100 distinct products may "
+                "fall back to a repeated productRef"
+            )
+            break
 
     order_api = base_url + api_paths["order"]
 
@@ -262,16 +403,6 @@ def _provision(
     body = invoice_group._body()
     status, resp = invoice_group._post(body)
     _record_group_call(ctx, "create_invoice", invoice_group, body, status, resp)
-    if status == 400 and "billingInfo" in str(resp):
-        # Some apps read the spec's "billingInfo: copied from Customer at
-        # issue time" as a pure server-side snapshot and forbid it in the
-        # request body. Seeding accommodates both readings - the strictness
-        # itself is judged by InvoiceTestGroup, not here.
-        body = {k: v for k, v in body.items() if k != "billingInfo"}
-        status, resp = invoice_group._post(body)
-        _record_group_call(
-            ctx, "create_invoice_without_billing_info", invoice_group, body, status, resp
-        )
     if status == 201 and isinstance(resp, dict) and resp.get("id"):
         ctx.invoice_id = resp["id"]
         try:
@@ -296,3 +427,45 @@ def _provision(
             "order did not transition to INVOICED after invoice creation; "
             "Payment happy-path seed unavailable"
         )
+        return
+
+    # Dedicated INVOICED orders for PaymentTestGroup's happy-path tests (see
+    # PAYMENT_HAPPY_PATH_ORDER_COUNT) - each is consumed by exactly one
+    # test, so a failure partway through only shrinks the queue rather than
+    # aborting seeding; PaymentTestGroup falls back to the shared
+    # order_invoiced_id for whichever tests run out of a dedicated one.
+    for i in range(PAYMENT_HAPPY_PATH_ORDER_COUNT):
+        entry = _provision_invoiced_order(
+            ctx, base_url, api_paths, order_api, accept_step, timeout,
+            label=f"payment_bulk_{i + 1:02d}",
+        )
+        if entry is not None:
+            ctx.bulk_invoiced_orders.append(entry)
+        else:
+            ctx.warnings.append(
+                f"only {len(ctx.bulk_invoiced_orders)}/{PAYMENT_HAPPY_PATH_ORDER_COUNT} "
+                "dedicated INVOICED orders seeded for Payment happy-path tests; "
+                "remaining test(s) fall back to the single shared order_invoiced_id"
+            )
+            break
+
+    # Dedicated ACCEPTED orders for InvoiceTestGroup's happy-path tests (see
+    # INVOICE_HAPPY_PATH_ORDER_COUNT) - ctx.order_accepted_id can't be reused
+    # here since it was already consumed (invoiced) above. Best-effort, same
+    # pattern as the Payment queue.
+    for i in range(INVOICE_HAPPY_PATH_ORDER_COUNT):
+        accepted = _provision_accepted_order(
+            ctx, base_url, order_api, accept_step, timeout,
+            label=f"invoice_bulk_{i + 1:02d}",
+        )
+        if accepted is not None:
+            _, order_id = accepted
+            ctx.bulk_accepted_order_ids.append(order_id)
+        else:
+            ctx.warnings.append(
+                f"only {len(ctx.bulk_accepted_order_ids)}/{INVOICE_HAPPY_PATH_ORDER_COUNT} "
+                "dedicated ACCEPTED orders seeded for Invoice happy-path tests; "
+                "remaining test(s) fall back to the single shared order_accepted_id "
+                "(already INVOICED, so those will see a false 409)"
+            )
+            break

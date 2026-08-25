@@ -146,6 +146,7 @@ class FunctionalValidator(IFunctionalValidator):
             "order": {
                 "seed_customer_id": seed.customer_id,
                 "seed_product_id": seed.product_id,
+                "seed_bulk_product_ids": seed.bulk_product_ids,
                 "seed_invoice_id": seed.invoice_id,
                 "seed_order_placed_id": seed.order_placed_id,
                 "seed_order_with_invoice_id": seed.order_invoiced_id,
@@ -154,11 +155,13 @@ class FunctionalValidator(IFunctionalValidator):
                 "seed_order_invoiced_id": seed.order_invoiced_id,
                 "seed_order_placed_id": seed.order_placed_id,
                 "seed_invoice_total_amount": seed.invoice_total_amount,
+                "seed_bulk_invoiced_orders": seed.bulk_invoiced_orders,
             },
             "invoice": {
                 "seed_order_accepted_id": seed.order_accepted_id,
                 "seed_order_placed_id": seed.order_placed_id,
                 "seed_order_accepted_total_amount": seed.order_total_amount,
+                "seed_bulk_accepted_order_ids": seed.bulk_accepted_order_ids,
             },
         }
 

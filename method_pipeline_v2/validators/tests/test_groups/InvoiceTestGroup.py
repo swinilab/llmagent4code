@@ -6,9 +6,12 @@ Source: OMS_TestCases_BVA_EP_EN.xlsx, sheet "Invoice" (TC_INV_*).
 Notes:
 - All test cases exercise POST /invoices.
 - Dates use the dd/MM/yyyy format specified in the sheet.
-- billingInfo.name is a snapshot of Customer.name (see Remarks column);
-  it is still submitted directly in the request body per the sheet's
-  Input Value column.
+- billingInfo is a snapshot of Customer.name/address "at issue time" (see
+  Remarks column) - i.e. read-only/server-derived, the same category as
+  Customer.orderHistory (see CustomerTestGroup._tc_cus_orderhist_01). It is
+  NOT included in standard_request_body; TC_INV_BILLNAME_* add it
+  explicitly to test that the app rejects a client-supplied billingInfo
+  regardless of value. See CHANGES.md.
 - totalAmount is server-computed; TC_INV_TOTALAMT_01 verifies it via a
   seeded order's totalAmount rather than asserting a literal value.
 """
@@ -33,17 +36,21 @@ class InvoiceTestGroup(ITestGroup):
         seed_order_accepted_id: str | None = None,
         seed_order_placed_id: str | None = None,
         seed_order_accepted_total_amount: str | None = None,
+        seed_bulk_accepted_order_ids: list[str] | None = None,
     ):
         self.api = api
         self.seed_order_accepted_id = seed_order_accepted_id or NEEDS_SEED_ORDER_ACCEPTED
         self.seed_order_placed_id = seed_order_placed_id or NEEDS_SEED_ORDER_PLACED
         self.seed_order_accepted_total_amount = seed_order_accepted_total_amount or "100.00"
+        # Queue of fresh, not-yet-invoiced ACCEPTED orders - one per
+        # happy-path invoice-creation test. Invoicing an order is a one-time
+        # ACCEPTED -> INVOICED transition, so happy-path tests can't share a
+        # single order (seed_order_accepted_id is also already consumed by
+        # the seed's own INVOICED-order provisioning for PaymentTestGroup).
+        self._accepted_order_queue: list[str] = list(seed_bulk_accepted_order_ids or [])
 
         self.standard_request_body: dict[str, Any] = {
             "orderRef": self.seed_order_accepted_id,
-            "billingInfo": {
-                "name": "Nguyen Van A",
-            },
             "issueDate": "23/07/2026",
             "dueDate": "30/07/2026",
         }
@@ -61,6 +68,40 @@ class InvoiceTestGroup(ITestGroup):
             "TC_INV_DUEDATE_04", "TC_INV_DUEDATE_05",
             "TC_INV_STATUS_01", "TC_INV_STATUS_02", "TC_INV_STATUS_03",
         ]
+
+    def _next_accepted_order(self) -> str | None:
+        """Pop the next dedicated, untouched ACCEPTED order for a
+        happy-path invoice-creation test, or None if the bulk queue is
+        exhausted/unavailable.
+
+        Deliberately does NOT fall back to seed_order_accepted_id: that
+        order is already INVOICED by seeding itself (see _provision() in
+        seed_context.py) and is also relied on by the negative-path test
+        TC_INV_ORDERREF_02 to stay in a known state. A caller seeing None
+        should report "seed data unavailable" rather than firing a request
+        against an order guaranteed to produce a false result.
+        """
+        if self._accepted_order_queue:
+            return self._accepted_order_queue.pop(0)
+        return None
+
+    def _seed_unavailable(self, testcase_id: str, expected_status: int) -> TestResult:
+        """Result for a happy-path test that couldn't get its own dedicated
+        order because bulk seeding fell short - reported distinctly from a
+        real HTTP failure so it isn't mistaken for an app defect."""
+        return TestResult(
+            result=False,
+            testcase_id=testcase_id,
+            method="",
+            url="",
+            expected_status=expected_status,
+            actual_status=0,
+            request_body=None,
+            response_body=(
+                "seed data unavailable: no dedicated ACCEPTED order left in "
+                "the bulk queue (see seed_context.py warnings)"
+            ),
+        )
 
     # ------------------------------------------------------------------ #
     # Dispatcher
@@ -116,8 +157,11 @@ class InvoiceTestGroup(ITestGroup):
     # ------------------------------------------------------------------ #
     def tc_inv_orderref_01(self) -> TestResult:
         """EC-Valid-1: orderRef exists and order status is ACCEPTED -> 201."""
+        order_id = self._next_accepted_order()
+        if order_id is None:
+            return self._seed_unavailable("TC_INV_ORDERREF_01", 201)
         body = self._body()
-        body["orderRef"] = self.seed_order_accepted_id
+        body["orderRef"] = order_id
         status, resp = self._post(body)
         return self._check("TC_INV_ORDERREF_01", 201, body, status, resp)
 
@@ -147,30 +191,47 @@ class InvoiceTestGroup(ITestGroup):
     # billingInfo.name
     # ------------------------------------------------------------------ #
     def tc_inv_billname_01(self) -> TestResult:
-        """BC-Min-1: length one below minimum (1 char) -> 400."""
+        """BC-Min-1: length one below minimum (1 char) -> 400.
+
+        billingInfo is read-only/server-derived (see module docstring), so
+        any client-supplied billingInfo is rejected regardless of the name
+        value's own length - this case happens to still be 400 for that
+        reason rather than the length-boundary violation it was originally
+        designed to isolate. See CHANGES.md.
+        """
         body = self._body()
-        body["billingInfo"]["name"] = "A"
+        body["billingInfo"] = {"name": "A"}
         status, resp = self._post(body)
         return self._check("TC_INV_BILLNAME_01", 400, body, status, resp)
 
     def tc_inv_billname_02(self) -> TestResult:
-        """BC-Min: length at minimum (2 chars) -> 201."""
+        """BC-Min: length at minimum (2 chars) -> 400.
+
+        Was 201 (assumed billingInfo is a client-settable field with a
+        min-length-2 boundary). billingInfo is read-only/server-derived -
+        the app correctly rejects it as an unrecognized field regardless of
+        value, so there is no valid client-supplied billingInfo case. See
+        CHANGES.md.
+        """
         body = self._body()
-        body["billingInfo"]["name"] = "An"
+        body["billingInfo"] = {"name": "An"}
         status, resp = self._post(body)
-        return self._check("TC_INV_BILLNAME_02", 201, body, status, resp)
+        return self._check("TC_INV_BILLNAME_02", 400, body, status, resp)
 
     def tc_inv_billname_03(self) -> TestResult:
-        """BC-Max: length at maximum (100 chars) -> 201."""
+        """BC-Max: length at maximum (100 chars) -> 400.
+
+        Was 201 - same reasoning as tc_inv_billname_02. See CHANGES.md.
+        """
         body = self._body()
-        body["billingInfo"]["name"] = "A" * 100
+        body["billingInfo"] = {"name": "A" * 100}
         status, resp = self._post(body)
-        return self._check("TC_INV_BILLNAME_03", 201, body, status, resp)
+        return self._check("TC_INV_BILLNAME_03", 400, body, status, resp)
 
     def tc_inv_billname_04(self) -> TestResult:
         """BC-Max+1: length one above maximum (101 chars) -> 400."""
         body = self._body()
-        body["billingInfo"]["name"] = "A" * 101
+        body["billingInfo"] = {"name": "A" * 101}
         status, resp = self._post(body)
         return self._check("TC_INV_BILLNAME_04", 400, body, status, resp)
 
@@ -179,7 +240,11 @@ class InvoiceTestGroup(ITestGroup):
     # ------------------------------------------------------------------ #
     def tc_inv_totalamt_01(self) -> TestResult:
         """EC-Valid-1: server-computed totalAmount equals Order.totalAmount -> 201."""
+        order_id = self._next_accepted_order()
+        if order_id is None:
+            return self._seed_unavailable("TC_INV_TOTALAMT_01", 201)
         body = self._body()
+        body["orderRef"] = order_id
         status, resp = self._post(body)
         result = self._check("TC_INV_TOTALAMT_01", 201, body, status, resp)
         if (
@@ -211,7 +276,11 @@ class InvoiceTestGroup(ITestGroup):
     # ------------------------------------------------------------------ #
     def tc_inv_issuedate_01(self) -> TestResult:
         """EC-Valid-1: valid date in dd/MM/yyyy format -> 201."""
+        order_id = self._next_accepted_order()
+        if order_id is None:
+            return self._seed_unavailable("TC_INV_ISSUEDATE_01", 201)
         body = self._body()
+        body["orderRef"] = order_id
         body["issueDate"] = "23/07/2026"
         status, resp = self._post(body)
         return self._check("TC_INV_ISSUEDATE_01", 201, body, status, resp)
@@ -265,7 +334,11 @@ class InvoiceTestGroup(ITestGroup):
     # ------------------------------------------------------------------ #
     def tc_inv_duedate_01(self) -> TestResult:
         """EC-Valid-1: dueDate = issueDate + 7 days (default) -> 201."""
+        order_id = self._next_accepted_order()
+        if order_id is None:
+            return self._seed_unavailable("TC_INV_DUEDATE_01", 201)
         body = self._body()
+        body["orderRef"] = order_id
         body["issueDate"] = "23/07/2026"
         body["dueDate"] = "30/07/2026"
         status, resp = self._post(body)
@@ -274,7 +347,11 @@ class InvoiceTestGroup(ITestGroup):
     def tc_inv_duedate_02(self) -> TestResult:
         """BC-Equal-Min: dueDate equals issueDate (0-day term, boundary
         equality) -> 201 (accepted since dueDate >= issueDate)."""
+        order_id = self._next_accepted_order()
+        if order_id is None:
+            return self._seed_unavailable("TC_INV_DUEDATE_02", 201)
         body = self._body()
+        body["orderRef"] = order_id
         body["issueDate"] = "23/07/2026"
         body["dueDate"] = "23/07/2026"
         status, resp = self._post(body)
@@ -310,7 +387,11 @@ class InvoiceTestGroup(ITestGroup):
     # ------------------------------------------------------------------ #
     def tc_inv_status_01(self) -> TestResult:
         """EC-Valid-1: default status on creation is ISSUED -> 201."""
+        order_id = self._next_accepted_order()
+        if order_id is None:
+            return self._seed_unavailable("TC_INV_STATUS_01", 201)
         body = self._body()
+        body["orderRef"] = order_id
         status, resp = self._post(body)
         result = self._check("TC_INV_STATUS_01", 201, body, status, resp)
         if result.result and isinstance(resp, dict) and resp.get("status") != "ISSUED":

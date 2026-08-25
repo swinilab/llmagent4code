@@ -76,6 +76,9 @@ class TextReportWriter(IReportWriter):
                     report_path = vr.details.get("report_path")
                     if report_path:
                         lines.append(f"    full report : {report_path}")
+                    seed_log_path = vr.details.get("seed_log_path")
+                    if seed_log_path:
+                        lines.append(f"    seed context log : {seed_log_path}")
                 elif vr.details.get("tally"):
                     lines.append(f"    tally : {vr.details.get('tally')}")
                     report_path = vr.details.get("report_path")

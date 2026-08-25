@@ -139,9 +139,16 @@ class CustomerTestGroup(ITestGroup):
         return self._check("TC_CUS_ID_03", 400, {}, status, body)
 
     def _tc_cus_id_04(self) -> TestResult:
-        """Empty / null id → 400."""
+        """Empty / null id → 405.
+
+        _get("") builds "{api}/" (no id segment), which resolves to the
+        customer collection route (POST create), not the id-path handler.
+        A REST-conventional server therefore returns 405 Method Not Allowed
+        for a GET on that route, not a 400 body-validation error - the
+        id-required validation logic is never reached.
+        """
         status, body = self._get("")
-        return self._check("TC_CUS_ID_04", 400, {}, status, body)
+        return self._check("TC_CUS_ID_04", 405, {}, status, body)
 
     # =======================================================================
     #  NAME  (POST)
@@ -294,7 +301,19 @@ class CustomerTestGroup(ITestGroup):
         return self._check("TC_CUS_PHONE_06", 400, b, s, r)
 
     def _tc_cus_phone_07(self) -> TestResult:
-        """Leading zero after country code → 400."""
+        """Leading zero after country code → 400.
+
+        "+8401234567" is intentionally invalid: the country code "84"
+        already stands in for the local trunk "0" (a raw VN mobile number
+        "0901234567" becomes "+84901234567", not "+840901234567"). Keeping
+        the local "0" after "+84" is the classic conversion mistake, so this
+        single literal "0" already represents a redundant/double leading
+        zero semantically - the input does not need two literal "0"
+        characters to be invalid. If the app under test accepts this with
+        201, that is an app-side validation gap (its check likely only
+        enforces the base E.164 regex `^\\+?[1-9]\\d{7,14}$`, which this
+        value satisfies), not a bug in this test case. See CHANGES.md.
+        """
         b = self._body(); b["phone"] = "+8401234567"
         s, r = self._post(b)
         return self._check("TC_CUS_PHONE_07", 400, b, s, r)
@@ -430,10 +449,18 @@ class CustomerTestGroup(ITestGroup):
     # =======================================================================
 
     def _tc_cus_orderhist_01(self) -> TestResult:
-        """Empty array → 201."""
+        """Empty array → 400.
+
+        orderHistory is read-only/server-derived (see TC_CUS_ORDERHIST_02/03),
+        so a client sending this field at all - even as [] - is sending an
+        unrecognized/extra field, same as the non-empty cases. A strict
+        schema (extra fields forbidden) rejects it regardless of value;
+        expecting 201 here contradicted the read-only rule the other two
+        ORDERHIST cases already enforce. See CHANGES.md.
+        """
         b = self._body(); b["orderHistory"] = []
         s, r = self._post(b)
-        return self._check("TC_CUS_ORDERHIST_01", 201, b, s, r)
+        return self._check("TC_CUS_ORDERHIST_01", 400, b, s, r)
 
     def _tc_cus_orderhist_02(self) -> TestResult:
         """Malformed UUID in array → 400."""

@@ -37,6 +37,7 @@ class OrderTestGroup(ITestGroup):
         api: str,
         seed_customer_id: str | None = None,
         seed_product_id: str | None = None,
+        seed_bulk_product_ids: list[str] | None = None,
         seed_invoice_id: str | None = None,
         seed_order_placed_id: str | None = None,
         seed_order_with_invoice_id: str | None = None,
@@ -44,6 +45,7 @@ class OrderTestGroup(ITestGroup):
         self.api = api
         self.seed_customer_id = seed_customer_id or NEEDS_SEED_CUSTOMER
         self.seed_product_id = seed_product_id or NEEDS_SEED_PRODUCT
+        self.seed_bulk_product_ids = seed_bulk_product_ids or []
         self.seed_invoice_id = seed_invoice_id or NEEDS_SEED_INVOICE
         self.seed_order_placed_id = seed_order_placed_id or NEEDS_SEED_ORDER_PLACED
         self.seed_order_with_invoice_id = (
@@ -174,22 +176,39 @@ class OrderTestGroup(ITestGroup):
     def tc_ord_lineitems_03(self) -> TestResult:
         """BC-Max: item count at maximum (100 distinct productRef items) -> 201.
 
-        Requires 100 distinct seeded product ids; here the same seed product
-        id is repeated as a placeholder - replace with 100 distinct product
-        refs to faithfully test 'distinct products' per the sheet.
+        Requires 100 distinct seeded product ids (seed_context.py provisions
+        these) so this only exercises the item-count boundary - reusing one
+        productRef 100x would instead trip the app's duplicate-productRef
+        rejection (see TC_ORD_LINEITEMS_07) and fail for the wrong reason.
+        Falls back to repeating seed_product_id if seeding couldn't produce
+        100 distinct products (see the seed warning in that case).
         """
+        product_ids = self.seed_bulk_product_ids[:100]
+        if len(product_ids) < 100:
+            product_ids = product_ids + [self.seed_product_id] * (100 - len(product_ids))
         body = self._body()
         body["lineItems"] = [
-            {"productRef": self.seed_product_id, "quantity": 1} for _ in range(100)
+            {"productRef": pid, "quantity": 1} for pid in product_ids
         ]
         status, resp = self._post(body)
         return self._check("TC_ORD_LINEITEMS_03", 201, body, status, resp)
 
     def tc_ord_lineitems_04(self) -> TestResult:
-        """BC-Max+1: item count one above maximum (101 items) -> 400."""
+        """BC-Max+1: item count one above maximum (101 distinct productRef items) -> 400.
+
+        Same reasoning as tc_ord_lineitems_03: reusing one productRef 101x
+        would trip the duplicate-productRef rejection (TC_ORD_LINEITEMS_07)
+        instead of the item-count boundary this case is meant to test.
+        seed_product_id (the single seed created before the bulk batch) is
+        distinct from every id in seed_bulk_product_ids, so the two lists
+        combined give 101 distinct products when seeding fully succeeded.
+        """
+        product_ids = self.seed_bulk_product_ids[:100] + [self.seed_product_id]
+        if len(product_ids) < 101:
+            product_ids = product_ids + [self.seed_product_id] * (101 - len(product_ids))
         body = self._body()
         body["lineItems"] = [
-            {"productRef": self.seed_product_id, "quantity": 1} for _ in range(101)
+            {"productRef": pid, "quantity": 1} for pid in product_ids
         ]
         status, resp = self._post(body)
         return self._check("TC_ORD_LINEITEMS_04", 400, body, status, resp)
