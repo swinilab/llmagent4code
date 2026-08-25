@@ -123,11 +123,20 @@ class FunctionalValidator(IFunctionalValidator):
             for _, entity_key, default_path in TEST_GROUPS.values()
         }
 
+        os.makedirs(self._report_dir, exist_ok=True)
+        seed_log_path = os.path.join(
+            self._report_dir,
+            f"seed_context_log_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json",
+        )
         try:
-            seed = build_seed_context(self._base_url, api_paths, workflow_api_paths, self._timeout)
+            seed = build_seed_context(
+                self._base_url, api_paths, workflow_api_paths, self._timeout,
+                log_path=seed_log_path,
+            )
         except Exception as exc:
             seed = SeedContext(warnings=[f"seed setup phase crashed: {exc}"])
 
+        print(f"[FunctionalValidator] seed request/response log: {seed_log_path}")
         for warning in seed.warnings:
             print(f"[FunctionalValidator] seed setup warning: {warning}")
 
@@ -190,5 +199,6 @@ class FunctionalValidator(IFunctionalValidator):
                 "failed": failed_count,
                 "summary": summary,
                 "report_path": report_path,
+                "seed_log_path": seed_log_path,
             },
         )

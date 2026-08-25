@@ -16,10 +16,16 @@ documented contract of never guessing undeclared routes. If an app doesn't
 ship workflow_apis.json (or omits the relevant step), ACCEPTED/INVOICED
 seed data simply cannot be provisioned for it and the corresponding
 placeholders are left in place; a warning explains why.
+
+Every HTTP call made during seeding is recorded in SeedContext.calls and,
+when a log_path is given, dumped to a JSON file for debugging — including
+when provisioning crashes partway through.
 """
 
 from __future__ import annotations
 
+import json
+import os
 from dataclasses import dataclass, field
 from decimal import Decimal, InvalidOperation
 from typing import Any
@@ -43,6 +49,76 @@ class SeedContext:
     order_total_amount: str | None = None
     invoice_total_amount: Decimal | None = None
     warnings: list[str] = field(default_factory=list)
+    calls: list[dict[str, Any]] = field(default_factory=list)
+
+
+def _record_call(
+    ctx: SeedContext,
+    step: str,
+    method: str,
+    url: str,
+    request_body: Any,
+    status: int | None,
+    response_body: Any,
+) -> None:
+    ctx.calls.append({
+        "step": step,
+        "method": method,
+        "url": url,
+        "request_body": request_body,
+        "status": status,
+        "response_body": response_body,
+    })
+
+
+def _record_group_call(
+    ctx: SeedContext,
+    step: str,
+    group: Any,
+    request_body: Any,
+    status: int,
+    response_body: Any,
+) -> None:
+    """Record a call made through an ITestGroup helper (_post/_get), which
+    stashes the method/url it used on the group instance."""
+    _record_call(
+        ctx,
+        step,
+        getattr(group, "_last_method", ""),
+        getattr(group, "_last_url", ""),
+        request_body,
+        status,
+        response_body,
+    )
+
+
+def _write_seed_log(
+    ctx: SeedContext,
+    base_url: str,
+    api_paths: dict[str, str],
+    log_path: str,
+) -> None:
+    payload = {
+        "base_url": base_url,
+        "api_paths": api_paths,
+        "seed_ids": {
+            "customer_id": ctx.customer_id,
+            "product_id": ctx.product_id,
+            "order_placed_id": ctx.order_placed_id,
+            "order_accepted_id": ctx.order_accepted_id,
+            "order_invoiced_id": ctx.order_invoiced_id,
+            "invoice_id": ctx.invoice_id,
+            "order_total_amount": ctx.order_total_amount,
+            "invoice_total_amount": ctx.invoice_total_amount,
+        },
+        "warnings": ctx.warnings,
+        "calls": ctx.calls,
+    }
+    parent = os.path.dirname(log_path)
+    if parent:
+        os.makedirs(parent, exist_ok=True)
+    with open(log_path, "w", encoding="utf-8") as f:
+        json.dump(payload, f, indent=2, ensure_ascii=False, default=str)
 
 
 def _find_accept_order_step(workflow_api_paths: dict[str, Any]) -> dict[str, Any] | None:
@@ -65,28 +141,50 @@ def build_seed_context(
     api_paths: dict[str, str],
     workflow_api_paths: dict[str, Any],
     timeout: float,
+    log_path: str | None = None,
 ) -> SeedContext:
     """Create one customer, one product, and orders walked as far through the
     PLACED -> ACCEPTED -> INVOICED lifecycle as the app's declared APIs allow.
     Each step is best-effort: a failure stops that branch and is recorded in
-    ctx.warnings, but earlier successfully-provisioned ids are kept."""
-    ctx = SeedContext()
+    ctx.warnings, but earlier successfully-provisioned ids are kept.
 
+    If log_path is given, every request/response made during seeding is
+    written there as JSON — even when provisioning raises."""
+    ctx = SeedContext()
+    try:
+        _provision(ctx, base_url, api_paths, workflow_api_paths, timeout)
+    finally:
+        if log_path:
+            _write_seed_log(ctx, base_url, api_paths, log_path)
+    return ctx
+
+
+def _provision(
+    ctx: SeedContext,
+    base_url: str,
+    api_paths: dict[str, str],
+    workflow_api_paths: dict[str, Any],
+    timeout: float,
+) -> None:
     customer_group = CustomerTestGroup(api=base_url + api_paths["customer"])
-    status, resp = customer_group._post(customer_group._body())
+    body = customer_group._body()
+    status, resp = customer_group._post(body)
+    _record_group_call(ctx, "create_customer", customer_group, body, status, resp)
     if status == 201 and isinstance(resp, dict) and resp.get("id"):
         ctx.customer_id = resp["id"]
     else:
         ctx.warnings.append(f"seed customer creation failed: {status} {resp}")
-        return ctx
+        return
 
     product_group = ProductTestGroup(api=base_url + api_paths["product"])
-    status, resp = product_group._post(product_group._body())
+    body = product_group._body()
+    status, resp = product_group._post(body)
+    _record_group_call(ctx, "create_product", product_group, body, status, resp)
     if status == 201 and isinstance(resp, dict) and resp.get("id"):
         ctx.product_id = resp["id"]
     else:
         ctx.warnings.append(f"seed product creation failed: {status} {resp}")
-        return ctx
+        return
 
     order_api = base_url + api_paths["order"]
 
@@ -97,12 +195,14 @@ def build_seed_context(
         seed_customer_id=ctx.customer_id,
         seed_product_id=ctx.product_id,
     )
-    status, resp = placed_group._post(placed_group._body())
+    body = placed_group._body()
+    status, resp = placed_group._post(body)
+    _record_group_call(ctx, "create_placed_order", placed_group, body, status, resp)
     if status == 201 and isinstance(resp, dict) and resp.get("id"):
         ctx.order_placed_id = resp["id"]
     else:
         ctx.warnings.append(f"seed PLACED order creation failed: {status} {resp}")
-        return ctx
+        return
 
     # Order #2 is pushed through the workflow towards ACCEPTED / INVOICED.
     lifecycle_group = OrderTestGroup(
@@ -110,10 +210,12 @@ def build_seed_context(
         seed_customer_id=ctx.customer_id,
         seed_product_id=ctx.product_id,
     )
-    status, resp = lifecycle_group._post(lifecycle_group._body())
+    body = lifecycle_group._body()
+    status, resp = lifecycle_group._post(body)
+    _record_group_call(ctx, "create_lifecycle_order", lifecycle_group, body, status, resp)
     if not (status == 201 and isinstance(resp, dict) and resp.get("id")):
         ctx.warnings.append(f"seed lifecycle order creation failed: {status} {resp}")
-        return ctx
+        return
 
     lifecycle_order_id = resp["id"]
     ctx.order_total_amount = resp.get("totalAmount")
@@ -125,22 +227,31 @@ def build_seed_context(
             "ACCEPTED/INVOICED seed data (Invoice/Payment happy-path and "
             "FK test cases) cannot be provisioned for this app."
         )
-        return ctx
+        return
 
+    accept_method = accept_step.get("method", "POST")
     accept_url = base_url + str(accept_step["pathTemplate"]).replace("{id}", lifecycle_order_id)
     try:
-        accept_resp = requests.request(
-            accept_step.get("method", "POST"), accept_url, timeout=timeout
-        )
+        accept_resp = requests.request(accept_method, accept_url, timeout=timeout)
     except requests.RequestException as exc:
+        _record_call(ctx, "accept_order", accept_method, accept_url, None, None, f"request failed: {exc}")
         ctx.warnings.append(f"acceptOrder call failed: {exc}")
-        return ctx
+        return
+
+    try:
+        accept_body = accept_resp.json()
+    except ValueError:
+        accept_body = accept_resp.text
+    _record_call(
+        ctx, "accept_order", accept_method, accept_url, None,
+        accept_resp.status_code, accept_body,
+    )
 
     if accept_resp.status_code >= 400:
         ctx.warnings.append(
             f"acceptOrder returned {accept_resp.status_code}; order stays PLACED"
         )
-        return ctx
+        return
 
     ctx.order_accepted_id = lifecycle_order_id
 
@@ -148,7 +259,19 @@ def build_seed_context(
         api=base_url + api_paths["invoice"],
         seed_order_accepted_id=ctx.order_accepted_id,
     )
-    status, resp = invoice_group._post(invoice_group._body())
+    body = invoice_group._body()
+    status, resp = invoice_group._post(body)
+    _record_group_call(ctx, "create_invoice", invoice_group, body, status, resp)
+    if status == 400 and "billingInfo" in str(resp):
+        # Some apps read the spec's "billingInfo: copied from Customer at
+        # issue time" as a pure server-side snapshot and forbid it in the
+        # request body. Seeding accommodates both readings - the strictness
+        # itself is judged by InvoiceTestGroup, not here.
+        body = {k: v for k, v in body.items() if k != "billingInfo"}
+        status, resp = invoice_group._post(body)
+        _record_group_call(
+            ctx, "create_invoice_without_billing_info", invoice_group, body, status, resp
+        )
     if status == 201 and isinstance(resp, dict) and resp.get("id"):
         ctx.invoice_id = resp["id"]
         try:
@@ -157,12 +280,15 @@ def build_seed_context(
             ctx.warnings.append("seed invoice totalAmount missing/unparseable")
     else:
         ctx.warnings.append(f"seed invoice creation failed: {status} {resp}")
-        return ctx
+        return
 
     # Per the domain workflow, invoice creation is expected to move the
     # order from ACCEPTED to INVOICED as a side effect - confirm it did
     # before handing this id to PaymentTestGroup as an INVOICED order.
     get_status, get_resp = lifecycle_group._get(lifecycle_order_id)
+    _record_group_call(
+        ctx, "verify_order_invoiced", lifecycle_group, None, get_status, get_resp
+    )
     if get_status == 200 and isinstance(get_resp, dict) and get_resp.get("status") == "INVOICED":
         ctx.order_invoiced_id = lifecycle_order_id
     else:
@@ -170,5 +296,3 @@ def build_seed_context(
             "order did not transition to INVOICED after invoice creation; "
             "Payment happy-path seed unavailable"
         )
-
-    return ctx
