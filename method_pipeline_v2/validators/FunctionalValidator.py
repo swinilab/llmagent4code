@@ -50,6 +50,11 @@ class FunctionalValidator(IFunctionalValidator):
             config.get("agent", {}).get("generated_dir", "generated")
         )
 
+    @staticmethod
+    def _format_rate(passed: int, total: int) -> str:
+        rate = (passed / total * 100) if total else 0.0
+        return f"{rate:.1f}%"
+
     def _resolve_create_api_path(
         self,
         create_api_paths: dict,
@@ -75,13 +80,15 @@ class FunctionalValidator(IFunctionalValidator):
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         path = os.path.join(self._report_dir, f"functional_test_report_{timestamp}.json")
 
+        passed_count = len([r for r in results if r.result])
         payload = {
             "stage": "functional",
             "status": status.name,
             "message": message,
             "total": len(results),
-            "passed": len([r for r in results if r.result]),
+            "passed": passed_count,
             "failed": len([r for r in results if not r.result]),
+            "pass_rate": self._format_rate(passed_count, len(results)),
             "seed_warnings": seed_warnings,
             "summary": summary,
             "results": [
@@ -175,19 +182,23 @@ class FunctionalValidator(IFunctionalValidator):
             results.extend(group_results)
 
             failed_count = sum(1 for r in group_results if not r.result)
+            group_passed = len(group_results) - failed_count
             summary.append({
                 "group": group_name,
                 "total": len(group_results),
-                "passed": len(group_results) - failed_count,
+                "passed": group_passed,
                 "failed": failed_count,
+                "pass_rate": self._format_rate(group_passed, len(group_results)),
             })
 
         failed_count = sum(1 for r in results if not r.result)
+        passed_count = len(results) - failed_count
+        pass_rate = self._format_rate(passed_count, len(results))
         status = Status.FAIL if failed_count else Status.PASS
         message = (
-            f"{failed_count} of {len(results)} HTTP test(s) failed."
+            f"{failed_count} of {len(results)} HTTP test(s) failed ({pass_rate} passed)."
             if failed_count
-            else f"All {len(results)} HTTP functional tests passed."
+            else f"All {len(results)} HTTP functional tests passed ({pass_rate})."
         )
 
         report_path = self._write_json_report(status, message, results, summary, seed.warnings)
@@ -198,8 +209,9 @@ class FunctionalValidator(IFunctionalValidator):
             message=message,
             details={
                 "total": len(results),
-                "passed": len(results) - failed_count,
+                "passed": passed_count,
                 "failed": failed_count,
+                "pass_rate": pass_rate,
                 "summary": summary,
                 "report_path": report_path,
                 "seed_log_path": seed_log_path,

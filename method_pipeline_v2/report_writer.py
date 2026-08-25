@@ -65,13 +65,15 @@ class TextReportWriter(IReportWriter):
 
                 summary = vr.details.get("summary")
                 if summary:
-                    total  = vr.details.get("total")
-                    passed = vr.details.get("passed")
-                    failed = vr.details.get("failed")
-                    lines.append(f"    {failed}/{total} failed ({passed} passed)")
+                    total     = vr.details.get("total")
+                    passed    = vr.details.get("passed")
+                    failed    = vr.details.get("failed")
+                    pass_rate = vr.details.get("pass_rate")
+                    lines.append(f"    {failed}/{total} failed ({passed} passed, {pass_rate} pass rate)")
                     for group in summary:
                         lines.append(
                             f"    - {group['group']} : {group['failed']}/{group['total']} failed"
+                            f" ({group.get('pass_rate')} pass rate)"
                         )
                     report_path = vr.details.get("report_path")
                     if report_path:
