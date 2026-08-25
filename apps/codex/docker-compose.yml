@@ -35,6 +35,7 @@ services:
   api:
     build:
       context: .
+      target: runtime
     environment:
       OMS_DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-oms}:${POSTGRES_PASSWORD:-oms}@postgres:5432/${POSTGRES_DB:-oms}
       OMS_REDIS_URL: redis://redis:6379/0

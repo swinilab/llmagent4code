@@ -19,5 +19,27 @@
   ],
   "State Resynchronization": [
     "sqlite3"
+  ],
+  "Echo": [
+    "tenacity"
+  ],
+  "Throttling": [
+    "asyncio"
+  ],
+  "Maintain Multiple Copies": [
+    "asyncio"
+  ],
+  "Detect Faults": [
+    "fastapi",
+    "pydantic"
+  ],
+  "Graceful Degradation": [
+    "fastapi"
+  ],
+  "Resynchronize State": [
+    "asyncio"
+  ],
+  "Atomicity": [
+    "sqlalchemy"
   ]
 }

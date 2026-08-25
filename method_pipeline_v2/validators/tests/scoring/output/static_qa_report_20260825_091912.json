@@ -1,0 +1,496 @@
+{
+  "generated_at": "2026-08-25T09:19:12",
+  "trace_file": "C:\\Swinburne Class\\SwinLab\\llmgenmt\\llmagent4code\\method_pipeline_v2\\generated\\sdk-test-hope\\code_workspace\\nfr-trace.json",
+  "repo_root": "C:\\Swinburne Class\\SwinLab\\llmgenmt\\llmagent4code\\method_pipeline_v2\\generated\\sdk-test-hope\\code_workspace",
+  "scoring_summary": {
+    "overall_score": 0.875,
+    "score3": {
+      "performance": 1.0,
+      "availability": 0.75
+    },
+    "score2": {
+      "Maintain Multiple Copies of Computations": 1.0,
+      "Introduce Concurrency": 1.0,
+      "Bound Queue Sizes": 1.0,
+      "Degradation": 1.0,
+      "Echo": 0.5,
+      "Retry": 0.5,
+      "State Resynchronization": 1.0
+    },
+    "score1": {
+      "Maintain Multiple Copies of Computations": {
+        "app/services.py::OrderService.place_order": 1.0,
+        "app/cache/response_cache.py::get_or_set_cached_product_list": 1.0
+      },
+      "Introduce Concurrency": {
+        "app/main.py::create_app": 1.0
+      },
+      "Bound Queue Sizes": {
+        "app/queue/queue_manager.py::enqueue_order_task": 1.0,
+        "app/queue/queue_manager.py::get_queue_depth": 1.0
+      },
+      "Degradation": {
+        "app/degradation/degradation_manager.py::should_degrade_feature": 1.0,
+        "app/degradation/degradation_manager.py::disable_non_essential_endpoints": 1.0
+      },
+      "Echo": {
+        "app/health/liveness.py::readiness": 1.0,
+        "app/db/connection_pool.py::get_connection_with_retry": 0.0
+      },
+      "Retry": {
+        "app/health/liveness.py::readiness": 1.0,
+        "app/db/connection_pool.py::get_connection_with_retry": 0.0
+      },
+      "State Resynchronization": {
+        "app/persistence/wal.py::append_to_wal": 1.0,
+        "app/persistence/wal.py::replay_wal_on_startup": 1.0
+      }
+    }
+  },
+  "tally": {
+    "overall_score": 0.875,
+    "score3": {
+      "performance": 1.0,
+      "availability": 0.75
+    },
+    "score2": {
+      "Maintain Multiple Copies of Computations": 1.0,
+      "Introduce Concurrency": 1.0,
+      "Bound Queue Sizes": 1.0,
+      "Degradation": 1.0,
+      "Echo": 0.5,
+      "Retry": 0.5,
+      "State Resynchronization": 1.0
+    },
+    "score1": {
+      "Maintain Multiple Copies of Computations": {
+        "app/services.py::OrderService.place_order": 1.0,
+        "app/cache/response_cache.py::get_or_set_cached_product_list": 1.0
+      },
+      "Introduce Concurrency": {
+        "app/main.py::create_app": 1.0
+      },
+      "Bound Queue Sizes": {
+        "app/queue/queue_manager.py::enqueue_order_task": 1.0,
+        "app/queue/queue_manager.py::get_queue_depth": 1.0
+      },
+      "Degradation": {
+        "app/degradation/degradation_manager.py::should_degrade_feature": 1.0,
+        "app/degradation/degradation_manager.py::disable_non_essential_endpoints": 1.0
+      },
+      "Echo": {
+        "app/health/liveness.py::readiness": 1.0,
+        "app/db/connection_pool.py::get_connection_with_retry": 0.0
+      },
+      "Retry": {
+        "app/health/liveness.py::readiness": 1.0,
+        "app/db/connection_pool.py::get_connection_with_retry": 0.0
+      },
+      "State Resynchronization": {
+        "app/persistence/wal.py::append_to_wal": 1.0,
+        "app/persistence/wal.py::replay_wal_on_startup": 1.0
+      }
+    },
+    "qa_groups": {
+      "performance": {
+        "score3": 1.0,
+        "tactics": [
+          "Bound Queue Sizes",
+          "Introduce Concurrency",
+          "Maintain Multiple Copies of Computations"
+        ],
+        "nfrs": [
+          {
+            "nfr": "NFR 1.1 Response Time",
+            "tactics": [
+              "Maintain Multiple Copies of Computations"
+            ],
+            "score2": 1.0,
+            "status": "ABSENT",
+            "functions": [
+              {
+                "ref": "app/services.py::OrderService.place_order",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "app/cache/response_cache.py::get_or_set_cached_product_list",
+                "status": "PRESENT",
+                "score1": 1.0
+              }
+            ],
+            "libraries": [
+              {
+                "lib": "fastapi",
+                "status": "ABSENT"
+              },
+              {
+                "lib": "aiocache",
+                "status": "PRESENT"
+              }
+            ]
+          },
+          {
+            "nfr": "NFR 1.2 Concurrency & Resource Utilization",
+            "tactics": [
+              "Introduce Concurrency"
+            ],
+            "score2": 1.0,
+            "status": "ABSENT",
+            "functions": [
+              {
+                "ref": "app/main.py::create_app",
+                "status": "PRESENT",
+                "score1": 1.0
+              }
+            ],
+            "libraries": [
+              {
+                "lib": "uvicorn",
+                "status": "ABSENT"
+              },
+              {
+                "lib": "asyncio",
+                "status": "ABSENT"
+              }
+            ]
+          },
+          {
+            "nfr": "NFR 1.3 Queue Management",
+            "tactics": [
+              "Bound Queue Sizes"
+            ],
+            "score2": 1.0,
+            "status": "PRESENT",
+            "functions": [
+              {
+                "ref": "app/queue/queue_manager.py::enqueue_order_task",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "app/queue/queue_manager.py::get_queue_depth",
+                "status": "PRESENT",
+                "score1": 1.0
+              }
+            ],
+            "libraries": [
+              {
+                "lib": "asyncio",
+                "status": "PRESENT"
+              }
+            ]
+          }
+        ]
+      },
+      "availability": {
+        "score3": 0.75,
+        "tactics": [
+          "Degradation",
+          "Echo",
+          "Retry",
+          "State Resynchronization"
+        ],
+        "nfrs": [
+          {
+            "nfr": "NFR 2.1 Graceful Degradation",
+            "tactics": [
+              "Degradation"
+            ],
+            "score2": 1.0,
+            "status": "PRESENT",
+            "functions": [
+              {
+                "ref": "app/degradation/degradation_manager.py::should_degrade_feature",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "app/degradation/degradation_manager.py::disable_non_essential_endpoints",
+                "status": "PRESENT",
+                "score1": 1.0
+              }
+            ],
+            "libraries": []
+          },
+          {
+            "nfr": "NFR 2.2 Fault Detection and Recovery",
+            "tactics": [
+              "Echo",
+              "Retry"
+            ],
+            "score2": 0.5,
+            "status": "ABSENT",
+            "functions": [
+              {
+                "ref": "app/health/liveness.py::readiness",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "app/db/connection_pool.py::get_connection_with_retry",
+                "status": "ABSENT",
+                "score1": 0.0
+              }
+            ],
+            "libraries": [
+              {
+                "lib": "tenacity",
+                "status": "PRESENT"
+              }
+            ]
+          },
+          {
+            "nfr": "NFR 2.3 State Preservation",
+            "tactics": [
+              "State Resynchronization"
+            ],
+            "score2": 1.0,
+            "status": "PRESENT",
+            "functions": [
+              {
+                "ref": "app/persistence/wal.py::append_to_wal",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "app/persistence/wal.py::replay_wal_on_startup",
+                "status": "PRESENT",
+                "score1": 1.0
+              }
+            ],
+            "libraries": [
+              {
+                "lib": "sqlite3",
+                "status": "PRESENT"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "results": [
+    {
+      "nfr": "NFR 1.1 Response Time",
+      "qa_group": "performance",
+      "status": "ABSENT",
+      "stage": "existence",
+      "score2": 1.0,
+      "evidence": "functions[OrderService.place_order=PRESENT(s1=1.0); get_or_set_cached_product_list=PRESENT(s1=1.0)] libraries[fastapi=ABSENT; aiocache=PRESENT] fn-uses-lib[level1=ABSENT; OrderService.place_order->none; get_or_set_cached_product_list->none]",
+      "tactics": [
+        "Maintain Multiple Copies of Computations"
+      ],
+      "functions": [
+        {
+          "ref": "app/services.py::OrderService.place_order",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        },
+        {
+          "ref": "app/cache/response_cache.py::get_or_set_cached_product_list",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        }
+      ],
+      "libraries": [
+        {
+          "lib": "fastapi",
+          "status": "ABSENT",
+          "detail": "'fastapi' not imported in any claimed file"
+        },
+        {
+          "lib": "aiocache",
+          "status": "PRESENT",
+          "detail": "'aiocache' imported and used"
+        }
+      ]
+    },
+    {
+      "nfr": "NFR 1.2 Concurrency & Resource Utilization",
+      "qa_group": "performance",
+      "status": "ABSENT",
+      "stage": "existence",
+      "score2": 1.0,
+      "evidence": "functions[create_app=PRESENT(s1=1.0)] libraries[uvicorn=ABSENT; asyncio=ABSENT] fn-uses-lib[level1=ABSENT; create_app->none]",
+      "tactics": [
+        "Introduce Concurrency"
+      ],
+      "functions": [
+        {
+          "ref": "app/main.py::create_app",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        }
+      ],
+      "libraries": [
+        {
+          "lib": "uvicorn",
+          "status": "ABSENT",
+          "detail": "'uvicorn' not imported in any claimed file"
+        },
+        {
+          "lib": "asyncio",
+          "status": "ABSENT",
+          "detail": "'asyncio' not imported in any claimed file"
+        }
+      ]
+    },
+    {
+      "nfr": "NFR 1.3 Queue Management",
+      "qa_group": "performance",
+      "status": "PRESENT",
+      "stage": "existence",
+      "score2": 1.0,
+      "evidence": "functions[enqueue_order_task=PRESENT(s1=1.0); get_queue_depth=PRESENT(s1=1.0)] libraries[asyncio=PRESENT] fn-uses-lib[level1=PRESENT; enqueue_order_task->['asyncio']; get_queue_depth->['asyncio']]",
+      "tactics": [
+        "Bound Queue Sizes"
+      ],
+      "functions": [
+        {
+          "ref": "app/queue/queue_manager.py::enqueue_order_task",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "asyncio"
+          ],
+          "uses_any": true
+        },
+        {
+          "ref": "app/queue/queue_manager.py::get_queue_depth",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "asyncio"
+          ],
+          "uses_any": true
+        }
+      ],
+      "libraries": [
+        {
+          "lib": "asyncio",
+          "status": "PRESENT",
+          "detail": "'asyncio' imported and used"
+        }
+      ]
+    },
+    {
+      "nfr": "NFR 2.1 Graceful Degradation",
+      "qa_group": "availability",
+      "status": "PRESENT",
+      "stage": "existence",
+      "score2": 1.0,
+      "evidence": "functions[should_degrade_feature=PRESENT(s1=1.0); disable_non_essential_endpoints=PRESENT(s1=1.0)] libraries[] fn-uses-lib[level1=PRESENT; should_degrade_feature->none; disable_non_essential_endpoints->none]",
+      "tactics": [
+        "Degradation"
+      ],
+      "functions": [
+        {
+          "ref": "app/degradation/degradation_manager.py::should_degrade_feature",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        },
+        {
+          "ref": "app/degradation/degradation_manager.py::disable_non_essential_endpoints",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        }
+      ],
+      "libraries": []
+    },
+    {
+      "nfr": "NFR 2.2 Fault Detection and Recovery",
+      "qa_group": "availability",
+      "status": "ABSENT",
+      "stage": "existence",
+      "score2": 0.5,
+      "evidence": "functions[readiness=PRESENT(s1=1.0); get_connection_with_retry=ABSENT(s1=0.0)] libraries[tenacity=PRESENT] fn-uses-lib[level1=ABSENT; readiness->none; get_connection_with_retry->none]",
+      "tactics": [
+        "Echo",
+        "Retry"
+      ],
+      "functions": [
+        {
+          "ref": "app/health/liveness.py::readiness",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        },
+        {
+          "ref": "app/db/connection_pool.py::get_connection_with_retry",
+          "status": "ABSENT",
+          "score1": 0.0,
+          "detail": "function not found",
+          "libraries_used": [],
+          "uses_any": false
+        }
+      ],
+      "libraries": [
+        {
+          "lib": "tenacity",
+          "status": "PRESENT",
+          "detail": "'tenacity' imported and used"
+        }
+      ]
+    },
+    {
+      "nfr": "NFR 2.3 State Preservation",
+      "qa_group": "availability",
+      "status": "PRESENT",
+      "stage": "existence",
+      "score2": 1.0,
+      "evidence": "functions[append_to_wal=PRESENT(s1=1.0); replay_wal_on_startup=PRESENT(s1=1.0)] libraries[sqlite3=PRESENT] fn-uses-lib[level1=PRESENT; append_to_wal->['sqlite3']; replay_wal_on_startup->['sqlite3']]",
+      "tactics": [
+        "State Resynchronization"
+      ],
+      "functions": [
+        {
+          "ref": "app/persistence/wal.py::append_to_wal",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "sqlite3"
+          ],
+          "uses_any": true
+        },
+        {
+          "ref": "app/persistence/wal.py::replay_wal_on_startup",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "sqlite3"
+          ],
+          "uses_any": true
+        }
+      ],
+      "libraries": [
+        {
+          "lib": "sqlite3",
+          "status": "PRESENT",
+          "detail": "'sqlite3' imported and used"
+        }
+      ]
+    }
+  ]
+}
