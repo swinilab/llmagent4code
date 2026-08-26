@@ -32,38 +32,25 @@ validation:
   http:
     base_url: "http://localhost:8000"
     timeout_seconds: 10
-    endpoints:                          # list of test cases
-      - id: "health_check"
-        method: GET
-        path: "/health/live"
-        expected_status: 200
-
-      - id: "create_item"
-        method: GET
-        path: "/api/v1/products"
-        # body: { "name": "test_item", "value": 42 }
-        expected_status: 200
-
-      - id: "get_item"
-        method: GET
-        path: "/items/1"
-        expected_status: 404
-
-      - id: "invalid_item"
-        method: GET
-        path: "/items/9999"
-        expected_status: 404
 
 # ── Validator settings ─────────────────────────
-# Read directly by the validator classes (validators/*.py), as opposed to
-# `validation` above which mostly configures generic test-case data.
+# Read directly by the validator classes (validators/*.py).
 validator:
-  base_url: "http://localhost:8000"
   start_command_file: "start_command.txt"
   boot_wait_seconds: 15          # Stage 1 – how long to wait for the server to crash on boot
   smoke_path: "/"                # Stage 1 – path probed after boot to catch startup-time 5xx
   smoke_timeout: 10
   nfr_trace_filename: "nfr-trace.json"   # Stage 3 – NFR trace file name inside the code dir
+
+  # Stage 2 – whether the prompt version used to generate this app requires
+  # workflow_apis.json (see prompts/latest_dynamic.md's "Workflow Manifest"
+  # section vs. prompts/latest.md, which never asked for it). When true and
+  # the file is missing/empty, FunctionalValidator logs it as a generation
+  # defect. When false, the same absence is logged as expected for this
+  # prompt version - ACCEPTED/INVOICED-dependent test cases still fail, but
+  # are not attributed to the app. See docs/workflow_dependency_test_cases.md
+  # for exactly which test cases that affects.
+  expect_workflow_manifest: true
 
 # ── Output ────────────────────────────────────
 output:

@@ -1,0 +1,21 @@
+PIPELINE REPORT — 2026-08-27 00:47:05
+
+GENERATION
+model: None
+code: C:\Users\Admin\Documents\GitHub\llmagent4code\apps\codex
+
+VALIDATION
+  ❌ functional : 17 of 147 HTTP test(s) failed (88.4% passed).
+    17/147 failed (130 passed, 88.4% pass rate)
+    - customer : 2/50 failed (96.0% pass rate)
+    - product : 0/25 failed (100.0% pass rate)
+    - order : 1/28 failed (96.4% pass rate)
+    - payment : 8/18 failed (55.6% pass rate)
+    - invoice : 6/26 failed (76.9% pass rate)
+    full report : reports/functional_test_report_20260827_004705.json
+    seed context log : reports/seed_context_log_20260827_004700.json
+
+RESULT
+  ❌ pipeline failed
+  blocking stage : functional
+  error          : 17 of 147 HTTP test(s) failed (88.4% passed).

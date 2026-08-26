@@ -169,7 +169,7 @@ class PaymentTestGroup(ITestGroup):
         body = self._body()
         body["orderRef"] = "order-1"
         status, resp = self._post(body)
-        return self._check("TC_PAY_ORDERREF_04", 400, body, status, resp)
+        return self._check("TC_PAY_ORDERREF_04", 400, body, status, resp, acceptable=(400, 422))
 
     # ------------------------------------------------------------------ #
     # amount
@@ -205,21 +205,21 @@ class PaymentTestGroup(ITestGroup):
         body = self._body()
         body["amount"] = "0.00"
         status, resp = self._post(body)
-        return self._check("TC_PAY_AMOUNT_04", 400, body, status, resp)
+        return self._check("TC_PAY_AMOUNT_04", 400, body, status, resp, acceptable=(400, 422))
 
     def tc_pay_amount_05(self) -> TestResult:
         """EC-Invalid-4 (Negative): negative value -> 400."""
         body = self._body()
         body["amount"] = "-50.00"
         status, resp = self._post(body)
-        return self._check("TC_PAY_AMOUNT_05", 400, body, status, resp)
+        return self._check("TC_PAY_AMOUNT_05", 400, body, status, resp, acceptable=(400, 422))
 
     def tc_pay_amount_06(self) -> TestResult:
         """EC-Invalid-5 (Empty): empty/null -> 400."""
         body = self._body()
         body["amount"] = None
         status, resp = self._post(body)
-        return self._check("TC_PAY_AMOUNT_06", 400, body, status, resp)
+        return self._check("TC_PAY_AMOUNT_06", 400, body, status, resp, acceptable=(400, 422))
 
     # ------------------------------------------------------------------ #
     # status
@@ -245,14 +245,14 @@ class PaymentTestGroup(ITestGroup):
         body = self._body()
         body["status"] = "VERIFIED"
         status, resp = self._post(body)
-        return self._check("TC_PAY_STATUS_02", 400, body, status, resp)
+        return self._check("TC_PAY_STATUS_02", 400, body, status, resp, acceptable=(400, 422))
 
     def tc_pay_status_03(self) -> TestResult:
         """EC-Invalid-2 (Unknown Value): value not part of enum -> 400."""
         body = self._body()
         body["status"] = "DONE"
         status, resp = self._post(body)
-        return self._check("TC_PAY_STATUS_03", 400, body, status, resp)
+        return self._check("TC_PAY_STATUS_03", 400, body, status, resp, acceptable=(400, 422))
 
     # ------------------------------------------------------------------ #
     # method
@@ -301,11 +301,11 @@ class PaymentTestGroup(ITestGroup):
         body = self._body()
         body["method"] = "CASH"
         status, resp = self._post(body)
-        return self._check("TC_PAY_METHOD_04", 400, body, status, resp)
+        return self._check("TC_PAY_METHOD_04", 400, body, status, resp, acceptable=(400, 422))
 
     def tc_pay_method_05(self) -> TestResult:
         """EC-Invalid-2 (Empty): empty/null -> 400."""
         body = self._body()
         body["method"] = None
         status, resp = self._post(body)
-        return self._check("TC_PAY_METHOD_05", 400, body, status, resp)
+        return self._check("TC_PAY_METHOD_05", 400, body, status, resp, acceptable=(400, 422))

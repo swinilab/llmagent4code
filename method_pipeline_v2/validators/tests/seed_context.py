@@ -60,6 +60,7 @@ INVOICE_HAPPY_PATH_ORDER_COUNT = 6
 class SeedContext:
     customer_id: str | None = None
     product_id: str | None = None
+    product_price: str | None = None
     bulk_product_ids: list[str] = field(default_factory=list)
     order_placed_id: str | None = None
     order_accepted_id: str | None = None
@@ -302,6 +303,10 @@ def _provision(
     _record_group_call(ctx, "create_product", product_group, body, status, resp)
     if status == 201 and isinstance(resp, dict) and resp.get("id"):
         ctx.product_id = resp["id"]
+        # Prefer the server-echoed price (what the app will actually snapshot
+        # onto order line items) over the sent value, in case the app
+        # normalizes it (e.g. "10" -> "10.00").
+        ctx.product_price = (resp.get("price") or {}).get("amount") or body["price"]["amount"]
     else:
         ctx.warnings.append(f"seed product creation failed: {status} {resp}")
         return

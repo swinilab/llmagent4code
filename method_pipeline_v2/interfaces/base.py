@@ -170,9 +170,18 @@ class ITestGroup(ABC):
         request_body: Any,
         actual_status: int,
         response_body: Any,
+        acceptable: tuple[int, ...] | None = None,
     ) -> TestResult:
-        """Build a TestResult by comparing expected vs actual HTTP status."""
-        passed = actual_status == expected_status
+        """Build a TestResult by comparing expected vs actual HTTP status.
+
+        `acceptable`, when given, is an additional set of status codes that
+        also count as a pass (e.g. some frameworks return 422 instead of 400
+        for request-body validation errors) - the reported expected_status
+        stays as `expected_status` either way.
+        """
+        passed = actual_status == expected_status or (
+            acceptable is not None and actual_status in acceptable
+        )
 
         return TestResult(
             result=passed,

@@ -45,6 +45,10 @@ class FunctionalValidator(IFunctionalValidator):
         self._timeout = http_config.get("timeout_seconds", 10.0)
         # Default to /start_command.txt as requested, but allow override via config
         self._start_command_file = config.get("validator", {}).get("start_command_file", "start_command.txt")
+        # Whether this app's prompt version requires workflow_apis.json (see
+        # docs/workflow_dependency_test_cases.md). Only changes how a missing
+        # file is logged below - seeding behavior is unchanged either way.
+        self._expect_workflow_manifest = config.get("validator", {}).get("expect_workflow_manifest", True)
         self._report_dir = config.get("output", {}).get("report_dir", "reports/")
         self._generated_dir = Path(
             config.get("agent", {}).get("generated_dir", "generated")
@@ -121,9 +125,23 @@ class FunctionalValidator(IFunctionalValidator):
 
         workflow_api_paths: dict = {}
         workflow_apis_file = os.path.join(workdir, 'workflow_apis.json')
-        if os.path.exists(workflow_apis_file):
+        workflow_manifest_present = os.path.exists(workflow_apis_file)
+        if workflow_manifest_present:
             with open(workflow_apis_file, 'r', encoding='utf-8') as file:
                 workflow_api_paths = json.load(file)
+        elif self._expect_workflow_manifest:
+            print(
+                f"[FunctionalValidator] workflow_apis.json missing at {workflow_apis_file} "
+                "(validator.expect_workflow_manifest=true) - treated as a generation defect; "
+                "see docs/workflow_dependency_test_cases.md for which test cases this fails."
+            )
+        else:
+            print(
+                f"[FunctionalValidator] workflow_apis.json missing at {workflow_apis_file}, "
+                "but validator.expect_workflow_manifest=false - expected for this app's prompt "
+                "version, not counted as a defect; see docs/workflow_dependency_test_cases.md "
+                "for which test cases remain meaningful."
+            )
 
         api_paths = {
             entity_key: self._resolve_create_api_path(create_api_paths, entity_key, default_path)
@@ -153,6 +171,7 @@ class FunctionalValidator(IFunctionalValidator):
             "order": {
                 "seed_customer_id": seed.customer_id,
                 "seed_product_id": seed.product_id,
+                "seed_product_price": seed.product_price,
                 "seed_bulk_product_ids": seed.bulk_product_ids,
                 "seed_invoice_id": seed.invoice_id,
                 "seed_order_placed_id": seed.order_placed_id,
@@ -215,5 +234,7 @@ class FunctionalValidator(IFunctionalValidator):
                 "summary": summary,
                 "report_path": report_path,
                 "seed_log_path": seed_log_path,
+                "workflow_manifest_present": workflow_manifest_present,
+                "workflow_manifest_expected": self._expect_workflow_manifest,
             },
         )

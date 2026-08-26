@@ -7,6 +7,132 @@ Tracks corrections made to the OMS test case suite (`docs/OMS_TestCases_BVA_EP_E
 
 ---
 
+## 2026-08-27 — Accept 422 alongside 400 for POST body-validation test cases
+
+**Files:** `method_pipeline_v2/interfaces/base.py`,
+`method_pipeline_v2/validators/tests/test_groups/CustomerTestGroup.py`,
+`method_pipeline_v2/validators/tests/test_groups/ProductTestGroup.py`,
+`method_pipeline_v2/validators/tests/test_groups/OrderTestGroup.py`,
+`method_pipeline_v2/validators/tests/test_groups/PaymentTestGroup.py`,
+`method_pipeline_v2/validators/tests/test_groups/InvoiceTestGroup.py`.
+
+**What changed:**
+- `ITestGroup._check()` gained an optional `acceptable: tuple[int, ...] | None`
+  parameter. When given, `actual_status in acceptable` also counts as a pass,
+  in addition to the exact `expected_status` match; the reported
+  `expected_status` in `TestResult`/the JSON report is unchanged either way.
+- Every test-case method across the five groups whose flow is
+  `self._post(body)` followed by `self._check(<id>, 400, ...)` — i.e. a POST
+  body-validation case (field length/format/enum/type violations) — now
+  passes `acceptable=(400, 422)`. 83 test-case call sites were updated this
+  way (28 Customer, 14 Product, 15 Order, 8 Payment, 18 Invoice).
+- Left untouched: GET path-param cases expecting 400 for a malformed id
+  (`TC_CUS_ID_03`, `TC_PRO_ID_03` — these already get 400 from the apps'
+  custom UUID-parsing handler, not from Pydantic body validation), and every
+  case expecting 200/201/404/405/409. Cases currently failing with a real
+  `500 ProgrammingError` app bug still fail — this change only forgives the
+  400-vs-422 status-code mismatch, it does not accept 500.
+
+**Why:** FastAPI/Pydantic returns `422 Unprocessable Entity` by default for
+request-body validation errors, not `400 Bad Request`; the BVA/EP suite
+(`docs/OMS_TestCases_BVA_EP_EN.xlsx`) was written expecting `400` for these
+cases. That is a framework-convention mismatch, not a defect in the
+generated app's validation logic (the app *does* reject the bad input with a
+correct error body — see `functional_test_report_20260827_002723.json`,
+where e.g. `TC_CUS_NAME_01` returns `422` with the exact expected validation
+message). Requested by the user after reviewing that report, scoped
+explicitly to "these test cases, not all" so the 500-status failures (a
+separate, real backend bug — see the `ProgrammingError` seed warning in the
+same report) keep failing and aren't masked by this change.
+
+---
+
+## 2026-08-26 — Verify computed values in TC_ORD_TOTALAMT_01 / TC_ORD_UNITPRICE_01 instead of status-only
+
+**Files:** `method_pipeline_v2/validators/tests/test_groups/OrderTestGroup.py`,
+`method_pipeline_v2/validators/tests/seed_context.py`,
+`method_pipeline_v2/validators/FunctionalValidator.py`.
+
+**What changed:**
+- `SeedContext` gained `product_price: str | None`. `seed_context.py`'s
+  `_provision()` now captures it from the seeded product's own creation
+  response (`resp["price"]["amount"]`, falling back to the sent value if the
+  app doesn't echo it) right after `ctx.product_id` is set.
+  `FunctionalValidator` passes it into `OrderTestGroup` as
+  `seed_product_price`.
+- `OrderTestGroup.__init__` gained `seed_product_price` (falls back to
+  `DEFAULT_PRODUCT_PRICE = "10.00"`, matching `ProductTestGroup`'s own
+  hardcoded default, for parity with the existing `NEEDS_SEED_*`/`DEFAULT_*`
+  fallback pattern used elsewhere in this file and in Payment/Invoice).
+- `tc_ord_unitprice_01` now compares `resp["lineItems"][0]["unitPriceSnapshot"]`
+  against `seed_product_price` (via `Decimal`, so `"10.0"` vs `"10.00"`
+  formatting differences don't cause a false failure) and flips `result.result`
+  to `False` on a mismatch, instead of accepting any `201`.
+- `tc_ord_totalamt_01` now compares `resp["totalAmount"]` against
+  `Decimal(seed_product_price) * 1` (the standard body's single line item,
+  quantity 1) the same way.
+
+**Why:** both cases' docstrings claimed to verify a server-computed value
+("server correctly computes total", "server derives snapshot from current
+Product price") but only asserted `status == 201` — an app that accepted the
+order while silently miscomputing/omitting the price would still report a
+pass. `TC_INV_TOTALAMT_01` already verifies its analogous value
+(`InvoiceTestGroup.py` `tc_inv_totalamt_01`), so this brings the two Order
+cases in line with that existing precedent rather than leaving them as an
+unexplained gap. See the `code-review`-style audit earlier the same day
+(chat, not a file) that first surfaced this as a false-positive risk
+alongside the already-documented `docs/workflow_dependency_test_cases.md`
+cases; those seed-ambiguity cases are left as-is per that discussion (the
+fix there is to remove the ambiguous seed data, not to add response
+assertions - not done in this change).
+
+---
+
+## 2026-08-26 — Isolate workflow-independent test cases; add `validator.expect_workflow_manifest`
+
+**Files:** `docs/workflow_dependency_test_cases.md` (new),
+`method_pipeline_v2/validators/FunctionalValidator.py`.
+(Pipeline config changes themselves — `pipeline_config.yaml`,
+`pipeline_config.yaml.example` — are not logged here per convention; see the
+files directly.)
+
+**What changed:**
+- New `docs/workflow_dependency_test_cases.md`: a derived table over the
+  existing BVA/EP suite (`docs/OMS_TestCases_BVA_EP_EN.md`/`.xlsx`, left
+  untouched) classifying every one of the 147 Customer/Product/Order/Payment/
+  Invoice test cases as `Unaffected`, `Always-fail`, `Likely-fail`, or
+  `False-positive risk` with respect to a missing/absent `workflow_apis.json`.
+  108 cases are Unaffected; 13 always fail via the explicit
+  `_seed_unavailable(...)` path (or an equivalent malformed-placeholder GET
+  for `TC_ORD_INVREF_02`) regardless of app correctness; 2 fail via a
+  409→400 mismatch; 24 carry a false-positive risk (they expect 400 anyway,
+  so a broken seed `orderRef` can make them pass without exercising the
+  field they're named for). The two suite variants — full and
+  without-workflow — are meant to coexist: the full suite (unchanged) is
+  authoritative whenever `workflow_apis.json` resolves an acceptOrder step;
+  the without-workflow subset is the `Unaffected` rows only.
+- `FunctionalValidator.py`: reads the new `validator.expect_workflow_manifest`
+  config flag. Missing `workflow_apis.json` is now logged distinctly
+  depending on it — as a generation defect when `true` (default), or as
+  expected-for-this-prompt-version when `false` — and both booleans
+  (`workflow_manifest_present`, `workflow_manifest_expected`) are now written
+  into `ValidationResult.details` for the functional stage. Seeding
+  mechanics in `seed_context.py` are unchanged; this only changes how the
+  absence is logged/reported, not what gets seeded.
+
+**Why:** `prompts/latest.md` (used for some already-generated apps, e.g.
+`claude-latest-fixed-compile`) never asked for `workflow_apis.json` — only
+`prompts/latest_dynamic.md` added that requirement. Scoring those older apps
+against evaluator checks that assume the newer prompt's manifest wrongly
+counts a prompt-version gap as an app defect, and silently drags down the
+pass rate of ~26% of the suite (39/147) for a reason unrelated to code
+quality. The new doc lets a reviewer separate "app is broken" from "this
+app's prompt never asked for this file" without re-deriving the seeding
+mechanics each time; the config flag makes that distinction explicit per run
+instead of implicit in whether the file happens to exist.
+
+---
+
 ## 2026-08-26 — Stop falling back to the shared order when the bulk seed queue runs short (Payment/Invoice)
 
 **Files:** `method_pipeline_v2/validators/tests/test_groups/PaymentTestGroup.py`,

@@ -1,0 +1,21 @@
+PIPELINE REPORT — 2026-08-27 00:49:04
+
+GENERATION
+model: None
+code: C:\Users\Admin\Documents\GitHub\llmagent4code\apps\app-claude
+
+VALIDATION
+  ❌ functional : 3 of 147 HTTP test(s) failed (98.0% passed).
+    3/147 failed (144 passed, 98.0% pass rate)
+    - customer : 1/50 failed (98.0% pass rate)
+    - product : 0/25 failed (100.0% pass rate)
+    - order : 0/28 failed (100.0% pass rate)
+    - payment : 0/18 failed (100.0% pass rate)
+    - invoice : 2/26 failed (92.3% pass rate)
+    full report : reports/functional_test_report_20260827_004904.json
+    seed context log : reports/seed_context_log_20260827_004858.json
+
+RESULT
+  ❌ pipeline failed
+  blocking stage : functional
+  error          : 3 of 147 HTTP test(s) failed (98.0% passed).

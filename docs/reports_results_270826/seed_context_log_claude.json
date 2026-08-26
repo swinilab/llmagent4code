@@ -1,0 +1,3369 @@
+{
+  "base_url": "http://localhost:8080",
+  "api_paths": {
+    "customer": "/api/v1/customers",
+    "product": "/api/v1/products",
+    "order": "/api/v1/orders",
+    "payment": "/api/v1/payments",
+    "invoice": "/api/v1/invoices"
+  },
+  "seed_ids": {
+    "customer_id": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+    "product_id": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+    "bulk_product_ids": [
+      "d796530c-5125-4413-9c88-6be82be201e0",
+      "7a5c4d38-d450-4638-bbe8-ebfac41ebfa4",
+      "991c171c-a40a-4f7f-9efe-43a3c654edd1",
+      "d847393d-6f67-417c-95b7-119a717b997d",
+      "8b3b49bb-8c46-4388-b605-3f3dd88c7221",
+      "ebceb08a-98c0-4bc2-9e29-616ad3b9142d",
+      "a506a5c2-605c-4754-809b-9f5cdb0effc6",
+      "2e188735-d0c0-4765-bab7-9e94feb8cf0c",
+      "ab98abe5-df4c-4b17-b29c-cbed53c0459d",
+      "a2765a62-98d9-4a34-9a2c-182a30e5972c",
+      "6600dd76-c0da-4ae9-b3a1-ae230b3851ac",
+      "397f3dee-4d0c-43a8-ac7d-8c41d377be0b",
+      "46d8d35f-1f8d-4af6-b5ab-634a370db9d8",
+      "7ba51ee0-2835-4fce-98bc-7f85c2bca0ad",
+      "8fee9313-1bcc-43b6-bb0e-82592c2a305e",
+      "b5687d2f-85d9-4fae-9c69-913a7c8b143a",
+      "0256222e-ae17-4ac7-befa-c8abb232c0a9",
+      "1f7abe11-2a55-4692-9cea-3088213b9b86",
+      "b0a25e96-3176-4e07-9633-eedb1b9cc76f",
+      "45668991-0054-41ca-bd0c-f939b3ad9d59",
+      "e4f4f39a-9254-475f-a4c0-13fad29a0887",
+      "409a167a-9f1e-463f-954e-5464e2840e2f",
+      "83d85afc-d98f-42e9-b1bd-10a35768f204",
+      "b2796673-cd7d-4512-b4e6-ccacc2196d0f",
+      "a1cdcbbe-cd55-42b1-99c6-99ed738a45cd",
+      "8a6891a6-9218-4672-b616-7f93984438ef",
+      "e6c64eda-e08d-4408-9381-7e802b3ff595",
+      "f62dadad-ced9-4353-baf6-b3c42acc1931",
+      "64261f90-f782-415b-a4af-493bf07c9f74",
+      "7f0a9339-fc68-4ea4-bddf-124b07eaa6f4",
+      "3adc22a9-c168-4426-a3ee-78e7a89ebdc0",
+      "5e2f2945-b087-4f2b-9dc6-87614e1b2406",
+      "be9eba03-5d04-4c9e-9137-d56757f2d1e5",
+      "4b3e8835-161e-46c5-b977-8f765085ec52",
+      "1dc4d40e-dfd3-4e78-912f-9ec19d8d1b6f",
+      "2ca85bcc-25fb-4c35-a3c1-b5367b280ab2",
+      "8c15e7e1-f27b-4799-92ee-8f7c73c00998",
+      "7605b977-36cc-4347-8291-af4f1b60562f",
+      "f39a8fbd-b4a4-4a6b-8973-4158cb364bfa",
+      "5e088a96-17ef-4b5c-bbd7-cba7221b62d7",
+      "09cae62e-9b2a-46e7-9ac6-9ff02b12893e",
+      "84bd86db-e649-42a5-8aef-aef486c4ad7c",
+      "9f292ddd-9240-430c-b5a8-ed7ff24290c3",
+      "b0181bb3-0a59-470d-a936-8fcde3017ff7",
+      "6cf90024-774c-4d0f-b820-548eb6dbc2cf",
+      "8941e2ee-68ae-48c7-be01-e7790e8fa06e",
+      "7ee3f231-b296-4e60-88e3-dacf8621fa6e",
+      "fe7c3688-ee2e-4f80-abc6-81a69da39e5a",
+      "9d0bf2be-3f18-449d-8380-c5de92acc23d",
+      "74adac97-5501-445d-ad82-353be4ea8661",
+      "ebef28f1-8217-48ef-bbc4-ec60d4dffc6d",
+      "7e49d322-6065-456e-bc05-0d467baa0af5",
+      "1571901f-33bb-4c3c-938c-7fba610b7ca6",
+      "9eec20c6-9fbe-4ca1-bb31-184daa355a30",
+      "ad1201f3-35fb-4ab7-90c8-5e7bd18b7e8d",
+      "154768df-a829-4e94-a6d8-6332a1859088",
+      "50b8d8b1-1b14-41f5-8635-ba5eb2ae5495",
+      "95d5b282-aa06-40c7-b0eb-a6d09739e01f",
+      "b7ebba82-7c5f-4972-9ea8-1fab8b7f81d4",
+      "a4cd1e47-9118-491a-9ba0-d9695710060c",
+      "2feb47a8-560a-455f-9b04-74087e1d487c",
+      "261b925b-b407-4ad4-bd1f-627950d22992",
+      "56c30dce-fe60-4b43-86a6-26b0cf1f3b14",
+      "44ac62c9-b591-4c28-9187-c61d29c6faee",
+      "695cd7ad-5845-479b-b24d-5d9296e61fcb",
+      "c95e68e6-cf88-4913-ac43-88278927b175",
+      "a69f461e-5fd1-4231-9591-81eb7ff7ab0c",
+      "051a9b4b-a887-459b-80ac-339a1b3c4a52",
+      "550be87e-2fda-4371-a1b8-2f2d8d3f2825",
+      "6cabcd0f-2e4a-4afb-b5d5-23857c4da752",
+      "88a8a21f-c521-43bc-a677-27b9171cae1d",
+      "297f58a4-4d35-48d7-872d-aae267dab62a",
+      "42f2e1eb-cb78-4fe0-9125-f48a5df24d43",
+      "9b00d152-8184-47b8-8109-e333a1a11efe",
+      "2a3e4ed4-1c1b-480d-8e90-5195972f6fbc",
+      "6995fae1-303f-4af4-a37e-761bfc2479fc",
+      "dfc02b50-576f-4815-b190-209b2a83faa2",
+      "0549f04c-bfe8-4e17-9094-393c43d1dce4",
+      "6989c8b4-89af-48d0-818a-056fcae06fa7",
+      "c4aa1cc8-8d18-49a6-b3de-dc3d0e945794",
+      "44ebadb3-3706-457d-82e3-9fcec95c5ed5",
+      "000d482c-a5aa-44b9-ad86-c7aff19a404d",
+      "4bcf6d93-34a7-4d79-9616-61e9f7874782",
+      "e8349de0-73a0-4f77-a356-7963996da206",
+      "adbf36ac-9f0f-4afb-a620-8f7d2fab922c",
+      "694e0206-42ea-48d2-a82c-0260ae346d67",
+      "7709c5a5-e96c-4df8-b93b-5f84cbcb14a2",
+      "25e3086d-91af-429f-9911-9d803fd6eb97",
+      "c1f19240-5a5a-4abc-89f6-344662cd2d32",
+      "7ea0626e-49c3-407e-b4e4-6e525a69de9e",
+      "b0acdf6c-edb0-4e49-8465-f82f44df6758",
+      "50579377-b069-4a73-809a-b603c03cd429",
+      "79ce2cf5-cdda-449b-bf2b-b76fdc58e874",
+      "de002d4e-1fda-4d42-9200-fd6621f14719",
+      "e27e529f-7e7d-4138-948c-f2c19188055c",
+      "a15a9be1-eb78-4c66-85e4-d99bdf872918",
+      "f629c7c4-1db3-46aa-9737-d56a8ca7d51c",
+      "b5c7d475-a505-4f50-adb1-5c3a8cdc97ee",
+      "6d31c64a-ce4c-46f8-8bf0-9f7be4c7b012",
+      "8f4ca366-3d10-4319-893a-79dc059aa517"
+    ],
+    "order_placed_id": "dad7c769-4550-4afb-8d06-5f5f4d83fe86",
+    "order_accepted_id": "e6fbc9dd-2343-48d4-8d68-cec8e4c044fd",
+    "order_invoiced_id": "e6fbc9dd-2343-48d4-8d68-cec8e4c044fd",
+    "invoice_id": "f57e7db1-d80c-45b3-8f29-05cc6cd5f7d1",
+    "order_total_amount": "10.00",
+    "invoice_total_amount": "10.00",
+    "bulk_invoiced_orders": [
+      {
+        "order_id": "89dbe30a-fa59-4775-bb28-1821dc5ba191",
+        "invoice_id": "074096ec-228f-49df-86ac-a7f36230f723",
+        "invoice_total_amount": "10.00"
+      },
+      {
+        "order_id": "2c55bb25-053d-42cc-851b-8b5c67963519",
+        "invoice_id": "6b4960ab-f5ea-429c-a222-6de12d981bfa",
+        "invoice_total_amount": "10.00"
+      },
+      {
+        "order_id": "a481000a-e495-45ef-a80a-dafc41111248",
+        "invoice_id": "5e6b8b44-1faf-4225-915b-c4fb30ed106d",
+        "invoice_total_amount": "10.00"
+      },
+      {
+        "order_id": "15a149bd-159e-4c76-94c4-0dfea77f2719",
+        "invoice_id": "00db4970-377f-476d-bd03-09ec7159866b",
+        "invoice_total_amount": "10.00"
+      },
+      {
+        "order_id": "beb9d6de-5bdf-4752-9472-749dfb7f65ae",
+        "invoice_id": "1eab8dfb-7a5f-45b4-98df-03205cdca974",
+        "invoice_total_amount": "10.00"
+      },
+      {
+        "order_id": "329ec2c0-dce8-41b1-9b24-35024374d2b6",
+        "invoice_id": "b44863c4-8858-4f0c-8b1d-f44256c5803a",
+        "invoice_total_amount": "10.00"
+      }
+    ],
+    "bulk_accepted_order_ids": [
+      "bf82909c-030e-4ac1-bd37-a6d7fe33bd2b",
+      "0e70bcfa-db2d-4616-8293-41d4f78a30d4",
+      "95a56f4c-ff14-438d-bc33-eea00e26f014",
+      "7e072d7f-27d3-4c94-93a3-37df0a1546fb",
+      "00e244ea-6bfe-428d-85cc-c5c600cb7908",
+      "d5fa2701-3831-42c7-a01e-fd1600e25c2a"
+    ]
+  },
+  "warnings": [],
+  "calls": [
+    {
+      "step": "create_customer",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "status": 201,
+      "response_body": {
+        "id": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER",
+        "orderHistory": []
+      }
+    },
+    {
+      "step": "create_product",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_001",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #1)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "d796530c-5125-4413-9c88-6be82be201e0",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #1)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_002",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #2)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "7a5c4d38-d450-4638-bbe8-ebfac41ebfa4",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #2)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_003",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #3)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "991c171c-a40a-4f7f-9efe-43a3c654edd1",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #3)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_004",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #4)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "d847393d-6f67-417c-95b7-119a717b997d",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #4)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_005",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #5)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "8b3b49bb-8c46-4388-b605-3f3dd88c7221",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #5)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_006",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #6)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "ebceb08a-98c0-4bc2-9e29-616ad3b9142d",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #6)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_007",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #7)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "a506a5c2-605c-4754-809b-9f5cdb0effc6",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #7)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_008",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #8)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "2e188735-d0c0-4765-bab7-9e94feb8cf0c",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #8)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_009",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #9)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "ab98abe5-df4c-4b17-b29c-cbed53c0459d",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #9)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_010",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #10)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "a2765a62-98d9-4a34-9a2c-182a30e5972c",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #10)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_011",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #11)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "6600dd76-c0da-4ae9-b3a1-ae230b3851ac",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #11)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_012",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #12)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "397f3dee-4d0c-43a8-ac7d-8c41d377be0b",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #12)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_013",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #13)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "46d8d35f-1f8d-4af6-b5ab-634a370db9d8",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #13)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_014",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #14)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "7ba51ee0-2835-4fce-98bc-7f85c2bca0ad",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #14)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_015",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #15)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "8fee9313-1bcc-43b6-bb0e-82592c2a305e",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #15)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_016",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #16)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "b5687d2f-85d9-4fae-9c69-913a7c8b143a",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #16)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_017",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #17)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "0256222e-ae17-4ac7-befa-c8abb232c0a9",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #17)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_018",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #18)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "1f7abe11-2a55-4692-9cea-3088213b9b86",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #18)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_019",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #19)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "b0a25e96-3176-4e07-9633-eedb1b9cc76f",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #19)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_020",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #20)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "45668991-0054-41ca-bd0c-f939b3ad9d59",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #20)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_021",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #21)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "e4f4f39a-9254-475f-a4c0-13fad29a0887",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #21)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_022",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #22)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "409a167a-9f1e-463f-954e-5464e2840e2f",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #22)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_023",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #23)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "83d85afc-d98f-42e9-b1bd-10a35768f204",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #23)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_024",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #24)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "b2796673-cd7d-4512-b4e6-ccacc2196d0f",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #24)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_025",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #25)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "a1cdcbbe-cd55-42b1-99c6-99ed738a45cd",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #25)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_026",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #26)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "8a6891a6-9218-4672-b616-7f93984438ef",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #26)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_027",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #27)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "e6c64eda-e08d-4408-9381-7e802b3ff595",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #27)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_028",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #28)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "f62dadad-ced9-4353-baf6-b3c42acc1931",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #28)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_029",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #29)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "64261f90-f782-415b-a4af-493bf07c9f74",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #29)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_030",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #30)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "7f0a9339-fc68-4ea4-bddf-124b07eaa6f4",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #30)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_031",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #31)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "3adc22a9-c168-4426-a3ee-78e7a89ebdc0",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #31)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_032",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #32)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "5e2f2945-b087-4f2b-9dc6-87614e1b2406",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #32)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_033",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #33)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "be9eba03-5d04-4c9e-9137-d56757f2d1e5",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #33)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_034",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #34)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "4b3e8835-161e-46c5-b977-8f765085ec52",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #34)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_035",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #35)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "1dc4d40e-dfd3-4e78-912f-9ec19d8d1b6f",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #35)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_036",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #36)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "2ca85bcc-25fb-4c35-a3c1-b5367b280ab2",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #36)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_037",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #37)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "8c15e7e1-f27b-4799-92ee-8f7c73c00998",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #37)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_038",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #38)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "7605b977-36cc-4347-8291-af4f1b60562f",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #38)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_039",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #39)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "f39a8fbd-b4a4-4a6b-8973-4158cb364bfa",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #39)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_040",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #40)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "5e088a96-17ef-4b5c-bbd7-cba7221b62d7",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #40)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_041",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #41)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "09cae62e-9b2a-46e7-9ac6-9ff02b12893e",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #41)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_042",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #42)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "84bd86db-e649-42a5-8aef-aef486c4ad7c",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #42)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_043",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #43)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "9f292ddd-9240-430c-b5a8-ed7ff24290c3",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #43)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_044",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #44)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "b0181bb3-0a59-470d-a936-8fcde3017ff7",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #44)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_045",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #45)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "6cf90024-774c-4d0f-b820-548eb6dbc2cf",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #45)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_046",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #46)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "8941e2ee-68ae-48c7-be01-e7790e8fa06e",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #46)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_047",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #47)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "7ee3f231-b296-4e60-88e3-dacf8621fa6e",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #47)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_048",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #48)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "fe7c3688-ee2e-4f80-abc6-81a69da39e5a",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #48)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_049",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #49)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "9d0bf2be-3f18-449d-8380-c5de92acc23d",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #49)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_050",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #50)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "74adac97-5501-445d-ad82-353be4ea8661",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #50)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_051",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #51)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "ebef28f1-8217-48ef-bbc4-ec60d4dffc6d",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #51)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_052",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #52)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "7e49d322-6065-456e-bc05-0d467baa0af5",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #52)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_053",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #53)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "1571901f-33bb-4c3c-938c-7fba610b7ca6",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #53)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_054",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #54)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "9eec20c6-9fbe-4ca1-bb31-184daa355a30",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #54)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_055",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #55)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "ad1201f3-35fb-4ab7-90c8-5e7bd18b7e8d",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #55)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_056",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #56)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "154768df-a829-4e94-a6d8-6332a1859088",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #56)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_057",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #57)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "50b8d8b1-1b14-41f5-8635-ba5eb2ae5495",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #57)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_058",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #58)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "95d5b282-aa06-40c7-b0eb-a6d09739e01f",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #58)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_059",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #59)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "b7ebba82-7c5f-4972-9ea8-1fab8b7f81d4",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #59)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_060",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #60)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "a4cd1e47-9118-491a-9ba0-d9695710060c",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #60)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_061",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #61)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "2feb47a8-560a-455f-9b04-74087e1d487c",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #61)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_062",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #62)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "261b925b-b407-4ad4-bd1f-627950d22992",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #62)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_063",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #63)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "56c30dce-fe60-4b43-86a6-26b0cf1f3b14",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #63)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_064",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #64)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "44ac62c9-b591-4c28-9187-c61d29c6faee",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #64)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_065",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #65)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "695cd7ad-5845-479b-b24d-5d9296e61fcb",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #65)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_066",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #66)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "c95e68e6-cf88-4913-ac43-88278927b175",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #66)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_067",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #67)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "a69f461e-5fd1-4231-9591-81eb7ff7ab0c",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #67)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_068",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #68)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "051a9b4b-a887-459b-80ac-339a1b3c4a52",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #68)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_069",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #69)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "550be87e-2fda-4371-a1b8-2f2d8d3f2825",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #69)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_070",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #70)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "6cabcd0f-2e4a-4afb-b5d5-23857c4da752",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #70)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_071",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #71)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "88a8a21f-c521-43bc-a677-27b9171cae1d",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #71)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_072",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #72)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "297f58a4-4d35-48d7-872d-aae267dab62a",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #72)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_073",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #73)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "42f2e1eb-cb78-4fe0-9125-f48a5df24d43",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #73)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_074",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #74)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "9b00d152-8184-47b8-8109-e333a1a11efe",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #74)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_075",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #75)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "2a3e4ed4-1c1b-480d-8e90-5195972f6fbc",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #75)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_076",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #76)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "6995fae1-303f-4af4-a37e-761bfc2479fc",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #76)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_077",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #77)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "dfc02b50-576f-4815-b190-209b2a83faa2",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #77)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_078",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #78)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "0549f04c-bfe8-4e17-9094-393c43d1dce4",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #78)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_079",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #79)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "6989c8b4-89af-48d0-818a-056fcae06fa7",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #79)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_080",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #80)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "c4aa1cc8-8d18-49a6-b3de-dc3d0e945794",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #80)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_081",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #81)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "44ebadb3-3706-457d-82e3-9fcec95c5ed5",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #81)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_082",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #82)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "000d482c-a5aa-44b9-ad86-c7aff19a404d",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #82)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_083",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #83)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "4bcf6d93-34a7-4d79-9616-61e9f7874782",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #83)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_084",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #84)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "e8349de0-73a0-4f77-a356-7963996da206",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #84)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_085",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #85)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "adbf36ac-9f0f-4afb-a620-8f7d2fab922c",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #85)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_086",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #86)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "694e0206-42ea-48d2-a82c-0260ae346d67",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #86)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_087",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #87)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "7709c5a5-e96c-4df8-b93b-5f84cbcb14a2",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #87)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_088",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #88)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "25e3086d-91af-429f-9911-9d803fd6eb97",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #88)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_089",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #89)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "c1f19240-5a5a-4abc-89f6-344662cd2d32",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #89)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_090",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #90)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "7ea0626e-49c3-407e-b4e4-6e525a69de9e",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #90)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_091",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #91)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "b0acdf6c-edb0-4e49-8465-f82f44df6758",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #91)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_092",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #92)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "50579377-b069-4a73-809a-b603c03cd429",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #92)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_093",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #93)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "79ce2cf5-cdda-449b-bf2b-b76fdc58e874",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #93)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_094",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #94)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "de002d4e-1fda-4d42-9200-fd6621f14719",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #94)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_095",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #95)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "e27e529f-7e7d-4138-948c-f2c19188055c",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #95)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_096",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #96)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "a15a9be1-eb78-4c66-85e4-d99bdf872918",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #96)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_097",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #97)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "f629c7c4-1db3-46aa-9737-d56a8ca7d51c",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #97)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_098",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #98)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "b5c7d475-a505-4f50-adb1-5c3a8cdc97ee",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #98)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_099",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #99)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "6d31c64a-ce4c-46f8-8bf0-9f7be4c7b012",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #99)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_bulk_product_100",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #100)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "8f4ca366-3d10-4319-893a-79dc059aa517",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #100)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "step": "create_placed_order",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "request_body": {
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1
+          }
+        ]
+      },
+      "status": 201,
+      "response_body": {
+        "id": "dad7c769-4550-4afb-8d06-5f5f4d83fe86",
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "PLACED",
+        "createdAt": "2026-08-26T17:49:00.517893Z",
+        "updatedAt": "2026-08-26T17:49:00.521016Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "step": "create_lifecycle_order",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "request_body": {
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1
+          }
+        ]
+      },
+      "status": 201,
+      "response_body": {
+        "id": "e6fbc9dd-2343-48d4-8d68-cec8e4c044fd",
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "PLACED",
+        "createdAt": "2026-08-26T17:49:00.566793Z",
+        "updatedAt": "2026-08-26T17:49:00.569631Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "step": "accept_order",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders/e6fbc9dd-2343-48d4-8d68-cec8e4c044fd/accept",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "e6fbc9dd-2343-48d4-8d68-cec8e4c044fd",
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "ACCEPTED",
+        "createdAt": "2026-08-26T17:49:00.566793Z",
+        "updatedAt": "2026-08-26T17:49:00.592389Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "step": "create_invoice",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/invoices",
+      "request_body": {
+        "orderRef": "e6fbc9dd-2343-48d4-8d68-cec8e4c044fd",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026"
+      },
+      "status": 201,
+      "response_body": {
+        "id": "f57e7db1-d80c-45b3-8f29-05cc6cd5f7d1",
+        "orderRef": "e6fbc9dd-2343-48d4-8d68-cec8e4c044fd",
+        "billingInfo": {
+          "name": "Nguyen Van A",
+          "address": "123 Nguyen Trai, Thanh Xuan, Hanoi"
+        },
+        "totalAmount": "10.00",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026",
+        "status": "ISSUED"
+      }
+    },
+    {
+      "step": "verify_order_invoiced",
+      "method": "GET",
+      "url": "http://localhost:8080/api/v1/orders/e6fbc9dd-2343-48d4-8d68-cec8e4c044fd",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "e6fbc9dd-2343-48d4-8d68-cec8e4c044fd",
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "INVOICED",
+        "createdAt": "2026-08-26T17:49:00.566793Z",
+        "updatedAt": "2026-08-26T17:49:00.633392Z",
+        "invoiceRef": "f57e7db1-d80c-45b3-8f29-05cc6cd5f7d1"
+      }
+    },
+    {
+      "step": "create_payment_bulk_01_order",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "request_body": {
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1
+          }
+        ]
+      },
+      "status": 201,
+      "response_body": {
+        "id": "89dbe30a-fa59-4775-bb28-1821dc5ba191",
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "PLACED",
+        "createdAt": "2026-08-26T17:49:00.691208Z",
+        "updatedAt": "2026-08-26T17:49:00.693733Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "step": "accept_payment_bulk_01_order",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders/89dbe30a-fa59-4775-bb28-1821dc5ba191/accept",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "89dbe30a-fa59-4775-bb28-1821dc5ba191",
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "ACCEPTED",
+        "createdAt": "2026-08-26T17:49:00.691208Z",
+        "updatedAt": "2026-08-26T17:49:00.719700Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "step": "create_payment_bulk_01_invoice",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/invoices",
+      "request_body": {
+        "orderRef": "89dbe30a-fa59-4775-bb28-1821dc5ba191",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026"
+      },
+      "status": 201,
+      "response_body": {
+        "id": "074096ec-228f-49df-86ac-a7f36230f723",
+        "orderRef": "89dbe30a-fa59-4775-bb28-1821dc5ba191",
+        "billingInfo": {
+          "name": "Nguyen Van A",
+          "address": "123 Nguyen Trai, Thanh Xuan, Hanoi"
+        },
+        "totalAmount": "10.00",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026",
+        "status": "ISSUED"
+      }
+    },
+    {
+      "step": "verify_payment_bulk_01_order_invoiced",
+      "method": "GET",
+      "url": "http://localhost:8080/api/v1/orders/89dbe30a-fa59-4775-bb28-1821dc5ba191",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "89dbe30a-fa59-4775-bb28-1821dc5ba191",
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "INVOICED",
+        "createdAt": "2026-08-26T17:49:00.691208Z",
+        "updatedAt": "2026-08-26T17:49:00.744047Z",
+        "invoiceRef": "074096ec-228f-49df-86ac-a7f36230f723"
+      }
+    },
+    {
+      "step": "create_payment_bulk_02_order",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "request_body": {
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1
+          }
+        ]
+      },
+      "status": 201,
+      "response_body": {
+        "id": "2c55bb25-053d-42cc-851b-8b5c67963519",
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "PLACED",
+        "createdAt": "2026-08-26T17:49:00.780401Z",
+        "updatedAt": "2026-08-26T17:49:00.782960Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "step": "accept_payment_bulk_02_order",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders/2c55bb25-053d-42cc-851b-8b5c67963519/accept",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "2c55bb25-053d-42cc-851b-8b5c67963519",
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "ACCEPTED",
+        "createdAt": "2026-08-26T17:49:00.780401Z",
+        "updatedAt": "2026-08-26T17:49:00.807181Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "step": "create_payment_bulk_02_invoice",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/invoices",
+      "request_body": {
+        "orderRef": "2c55bb25-053d-42cc-851b-8b5c67963519",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026"
+      },
+      "status": 201,
+      "response_body": {
+        "id": "6b4960ab-f5ea-429c-a222-6de12d981bfa",
+        "orderRef": "2c55bb25-053d-42cc-851b-8b5c67963519",
+        "billingInfo": {
+          "name": "Nguyen Van A",
+          "address": "123 Nguyen Trai, Thanh Xuan, Hanoi"
+        },
+        "totalAmount": "10.00",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026",
+        "status": "ISSUED"
+      }
+    },
+    {
+      "step": "verify_payment_bulk_02_order_invoiced",
+      "method": "GET",
+      "url": "http://localhost:8080/api/v1/orders/2c55bb25-053d-42cc-851b-8b5c67963519",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "2c55bb25-053d-42cc-851b-8b5c67963519",
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "INVOICED",
+        "createdAt": "2026-08-26T17:49:00.780401Z",
+        "updatedAt": "2026-08-26T17:49:00.835089Z",
+        "invoiceRef": "6b4960ab-f5ea-429c-a222-6de12d981bfa"
+      }
+    },
+    {
+      "step": "create_payment_bulk_03_order",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "request_body": {
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1
+          }
+        ]
+      },
+      "status": 201,
+      "response_body": {
+        "id": "a481000a-e495-45ef-a80a-dafc41111248",
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "PLACED",
+        "createdAt": "2026-08-26T17:49:00.874207Z",
+        "updatedAt": "2026-08-26T17:49:00.876668Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "step": "accept_payment_bulk_03_order",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders/a481000a-e495-45ef-a80a-dafc41111248/accept",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "a481000a-e495-45ef-a80a-dafc41111248",
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "ACCEPTED",
+        "createdAt": "2026-08-26T17:49:00.874207Z",
+        "updatedAt": "2026-08-26T17:49:00.922876Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "step": "create_payment_bulk_03_invoice",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/invoices",
+      "request_body": {
+        "orderRef": "a481000a-e495-45ef-a80a-dafc41111248",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026"
+      },
+      "status": 201,
+      "response_body": {
+        "id": "5e6b8b44-1faf-4225-915b-c4fb30ed106d",
+        "orderRef": "a481000a-e495-45ef-a80a-dafc41111248",
+        "billingInfo": {
+          "name": "Nguyen Van A",
+          "address": "123 Nguyen Trai, Thanh Xuan, Hanoi"
+        },
+        "totalAmount": "10.00",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026",
+        "status": "ISSUED"
+      }
+    },
+    {
+      "step": "verify_payment_bulk_03_order_invoiced",
+      "method": "GET",
+      "url": "http://localhost:8080/api/v1/orders/a481000a-e495-45ef-a80a-dafc41111248",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "a481000a-e495-45ef-a80a-dafc41111248",
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "INVOICED",
+        "createdAt": "2026-08-26T17:49:00.874207Z",
+        "updatedAt": "2026-08-26T17:49:00.970717Z",
+        "invoiceRef": "5e6b8b44-1faf-4225-915b-c4fb30ed106d"
+      }
+    },
+    {
+      "step": "create_payment_bulk_04_order",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "request_body": {
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1
+          }
+        ]
+      },
+      "status": 201,
+      "response_body": {
+        "id": "15a149bd-159e-4c76-94c4-0dfea77f2719",
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "PLACED",
+        "createdAt": "2026-08-26T17:49:01.018369Z",
+        "updatedAt": "2026-08-26T17:49:01.021246Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "step": "accept_payment_bulk_04_order",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders/15a149bd-159e-4c76-94c4-0dfea77f2719/accept",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "15a149bd-159e-4c76-94c4-0dfea77f2719",
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "ACCEPTED",
+        "createdAt": "2026-08-26T17:49:01.018369Z",
+        "updatedAt": "2026-08-26T17:49:01.048679Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "step": "create_payment_bulk_04_invoice",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/invoices",
+      "request_body": {
+        "orderRef": "15a149bd-159e-4c76-94c4-0dfea77f2719",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026"
+      },
+      "status": 201,
+      "response_body": {
+        "id": "00db4970-377f-476d-bd03-09ec7159866b",
+        "orderRef": "15a149bd-159e-4c76-94c4-0dfea77f2719",
+        "billingInfo": {
+          "name": "Nguyen Van A",
+          "address": "123 Nguyen Trai, Thanh Xuan, Hanoi"
+        },
+        "totalAmount": "10.00",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026",
+        "status": "ISSUED"
+      }
+    },
+    {
+      "step": "verify_payment_bulk_04_order_invoiced",
+      "method": "GET",
+      "url": "http://localhost:8080/api/v1/orders/15a149bd-159e-4c76-94c4-0dfea77f2719",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "15a149bd-159e-4c76-94c4-0dfea77f2719",
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "INVOICED",
+        "createdAt": "2026-08-26T17:49:01.018369Z",
+        "updatedAt": "2026-08-26T17:49:01.073859Z",
+        "invoiceRef": "00db4970-377f-476d-bd03-09ec7159866b"
+      }
+    },
+    {
+      "step": "create_payment_bulk_05_order",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "request_body": {
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1
+          }
+        ]
+      },
+      "status": 201,
+      "response_body": {
+        "id": "beb9d6de-5bdf-4752-9472-749dfb7f65ae",
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "PLACED",
+        "createdAt": "2026-08-26T17:49:01.112572Z",
+        "updatedAt": "2026-08-26T17:49:01.115316Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "step": "accept_payment_bulk_05_order",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders/beb9d6de-5bdf-4752-9472-749dfb7f65ae/accept",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "beb9d6de-5bdf-4752-9472-749dfb7f65ae",
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "ACCEPTED",
+        "createdAt": "2026-08-26T17:49:01.112572Z",
+        "updatedAt": "2026-08-26T17:49:01.156620Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "step": "create_payment_bulk_05_invoice",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/invoices",
+      "request_body": {
+        "orderRef": "beb9d6de-5bdf-4752-9472-749dfb7f65ae",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026"
+      },
+      "status": 201,
+      "response_body": {
+        "id": "1eab8dfb-7a5f-45b4-98df-03205cdca974",
+        "orderRef": "beb9d6de-5bdf-4752-9472-749dfb7f65ae",
+        "billingInfo": {
+          "name": "Nguyen Van A",
+          "address": "123 Nguyen Trai, Thanh Xuan, Hanoi"
+        },
+        "totalAmount": "10.00",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026",
+        "status": "ISSUED"
+      }
+    },
+    {
+      "step": "verify_payment_bulk_05_order_invoiced",
+      "method": "GET",
+      "url": "http://localhost:8080/api/v1/orders/beb9d6de-5bdf-4752-9472-749dfb7f65ae",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "beb9d6de-5bdf-4752-9472-749dfb7f65ae",
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "INVOICED",
+        "createdAt": "2026-08-26T17:49:01.112572Z",
+        "updatedAt": "2026-08-26T17:49:01.184557Z",
+        "invoiceRef": "1eab8dfb-7a5f-45b4-98df-03205cdca974"
+      }
+    },
+    {
+      "step": "create_payment_bulk_06_order",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "request_body": {
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1
+          }
+        ]
+      },
+      "status": 201,
+      "response_body": {
+        "id": "329ec2c0-dce8-41b1-9b24-35024374d2b6",
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "PLACED",
+        "createdAt": "2026-08-26T17:49:01.221502Z",
+        "updatedAt": "2026-08-26T17:49:01.224300Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "step": "accept_payment_bulk_06_order",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders/329ec2c0-dce8-41b1-9b24-35024374d2b6/accept",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "329ec2c0-dce8-41b1-9b24-35024374d2b6",
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "ACCEPTED",
+        "createdAt": "2026-08-26T17:49:01.221502Z",
+        "updatedAt": "2026-08-26T17:49:01.266504Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "step": "create_payment_bulk_06_invoice",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/invoices",
+      "request_body": {
+        "orderRef": "329ec2c0-dce8-41b1-9b24-35024374d2b6",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026"
+      },
+      "status": 201,
+      "response_body": {
+        "id": "b44863c4-8858-4f0c-8b1d-f44256c5803a",
+        "orderRef": "329ec2c0-dce8-41b1-9b24-35024374d2b6",
+        "billingInfo": {
+          "name": "Nguyen Van A",
+          "address": "123 Nguyen Trai, Thanh Xuan, Hanoi"
+        },
+        "totalAmount": "10.00",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026",
+        "status": "ISSUED"
+      }
+    },
+    {
+      "step": "verify_payment_bulk_06_order_invoiced",
+      "method": "GET",
+      "url": "http://localhost:8080/api/v1/orders/329ec2c0-dce8-41b1-9b24-35024374d2b6",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "329ec2c0-dce8-41b1-9b24-35024374d2b6",
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "INVOICED",
+        "createdAt": "2026-08-26T17:49:01.221502Z",
+        "updatedAt": "2026-08-26T17:49:01.294427Z",
+        "invoiceRef": "b44863c4-8858-4f0c-8b1d-f44256c5803a"
+      }
+    },
+    {
+      "step": "create_invoice_bulk_01_order",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "request_body": {
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1
+          }
+        ]
+      },
+      "status": 201,
+      "response_body": {
+        "id": "bf82909c-030e-4ac1-bd37-a6d7fe33bd2b",
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "PLACED",
+        "createdAt": "2026-08-26T17:49:01.346526Z",
+        "updatedAt": "2026-08-26T17:49:01.349328Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "step": "accept_invoice_bulk_01_order",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders/bf82909c-030e-4ac1-bd37-a6d7fe33bd2b/accept",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "bf82909c-030e-4ac1-bd37-a6d7fe33bd2b",
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "ACCEPTED",
+        "createdAt": "2026-08-26T17:49:01.346526Z",
+        "updatedAt": "2026-08-26T17:49:01.372450Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "step": "create_invoice_bulk_02_order",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "request_body": {
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1
+          }
+        ]
+      },
+      "status": 201,
+      "response_body": {
+        "id": "0e70bcfa-db2d-4616-8293-41d4f78a30d4",
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "PLACED",
+        "createdAt": "2026-08-26T17:49:01.409936Z",
+        "updatedAt": "2026-08-26T17:49:01.412969Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "step": "accept_invoice_bulk_02_order",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders/0e70bcfa-db2d-4616-8293-41d4f78a30d4/accept",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "0e70bcfa-db2d-4616-8293-41d4f78a30d4",
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "ACCEPTED",
+        "createdAt": "2026-08-26T17:49:01.409936Z",
+        "updatedAt": "2026-08-26T17:49:01.452885Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "step": "create_invoice_bulk_03_order",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "request_body": {
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1
+          }
+        ]
+      },
+      "status": 201,
+      "response_body": {
+        "id": "95a56f4c-ff14-438d-bc33-eea00e26f014",
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "PLACED",
+        "createdAt": "2026-08-26T17:49:01.481202Z",
+        "updatedAt": "2026-08-26T17:49:01.483863Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "step": "accept_invoice_bulk_03_order",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders/95a56f4c-ff14-438d-bc33-eea00e26f014/accept",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "95a56f4c-ff14-438d-bc33-eea00e26f014",
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "ACCEPTED",
+        "createdAt": "2026-08-26T17:49:01.481202Z",
+        "updatedAt": "2026-08-26T17:49:01.504581Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "step": "create_invoice_bulk_04_order",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "request_body": {
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1
+          }
+        ]
+      },
+      "status": 201,
+      "response_body": {
+        "id": "7e072d7f-27d3-4c94-93a3-37df0a1546fb",
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "PLACED",
+        "createdAt": "2026-08-26T17:49:01.531332Z",
+        "updatedAt": "2026-08-26T17:49:01.534077Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "step": "accept_invoice_bulk_04_order",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders/7e072d7f-27d3-4c94-93a3-37df0a1546fb/accept",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "7e072d7f-27d3-4c94-93a3-37df0a1546fb",
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "ACCEPTED",
+        "createdAt": "2026-08-26T17:49:01.531332Z",
+        "updatedAt": "2026-08-26T17:49:01.577770Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "step": "create_invoice_bulk_05_order",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "request_body": {
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1
+          }
+        ]
+      },
+      "status": 201,
+      "response_body": {
+        "id": "00e244ea-6bfe-428d-85cc-c5c600cb7908",
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "PLACED",
+        "createdAt": "2026-08-26T17:49:01.606274Z",
+        "updatedAt": "2026-08-26T17:49:01.608955Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "step": "accept_invoice_bulk_05_order",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders/00e244ea-6bfe-428d-85cc-c5c600cb7908/accept",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "00e244ea-6bfe-428d-85cc-c5c600cb7908",
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "ACCEPTED",
+        "createdAt": "2026-08-26T17:49:01.606274Z",
+        "updatedAt": "2026-08-26T17:49:01.640020Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "step": "create_invoice_bulk_06_order",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "request_body": {
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1
+          }
+        ]
+      },
+      "status": 201,
+      "response_body": {
+        "id": "d5fa2701-3831-42c7-a01e-fd1600e25c2a",
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "PLACED",
+        "createdAt": "2026-08-26T17:49:01.690984Z",
+        "updatedAt": "2026-08-26T17:49:01.694218Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "step": "accept_invoice_bulk_06_order",
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders/d5fa2701-3831-42c7-a01e-fd1600e25c2a/accept",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "d5fa2701-3831-42c7-a01e-fd1600e25c2a",
+        "customerRef": "be8c1d99-3d69-4a7f-bc86-d0852ace1a8e",
+        "lineItems": [
+          {
+            "productRef": "40d123e6-0381-4f15-b97d-0b09a790ecdf",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "ACCEPTED",
+        "createdAt": "2026-08-26T17:49:01.690984Z",
+        "updatedAt": "2026-08-26T17:49:01.732673Z",
+        "invoiceRef": null
+      }
+    }
+  ]
+}

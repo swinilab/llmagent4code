@@ -1,0 +1,3 @@
+Không chạy được functional testing pipeline
+
+bug thật trong oms/infrastructure/exceptions.py của app generated — không serialize exc.errors() qua jsonable_encoder trước khi build JSONResponse.

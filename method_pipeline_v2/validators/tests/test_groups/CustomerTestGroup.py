@@ -158,7 +158,7 @@ class CustomerTestGroup(ITestGroup):
         """1 char – below minimum → 400."""
         b = self._body(); b["name"] = "A"
         s, r = self._post(b)
-        return self._check("TC_CUS_NAME_01", 400, b, s, r)
+        return self._check("TC_CUS_NAME_01", 400, b, s, r, acceptable=(400, 422))
 
     def _tc_cus_name_02(self) -> TestResult:
         """2 chars – at minimum → 201."""
@@ -176,7 +176,7 @@ class CustomerTestGroup(ITestGroup):
         """101 chars – above maximum → 400."""
         b = self._body(); b["name"] = "A" * 101
         s, r = self._post(b)
-        return self._check("TC_CUS_NAME_04", 400, b, s, r)
+        return self._check("TC_CUS_NAME_04", 400, b, s, r, acceptable=(400, 422))
 
     def _tc_cus_name_05(self) -> TestResult:
         """Ordinary name with space → 201."""
@@ -194,25 +194,25 @@ class CustomerTestGroup(ITestGroup):
         """Empty string → 400."""
         b = self._body(); b["name"] = ""
         s, r = self._post(b)
-        return self._check("TC_CUS_NAME_07", 400, b, s, r)
+        return self._check("TC_CUS_NAME_07", 400, b, s, r, acceptable=(400, 422))
 
     def _tc_cus_name_08(self) -> TestResult:
         """Digits only → 400."""
         b = self._body(); b["name"] = "12345"
         s, r = self._post(b)
-        return self._check("TC_CUS_NAME_08", 400, b, s, r)
+        return self._check("TC_CUS_NAME_08", 400, b, s, r, acceptable=(400, 422))
 
     def _tc_cus_name_09(self) -> TestResult:
         """Symbols only → 400."""
         b = self._body(); b["name"] = "@#$%^&"
         s, r = self._post(b)
-        return self._check("TC_CUS_NAME_09", 400, b, s, r)
+        return self._check("TC_CUS_NAME_09", 400, b, s, r, acceptable=(400, 422))
 
     def _tc_cus_name_10(self) -> TestResult:
         """Whitespace only → 400."""
         b = self._body(); b["name"] = "      "
         s, r = self._post(b)
-        return self._check("TC_CUS_NAME_10", 400, b, s, r)
+        return self._check("TC_CUS_NAME_10", 400, b, s, r, acceptable=(400, 422))
 
     # =======================================================================
     #  ADDRESS  (POST)
@@ -222,7 +222,7 @@ class CustomerTestGroup(ITestGroup):
         """4 chars – below minimum → 400."""
         b = self._body(); b["address"] = "12 A"
         s, r = self._post(b)
-        return self._check("TC_CUS_ADDRESS_01", 400, b, s, r)
+        return self._check("TC_CUS_ADDRESS_01", 400, b, s, r, acceptable=(400, 422))
 
     def _tc_cus_address_02(self) -> TestResult:
         """5 chars – at minimum → 201."""
@@ -240,19 +240,19 @@ class CustomerTestGroup(ITestGroup):
         """256 chars – above maximum → 400."""
         b = self._body(); b["address"] = "A" * 256
         s, r = self._post(b)
-        return self._check("TC_CUS_ADDRESS_04", 400, b, s, r)
+        return self._check("TC_CUS_ADDRESS_04", 400, b, s, r, acceptable=(400, 422))
 
     def _tc_cus_address_05(self) -> TestResult:
         """Empty string → 400."""
         b = self._body(); b["address"] = ""
         s, r = self._post(b)
-        return self._check("TC_CUS_ADDRESS_05", 400, b, s, r)
+        return self._check("TC_CUS_ADDRESS_05", 400, b, s, r, acceptable=(400, 422))
 
     def _tc_cus_address_06(self) -> TestResult:
         """Whitespace only → 400."""
         b = self._body(); b["address"] = "         "
         s, r = self._post(b)
-        return self._check("TC_CUS_ADDRESS_06", 400, b, s, r)
+        return self._check("TC_CUS_ADDRESS_06", 400, b, s, r, acceptable=(400, 422))
 
     def _tc_cus_address_07(self) -> TestResult:
         """Ordinary full address → 201."""
@@ -268,7 +268,7 @@ class CustomerTestGroup(ITestGroup):
         """7 digits – below minimum → 400."""
         b = self._body(); b["phone"] = "+8412345"
         s, r = self._post(b)
-        return self._check("TC_CUS_PHONE_01", 400, b, s, r)
+        return self._check("TC_CUS_PHONE_01", 400, b, s, r, acceptable=(400, 422))
 
     def _tc_cus_phone_02(self) -> TestResult:
         """8 digits – at minimum → 201."""
@@ -286,7 +286,7 @@ class CustomerTestGroup(ITestGroup):
         """16 digits – above maximum → 400."""
         b = self._body(); b["phone"] = "+8412345678901234"
         s, r = self._post(b)
-        return self._check("TC_CUS_PHONE_04", 400, b, s, r)
+        return self._check("TC_CUS_PHONE_04", 400, b, s, r, acceptable=(400, 422))
 
     def _tc_cus_phone_05(self) -> TestResult:
         """E.164 without leading + → 201."""
@@ -298,7 +298,7 @@ class CustomerTestGroup(ITestGroup):
         """Contains letters → 400."""
         b = self._body(); b["phone"] = "+849abc45678"
         s, r = self._post(b)
-        return self._check("TC_CUS_PHONE_06", 400, b, s, r)
+        return self._check("TC_CUS_PHONE_06", 400, b, s, r, acceptable=(400, 422))
 
     def _tc_cus_phone_07(self) -> TestResult:
         """Leading zero after country code → 400.
@@ -316,13 +316,13 @@ class CustomerTestGroup(ITestGroup):
         """
         b = self._body(); b["phone"] = "+8401234567"
         s, r = self._post(b)
-        return self._check("TC_CUS_PHONE_07", 400, b, s, r)
+        return self._check("TC_CUS_PHONE_07", 400, b, s, r, acceptable=(400, 422))
 
     def _tc_cus_phone_08(self) -> TestResult:
         """Empty / null → 400."""
         b = self._body(); b["phone"] = ""
         s, r = self._post(b)
-        return self._check("TC_CUS_PHONE_08", 400, b, s, r)
+        return self._check("TC_CUS_PHONE_08", 400, b, s, r, acceptable=(400, 422))
 
     # =======================================================================
     #  BANKING DETAILS – accountNumber  (POST)
@@ -332,7 +332,7 @@ class CustomerTestGroup(ITestGroup):
         """5 digits – below minimum → 400."""
         b = self._body(); b["bankingDetails"]["accountNumber"] = "12345"
         s, r = self._post(b)
-        return self._check("TC_CUS_BANKACCTNU_01", 400, b, s, r)
+        return self._check("TC_CUS_BANKACCTNU_01", 400, b, s, r, acceptable=(400, 422))
 
     def _tc_cus_bankacctnu_02(self) -> TestResult:
         """6 digits – at minimum → 201."""
@@ -350,19 +350,19 @@ class CustomerTestGroup(ITestGroup):
         """21 digits – above maximum → 400."""
         b = self._body(); b["bankingDetails"]["accountNumber"] = "1" * 21
         s, r = self._post(b)
-        return self._check("TC_CUS_BANKACCTNU_04", 400, b, s, r)
+        return self._check("TC_CUS_BANKACCTNU_04", 400, b, s, r, acceptable=(400, 422))
 
     def _tc_cus_bankacctnu_05(self) -> TestResult:
         """Contains letters → 400."""
         b = self._body(); b["bankingDetails"]["accountNumber"] = "12ab56"
         s, r = self._post(b)
-        return self._check("TC_CUS_BANKACCTNU_05", 400, b, s, r)
+        return self._check("TC_CUS_BANKACCTNU_05", 400, b, s, r, acceptable=(400, 422))
 
     def _tc_cus_bankacctnu_06(self) -> TestResult:
         """Empty string → 400."""
         b = self._body(); b["bankingDetails"]["accountNumber"] = ""
         s, r = self._post(b)
-        return self._check("TC_CUS_BANKACCTNU_06", 400, b, s, r)
+        return self._check("TC_CUS_BANKACCTNU_06", 400, b, s, r, acceptable=(400, 422))
 
     # =======================================================================
     #  BANKING DETAILS – bankName  (POST)
@@ -372,7 +372,7 @@ class CustomerTestGroup(ITestGroup):
         """1 char – below minimum → 400."""
         b = self._body(); b["bankingDetails"]["bankName"] = "A"
         s, r = self._post(b)
-        return self._check("TC_CUS_BANKNAME_01", 400, b, s, r)
+        return self._check("TC_CUS_BANKNAME_01", 400, b, s, r, acceptable=(400, 422))
 
     def _tc_cus_bankname_02(self) -> TestResult:
         """2 chars – at minimum → 201."""
@@ -390,13 +390,13 @@ class CustomerTestGroup(ITestGroup):
         """101 chars – above maximum → 400."""
         b = self._body(); b["bankingDetails"]["bankName"] = "A" * 101
         s, r = self._post(b)
-        return self._check("TC_CUS_BANKNAME_04", 400, b, s, r)
+        return self._check("TC_CUS_BANKNAME_04", 400, b, s, r, acceptable=(400, 422))
 
     def _tc_cus_bankname_05(self) -> TestResult:
         """Empty string → 400."""
         b = self._body(); b["bankingDetails"]["bankName"] = ""
         s, r = self._post(b)
-        return self._check("TC_CUS_BANKNAME_05", 400, b, s, r)
+        return self._check("TC_CUS_BANKNAME_05", 400, b, s, r, acceptable=(400, 422))
 
     def _tc_cus_bankname_06(self) -> TestResult:
         """Realistic bank name → 201."""
@@ -430,19 +430,19 @@ class CustomerTestGroup(ITestGroup):
         """Unknown enum value → 400."""
         b = self._body(); b["role"] = "MANAGER"
         s, r = self._post(b)
-        return self._check("TC_CUS_ROLE_04", 400, b, s, r)
+        return self._check("TC_CUS_ROLE_04", 400, b, s, r, acceptable=(400, 422))
 
     def _tc_cus_role_05(self) -> TestResult:
         """Wrong case → 400."""
         b = self._body(); b["role"] = "customer"
         s, r = self._post(b)
-        return self._check("TC_CUS_ROLE_05", 400, b, s, r)
+        return self._check("TC_CUS_ROLE_05", 400, b, s, r, acceptable=(400, 422))
 
     def _tc_cus_role_06(self) -> TestResult:
         """Empty / null → 400."""
         b = self._body(); b["role"] = ""
         s, r = self._post(b)
-        return self._check("TC_CUS_ROLE_06", 400, b, s, r)
+        return self._check("TC_CUS_ROLE_06", 400, b, s, r, acceptable=(400, 422))
 
     # =======================================================================
     #  ORDER HISTORY  (POST – read-only / server-derived field)
@@ -460,17 +460,17 @@ class CustomerTestGroup(ITestGroup):
         """
         b = self._body(); b["orderHistory"] = []
         s, r = self._post(b)
-        return self._check("TC_CUS_ORDERHIST_01", 400, b, s, r)
+        return self._check("TC_CUS_ORDERHIST_01", 400, b, s, r, acceptable=(400, 422))
 
     def _tc_cus_orderhist_02(self) -> TestResult:
         """Malformed UUID in array → 400."""
         b = self._body(); b["orderHistory"] = ["not-a-uuid"]
         s, r = self._post(b)
-        return self._check("TC_CUS_ORDERHIST_02", 400, b, s, r)
+        return self._check("TC_CUS_ORDERHIST_02", 400, b, s, r, acceptable=(400, 422))
 
     def _tc_cus_orderhist_03(self) -> TestResult:
         """Client-supplied read-only field → 400."""
         b = self._body()
         b["orderHistory"] = ["3fa85f64-5717-4562-b3fc-2c963f66afa6"]
         s, r = self._post(b)
-        return self._check("TC_CUS_ORDERHIST_03", 400, b, s, r)
+        return self._check("TC_CUS_ORDERHIST_03", 400, b, s, r, acceptable=(400, 422))

@@ -185,7 +185,7 @@ class InvoiceTestGroup(ITestGroup):
         body = self._body()
         body["orderRef"] = "order-1"
         status, resp = self._post(body)
-        return self._check("TC_INV_ORDERREF_04", 400, body, status, resp)
+        return self._check("TC_INV_ORDERREF_04", 400, body, status, resp, acceptable=(400, 422))
 
     # ------------------------------------------------------------------ #
     # billingInfo.name
@@ -202,7 +202,7 @@ class InvoiceTestGroup(ITestGroup):
         body = self._body()
         body["billingInfo"] = {"name": "A"}
         status, resp = self._post(body)
-        return self._check("TC_INV_BILLNAME_01", 400, body, status, resp)
+        return self._check("TC_INV_BILLNAME_01", 400, body, status, resp, acceptable=(400, 422))
 
     def tc_inv_billname_02(self) -> TestResult:
         """BC-Min: length at minimum (2 chars) -> 400.
@@ -216,7 +216,7 @@ class InvoiceTestGroup(ITestGroup):
         body = self._body()
         body["billingInfo"] = {"name": "An"}
         status, resp = self._post(body)
-        return self._check("TC_INV_BILLNAME_02", 400, body, status, resp)
+        return self._check("TC_INV_BILLNAME_02", 400, body, status, resp, acceptable=(400, 422))
 
     def tc_inv_billname_03(self) -> TestResult:
         """BC-Max: length at maximum (100 chars) -> 400.
@@ -226,14 +226,14 @@ class InvoiceTestGroup(ITestGroup):
         body = self._body()
         body["billingInfo"] = {"name": "A" * 100}
         status, resp = self._post(body)
-        return self._check("TC_INV_BILLNAME_03", 400, body, status, resp)
+        return self._check("TC_INV_BILLNAME_03", 400, body, status, resp, acceptable=(400, 422))
 
     def tc_inv_billname_04(self) -> TestResult:
         """BC-Max+1: length one above maximum (101 chars) -> 400."""
         body = self._body()
         body["billingInfo"] = {"name": "A" * 101}
         status, resp = self._post(body)
-        return self._check("TC_INV_BILLNAME_04", 400, body, status, resp)
+        return self._check("TC_INV_BILLNAME_04", 400, body, status, resp, acceptable=(400, 422))
 
     # ------------------------------------------------------------------ #
     # totalAmount (server-computed)
@@ -262,14 +262,14 @@ class InvoiceTestGroup(ITestGroup):
         body = self._body()
         body["totalAmount"] = "0.01"
         status, resp = self._post(body)
-        return self._check("TC_INV_TOTALAMT_02", 400, body, status, resp)
+        return self._check("TC_INV_TOTALAMT_02", 400, body, status, resp, acceptable=(400, 422))
 
     def tc_inv_totalamt_03(self) -> TestResult:
         """BC-Min-1: value at zero boundary -> 400."""
         body = self._body()
         body["totalAmount"] = "0.00"
         status, resp = self._post(body)
-        return self._check("TC_INV_TOTALAMT_03", 400, body, status, resp)
+        return self._check("TC_INV_TOTALAMT_03", 400, body, status, resp, acceptable=(400, 422))
 
     # ------------------------------------------------------------------ #
     # issueDate
@@ -290,14 +290,14 @@ class InvoiceTestGroup(ITestGroup):
         body = self._body()
         body["issueDate"] = "23-07-2026"
         status, resp = self._post(body)
-        return self._check("TC_INV_ISSUEDATE_02", 400, body, status, resp)
+        return self._check("TC_INV_ISSUEDATE_02", 400, body, status, resp, acceptable=(400, 422))
 
     def tc_inv_issuedate_03(self) -> TestResult:
         """EC-Invalid-2 (Wrong Order): yyyy/MM/dd order -> 400."""
         body = self._body()
         body["issueDate"] = "2026/07/23"
         status, resp = self._post(body)
-        return self._check("TC_INV_ISSUEDATE_03", 400, body, status, resp)
+        return self._check("TC_INV_ISSUEDATE_03", 400, body, status, resp, acceptable=(400, 422))
 
     def tc_inv_issuedate_04(self) -> TestResult:
         """EC-Invalid-3 (Non-Existent Date): well-formed but calendar-invalid
@@ -305,7 +305,7 @@ class InvoiceTestGroup(ITestGroup):
         body = self._body()
         body["issueDate"] = "31/02/2026"
         status, resp = self._post(body)
-        return self._check("TC_INV_ISSUEDATE_04", 400, body, status, resp)
+        return self._check("TC_INV_ISSUEDATE_04", 400, body, status, resp, acceptable=(400, 422))
 
     def tc_inv_issuedate_05(self) -> TestResult:
         """EC-Invalid-4 (Non-Existent Date): well-formed but calendar-invalid
@@ -313,21 +313,21 @@ class InvoiceTestGroup(ITestGroup):
         body = self._body()
         body["issueDate"] = "30/02/2026"
         status, resp = self._post(body)
-        return self._check("TC_INV_ISSUEDATE_05", 400, body, status, resp)
+        return self._check("TC_INV_ISSUEDATE_05", 400, body, status, resp, acceptable=(400, 422))
 
     def tc_inv_issuedate_06(self) -> TestResult:
         """BC-Month-Min-1: month value below minimum (0) -> 400."""
         body = self._body()
         body["issueDate"] = "23/00/2026"
         status, resp = self._post(body)
-        return self._check("TC_INV_ISSUEDATE_06", 400, body, status, resp)
+        return self._check("TC_INV_ISSUEDATE_06", 400, body, status, resp, acceptable=(400, 422))
 
     def tc_inv_issuedate_07(self) -> TestResult:
         """BC-Month-Max+1: month value above maximum (13) -> 400."""
         body = self._body()
         body["issueDate"] = "23/13/2026"
         status, resp = self._post(body)
-        return self._check("TC_INV_ISSUEDATE_07", 400, body, status, resp)
+        return self._check("TC_INV_ISSUEDATE_07", 400, body, status, resp, acceptable=(400, 422))
 
     # ------------------------------------------------------------------ #
     # dueDate
@@ -363,7 +363,7 @@ class InvoiceTestGroup(ITestGroup):
         body["issueDate"] = "23/07/2026"
         body["dueDate"] = "22/07/2026"
         status, resp = self._post(body)
-        return self._check("TC_INV_DUEDATE_03", 400, body, status, resp)
+        return self._check("TC_INV_DUEDATE_03", 400, body, status, resp, acceptable=(400, 422))
 
     def tc_inv_duedate_04(self) -> TestResult:
         """EC-Invalid-1 (Wrong Format): ISO format instead of dd/MM/yyyy -> 400."""
@@ -371,7 +371,7 @@ class InvoiceTestGroup(ITestGroup):
         body["issueDate"] = "23/07/2026"
         body["dueDate"] = "2026-07-30"
         status, resp = self._post(body)
-        return self._check("TC_INV_DUEDATE_04", 400, body, status, resp)
+        return self._check("TC_INV_DUEDATE_04", 400, body, status, resp, acceptable=(400, 422))
 
     def tc_inv_duedate_05(self) -> TestResult:
         """EC-Invalid-2 (Non-Existent Date): well-formed but calendar-invalid
@@ -380,7 +380,7 @@ class InvoiceTestGroup(ITestGroup):
         body["issueDate"] = "23/07/2026"
         body["dueDate"] = "31/04/2026"
         status, resp = self._post(body)
-        return self._check("TC_INV_DUEDATE_05", 400, body, status, resp)
+        return self._check("TC_INV_DUEDATE_05", 400, body, status, resp, acceptable=(400, 422))
 
     # ------------------------------------------------------------------ #
     # status
@@ -404,11 +404,11 @@ class InvoiceTestGroup(ITestGroup):
         body = self._body()
         body["status"] = "PAID"
         status, resp = self._post(body)
-        return self._check("TC_INV_STATUS_02", 400, body, status, resp)
+        return self._check("TC_INV_STATUS_02", 400, body, status, resp, acceptable=(400, 422))
 
     def tc_inv_status_03(self) -> TestResult:
         """EC-Invalid-2 (Unknown Value): value not part of enum -> 400."""
         body = self._body()
         body["status"] = "DRAFT"
         status, resp = self._post(body)
-        return self._check("TC_INV_STATUS_03", 400, body, status, resp)
+        return self._check("TC_INV_STATUS_03", 400, body, status, resp, acceptable=(400, 422))

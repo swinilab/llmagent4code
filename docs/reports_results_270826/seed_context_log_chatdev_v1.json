@@ -1,0 +1,50 @@
+{
+  "base_url": "http://localhost:8000",
+  "api_paths": {
+    "customer": "/api/v1/customers",
+    "product": "/api/v1/products",
+    "order": "/api/v1/orders",
+    "payment": "/api/v1/payments",
+    "invoice": "/api/v1/invoices"
+  },
+  "seed_ids": {
+    "customer_id": null,
+    "product_id": null,
+    "bulk_product_ids": [],
+    "order_placed_id": null,
+    "order_accepted_id": null,
+    "order_invoiced_id": null,
+    "invoice_id": null,
+    "order_total_amount": null,
+    "invoice_total_amount": null,
+    "bulk_invoiced_orders": [],
+    "bulk_accepted_order_ids": []
+  },
+  "warnings": [
+    "seed customer creation failed: 500 {'message': 'Internal server error', 'details': {'type': 'ProgrammingError'}}"
+  ],
+  "calls": [
+    {
+      "step": "create_customer",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "status": 500,
+      "response_body": {
+        "message": "Internal server error",
+        "details": {
+          "type": "ProgrammingError"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+PIPELINE REPORT — 2026-08-27 00:34:06
+
+GENERATION
+model: None
+code: C:\Users\Admin\Documents\GitHub\llmagent4code\method_pipeline_v2\generated\chatdev-qwen35-v1\code_workspace
+
+VALIDATION
+  ❌ functional : 66 of 147 HTTP test(s) failed (55.1% passed).
+    66/147 failed (81 passed, 55.1% pass rate)
+    - customer : 25/50 failed (50.0% pass rate)
+    - product : 10/25 failed (60.0% pass rate)
+    - order : 13/28 failed (53.6% pass rate)
+    - payment : 10/18 failed (44.4% pass rate)
+    - invoice : 8/26 failed (69.2% pass rate)
+    full report : reports/functional_test_report_20260827_003406.json
+    seed context log : reports/seed_context_log_20260827_003404.json
+
+RESULT
+  ❌ pipeline failed
+  blocking stage : functional
+  error          : 66 of 147 HTTP test(s) failed (55.1% passed).
