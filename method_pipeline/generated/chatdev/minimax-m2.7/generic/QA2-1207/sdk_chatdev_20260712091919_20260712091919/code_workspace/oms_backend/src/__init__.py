@@ -1,3 +1,0 @@
-"""
-OMS Backend Package
-"""

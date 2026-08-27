@@ -1,1 +1,0 @@
-Create a Rust script to print first 20 numbers of Fibonacci using dynamic programming. Do not compile, just pure code

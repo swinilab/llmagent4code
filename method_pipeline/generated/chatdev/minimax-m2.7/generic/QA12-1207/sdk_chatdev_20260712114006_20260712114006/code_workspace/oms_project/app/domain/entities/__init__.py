@@ -1,1 +1,0 @@
-"""OMS Domain Entities Package."""
