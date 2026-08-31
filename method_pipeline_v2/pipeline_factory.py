@@ -22,6 +22,8 @@ class PipelineComponents:
     compilability_validator:  ICompilabilityValidator
     functional_validator:     IFunctionalValidator
     static_quality_validator: IStaticQualityValidator
+    tics_validator:           object          # validators.tics.TICSValidator
+    workflow_validator:       object          # validators.WorkflowValidator
     report_writer:            IReportWriter
     config:                   dict
 
@@ -42,6 +44,8 @@ def build(config_path: str) -> PipelineComponents:
     from validators.CompilabilityValidator        import CompilabilityValidator
     from validators.FunctionalValidator            import FunctionalValidator
     from validators.StaticQualityAttributeValidator import StaticQualityAttributeValidator
+    from validators.tics.TICSValidator import TICSValidator
+    from validators.WorkflowValidator import WorkflowValidator
     endpoints = cfg.get("validation", {}).get("http", {}).get("endpoints")
 
     return PipelineComponents(
@@ -49,6 +53,10 @@ def build(config_path: str) -> PipelineComponents:
         compilability_validator  = CompilabilityValidator(config=cfg),
         functional_validator     = FunctionalValidator(endpoints=endpoints, config=cfg),
         static_quality_validator = StaticQualityAttributeValidator(config=cfg),
+        # TICS takes no binding provider yet: until the S(x,f) component lands it
+        # falls back to trace-only bindings and labels its own output degraded.
+        tics_validator           = TICSValidator(config=cfg),
+        workflow_validator       = WorkflowValidator(config=cfg),
         report_writer            = TextReportWriter(
             report_dir=cfg.get("output", {}).get("report_dir", "reports/")
         ),

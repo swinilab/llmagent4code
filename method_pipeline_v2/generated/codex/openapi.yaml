@@ -1,0 +1,1150 @@
+openapi: 3.1.0
+info:
+  title: Order Management System API
+  description: Backend-only OMS for ordering, invoicing, payment, shipping, and closure.
+  version: 1.0.0
+paths:
+  /health/live:
+    get:
+      tags:
+      - system
+      summary: Liveness
+      operationId: liveness_health_live_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                additionalProperties:
+                  type: string
+                type: object
+                title: Response Liveness Health Live Get
+  /health/ready:
+    get:
+      tags:
+      - system
+      summary: Readiness
+      operationId: readiness_health_ready_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /internal/resynchronize:
+    post:
+      tags:
+      - system
+      summary: Resynchronize
+      operationId: resynchronize_internal_resynchronize_post
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                additionalProperties:
+                  type: integer
+                type: object
+                title: Response Resynchronize Internal Resynchronize Post
+  /api/v1/customers:
+    post:
+      tags:
+      - customers
+      summary: Create Customer
+      operationId: create_customer_api_v1_customers_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerCreate'
+        required: true
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerResponse'
+        '400':
+          description: Malformed identifier or request validation failure
+          content: &id001
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    required:
+                    - code
+                    - message
+                    properties:
+                      code:
+                        type: string
+                      message:
+                        type: string
+                      requestId:
+                        type:
+                        - string
+                        - 'null'
+                      details: {}
+                required:
+                - error
+  /api/v1/customers/{customer_id}:
+    get:
+      tags:
+      - customers
+      summary: Get Customer
+      operationId: get_customer_api_v1_customers__customer_id__get
+      parameters:
+      - name: customer_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Customer Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerResponse'
+        '400':
+          description: Malformed identifier or request validation failure
+          content: *id001
+        '404':
+          description: A well-formed referenced resource was not found
+          content: *id001
+  /api/v1/products:
+    post:
+      tags:
+      - products
+      summary: Create Product
+      operationId: create_product_api_v1_products_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductCreate'
+        required: true
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResponse'
+        '400':
+          description: Malformed identifier or request validation failure
+          content: *id001
+  /api/v1/products/{product_id}:
+    get:
+      tags:
+      - products
+      summary: Get Product
+      operationId: get_product_api_v1_products__product_id__get
+      parameters:
+      - name: product_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Product Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResponse'
+        '400':
+          description: Malformed identifier or request validation failure
+          content: *id001
+        '404':
+          description: A well-formed referenced resource was not found
+          content: *id001
+  /api/v1/orders:
+    post:
+      tags:
+      - orders
+      summary: Create Order
+      operationId: create_order_api_v1_orders_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderCreate'
+        required: true
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
+        '400':
+          description: Malformed identifier or request validation failure
+          content: *id001
+        '409':
+          description: The requested workflow transition conflicts with current state
+          content: *id001
+        '404':
+          description: A well-formed referenced resource was not found
+          content: *id001
+  /api/v1/orders/{order_id}:
+    get:
+      tags:
+      - orders
+      summary: Get Order
+      operationId: get_order_api_v1_orders__order_id__get
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Order Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
+        '400':
+          description: Malformed identifier or request validation failure
+          content: *id001
+        '404':
+          description: A well-formed referenced resource was not found
+          content: *id001
+        '409':
+          description: The requested workflow transition conflicts with current state
+          content: *id001
+  /api/v1/orders/{order_id}/accept:
+    post:
+      tags:
+      - orders
+      summary: Accept Order
+      operationId: accept_order_api_v1_orders__order_id__accept_post
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Order Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderWorkflowResponse'
+        '400':
+          description: Malformed identifier or request validation failure
+          content: *id001
+        '404':
+          description: A well-formed referenced resource was not found
+          content: *id001
+        '409':
+          description: The requested workflow transition conflicts with current state
+          content: *id001
+  /api/v1/orders/{order_id}/ship:
+    post:
+      tags:
+      - orders
+      summary: Ship Order
+      operationId: ship_order_api_v1_orders__order_id__ship_post
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Order Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderWorkflowResponse'
+        '400':
+          description: Malformed identifier or request validation failure
+          content: *id001
+        '404':
+          description: A well-formed referenced resource was not found
+          content: *id001
+        '409':
+          description: The requested workflow transition conflicts with current state
+          content: *id001
+  /api/v1/orders/{order_id}/close:
+    post:
+      tags:
+      - orders
+      summary: Close Order
+      operationId: close_order_api_v1_orders__order_id__close_post
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Order Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderWorkflowResponse'
+        '400':
+          description: Malformed identifier or request validation failure
+          content: *id001
+        '404':
+          description: A well-formed referenced resource was not found
+          content: *id001
+        '409':
+          description: The requested workflow transition conflicts with current state
+          content: *id001
+  /api/v1/orders/{order_id}/cancel:
+    post:
+      tags:
+      - orders
+      summary: Cancel Order
+      operationId: cancel_order_api_v1_orders__order_id__cancel_post
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Order Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderWorkflowResponse'
+        '400':
+          description: Malformed identifier or request validation failure
+          content: *id001
+        '404':
+          description: A well-formed referenced resource was not found
+          content: *id001
+        '409':
+          description: The requested workflow transition conflicts with current state
+          content: *id001
+  /api/v1/invoices:
+    post:
+      tags:
+      - invoices
+      summary: Create Invoice
+      operationId: create_invoice_api_v1_invoices_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InvoiceCreate'
+        required: true
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceResponse'
+        '400':
+          description: Malformed identifier or request validation failure
+          content: *id001
+        '409':
+          description: The requested workflow transition conflicts with current state
+          content: *id001
+        '404':
+          description: A well-formed referenced resource was not found
+          content: *id001
+  /api/v1/invoices/{invoice_id}:
+    get:
+      tags:
+      - invoices
+      summary: Get Invoice
+      operationId: get_invoice_api_v1_invoices__invoice_id__get
+      parameters:
+      - name: invoice_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Invoice Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceResponse'
+        '400':
+          description: Malformed identifier or request validation failure
+          content: *id001
+        '404':
+          description: A well-formed referenced resource was not found
+          content: *id001
+  /api/v1/payments:
+    post:
+      tags:
+      - payments
+      summary: Create Payment
+      operationId: create_payment_api_v1_payments_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentCreate'
+        required: true
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+        '400':
+          description: Malformed identifier or request validation failure
+          content: *id001
+        '409':
+          description: The requested workflow transition conflicts with current state
+          content: *id001
+        '404':
+          description: A well-formed referenced resource was not found
+          content: *id001
+  /api/v1/payments/{payment_id}:
+    get:
+      tags:
+      - payments
+      summary: Get Payment
+      operationId: get_payment_api_v1_payments__payment_id__get
+      parameters:
+      - name: payment_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Payment Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+        '400':
+          description: Malformed identifier or request validation failure
+          content: *id001
+        '404':
+          description: A well-formed referenced resource was not found
+          content: *id001
+        '409':
+          description: The requested workflow transition conflicts with current state
+          content: *id001
+  /api/v1/payments/{payment_id}/verify:
+    post:
+      tags:
+      - payments
+      summary: Verify Payment
+      operationId: verify_payment_api_v1_payments__payment_id__verify_post
+      parameters:
+      - name: payment_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Payment Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentWorkflowResponse'
+        '400':
+          description: Malformed identifier or request validation failure
+          content: *id001
+        '404':
+          description: A well-formed referenced resource was not found
+          content: *id001
+        '409':
+          description: The requested workflow transition conflicts with current state
+          content: *id001
+  /api/v1/payments/{payment_id}/reject:
+    post:
+      tags:
+      - payments
+      summary: Reject Payment
+      operationId: reject_payment_api_v1_payments__payment_id__reject_post
+      parameters:
+      - name: payment_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Payment Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentWorkflowResponse'
+        '400':
+          description: Malformed identifier or request validation failure
+          content: *id001
+        '404':
+          description: A well-formed referenced resource was not found
+          content: *id001
+        '409':
+          description: The requested workflow transition conflicts with current state
+          content: *id001
+  /:
+    get:
+      tags:
+      - system
+      summary: Root
+      operationId: root__get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                additionalProperties:
+                  type: string
+                type: object
+                title: Response Root  Get
+components:
+  schemas:
+    BankingDetails:
+      properties:
+        accountNumber:
+          type: string
+          maxLength: 20
+          minLength: 6
+          pattern: ^\d{6,20}$
+          title: Accountnumber
+        bankName:
+          type: string
+          maxLength: 100
+          minLength: 2
+          pattern: ^[\p{L}0-9 .&-]+$
+          title: Bankname
+      additionalProperties: false
+      type: object
+      required:
+      - accountNumber
+      - bankName
+      title: BankingDetails
+    BillingInfo:
+      properties:
+        name:
+          type: string
+          maxLength: 100
+          minLength: 2
+          pattern: ^[\p{L} .'-]+$
+          title: Name
+        address:
+          type: string
+          maxLength: 255
+          minLength: 5
+          title: Address
+      additionalProperties: false
+      type: object
+      required:
+      - name
+      - address
+      title: BillingInfo
+    BillingInfoCreateHint:
+      properties:
+        name:
+          type: string
+          maxLength: 100
+          minLength: 2
+          pattern: ^[\p{L} .'-]+$
+          title: Name
+        address:
+          anyOf:
+          - type: string
+            maxLength: 255
+            minLength: 5
+          - type: 'null'
+          title: Address
+      additionalProperties: false
+      type: object
+      required:
+      - name
+      title: BillingInfoCreateHint
+      description: Client comparison hint; omitted address is copied from Customer.
+    CurrencyCode:
+      type: string
+      enum:
+      - USD
+      - VND
+      - EUR
+      title: CurrencyCode
+    CustomerCreate:
+      properties:
+        name:
+          type: string
+          maxLength: 100
+          minLength: 2
+          pattern: ^[\p{L} .'-]+$
+          title: Name
+        address:
+          type: string
+          maxLength: 255
+          minLength: 5
+          title: Address
+        phone:
+          type: string
+          pattern: ^\+?[1-9]\d{7,14}$
+          title: Phone
+          description: E.164-compatible number containing 8 to 15 digits.
+        bankingDetails:
+          $ref: '#/components/schemas/BankingDetails'
+        role:
+          $ref: '#/components/schemas/Role'
+        orderHistory:
+          items:
+            type: string
+            maxLength: 36
+            minLength: 36
+            pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89aAbB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$
+            format: uuid
+          type: array
+          maxItems: 0
+          title: Orderhistory
+      additionalProperties: false
+      type: object
+      required:
+      - name
+      - address
+      - phone
+      - bankingDetails
+      - role
+      title: CustomerCreate
+    CustomerResponse:
+      properties:
+        id:
+          type: string
+          maxLength: 36
+          minLength: 36
+          pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89aAbB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$
+          format: uuid
+          title: Id
+        name:
+          type: string
+          maxLength: 100
+          minLength: 2
+          pattern: ^[\p{L} .'-]+$
+          title: Name
+        address:
+          type: string
+          maxLength: 255
+          minLength: 5
+          title: Address
+        phone:
+          type: string
+          pattern: ^\+?[1-9]\d{7,14}$
+          title: Phone
+          description: E.164-compatible number containing 8 to 15 digits.
+        bankingDetails:
+          $ref: '#/components/schemas/BankingDetails'
+        role:
+          $ref: '#/components/schemas/Role'
+        orderHistory:
+          items:
+            type: string
+            maxLength: 36
+            minLength: 36
+            pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89aAbB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$
+            format: uuid
+          type: array
+          maxItems: 10000
+          title: Orderhistory
+      additionalProperties: false
+      type: object
+      required:
+      - id
+      - name
+      - address
+      - phone
+      - bankingDetails
+      - role
+      title: CustomerResponse
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    InvoiceCreate:
+      properties:
+        orderRef:
+          type: string
+          maxLength: 36
+          minLength: 36
+          pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89aAbB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$
+          format: uuid
+          title: Orderref
+        billingInfo:
+          anyOf:
+          - $ref: '#/components/schemas/BillingInfoCreateHint'
+          - type: 'null'
+        totalAmount:
+          anyOf:
+          - type: string
+            maximum: 99999999.99
+            minimum: 0.01
+            pattern: ^\d{1,8}\.\d{2}$
+          - type: 'null'
+          title: Totalamount
+        issueDate:
+          anyOf:
+          - type: string
+            pattern: ^\d{2}/\d{2}/\d{4}$
+            description: A real calendar date in dd/MM/yyyy format.
+          - type: 'null'
+          title: Issuedate
+        dueDate:
+          anyOf:
+          - type: string
+            pattern: ^\d{2}/\d{2}/\d{4}$
+            description: A real calendar date in dd/MM/yyyy format.
+          - type: 'null'
+          title: Duedate
+        status:
+          $ref: '#/components/schemas/InvoiceStatus'
+          default: ISSUED
+      additionalProperties: false
+      type: object
+      required:
+      - orderRef
+      title: InvoiceCreate
+    InvoiceResponse:
+      properties:
+        id:
+          type: string
+          maxLength: 36
+          minLength: 36
+          pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89aAbB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$
+          format: uuid
+          title: Id
+        orderRef:
+          type: string
+          maxLength: 36
+          minLength: 36
+          pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89aAbB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$
+          format: uuid
+          title: Orderref
+        billingInfo:
+          $ref: '#/components/schemas/BillingInfo'
+        totalAmount:
+          type: string
+          maximum: 99999999.99
+          minimum: 0.01
+          pattern: ^\d{1,8}\.\d{2}$
+          title: Totalamount
+        issueDate:
+          type: string
+          pattern: ^\d{2}/\d{2}/\d{4}$
+          title: Issuedate
+          description: A real calendar date in dd/MM/yyyy format.
+        dueDate:
+          type: string
+          pattern: ^\d{2}/\d{2}/\d{4}$
+          title: Duedate
+          description: A real calendar date in dd/MM/yyyy format.
+        status:
+          $ref: '#/components/schemas/InvoiceStatus'
+      additionalProperties: false
+      type: object
+      required:
+      - id
+      - orderRef
+      - billingInfo
+      - totalAmount
+      - issueDate
+      - dueDate
+      - status
+      title: InvoiceResponse
+    InvoiceStatus:
+      type: string
+      enum:
+      - ISSUED
+      - PAID
+      - OVERDUE
+      - CANCELLED
+      title: InvoiceStatus
+    OrderCreate:
+      properties:
+        customerRef:
+          type: string
+          maxLength: 36
+          minLength: 36
+          pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89aAbB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$
+          format: uuid
+          title: Customerref
+        lineItems:
+          items:
+            $ref: '#/components/schemas/OrderLineItemCreate'
+          type: array
+          maxItems: 100
+          minItems: 1
+          title: Lineitems
+        totalAmount:
+          anyOf:
+          - type: string
+            maximum: 99999999.99
+            minimum: 0.01
+            pattern: ^\d{1,8}\.\d{2}$
+          - type: 'null'
+          title: Totalamount
+        status:
+          $ref: '#/components/schemas/OrderStatus'
+          default: PLACED
+      additionalProperties: false
+      type: object
+      required:
+      - customerRef
+      - lineItems
+      title: OrderCreate
+    OrderLineItemCreate:
+      properties:
+        productRef:
+          type: string
+          maxLength: 36
+          minLength: 36
+          pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89aAbB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$
+          format: uuid
+          title: Productref
+        quantity:
+          type: integer
+          maximum: 1000.0
+          minimum: 1.0
+          title: Quantity
+        unitPriceSnapshot:
+          anyOf:
+          - type: string
+            maximum: 999999.99
+            minimum: 0.01
+            pattern: ^\d{1,6}\.\d{2}$
+          - type: 'null'
+          title: Unitpricesnapshot
+      additionalProperties: false
+      type: object
+      required:
+      - productRef
+      - quantity
+      title: OrderLineItemCreate
+    OrderLineItemResponse:
+      properties:
+        productRef:
+          type: string
+          maxLength: 36
+          minLength: 36
+          pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89aAbB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$
+          format: uuid
+          title: Productref
+        quantity:
+          type: integer
+          maximum: 1000.0
+          minimum: 1.0
+          title: Quantity
+        unitPriceSnapshot:
+          type: string
+          maximum: 999999.99
+          minimum: 0.01
+          pattern: ^\d{1,6}\.\d{2}$
+          title: Unitpricesnapshot
+      additionalProperties: false
+      type: object
+      required:
+      - productRef
+      - quantity
+      - unitPriceSnapshot
+      title: OrderLineItemResponse
+    OrderResponse:
+      properties:
+        id:
+          type: string
+          maxLength: 36
+          minLength: 36
+          pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89aAbB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$
+          format: uuid
+          title: Id
+        customerRef:
+          type: string
+          maxLength: 36
+          minLength: 36
+          pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89aAbB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$
+          format: uuid
+          title: Customerref
+        lineItems:
+          items:
+            $ref: '#/components/schemas/OrderLineItemResponse'
+          type: array
+          maxItems: 100
+          minItems: 1
+          title: Lineitems
+        totalAmount:
+          type: string
+          maximum: 99999999.99
+          minimum: 0.01
+          pattern: ^\d{1,8}\.\d{2}$
+          title: Totalamount
+        status:
+          $ref: '#/components/schemas/OrderStatus'
+        createdAt:
+          type: string
+          format: date-time
+          title: Createdat
+        updatedAt:
+          type: string
+          format: date-time
+          title: Updatedat
+        invoiceRef:
+          anyOf:
+          - type: string
+            maxLength: 36
+            minLength: 36
+            pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89aAbB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$
+            format: uuid
+          - type: 'null'
+          title: Invoiceref
+      additionalProperties: false
+      type: object
+      required:
+      - id
+      - customerRef
+      - lineItems
+      - totalAmount
+      - status
+      - createdAt
+      - updatedAt
+      title: OrderResponse
+    OrderStatus:
+      type: string
+      enum:
+      - PLACED
+      - ACCEPTED
+      - INVOICED
+      - PAID
+      - VERIFIED
+      - SHIPPED
+      - CLOSED
+      - CANCELLED
+      title: OrderStatus
+    OrderWorkflowResponse:
+      properties:
+        previousStatus:
+          $ref: '#/components/schemas/OrderStatus'
+        order:
+          $ref: '#/components/schemas/OrderResponse'
+      additionalProperties: false
+      type: object
+      required:
+      - previousStatus
+      - order
+      title: OrderWorkflowResponse
+      description: Result returned by accept, ship, close, and cancel commands.
+    PaymentCreate:
+      properties:
+        orderRef:
+          type: string
+          maxLength: 36
+          minLength: 36
+          pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89aAbB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$
+          format: uuid
+          title: Orderref
+        amount:
+          type: string
+          maximum: 99999999.99
+          minimum: 0.01
+          pattern: ^\d{1,8}\.\d{2}$
+          title: Amount
+        status:
+          $ref: '#/components/schemas/PaymentStatus'
+          default: PENDING
+        method:
+          $ref: '#/components/schemas/PaymentMethod'
+      additionalProperties: false
+      type: object
+      required:
+      - orderRef
+      - amount
+      - method
+      title: PaymentCreate
+    PaymentMethod:
+      type: string
+      enum:
+      - CREDIT_CARD
+      - BANK_TRANSFER
+      - E_WALLET
+      title: PaymentMethod
+    PaymentResponse:
+      properties:
+        id:
+          type: string
+          maxLength: 36
+          minLength: 36
+          pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89aAbB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$
+          format: uuid
+          title: Id
+        orderRef:
+          type: string
+          maxLength: 36
+          minLength: 36
+          pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89aAbB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$
+          format: uuid
+          title: Orderref
+        amount:
+          type: string
+          maximum: 99999999.99
+          minimum: 0.01
+          pattern: ^\d{1,8}\.\d{2}$
+          title: Amount
+        timestamp:
+          type: string
+          format: date-time
+          title: Timestamp
+        status:
+          $ref: '#/components/schemas/PaymentStatus'
+        method:
+          $ref: '#/components/schemas/PaymentMethod'
+      additionalProperties: false
+      type: object
+      required:
+      - id
+      - orderRef
+      - amount
+      - timestamp
+      - status
+      - method
+      title: PaymentResponse
+    PaymentStatus:
+      type: string
+      enum:
+      - PENDING
+      - VERIFIED
+      - REJECTED
+      title: PaymentStatus
+    PaymentWorkflowResponse:
+      properties:
+        previousPaymentStatus:
+          $ref: '#/components/schemas/PaymentStatus'
+        payment:
+          $ref: '#/components/schemas/PaymentResponse'
+        order:
+          $ref: '#/components/schemas/OrderResponse'
+        invoice:
+          $ref: '#/components/schemas/InvoiceResponse'
+      additionalProperties: false
+      type: object
+      required:
+      - previousPaymentStatus
+      - payment
+      - order
+      - invoice
+      title: PaymentWorkflowResponse
+      description: Atomic result returned by payment verification/rejection commands.
+    Price:
+      properties:
+        amount:
+          type: string
+          maximum: 999999.99
+          minimum: 0.01
+          pattern: ^\d{1,6}\.\d{2}$
+          title: Amount
+        currency:
+          $ref: '#/components/schemas/CurrencyCode'
+      additionalProperties: false
+      type: object
+      required:
+      - amount
+      - currency
+      title: Price
+    ProductCreate:
+      properties:
+        description:
+          type: string
+          maxLength: 500
+          minLength: 3
+          title: Description
+        price:
+          $ref: '#/components/schemas/Price'
+      additionalProperties: false
+      type: object
+      required:
+      - description
+      - price
+      title: ProductCreate
+    ProductResponse:
+      properties:
+        id:
+          type: string
+          maxLength: 36
+          minLength: 36
+          pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89aAbB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$
+          format: uuid
+          title: Id
+        description:
+          type: string
+          maxLength: 500
+          minLength: 3
+          title: Description
+        price:
+          $ref: '#/components/schemas/Price'
+      additionalProperties: false
+      type: object
+      required:
+      - id
+      - description
+      - price
+      title: ProductResponse
+    Role:
+      type: string
+      enum:
+      - CUSTOMER
+      - ORDER_STAFF
+      - ACCOUNTANT
+      title: Role
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError

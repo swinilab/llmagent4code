@@ -34,6 +34,17 @@ class TextReportWriter(IReportWriter):
         validation_results: list[ValidationResult],
         all_passed:         bool,
     ) -> str:
+        # When a stage produced a per-app run folder, put the summary next to
+        # that stage's own artefacts instead of leaving a bare
+        # reports/report_<timestamp>.txt that names no app.
+        run_dir = next(
+            (vr.details.get("run_dir") for vr in validation_results
+             if vr.details and vr.details.get("run_dir")),
+            None,
+        )
+        if run_dir:
+            self._path = os.path.join(run_dir, "report.txt")
+
         os.makedirs(os.path.dirname(self._path), exist_ok=True)
 
         lines: list[str] = []
@@ -70,10 +81,18 @@ class TextReportWriter(IReportWriter):
                     failed    = vr.details.get("failed")
                     pass_rate = vr.details.get("pass_rate")
                     lines.append(f"    {failed}/{total} failed ({passed} passed, {pass_rate} pass rate)")
-                    for group in summary:
+                    # Stage 2 groups by entity ("group"), stage 6 by check
+                    # kind ("category"); both render the same way.
+                    for row in summary:
+                        label = row.get("group") or row.get("category") or "?"
                         lines.append(
-                            f"    - {group['group']} : {group['failed']}/{group['total']} failed"
-                            f" ({group.get('pass_rate')} pass rate)"
+                            f"    - {label} : {row['failed']}/{row['total']} failed"
+                            f" ({row.get('pass_rate')} pass rate)"
+                        )
+                    for step, route in (vr.details.get("transitions_used") or {}).items():
+                        lines.append(
+                            f"    transition {step} : {route.get('method')} "
+                            f"{route.get('pathTemplate')} [{route.get('source')}]"
                         )
                     report_path = vr.details.get("report_path")
                     if report_path:

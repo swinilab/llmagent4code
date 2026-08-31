@@ -1,0 +1,280 @@
+{
+  "schemaVersion": "1.0",
+  "repoRoot": "F:\\swelab\\llmagent4code\\method_pipeline_v2\\generated\\claude",
+  "bindings": [
+    {
+      "nfr_id": "NFR 1.1",
+      "function_ref": "app/infra/rate_limiter.py::TokenBucketRateLimiter.allow",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 1.1",
+      "function_ref": "app/core/middleware.py::RateLimitMiddleware.dispatch",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 1.2",
+      "function_ref": "app/infra/cache.py::EntityCache.get",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 1.2",
+      "function_ref": "app/infra/cache.py::EntityCache.set",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 1.2",
+      "function_ref": "app/infra/cache.py::EntityCache.invalidate",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 1.2",
+      "function_ref": "app/infra/database.py::_build_engine",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "sqlalchemy"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 1.2",
+      "function_ref": "app/infra/database.py::read_session",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "sqlalchemy"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 1.2",
+      "function_ref": "app/services/services.py::BaseService._cached_read",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 2.1",
+      "function_ref": "app/core/middleware.py::ExceptionDetectionMiddleware.dispatch",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "asyncio"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 2.1",
+      "function_ref": "app/infra/degradation.py::CircuitBreaker.call",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "asyncio"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 2.1",
+      "function_ref": "app/infra/cache.py::EntityCache.get",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "asyncio"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 2.2",
+      "function_ref": "app/infra/degradation.py::FeatureRegistry.shed",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 2.2",
+      "function_ref": "app/infra/degradation.py::FeatureRegistry.is_available",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 2.2",
+      "function_ref": "app/infra/database.py::_open_replica_session",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "sqlalchemy"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 2.2",
+      "function_ref": "app/services/services.py::BaseService._cached_read",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 2.3",
+      "function_ref": "app/infra/resync.py::StateResynchronizer.compare_active_and_standby",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 2.3",
+      "function_ref": "app/infra/resync.py::StateResynchronizer.run_once",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "asyncio"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 2.3",
+      "function_ref": "app/infra/resync.py::StateResynchronizer._replication_lag",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "sqlalchemy"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 2.3",
+      "function_ref": "app/api/v1/ops.py::force_resync",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 2.4",
+      "function_ref": "app/infra/database.py::unit_of_work",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "sqlalchemy"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 2.4",
+      "function_ref": "app/services/services.py::InvoiceService.create",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "sqlalchemy"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 2.4",
+      "function_ref": "app/services/services.py::PaymentService.create",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 2.4",
+      "function_ref": "app/services/services.py::PaymentService.verify",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 2.4",
+      "function_ref": "app/services/services.py::OrderService.transition",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "sqlalchemy"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 2.4",
+      "function_ref": "app/repositories/repositories.py::SQLAlchemyRepository.get_for_update",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "sqlalchemy"
+        ],
+        "usesAny": true
+      }
+    }
+  ]
+}

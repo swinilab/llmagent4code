@@ -1,0 +1,14 @@
+PIPELINE REPORT — 2026-08-31 12:31:50
+
+GENERATION
+model: None
+code: generated/codex
+
+VALIDATION
+  ✅ tics : TICS 0.785 (high=worse) | conformance 0.861 (high=better) | 13/13 pairs interacting, 66% of ground truth applicable
+    graph    reports\tics_codex_20260831_123150\tics_graph.json  (176 nodes, 331 edges, 124 unresolved calls)
+    report   reports\tics_codex_20260831_123150\tics_report.json
+    bindings reports\tics_codex_20260831_123150\tics_bindings.json
+
+RESULT
+  ✅ all checks passed — check QA manually

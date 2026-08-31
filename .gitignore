@@ -148,8 +148,5 @@ execution_logs.json
 *.pyc
 fucntional_test_report.json
 
-/evaluation-results
-/claude
-/claude-gen
-
-/old
+/backup
+/paper

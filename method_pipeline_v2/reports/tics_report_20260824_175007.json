@@ -1,0 +1,329 @@
+{
+  "generatedAt": "2026-08-24T17:50:07",
+  "repoRoot": "F:\\swelab\\llmagent4code\\apps\\codex",
+  "language": "python",
+  "degraded": false,
+  "score": {
+    "tics": 0.7792,
+    "conformance": 0.8611,
+    "applicableMass": 0.6604,
+    "implementationByNfr": {
+      "NFR 1.1": 0.5,
+      "NFR 1.2": 1.0,
+      "NFR 2.1": 1.0,
+      "NFR 2.2": 1.0,
+      "NFR 2.3": 1.0,
+      "NFR 2.4": 0.6667
+    },
+    "breadth": 1.0,
+    "intensity": 0.7681,
+    "coverage": 1.0,
+    "medianConflictDistance": 1,
+    "proximityLift": 4.0,
+    "meanPair": 0.7997,
+    "maxPair": 1.0
+  },
+  "baseline": {
+    "medianDistance": 4.0,
+    "meanDistance": 3.694,
+    "reachableFraction": 0.3468,
+    "sampleSize": 3979
+  },
+  "graph": {
+    "nodes": 176,
+    "edges": {
+      "CALLS": 263
+    },
+    "externalCalls": 397,
+    "nodelessCalls": 25,
+    "unresolvedCalls": 124,
+    "dumpPath": "reports\\tics_graph_20260824_175007.json"
+  },
+  "trace": {
+    "claimedFunctions": 13,
+    "missingFromGraph": [],
+    "unclaimedNfrs": []
+  },
+  "pairs": [
+    {
+      "pair": [
+        "NFR 1.1",
+        "NFR 1.2"
+      ],
+      "weight": 0.25,
+      "score": 0.4966,
+      "distance": 3,
+      "functionA": "app/workers/outbox.py::OutboxDispatcher.dispatch_pending_events",
+      "functionB": "app/infrastructure/cache.py::EntityCache.get_json",
+      "path": [
+        "app/workers/outbox.py::OutboxDispatcher.dispatch_pending_events",
+        "app/workers/outbox.py::OutboxDispatcher._publish",
+        "app/core/resilience.py::run_with_timeout",
+        "app/infrastructure/cache.py::EntityCache.get_json"
+      ],
+      "edgeKinds": [
+        "CALLS",
+        "CALLS",
+        "CALLS"
+      ]
+    },
+    {
+      "pair": [
+        "NFR 1.1",
+        "NFR 2.1"
+      ],
+      "weight": 0.25,
+      "score": 0.7047,
+      "distance": 2,
+      "functionA": "app/workers/outbox.py::OutboxDispatcher.dispatch_pending_events",
+      "functionB": "app/core/resilience.py::run_with_timeout",
+      "path": [
+        "app/workers/outbox.py::OutboxDispatcher.dispatch_pending_events",
+        "app/workers/outbox.py::OutboxDispatcher._publish",
+        "app/core/resilience.py::run_with_timeout"
+      ],
+      "edgeKinds": [
+        "CALLS",
+        "CALLS"
+      ]
+    },
+    {
+      "pair": [
+        "NFR 1.1",
+        "NFR 2.2"
+      ],
+      "weight": 0.25,
+      "score": 1.0,
+      "distance": 0,
+      "functionA": "app/workers/outbox.py::OutboxDispatcher.dispatch_pending_events",
+      "functionB": "app/workers/outbox.py::OutboxDispatcher.dispatch_pending_events",
+      "path": [
+        "app/workers/outbox.py::OutboxDispatcher.dispatch_pending_events"
+      ],
+      "edgeKinds": []
+    },
+    {
+      "pair": [
+        "NFR 1.1",
+        "NFR 2.3"
+      ],
+      "weight": 0.5,
+      "score": 0.7047,
+      "distance": 2,
+      "functionA": "app/workers/outbox.py::OutboxDispatcher.__init__",
+      "functionB": "app/workers/state_sync.py::StateSynchronizer.run_forever",
+      "path": [
+        "app/workers/outbox.py::OutboxDispatcher.__init__",
+        "app/main.py::lifespan",
+        "app/workers/state_sync.py::StateSynchronizer.run_forever"
+      ],
+      "edgeKinds": [
+        "CALLS",
+        "CALLS"
+      ]
+    },
+    {
+      "pair": [
+        "NFR 1.1",
+        "NFR 2.4"
+      ],
+      "weight": 0.75,
+      "score": 1.0,
+      "distance": 1,
+      "functionA": "app/workers/outbox.py::OutboxDispatcher.dispatch_pending_events",
+      "functionB": "app/repositories/outbox_repository.py::OutboxRepository.claim_batch",
+      "path": [
+        "app/workers/outbox.py::OutboxDispatcher.dispatch_pending_events",
+        "app/repositories/outbox_repository.py::OutboxRepository.claim_batch"
+      ],
+      "edgeKinds": [
+        "CALLS"
+      ]
+    },
+    {
+      "pair": [
+        "NFR 1.2",
+        "NFR 2.1"
+      ],
+      "weight": 0.25,
+      "score": 1.0,
+      "distance": 1,
+      "functionA": "app/infrastructure/cache.py::EntityCache.get_json",
+      "functionB": "app/core/resilience.py::run_with_timeout",
+      "path": [
+        "app/infrastructure/cache.py::EntityCache.get_json",
+        "app/core/resilience.py::run_with_timeout"
+      ],
+      "edgeKinds": [
+        "CALLS"
+      ]
+    },
+    {
+      "pair": [
+        "NFR 1.2",
+        "NFR 2.3"
+      ],
+      "weight": 0.5,
+      "score": 1.0,
+      "distance": 0,
+      "functionA": "app/infrastructure/cache.py::EntityCache.set_json",
+      "functionB": "app/infrastructure/cache.py::EntityCache.set_json",
+      "path": [
+        "app/infrastructure/cache.py::EntityCache.set_json"
+      ],
+      "edgeKinds": []
+    },
+    {
+      "pair": [
+        "NFR 1.2",
+        "NFR 2.4"
+      ],
+      "weight": 1.0,
+      "score": 0.4966,
+      "distance": 3,
+      "functionA": "app/infrastructure/cache.py::EntityCache.set_json",
+      "functionB": "app/infrastructure/unit_of_work.py::SqlAlchemyUnitOfWork.transaction",
+      "path": [
+        "app/infrastructure/cache.py::EntityCache.set_json",
+        "app/services/base_service.py::CachedService._store_cached",
+        "app/services/customer_service.py::CustomerService.create",
+        "app/infrastructure/unit_of_work.py::SqlAlchemyUnitOfWork.transaction"
+      ],
+      "edgeKinds": [
+        "CALLS",
+        "CALLS",
+        "CALLS"
+      ]
+    },
+    {
+      "pair": [
+        "NFR 2.1",
+        "NFR 2.2"
+      ],
+      "weight": 0.25,
+      "score": 1.0,
+      "distance": 1,
+      "functionA": "app/core/resilience.py::run_with_timeout",
+      "functionB": "app/infrastructure/cache.py::EntityCache.get_json",
+      "path": [
+        "app/core/resilience.py::run_with_timeout",
+        "app/infrastructure/cache.py::EntityCache.get_json"
+      ],
+      "edgeKinds": [
+        "CALLS"
+      ]
+    },
+    {
+      "pair": [
+        "NFR 2.1",
+        "NFR 2.3"
+      ],
+      "weight": 0.25,
+      "score": 1.0,
+      "distance": 1,
+      "functionA": "app/core/resilience.py::run_with_timeout",
+      "functionB": "app/infrastructure/cache.py::EntityCache.get_envelope",
+      "path": [
+        "app/core/resilience.py::run_with_timeout",
+        "app/infrastructure/cache.py::EntityCache.get_envelope"
+      ],
+      "edgeKinds": [
+        "CALLS"
+      ]
+    },
+    {
+      "pair": [
+        "NFR 2.1",
+        "NFR 2.4"
+      ],
+      "weight": 0.75,
+      "score": 0.4966,
+      "distance": 3,
+      "functionA": "app/core/resilience.py::run_with_timeout",
+      "functionB": "app/infrastructure/unit_of_work.py::SqlAlchemyUnitOfWork.transaction",
+      "path": [
+        "app/core/resilience.py::run_with_timeout",
+        "app/infrastructure/cache.py::EntityCache.invalidate",
+        "app/services/order_service.py::OrderService.create",
+        "app/infrastructure/unit_of_work.py::SqlAlchemyUnitOfWork.transaction"
+      ],
+      "edgeKinds": [
+        "CALLS",
+        "CALLS",
+        "CALLS"
+      ]
+    },
+    {
+      "pair": [
+        "NFR 2.2",
+        "NFR 2.4"
+      ],
+      "weight": 1.0,
+      "score": 1.0,
+      "distance": 1,
+      "functionA": "app/workers/outbox.py::OutboxDispatcher.dispatch_pending_events",
+      "functionB": "app/repositories/outbox_repository.py::OutboxRepository.claim_batch",
+      "path": [
+        "app/workers/outbox.py::OutboxDispatcher.dispatch_pending_events",
+        "app/repositories/outbox_repository.py::OutboxRepository.claim_batch"
+      ],
+      "edgeKinds": [
+        "CALLS"
+      ]
+    },
+    {
+      "pair": [
+        "NFR 2.3",
+        "NFR 2.4"
+      ],
+      "weight": 0.6,
+      "score": 0.4966,
+      "distance": 3,
+      "functionA": "app/infrastructure/cache.py::EntityCache.set_json",
+      "functionB": "app/infrastructure/unit_of_work.py::SqlAlchemyUnitOfWork.transaction",
+      "path": [
+        "app/infrastructure/cache.py::EntityCache.set_json",
+        "app/services/base_service.py::CachedService._store_cached",
+        "app/services/customer_service.py::CustomerService.create",
+        "app/infrastructure/unit_of_work.py::SqlAlchemyUnitOfWork.transaction"
+      ],
+      "edgeKinds": [
+        "CALLS",
+        "CALLS",
+        "CALLS"
+      ]
+    }
+  ],
+  "synergyPairs": [
+    {
+      "pair": [
+        "NFR 1.2",
+        "NFR 2.2"
+      ],
+      "weight": 0.0,
+      "score": 1.0,
+      "distance": 0,
+      "functionA": "app/infrastructure/cache.py::EntityCache.get_json",
+      "functionB": "app/infrastructure/cache.py::EntityCache.get_json",
+      "path": [
+        "app/infrastructure/cache.py::EntityCache.get_json"
+      ],
+      "edgeKinds": []
+    },
+    {
+      "pair": [
+        "NFR 2.2",
+        "NFR 2.3"
+      ],
+      "weight": 0.0,
+      "score": 1.0,
+      "distance": 0,
+      "functionA": "app/infrastructure/cache.py::EntityCache.set_json",
+      "functionB": "app/infrastructure/cache.py::EntityCache.set_json",
+      "path": [
+        "app/infrastructure/cache.py::EntityCache.set_json"
+      ],
+      "edgeKinds": []
+    }
+  ]
+}

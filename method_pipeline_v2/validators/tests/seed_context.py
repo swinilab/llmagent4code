@@ -10,12 +10,24 @@ Without this, every *TestGroup falls back to its own placeholder default
 entity, so FK-dependent and GET-by-id test cases send garbage instead of a
 real UUID and can never pass regardless of the app's correctness.
 
-State transitions (PLACED -> ACCEPTED -> INVOICED) are only attempted via
-steps declared in workflow_apis.json, consistent with the harness's
-documented contract of never guessing undeclared routes. If an app doesn't
-ship workflow_apis.json (or omits the relevant step), ACCEPTED/INVOICED
-seed data simply cannot be provisioned for it and the corresponding
-placeholders are left in place; a warning explains why.
+State transitions (PLACED -> ACCEPTED -> INVOICED) come from workflow_apis.json
+when the app ships one. When it doesn't - prompts/latest.md never asked for
+that file, so codex and claude-latest have none - the PLACED -> ACCEPTED step
+is inferred from the app's *own* OpenAPI document instead: the transition
+route is picked out of the routes the app itself publishes under the order
+collection path from create_apis.json. That is still not guessing, on two
+counts: only published routes are considered, and the order is re-read
+afterwards so a mis-identified route surfaces as a warning rather than a
+silently wrong seed. Without either source, ACCEPTED/INVOICED seed data
+cannot be provisioned and a warning explains why.
+
+Pool sizes matter for attribution. Invoicing and paying are one-time
+transitions, so *every* test case that posts an invoice or a payment needs
+its own untouched order - negative cases included. Sharing one order lets an
+app's state check answer a negative case before it ever evaluates the field
+rule under test, which makes the result track the app's internal validation
+order instead of its correctness (this is what made TC_INV_BILLNAME_02/03
+fail on state-first apps and pass on field-first ones).
 
 Every HTTP call made during seeding is recorded in SeedContext.calls and,
 when a log_path is given, dumped to a JSON file for debugging — including
@@ -26,6 +38,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 from dataclasses import dataclass, field
 from decimal import Decimal, InvalidOperation
 from typing import Any
@@ -45,7 +58,7 @@ BULK_PRODUCT_COUNT = 100
 # one-time INVOICED -> PAID transition, so sharing a single seeded order
 # across all of them means only the first can ever succeed and the rest see
 # a false 409. Each needs its own untouched INVOICED order.
-PAYMENT_HAPPY_PATH_ORDER_COUNT = 6
+PAYMENT_HAPPY_PATH_ORDER_COUNT = 20
 
 # ORDERREF_01, TOTALAMT_01, ISSUEDATE_01, DUEDATE_01/02, STATUS_01 in
 # InvoiceTestGroup are each a happy-path invoice creation against an
@@ -53,7 +66,7 @@ PAYMENT_HAPPY_PATH_ORDER_COUNT = 6
 # transition, so they can't share ctx.order_accepted_id (which is also
 # already consumed by the seed's own INVOICED-order provisioning). Each
 # needs its own untouched ACCEPTED order.
-INVOICE_HAPPY_PATH_ORDER_COUNT = 6
+INVOICE_HAPPY_PATH_ORDER_COUNT = 30
 
 
 @dataclass
@@ -70,6 +83,10 @@ class SeedContext:
     invoice_total_amount: Decimal | None = None
     bulk_invoiced_orders: list[dict[str, Any]] = field(default_factory=list)
     bulk_accepted_order_ids: list[str] = field(default_factory=list)
+    # The PLACED -> ACCEPTED transition actually used, whether declared in
+    # workflow_apis.json or inferred from the app's OpenAPI. Recorded so the
+    # report shows which route the seed relied on.
+    accept_step: dict[str, Any] | None = None
     warnings: list[str] = field(default_factory=list)
     calls: list[dict[str, Any]] = field(default_factory=list)
 
@@ -146,8 +163,9 @@ def _write_seed_log(
         json.dump(payload, f, indent=2, ensure_ascii=False, default=str)
 
 
-def _find_accept_order_step(workflow_api_paths: dict[str, Any]) -> dict[str, Any] | None:
-    """Locate the workflow step that moves an Order from PLACED to ACCEPTED."""
+def _find_declared_accept_step(workflow_api_paths: dict[str, Any]) -> dict[str, Any] | None:
+    """Locate the workflow step that moves an Order from PLACED to ACCEPTED,
+    as *declared* in workflow_apis.json."""
     for key, entry in workflow_api_paths.items():
         if key.lower() == "acceptorder":
             return entry
@@ -159,6 +177,223 @@ def _find_accept_order_step(workflow_api_paths: dict[str, Any]) -> dict[str, Any
         ):
             return entry
     return None
+
+
+# Candidate locations of the app's own OpenAPI document. FastAPI serves
+# /openapi.json by default; apps that version their docs (e.g. chatdev-v2's
+# openapi_url="/api/v1/openapi.json") are covered by the versioned variants.
+OPENAPI_URL_CANDIDATES = (
+    "/openapi.json",
+    "/api/v1/openapi.json",
+    "/api/openapi.json",
+    "/v1/openapi.json",
+)
+
+# Path segment naming a dedicated PLACED -> ACCEPTED action route.
+ACCEPT_ACTION_SEGMENTS = ("accept",)
+# Path segment naming a generic status-setter route, driven by a request body.
+STATUS_ACTION_SEGMENTS = ("status", "state")
+
+
+def _fetch_openapi(
+    ctx: SeedContext, base_url: str, timeout: float
+) -> dict[str, Any] | None:
+    """Fetch the running app's OpenAPI document, trying the conventional
+    locations. Returns the parsed spec or None."""
+    for candidate in OPENAPI_URL_CANDIDATES:
+        url = base_url + candidate
+        try:
+            resp = requests.get(url, timeout=timeout)
+        except requests.RequestException:
+            continue
+        if resp.status_code != 200:
+            continue
+        try:
+            spec = resp.json()
+        except ValueError:
+            continue
+        if isinstance(spec, dict) and isinstance(spec.get("paths"), dict):
+            _record_call(ctx, "fetch_openapi", "GET", url, None, resp.status_code,
+                         f"<spec with {len(spec['paths'])} paths>")
+            return spec
+    return None
+
+
+def _resolve_schema(spec: dict[str, Any], schema: Any, depth: int = 0) -> dict[str, Any]:
+    """Resolve a (possibly $ref'd) OpenAPI schema node into a plain dict."""
+    if not isinstance(schema, dict) or depth > 5:
+        return {}
+    ref = schema.get("$ref")
+    if isinstance(ref, str) and ref.startswith("#/"):
+        node: Any = spec
+        for part in ref[2:].split("/"):
+            if not isinstance(node, dict):
+                return {}
+            node = node.get(part, {})
+        return _resolve_schema(spec, node, depth + 1)
+    return schema
+
+
+def _status_field_for_accepted(spec: dict[str, Any], operation: dict[str, Any]) -> str:
+    """Name of the request-body field that carries the target status for a
+    generic status-setter route. Derived from the operation's own schema:
+    the property whose enum contains ACCEPTED. Falls back to "status"."""
+    body = operation.get("requestBody")
+    if isinstance(body, dict):
+        content = body.get("content")
+        if isinstance(content, dict):
+            for media in ("application/json", "*/*"):
+                media_obj = content.get(media)
+                if not isinstance(media_obj, dict):
+                    continue
+                schema = _resolve_schema(spec, media_obj.get("schema"))
+                props = schema.get("properties")
+                if not isinstance(props, dict):
+                    continue
+                for prop_name, prop_schema in props.items():
+                    resolved = _resolve_schema(spec, prop_schema)
+                    enum = resolved.get("enum")
+                    if isinstance(enum, list) and "ACCEPTED" in enum:
+                        return prop_name
+    return "status"
+
+
+def _discover_accept_order_step(
+    ctx: SeedContext, spec: dict[str, Any], order_path: str
+) -> dict[str, Any] | None:
+    """Infer the PLACED -> ACCEPTED transition from the app's own OpenAPI
+    document, given the order collection path from create_apis.json.
+
+    Only routes the app itself publishes are considered - this narrows the
+    published contract down to the transition the test suite needs, rather
+    than guessing undeclared routes. Two shapes are recognised, both
+    observed in the corpus:
+
+      A. a dedicated action route   POST {orders}/{id}/accept
+      B. a generic status setter    PUT  {orders}/{id}/status  {"status": "ACCEPTED"}
+
+    The caller verifies the order actually reached ACCEPTED afterwards, so a
+    wrong candidate surfaces as a seed warning rather than a silent bad seed.
+    """
+    prefix = order_path.rstrip("/")
+    action_re = re.compile(
+        rf"^{re.escape(prefix)}/\{{[^}}/]+\}}/(?P<action>[A-Za-z_-]+)/?$"
+    )
+
+    dedicated: dict[str, Any] | None = None
+    generic: dict[str, Any] | None = None
+
+    for path, path_item in sorted(spec.get("paths", {}).items()):
+        if not isinstance(path_item, dict):
+            continue
+        match = action_re.match(path)
+        if not match:
+            continue
+        action = match.group("action").lower()
+        for method, operation in path_item.items():
+            if method.lower() not in ("post", "put", "patch"):
+                continue
+            if not isinstance(operation, dict):
+                continue
+            # Normalise the app's own parameter name to the {id} token that
+            # the seeding code substitutes into.
+            template = re.sub(r"\{[^}/]+\}", "{id}", path)
+            if action in ACCEPT_ACTION_SEGMENTS and dedicated is None:
+                dedicated = {
+                    "method": method.upper(),
+                    "pathTemplate": template,
+                    "precondition": "PLACED",
+                    "discoveredFrom": "openapi:action-route",
+                }
+            elif action in STATUS_ACTION_SEGMENTS and generic is None:
+                field_name = _status_field_for_accepted(spec, operation)
+                generic = {
+                    "method": method.upper(),
+                    "pathTemplate": template,
+                    "precondition": "PLACED",
+                    "body": {field_name: "ACCEPTED"},
+                    "discoveredFrom": "openapi:status-route",
+                }
+
+    step = dedicated or generic
+    if step is not None:
+        ctx.warnings.append(
+            "acceptOrder step not declared in workflow_apis.json; inferred "
+            f"{step['method']} {step['pathTemplate']} from the app's own OpenAPI "
+            f"({step['discoveredFrom']}). Transition is verified by re-reading "
+            "the order's status."
+        )
+    return step
+
+
+def _resolve_accept_order_step(
+    ctx: SeedContext,
+    base_url: str,
+    api_paths: dict[str, str],
+    workflow_api_paths: dict[str, Any],
+    timeout: float,
+) -> dict[str, Any] | None:
+    """The declared step wins; otherwise infer it from the running app's
+    OpenAPI so apps generated under a prompt that never asked for
+    workflow_apis.json (e.g. prompts/latest.md) are still seedable."""
+    declared = _find_declared_accept_step(workflow_api_paths)
+    if declared is not None:
+        return declared
+
+    spec = _fetch_openapi(ctx, base_url, timeout)
+    if spec is None:
+        ctx.warnings.append(
+            "acceptOrder step is neither declared in workflow_apis.json nor "
+            "discoverable: the app serves no OpenAPI document at any of "
+            f"{', '.join(OPENAPI_URL_CANDIDATES)}."
+        )
+        return None
+
+    step = _discover_accept_order_step(ctx, spec, api_paths["order"])
+    if step is None:
+        ctx.warnings.append(
+            "acceptOrder step is neither declared in workflow_apis.json nor "
+            "present in the app's OpenAPI: no PLACED -> ACCEPTED transition "
+            f"route found under {api_paths['order']}."
+        )
+    return step
+
+
+def _perform_accept(
+    ctx: SeedContext,
+    base_url: str,
+    accept_step: dict[str, Any],
+    order_id: str,
+    timeout: float,
+    label: str,
+) -> bool:
+    """Fire the PLACED -> ACCEPTED transition for one order. Returns whether
+    the call itself succeeded (the caller verifies the resulting state)."""
+    method = accept_step.get("method", "POST")
+    url = base_url + str(accept_step["pathTemplate"]).replace("{id}", order_id)
+    body = accept_step.get("body")
+    try:
+        resp = requests.request(method, url, json=body, timeout=timeout)
+    except requests.RequestException as exc:
+        _record_call(ctx, f"accept_{label}_order", method, url, body, None,
+                     f"request failed: {exc}")
+        ctx.warnings.append(f"acceptOrder call failed for {label} order: {exc}")
+        return False
+
+    try:
+        resp_body = resp.json()
+    except ValueError:
+        resp_body = resp.text
+    _record_call(ctx, f"accept_{label}_order", method, url, body,
+                 resp.status_code, resp_body)
+
+    if resp.status_code >= 400:
+        ctx.warnings.append(
+            f"acceptOrder returned {resp.status_code} for {label} order; "
+            "order stays PLACED"
+        )
+        return False
+    return True
 
 
 def _provision_accepted_order(
@@ -186,26 +421,19 @@ def _provision_accepted_order(
         return None
     order_id = resp["id"]
 
-    accept_method = accept_step.get("method", "POST")
-    accept_url = base_url + str(accept_step["pathTemplate"]).replace("{id}", order_id)
-    try:
-        accept_resp = requests.request(accept_method, accept_url, timeout=timeout)
-    except requests.RequestException as exc:
-        _record_call(ctx, f"accept_{label}_order", accept_method, accept_url, None, None, f"request failed: {exc}")
-        ctx.warnings.append(f"acceptOrder call failed for {label} order: {exc}")
+    if not _perform_accept(ctx, base_url, accept_step, order_id, timeout, label):
         return None
 
-    try:
-        accept_body = accept_resp.json()
-    except ValueError:
-        accept_body = accept_resp.text
-    _record_call(
-        ctx, f"accept_{label}_order", accept_method, accept_url, None,
-        accept_resp.status_code, accept_body,
-    )
-    if accept_resp.status_code >= 400:
+    # The transition route may have been inferred rather than declared, so
+    # confirm the order really is ACCEPTED before handing it to a test.
+    get_status, get_resp = order_group._get(order_id)
+    _record_group_call(ctx, f"verify_{label}_order_accepted", order_group, None, get_status, get_resp)
+    if not (get_status == 200 and isinstance(get_resp, dict) and get_resp.get("status") == "ACCEPTED"):
+        observed = get_resp.get("status") if isinstance(get_resp, dict) else get_resp
         ctx.warnings.append(
-            f"acceptOrder returned {accept_resp.status_code} for {label} order; order stays PLACED"
+            f"{label} order did not reach ACCEPTED via "
+            f"{accept_step.get('method')} {accept_step.get('pathTemplate')} "
+            f"(observed status: {observed!r})"
         )
         return None
 
@@ -366,36 +594,28 @@ def _provision(
     lifecycle_order_id = resp["id"]
     ctx.order_total_amount = resp.get("totalAmount")
 
-    accept_step = _find_accept_order_step(workflow_api_paths)
+    accept_step = _resolve_accept_order_step(
+        ctx, base_url, api_paths, workflow_api_paths, timeout
+    )
     if accept_step is None:
         ctx.warnings.append(
-            "workflow_apis.json declares no acceptOrder-equivalent step; "
             "ACCEPTED/INVOICED seed data (Invoice/Payment happy-path and "
             "FK test cases) cannot be provisioned for this app."
         )
         return
+    ctx.accept_step = accept_step
 
-    accept_method = accept_step.get("method", "POST")
-    accept_url = base_url + str(accept_step["pathTemplate"]).replace("{id}", lifecycle_order_id)
-    try:
-        accept_resp = requests.request(accept_method, accept_url, timeout=timeout)
-    except requests.RequestException as exc:
-        _record_call(ctx, "accept_order", accept_method, accept_url, None, None, f"request failed: {exc}")
-        ctx.warnings.append(f"acceptOrder call failed: {exc}")
+    if not _perform_accept(ctx, base_url, accept_step, lifecycle_order_id, timeout, "lifecycle"):
         return
 
-    try:
-        accept_body = accept_resp.json()
-    except ValueError:
-        accept_body = accept_resp.text
-    _record_call(
-        ctx, "accept_order", accept_method, accept_url, None,
-        accept_resp.status_code, accept_body,
-    )
-
-    if accept_resp.status_code >= 400:
+    get_status, get_resp = lifecycle_group._get(lifecycle_order_id)
+    _record_group_call(ctx, "verify_order_accepted", lifecycle_group, None, get_status, get_resp)
+    if not (get_status == 200 and isinstance(get_resp, dict) and get_resp.get("status") == "ACCEPTED"):
+        observed = get_resp.get("status") if isinstance(get_resp, dict) else get_resp
         ctx.warnings.append(
-            f"acceptOrder returned {accept_resp.status_code}; order stays PLACED"
+            "lifecycle order did not reach ACCEPTED via "
+            f"{accept_step.get('method')} {accept_step.get('pathTemplate')} "
+            f"(observed status: {observed!r})"
         )
         return
 

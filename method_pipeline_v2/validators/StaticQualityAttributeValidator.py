@@ -32,6 +32,7 @@ from interfaces.base import (
     IStaticQualityValidator,
     Status,
     ValidationResult,
+    app_run_dir,
 )
 
 HERE = Path(__file__).parent
@@ -622,9 +623,8 @@ class StaticQualityAttributeValidator(IStaticQualityValidator):
         self._history_path.write_text(json.dumps(history, indent=2, ensure_ascii=False), encoding="utf-8")
 
     def _write_json_report(self, trace_path, repo_root, results, counts) -> str:
-        self._report_dir.mkdir(parents=True, exist_ok=True)
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        path = self._report_dir / f"static_qa_report_{timestamp}.json"
+        run_dir = app_run_dir(self._report_dir, "static_qa", repo_root)
+        path = run_dir / "static_qa_report.json"
         payload = {
             "generated_at": datetime.now().isoformat(timespec="seconds"),
             "trace_file": str(trace_path),
@@ -718,6 +718,7 @@ class StaticQualityAttributeValidator(IStaticQualityValidator):
             stage="static_qa",
             status=status,
             message=message,
-            details={"tally": tally, "report_path": report_path},
+            details={"tally": tally, "report_path": report_path,
+                     "run_dir": str(Path(report_path).parent)},
         )
 

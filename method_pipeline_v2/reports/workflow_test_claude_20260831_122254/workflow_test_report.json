@@ -1,0 +1,1111 @@
+{
+  "stage": "workflow",
+  "app": "claude",
+  "status": "PASS",
+  "message": "All 19 workflow checks passed.",
+  "total": 19,
+  "passed": 19,
+  "failed": 0,
+  "pass_rate": "100.0%",
+  "transitions_used": {
+    "accept": {
+      "method": "POST",
+      "pathTemplate": "/api/v1/orders/{id}/accept",
+      "source": "workflow_apis.json"
+    },
+    "ship": {
+      "method": "POST",
+      "pathTemplate": "/api/v1/orders/{id}/ship",
+      "source": "workflow_apis.json"
+    },
+    "close": {
+      "method": "POST",
+      "pathTemplate": "/api/v1/orders/{id}/close",
+      "source": "workflow_apis.json"
+    },
+    "verify": {
+      "method": "POST",
+      "pathTemplate": "/api/v1/payments/{id}/verify",
+      "source": "workflow_apis.json"
+    }
+  },
+  "warnings": [],
+  "summary": [
+    {
+      "category": "capability",
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "pass_rate": "100.0%"
+    },
+    {
+      "category": "happy_path",
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "pass_rate": "100.0%"
+    },
+    {
+      "category": "precondition",
+      "total": 5,
+      "passed": 5,
+      "failed": 0,
+      "pass_rate": "100.0%"
+    }
+  ],
+  "checks": [
+    {
+      "check_id": "WF_C_PLACE",
+      "category": "capability",
+      "description": "app publishes a route for lifecycle step 'place'",
+      "result": true,
+      "expected": "route published",
+      "actual": "/api/v1/orders",
+      "method": "",
+      "url": "",
+      "detail": null
+    },
+    {
+      "check_id": "WF_C_ACCEPT",
+      "category": "capability",
+      "description": "app publishes a route for lifecycle step 'accept'",
+      "result": true,
+      "expected": "route published",
+      "actual": "/api/v1/orders/{id}/accept",
+      "method": "",
+      "url": "",
+      "detail": {
+        "method": "POST",
+        "pathTemplate": "/api/v1/orders/{id}/accept",
+        "source": "workflow_apis.json"
+      }
+    },
+    {
+      "check_id": "WF_C_INVOICE",
+      "category": "capability",
+      "description": "app publishes a route for lifecycle step 'invoice'",
+      "result": true,
+      "expected": "route published",
+      "actual": "/api/v1/invoices",
+      "method": "",
+      "url": "",
+      "detail": null
+    },
+    {
+      "check_id": "WF_C_PAY",
+      "category": "capability",
+      "description": "app publishes a route for lifecycle step 'pay'",
+      "result": true,
+      "expected": "route published",
+      "actual": "/api/v1/payments",
+      "method": "",
+      "url": "",
+      "detail": null
+    },
+    {
+      "check_id": "WF_C_VERIFY",
+      "category": "capability",
+      "description": "app publishes a route for lifecycle step 'verify'",
+      "result": true,
+      "expected": "route published",
+      "actual": "/api/v1/payments/{id}/verify",
+      "method": "",
+      "url": "",
+      "detail": {
+        "method": "POST",
+        "pathTemplate": "/api/v1/payments/{id}/verify",
+        "source": "workflow_apis.json"
+      }
+    },
+    {
+      "check_id": "WF_C_SHIP",
+      "category": "capability",
+      "description": "app publishes a route for lifecycle step 'ship'",
+      "result": true,
+      "expected": "route published",
+      "actual": "/api/v1/orders/{id}/ship",
+      "method": "",
+      "url": "",
+      "detail": {
+        "method": "POST",
+        "pathTemplate": "/api/v1/orders/{id}/ship",
+        "source": "workflow_apis.json"
+      }
+    },
+    {
+      "check_id": "WF_C_CLOSE",
+      "category": "capability",
+      "description": "app publishes a route for lifecycle step 'close'",
+      "result": true,
+      "expected": "route published",
+      "actual": "/api/v1/orders/{id}/close",
+      "method": "",
+      "url": "",
+      "detail": {
+        "method": "POST",
+        "pathTemplate": "/api/v1/orders/{id}/close",
+        "source": "workflow_apis.json"
+      }
+    },
+    {
+      "check_id": "WF_H_01_PLACE",
+      "category": "happy_path",
+      "description": "Customer places order -> PLACED",
+      "result": true,
+      "expected": "PLACED",
+      "actual": "PLACED",
+      "method": "",
+      "url": "",
+      "detail": null
+    },
+    {
+      "check_id": "WF_H_02_ACCEPT",
+      "category": "happy_path",
+      "description": "Order Staff accepts order -> ACCEPTED",
+      "result": true,
+      "expected": "ACCEPTED",
+      "actual": "ACCEPTED",
+      "method": "",
+      "url": "",
+      "detail": null
+    },
+    {
+      "check_id": "WF_H_03_INVOICE",
+      "category": "happy_path",
+      "description": "Accountant creates invoice -> INVOICED",
+      "result": true,
+      "expected": "INVOICED",
+      "actual": "INVOICED",
+      "method": "",
+      "url": "",
+      "detail": null
+    },
+    {
+      "check_id": "WF_H_04_PAY",
+      "category": "happy_path",
+      "description": "Customer pays invoice -> PAID",
+      "result": true,
+      "expected": "PAID",
+      "actual": "PAID",
+      "method": "",
+      "url": "",
+      "detail": null
+    },
+    {
+      "check_id": "WF_H_05_VERIFY",
+      "category": "happy_path",
+      "description": "Accountant verifies payment -> VERIFIED",
+      "result": true,
+      "expected": "VERIFIED",
+      "actual": "VERIFIED",
+      "method": "",
+      "url": "",
+      "detail": null
+    },
+    {
+      "check_id": "WF_H_06_SHIP",
+      "category": "happy_path",
+      "description": "Order Staff ships order -> SHIPPED",
+      "result": true,
+      "expected": "SHIPPED",
+      "actual": "SHIPPED",
+      "method": "",
+      "url": "",
+      "detail": null
+    },
+    {
+      "check_id": "WF_H_07_CLOSE",
+      "category": "happy_path",
+      "description": "Order Staff closes order -> CLOSED",
+      "result": true,
+      "expected": "CLOSED",
+      "actual": "CLOSED",
+      "method": "",
+      "url": "",
+      "detail": null
+    },
+    {
+      "check_id": "WF_P_01_INVOICE_FROM_PLACED",
+      "category": "precondition",
+      "description": "create invoice for a PLACED order",
+      "result": true,
+      "expected": 409,
+      "actual": 409,
+      "method": "",
+      "url": "",
+      "detail": {
+        "code": "conflict",
+        "message": "order must be ACCEPTED before invoicing",
+        "detail": {
+          "orderStatus": "PLACED"
+        }
+      }
+    },
+    {
+      "check_id": "WF_P_02_PAY_FROM_ACCEPTED",
+      "category": "precondition",
+      "description": "pay an ACCEPTED (not INVOICED) order",
+      "result": true,
+      "expected": 409,
+      "actual": 409,
+      "method": "",
+      "url": "",
+      "detail": {
+        "code": "conflict",
+        "message": "order is not in a payable state",
+        "detail": {
+          "orderStatus": "ACCEPTED",
+          "required": "INVOICED"
+        }
+      }
+    },
+    {
+      "check_id": "WF_P_03_SHIP_FROM_INVOICED",
+      "category": "precondition",
+      "description": "ship an INVOICED (not VERIFIED) order",
+      "result": true,
+      "expected": 409,
+      "actual": 409,
+      "method": "",
+      "url": "",
+      "detail": {
+        "code": "conflict",
+        "message": "illegal order transition INVOICED -> SHIPPED",
+        "detail": {
+          "from": "INVOICED",
+          "to": "SHIPPED"
+        }
+      }
+    },
+    {
+      "check_id": "WF_P_04_CLOSE_FROM_ACCEPTED",
+      "category": "precondition",
+      "description": "close an ACCEPTED (not SHIPPED) order",
+      "result": true,
+      "expected": 409,
+      "actual": 409,
+      "method": "",
+      "url": "",
+      "detail": {
+        "code": "conflict",
+        "message": "illegal order transition ACCEPTED -> CLOSED",
+        "detail": {
+          "from": "ACCEPTED",
+          "to": "CLOSED"
+        }
+      }
+    },
+    {
+      "check_id": "WF_P_05_ACCEPT_TWICE",
+      "category": "precondition",
+      "description": "accept an already ACCEPTED order",
+      "result": true,
+      "expected": 409,
+      "actual": 409,
+      "method": "",
+      "url": "",
+      "detail": {
+        "code": "conflict",
+        "message": "order is already ACCEPTED",
+        "detail": {}
+      }
+    }
+  ],
+  "calls": [
+    {
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "status": 201,
+      "response_body": {
+        "id": "7eb116e5-177b-434b-8cda-a1100b565ba0",
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER",
+        "orderHistory": []
+      }
+    },
+    {
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "84ea87b7-0010-497f-b151-d5aa8f575ee7",
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders",
+      "request_body": {
+        "customerRef": "7eb116e5-177b-434b-8cda-a1100b565ba0",
+        "lineItems": [
+          {
+            "productRef": "84ea87b7-0010-497f-b151-d5aa8f575ee7",
+            "quantity": 1
+          }
+        ]
+      },
+      "status": 201,
+      "response_body": {
+        "id": "47278fae-7142-41b6-bef5-a9b6bf55b940",
+        "customerRef": "7eb116e5-177b-434b-8cda-a1100b565ba0",
+        "lineItems": [
+          {
+            "productRef": "84ea87b7-0010-497f-b151-d5aa8f575ee7",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "PLACED",
+        "createdAt": "2026-08-31T05:22:54.769548Z",
+        "updatedAt": "2026-08-31T05:22:54.770431Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/orders/47278fae-7142-41b6-bef5-a9b6bf55b940",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "47278fae-7142-41b6-bef5-a9b6bf55b940",
+        "customerRef": "7eb116e5-177b-434b-8cda-a1100b565ba0",
+        "lineItems": [
+          {
+            "productRef": "84ea87b7-0010-497f-b151-d5aa8f575ee7",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "PLACED",
+        "createdAt": "2026-08-31T05:22:54.769548Z",
+        "updatedAt": "2026-08-31T05:22:54.770431Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders/47278fae-7142-41b6-bef5-a9b6bf55b940/accept",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "47278fae-7142-41b6-bef5-a9b6bf55b940",
+        "customerRef": "7eb116e5-177b-434b-8cda-a1100b565ba0",
+        "lineItems": [
+          {
+            "productRef": "84ea87b7-0010-497f-b151-d5aa8f575ee7",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "ACCEPTED",
+        "createdAt": "2026-08-31T05:22:54.769548Z",
+        "updatedAt": "2026-08-31T05:22:54.816046Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/orders/47278fae-7142-41b6-bef5-a9b6bf55b940",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "47278fae-7142-41b6-bef5-a9b6bf55b940",
+        "customerRef": "7eb116e5-177b-434b-8cda-a1100b565ba0",
+        "lineItems": [
+          {
+            "productRef": "84ea87b7-0010-497f-b151-d5aa8f575ee7",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "ACCEPTED",
+        "createdAt": "2026-08-31T05:22:54.769548Z",
+        "updatedAt": "2026-08-31T05:22:54.816046Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/invoices",
+      "request_body": {
+        "orderRef": "47278fae-7142-41b6-bef5-a9b6bf55b940",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026"
+      },
+      "status": 201,
+      "response_body": {
+        "id": "6a5390d2-59f2-4a91-bddb-e1f8d7bc8ffb",
+        "orderRef": "47278fae-7142-41b6-bef5-a9b6bf55b940",
+        "billingInfo": {
+          "name": "Nguyen Van A",
+          "address": "123 Nguyen Trai, Thanh Xuan, Hanoi"
+        },
+        "totalAmount": "10.00",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026",
+        "status": "ISSUED"
+      }
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/orders/47278fae-7142-41b6-bef5-a9b6bf55b940",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "47278fae-7142-41b6-bef5-a9b6bf55b940",
+        "customerRef": "7eb116e5-177b-434b-8cda-a1100b565ba0",
+        "lineItems": [
+          {
+            "productRef": "84ea87b7-0010-497f-b151-d5aa8f575ee7",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "INVOICED",
+        "createdAt": "2026-08-31T05:22:54.769548Z",
+        "updatedAt": "2026-08-31T05:22:54.882521Z",
+        "invoiceRef": "6a5390d2-59f2-4a91-bddb-e1f8d7bc8ffb"
+      }
+    },
+    {
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/payments",
+      "request_body": {
+        "orderRef": "47278fae-7142-41b6-bef5-a9b6bf55b940",
+        "amount": "10.00",
+        "method": "CREDIT_CARD"
+      },
+      "status": 201,
+      "response_body": {
+        "id": "dfc77467-f0e4-4516-8907-bcbd9d55a434",
+        "orderRef": "47278fae-7142-41b6-bef5-a9b6bf55b940",
+        "amount": "10.00",
+        "timestamp": "2026-08-31T05:22:54.907971Z",
+        "status": "PENDING",
+        "method": "CREDIT_CARD"
+      }
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/orders/47278fae-7142-41b6-bef5-a9b6bf55b940",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "47278fae-7142-41b6-bef5-a9b6bf55b940",
+        "customerRef": "7eb116e5-177b-434b-8cda-a1100b565ba0",
+        "lineItems": [
+          {
+            "productRef": "84ea87b7-0010-497f-b151-d5aa8f575ee7",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "PAID",
+        "createdAt": "2026-08-31T05:22:54.769548Z",
+        "updatedAt": "2026-08-31T05:22:54.908647Z",
+        "invoiceRef": "6a5390d2-59f2-4a91-bddb-e1f8d7bc8ffb"
+      }
+    },
+    {
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/payments/dfc77467-f0e4-4516-8907-bcbd9d55a434/verify",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "dfc77467-f0e4-4516-8907-bcbd9d55a434",
+        "orderRef": "47278fae-7142-41b6-bef5-a9b6bf55b940",
+        "amount": "10.00",
+        "timestamp": "2026-08-31T05:22:54.907971Z",
+        "status": "VERIFIED",
+        "method": "CREDIT_CARD"
+      }
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/orders/47278fae-7142-41b6-bef5-a9b6bf55b940",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "47278fae-7142-41b6-bef5-a9b6bf55b940",
+        "customerRef": "7eb116e5-177b-434b-8cda-a1100b565ba0",
+        "lineItems": [
+          {
+            "productRef": "84ea87b7-0010-497f-b151-d5aa8f575ee7",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "VERIFIED",
+        "createdAt": "2026-08-31T05:22:54.769548Z",
+        "updatedAt": "2026-08-31T05:22:54.956470Z",
+        "invoiceRef": "6a5390d2-59f2-4a91-bddb-e1f8d7bc8ffb"
+      }
+    },
+    {
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders/47278fae-7142-41b6-bef5-a9b6bf55b940/ship",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "47278fae-7142-41b6-bef5-a9b6bf55b940",
+        "customerRef": "7eb116e5-177b-434b-8cda-a1100b565ba0",
+        "lineItems": [
+          {
+            "productRef": "84ea87b7-0010-497f-b151-d5aa8f575ee7",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "SHIPPED",
+        "createdAt": "2026-08-31T05:22:54.769548Z",
+        "updatedAt": "2026-08-31T05:22:55.017118Z",
+        "invoiceRef": "6a5390d2-59f2-4a91-bddb-e1f8d7bc8ffb"
+      }
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/orders/47278fae-7142-41b6-bef5-a9b6bf55b940",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "47278fae-7142-41b6-bef5-a9b6bf55b940",
+        "customerRef": "7eb116e5-177b-434b-8cda-a1100b565ba0",
+        "lineItems": [
+          {
+            "productRef": "84ea87b7-0010-497f-b151-d5aa8f575ee7",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "SHIPPED",
+        "createdAt": "2026-08-31T05:22:54.769548Z",
+        "updatedAt": "2026-08-31T05:22:55.017118Z",
+        "invoiceRef": "6a5390d2-59f2-4a91-bddb-e1f8d7bc8ffb"
+      }
+    },
+    {
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders/47278fae-7142-41b6-bef5-a9b6bf55b940/close",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "47278fae-7142-41b6-bef5-a9b6bf55b940",
+        "customerRef": "7eb116e5-177b-434b-8cda-a1100b565ba0",
+        "lineItems": [
+          {
+            "productRef": "84ea87b7-0010-497f-b151-d5aa8f575ee7",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "CLOSED",
+        "createdAt": "2026-08-31T05:22:54.769548Z",
+        "updatedAt": "2026-08-31T05:22:55.063390Z",
+        "invoiceRef": "6a5390d2-59f2-4a91-bddb-e1f8d7bc8ffb"
+      }
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/orders/47278fae-7142-41b6-bef5-a9b6bf55b940",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "47278fae-7142-41b6-bef5-a9b6bf55b940",
+        "customerRef": "7eb116e5-177b-434b-8cda-a1100b565ba0",
+        "lineItems": [
+          {
+            "productRef": "84ea87b7-0010-497f-b151-d5aa8f575ee7",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "CLOSED",
+        "createdAt": "2026-08-31T05:22:54.769548Z",
+        "updatedAt": "2026-08-31T05:22:55.063390Z",
+        "invoiceRef": "6a5390d2-59f2-4a91-bddb-e1f8d7bc8ffb"
+      }
+    },
+    {
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders",
+      "request_body": {
+        "customerRef": "7eb116e5-177b-434b-8cda-a1100b565ba0",
+        "lineItems": [
+          {
+            "productRef": "84ea87b7-0010-497f-b151-d5aa8f575ee7",
+            "quantity": 1
+          }
+        ]
+      },
+      "status": 201,
+      "response_body": {
+        "id": "45242822-2ff9-48dc-8845-6b7f9cfe7b13",
+        "customerRef": "7eb116e5-177b-434b-8cda-a1100b565ba0",
+        "lineItems": [
+          {
+            "productRef": "84ea87b7-0010-497f-b151-d5aa8f575ee7",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "PLACED",
+        "createdAt": "2026-08-31T05:22:55.128442Z",
+        "updatedAt": "2026-08-31T05:22:55.129644Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/invoices",
+      "request_body": {
+        "orderRef": "45242822-2ff9-48dc-8845-6b7f9cfe7b13",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026"
+      },
+      "status": 409,
+      "response_body": {
+        "code": "conflict",
+        "message": "order must be ACCEPTED before invoicing",
+        "detail": {
+          "orderStatus": "PLACED"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders",
+      "request_body": {
+        "customerRef": "7eb116e5-177b-434b-8cda-a1100b565ba0",
+        "lineItems": [
+          {
+            "productRef": "84ea87b7-0010-497f-b151-d5aa8f575ee7",
+            "quantity": 1
+          }
+        ]
+      },
+      "status": 201,
+      "response_body": {
+        "id": "b45ba9b0-c999-4357-b1ce-cacbfca32504",
+        "customerRef": "7eb116e5-177b-434b-8cda-a1100b565ba0",
+        "lineItems": [
+          {
+            "productRef": "84ea87b7-0010-497f-b151-d5aa8f575ee7",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "PLACED",
+        "createdAt": "2026-08-31T05:22:55.190324Z",
+        "updatedAt": "2026-08-31T05:22:55.191331Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders/b45ba9b0-c999-4357-b1ce-cacbfca32504/accept",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "b45ba9b0-c999-4357-b1ce-cacbfca32504",
+        "customerRef": "7eb116e5-177b-434b-8cda-a1100b565ba0",
+        "lineItems": [
+          {
+            "productRef": "84ea87b7-0010-497f-b151-d5aa8f575ee7",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "ACCEPTED",
+        "createdAt": "2026-08-31T05:22:55.190324Z",
+        "updatedAt": "2026-08-31T05:22:55.203654Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/orders/b45ba9b0-c999-4357-b1ce-cacbfca32504",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "b45ba9b0-c999-4357-b1ce-cacbfca32504",
+        "customerRef": "7eb116e5-177b-434b-8cda-a1100b565ba0",
+        "lineItems": [
+          {
+            "productRef": "84ea87b7-0010-497f-b151-d5aa8f575ee7",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "ACCEPTED",
+        "createdAt": "2026-08-31T05:22:55.190324Z",
+        "updatedAt": "2026-08-31T05:22:55.203654Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/payments",
+      "request_body": {
+        "orderRef": "b45ba9b0-c999-4357-b1ce-cacbfca32504",
+        "amount": "100.00",
+        "method": "CREDIT_CARD"
+      },
+      "status": 409,
+      "response_body": {
+        "code": "conflict",
+        "message": "order is not in a payable state",
+        "detail": {
+          "orderStatus": "ACCEPTED",
+          "required": "INVOICED"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders",
+      "request_body": {
+        "customerRef": "7eb116e5-177b-434b-8cda-a1100b565ba0",
+        "lineItems": [
+          {
+            "productRef": "84ea87b7-0010-497f-b151-d5aa8f575ee7",
+            "quantity": 1
+          }
+        ]
+      },
+      "status": 201,
+      "response_body": {
+        "id": "9b64f3b4-0e06-41ab-9c6f-bc839250137d",
+        "customerRef": "7eb116e5-177b-434b-8cda-a1100b565ba0",
+        "lineItems": [
+          {
+            "productRef": "84ea87b7-0010-497f-b151-d5aa8f575ee7",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "PLACED",
+        "createdAt": "2026-08-31T05:22:55.301826Z",
+        "updatedAt": "2026-08-31T05:22:55.303342Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders/9b64f3b4-0e06-41ab-9c6f-bc839250137d/accept",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "9b64f3b4-0e06-41ab-9c6f-bc839250137d",
+        "customerRef": "7eb116e5-177b-434b-8cda-a1100b565ba0",
+        "lineItems": [
+          {
+            "productRef": "84ea87b7-0010-497f-b151-d5aa8f575ee7",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "ACCEPTED",
+        "createdAt": "2026-08-31T05:22:55.301826Z",
+        "updatedAt": "2026-08-31T05:22:55.323192Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/orders/9b64f3b4-0e06-41ab-9c6f-bc839250137d",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "9b64f3b4-0e06-41ab-9c6f-bc839250137d",
+        "customerRef": "7eb116e5-177b-434b-8cda-a1100b565ba0",
+        "lineItems": [
+          {
+            "productRef": "84ea87b7-0010-497f-b151-d5aa8f575ee7",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "ACCEPTED",
+        "createdAt": "2026-08-31T05:22:55.301826Z",
+        "updatedAt": "2026-08-31T05:22:55.323192Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/invoices",
+      "request_body": {
+        "orderRef": "9b64f3b4-0e06-41ab-9c6f-bc839250137d",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026"
+      },
+      "status": 201,
+      "response_body": {
+        "id": "289f6f4f-a71a-440e-bc5d-3e8a659f4860",
+        "orderRef": "9b64f3b4-0e06-41ab-9c6f-bc839250137d",
+        "billingInfo": {
+          "name": "Nguyen Van A",
+          "address": "123 Nguyen Trai, Thanh Xuan, Hanoi"
+        },
+        "totalAmount": "10.00",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026",
+        "status": "ISSUED"
+      }
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/orders/9b64f3b4-0e06-41ab-9c6f-bc839250137d",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "9b64f3b4-0e06-41ab-9c6f-bc839250137d",
+        "customerRef": "7eb116e5-177b-434b-8cda-a1100b565ba0",
+        "lineItems": [
+          {
+            "productRef": "84ea87b7-0010-497f-b151-d5aa8f575ee7",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "INVOICED",
+        "createdAt": "2026-08-31T05:22:55.301826Z",
+        "updatedAt": "2026-08-31T05:22:55.363227Z",
+        "invoiceRef": "289f6f4f-a71a-440e-bc5d-3e8a659f4860"
+      }
+    },
+    {
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders/9b64f3b4-0e06-41ab-9c6f-bc839250137d/ship",
+      "request_body": null,
+      "status": 409,
+      "response_body": {
+        "code": "conflict",
+        "message": "illegal order transition INVOICED -> SHIPPED",
+        "detail": {
+          "from": "INVOICED",
+          "to": "SHIPPED"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders",
+      "request_body": {
+        "customerRef": "7eb116e5-177b-434b-8cda-a1100b565ba0",
+        "lineItems": [
+          {
+            "productRef": "84ea87b7-0010-497f-b151-d5aa8f575ee7",
+            "quantity": 1
+          }
+        ]
+      },
+      "status": 201,
+      "response_body": {
+        "id": "adf14b16-3ed5-48e9-88c8-defc359f8c8e",
+        "customerRef": "7eb116e5-177b-434b-8cda-a1100b565ba0",
+        "lineItems": [
+          {
+            "productRef": "84ea87b7-0010-497f-b151-d5aa8f575ee7",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "PLACED",
+        "createdAt": "2026-08-31T05:22:55.411841Z",
+        "updatedAt": "2026-08-31T05:22:55.412977Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders/adf14b16-3ed5-48e9-88c8-defc359f8c8e/accept",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "adf14b16-3ed5-48e9-88c8-defc359f8c8e",
+        "customerRef": "7eb116e5-177b-434b-8cda-a1100b565ba0",
+        "lineItems": [
+          {
+            "productRef": "84ea87b7-0010-497f-b151-d5aa8f575ee7",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "ACCEPTED",
+        "createdAt": "2026-08-31T05:22:55.411841Z",
+        "updatedAt": "2026-08-31T05:22:55.437704Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/orders/adf14b16-3ed5-48e9-88c8-defc359f8c8e",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "adf14b16-3ed5-48e9-88c8-defc359f8c8e",
+        "customerRef": "7eb116e5-177b-434b-8cda-a1100b565ba0",
+        "lineItems": [
+          {
+            "productRef": "84ea87b7-0010-497f-b151-d5aa8f575ee7",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "ACCEPTED",
+        "createdAt": "2026-08-31T05:22:55.411841Z",
+        "updatedAt": "2026-08-31T05:22:55.437704Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders/adf14b16-3ed5-48e9-88c8-defc359f8c8e/close",
+      "request_body": null,
+      "status": 409,
+      "response_body": {
+        "code": "conflict",
+        "message": "illegal order transition ACCEPTED -> CLOSED",
+        "detail": {
+          "from": "ACCEPTED",
+          "to": "CLOSED"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders",
+      "request_body": {
+        "customerRef": "7eb116e5-177b-434b-8cda-a1100b565ba0",
+        "lineItems": [
+          {
+            "productRef": "84ea87b7-0010-497f-b151-d5aa8f575ee7",
+            "quantity": 1
+          }
+        ]
+      },
+      "status": 201,
+      "response_body": {
+        "id": "90214e3e-ffb9-4dc9-9409-525c7fe0a14e",
+        "customerRef": "7eb116e5-177b-434b-8cda-a1100b565ba0",
+        "lineItems": [
+          {
+            "productRef": "84ea87b7-0010-497f-b151-d5aa8f575ee7",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "PLACED",
+        "createdAt": "2026-08-31T05:22:55.517984Z",
+        "updatedAt": "2026-08-31T05:22:55.519166Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders/90214e3e-ffb9-4dc9-9409-525c7fe0a14e/accept",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "90214e3e-ffb9-4dc9-9409-525c7fe0a14e",
+        "customerRef": "7eb116e5-177b-434b-8cda-a1100b565ba0",
+        "lineItems": [
+          {
+            "productRef": "84ea87b7-0010-497f-b151-d5aa8f575ee7",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "ACCEPTED",
+        "createdAt": "2026-08-31T05:22:55.517984Z",
+        "updatedAt": "2026-08-31T05:22:55.545305Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/orders/90214e3e-ffb9-4dc9-9409-525c7fe0a14e",
+      "request_body": null,
+      "status": 200,
+      "response_body": {
+        "id": "90214e3e-ffb9-4dc9-9409-525c7fe0a14e",
+        "customerRef": "7eb116e5-177b-434b-8cda-a1100b565ba0",
+        "lineItems": [
+          {
+            "productRef": "84ea87b7-0010-497f-b151-d5aa8f575ee7",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "ACCEPTED",
+        "createdAt": "2026-08-31T05:22:55.517984Z",
+        "updatedAt": "2026-08-31T05:22:55.545305Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders/90214e3e-ffb9-4dc9-9409-525c7fe0a14e/accept",
+      "request_body": null,
+      "status": 409,
+      "response_body": {
+        "code": "conflict",
+        "message": "order is already ACCEPTED",
+        "detail": {}
+      }
+    }
+  ]
+}

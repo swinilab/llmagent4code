@@ -1,5 +1,6 @@
 from __future__ import annotations
 import os
+import re
 from pathlib import Path
 from datetime import datetime
 import json
@@ -8,7 +9,9 @@ from interfaces.base import (
     Status,
     TestResult,
     ValidationResult,
-    GenerationResult
+    GenerationResult,
+    app_run_dir,
+    app_label as base_app_label,
 )
 from validators.tests.test_groups.CustomerTestGroup import CustomerTestGroup
 from validators.tests.test_groups.InvoiceTestGroup import InvoiceTestGroup
@@ -79,14 +82,16 @@ class FunctionalValidator(IFunctionalValidator):
         results: list[TestResult],
         summary: list[dict],
         seed_warnings: list[str],
+        run_dir: str,
+        app_label: str,
     ) -> str:
-        os.makedirs(self._report_dir, exist_ok=True)
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        path = os.path.join(self._report_dir, f"functional_test_report_{timestamp}.json")
+        os.makedirs(run_dir, exist_ok=True)
+        path = os.path.join(run_dir, "functional_test_report.json")
 
         passed_count = len([r for r in results if r.result])
         payload = {
             "stage": "functional",
+            "app": app_label,
             "status": status.name,
             "message": message,
             "total": len(results),
@@ -116,10 +121,10 @@ class FunctionalValidator(IFunctionalValidator):
         return path
 
     def validate(self, generation_result: GenerationResult) -> ValidationResult:
-        workdir = Path(os.path.join(
-            self._generated_dir,
-            generation_result.code
-        ))
+        # GenerationResult.code already carries the generated/ prefix - that is
+        # the convention stages 3 and 5 follow. Prepending generated_dir here
+        # as well used to make this stage the only one resolving it differently.
+        workdir = Path(generation_result.code)
         with open(os.path.join(workdir, 'create_apis.json'), 'r', encoding='utf-8') as file:
             create_api_paths = json.load(file)
 
@@ -148,11 +153,12 @@ class FunctionalValidator(IFunctionalValidator):
             for _, entity_key, default_path in TEST_GROUPS.values()
         }
 
-        os.makedirs(self._report_dir, exist_ok=True)
-        seed_log_path = os.path.join(
-            self._report_dir,
-            f"seed_context_log_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json",
-        )
+        # One folder per run, named after the app, so reports from different
+        # apps stay distinguishable instead of being a flat pile of timestamps.
+        app_label = base_app_label(generation_result.code)
+        run_dir = str(app_run_dir(self._report_dir, "functional_test",
+                                  generation_result.code))
+        seed_log_path = os.path.join(run_dir, "seed_context_log.json")
         try:
             seed = build_seed_context(
                 self._base_url, api_paths, workflow_api_paths, self._timeout,
@@ -220,13 +226,17 @@ class FunctionalValidator(IFunctionalValidator):
             else f"All {len(results)} HTTP functional tests passed ({pass_rate})."
         )
 
-        report_path = self._write_json_report(status, message, results, summary, seed.warnings)
+        report_path = self._write_json_report(
+            status, message, results, summary, seed.warnings, run_dir, app_label
+        )
 
         return ValidationResult(
             stage="functional",
             status=status,
             message=message,
             details={
+                "app": app_label,
+                "run_dir": run_dir,
                 "total": len(results),
                 "passed": passed_count,
                 "failed": failed_count,

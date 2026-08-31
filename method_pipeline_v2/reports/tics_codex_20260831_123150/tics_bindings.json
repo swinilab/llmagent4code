@@ -1,0 +1,205 @@
+{
+  "schemaVersion": "1.0",
+  "repoRoot": "F:\\swelab\\llmagent4code\\method_pipeline_v2\\generated\\codex",
+  "bindings": [
+    {
+      "nfr_id": "NFR 1.1",
+      "function_ref": "app/workers/outbox.py::OutboxDispatcher.__init__",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "aiolimiter"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 1.1",
+      "function_ref": "app/workers/outbox.py::OutboxDispatcher.dispatch_pending_events",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 1.2",
+      "function_ref": "app/infrastructure/cache.py::EntityCache.get_json",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "redis"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 1.2",
+      "function_ref": "app/infrastructure/cache.py::EntityCache.set_json",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "redis"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 2.1",
+      "function_ref": "app/core/resilience.py::run_with_timeout",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "asyncio"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 2.1",
+      "function_ref": "app/core/errors.py::install_exception_handlers",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "fastapi",
+          "sqlalchemy"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 2.1",
+      "function_ref": "app/services/health_service.py::HealthService.check",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "sqlalchemy"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 2.2",
+      "function_ref": "app/infrastructure/cache.py::EntityCache.get_json",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "redis"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 2.2",
+      "function_ref": "app/infrastructure/cache.py::EntityCache.set_json",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "redis"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 2.2",
+      "function_ref": "app/workers/outbox.py::OutboxDispatcher.dispatch_pending_events",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "redis"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 2.3",
+      "function_ref": "app/workers/state_sync.py::StateSynchronizer.resynchronize_once",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "sqlalchemy"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 2.3",
+      "function_ref": "app/workers/state_sync.py::StateSynchronizer.run_forever",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 2.3",
+      "function_ref": "app/infrastructure/cache.py::EntityCache.get_envelope",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "redis"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 2.3",
+      "function_ref": "app/infrastructure/cache.py::EntityCache.set_json",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "redis"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 2.4",
+      "function_ref": "app/infrastructure/unit_of_work.py::SqlAlchemyUnitOfWork.transaction",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "sqlalchemy"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 2.4",
+      "function_ref": "app/repositories/outbox_repository.py::OutboxRepository.add",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 2.4",
+      "function_ref": "app/repositories/outbox_repository.py::OutboxRepository.claim_batch",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "sqlalchemy"
+        ],
+        "usesAny": true
+      }
+    }
+  ]
+}

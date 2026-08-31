@@ -61,6 +61,34 @@ class PaymentTestGroup(ITestGroup):
             "TC_PAY_METHOD_04", "TC_PAY_METHOD_05",
         ]
 
+    def _body(self) -> dict[str, Any]:
+        """Standard body, but pointed at a *fresh* untouched INVOICED order.
+
+        Paying is a one-time INVOICED -> PAID transition, so every case here
+        needs its own order - negative cases included. Sharing one order is
+        only safe while the app rejects every negative case correctly: the
+        moment an app wrongly *accepts* one, the shared order becomes PAID and
+        every later case sees a 409 that has nothing to do with the field it
+        was testing. That failure mode fires only on buggy apps, so it would
+        bias exactly the measurements that matter most.
+
+        `_last_order_id` / `_last_total` expose what was popped, so the cases
+        that compute an amount relative to the invoice total use *this*
+        order's total rather than a shared one.
+        """
+        order = self._next_invoiced_order()
+        if order is None:
+            self._last_order_id = None
+            self._last_total = self.seed_invoice_total_amount
+            return super()._body()
+        order_id, total = order
+        self._last_order_id = order_id
+        self._last_total = total
+        body = super()._body()
+        body["orderRef"] = order_id
+        body["amount"] = str(total)
+        return body
+
     def _next_invoiced_order(self) -> tuple[str, Decimal] | None:
         """Pop the next dedicated, untouched INVOICED order for a happy-path
         payment test, or None if the bulk queue is exhausted/unavailable.
@@ -139,13 +167,10 @@ class PaymentTestGroup(ITestGroup):
     # ------------------------------------------------------------------ #
     def tc_pay_orderref_01(self) -> TestResult:
         """EC-Valid-1: orderRef exists and order status is INVOICED -> 201."""
-        order = self._next_invoiced_order()
-        if order is None:
-            return self._seed_unavailable("TC_PAY_ORDERREF_01", 201)
-        order_id, total = order
         body = self._body()
-        body["orderRef"] = order_id
-        body["amount"] = str(total)
+        if self._last_order_id is None:
+            return self._seed_unavailable("TC_PAY_ORDERREF_01", 201)
+        order_id, total = self._last_order_id, self._last_total
         status, resp = self._post(body)
         return self._check("TC_PAY_ORDERREF_01", 201, body, status, resp)
 
@@ -176,27 +201,24 @@ class PaymentTestGroup(ITestGroup):
     # ------------------------------------------------------------------ #
     def tc_pay_amount_01(self) -> TestResult:
         """EC-Valid-1: amount exactly equals invoice.totalAmount -> 201."""
-        order = self._next_invoiced_order()
-        if order is None:
-            return self._seed_unavailable("TC_PAY_AMOUNT_01", 201)
-        order_id, total = order
         body = self._body()
-        body["orderRef"] = order_id
-        body["amount"] = str(total)
+        if self._last_order_id is None:
+            return self._seed_unavailable("TC_PAY_AMOUNT_01", 201)
+        order_id, total = self._last_order_id, self._last_total
         status, resp = self._post(body)
         return self._check("TC_PAY_AMOUNT_01", 201, body, status, resp)
 
     def tc_pay_amount_02(self) -> TestResult:
         """EC-Invalid-1 (Underpayment): amount less than invoice.totalAmount -> 409."""
         body = self._body()
-        body["amount"] = str(self.seed_invoice_total_amount - Decimal("0.01"))
+        body["amount"] = str(self._last_total - Decimal("0.01"))
         status, resp = self._post(body)
         return self._check("TC_PAY_AMOUNT_02", 409, body, status, resp)
 
     def tc_pay_amount_03(self) -> TestResult:
         """EC-Invalid-2 (Overpayment): amount greater than invoice.totalAmount -> 409."""
         body = self._body()
-        body["amount"] = str(self.seed_invoice_total_amount + Decimal("0.01"))
+        body["amount"] = str(self._last_total + Decimal("0.01"))
         status, resp = self._post(body)
         return self._check("TC_PAY_AMOUNT_03", 409, body, status, resp)
 
@@ -226,13 +248,10 @@ class PaymentTestGroup(ITestGroup):
     # ------------------------------------------------------------------ #
     def tc_pay_status_01(self) -> TestResult:
         """EC-Valid-1: default status on creation is PENDING -> 201."""
-        order = self._next_invoiced_order()
-        if order is None:
-            return self._seed_unavailable("TC_PAY_STATUS_01", 201)
-        order_id, total = order
         body = self._body()
-        body["orderRef"] = order_id
-        body["amount"] = str(total)
+        if self._last_order_id is None:
+            return self._seed_unavailable("TC_PAY_STATUS_01", 201)
+        order_id, total = self._last_order_id, self._last_total
         status, resp = self._post(body)
         result = self._check("TC_PAY_STATUS_01", 201, body, status, resp)
         if result.result and isinstance(resp, dict) and resp.get("status") != "PENDING":
@@ -259,39 +278,30 @@ class PaymentTestGroup(ITestGroup):
     # ------------------------------------------------------------------ #
     def tc_pay_method_01(self) -> TestResult:
         """EC-Valid-1: valid method - CREDIT_CARD -> 201."""
-        order = self._next_invoiced_order()
-        if order is None:
-            return self._seed_unavailable("TC_PAY_METHOD_01", 201)
-        order_id, total = order
         body = self._body()
-        body["orderRef"] = order_id
-        body["amount"] = str(total)
+        if self._last_order_id is None:
+            return self._seed_unavailable("TC_PAY_METHOD_01", 201)
+        order_id, total = self._last_order_id, self._last_total
         body["method"] = "CREDIT_CARD"
         status, resp = self._post(body)
         return self._check("TC_PAY_METHOD_01", 201, body, status, resp)
 
     def tc_pay_method_02(self) -> TestResult:
         """EC-Valid-2: valid method - BANK_TRANSFER -> 201."""
-        order = self._next_invoiced_order()
-        if order is None:
-            return self._seed_unavailable("TC_PAY_METHOD_02", 201)
-        order_id, total = order
         body = self._body()
-        body["orderRef"] = order_id
-        body["amount"] = str(total)
+        if self._last_order_id is None:
+            return self._seed_unavailable("TC_PAY_METHOD_02", 201)
+        order_id, total = self._last_order_id, self._last_total
         body["method"] = "BANK_TRANSFER"
         status, resp = self._post(body)
         return self._check("TC_PAY_METHOD_02", 201, body, status, resp)
 
     def tc_pay_method_03(self) -> TestResult:
         """EC-Valid-3: valid method - E_WALLET -> 201."""
-        order = self._next_invoiced_order()
-        if order is None:
-            return self._seed_unavailable("TC_PAY_METHOD_03", 201)
-        order_id, total = order
         body = self._body()
-        body["orderRef"] = order_id
-        body["amount"] = str(total)
+        if self._last_order_id is None:
+            return self._seed_unavailable("TC_PAY_METHOD_03", 201)
+        order_id, total = self._last_order_id, self._last_total
         body["method"] = "E_WALLET"
         status, resp = self._post(body)
         return self._check("TC_PAY_METHOD_03", 201, body, status, resp)

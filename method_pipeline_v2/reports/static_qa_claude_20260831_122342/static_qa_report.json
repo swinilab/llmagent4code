@@ -1,0 +1,765 @@
+{
+  "generated_at": "2026-08-31T12:23:42",
+  "trace_file": "generated\\claude\\nfr-trace.json",
+  "repo_root": "generated\\claude",
+  "scoring_summary": {
+    "overall_score": 1.0,
+    "score3": {
+      "performance": 1.0,
+      "availability": 1.0
+    },
+    "score2": {
+      "Limit Event Response": 1.0,
+      "Maintain Multiple Copies of Data": 1.0,
+      "Exception Detection": 1.0,
+      "Degradation": 1.0,
+      "State Resynchronization": 1.0,
+      "Transactions": 1.0
+    },
+    "score1": {
+      "Limit Event Response": {
+        "app/infra/rate_limiter.py::TokenBucketRateLimiter.allow": 1.0,
+        "app/core/middleware.py::RateLimitMiddleware.dispatch": 1.0
+      },
+      "Maintain Multiple Copies of Data": {
+        "app/infra/cache.py::EntityCache.get": 1.0,
+        "app/infra/cache.py::EntityCache.set": 1.0,
+        "app/infra/cache.py::EntityCache.invalidate": 1.0,
+        "app/infra/database.py::_build_engine": 1.0,
+        "app/infra/database.py::read_session": 1.0,
+        "app/services/services.py::BaseService._cached_read": 1.0
+      },
+      "Exception Detection": {
+        "app/core/middleware.py::ExceptionDetectionMiddleware.dispatch": 1.0,
+        "app/infra/degradation.py::CircuitBreaker.call": 1.0,
+        "app/infra/cache.py::EntityCache.get": 1.0
+      },
+      "Degradation": {
+        "app/infra/degradation.py::FeatureRegistry.shed": 1.0,
+        "app/infra/degradation.py::FeatureRegistry.is_available": 1.0,
+        "app/infra/database.py::_open_replica_session": 1.0,
+        "app/services/services.py::BaseService._cached_read": 1.0
+      },
+      "State Resynchronization": {
+        "app/infra/resync.py::StateResynchronizer.compare_active_and_standby": 1.0,
+        "app/infra/resync.py::StateResynchronizer.run_once": 1.0,
+        "app/infra/resync.py::StateResynchronizer._replication_lag": 1.0,
+        "app/api/v1/ops.py::force_resync": 1.0
+      },
+      "Transactions": {
+        "app/infra/database.py::unit_of_work": 1.0,
+        "app/services/services.py::InvoiceService.create": 1.0,
+        "app/services/services.py::PaymentService.create": 1.0,
+        "app/services/services.py::PaymentService.verify": 1.0,
+        "app/services/services.py::OrderService.transition": 1.0,
+        "app/repositories/repositories.py::SQLAlchemyRepository.get_for_update": 1.0
+      }
+    }
+  },
+  "tally": {
+    "overall_score": 1.0,
+    "score3": {
+      "performance": 1.0,
+      "availability": 1.0
+    },
+    "score2": {
+      "Limit Event Response": 1.0,
+      "Maintain Multiple Copies of Data": 1.0,
+      "Exception Detection": 1.0,
+      "Degradation": 1.0,
+      "State Resynchronization": 1.0,
+      "Transactions": 1.0
+    },
+    "score1": {
+      "Limit Event Response": {
+        "app/infra/rate_limiter.py::TokenBucketRateLimiter.allow": 1.0,
+        "app/core/middleware.py::RateLimitMiddleware.dispatch": 1.0
+      },
+      "Maintain Multiple Copies of Data": {
+        "app/infra/cache.py::EntityCache.get": 1.0,
+        "app/infra/cache.py::EntityCache.set": 1.0,
+        "app/infra/cache.py::EntityCache.invalidate": 1.0,
+        "app/infra/database.py::_build_engine": 1.0,
+        "app/infra/database.py::read_session": 1.0,
+        "app/services/services.py::BaseService._cached_read": 1.0
+      },
+      "Exception Detection": {
+        "app/core/middleware.py::ExceptionDetectionMiddleware.dispatch": 1.0,
+        "app/infra/degradation.py::CircuitBreaker.call": 1.0,
+        "app/infra/cache.py::EntityCache.get": 1.0
+      },
+      "Degradation": {
+        "app/infra/degradation.py::FeatureRegistry.shed": 1.0,
+        "app/infra/degradation.py::FeatureRegistry.is_available": 1.0,
+        "app/infra/database.py::_open_replica_session": 1.0,
+        "app/services/services.py::BaseService._cached_read": 1.0
+      },
+      "State Resynchronization": {
+        "app/infra/resync.py::StateResynchronizer.compare_active_and_standby": 1.0,
+        "app/infra/resync.py::StateResynchronizer.run_once": 1.0,
+        "app/infra/resync.py::StateResynchronizer._replication_lag": 1.0,
+        "app/api/v1/ops.py::force_resync": 1.0
+      },
+      "Transactions": {
+        "app/infra/database.py::unit_of_work": 1.0,
+        "app/services/services.py::InvoiceService.create": 1.0,
+        "app/services/services.py::PaymentService.create": 1.0,
+        "app/services/services.py::PaymentService.verify": 1.0,
+        "app/services/services.py::OrderService.transition": 1.0,
+        "app/repositories/repositories.py::SQLAlchemyRepository.get_for_update": 1.0
+      }
+    },
+    "qa_groups": {
+      "performance": {
+        "score3": 1.0,
+        "tactics": [
+          "Limit Event Response",
+          "Maintain Multiple Copies of Data"
+        ],
+        "nfrs": [
+          {
+            "nfr": "NFR 1.1: Limit Event Response",
+            "tactics": [
+              "Limit Event Response"
+            ],
+            "score2": 1.0,
+            "status": "ABSENT",
+            "functions": [
+              {
+                "ref": "app/infra/rate_limiter.py::TokenBucketRateLimiter.allow",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "app/core/middleware.py::RateLimitMiddleware.dispatch",
+                "status": "PRESENT",
+                "score1": 1.0
+              }
+            ],
+            "libraries": [
+              {
+                "lib": "redis",
+                "status": "PRESENT"
+              },
+              {
+                "lib": "starlette",
+                "status": "PRESENT"
+              }
+            ]
+          },
+          {
+            "nfr": "NFR 1.2: Maintain Multiple Copies of Data",
+            "tactics": [
+              "Maintain Multiple Copies of Data"
+            ],
+            "score2": 1.0,
+            "status": "PRESENT",
+            "functions": [
+              {
+                "ref": "app/infra/cache.py::EntityCache.get",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "app/infra/cache.py::EntityCache.set",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "app/infra/cache.py::EntityCache.invalidate",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "app/infra/database.py::_build_engine",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "app/infra/database.py::read_session",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "app/services/services.py::BaseService._cached_read",
+                "status": "PRESENT",
+                "score1": 1.0
+              }
+            ],
+            "libraries": [
+              {
+                "lib": "redis",
+                "status": "PRESENT"
+              },
+              {
+                "lib": "sqlalchemy",
+                "status": "PRESENT"
+              }
+            ]
+          }
+        ]
+      },
+      "availability": {
+        "score3": 1.0,
+        "tactics": [
+          "Degradation",
+          "Exception Detection",
+          "State Resynchronization",
+          "Transactions"
+        ],
+        "nfrs": [
+          {
+            "nfr": "NFR 2.1: Exception Detection",
+            "tactics": [
+              "Exception Detection"
+            ],
+            "score2": 1.0,
+            "status": "ABSENT",
+            "functions": [
+              {
+                "ref": "app/core/middleware.py::ExceptionDetectionMiddleware.dispatch",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "app/infra/degradation.py::CircuitBreaker.call",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "app/infra/cache.py::EntityCache.get",
+                "status": "PRESENT",
+                "score1": 1.0
+              }
+            ],
+            "libraries": [
+              {
+                "lib": "asyncio",
+                "status": "PRESENT"
+              },
+              {
+                "lib": "starlette",
+                "status": "PRESENT"
+              },
+              {
+                "lib": "sqlalchemy",
+                "status": "ABSENT"
+              }
+            ]
+          },
+          {
+            "nfr": "NFR 2.2: Graceful Degradation",
+            "tactics": [
+              "Degradation"
+            ],
+            "score2": 1.0,
+            "status": "ABSENT",
+            "functions": [
+              {
+                "ref": "app/infra/degradation.py::FeatureRegistry.shed",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "app/infra/degradation.py::FeatureRegistry.is_available",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "app/infra/database.py::_open_replica_session",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "app/services/services.py::BaseService._cached_read",
+                "status": "PRESENT",
+                "score1": 1.0
+              }
+            ],
+            "libraries": [
+              {
+                "lib": "sqlalchemy",
+                "status": "PRESENT"
+              },
+              {
+                "lib": "redis",
+                "status": "ABSENT"
+              }
+            ]
+          },
+          {
+            "nfr": "NFR 2.3: State Resynchronization",
+            "tactics": [
+              "State Resynchronization"
+            ],
+            "score2": 1.0,
+            "status": "ABSENT",
+            "functions": [
+              {
+                "ref": "app/infra/resync.py::StateResynchronizer.compare_active_and_standby",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "app/infra/resync.py::StateResynchronizer.run_once",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "app/infra/resync.py::StateResynchronizer._replication_lag",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "app/api/v1/ops.py::force_resync",
+                "status": "PRESENT",
+                "score1": 1.0
+              }
+            ],
+            "libraries": [
+              {
+                "lib": "sqlalchemy",
+                "status": "PRESENT"
+              },
+              {
+                "lib": "asyncio",
+                "status": "PRESENT"
+              },
+              {
+                "lib": "redis",
+                "status": "ABSENT"
+              }
+            ]
+          },
+          {
+            "nfr": "NFR 2.4: Transactions",
+            "tactics": [
+              "Transactions"
+            ],
+            "score2": 1.0,
+            "status": "PRESENT",
+            "functions": [
+              {
+                "ref": "app/infra/database.py::unit_of_work",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "app/services/services.py::InvoiceService.create",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "app/services/services.py::PaymentService.create",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "app/services/services.py::PaymentService.verify",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "app/services/services.py::OrderService.transition",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "app/repositories/repositories.py::SQLAlchemyRepository.get_for_update",
+                "status": "PRESENT",
+                "score1": 1.0
+              }
+            ],
+            "libraries": [
+              {
+                "lib": "sqlalchemy",
+                "status": "PRESENT"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "results": [
+    {
+      "nfr": "NFR 1.1: Limit Event Response",
+      "qa_group": "performance",
+      "status": "ABSENT",
+      "stage": "existence",
+      "score2": 1.0,
+      "evidence": "functions[TokenBucketRateLimiter.allow=PRESENT(s1=1.0); RateLimitMiddleware.dispatch=PRESENT(s1=1.0)] libraries[redis=PRESENT; starlette=PRESENT] fn-uses-lib[level1=ABSENT; TokenBucketRateLimiter.allow->none; RateLimitMiddleware.dispatch->none]",
+      "tactics": [
+        "Limit Event Response"
+      ],
+      "functions": [
+        {
+          "ref": "app/infra/rate_limiter.py::TokenBucketRateLimiter.allow",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        },
+        {
+          "ref": "app/core/middleware.py::RateLimitMiddleware.dispatch",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        }
+      ],
+      "libraries": [
+        {
+          "lib": "redis",
+          "status": "PRESENT",
+          "detail": "'redis' imported and used"
+        },
+        {
+          "lib": "starlette",
+          "status": "PRESENT",
+          "detail": "'starlette' imported and used"
+        }
+      ]
+    },
+    {
+      "nfr": "NFR 1.2: Maintain Multiple Copies of Data",
+      "qa_group": "performance",
+      "status": "PRESENT",
+      "stage": "existence",
+      "score2": 1.0,
+      "evidence": "functions[EntityCache.get=PRESENT(s1=1.0); EntityCache.set=PRESENT(s1=1.0); EntityCache.invalidate=PRESENT(s1=1.0); _build_engine=PRESENT(s1=1.0); read_session=PRESENT(s1=1.0); BaseService._cached_read=PRESENT(s1=1.0)] libraries[redis=PRESENT; sqlalchemy=PRESENT] fn-uses-lib[level1=PRESENT; EntityCache.get->none; EntityCache.set->none; EntityCache.invalidate->none; _build_engine->['sqlalchemy']; read_session->['sqlalchemy']; BaseService._cached_read->none]",
+      "tactics": [
+        "Maintain Multiple Copies of Data"
+      ],
+      "functions": [
+        {
+          "ref": "app/infra/cache.py::EntityCache.get",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        },
+        {
+          "ref": "app/infra/cache.py::EntityCache.set",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        },
+        {
+          "ref": "app/infra/cache.py::EntityCache.invalidate",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        },
+        {
+          "ref": "app/infra/database.py::_build_engine",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "sqlalchemy"
+          ],
+          "uses_any": true
+        },
+        {
+          "ref": "app/infra/database.py::read_session",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "sqlalchemy"
+          ],
+          "uses_any": true
+        },
+        {
+          "ref": "app/services/services.py::BaseService._cached_read",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        }
+      ],
+      "libraries": [
+        {
+          "lib": "redis",
+          "status": "PRESENT",
+          "detail": "'redis' imported and used"
+        },
+        {
+          "lib": "sqlalchemy",
+          "status": "PRESENT",
+          "detail": "'sqlalchemy' imported and used"
+        }
+      ]
+    },
+    {
+      "nfr": "NFR 2.1: Exception Detection",
+      "qa_group": "availability",
+      "status": "ABSENT",
+      "stage": "existence",
+      "score2": 1.0,
+      "evidence": "functions[ExceptionDetectionMiddleware.dispatch=PRESENT(s1=1.0); CircuitBreaker.call=PRESENT(s1=1.0); EntityCache.get=PRESENT(s1=1.0)] libraries[asyncio=PRESENT; starlette=PRESENT; sqlalchemy=ABSENT] fn-uses-lib[level1=PRESENT; ExceptionDetectionMiddleware.dispatch->['asyncio']; CircuitBreaker.call->['asyncio']; EntityCache.get->['asyncio']]",
+      "tactics": [
+        "Exception Detection"
+      ],
+      "functions": [
+        {
+          "ref": "app/core/middleware.py::ExceptionDetectionMiddleware.dispatch",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "asyncio"
+          ],
+          "uses_any": true
+        },
+        {
+          "ref": "app/infra/degradation.py::CircuitBreaker.call",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "asyncio"
+          ],
+          "uses_any": true
+        },
+        {
+          "ref": "app/infra/cache.py::EntityCache.get",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "asyncio"
+          ],
+          "uses_any": true
+        }
+      ],
+      "libraries": [
+        {
+          "lib": "asyncio",
+          "status": "PRESENT",
+          "detail": "'asyncio' imported and used"
+        },
+        {
+          "lib": "starlette",
+          "status": "PRESENT",
+          "detail": "'starlette' imported and used"
+        },
+        {
+          "lib": "sqlalchemy",
+          "status": "ABSENT",
+          "detail": "'sqlalchemy' not imported in any claimed file"
+        }
+      ]
+    },
+    {
+      "nfr": "NFR 2.2: Graceful Degradation",
+      "qa_group": "availability",
+      "status": "ABSENT",
+      "stage": "existence",
+      "score2": 1.0,
+      "evidence": "functions[FeatureRegistry.shed=PRESENT(s1=1.0); FeatureRegistry.is_available=PRESENT(s1=1.0); _open_replica_session=PRESENT(s1=1.0); BaseService._cached_read=PRESENT(s1=1.0)] libraries[sqlalchemy=PRESENT; redis=ABSENT] fn-uses-lib[level1=PRESENT; FeatureRegistry.shed->none; FeatureRegistry.is_available->none; _open_replica_session->['sqlalchemy']; BaseService._cached_read->none]",
+      "tactics": [
+        "Degradation"
+      ],
+      "functions": [
+        {
+          "ref": "app/infra/degradation.py::FeatureRegistry.shed",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        },
+        {
+          "ref": "app/infra/degradation.py::FeatureRegistry.is_available",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        },
+        {
+          "ref": "app/infra/database.py::_open_replica_session",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "sqlalchemy"
+          ],
+          "uses_any": true
+        },
+        {
+          "ref": "app/services/services.py::BaseService._cached_read",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        }
+      ],
+      "libraries": [
+        {
+          "lib": "sqlalchemy",
+          "status": "PRESENT",
+          "detail": "'sqlalchemy' imported and used"
+        },
+        {
+          "lib": "redis",
+          "status": "ABSENT",
+          "detail": "'redis' not imported in any claimed file"
+        }
+      ]
+    },
+    {
+      "nfr": "NFR 2.3: State Resynchronization",
+      "qa_group": "availability",
+      "status": "ABSENT",
+      "stage": "existence",
+      "score2": 1.0,
+      "evidence": "functions[StateResynchronizer.compare_active_and_standby=PRESENT(s1=1.0); StateResynchronizer.run_once=PRESENT(s1=1.0); StateResynchronizer._replication_lag=PRESENT(s1=1.0); force_resync=PRESENT(s1=1.0)] libraries[sqlalchemy=PRESENT; asyncio=PRESENT; redis=ABSENT] fn-uses-lib[level1=PRESENT; StateResynchronizer.compare_active_and_standby->none; StateResynchronizer.run_once->['asyncio']; StateResynchronizer._replication_lag->['sqlalchemy']; force_resync->none]",
+      "tactics": [
+        "State Resynchronization"
+      ],
+      "functions": [
+        {
+          "ref": "app/infra/resync.py::StateResynchronizer.compare_active_and_standby",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        },
+        {
+          "ref": "app/infra/resync.py::StateResynchronizer.run_once",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "asyncio"
+          ],
+          "uses_any": true
+        },
+        {
+          "ref": "app/infra/resync.py::StateResynchronizer._replication_lag",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "sqlalchemy"
+          ],
+          "uses_any": true
+        },
+        {
+          "ref": "app/api/v1/ops.py::force_resync",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        }
+      ],
+      "libraries": [
+        {
+          "lib": "sqlalchemy",
+          "status": "PRESENT",
+          "detail": "'sqlalchemy' imported and used"
+        },
+        {
+          "lib": "asyncio",
+          "status": "PRESENT",
+          "detail": "'asyncio' imported and used"
+        },
+        {
+          "lib": "redis",
+          "status": "ABSENT",
+          "detail": "'redis' not imported in any claimed file"
+        }
+      ]
+    },
+    {
+      "nfr": "NFR 2.4: Transactions",
+      "qa_group": "availability",
+      "status": "PRESENT",
+      "stage": "existence",
+      "score2": 1.0,
+      "evidence": "functions[unit_of_work=PRESENT(s1=1.0); InvoiceService.create=PRESENT(s1=1.0); PaymentService.create=PRESENT(s1=1.0); PaymentService.verify=PRESENT(s1=1.0); OrderService.transition=PRESENT(s1=1.0); SQLAlchemyRepository.get_for_update=PRESENT(s1=1.0)] libraries[sqlalchemy=PRESENT] fn-uses-lib[level1=PRESENT; unit_of_work->['sqlalchemy']; InvoiceService.create->['sqlalchemy']; PaymentService.create->none; PaymentService.verify->none; OrderService.transition->['sqlalchemy']; SQLAlchemyRepository.get_for_update->['sqlalchemy']]",
+      "tactics": [
+        "Transactions"
+      ],
+      "functions": [
+        {
+          "ref": "app/infra/database.py::unit_of_work",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "sqlalchemy"
+          ],
+          "uses_any": true
+        },
+        {
+          "ref": "app/services/services.py::InvoiceService.create",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "sqlalchemy"
+          ],
+          "uses_any": true
+        },
+        {
+          "ref": "app/services/services.py::PaymentService.create",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        },
+        {
+          "ref": "app/services/services.py::PaymentService.verify",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        },
+        {
+          "ref": "app/services/services.py::OrderService.transition",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "sqlalchemy"
+          ],
+          "uses_any": true
+        },
+        {
+          "ref": "app/repositories/repositories.py::SQLAlchemyRepository.get_for_update",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "sqlalchemy"
+          ],
+          "uses_any": true
+        }
+      ],
+      "libraries": [
+        {
+          "lib": "sqlalchemy",
+          "status": "PRESENT",
+          "detail": "'sqlalchemy' imported and used"
+        }
+      ]
+    }
+  ]
+}

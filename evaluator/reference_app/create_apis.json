@@ -1,7 +1,0 @@
-{
-  "customer": {"method": "POST", "path": "/api/v1/customers"},
-  "product": {"method": "POST", "path": "/api/v1/products"},
-  "order": {"method": "POST", "path": "/api/v1/orders"},
-  "payment": {"method": "POST", "path": "/api/v1/payments"},
-  "invoice": {"method": "POST", "path": "/api/v1/invoices"}
-}

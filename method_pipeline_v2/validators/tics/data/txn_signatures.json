@@ -1,0 +1,44 @@
+{
+  "$comment": [
+    "Transaction-boundary signatures, owned by the harness -- never read from the",
+    "candidate's own nfr-trace.json. Used ONLY to build the TXN_BOUNDARY edge in the code",
+    "graph: a function that opens a transaction scope is linked to every function called",
+    "inside that scope.",
+    "",
+    "This is deliberately NOT a full per-tactic mechanism table. Scoring how strongly a",
+    "function implements a tactic (E_call inside S(x,f)) belongs to the binding provider,",
+    "not to TICS -- see validators/tics/contract.py. Keeping the two tables separate stops",
+    "the same ground truth from being owned in two places.",
+    "",
+    "Patterns match the dotted attribute path of the call target. '*' matches one receiver",
+    "segment, so '*.begin' matches session.begin() and self._session.begin() alike."
+  ],
+
+  "python": {
+    "context_managers": [
+      { "pattern": "*.begin",        "note": "sqlalchemy Session.begin / Connection.begin" },
+      { "pattern": "*.begin_nested", "note": "sqlalchemy SAVEPOINT" },
+      { "pattern": "*.transaction",  "note": "asyncpg/psycopg connection.transaction, and the widespread unit-of-work convention uow.transaction()" },
+      { "pattern": "transaction.atomic", "note": "django" },
+      { "pattern": "*.atomic",       "note": "django-style atomic() bound to another name" }
+    ],
+
+    "calls": [
+      { "pattern": "*.commit",   "note": "explicit commit closes a transaction scope" },
+      { "pattern": "*.rollback", "note": "explicit rollback closes a transaction scope" }
+    ],
+
+    "decorators": [
+      { "pattern": "transaction.atomic", "note": "django, used as @transaction.atomic" },
+      { "pattern": "*.transactional",    "note": "generic declarative-transaction convention" }
+    ],
+
+    "known_false_positives": [
+      "'*.transaction' is broad on purpose. It is what catches the unit-of-work pattern, which",
+      "is the dominant way transaction boundaries appear in generated FastAPI/SQLAlchemy code,",
+      "but it will also match an unrelated attribute called .transaction. Every TXN_BOUNDARY",
+      "edge is emitted with the matched pattern attached so a false positive is auditable in",
+      "the report rather than silently inflating a score."
+    ]
+  }
+}

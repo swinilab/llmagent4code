@@ -10,7 +10,10 @@
   "Bound Queue Sizes": [
     "asyncio"
   ],
-  "Degradation": [],
+  "Degradation": [
+    "redis",
+    "sqlalchemy"
+  ],
   "Ping/Echo": [
     "tenacity"
   ],
@@ -18,7 +21,11 @@
     "tenacity"
   ],
   "State Resynchronization": [
-    "sqlite3"
+    "asyncio",
+    "redis",
+    "sqlalchemy",
+    "sqlite3",
+    "tenacity"
   ],
   "Echo": [
     "tenacity"
@@ -34,12 +41,39 @@
     "pydantic"
   ],
   "Graceful Degradation": [
-    "fastapi"
+    "fastapi",
+    "redis",
+    "tenacity"
   ],
   "Resynchronize State": [
     "asyncio"
   ],
   "Atomicity": [
     "sqlalchemy"
+  ],
+  "Limit Event Response": [
+    "aiolimiter",
+    "redis",
+    "starlette"
+  ],
+  "Maintain Multiple Copies of Data": [
+    "redis",
+    "sqlalchemy"
+  ],
+  "Exception Detection": [
+    "asyncio",
+    "fastapi",
+    "sqlalchemy",
+    "starlette",
+    "tenacity"
+  ],
+  "Transactions": [
+    "sqlalchemy"
+  ],
+  "Rate Limiting": [
+    "redis"
+  ],
+  "Caching": [
+    "redis"
   ]
 }

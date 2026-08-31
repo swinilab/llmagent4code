@@ -1,0 +1,14 @@
+PIPELINE REPORT — 2026-08-31 12:23:47
+
+GENERATION
+model: None
+code: generated/claude
+
+VALIDATION
+  ✅ tics : TICS 0.528 (high=worse) | conformance 0.542 (high=better) | 5/13 pairs interacting, 36% of ground truth applicable
+    graph    reports\tics_claude_20260831_122347\tics_graph.json  (128 nodes, 169 edges, 135 unresolved calls)
+    report   reports\tics_claude_20260831_122347\tics_report.json
+    bindings reports\tics_claude_20260831_122347\tics_bindings.json
+
+RESULT
+  ✅ all checks passed — check QA manually

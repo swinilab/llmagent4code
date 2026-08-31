@@ -1,2 +1,0 @@
-"""Versioned FastAPI routers."""
-

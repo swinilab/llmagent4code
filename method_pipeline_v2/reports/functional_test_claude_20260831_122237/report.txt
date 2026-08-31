@@ -1,0 +1,21 @@
+PIPELINE REPORT — 2026-08-31 12:22:49
+
+GENERATION
+model: None
+code: generated/claude
+
+VALIDATION
+  ❌ functional : 3 of 147 HTTP test(s) failed (98.0% passed).
+    3/147 failed (144 passed, 98.0% pass rate)
+    - customer : 1/50 failed (98.0% pass rate)
+    - product : 0/25 failed (100.0% pass rate)
+    - order : 0/28 failed (100.0% pass rate)
+    - payment : 2/18 failed (88.9% pass rate)
+    - invoice : 0/26 failed (100.0% pass rate)
+    full report : reports\functional_test_claude_20260831_122237\functional_test_report.json
+    seed context log : reports\functional_test_claude_20260831_122237\seed_context_log.json
+
+RESULT
+  ❌ pipeline failed
+  blocking stage : functional
+  error          : 3 of 147 HTTP test(s) failed (98.0% passed).

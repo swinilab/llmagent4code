@@ -1,0 +1,21 @@
+PIPELINE REPORT — 2026-08-31 12:31:17
+
+GENERATION
+model: None
+code: generated/codex
+
+VALIDATION
+  ❌ functional : 4 of 147 HTTP test(s) failed (97.3% passed).
+    4/147 failed (143 passed, 97.3% pass rate)
+    - customer : 2/50 failed (96.0% pass rate)
+    - product : 0/25 failed (100.0% pass rate)
+    - order : 0/28 failed (100.0% pass rate)
+    - payment : 2/18 failed (88.9% pass rate)
+    - invoice : 0/26 failed (100.0% pass rate)
+    full report : reports\functional_test_codex_20260831_123107\functional_test_report.json
+    seed context log : reports\functional_test_codex_20260831_123107\seed_context_log.json
+
+RESULT
+  ❌ pipeline failed
+  blocking stage : functional
+  error          : 4 of 147 HTTP test(s) failed (97.3% passed).

@@ -1,1 +1,0 @@
-export { default as OrderRouter } from "./OrderRoutes";

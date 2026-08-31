@@ -49,6 +49,8 @@ VALIDATION_STAGES = {
     2: "functional",
     3: "static QA",
     4: "QA",
+    5: "TICS",
+    6: "workflow",
 }
 
 def run_validation(
@@ -79,6 +81,12 @@ def run_validation(
         elif s == 3:
             print(f"{pad}validate > {name}")
             result = components.static_quality_validator.validate(generation)
+        elif s == 5:
+            print(f"{pad}validate > {name}")
+            result = components.tics_validator.validate(generation)
+        elif s == 6:
+            print(f"{pad}validate > {name}")
+            result = components.workflow_validator.validate(generation)
         else:
             print(f"{pad}validate > {name} (not implemented yet, skipping)")
             continue
@@ -87,7 +95,7 @@ def run_validation(
         if result.passed:
             print(f"{pad}  ✅ passed")
         else:
-            if s == 2:
+            if s in (2, 6):
                 print(f"{pad}  ❌ {json.dumps(result.details)}")
             else:
                 print(f"{pad}  ❌ {result.message}")

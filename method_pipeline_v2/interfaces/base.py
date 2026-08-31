@@ -66,6 +66,38 @@ class TestResult:
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+#  Report locations
+# ─────────────────────────────────────────────────────────────────────────────
+
+def app_label(code: str | Any) -> str:
+    """Short name of the app under test, from its path under generated/ -
+    e.g. "claude", "codex", "chatdev-qwen35-v1". Reports used to land in one
+    flat folder separated only by timestamp, which made a run impossible to
+    attribute to an app afterwards."""
+    import re
+    from pathlib import Path as _Path
+    parts = [p for p in _Path(str(code)).parts if p not in (".", "..", "")]
+    parts = [p for p in parts if p not in ("code_workspace", "generated")]
+    label = parts[-1] if parts else "unknown"
+    return re.sub(r"[^A-Za-z0-9._-]+", "-", label) or "unknown"
+
+
+def app_run_dir(report_dir: str | Any, stage_slug: str, code: str | Any):
+    """`<report_dir>/<stage_slug>_<app>_<timestamp>/`, created.
+
+    Every stage writes its artefacts into one folder per run per app, so a
+    number can always be traced back to the app and the run that produced it.
+    """
+    from datetime import datetime as _dt
+    from pathlib import Path as _Path
+    path = _Path(report_dir) / (
+        f"{stage_slug}_{app_label(code)}_{_dt.now().strftime('%Y%m%d_%H%M%S')}"
+    )
+    path.mkdir(parents=True, exist_ok=True)
+    return path
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 #  Abstract interfaces
 # ─────────────────────────────────────────────────────────────────────────────
 class IGenerationAgent(ABC):

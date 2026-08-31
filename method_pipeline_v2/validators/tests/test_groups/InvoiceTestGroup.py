@@ -69,6 +69,28 @@ class InvoiceTestGroup(ITestGroup):
             "TC_INV_STATUS_01", "TC_INV_STATUS_02", "TC_INV_STATUS_03",
         ]
 
+    def _body(self) -> dict[str, Any]:
+        """Standard body, but pointed at a *fresh* untouched ACCEPTED order.
+
+        Creating an invoice is a one-time ACCEPTED -> INVOICED transition, so
+        every case here needs its own order - negative cases included. Firing
+        a negative case at an already-INVOICED order lets the app answer with
+        its state check (409) before it ever evaluates the field rule the case
+        was written to isolate, which is what made TC_INV_BILLNAME_02/03 look
+        like defects on apps that validate state before fields, while passing
+        on apps that validate fields first. The outcome tracked the app's
+        internal validation order rather than its correctness.
+
+        `_last_order_id` is None when the pool is exhausted; callers that
+        need a real order report seed-unavailable instead of asserting.
+        """
+        body = super()._body()
+        fresh = self._next_accepted_order()
+        self._last_order_id = fresh
+        if fresh is not None:
+            body["orderRef"] = fresh
+        return body
+
     def _next_accepted_order(self) -> str | None:
         """Pop the next dedicated, untouched ACCEPTED order for a
         happy-path invoice-creation test, or None if the bulk queue is
@@ -157,11 +179,10 @@ class InvoiceTestGroup(ITestGroup):
     # ------------------------------------------------------------------ #
     def tc_inv_orderref_01(self) -> TestResult:
         """EC-Valid-1: orderRef exists and order status is ACCEPTED -> 201."""
-        order_id = self._next_accepted_order()
+        body = self._body()
+        order_id = self._last_order_id
         if order_id is None:
             return self._seed_unavailable("TC_INV_ORDERREF_01", 201)
-        body = self._body()
-        body["orderRef"] = order_id
         status, resp = self._post(body)
         return self._check("TC_INV_ORDERREF_01", 201, body, status, resp)
 
@@ -240,11 +261,10 @@ class InvoiceTestGroup(ITestGroup):
     # ------------------------------------------------------------------ #
     def tc_inv_totalamt_01(self) -> TestResult:
         """EC-Valid-1: server-computed totalAmount equals Order.totalAmount -> 201."""
-        order_id = self._next_accepted_order()
+        body = self._body()
+        order_id = self._last_order_id
         if order_id is None:
             return self._seed_unavailable("TC_INV_TOTALAMT_01", 201)
-        body = self._body()
-        body["orderRef"] = order_id
         status, resp = self._post(body)
         result = self._check("TC_INV_TOTALAMT_01", 201, body, status, resp)
         if (
@@ -276,11 +296,10 @@ class InvoiceTestGroup(ITestGroup):
     # ------------------------------------------------------------------ #
     def tc_inv_issuedate_01(self) -> TestResult:
         """EC-Valid-1: valid date in dd/MM/yyyy format -> 201."""
-        order_id = self._next_accepted_order()
+        body = self._body()
+        order_id = self._last_order_id
         if order_id is None:
             return self._seed_unavailable("TC_INV_ISSUEDATE_01", 201)
-        body = self._body()
-        body["orderRef"] = order_id
         body["issueDate"] = "23/07/2026"
         status, resp = self._post(body)
         return self._check("TC_INV_ISSUEDATE_01", 201, body, status, resp)
@@ -334,11 +353,10 @@ class InvoiceTestGroup(ITestGroup):
     # ------------------------------------------------------------------ #
     def tc_inv_duedate_01(self) -> TestResult:
         """EC-Valid-1: dueDate = issueDate + 7 days (default) -> 201."""
-        order_id = self._next_accepted_order()
+        body = self._body()
+        order_id = self._last_order_id
         if order_id is None:
             return self._seed_unavailable("TC_INV_DUEDATE_01", 201)
-        body = self._body()
-        body["orderRef"] = order_id
         body["issueDate"] = "23/07/2026"
         body["dueDate"] = "30/07/2026"
         status, resp = self._post(body)
@@ -347,11 +365,10 @@ class InvoiceTestGroup(ITestGroup):
     def tc_inv_duedate_02(self) -> TestResult:
         """BC-Equal-Min: dueDate equals issueDate (0-day term, boundary
         equality) -> 201 (accepted since dueDate >= issueDate)."""
-        order_id = self._next_accepted_order()
+        body = self._body()
+        order_id = self._last_order_id
         if order_id is None:
             return self._seed_unavailable("TC_INV_DUEDATE_02", 201)
-        body = self._body()
-        body["orderRef"] = order_id
         body["issueDate"] = "23/07/2026"
         body["dueDate"] = "23/07/2026"
         status, resp = self._post(body)
@@ -387,11 +404,10 @@ class InvoiceTestGroup(ITestGroup):
     # ------------------------------------------------------------------ #
     def tc_inv_status_01(self) -> TestResult:
         """EC-Valid-1: default status on creation is ISSUED -> 201."""
-        order_id = self._next_accepted_order()
+        body = self._body()
+        order_id = self._last_order_id
         if order_id is None:
             return self._seed_unavailable("TC_INV_STATUS_01", 201)
-        body = self._body()
-        body["orderRef"] = order_id
         status, resp = self._post(body)
         result = self._check("TC_INV_STATUS_01", 201, body, status, resp)
         if result.result and isinstance(resp, dict) and resp.get("status") != "ISSUED":

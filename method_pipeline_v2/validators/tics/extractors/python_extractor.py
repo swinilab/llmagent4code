@@ -1,0 +1,716 @@
+"""
+extractors/python_extractor.py
+──────────────────────────────
+Python frontend: source tree → CodeGraph of CALLS edges.
+
+Resolving a call in generated backend code is mostly a typing problem, because
+almost nothing is called by its own name. The three mechanisms below are not
+optional extras — each is the only thing standing between one of the acceptance
+oracles and a false "unreachable":
+
+  local variables      repository = OutboxRepository(session)
+                       repository.claim_batch(...)          -> OutboxRepository.claim_batch
+
+  injected attributes  def __init__(self, cache: EntityCache): self.cache = cache
+                       self.cache.set_json(...)             -> EntityCache.set_json
+
+  inheritance          class OrderService(CachedService)
+                       self._store_cached(...)              -> CachedService._store_cached
+
+This is deliberately a *static approximation*, not a type checker. It resolves
+what constructor calls and annotations state directly and gives up otherwise.
+Every unresolved call is classified so the report can state coverage honestly
+rather than presenting a sparse graph as a complete one:
+
+    external   a call into stdlib or a third-party package — outside the graph
+               by design, and the bulk of any real codebase
+    nodeless   a first-party target with no function node, such as constructing
+               a dataclass that has no explicit __init__
+    unresolved a first-party call the frontend could not type — the only bucket
+               that represents a genuine gap
+
+Collapsing these into one number overstated the gap roughly sixfold on the first
+sample, which would have made the coverage figure worthless as a validity claim.
+"""
+
+from __future__ import annotations
+
+import ast
+import builtins
+from dataclasses import dataclass, field
+from pathlib import Path
+
+from validators.tics.extractors.base import ILanguageExtractor
+from validators.tics.model import CALLS, REGISTERED, CodeGraph, FunctionNode
+
+# Directories that are never the candidate's own code. A graph that reaches into
+# site-packages connects every pair of functions through library internals and
+# makes distance meaningless.
+EXCLUDED_DIRS = {
+    ".venv", "venv", "env", ".env", "node_modules", "site-packages",
+    "__pycache__", ".git", ".pytest_cache", ".uv-cache", ".mypy_cache",
+    "build", "dist", ".tox", ".eggs",
+}
+
+# Test packages exercise production code from angles no request takes; including
+# them adds shortcuts that make unrelated tactics look adjacent.
+_TEST_DIRS = {"tests", "test", "testing", "e2e", "integration_tests", "verification"}
+
+ClassKey = tuple[str, str]          # (relative file path, class name)
+
+# Names callable without any import. Calls through these are external by
+# definition and must not be counted as resolution failures.
+_BUILTIN_CALLABLES = frozenset(dir(builtins))
+
+# Enough to characterise what the frontend misses without bloating the dump;
+# graph.unresolved_calls keeps the exact total.
+_MAX_UNRESOLVED_SAMPLES = 300
+
+
+@dataclass
+class _ClassInfo:
+    name: str
+    file: str
+    bases: list[str] = field(default_factory=list)          # raw base names, resolved lazily
+    methods: dict[str, int] = field(default_factory=dict)   # method name -> lineno
+    attr_types: dict[str, ClassKey] = field(default_factory=dict)
+    attr_external: set[str] = field(default_factory=set)     # self.<attr> holding a 3rd-party value
+
+    @property
+    def key(self) -> ClassKey:
+        return (self.file, self.name)
+
+
+@dataclass
+class _ModuleInfo:
+    file: str                                               # "app/services/order_service.py"
+    dotted: str                                             # "app.services.order_service"
+    tree: ast.Module
+    # bound name -> ("symbol", module_dotted, original_name) | ("module", module_dotted, "")
+    imports: dict[str, tuple[str, str, str]] = field(default_factory=dict)
+    classes: dict[str, _ClassInfo] = field(default_factory=dict)
+    functions: dict[str, int] = field(default_factory=dict)  # module-level function -> lineno
+
+
+class PythonExtractor(ILanguageExtractor):
+    language = "python"
+
+    # ── ILanguageExtractor ──────────────────────────────────────────────────
+    def detect(self, repo_root: Path) -> bool:
+        if (repo_root / "pyproject.toml").is_file() or (repo_root / "setup.py").is_file():
+            return True
+        return any(True for _ in self._python_files(repo_root, None))
+
+    def build_graph(self, repo_root: Path, source_roots: list[str] | None = None) -> CodeGraph:
+        repo_root = Path(repo_root).resolve()
+        modules = self._parse_modules(repo_root, source_roots or self.infer_source_roots(repo_root))
+        graph = CodeGraph()
+        self._add_nodes(graph, modules)
+        self._add_call_edges(graph, modules)
+        return graph
+
+    # ── discovery ───────────────────────────────────────────────────────────
+    def infer_source_roots(self, repo_root: Path) -> list[str]:
+        """Top-level packages that hold the candidate's own code.
+
+        Generated layouts disagree on the package name — `app`, `oms_backend`,
+        `oms` all appear across the sample — so the root cannot be hard-coded.
+        Test packages are excluded: test code calls production code from every
+        direction and would add shortcuts that no production request ever takes.
+        """
+        roots = [
+            entry.name
+            for entry in sorted(repo_root.iterdir())
+            if entry.is_dir()
+            and entry.name not in EXCLUDED_DIRS
+            and entry.name not in _TEST_DIRS
+            and (entry / "__init__.py").is_file()
+        ]
+        return roots or [repo_root.name]
+
+    def _python_files(self, repo_root: Path, source_roots: list[str] | None):
+        roots = [repo_root / r for r in source_roots] if source_roots else [repo_root]
+        for root in roots:
+            if not root.is_dir():
+                continue
+            for path in root.rglob("*.py"):
+                if any(part in EXCLUDED_DIRS for part in path.parts):
+                    continue
+                yield path
+
+    def _parse_modules(
+        self, repo_root: Path, source_roots: list[str] | None
+    ) -> dict[str, _ModuleInfo]:
+        modules: dict[str, _ModuleInfo] = {}
+        for path in self._python_files(repo_root, source_roots):
+            rel = path.relative_to(repo_root).as_posix()
+            try:
+                tree = ast.parse(path.read_text(encoding="utf-8-sig"))
+            except (SyntaxError, UnicodeDecodeError):
+                continue        # a file we cannot parse contributes no edges
+            module = _ModuleInfo(file=rel, dotted=self._dotted_name(rel), tree=tree)
+            self._index_module(module)
+            modules[module.dotted] = module
+        return modules
+
+    @staticmethod
+    def _dotted_name(rel_path: str) -> str:
+        stem = rel_path[:-3] if rel_path.endswith(".py") else rel_path
+        if stem.endswith("/__init__"):
+            stem = stem[: -len("/__init__")]
+        return stem.replace("/", ".")
+
+    # ── pass A: index declarations ──────────────────────────────────────────
+    def _index_module(self, module: _ModuleInfo) -> None:
+        for node in module.tree.body:
+            if isinstance(node, ast.Import):
+                for alias in node.names:
+                    module.imports[alias.asname or alias.name.split(".")[0]] = (
+                        "module", alias.name, ""
+                    )
+            elif isinstance(node, ast.ImportFrom):
+                target = node.module or ""
+                for alias in node.names:
+                    module.imports[alias.asname or alias.name] = (
+                        "symbol", target, alias.name
+                    )
+            elif isinstance(node, ast.ClassDef):
+                info = _ClassInfo(
+                    name=node.name,
+                    file=module.file,
+                    bases=[n for n in (self._base_name(b) for b in node.bases) if n],
+                )
+                for item in node.body:
+                    if isinstance(item, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                        info.methods[item.name] = item.lineno
+                module.classes[node.name] = info
+            elif isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                module.functions[node.name] = node.lineno
+
+    @staticmethod
+    def _base_name(node: ast.expr) -> str | None:
+        """`CachedService` and `mod.CachedService` both reduce to the bare name."""
+        if isinstance(node, ast.Name):
+            return node.id
+        if isinstance(node, ast.Attribute):
+            return node.attr
+        if isinstance(node, ast.Subscript):          # Generic[T]
+            return PythonExtractor._base_name(node.value)
+        return None
+
+    # ── nodes ───────────────────────────────────────────────────────────────
+    def _add_nodes(self, graph: CodeGraph, modules: dict[str, _ModuleInfo]) -> None:
+        for module in modules.values():
+            for name, lineno in module.functions.items():
+                graph.add_node(
+                    FunctionNode(
+                        ref=f"{module.file}::{name}",
+                        file=module.file,
+                        qualname=name,
+                        lineno=lineno,
+                    )
+                )
+            for cls in module.classes.values():
+                for method, lineno in cls.methods.items():
+                    graph.add_node(
+                        FunctionNode(
+                            ref=f"{module.file}::{cls.name}.{method}",
+                            file=module.file,
+                            qualname=f"{cls.name}.{method}",
+                            lineno=lineno,
+                            class_name=cls.name,
+                        )
+                    )
+
+    # ── type resolution ─────────────────────────────────────────────────────
+    def _resolve_class(
+        self, module: _ModuleInfo, name: str, modules: dict[str, _ModuleInfo]
+    ) -> ClassKey | None:
+        if name in module.classes:
+            return module.classes[name].key
+        binding = module.imports.get(name)
+        if binding and binding[0] == "symbol":
+            target = modules.get(binding[1])
+            if target and binding[2] in target.classes:
+                return target.classes[binding[2]].key
+        return None
+
+    def _class_by_key(
+        self, key: ClassKey, modules: dict[str, _ModuleInfo]
+    ) -> _ClassInfo | None:
+        file, name = key
+        for module in modules.values():
+            if module.file == file:
+                return module.classes.get(name)
+        return None
+
+    def _mro(
+        self, key: ClassKey, modules: dict[str, _ModuleInfo], _seen: set[ClassKey] | None = None
+    ) -> list[ClassKey]:
+        """Depth-first linearisation. Not CPython's C3 — good enough to find
+        which class actually defines an inherited method."""
+        seen = _seen if _seen is not None else set()
+        if key in seen:
+            return []
+        seen.add(key)
+        order = [key]
+        info = self._class_by_key(key, modules)
+        if info is None:
+            return order
+        owner = next((m for m in modules.values() if m.file == info.file), None)
+        for base in info.bases:
+            base_key = self._resolve_class(owner, base, modules) if owner else None
+            if base_key:
+                order.extend(self._mro(base_key, modules, seen))
+        return order
+
+    def _lookup_method(
+        self, key: ClassKey, method: str, modules: dict[str, _ModuleInfo]
+    ) -> str | None:
+        for cls_key in self._mro(key, modules):
+            info = self._class_by_key(cls_key, modules)
+            if info and method in info.methods:
+                return f"{info.file}::{info.name}.{method}"
+        return None
+
+    @staticmethod
+    def _annotation_name(node: ast.expr | None) -> str | None:
+        """Bare class name out of an annotation: `EntityCache`, `EntityCache | None`,
+        `async_sessionmaker[AsyncSession]` all reduce to their head name."""
+        if node is None:
+            return None
+        if isinstance(node, ast.Name):
+            return node.id
+        if isinstance(node, ast.Attribute):
+            return node.attr
+        if isinstance(node, ast.Subscript):
+            return PythonExtractor._annotation_name(node.value)
+        if isinstance(node, ast.BinOp) and isinstance(node.op, ast.BitOr):   # X | None
+            return (PythonExtractor._annotation_name(node.left)
+                    or PythonExtractor._annotation_name(node.right))
+        if isinstance(node, ast.Constant) and isinstance(node.value, str):   # "EntityCache"
+            return node.value.split("[")[0].strip() or None
+        return None
+
+    def _index_attribute_types(
+        self, modules: dict[str, _ModuleInfo]
+    ) -> None:
+        """Learn `self.<attr>` types from each class's __init__.
+
+        Two shapes carry almost all dependency injection in generated code:
+            self.cache = cache          with `cache: EntityCache` in the signature
+            self._limiter = AsyncLimiter(...)
+        """
+        for module in modules.values():
+            for cls in module.classes.values():
+                init = self._find_method_node(module, cls.name, "__init__")
+                if init is None:
+                    continue
+                params: dict[str, ClassKey] = {}
+                params_external: set[str] = set()
+                args = init.args
+                for arg in (*args.posonlyargs, *args.args, *args.kwonlyargs):
+                    name = self._annotation_name(arg.annotation)
+                    key = self._resolve_class(module, name, modules) if name else None
+                    if key:
+                        params[arg.arg] = key
+                    elif self._roots_outside_index(arg.annotation, module, modules):
+                        params_external.add(arg.arg)
+                for node in ast.walk(init):
+                    target = value = None
+                    if isinstance(node, ast.Assign) and len(node.targets) == 1:
+                        target, value = node.targets[0], node.value
+                    elif isinstance(node, ast.AnnAssign):
+                        target, value = node.target, node.value
+                    if not (
+                        isinstance(target, ast.Attribute)
+                        and isinstance(target.value, ast.Name)
+                        and target.value.id == "self"
+                    ):
+                        continue
+                    key = None
+                    if isinstance(node, ast.AnnAssign):
+                        name = self._annotation_name(node.annotation)
+                        key = self._resolve_class(module, name, modules) if name else None
+                    if key is None and isinstance(value, ast.Name):
+                        key = params.get(value.id)
+                    if key is None and isinstance(value, ast.Call):
+                        name = self._base_name(value.func)
+                        key = self._resolve_class(module, name, modules) if name else None
+                    if key:
+                        cls.attr_types[target.attr] = key
+                    elif (
+                        isinstance(value, ast.Name) and value.id in params_external
+                    ) or self._roots_outside_index(
+                        node.annotation if isinstance(node, ast.AnnAssign) else value,
+                        module, modules,
+                    ):
+                        # self._redis = redis  where `redis: Redis` is third-party.
+                        # Knowing this stops every later `self._redis.get()` from
+                        # being filed as a resolution failure.
+                        cls.attr_external.add(target.attr)
+
+    @staticmethod
+    def _find_method_node(
+        module: _ModuleInfo, class_name: str, method: str
+    ) -> ast.FunctionDef | ast.AsyncFunctionDef | None:
+        for node in module.tree.body:
+            if isinstance(node, ast.ClassDef) and node.name == class_name:
+                for item in node.body:
+                    if isinstance(item, (ast.FunctionDef, ast.AsyncFunctionDef)) \
+                            and item.name == method:
+                        return item
+        return None
+
+    def _local_types(
+        self,
+        fn: ast.FunctionDef | ast.AsyncFunctionDef,
+        module: _ModuleInfo,
+        modules: dict[str, _ModuleInfo],
+    ) -> dict[str, ClassKey]:
+        """Types of parameters and locals bound to a constructor call."""
+        local: dict[str, ClassKey] = {}
+        args = fn.args
+        for arg in (*args.posonlyargs, *args.args, *args.kwonlyargs):
+            name = self._annotation_name(arg.annotation)
+            key = self._resolve_class(module, name, modules) if name else None
+            if key:
+                local[arg.arg] = key
+        for node in ast.walk(fn):
+            target = value = annotation = None
+            if isinstance(node, ast.Assign) and len(node.targets) == 1:
+                target, value = node.targets[0], node.value
+            elif isinstance(node, ast.AnnAssign):
+                target, value, annotation = node.target, node.value, node.annotation
+            if not isinstance(target, ast.Name):
+                continue
+            key = None
+            if annotation is not None:
+                name = self._annotation_name(annotation)
+                key = self._resolve_class(module, name, modules) if name else None
+            if key is None and isinstance(value, ast.Call):
+                name = self._base_name(value.func)
+                key = self._resolve_class(module, name, modules) if name else None
+            if key:
+                local[target.id] = key
+        return local
+
+    # ── pass B: resolve calls into edges ────────────────────────────────────
+    def _add_call_edges(self, graph: CodeGraph, modules: dict[str, _ModuleInfo]) -> None:
+        self._index_attribute_types(modules)
+        for module in modules.values():
+            for node in module.tree.body:
+                if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                    self._edges_from_function(
+                        graph, modules, module, node, f"{module.file}::{node.name}", None
+                    )
+                elif isinstance(node, ast.ClassDef):
+                    cls = module.classes.get(node.name)
+                    for item in node.body:
+                        if isinstance(item, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                            self._edges_from_function(
+                                graph, modules, module, item,
+                                f"{module.file}::{node.name}.{item.name}",
+                                cls.key if cls else None,
+                            )
+
+    def _registration_edges(
+        self,
+        graph: CodeGraph,
+        modules: dict[str, _ModuleInfo],
+        module: _ModuleInfo,
+        fn: ast.FunctionDef | ast.AsyncFunctionDef,
+        src_ref: str,
+    ) -> None:
+        """Link a function to whatever it hands to a framework by name.
+
+        A call graph sees `handler(request)` and misses
+        `app.add_exception_handler(Cls, handler)` — yet the second is how a
+        framework-integrated tactic is usually wired, and the framework then
+        invokes it on every request. Treating those functions as orphans
+        understated integration for two of the four sampled systems.
+
+        The rule is deliberately general rather than a list of framework APIs:
+        a first-party function or class *referenced by name but not called* has
+        been handed to something. That covers add_middleware, Depends,
+        add_exception_handler and any equivalent this sample does not contain.
+        """
+        called = {id(node.func) for node in ast.walk(fn) if isinstance(node, ast.Call)}
+        for node in ast.walk(fn):
+            if not isinstance(node, ast.Name) or id(node) in called:
+                continue
+            if not isinstance(node.ctx, ast.Load):
+                continue
+            class_key = self._resolve_class(module, node.id, modules)
+            if class_key:
+                # A registered class: the framework instantiates it and drives
+                # its methods, so every method with no first-party caller is an
+                # entry point rather than dead code.
+                info = self._class_by_key(class_key, modules)
+                if info:
+                    for method in info.methods:
+                        graph.framework_entrypoints.add(f"{info.file}::{info.name}.{method}")
+                    init = self._lookup_method(class_key, "__init__", modules)
+                    if init:
+                        graph.add_edge(src_ref, init, REGISTERED, detail=node.id)
+                continue
+            target = None
+            if node.id in module.functions:
+                target = f"{module.file}::{node.id}"
+            else:
+                binding = module.imports.get(node.id)
+                if binding and binding[0] == "symbol":
+                    origin = modules.get(binding[1])
+                    if origin and binding[2] in origin.functions:
+                        target = f"{origin.file}::{binding[2]}"
+            if target:
+                graph.add_edge(src_ref, target, REGISTERED, detail=node.id)
+
+    def _decorator_entrypoints(
+        self,
+        graph: CodeGraph,
+        module: _ModuleInfo,
+        fn: ast.FunctionDef | ast.AsyncFunctionDef,
+        ref: str,
+    ) -> None:
+        """A function reached only through a decorator has no first-party caller
+        to draw an edge from, so integration is recorded on the node itself."""
+        for decorator in fn.decorator_list:
+            target = decorator.func if isinstance(decorator, ast.Call) else decorator
+            root = self._expr_root(target)
+            if root and root not in module.functions and root not in module.classes:
+                graph.framework_entrypoints.add(ref)
+                return
+
+    def _edges_from_function(
+        self,
+        graph: CodeGraph,
+        modules: dict[str, _ModuleInfo],
+        module: _ModuleInfo,
+        fn: ast.FunctionDef | ast.AsyncFunctionDef,
+        src_ref: str,
+        enclosing: ClassKey | None,
+    ) -> None:
+        local = self._local_types(fn, module, modules)
+        external_locals = self._external_locals(fn, module, modules)
+        self._registration_edges(graph, modules, module, fn, src_ref)
+        self._decorator_entrypoints(graph, module, fn, src_ref)
+        for node in ast.walk(fn):
+            if not isinstance(node, ast.Call):
+                continue
+            target = self._resolve_call(node, module, modules, enclosing, local)
+            if target is None:
+                if self._is_external(node.func, module, modules, enclosing, external_locals):
+                    graph.external_calls += 1
+                elif self._targets_nodeless_class(node.func, module, modules):
+                    graph.nodeless_calls += 1
+                else:
+                    graph.unresolved_calls += 1
+                    if len(graph.unresolved_samples) < _MAX_UNRESOLVED_SAMPLES:
+                        graph.unresolved_samples.append({
+                            "in": src_ref,
+                            "call": self._describe(node.func),
+                            "line": getattr(node, "lineno", 0),
+                        })
+            elif target in graph:
+                graph.add_edge(src_ref, target, CALLS, detail=self._describe(node.func))
+
+    @staticmethod
+    def _expr_root(node: ast.expr | None) -> str | None:
+        """Leftmost identifier of an expression: `asyncio.Event | None` -> 'asyncio'."""
+        while node is not None:
+            if isinstance(node, ast.Name):
+                return node.id
+            if isinstance(node, (ast.Attribute, ast.Subscript)):
+                node = node.value
+            elif isinstance(node, ast.Call):
+                node = node.func
+            elif isinstance(node, ast.Await):
+                node = node.value
+            elif isinstance(node, ast.BinOp):
+                node = node.left
+            else:
+                return None
+        return None
+
+    def _roots_outside_index(
+        self, node: ast.expr | None, module: _ModuleInfo, modules: dict[str, _ModuleInfo]
+    ) -> bool:
+        """True when an expression's type comes from a package we did not index."""
+        root = self._expr_root(node)
+        if root is None:
+            return False
+        if root in _BUILTIN_CALLABLES:
+            return True
+        binding = module.imports.get(root)
+        return bool(binding) and binding[1] not in modules
+
+    def _external_locals(
+        self,
+        fn: ast.FunctionDef | ast.AsyncFunctionDef,
+        module: _ModuleInfo,
+        modules: dict[str, _ModuleInfo],
+    ) -> set[str]:
+        """Local names holding third-party values, e.g. `stop_event: asyncio.Event`.
+
+        Without this, every `stop_event.set()` and `redis.aclose()` is filed as a
+        resolution failure. That inflated the reported gap roughly sixfold on the
+        first sample and made the diagnostic useless as a validity signal.
+        """
+        external: set[str] = set()
+        args = fn.args
+        for arg in (*args.posonlyargs, *args.args, *args.kwonlyargs):
+            if self._roots_outside_index(arg.annotation, module, modules):
+                external.add(arg.arg)
+        for node in ast.walk(fn):
+            target = source = None
+            if isinstance(node, ast.Assign) and len(node.targets) == 1:
+                target, source = node.targets[0], node.value
+            elif isinstance(node, ast.AnnAssign):
+                target, source = node.target, node.annotation
+            if isinstance(target, ast.Name) and self._roots_outside_index(
+                source, module, modules
+            ):
+                external.add(target.id)
+        return external
+
+    def _is_external(
+        self,
+        func: ast.expr,
+        module: _ModuleInfo,
+        modules: dict[str, _ModuleInfo],
+        enclosing: ClassKey | None = None,
+        external_locals: set[str] | None = None,
+    ) -> bool:
+        """True when the call heads into stdlib or a third-party package.
+
+        Those targets have no node by design, so failing to resolve them is not a
+        gap in the frontend. Anything else — a first-party call we could not type —
+        is a genuine gap and must stay visible.
+        """
+        root = self._expr_root(func)
+        if root is None:
+            return True                       # e.g. "'.'.join(...)" on a literal
+        if root in _BUILTIN_CALLABLES:
+            return True
+        if external_locals and root in external_locals:
+            return True
+        if root == "self" and enclosing:
+            attr = self._self_attr_of(func)
+            if attr is not None:
+                for class_key in self._mro(enclosing, modules):
+                    info = self._class_by_key(class_key, modules)
+                    if info and attr in info.attr_external:
+                        return True
+            return False
+        binding = module.imports.get(root)
+        # imported from a module we did not index -> outside the source roots
+        return bool(binding) and binding[1] not in modules
+
+    def _targets_nodeless_class(
+        self, func: ast.expr, module: _ModuleInfo, modules: dict[str, _ModuleInfo]
+    ) -> bool:
+        """A first-party construction with nothing to link to.
+
+        `EntitySyncSpec(...)` names a real class in this repository, but a
+        dataclass has no explicit `__init__`, so there is no function node to
+        point an edge at. That is neither an external call nor a failure to
+        resolve, and lumping it into either would misstate the frontend's
+        coverage.
+        """
+        if not isinstance(func, ast.Name):
+            return False
+        key = self._resolve_class(module, func.id, modules)
+        return key is not None and self._lookup_method(key, "__init__", modules) is None
+
+    @staticmethod
+    def _self_attr_of(func: ast.expr) -> str | None:
+        """For `self._redis.get(...)` return '_redis'; None if not that shape."""
+        node = func
+        previous: ast.Attribute | None = None
+        while isinstance(node, ast.Attribute):
+            previous = node
+            node = node.value
+        if isinstance(node, ast.Name) and node.id == "self" and previous is not None:
+            return previous.attr
+        return None
+
+    def _resolve_call(
+        self,
+        call: ast.Call,
+        module: _ModuleInfo,
+        modules: dict[str, _ModuleInfo],
+        enclosing: ClassKey | None,
+        local: dict[str, ClassKey],
+    ) -> str | None:
+        func = call.func
+
+        # bare name: a constructor, or a function in scope / imported
+        if isinstance(func, ast.Name):
+            key = self._resolve_class(module, func.id, modules)
+            if key:
+                return self._lookup_method(key, "__init__", modules)
+            if func.id in module.functions:
+                return f"{module.file}::{func.id}"
+            binding = module.imports.get(func.id)
+            if binding and binding[0] == "symbol":
+                target = modules.get(binding[1])
+                if target and binding[2] in target.functions:
+                    return f"{target.file}::{binding[2]}"
+            return None
+
+        if isinstance(func, ast.Attribute):
+            owner = self._owner_class(func.value, module, modules, enclosing, local)
+            if owner:
+                return self._lookup_method(owner, func.attr, modules)
+            # module-qualified function: `helpers.do_thing()`
+            if isinstance(func.value, ast.Name):
+                binding = module.imports.get(func.value.id)
+                if binding and binding[0] == "module":
+                    target = modules.get(binding[1])
+                    if target and func.attr in target.functions:
+                        return f"{target.file}::{func.attr}"
+            return None
+
+        return None
+
+    def _owner_class(
+        self,
+        expr: ast.expr,
+        module: _ModuleInfo,
+        modules: dict[str, _ModuleInfo],
+        enclosing: ClassKey | None,
+        local: dict[str, ClassKey],
+    ) -> ClassKey | None:
+        """Which class does the receiver of an attribute access belong to?"""
+        if isinstance(expr, ast.Name):
+            if expr.id == "self":
+                return enclosing
+            if expr.id in local:
+                return local[expr.id]
+            return self._resolve_class(module, expr.id, modules)     # ClassName.method(...)
+        if isinstance(expr, ast.Attribute):
+            if isinstance(expr.value, ast.Name) and expr.value.id == "self" and enclosing:
+                info = self._class_by_key(enclosing, modules)
+                if info:
+                    # walk the MRO so an attribute injected by a base class resolves
+                    for cls_key in self._mro(enclosing, modules):
+                        parent = self._class_by_key(cls_key, modules)
+                        if parent and expr.attr in parent.attr_types:
+                            return parent.attr_types[expr.attr]
+            return None
+        if isinstance(expr, ast.Call):
+            # chained construction: OutboxRepository(session).add(...)
+            name = self._base_name(expr.func)
+            return self._resolve_class(module, name, modules) if name else None
+        if isinstance(expr, ast.Await):
+            return self._owner_class(expr.value, module, modules, enclosing, local)
+        return None
+
+    @staticmethod
+    def _describe(func: ast.expr) -> str:
+        try:
+            return ast.unparse(func)
+        except Exception:
+            return ""
+

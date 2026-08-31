@@ -1,0 +1,70 @@
+{
+  "$comment": [
+    "Ground truth for TICS: which of the prompt's six NFRs are in architectural tension,",
+    "and how strongly. Keyed by NFR id, NOT by the agent's `tacticUsed` string -- agents",
+    "have been observed inventing category paths (e.g. 'Data Integrity > Maintain Integrity'),",
+    "so the free-text field is unreliable as a join key.",
+    "",
+    "Weights transcribe the conflict matrix in 'NFR trade off' section 9.",
+    "Pairs weighted 0.0 are SUPPORT relationships (synergistic, not conflicting): they are",
+    "excluded from the TICS denominator but still measured and reported separately, because",
+    "co-location of synergistic tactics is an observation, not a conflict."
+  ],
+
+  "scale": {
+    "very_high": 1.0,
+    "high": 0.75,
+    "medium_high": 0.6,
+    "medium": 0.5,
+    "low": 0.25,
+    "support": 0.0
+  },
+
+  "nfrs": {
+    "NFR 1.1": "Limit Event Response",
+    "NFR 1.2": "Maintain Multiple Copies of Data",
+    "NFR 2.1": "Exception Detection",
+    "NFR 2.2": "Graceful Degradation",
+    "NFR 2.3": "State Resynchronization",
+    "NFR 2.4": "Transactions"
+  },
+
+  "pairs": [
+    { "a": "NFR 1.2", "b": "NFR 2.4", "level": "very_high", "weight": 1.0,
+      "rationale": "Replication/caching for performance vs. strong consistency through transactional guarantees. The doc's strongest pair (section 1)." },
+
+    { "a": "NFR 2.2", "b": "NFR 2.4", "level": "very_high", "weight": 1.0,
+      "rationale": "Degrading to keep critical functions alive vs. all-or-nothing atomicity across a distributed operation (section 3)." },
+
+    { "a": "NFR 1.1", "b": "NFR 2.4", "level": "high", "weight": 0.75,
+      "rationale": "Admission rate vs. transaction overhead: raising throughput raises DB contention and transaction failures (section 2)." },
+
+    { "a": "NFR 2.1", "b": "NFR 2.4", "level": "high", "weight": 0.75,
+      "rationale": "Timeout-based failure detection vs. transaction certainty: a client timeout does not stop a remote commit (section 6)." },
+
+    { "a": "NFR 2.3", "b": "NFR 2.4", "level": "medium_high", "weight": 0.6,
+      "rationale": "Resynchronization traffic competes with transactional work for the same resources." },
+
+    { "a": "NFR 1.1", "b": "NFR 2.3", "level": "medium", "weight": 0.5,
+      "rationale": "Is sync traffic rate-limited alongside business traffic? Either the standby goes stale or sync steals capacity (section 4)." },
+
+    { "a": "NFR 1.2", "b": "NFR 2.3", "level": "medium", "weight": 0.5,
+      "rationale": "More copies improve read performance but make synchronization costlier and staleness likelier (section 5)." },
+
+    { "a": "NFR 1.1", "b": "NFR 1.2", "level": "low", "weight": 0.25, "rationale": "Matrix: Low." },
+    { "a": "NFR 1.1", "b": "NFR 2.1", "level": "low", "weight": 0.25, "rationale": "Matrix: Low." },
+    { "a": "NFR 1.1", "b": "NFR 2.2", "level": "low", "weight": 0.25, "rationale": "Matrix: Low." },
+    { "a": "NFR 1.2", "b": "NFR 2.1", "level": "low", "weight": 0.25, "rationale": "Matrix: Low." },
+    { "a": "NFR 2.1", "b": "NFR 2.3", "level": "low", "weight": 0.25, "rationale": "Matrix: Low." },
+
+    { "a": "NFR 2.1", "b": "NFR 2.2", "level": "low", "weight": 0.25,
+      "disputed": true,
+      "rationale": "UNRESOLVED IN THE SOURCE DOC. The matrix (section 9) reads 'Support / Low', but the prose (section 7) rates it 'THAP-TRUNG BINH' (low-medium) and locates the tension in threshold configuration rather than in the goals. Set to Low to follow the prose. Flip to 0.0 to follow the matrix -- this changes the TICS denominator from 13 to 12." },
+
+    { "a": "NFR 1.2", "b": "NFR 2.2", "level": "support", "weight": 0.0,
+      "rationale": "Replication/cache actively supports degraded operation: a replica serves reads when the primary is unavailable (section 8)." },
+
+    { "a": "NFR 2.2", "b": "NFR 2.3", "level": "support", "weight": 0.0,
+      "rationale": "Matrix: Support. Resynchronization restores the state that degraded operation ran without." }
+  ]
+}

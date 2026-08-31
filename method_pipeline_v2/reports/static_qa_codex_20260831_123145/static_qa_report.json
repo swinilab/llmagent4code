@@ -1,0 +1,614 @@
+{
+  "generated_at": "2026-08-31T12:31:45",
+  "trace_file": "generated\\codex\\nfr-trace.json",
+  "repo_root": "generated\\codex",
+  "scoring_summary": {
+    "overall_score": 1.0,
+    "score3": {
+      "performance": 1.0,
+      "availability": 1.0
+    },
+    "score2": {
+      "Limit Event Response": 1.0,
+      "Maintain Multiple Copies of Data": 1.0,
+      "Exception Detection": 1.0,
+      "Degradation": 1.0,
+      "State Resynchronization": 1.0,
+      "Transactions": 1.0
+    },
+    "score1": {
+      "Limit Event Response": {
+        "app/workers/outbox.py::OutboxDispatcher.__init__": 1.0,
+        "app/workers/outbox.py::OutboxDispatcher.dispatch_pending_events": 1.0
+      },
+      "Maintain Multiple Copies of Data": {
+        "app/infrastructure/cache.py::EntityCache.get_json": 1.0,
+        "app/infrastructure/cache.py::EntityCache.set_json": 1.0
+      },
+      "Exception Detection": {
+        "app/core/resilience.py::run_with_timeout": 1.0,
+        "app/core/errors.py::install_exception_handlers": 1.0,
+        "app/services/health_service.py::HealthService.check": 1.0
+      },
+      "Degradation": {
+        "app/infrastructure/cache.py::EntityCache.get_json": 1.0,
+        "app/infrastructure/cache.py::EntityCache.set_json": 1.0,
+        "app/workers/outbox.py::OutboxDispatcher.dispatch_pending_events": 1.0
+      },
+      "State Resynchronization": {
+        "app/workers/state_sync.py::StateSynchronizer.resynchronize_once": 1.0,
+        "app/workers/state_sync.py::StateSynchronizer.run_forever": 1.0,
+        "app/infrastructure/cache.py::EntityCache.get_envelope": 1.0,
+        "app/infrastructure/cache.py::EntityCache.set_json": 1.0
+      },
+      "Transactions": {
+        "app/infrastructure/unit_of_work.py::SqlAlchemyUnitOfWork.transaction": 1.0,
+        "app/repositories/outbox_repository.py::OutboxRepository.add": 1.0,
+        "app/repositories/outbox_repository.py::OutboxRepository.claim_batch": 1.0
+      }
+    }
+  },
+  "tally": {
+    "overall_score": 1.0,
+    "score3": {
+      "performance": 1.0,
+      "availability": 1.0
+    },
+    "score2": {
+      "Limit Event Response": 1.0,
+      "Maintain Multiple Copies of Data": 1.0,
+      "Exception Detection": 1.0,
+      "Degradation": 1.0,
+      "State Resynchronization": 1.0,
+      "Transactions": 1.0
+    },
+    "score1": {
+      "Limit Event Response": {
+        "app/workers/outbox.py::OutboxDispatcher.__init__": 1.0,
+        "app/workers/outbox.py::OutboxDispatcher.dispatch_pending_events": 1.0
+      },
+      "Maintain Multiple Copies of Data": {
+        "app/infrastructure/cache.py::EntityCache.get_json": 1.0,
+        "app/infrastructure/cache.py::EntityCache.set_json": 1.0
+      },
+      "Exception Detection": {
+        "app/core/resilience.py::run_with_timeout": 1.0,
+        "app/core/errors.py::install_exception_handlers": 1.0,
+        "app/services/health_service.py::HealthService.check": 1.0
+      },
+      "Degradation": {
+        "app/infrastructure/cache.py::EntityCache.get_json": 1.0,
+        "app/infrastructure/cache.py::EntityCache.set_json": 1.0,
+        "app/workers/outbox.py::OutboxDispatcher.dispatch_pending_events": 1.0
+      },
+      "State Resynchronization": {
+        "app/workers/state_sync.py::StateSynchronizer.resynchronize_once": 1.0,
+        "app/workers/state_sync.py::StateSynchronizer.run_forever": 1.0,
+        "app/infrastructure/cache.py::EntityCache.get_envelope": 1.0,
+        "app/infrastructure/cache.py::EntityCache.set_json": 1.0
+      },
+      "Transactions": {
+        "app/infrastructure/unit_of_work.py::SqlAlchemyUnitOfWork.transaction": 1.0,
+        "app/repositories/outbox_repository.py::OutboxRepository.add": 1.0,
+        "app/repositories/outbox_repository.py::OutboxRepository.claim_batch": 1.0
+      }
+    },
+    "qa_groups": {
+      "performance": {
+        "score3": 1.0,
+        "tactics": [
+          "Limit Event Response",
+          "Maintain Multiple Copies of Data"
+        ],
+        "nfrs": [
+          {
+            "nfr": "NFR 1.1 Limit Event Response",
+            "tactics": [
+              "Limit Event Response"
+            ],
+            "score2": 1.0,
+            "status": "PRESENT",
+            "functions": [
+              {
+                "ref": "app/workers/outbox.py::OutboxDispatcher.__init__",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "app/workers/outbox.py::OutboxDispatcher.dispatch_pending_events",
+                "status": "PRESENT",
+                "score1": 1.0
+              }
+            ],
+            "libraries": [
+              {
+                "lib": "aiolimiter",
+                "status": "PRESENT"
+              }
+            ]
+          },
+          {
+            "nfr": "NFR 1.2 Maintain Multiple copies of Data",
+            "tactics": [
+              "Maintain Multiple Copies of Data"
+            ],
+            "score2": 1.0,
+            "status": "PRESENT",
+            "functions": [
+              {
+                "ref": "app/infrastructure/cache.py::EntityCache.get_json",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "app/infrastructure/cache.py::EntityCache.set_json",
+                "status": "PRESENT",
+                "score1": 1.0
+              }
+            ],
+            "libraries": [
+              {
+                "lib": "redis",
+                "status": "PRESENT"
+              }
+            ]
+          }
+        ]
+      },
+      "availability": {
+        "score3": 1.0,
+        "tactics": [
+          "Degradation",
+          "Exception Detection",
+          "State Resynchronization",
+          "Transactions"
+        ],
+        "nfrs": [
+          {
+            "nfr": "NFR 2.1 Exception detection",
+            "tactics": [
+              "Exception Detection"
+            ],
+            "score2": 1.0,
+            "status": "PRESENT",
+            "functions": [
+              {
+                "ref": "app/core/resilience.py::run_with_timeout",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "app/core/errors.py::install_exception_handlers",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "app/services/health_service.py::HealthService.check",
+                "status": "PRESENT",
+                "score1": 1.0
+              }
+            ],
+            "libraries": [
+              {
+                "lib": "asyncio",
+                "status": "PRESENT"
+              },
+              {
+                "lib": "fastapi",
+                "status": "PRESENT"
+              },
+              {
+                "lib": "sqlalchemy",
+                "status": "PRESENT"
+              }
+            ]
+          },
+          {
+            "nfr": "NFR 2.2 Graceful Degradation",
+            "tactics": [
+              "Degradation"
+            ],
+            "score2": 1.0,
+            "status": "PRESENT",
+            "functions": [
+              {
+                "ref": "app/infrastructure/cache.py::EntityCache.get_json",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "app/infrastructure/cache.py::EntityCache.set_json",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "app/workers/outbox.py::OutboxDispatcher.dispatch_pending_events",
+                "status": "PRESENT",
+                "score1": 1.0
+              }
+            ],
+            "libraries": [
+              {
+                "lib": "redis",
+                "status": "PRESENT"
+              }
+            ]
+          },
+          {
+            "nfr": "NFR 2.3 State Resynchronization",
+            "tactics": [
+              "State Resynchronization"
+            ],
+            "score2": 1.0,
+            "status": "PRESENT",
+            "functions": [
+              {
+                "ref": "app/workers/state_sync.py::StateSynchronizer.resynchronize_once",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "app/workers/state_sync.py::StateSynchronizer.run_forever",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "app/infrastructure/cache.py::EntityCache.get_envelope",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "app/infrastructure/cache.py::EntityCache.set_json",
+                "status": "PRESENT",
+                "score1": 1.0
+              }
+            ],
+            "libraries": [
+              {
+                "lib": "sqlalchemy",
+                "status": "PRESENT"
+              },
+              {
+                "lib": "redis",
+                "status": "PRESENT"
+              }
+            ]
+          },
+          {
+            "nfr": "NFR 2.4 Transactions",
+            "tactics": [
+              "Transactions"
+            ],
+            "score2": 1.0,
+            "status": "PRESENT",
+            "functions": [
+              {
+                "ref": "app/infrastructure/unit_of_work.py::SqlAlchemyUnitOfWork.transaction",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "app/repositories/outbox_repository.py::OutboxRepository.add",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "app/repositories/outbox_repository.py::OutboxRepository.claim_batch",
+                "status": "PRESENT",
+                "score1": 1.0
+              }
+            ],
+            "libraries": [
+              {
+                "lib": "sqlalchemy",
+                "status": "PRESENT"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "results": [
+    {
+      "nfr": "NFR 1.1 Limit Event Response",
+      "qa_group": "performance",
+      "status": "PRESENT",
+      "stage": "existence",
+      "score2": 1.0,
+      "evidence": "functions[OutboxDispatcher.__init__=PRESENT(s1=1.0); OutboxDispatcher.dispatch_pending_events=PRESENT(s1=1.0)] libraries[aiolimiter=PRESENT] fn-uses-lib[level1=PRESENT; OutboxDispatcher.__init__->['aiolimiter']; OutboxDispatcher.dispatch_pending_events->none]",
+      "tactics": [
+        "Limit Event Response"
+      ],
+      "functions": [
+        {
+          "ref": "app/workers/outbox.py::OutboxDispatcher.__init__",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "aiolimiter"
+          ],
+          "uses_any": true
+        },
+        {
+          "ref": "app/workers/outbox.py::OutboxDispatcher.dispatch_pending_events",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        }
+      ],
+      "libraries": [
+        {
+          "lib": "aiolimiter",
+          "status": "PRESENT",
+          "detail": "'aiolimiter' imported and used"
+        }
+      ]
+    },
+    {
+      "nfr": "NFR 1.2 Maintain Multiple copies of Data",
+      "qa_group": "performance",
+      "status": "PRESENT",
+      "stage": "existence",
+      "score2": 1.0,
+      "evidence": "functions[EntityCache.get_json=PRESENT(s1=1.0); EntityCache.set_json=PRESENT(s1=1.0)] libraries[redis=PRESENT] fn-uses-lib[level1=PRESENT; EntityCache.get_json->['redis']; EntityCache.set_json->['redis']]",
+      "tactics": [
+        "Maintain Multiple Copies of Data"
+      ],
+      "functions": [
+        {
+          "ref": "app/infrastructure/cache.py::EntityCache.get_json",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "redis"
+          ],
+          "uses_any": true
+        },
+        {
+          "ref": "app/infrastructure/cache.py::EntityCache.set_json",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "redis"
+          ],
+          "uses_any": true
+        }
+      ],
+      "libraries": [
+        {
+          "lib": "redis",
+          "status": "PRESENT",
+          "detail": "'redis' imported and used"
+        }
+      ]
+    },
+    {
+      "nfr": "NFR 2.1 Exception detection",
+      "qa_group": "availability",
+      "status": "PRESENT",
+      "stage": "existence",
+      "score2": 1.0,
+      "evidence": "functions[run_with_timeout=PRESENT(s1=1.0); install_exception_handlers=PRESENT(s1=1.0); HealthService.check=PRESENT(s1=1.0)] libraries[asyncio=PRESENT; fastapi=PRESENT; sqlalchemy=PRESENT] fn-uses-lib[level1=PRESENT; run_with_timeout->['asyncio']; install_exception_handlers->['fastapi', 'sqlalchemy']; HealthService.check->['sqlalchemy']]",
+      "tactics": [
+        "Exception Detection"
+      ],
+      "functions": [
+        {
+          "ref": "app/core/resilience.py::run_with_timeout",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "asyncio"
+          ],
+          "uses_any": true
+        },
+        {
+          "ref": "app/core/errors.py::install_exception_handlers",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "fastapi",
+            "sqlalchemy"
+          ],
+          "uses_any": true
+        },
+        {
+          "ref": "app/services/health_service.py::HealthService.check",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "sqlalchemy"
+          ],
+          "uses_any": true
+        }
+      ],
+      "libraries": [
+        {
+          "lib": "asyncio",
+          "status": "PRESENT",
+          "detail": "'asyncio' imported and used"
+        },
+        {
+          "lib": "fastapi",
+          "status": "PRESENT",
+          "detail": "'fastapi' imported and used"
+        },
+        {
+          "lib": "sqlalchemy",
+          "status": "PRESENT",
+          "detail": "'sqlalchemy' imported and used"
+        }
+      ]
+    },
+    {
+      "nfr": "NFR 2.2 Graceful Degradation",
+      "qa_group": "availability",
+      "status": "PRESENT",
+      "stage": "existence",
+      "score2": 1.0,
+      "evidence": "functions[EntityCache.get_json=PRESENT(s1=1.0); EntityCache.set_json=PRESENT(s1=1.0); OutboxDispatcher.dispatch_pending_events=PRESENT(s1=1.0)] libraries[redis=PRESENT] fn-uses-lib[level1=PRESENT; EntityCache.get_json->['redis']; EntityCache.set_json->['redis']; OutboxDispatcher.dispatch_pending_events->['redis']]",
+      "tactics": [
+        "Degradation"
+      ],
+      "functions": [
+        {
+          "ref": "app/infrastructure/cache.py::EntityCache.get_json",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "redis"
+          ],
+          "uses_any": true
+        },
+        {
+          "ref": "app/infrastructure/cache.py::EntityCache.set_json",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "redis"
+          ],
+          "uses_any": true
+        },
+        {
+          "ref": "app/workers/outbox.py::OutboxDispatcher.dispatch_pending_events",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "redis"
+          ],
+          "uses_any": true
+        }
+      ],
+      "libraries": [
+        {
+          "lib": "redis",
+          "status": "PRESENT",
+          "detail": "'redis' imported and used"
+        }
+      ]
+    },
+    {
+      "nfr": "NFR 2.3 State Resynchronization",
+      "qa_group": "availability",
+      "status": "PRESENT",
+      "stage": "existence",
+      "score2": 1.0,
+      "evidence": "functions[StateSynchronizer.resynchronize_once=PRESENT(s1=1.0); StateSynchronizer.run_forever=PRESENT(s1=1.0); EntityCache.get_envelope=PRESENT(s1=1.0); EntityCache.set_json=PRESENT(s1=1.0)] libraries[sqlalchemy=PRESENT; redis=PRESENT] fn-uses-lib[level1=PRESENT; StateSynchronizer.resynchronize_once->['sqlalchemy']; StateSynchronizer.run_forever->none; EntityCache.get_envelope->['redis']; EntityCache.set_json->['redis']]",
+      "tactics": [
+        "State Resynchronization"
+      ],
+      "functions": [
+        {
+          "ref": "app/workers/state_sync.py::StateSynchronizer.resynchronize_once",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "sqlalchemy"
+          ],
+          "uses_any": true
+        },
+        {
+          "ref": "app/workers/state_sync.py::StateSynchronizer.run_forever",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        },
+        {
+          "ref": "app/infrastructure/cache.py::EntityCache.get_envelope",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "redis"
+          ],
+          "uses_any": true
+        },
+        {
+          "ref": "app/infrastructure/cache.py::EntityCache.set_json",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "redis"
+          ],
+          "uses_any": true
+        }
+      ],
+      "libraries": [
+        {
+          "lib": "sqlalchemy",
+          "status": "PRESENT",
+          "detail": "'sqlalchemy' imported and used"
+        },
+        {
+          "lib": "redis",
+          "status": "PRESENT",
+          "detail": "'redis' imported and used"
+        }
+      ]
+    },
+    {
+      "nfr": "NFR 2.4 Transactions",
+      "qa_group": "availability",
+      "status": "PRESENT",
+      "stage": "existence",
+      "score2": 1.0,
+      "evidence": "functions[SqlAlchemyUnitOfWork.transaction=PRESENT(s1=1.0); OutboxRepository.add=PRESENT(s1=1.0); OutboxRepository.claim_batch=PRESENT(s1=1.0)] libraries[sqlalchemy=PRESENT] fn-uses-lib[level1=PRESENT; SqlAlchemyUnitOfWork.transaction->['sqlalchemy']; OutboxRepository.add->none; OutboxRepository.claim_batch->['sqlalchemy']]",
+      "tactics": [
+        "Transactions"
+      ],
+      "functions": [
+        {
+          "ref": "app/infrastructure/unit_of_work.py::SqlAlchemyUnitOfWork.transaction",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "sqlalchemy"
+          ],
+          "uses_any": true
+        },
+        {
+          "ref": "app/repositories/outbox_repository.py::OutboxRepository.add",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        },
+        {
+          "ref": "app/repositories/outbox_repository.py::OutboxRepository.claim_batch",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "sqlalchemy"
+          ],
+          "uses_any": true
+        }
+      ],
+      "libraries": [
+        {
+          "lib": "sqlalchemy",
+          "status": "PRESENT",
+          "detail": "'sqlalchemy' imported and used"
+        }
+      ]
+    }
+  ]
+}

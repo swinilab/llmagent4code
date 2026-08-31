@@ -1,0 +1,2669 @@
+{
+  "nodes": [
+    {
+      "ref": "app/main.py::lifespan",
+      "file": "app/main.py",
+      "qualname": "lifespan",
+      "lineno": 28,
+      "className": null
+    },
+    {
+      "ref": "app/main.py::domain_error_handler",
+      "file": "app/main.py",
+      "qualname": "domain_error_handler",
+      "lineno": 66,
+      "className": null
+    },
+    {
+      "ref": "app/main.py::validation_error_handler",
+      "file": "app/main.py",
+      "qualname": "validation_error_handler",
+      "lineno": 74,
+      "className": null
+    },
+    {
+      "ref": "app/api/deps.py::parse_entity_id",
+      "file": "app/api/deps.py",
+      "qualname": "parse_entity_id",
+      "lineno": 23,
+      "className": null
+    },
+    {
+      "ref": "app/api/deps.py::get_cache",
+      "file": "app/api/deps.py",
+      "qualname": "get_cache",
+      "lineno": 37,
+      "className": null
+    },
+    {
+      "ref": "app/api/deps.py::get_customer_service",
+      "file": "app/api/deps.py",
+      "qualname": "get_customer_service",
+      "lineno": 41,
+      "className": null
+    },
+    {
+      "ref": "app/api/deps.py::get_product_service",
+      "file": "app/api/deps.py",
+      "qualname": "get_product_service",
+      "lineno": 45,
+      "className": null
+    },
+    {
+      "ref": "app/api/deps.py::get_order_service",
+      "file": "app/api/deps.py",
+      "qualname": "get_order_service",
+      "lineno": 49,
+      "className": null
+    },
+    {
+      "ref": "app/api/deps.py::get_invoice_service",
+      "file": "app/api/deps.py",
+      "qualname": "get_invoice_service",
+      "lineno": 53,
+      "className": null
+    },
+    {
+      "ref": "app/api/deps.py::get_payment_service",
+      "file": "app/api/deps.py",
+      "qualname": "get_payment_service",
+      "lineno": 57,
+      "className": null
+    },
+    {
+      "ref": "app/core/config.py::get_settings",
+      "file": "app/core/config.py",
+      "qualname": "get_settings",
+      "lineno": 44,
+      "className": null
+    },
+    {
+      "ref": "app/core/errors.py::DomainError.__init__",
+      "file": "app/core/errors.py",
+      "qualname": "DomainError.__init__",
+      "lineno": 18,
+      "className": "DomainError"
+    },
+    {
+      "ref": "app/core/middleware.py::RateLimitMiddleware.dispatch",
+      "file": "app/core/middleware.py",
+      "qualname": "RateLimitMiddleware.dispatch",
+      "lineno": 33,
+      "className": "RateLimitMiddleware"
+    },
+    {
+      "ref": "app/core/middleware.py::ExceptionDetectionMiddleware.__init__",
+      "file": "app/core/middleware.py",
+      "qualname": "ExceptionDetectionMiddleware.__init__",
+      "lineno": 66,
+      "className": "ExceptionDetectionMiddleware"
+    },
+    {
+      "ref": "app/core/middleware.py::ExceptionDetectionMiddleware.dispatch",
+      "file": "app/core/middleware.py",
+      "qualname": "ExceptionDetectionMiddleware.dispatch",
+      "lineno": 70,
+      "className": "ExceptionDetectionMiddleware"
+    },
+    {
+      "ref": "app/domain/enums.py::can_transition",
+      "file": "app/domain/enums.py",
+      "qualname": "can_transition",
+      "lineno": 81,
+      "className": null
+    },
+    {
+      "ref": "app/domain/models.py::Price._currency_supported",
+      "file": "app/domain/models.py",
+      "qualname": "Price._currency_supported",
+      "lineno": 85,
+      "className": "Price"
+    },
+    {
+      "ref": "app/domain/models.py::Price._ser_amount",
+      "file": "app/domain/models.py",
+      "qualname": "Price._ser_amount",
+      "lineno": 91,
+      "className": "Price"
+    },
+    {
+      "ref": "app/domain/models.py::LineItemRead._ser_snapshot",
+      "file": "app/domain/models.py",
+      "qualname": "LineItemRead._ser_snapshot",
+      "lineno": 127,
+      "className": "LineItemRead"
+    },
+    {
+      "ref": "app/domain/models.py::OrderCreate._no_duplicate_products",
+      "file": "app/domain/models.py",
+      "qualname": "OrderCreate._no_duplicate_products",
+      "lineno": 137,
+      "className": "OrderCreate"
+    },
+    {
+      "ref": "app/domain/models.py::OrderRead._ser_total",
+      "file": "app/domain/models.py",
+      "qualname": "OrderRead._ser_total",
+      "lineno": 156,
+      "className": "OrderRead"
+    },
+    {
+      "ref": "app/domain/models.py::PaymentRead._ser_amount",
+      "file": "app/domain/models.py",
+      "qualname": "PaymentRead._ser_amount",
+      "lineno": 180,
+      "className": "PaymentRead"
+    },
+    {
+      "ref": "app/domain/models.py::InvoiceCreate._due_not_before_issue",
+      "file": "app/domain/models.py",
+      "qualname": "InvoiceCreate._due_not_before_issue",
+      "lineno": 204,
+      "className": "InvoiceCreate"
+    },
+    {
+      "ref": "app/domain/models.py::InvoiceRead._ser_total",
+      "file": "app/domain/models.py",
+      "qualname": "InvoiceRead._ser_total",
+      "lineno": 225,
+      "className": "InvoiceRead"
+    },
+    {
+      "ref": "app/domain/models.py::InvoiceRead._ser_date",
+      "file": "app/domain/models.py",
+      "qualname": "InvoiceRead._ser_date",
+      "lineno": 229,
+      "className": "InvoiceRead"
+    },
+    {
+      "ref": "app/domain/validators.py::_validate_unicode_name",
+      "file": "app/domain/validators.py",
+      "qualname": "_validate_unicode_name",
+      "lineno": 29,
+      "className": null
+    },
+    {
+      "ref": "app/domain/validators.py::_validate_bank_name",
+      "file": "app/domain/validators.py",
+      "qualname": "_validate_bank_name",
+      "lineno": 39,
+      "className": null
+    },
+    {
+      "ref": "app/domain/validators.py::_not_blank",
+      "file": "app/domain/validators.py",
+      "qualname": "_not_blank",
+      "lineno": 49,
+      "className": null
+    },
+    {
+      "ref": "app/domain/validators.py::_validate_phone",
+      "file": "app/domain/validators.py",
+      "qualname": "_validate_phone",
+      "lineno": 55,
+      "className": null
+    },
+    {
+      "ref": "app/domain/validators.py::_make_money_validator",
+      "file": "app/domain/validators.py",
+      "qualname": "_make_money_validator",
+      "lineno": 62,
+      "className": null
+    },
+    {
+      "ref": "app/domain/validators.py::_validate_ddmmyyyy",
+      "file": "app/domain/validators.py",
+      "qualname": "_validate_ddmmyyyy",
+      "lineno": 91,
+      "className": null
+    },
+    {
+      "ref": "app/domain/validators.py::_validate_uuid4_str",
+      "file": "app/domain/validators.py",
+      "qualname": "_validate_uuid4_str",
+      "lineno": 104,
+      "className": null
+    },
+    {
+      "ref": "app/domain/validators.py::_validate_quantity",
+      "file": "app/domain/validators.py",
+      "qualname": "_validate_quantity",
+      "lineno": 120,
+      "className": null
+    },
+    {
+      "ref": "app/domain/validators.py::format_ddmmyyyy",
+      "file": "app/domain/validators.py",
+      "qualname": "format_ddmmyyyy",
+      "lineno": 173,
+      "className": null
+    },
+    {
+      "ref": "app/domain/validators.py::format_money",
+      "file": "app/domain/validators.py",
+      "qualname": "format_money",
+      "lineno": 177,
+      "className": null
+    },
+    {
+      "ref": "app/infra/cache.py::EntityCache.__init__",
+      "file": "app/infra/cache.py",
+      "qualname": "EntityCache.__init__",
+      "lineno": 23,
+      "className": "EntityCache"
+    },
+    {
+      "ref": "app/infra/cache.py::EntityCache._key",
+      "file": "app/infra/cache.py",
+      "qualname": "EntityCache._key",
+      "lineno": 32,
+      "className": "EntityCache"
+    },
+    {
+      "ref": "app/infra/cache.py::EntityCache.get",
+      "file": "app/infra/cache.py",
+      "qualname": "EntityCache.get",
+      "lineno": 35,
+      "className": "EntityCache"
+    },
+    {
+      "ref": "app/infra/cache.py::EntityCache.set",
+      "file": "app/infra/cache.py",
+      "qualname": "EntityCache.set",
+      "lineno": 50,
+      "className": "EntityCache"
+    },
+    {
+      "ref": "app/infra/cache.py::EntityCache.invalidate",
+      "file": "app/infra/cache.py",
+      "qualname": "EntityCache.invalidate",
+      "lineno": 62,
+      "className": "EntityCache"
+    },
+    {
+      "ref": "app/infra/cache.py::EntityCache.stats",
+      "file": "app/infra/cache.py",
+      "qualname": "EntityCache.stats",
+      "lineno": 72,
+      "className": "EntityCache"
+    },
+    {
+      "ref": "app/infra/database.py::_build_engine",
+      "file": "app/infra/database.py",
+      "qualname": "_build_engine",
+      "lineno": 23,
+      "className": null
+    },
+    {
+      "ref": "app/infra/database.py::unit_of_work",
+      "file": "app/infra/database.py",
+      "qualname": "unit_of_work",
+      "lineno": 54,
+      "className": null
+    },
+    {
+      "ref": "app/infra/database.py::_open_replica_session",
+      "file": "app/infra/database.py",
+      "qualname": "_open_replica_session",
+      "lineno": 71,
+      "className": null
+    },
+    {
+      "ref": "app/infra/database.py::read_session",
+      "file": "app/infra/database.py",
+      "qualname": "read_session",
+      "lineno": 90,
+      "className": null
+    },
+    {
+      "ref": "app/infra/degradation.py::CircuitBreaker.__init__",
+      "file": "app/infra/degradation.py",
+      "qualname": "CircuitBreaker.__init__",
+      "lineno": 38,
+      "className": "CircuitBreaker"
+    },
+    {
+      "ref": "app/infra/degradation.py::CircuitBreaker._record_success",
+      "file": "app/infra/degradation.py",
+      "qualname": "CircuitBreaker._record_success",
+      "lineno": 46,
+      "className": "CircuitBreaker"
+    },
+    {
+      "ref": "app/infra/degradation.py::CircuitBreaker._record_failure",
+      "file": "app/infra/degradation.py",
+      "qualname": "CircuitBreaker._record_failure",
+      "lineno": 50,
+      "className": "CircuitBreaker"
+    },
+    {
+      "ref": "app/infra/degradation.py::CircuitBreaker.call",
+      "file": "app/infra/degradation.py",
+      "qualname": "CircuitBreaker.call",
+      "lineno": 57,
+      "className": "CircuitBreaker"
+    },
+    {
+      "ref": "app/infra/degradation.py::FeatureRegistry.__init__",
+      "file": "app/infra/degradation.py",
+      "qualname": "FeatureRegistry.__init__",
+      "lineno": 94,
+      "className": "FeatureRegistry"
+    },
+    {
+      "ref": "app/infra/degradation.py::FeatureRegistry.shed",
+      "file": "app/infra/degradation.py",
+      "qualname": "FeatureRegistry.shed",
+      "lineno": 105,
+      "className": "FeatureRegistry"
+    },
+    {
+      "ref": "app/infra/degradation.py::FeatureRegistry.restore",
+      "file": "app/infra/degradation.py",
+      "qualname": "FeatureRegistry.restore",
+      "lineno": 112,
+      "className": "FeatureRegistry"
+    },
+    {
+      "ref": "app/infra/degradation.py::FeatureRegistry.is_available",
+      "file": "app/infra/degradation.py",
+      "qualname": "FeatureRegistry.is_available",
+      "lineno": 115,
+      "className": "FeatureRegistry"
+    },
+    {
+      "ref": "app/infra/degradation.py::FeatureRegistry.status",
+      "file": "app/infra/degradation.py",
+      "qualname": "FeatureRegistry.status",
+      "lineno": 118,
+      "className": "FeatureRegistry"
+    },
+    {
+      "ref": "app/infra/rate_limiter.py::TokenBucketRateLimiter.__init__",
+      "file": "app/infra/rate_limiter.py",
+      "qualname": "TokenBucketRateLimiter.__init__",
+      "lineno": 54,
+      "className": "TokenBucketRateLimiter"
+    },
+    {
+      "ref": "app/infra/rate_limiter.py::TokenBucketRateLimiter.allow",
+      "file": "app/infra/rate_limiter.py",
+      "qualname": "TokenBucketRateLimiter.allow",
+      "lineno": 60,
+      "className": "TokenBucketRateLimiter"
+    },
+    {
+      "ref": "app/infra/resync.py::ResyncReport.as_dict",
+      "file": "app/infra/resync.py",
+      "qualname": "ResyncReport.as_dict",
+      "lineno": 37,
+      "className": "ResyncReport"
+    },
+    {
+      "ref": "app/infra/resync.py::StateResynchronizer.__init__",
+      "file": "app/infra/resync.py",
+      "qualname": "StateResynchronizer.__init__",
+      "lineno": 48,
+      "className": "StateResynchronizer"
+    },
+    {
+      "ref": "app/infra/resync.py::StateResynchronizer._replication_lag",
+      "file": "app/infra/resync.py",
+      "qualname": "StateResynchronizer._replication_lag",
+      "lineno": 55,
+      "className": "StateResynchronizer"
+    },
+    {
+      "ref": "app/infra/resync.py::StateResynchronizer._table_signature",
+      "file": "app/infra/resync.py",
+      "qualname": "StateResynchronizer._table_signature",
+      "lineno": 66,
+      "className": "StateResynchronizer"
+    },
+    {
+      "ref": "app/infra/resync.py::StateResynchronizer.compare_active_and_standby",
+      "file": "app/infra/resync.py",
+      "qualname": "StateResynchronizer.compare_active_and_standby",
+      "lineno": 77,
+      "className": "StateResynchronizer"
+    },
+    {
+      "ref": "app/infra/resync.py::StateResynchronizer._evict_diverged_cache",
+      "file": "app/infra/resync.py",
+      "qualname": "StateResynchronizer._evict_diverged_cache",
+      "lineno": 92,
+      "className": "StateResynchronizer"
+    },
+    {
+      "ref": "app/infra/resync.py::StateResynchronizer.run_once",
+      "file": "app/infra/resync.py",
+      "qualname": "StateResynchronizer.run_once",
+      "lineno": 107,
+      "className": "StateResynchronizer"
+    },
+    {
+      "ref": "app/infra/resync.py::StateResynchronizer._loop",
+      "file": "app/infra/resync.py",
+      "qualname": "StateResynchronizer._loop",
+      "lineno": 127,
+      "className": "StateResynchronizer"
+    },
+    {
+      "ref": "app/infra/resync.py::StateResynchronizer.start",
+      "file": "app/infra/resync.py",
+      "qualname": "StateResynchronizer.start",
+      "lineno": 132,
+      "className": "StateResynchronizer"
+    },
+    {
+      "ref": "app/infra/resync.py::StateResynchronizer.stop",
+      "file": "app/infra/resync.py",
+      "qualname": "StateResynchronizer.stop",
+      "lineno": 136,
+      "className": "StateResynchronizer"
+    },
+    {
+      "ref": "app/repositories/repositories.py::SQLAlchemyRepository.__init__",
+      "file": "app/repositories/repositories.py",
+      "qualname": "SQLAlchemyRepository.__init__",
+      "lineno": 25,
+      "className": "SQLAlchemyRepository"
+    },
+    {
+      "ref": "app/repositories/repositories.py::SQLAlchemyRepository.add",
+      "file": "app/repositories/repositories.py",
+      "qualname": "SQLAlchemyRepository.add",
+      "lineno": 28,
+      "className": "SQLAlchemyRepository"
+    },
+    {
+      "ref": "app/repositories/repositories.py::SQLAlchemyRepository.get",
+      "file": "app/repositories/repositories.py",
+      "qualname": "SQLAlchemyRepository.get",
+      "lineno": 33,
+      "className": "SQLAlchemyRepository"
+    },
+    {
+      "ref": "app/repositories/repositories.py::SQLAlchemyRepository.get_for_update",
+      "file": "app/repositories/repositories.py",
+      "qualname": "SQLAlchemyRepository.get_for_update",
+      "lineno": 36,
+      "className": "SQLAlchemyRepository"
+    },
+    {
+      "ref": "app/repositories/repositories.py::SQLAlchemyRepository.list",
+      "file": "app/repositories/repositories.py",
+      "qualname": "SQLAlchemyRepository.list",
+      "lineno": 41,
+      "className": "SQLAlchemyRepository"
+    },
+    {
+      "ref": "app/repositories/repositories.py::SQLAlchemyRepository.count",
+      "file": "app/repositories/repositories.py",
+      "qualname": "SQLAlchemyRepository.count",
+      "lineno": 45,
+      "className": "SQLAlchemyRepository"
+    },
+    {
+      "ref": "app/repositories/repositories.py::CustomerRepository.get_active",
+      "file": "app/repositories/repositories.py",
+      "qualname": "CustomerRepository.get_active",
+      "lineno": 52,
+      "className": "CustomerRepository"
+    },
+    {
+      "ref": "app/repositories/repositories.py::CustomerRepository.order_history",
+      "file": "app/repositories/repositories.py",
+      "qualname": "CustomerRepository.order_history",
+      "lineno": 57,
+      "className": "CustomerRepository"
+    },
+    {
+      "ref": "app/repositories/repositories.py::ProductRepository.get_many",
+      "file": "app/repositories/repositories.py",
+      "qualname": "ProductRepository.get_many",
+      "lineno": 70,
+      "className": "ProductRepository"
+    },
+    {
+      "ref": "app/repositories/repositories.py::OrderRepository.add_line_item",
+      "file": "app/repositories/repositories.py",
+      "qualname": "OrderRepository.add_line_item",
+      "lineno": 81,
+      "className": "OrderRepository"
+    },
+    {
+      "ref": "app/repositories/repositories.py::OrderRepository.by_status",
+      "file": "app/repositories/repositories.py",
+      "qualname": "OrderRepository.by_status",
+      "lineno": 85,
+      "className": "OrderRepository"
+    },
+    {
+      "ref": "app/repositories/repositories.py::InvoiceRepository.get_by_order",
+      "file": "app/repositories/repositories.py",
+      "qualname": "InvoiceRepository.get_by_order",
+      "lineno": 93,
+      "className": "InvoiceRepository"
+    },
+    {
+      "ref": "app/repositories/repositories.py::InvoiceRepository.overdue_before",
+      "file": "app/repositories/repositories.py",
+      "qualname": "InvoiceRepository.overdue_before",
+      "lineno": 97,
+      "className": "InvoiceRepository"
+    },
+    {
+      "ref": "app/repositories/repositories.py::PaymentRepository.get_by_order",
+      "file": "app/repositories/repositories.py",
+      "qualname": "PaymentRepository.get_by_order",
+      "lineno": 105,
+      "className": "PaymentRepository"
+    },
+    {
+      "ref": "app/repositories/repositories.py::PaymentRepository.has_settled_payment",
+      "file": "app/repositories/repositories.py",
+      "qualname": "PaymentRepository.has_settled_payment",
+      "lineno": 109,
+      "className": "PaymentRepository"
+    },
+    {
+      "ref": "app/repositories/schema.py::_uuid_pk",
+      "file": "app/repositories/schema.py",
+      "qualname": "_uuid_pk",
+      "lineno": 31,
+      "className": null
+    },
+    {
+      "ref": "app/repositories/schema.py::_now",
+      "file": "app/repositories/schema.py",
+      "qualname": "_now",
+      "lineno": 35,
+      "className": null
+    },
+    {
+      "ref": "app/services/services.py::_guard_transition",
+      "file": "app/services/services.py",
+      "qualname": "_guard_transition",
+      "lineno": 57,
+      "className": null
+    },
+    {
+      "ref": "app/services/services.py::BaseService.__init__",
+      "file": "app/services/services.py",
+      "qualname": "BaseService.__init__",
+      "lineno": 74,
+      "className": "BaseService"
+    },
+    {
+      "ref": "app/services/services.py::BaseService._cached_read",
+      "file": "app/services/services.py",
+      "qualname": "BaseService._cached_read",
+      "lineno": 77,
+      "className": "BaseService"
+    },
+    {
+      "ref": "app/services/services.py::BaseService._invalidate",
+      "file": "app/services/services.py",
+      "qualname": "BaseService._invalidate",
+      "lineno": 92,
+      "className": "BaseService"
+    },
+    {
+      "ref": "app/services/services.py::CustomerService._to_read",
+      "file": "app/services/services.py",
+      "qualname": "CustomerService._to_read",
+      "lineno": 103,
+      "className": "CustomerService"
+    },
+    {
+      "ref": "app/services/services.py::CustomerService.create",
+      "file": "app/services/services.py",
+      "qualname": "CustomerService.create",
+      "lineno": 114,
+      "className": "CustomerService"
+    },
+    {
+      "ref": "app/services/services.py::CustomerService.get",
+      "file": "app/services/services.py",
+      "qualname": "CustomerService.get",
+      "lineno": 129,
+      "className": "CustomerService"
+    },
+    {
+      "ref": "app/services/services.py::ProductService._to_read",
+      "file": "app/services/services.py",
+      "qualname": "ProductService._to_read",
+      "lineno": 152,
+      "className": "ProductService"
+    },
+    {
+      "ref": "app/services/services.py::ProductService.create",
+      "file": "app/services/services.py",
+      "qualname": "ProductService.create",
+      "lineno": 159,
+      "className": "ProductService"
+    },
+    {
+      "ref": "app/services/services.py::ProductService.get",
+      "file": "app/services/services.py",
+      "qualname": "ProductService.get",
+      "lineno": 171,
+      "className": "ProductService"
+    },
+    {
+      "ref": "app/services/services.py::OrderService._to_read",
+      "file": "app/services/services.py",
+      "qualname": "OrderService._to_read",
+      "lineno": 188,
+      "className": "OrderService"
+    },
+    {
+      "ref": "app/services/services.py::OrderService.create",
+      "file": "app/services/services.py",
+      "qualname": "OrderService.create",
+      "lineno": 207,
+      "className": "OrderService"
+    },
+    {
+      "ref": "app/services/services.py::OrderService.get",
+      "file": "app/services/services.py",
+      "qualname": "OrderService.get",
+      "lineno": 265,
+      "className": "OrderService"
+    },
+    {
+      "ref": "app/services/services.py::OrderService.transition",
+      "file": "app/services/services.py",
+      "qualname": "OrderService.transition",
+      "lineno": 274,
+      "className": "OrderService"
+    },
+    {
+      "ref": "app/services/services.py::InvoiceService._to_read",
+      "file": "app/services/services.py",
+      "qualname": "InvoiceService._to_read",
+      "lineno": 311,
+      "className": "InvoiceService"
+    },
+    {
+      "ref": "app/services/services.py::InvoiceService.create",
+      "file": "app/services/services.py",
+      "qualname": "InvoiceService.create",
+      "lineno": 322,
+      "className": "InvoiceService"
+    },
+    {
+      "ref": "app/services/services.py::InvoiceService.get",
+      "file": "app/services/services.py",
+      "qualname": "InvoiceService.get",
+      "lineno": 373,
+      "className": "InvoiceService"
+    },
+    {
+      "ref": "app/services/services.py::InvoiceService.mark_overdue",
+      "file": "app/services/services.py",
+      "qualname": "InvoiceService.mark_overdue",
+      "lineno": 382,
+      "className": "InvoiceService"
+    },
+    {
+      "ref": "app/services/services.py::PaymentService._to_read",
+      "file": "app/services/services.py",
+      "qualname": "PaymentService._to_read",
+      "lineno": 401,
+      "className": "PaymentService"
+    },
+    {
+      "ref": "app/services/services.py::PaymentService.create",
+      "file": "app/services/services.py",
+      "qualname": "PaymentService.create",
+      "lineno": 411,
+      "className": "PaymentService"
+    },
+    {
+      "ref": "app/services/services.py::PaymentService.get",
+      "file": "app/services/services.py",
+      "qualname": "PaymentService.get",
+      "lineno": 463,
+      "className": "PaymentService"
+    },
+    {
+      "ref": "app/services/services.py::PaymentService.verify",
+      "file": "app/services/services.py",
+      "qualname": "PaymentService.verify",
+      "lineno": 472,
+      "className": "PaymentService"
+    },
+    {
+      "ref": "app/api/v1/customers.py::create_customer",
+      "file": "app/api/v1/customers.py",
+      "qualname": "create_customer",
+      "lineno": 22,
+      "className": null
+    },
+    {
+      "ref": "app/api/v1/customers.py::get_customer",
+      "file": "app/api/v1/customers.py",
+      "qualname": "get_customer",
+      "lineno": 32,
+      "className": null
+    },
+    {
+      "ref": "app/api/v1/invoices.py::create_invoice",
+      "file": "app/api/v1/invoices.py",
+      "qualname": "create_invoice",
+      "lineno": 26,
+      "className": null
+    },
+    {
+      "ref": "app/api/v1/invoices.py::get_invoice",
+      "file": "app/api/v1/invoices.py",
+      "qualname": "get_invoice",
+      "lineno": 36,
+      "className": null
+    },
+    {
+      "ref": "app/api/v1/ops.py::health",
+      "file": "app/api/v1/ops.py",
+      "qualname": "health",
+      "lineno": 21,
+      "className": null
+    },
+    {
+      "ref": "app/api/v1/ops.py::readiness",
+      "file": "app/api/v1/ops.py",
+      "qualname": "readiness",
+      "lineno": 26,
+      "className": null
+    },
+    {
+      "ref": "app/api/v1/ops.py::nfr_status",
+      "file": "app/api/v1/ops.py",
+      "qualname": "nfr_status",
+      "lineno": 50,
+      "className": null
+    },
+    {
+      "ref": "app/api/v1/ops.py::force_resync",
+      "file": "app/api/v1/ops.py",
+      "qualname": "force_resync",
+      "lineno": 75,
+      "className": null
+    },
+    {
+      "ref": "app/api/v1/ops.py::degrade",
+      "file": "app/api/v1/ops.py",
+      "qualname": "degrade",
+      "lineno": 81,
+      "className": null
+    },
+    {
+      "ref": "app/api/v1/ops.py::restore",
+      "file": "app/api/v1/ops.py",
+      "qualname": "restore",
+      "lineno": 91,
+      "className": null
+    },
+    {
+      "ref": "app/api/v1/orders.py::create_order",
+      "file": "app/api/v1/orders.py",
+      "qualname": "create_order",
+      "lineno": 27,
+      "className": null
+    },
+    {
+      "ref": "app/api/v1/orders.py::get_order",
+      "file": "app/api/v1/orders.py",
+      "qualname": "get_order",
+      "lineno": 37,
+      "className": null
+    },
+    {
+      "ref": "app/api/v1/orders.py::update_order_status",
+      "file": "app/api/v1/orders.py",
+      "qualname": "update_order_status",
+      "lineno": 51,
+      "className": null
+    },
+    {
+      "ref": "app/api/v1/orders.py::accept_order",
+      "file": "app/api/v1/orders.py",
+      "qualname": "accept_order",
+      "lineno": 63,
+      "className": null
+    },
+    {
+      "ref": "app/api/v1/orders.py::ship_order",
+      "file": "app/api/v1/orders.py",
+      "qualname": "ship_order",
+      "lineno": 73,
+      "className": null
+    },
+    {
+      "ref": "app/api/v1/orders.py::close_order",
+      "file": "app/api/v1/orders.py",
+      "qualname": "close_order",
+      "lineno": 83,
+      "className": null
+    },
+    {
+      "ref": "app/api/v1/orders.py::cancel_order",
+      "file": "app/api/v1/orders.py",
+      "qualname": "cancel_order",
+      "lineno": 93,
+      "className": null
+    },
+    {
+      "ref": "app/api/v1/payments.py::create_payment",
+      "file": "app/api/v1/payments.py",
+      "qualname": "create_payment",
+      "lineno": 27,
+      "className": null
+    },
+    {
+      "ref": "app/api/v1/payments.py::get_payment",
+      "file": "app/api/v1/payments.py",
+      "qualname": "get_payment",
+      "lineno": 37,
+      "className": null
+    },
+    {
+      "ref": "app/api/v1/payments.py::verify_payment",
+      "file": "app/api/v1/payments.py",
+      "qualname": "verify_payment",
+      "lineno": 51,
+      "className": null
+    },
+    {
+      "ref": "app/api/v1/payments.py::verify_payment_shorthand",
+      "file": "app/api/v1/payments.py",
+      "qualname": "verify_payment_shorthand",
+      "lineno": 63,
+      "className": null
+    },
+    {
+      "ref": "app/api/v1/products.py::create_product",
+      "file": "app/api/v1/products.py",
+      "qualname": "create_product",
+      "lineno": 22,
+      "className": null
+    },
+    {
+      "ref": "app/api/v1/products.py::get_product",
+      "file": "app/api/v1/products.py",
+      "qualname": "get_product",
+      "lineno": 32,
+      "className": null
+    }
+  ],
+  "edges": [
+    {
+      "src": "app/main.py::lifespan",
+      "dst": "app/infra/cache.py::EntityCache.__init__",
+      "kind": "CALLS",
+      "detail": "EntityCache"
+    },
+    {
+      "src": "app/main.py::lifespan",
+      "dst": "app/infra/rate_limiter.py::TokenBucketRateLimiter.__init__",
+      "kind": "CALLS",
+      "detail": "TokenBucketRateLimiter"
+    },
+    {
+      "src": "app/main.py::lifespan",
+      "dst": "app/infra/resync.py::StateResynchronizer.__init__",
+      "kind": "CALLS",
+      "detail": "StateResynchronizer"
+    },
+    {
+      "src": "app/main.py::domain_error_handler",
+      "dst": "app/core/errors.py::DomainError.__init__",
+      "kind": "REGISTERED",
+      "detail": "DomainError"
+    },
+    {
+      "src": "app/main.py::domain_error_handler",
+      "dst": "app/core/errors.py::DomainError.__init__",
+      "kind": "REGISTERED",
+      "detail": "DomainError"
+    },
+    {
+      "src": "app/api/deps.py::parse_entity_id",
+      "dst": "app/core/errors.py::DomainError.__init__",
+      "kind": "CALLS",
+      "detail": "ValidationError"
+    },
+    {
+      "src": "app/api/deps.py::parse_entity_id",
+      "dst": "app/core/errors.py::DomainError.__init__",
+      "kind": "CALLS",
+      "detail": "ValidationError"
+    },
+    {
+      "src": "app/api/deps.py::get_cache",
+      "dst": "app/infra/cache.py::EntityCache.__init__",
+      "kind": "REGISTERED",
+      "detail": "EntityCache"
+    },
+    {
+      "src": "app/api/deps.py::get_customer_service",
+      "dst": "app/services/services.py::BaseService.__init__",
+      "kind": "REGISTERED",
+      "detail": "CustomerService"
+    },
+    {
+      "src": "app/api/deps.py::get_customer_service",
+      "dst": "app/infra/cache.py::EntityCache.__init__",
+      "kind": "REGISTERED",
+      "detail": "EntityCache"
+    },
+    {
+      "src": "app/api/deps.py::get_customer_service",
+      "dst": "app/api/deps.py::get_cache",
+      "kind": "REGISTERED",
+      "detail": "get_cache"
+    },
+    {
+      "src": "app/api/deps.py::get_customer_service",
+      "dst": "app/services/services.py::BaseService.__init__",
+      "kind": "CALLS",
+      "detail": "CustomerService"
+    },
+    {
+      "src": "app/api/deps.py::get_product_service",
+      "dst": "app/services/services.py::BaseService.__init__",
+      "kind": "REGISTERED",
+      "detail": "ProductService"
+    },
+    {
+      "src": "app/api/deps.py::get_product_service",
+      "dst": "app/infra/cache.py::EntityCache.__init__",
+      "kind": "REGISTERED",
+      "detail": "EntityCache"
+    },
+    {
+      "src": "app/api/deps.py::get_product_service",
+      "dst": "app/api/deps.py::get_cache",
+      "kind": "REGISTERED",
+      "detail": "get_cache"
+    },
+    {
+      "src": "app/api/deps.py::get_product_service",
+      "dst": "app/services/services.py::BaseService.__init__",
+      "kind": "CALLS",
+      "detail": "ProductService"
+    },
+    {
+      "src": "app/api/deps.py::get_order_service",
+      "dst": "app/services/services.py::BaseService.__init__",
+      "kind": "REGISTERED",
+      "detail": "OrderService"
+    },
+    {
+      "src": "app/api/deps.py::get_order_service",
+      "dst": "app/infra/cache.py::EntityCache.__init__",
+      "kind": "REGISTERED",
+      "detail": "EntityCache"
+    },
+    {
+      "src": "app/api/deps.py::get_order_service",
+      "dst": "app/api/deps.py::get_cache",
+      "kind": "REGISTERED",
+      "detail": "get_cache"
+    },
+    {
+      "src": "app/api/deps.py::get_order_service",
+      "dst": "app/services/services.py::BaseService.__init__",
+      "kind": "CALLS",
+      "detail": "OrderService"
+    },
+    {
+      "src": "app/api/deps.py::get_invoice_service",
+      "dst": "app/services/services.py::BaseService.__init__",
+      "kind": "REGISTERED",
+      "detail": "InvoiceService"
+    },
+    {
+      "src": "app/api/deps.py::get_invoice_service",
+      "dst": "app/infra/cache.py::EntityCache.__init__",
+      "kind": "REGISTERED",
+      "detail": "EntityCache"
+    },
+    {
+      "src": "app/api/deps.py::get_invoice_service",
+      "dst": "app/api/deps.py::get_cache",
+      "kind": "REGISTERED",
+      "detail": "get_cache"
+    },
+    {
+      "src": "app/api/deps.py::get_invoice_service",
+      "dst": "app/services/services.py::BaseService.__init__",
+      "kind": "CALLS",
+      "detail": "InvoiceService"
+    },
+    {
+      "src": "app/api/deps.py::get_payment_service",
+      "dst": "app/services/services.py::BaseService.__init__",
+      "kind": "REGISTERED",
+      "detail": "PaymentService"
+    },
+    {
+      "src": "app/api/deps.py::get_payment_service",
+      "dst": "app/infra/cache.py::EntityCache.__init__",
+      "kind": "REGISTERED",
+      "detail": "EntityCache"
+    },
+    {
+      "src": "app/api/deps.py::get_payment_service",
+      "dst": "app/api/deps.py::get_cache",
+      "kind": "REGISTERED",
+      "detail": "get_cache"
+    },
+    {
+      "src": "app/api/deps.py::get_payment_service",
+      "dst": "app/services/services.py::BaseService.__init__",
+      "kind": "CALLS",
+      "detail": "PaymentService"
+    },
+    {
+      "src": "app/core/middleware.py::ExceptionDetectionMiddleware.dispatch",
+      "dst": "app/core/errors.py::DomainError.__init__",
+      "kind": "REGISTERED",
+      "detail": "DomainError"
+    },
+    {
+      "src": "app/domain/models.py::Price._ser_amount",
+      "dst": "app/domain/validators.py::format_money",
+      "kind": "CALLS",
+      "detail": "format_money"
+    },
+    {
+      "src": "app/domain/models.py::LineItemRead._ser_snapshot",
+      "dst": "app/domain/validators.py::format_money",
+      "kind": "CALLS",
+      "detail": "format_money"
+    },
+    {
+      "src": "app/domain/models.py::OrderRead._ser_total",
+      "dst": "app/domain/validators.py::format_money",
+      "kind": "CALLS",
+      "detail": "format_money"
+    },
+    {
+      "src": "app/domain/models.py::PaymentRead._ser_amount",
+      "dst": "app/domain/validators.py::format_money",
+      "kind": "CALLS",
+      "detail": "format_money"
+    },
+    {
+      "src": "app/domain/models.py::InvoiceRead._ser_total",
+      "dst": "app/domain/validators.py::format_money",
+      "kind": "CALLS",
+      "detail": "format_money"
+    },
+    {
+      "src": "app/domain/models.py::InvoiceRead._ser_date",
+      "dst": "app/domain/validators.py::format_ddmmyyyy",
+      "kind": "CALLS",
+      "detail": "format_ddmmyyyy"
+    },
+    {
+      "src": "app/infra/cache.py::EntityCache.get",
+      "dst": "app/infra/cache.py::EntityCache._key",
+      "kind": "CALLS",
+      "detail": "self._key"
+    },
+    {
+      "src": "app/infra/cache.py::EntityCache.set",
+      "dst": "app/infra/cache.py::EntityCache._key",
+      "kind": "CALLS",
+      "detail": "self._key"
+    },
+    {
+      "src": "app/infra/cache.py::EntityCache.invalidate",
+      "dst": "app/infra/cache.py::EntityCache._key",
+      "kind": "CALLS",
+      "detail": "self._key"
+    },
+    {
+      "src": "app/infra/database.py::read_session",
+      "dst": "app/infra/database.py::_open_replica_session",
+      "kind": "CALLS",
+      "detail": "_open_replica_session"
+    },
+    {
+      "src": "app/infra/degradation.py::CircuitBreaker.call",
+      "dst": "app/infra/degradation.py::CircuitBreaker._record_success",
+      "kind": "CALLS",
+      "detail": "self._record_success"
+    },
+    {
+      "src": "app/infra/degradation.py::CircuitBreaker.call",
+      "dst": "app/infra/degradation.py::CircuitBreaker._record_failure",
+      "kind": "CALLS",
+      "detail": "self._record_failure"
+    },
+    {
+      "src": "app/infra/resync.py::StateResynchronizer.__init__",
+      "dst": "app/infra/cache.py::EntityCache.__init__",
+      "kind": "REGISTERED",
+      "detail": "EntityCache"
+    },
+    {
+      "src": "app/infra/resync.py::StateResynchronizer.compare_active_and_standby",
+      "dst": "app/infra/resync.py::StateResynchronizer._table_signature",
+      "kind": "CALLS",
+      "detail": "self._table_signature"
+    },
+    {
+      "src": "app/infra/resync.py::StateResynchronizer.compare_active_and_standby",
+      "dst": "app/infra/resync.py::StateResynchronizer._table_signature",
+      "kind": "CALLS",
+      "detail": "self._table_signature"
+    },
+    {
+      "src": "app/infra/resync.py::StateResynchronizer.run_once",
+      "dst": "app/infra/resync.py::StateResynchronizer._evict_diverged_cache",
+      "kind": "CALLS",
+      "detail": "self._evict_diverged_cache"
+    },
+    {
+      "src": "app/infra/resync.py::StateResynchronizer.run_once",
+      "dst": "app/infra/resync.py::ResyncReport.as_dict",
+      "kind": "CALLS",
+      "detail": "report.as_dict"
+    },
+    {
+      "src": "app/infra/resync.py::StateResynchronizer._loop",
+      "dst": "app/infra/resync.py::StateResynchronizer.run_once",
+      "kind": "CALLS",
+      "detail": "self.run_once"
+    },
+    {
+      "src": "app/infra/resync.py::StateResynchronizer.start",
+      "dst": "app/infra/resync.py::StateResynchronizer._loop",
+      "kind": "CALLS",
+      "detail": "self._loop"
+    },
+    {
+      "src": "app/services/services.py::_guard_transition",
+      "dst": "app/core/errors.py::DomainError.__init__",
+      "kind": "CALLS",
+      "detail": "ConflictError"
+    },
+    {
+      "src": "app/services/services.py::_guard_transition",
+      "dst": "app/domain/enums.py::can_transition",
+      "kind": "CALLS",
+      "detail": "can_transition"
+    },
+    {
+      "src": "app/services/services.py::_guard_transition",
+      "dst": "app/core/errors.py::DomainError.__init__",
+      "kind": "CALLS",
+      "detail": "ConflictError"
+    },
+    {
+      "src": "app/services/services.py::BaseService.__init__",
+      "dst": "app/infra/cache.py::EntityCache.__init__",
+      "kind": "REGISTERED",
+      "detail": "EntityCache"
+    },
+    {
+      "src": "app/services/services.py::BaseService._cached_read",
+      "dst": "app/infra/database.py::read_session",
+      "kind": "CALLS",
+      "detail": "read_session"
+    },
+    {
+      "src": "app/services/services.py::BaseService._cached_read",
+      "dst": "app/infra/cache.py::EntityCache.get",
+      "kind": "CALLS",
+      "detail": "self.cache.get"
+    },
+    {
+      "src": "app/services/services.py::BaseService._cached_read",
+      "dst": "app/infra/cache.py::EntityCache.set",
+      "kind": "CALLS",
+      "detail": "self.cache.set"
+    },
+    {
+      "src": "app/services/services.py::BaseService._invalidate",
+      "dst": "app/infra/cache.py::EntityCache.invalidate",
+      "kind": "CALLS",
+      "detail": "self.cache.invalidate"
+    },
+    {
+      "src": "app/services/services.py::CustomerService.create",
+      "dst": "app/infra/database.py::unit_of_work",
+      "kind": "CALLS",
+      "detail": "unit_of_work"
+    },
+    {
+      "src": "app/services/services.py::CustomerService.create",
+      "dst": "app/repositories/repositories.py::SQLAlchemyRepository.add",
+      "kind": "CALLS",
+      "detail": "CustomerRepository(session).add"
+    },
+    {
+      "src": "app/services/services.py::CustomerService.create",
+      "dst": "app/services/services.py::CustomerService._to_read",
+      "kind": "CALLS",
+      "detail": "self._to_read"
+    },
+    {
+      "src": "app/services/services.py::CustomerService.create",
+      "dst": "app/repositories/repositories.py::SQLAlchemyRepository.__init__",
+      "kind": "CALLS",
+      "detail": "CustomerRepository"
+    },
+    {
+      "src": "app/services/services.py::CustomerService.get",
+      "dst": "app/repositories/repositories.py::SQLAlchemyRepository.__init__",
+      "kind": "CALLS",
+      "detail": "CustomerRepository"
+    },
+    {
+      "src": "app/services/services.py::CustomerService.get",
+      "dst": "app/repositories/repositories.py::CustomerRepository.get_active",
+      "kind": "CALLS",
+      "detail": "repo.get_active"
+    },
+    {
+      "src": "app/services/services.py::CustomerService.get",
+      "dst": "app/core/errors.py::DomainError.__init__",
+      "kind": "CALLS",
+      "detail": "NotFoundError"
+    },
+    {
+      "src": "app/services/services.py::CustomerService.get",
+      "dst": "app/repositories/repositories.py::CustomerRepository.order_history",
+      "kind": "CALLS",
+      "detail": "repo.order_history"
+    },
+    {
+      "src": "app/services/services.py::CustomerService.get",
+      "dst": "app/services/services.py::BaseService._cached_read",
+      "kind": "CALLS",
+      "detail": "self._cached_read"
+    },
+    {
+      "src": "app/services/services.py::CustomerService.get",
+      "dst": "app/services/services.py::CustomerService._to_read",
+      "kind": "CALLS",
+      "detail": "self._to_read"
+    },
+    {
+      "src": "app/services/services.py::ProductService.create",
+      "dst": "app/infra/database.py::unit_of_work",
+      "kind": "CALLS",
+      "detail": "unit_of_work"
+    },
+    {
+      "src": "app/services/services.py::ProductService.create",
+      "dst": "app/repositories/repositories.py::SQLAlchemyRepository.add",
+      "kind": "CALLS",
+      "detail": "ProductRepository(session).add"
+    },
+    {
+      "src": "app/services/services.py::ProductService.create",
+      "dst": "app/services/services.py::ProductService._to_read",
+      "kind": "CALLS",
+      "detail": "self._to_read"
+    },
+    {
+      "src": "app/services/services.py::ProductService.create",
+      "dst": "app/repositories/repositories.py::SQLAlchemyRepository.__init__",
+      "kind": "CALLS",
+      "detail": "ProductRepository"
+    },
+    {
+      "src": "app/services/services.py::ProductService.get",
+      "dst": "app/repositories/repositories.py::SQLAlchemyRepository.get",
+      "kind": "CALLS",
+      "detail": "ProductRepository(session).get"
+    },
+    {
+      "src": "app/services/services.py::ProductService.get",
+      "dst": "app/core/errors.py::DomainError.__init__",
+      "kind": "CALLS",
+      "detail": "NotFoundError"
+    },
+    {
+      "src": "app/services/services.py::ProductService.get",
+      "dst": "app/services/services.py::BaseService._cached_read",
+      "kind": "CALLS",
+      "detail": "self._cached_read"
+    },
+    {
+      "src": "app/services/services.py::ProductService.get",
+      "dst": "app/repositories/repositories.py::SQLAlchemyRepository.__init__",
+      "kind": "CALLS",
+      "detail": "ProductRepository"
+    },
+    {
+      "src": "app/services/services.py::ProductService.get",
+      "dst": "app/services/services.py::ProductService._to_read",
+      "kind": "CALLS",
+      "detail": "self._to_read"
+    },
+    {
+      "src": "app/services/services.py::OrderService.create",
+      "dst": "app/infra/database.py::unit_of_work",
+      "kind": "CALLS",
+      "detail": "unit_of_work"
+    },
+    {
+      "src": "app/services/services.py::OrderService.create",
+      "dst": "app/repositories/repositories.py::SQLAlchemyRepository.__init__",
+      "kind": "CALLS",
+      "detail": "CustomerRepository"
+    },
+    {
+      "src": "app/services/services.py::OrderService.create",
+      "dst": "app/repositories/repositories.py::SQLAlchemyRepository.__init__",
+      "kind": "CALLS",
+      "detail": "ProductRepository"
+    },
+    {
+      "src": "app/services/services.py::OrderService.create",
+      "dst": "app/repositories/repositories.py::ProductRepository.get_many",
+      "kind": "CALLS",
+      "detail": "products.get_many"
+    },
+    {
+      "src": "app/services/services.py::OrderService.create",
+      "dst": "app/repositories/repositories.py::SQLAlchemyRepository.__init__",
+      "kind": "CALLS",
+      "detail": "OrderRepository"
+    },
+    {
+      "src": "app/services/services.py::OrderService.create",
+      "dst": "app/repositories/repositories.py::SQLAlchemyRepository.add",
+      "kind": "CALLS",
+      "detail": "orders.add"
+    },
+    {
+      "src": "app/services/services.py::OrderService.create",
+      "dst": "app/services/services.py::OrderService._to_read",
+      "kind": "CALLS",
+      "detail": "self._to_read"
+    },
+    {
+      "src": "app/services/services.py::OrderService.create",
+      "dst": "app/repositories/repositories.py::CustomerRepository.get_active",
+      "kind": "CALLS",
+      "detail": "customers.get_active"
+    },
+    {
+      "src": "app/services/services.py::OrderService.create",
+      "dst": "app/core/errors.py::DomainError.__init__",
+      "kind": "CALLS",
+      "detail": "NotFoundError"
+    },
+    {
+      "src": "app/services/services.py::OrderService.create",
+      "dst": "app/core/errors.py::DomainError.__init__",
+      "kind": "CALLS",
+      "detail": "NotFoundError"
+    },
+    {
+      "src": "app/services/services.py::OrderService.create",
+      "dst": "app/core/errors.py::DomainError.__init__",
+      "kind": "CALLS",
+      "detail": "ValidationError"
+    },
+    {
+      "src": "app/services/services.py::OrderService.create",
+      "dst": "app/repositories/repositories.py::OrderRepository.add_line_item",
+      "kind": "CALLS",
+      "detail": "orders.add_line_item"
+    },
+    {
+      "src": "app/services/services.py::OrderService.create",
+      "dst": "app/core/errors.py::DomainError.__init__",
+      "kind": "CALLS",
+      "detail": "ValidationError"
+    },
+    {
+      "src": "app/services/services.py::OrderService.get",
+      "dst": "app/repositories/repositories.py::SQLAlchemyRepository.get",
+      "kind": "CALLS",
+      "detail": "OrderRepository(session).get"
+    },
+    {
+      "src": "app/services/services.py::OrderService.get",
+      "dst": "app/core/errors.py::DomainError.__init__",
+      "kind": "CALLS",
+      "detail": "NotFoundError"
+    },
+    {
+      "src": "app/services/services.py::OrderService.get",
+      "dst": "app/services/services.py::BaseService._cached_read",
+      "kind": "CALLS",
+      "detail": "self._cached_read"
+    },
+    {
+      "src": "app/services/services.py::OrderService.get",
+      "dst": "app/repositories/repositories.py::SQLAlchemyRepository.__init__",
+      "kind": "CALLS",
+      "detail": "OrderRepository"
+    },
+    {
+      "src": "app/services/services.py::OrderService.get",
+      "dst": "app/services/services.py::OrderService._to_read",
+      "kind": "CALLS",
+      "detail": "self._to_read"
+    },
+    {
+      "src": "app/services/services.py::OrderService.transition",
+      "dst": "app/infra/database.py::unit_of_work",
+      "kind": "CALLS",
+      "detail": "unit_of_work"
+    },
+    {
+      "src": "app/services/services.py::OrderService.transition",
+      "dst": "app/repositories/repositories.py::SQLAlchemyRepository.__init__",
+      "kind": "CALLS",
+      "detail": "OrderRepository"
+    },
+    {
+      "src": "app/services/services.py::OrderService.transition",
+      "dst": "app/repositories/repositories.py::SQLAlchemyRepository.get_for_update",
+      "kind": "CALLS",
+      "detail": "orders.get_for_update"
+    },
+    {
+      "src": "app/services/services.py::OrderService.transition",
+      "dst": "app/services/services.py::_guard_transition",
+      "kind": "CALLS",
+      "detail": "_guard_transition"
+    },
+    {
+      "src": "app/services/services.py::OrderService.transition",
+      "dst": "app/services/services.py::OrderService._to_read",
+      "kind": "CALLS",
+      "detail": "self._to_read"
+    },
+    {
+      "src": "app/services/services.py::OrderService.transition",
+      "dst": "app/services/services.py::BaseService._invalidate",
+      "kind": "CALLS",
+      "detail": "self._invalidate"
+    },
+    {
+      "src": "app/services/services.py::OrderService.transition",
+      "dst": "app/core/errors.py::DomainError.__init__",
+      "kind": "CALLS",
+      "detail": "NotFoundError"
+    },
+    {
+      "src": "app/services/services.py::OrderService.transition",
+      "dst": "app/core/errors.py::DomainError.__init__",
+      "kind": "CALLS",
+      "detail": "ConflictError"
+    },
+    {
+      "src": "app/services/services.py::OrderService.transition",
+      "dst": "app/core/errors.py::DomainError.__init__",
+      "kind": "CALLS",
+      "detail": "ConflictError"
+    },
+    {
+      "src": "app/services/services.py::InvoiceService.create",
+      "dst": "app/infra/database.py::unit_of_work",
+      "kind": "CALLS",
+      "detail": "unit_of_work"
+    },
+    {
+      "src": "app/services/services.py::InvoiceService.create",
+      "dst": "app/repositories/repositories.py::SQLAlchemyRepository.__init__",
+      "kind": "CALLS",
+      "detail": "OrderRepository"
+    },
+    {
+      "src": "app/services/services.py::InvoiceService.create",
+      "dst": "app/repositories/repositories.py::SQLAlchemyRepository.get_for_update",
+      "kind": "CALLS",
+      "detail": "orders.get_for_update"
+    },
+    {
+      "src": "app/services/services.py::InvoiceService.create",
+      "dst": "app/repositories/repositories.py::CustomerRepository.get_active",
+      "kind": "CALLS",
+      "detail": "CustomerRepository(session).get_active"
+    },
+    {
+      "src": "app/services/services.py::InvoiceService.create",
+      "dst": "app/services/services.py::InvoiceService._to_read",
+      "kind": "CALLS",
+      "detail": "self._to_read"
+    },
+    {
+      "src": "app/services/services.py::InvoiceService.create",
+      "dst": "app/services/services.py::BaseService._invalidate",
+      "kind": "CALLS",
+      "detail": "self._invalidate"
+    },
+    {
+      "src": "app/services/services.py::InvoiceService.create",
+      "dst": "app/services/services.py::BaseService._invalidate",
+      "kind": "CALLS",
+      "detail": "OrderService(self.cache)._invalidate"
+    },
+    {
+      "src": "app/services/services.py::InvoiceService.create",
+      "dst": "app/core/errors.py::DomainError.__init__",
+      "kind": "CALLS",
+      "detail": "NotFoundError"
+    },
+    {
+      "src": "app/services/services.py::InvoiceService.create",
+      "dst": "app/core/errors.py::DomainError.__init__",
+      "kind": "CALLS",
+      "detail": "ConflictError"
+    },
+    {
+      "src": "app/services/services.py::InvoiceService.create",
+      "dst": "app/core/errors.py::DomainError.__init__",
+      "kind": "CALLS",
+      "detail": "NotFoundError"
+    },
+    {
+      "src": "app/services/services.py::InvoiceService.create",
+      "dst": "app/core/errors.py::DomainError.__init__",
+      "kind": "CALLS",
+      "detail": "ValidationError"
+    },
+    {
+      "src": "app/services/services.py::InvoiceService.create",
+      "dst": "app/repositories/repositories.py::SQLAlchemyRepository.add",
+      "kind": "CALLS",
+      "detail": "InvoiceRepository(session).add"
+    },
+    {
+      "src": "app/services/services.py::InvoiceService.create",
+      "dst": "app/repositories/repositories.py::SQLAlchemyRepository.__init__",
+      "kind": "CALLS",
+      "detail": "CustomerRepository"
+    },
+    {
+      "src": "app/services/services.py::InvoiceService.create",
+      "dst": "app/core/errors.py::DomainError.__init__",
+      "kind": "CALLS",
+      "detail": "ConflictError"
+    },
+    {
+      "src": "app/services/services.py::InvoiceService.create",
+      "dst": "app/services/services.py::BaseService.__init__",
+      "kind": "CALLS",
+      "detail": "OrderService"
+    },
+    {
+      "src": "app/services/services.py::InvoiceService.create",
+      "dst": "app/repositories/repositories.py::SQLAlchemyRepository.__init__",
+      "kind": "CALLS",
+      "detail": "InvoiceRepository"
+    },
+    {
+      "src": "app/services/services.py::InvoiceService.get",
+      "dst": "app/repositories/repositories.py::SQLAlchemyRepository.get",
+      "kind": "CALLS",
+      "detail": "InvoiceRepository(session).get"
+    },
+    {
+      "src": "app/services/services.py::InvoiceService.get",
+      "dst": "app/core/errors.py::DomainError.__init__",
+      "kind": "CALLS",
+      "detail": "NotFoundError"
+    },
+    {
+      "src": "app/services/services.py::InvoiceService.get",
+      "dst": "app/services/services.py::BaseService._cached_read",
+      "kind": "CALLS",
+      "detail": "self._cached_read"
+    },
+    {
+      "src": "app/services/services.py::InvoiceService.get",
+      "dst": "app/repositories/repositories.py::SQLAlchemyRepository.__init__",
+      "kind": "CALLS",
+      "detail": "InvoiceRepository"
+    },
+    {
+      "src": "app/services/services.py::InvoiceService.get",
+      "dst": "app/services/services.py::InvoiceService._to_read",
+      "kind": "CALLS",
+      "detail": "self._to_read"
+    },
+    {
+      "src": "app/services/services.py::InvoiceService.mark_overdue",
+      "dst": "app/infra/database.py::unit_of_work",
+      "kind": "CALLS",
+      "detail": "unit_of_work"
+    },
+    {
+      "src": "app/services/services.py::InvoiceService.mark_overdue",
+      "dst": "app/repositories/repositories.py::SQLAlchemyRepository.__init__",
+      "kind": "CALLS",
+      "detail": "InvoiceRepository"
+    },
+    {
+      "src": "app/services/services.py::InvoiceService.mark_overdue",
+      "dst": "app/repositories/repositories.py::InvoiceRepository.overdue_before",
+      "kind": "CALLS",
+      "detail": "repo.overdue_before"
+    },
+    {
+      "src": "app/services/services.py::InvoiceService.mark_overdue",
+      "dst": "app/domain/enums.py::can_transition",
+      "kind": "CALLS",
+      "detail": "can_transition"
+    },
+    {
+      "src": "app/services/services.py::PaymentService.create",
+      "dst": "app/infra/database.py::unit_of_work",
+      "kind": "CALLS",
+      "detail": "unit_of_work"
+    },
+    {
+      "src": "app/services/services.py::PaymentService.create",
+      "dst": "app/repositories/repositories.py::SQLAlchemyRepository.__init__",
+      "kind": "CALLS",
+      "detail": "OrderRepository"
+    },
+    {
+      "src": "app/services/services.py::PaymentService.create",
+      "dst": "app/repositories/repositories.py::SQLAlchemyRepository.get_for_update",
+      "kind": "CALLS",
+      "detail": "orders.get_for_update"
+    },
+    {
+      "src": "app/services/services.py::PaymentService.create",
+      "dst": "app/repositories/repositories.py::InvoiceRepository.get_by_order",
+      "kind": "CALLS",
+      "detail": "InvoiceRepository(session).get_by_order"
+    },
+    {
+      "src": "app/services/services.py::PaymentService.create",
+      "dst": "app/repositories/repositories.py::SQLAlchemyRepository.__init__",
+      "kind": "CALLS",
+      "detail": "PaymentRepository"
+    },
+    {
+      "src": "app/services/services.py::PaymentService.create",
+      "dst": "app/repositories/repositories.py::PaymentRepository.has_settled_payment",
+      "kind": "CALLS",
+      "detail": "payments.has_settled_payment"
+    },
+    {
+      "src": "app/services/services.py::PaymentService.create",
+      "dst": "app/repositories/repositories.py::SQLAlchemyRepository.add",
+      "kind": "CALLS",
+      "detail": "payments.add"
+    },
+    {
+      "src": "app/services/services.py::PaymentService.create",
+      "dst": "app/services/services.py::PaymentService._to_read",
+      "kind": "CALLS",
+      "detail": "self._to_read"
+    },
+    {
+      "src": "app/services/services.py::PaymentService.create",
+      "dst": "app/services/services.py::BaseService._invalidate",
+      "kind": "CALLS",
+      "detail": "OrderService(self.cache)._invalidate"
+    },
+    {
+      "src": "app/services/services.py::PaymentService.create",
+      "dst": "app/services/services.py::BaseService._invalidate",
+      "kind": "CALLS",
+      "detail": "InvoiceService(self.cache)._invalidate"
+    },
+    {
+      "src": "app/services/services.py::PaymentService.create",
+      "dst": "app/core/errors.py::DomainError.__init__",
+      "kind": "CALLS",
+      "detail": "NotFoundError"
+    },
+    {
+      "src": "app/services/services.py::PaymentService.create",
+      "dst": "app/core/errors.py::DomainError.__init__",
+      "kind": "CALLS",
+      "detail": "ConflictError"
+    },
+    {
+      "src": "app/services/services.py::PaymentService.create",
+      "dst": "app/core/errors.py::DomainError.__init__",
+      "kind": "CALLS",
+      "detail": "ConflictError"
+    },
+    {
+      "src": "app/services/services.py::PaymentService.create",
+      "dst": "app/core/errors.py::DomainError.__init__",
+      "kind": "CALLS",
+      "detail": "ConflictError"
+    },
+    {
+      "src": "app/services/services.py::PaymentService.create",
+      "dst": "app/core/errors.py::DomainError.__init__",
+      "kind": "CALLS",
+      "detail": "ValidationError"
+    },
+    {
+      "src": "app/services/services.py::PaymentService.create",
+      "dst": "app/repositories/repositories.py::SQLAlchemyRepository.__init__",
+      "kind": "CALLS",
+      "detail": "InvoiceRepository"
+    },
+    {
+      "src": "app/services/services.py::PaymentService.create",
+      "dst": "app/services/services.py::BaseService.__init__",
+      "kind": "CALLS",
+      "detail": "OrderService"
+    },
+    {
+      "src": "app/services/services.py::PaymentService.create",
+      "dst": "app/services/services.py::BaseService.__init__",
+      "kind": "CALLS",
+      "detail": "InvoiceService"
+    },
+    {
+      "src": "app/services/services.py::PaymentService.get",
+      "dst": "app/repositories/repositories.py::SQLAlchemyRepository.get",
+      "kind": "CALLS",
+      "detail": "PaymentRepository(session).get"
+    },
+    {
+      "src": "app/services/services.py::PaymentService.get",
+      "dst": "app/core/errors.py::DomainError.__init__",
+      "kind": "CALLS",
+      "detail": "NotFoundError"
+    },
+    {
+      "src": "app/services/services.py::PaymentService.get",
+      "dst": "app/services/services.py::BaseService._cached_read",
+      "kind": "CALLS",
+      "detail": "self._cached_read"
+    },
+    {
+      "src": "app/services/services.py::PaymentService.get",
+      "dst": "app/repositories/repositories.py::SQLAlchemyRepository.__init__",
+      "kind": "CALLS",
+      "detail": "PaymentRepository"
+    },
+    {
+      "src": "app/services/services.py::PaymentService.get",
+      "dst": "app/services/services.py::PaymentService._to_read",
+      "kind": "CALLS",
+      "detail": "self._to_read"
+    },
+    {
+      "src": "app/services/services.py::PaymentService.verify",
+      "dst": "app/infra/database.py::unit_of_work",
+      "kind": "CALLS",
+      "detail": "unit_of_work"
+    },
+    {
+      "src": "app/services/services.py::PaymentService.verify",
+      "dst": "app/repositories/repositories.py::SQLAlchemyRepository.__init__",
+      "kind": "CALLS",
+      "detail": "PaymentRepository"
+    },
+    {
+      "src": "app/services/services.py::PaymentService.verify",
+      "dst": "app/repositories/repositories.py::SQLAlchemyRepository.get_for_update",
+      "kind": "CALLS",
+      "detail": "payments.get_for_update"
+    },
+    {
+      "src": "app/services/services.py::PaymentService.verify",
+      "dst": "app/services/services.py::_guard_transition",
+      "kind": "CALLS",
+      "detail": "_guard_transition"
+    },
+    {
+      "src": "app/services/services.py::PaymentService.verify",
+      "dst": "app/repositories/repositories.py::SQLAlchemyRepository.get_for_update",
+      "kind": "CALLS",
+      "detail": "OrderRepository(session).get_for_update"
+    },
+    {
+      "src": "app/services/services.py::PaymentService.verify",
+      "dst": "app/repositories/repositories.py::InvoiceRepository.get_by_order",
+      "kind": "CALLS",
+      "detail": "InvoiceRepository(session).get_by_order"
+    },
+    {
+      "src": "app/services/services.py::PaymentService.verify",
+      "dst": "app/services/services.py::PaymentService._to_read",
+      "kind": "CALLS",
+      "detail": "self._to_read"
+    },
+    {
+      "src": "app/services/services.py::PaymentService.verify",
+      "dst": "app/services/services.py::BaseService._invalidate",
+      "kind": "CALLS",
+      "detail": "self._invalidate"
+    },
+    {
+      "src": "app/services/services.py::PaymentService.verify",
+      "dst": "app/services/services.py::BaseService._invalidate",
+      "kind": "CALLS",
+      "detail": "OrderService(self.cache)._invalidate"
+    },
+    {
+      "src": "app/services/services.py::PaymentService.verify",
+      "dst": "app/core/errors.py::DomainError.__init__",
+      "kind": "CALLS",
+      "detail": "NotFoundError"
+    },
+    {
+      "src": "app/services/services.py::PaymentService.verify",
+      "dst": "app/core/errors.py::DomainError.__init__",
+      "kind": "CALLS",
+      "detail": "NotFoundError"
+    },
+    {
+      "src": "app/services/services.py::PaymentService.verify",
+      "dst": "app/repositories/repositories.py::SQLAlchemyRepository.__init__",
+      "kind": "CALLS",
+      "detail": "OrderRepository"
+    },
+    {
+      "src": "app/services/services.py::PaymentService.verify",
+      "dst": "app/repositories/repositories.py::SQLAlchemyRepository.__init__",
+      "kind": "CALLS",
+      "detail": "InvoiceRepository"
+    },
+    {
+      "src": "app/services/services.py::PaymentService.verify",
+      "dst": "app/services/services.py::BaseService.__init__",
+      "kind": "CALLS",
+      "detail": "OrderService"
+    },
+    {
+      "src": "app/api/v1/ops.py::readiness",
+      "dst": "app/infra/cache.py::EntityCache.__init__",
+      "kind": "REGISTERED",
+      "detail": "EntityCache"
+    },
+    {
+      "src": "app/api/v1/ops.py::readiness",
+      "dst": "app/api/deps.py::get_cache",
+      "kind": "REGISTERED",
+      "detail": "get_cache"
+    },
+    {
+      "src": "app/api/v1/ops.py::nfr_status",
+      "dst": "app/infra/cache.py::EntityCache.__init__",
+      "kind": "REGISTERED",
+      "detail": "EntityCache"
+    },
+    {
+      "src": "app/api/v1/ops.py::nfr_status",
+      "dst": "app/api/deps.py::get_cache",
+      "kind": "REGISTERED",
+      "detail": "get_cache"
+    },
+    {
+      "src": "app/api/v1/ops.py::degrade",
+      "dst": "app/core/errors.py::DomainError.__init__",
+      "kind": "CALLS",
+      "detail": "ValidationError"
+    }
+  ],
+  "diagnostics": {
+    "externalCalls": 240,
+    "nodelessCalls": 15,
+    "unresolvedCalls": 135,
+    "unresolvedSamples": [
+      {
+        "in": "app/main.py::lifespan",
+        "call": "Base.metadata.create_all",
+        "line": 29
+      },
+      {
+        "in": "app/main.py::lifespan",
+        "call": "logger.info",
+        "line": 39
+      },
+      {
+        "in": "app/main.py::domain_error_handler",
+        "call": "app.exception_handler",
+        "line": 65
+      },
+      {
+        "in": "app/main.py::validation_error_handler",
+        "call": "app.exception_handler",
+        "line": 73
+      },
+      {
+        "in": "app/core/middleware.py::RateLimitMiddleware.dispatch",
+        "call": "logger.warning",
+        "line": 45
+      },
+      {
+        "in": "app/core/middleware.py::RateLimitMiddleware.dispatch",
+        "call": "call_next",
+        "line": 55
+      },
+      {
+        "in": "app/core/middleware.py::RateLimitMiddleware.dispatch",
+        "call": "call_next",
+        "line": 35
+      },
+      {
+        "in": "app/core/middleware.py::RateLimitMiddleware.dispatch",
+        "call": "limiter.allow",
+        "line": 42
+      },
+      {
+        "in": "app/core/middleware.py::ExceptionDetectionMiddleware.dispatch",
+        "call": "logger.error",
+        "line": 80
+      },
+      {
+        "in": "app/core/middleware.py::ExceptionDetectionMiddleware.dispatch",
+        "call": "logger.exception",
+        "line": 93
+      },
+      {
+        "in": "app/core/middleware.py::ExceptionDetectionMiddleware.dispatch",
+        "call": "call_next",
+        "line": 76
+      },
+      {
+        "in": "app/core/middleware.py::ExceptionDetectionMiddleware.dispatch",
+        "call": "feature_registry.shed",
+        "line": 97
+      },
+      {
+        "in": "app/domain/validators.py::_validate_unicode_name",
+        "call": "ch.isalpha",
+        "line": 34
+      },
+      {
+        "in": "app/domain/validators.py::_validate_bank_name",
+        "call": "ch.isalnum",
+        "line": 44
+      },
+      {
+        "in": "app/domain/validators.py::_validate_phone",
+        "call": "PHONE_REGEX.match",
+        "line": 57
+      },
+      {
+        "in": "app/domain/validators.py::_validate_ddmmyyyy",
+        "call": "DATE_REGEX.match",
+        "line": 96
+      },
+      {
+        "in": "app/domain/validators.py::_validate_quantity",
+        "call": "QUANTITY_REGEX.match",
+        "line": 127
+      },
+      {
+        "in": "app/infra/cache.py::EntityCache.get",
+        "call": "logger.warning",
+        "line": 42
+      },
+      {
+        "in": "app/infra/cache.py::EntityCache.set",
+        "call": "logger.warning",
+        "line": 60
+      },
+      {
+        "in": "app/infra/cache.py::EntityCache.invalidate",
+        "call": "logger.warning",
+        "line": 70
+      },
+      {
+        "in": "app/infra/database.py::_build_engine",
+        "call": "conn.exec_driver_sql",
+        "line": 41
+      },
+      {
+        "in": "app/infra/database.py::unit_of_work",
+        "call": "PrimarySession",
+        "line": 60
+      },
+      {
+        "in": "app/infra/database.py::unit_of_work",
+        "call": "session.commit",
+        "line": 63
+      },
+      {
+        "in": "app/infra/database.py::unit_of_work",
+        "call": "session.close",
+        "line": 68
+      },
+      {
+        "in": "app/infra/database.py::unit_of_work",
+        "call": "session.rollback",
+        "line": 65
+      },
+      {
+        "in": "app/infra/database.py::_open_replica_session",
+        "call": "ReplicaSession",
+        "line": 78
+      },
+      {
+        "in": "app/infra/database.py::_open_replica_session",
+        "call": "session.execute",
+        "line": 80
+      },
+      {
+        "in": "app/infra/database.py::_open_replica_session",
+        "call": "logger.warning",
+        "line": 83
+      },
+      {
+        "in": "app/infra/database.py::_open_replica_session",
+        "call": "session.rollback",
+        "line": 84
+      },
+      {
+        "in": "app/infra/database.py::_open_replica_session",
+        "call": "session.close",
+        "line": 85
+      },
+      {
+        "in": "app/infra/database.py::read_session",
+        "call": "PrimarySession",
+        "line": 100
+      },
+      {
+        "in": "app/infra/database.py::read_session",
+        "call": "session.close",
+        "line": 104
+      },
+      {
+        "in": "app/infra/degradation.py::CircuitBreaker._record_failure",
+        "call": "logger.error",
+        "line": 55
+      },
+      {
+        "in": "app/infra/degradation.py::CircuitBreaker.call",
+        "call": "logger.info",
+        "line": 69
+      },
+      {
+        "in": "app/infra/degradation.py::FeatureRegistry.shed",
+        "call": "logger.warning",
+        "line": 110
+      },
+      {
+        "in": "app/infra/rate_limiter.py::TokenBucketRateLimiter.allow",
+        "call": "self._script",
+        "line": 63
+      },
+      {
+        "in": "app/infra/rate_limiter.py::TokenBucketRateLimiter.allow",
+        "call": "logger.warning",
+        "line": 70
+      },
+      {
+        "in": "app/infra/resync.py::ResyncReport.as_dict",
+        "call": "self.checked_at.isoformat",
+        "line": 39
+      },
+      {
+        "in": "app/infra/resync.py::StateResynchronizer._replication_lag",
+        "call": "PrimarySession",
+        "line": 57
+      },
+      {
+        "in": "app/infra/resync.py::StateResynchronizer._replication_lag",
+        "call": "session.execute(text('SELECT COALESCE(MAX(sent_lsn - replay_lsn), 0)::bigint AS lag FROM pg_stat_replication')).first",
+        "line": 58
+      },
+      {
+        "in": "app/infra/resync.py::StateResynchronizer._replication_lag",
+        "call": "session.execute",
+        "line": 58
+      },
+      {
+        "in": "app/infra/resync.py::StateResynchronizer._table_signature",
+        "call": "session.execute(text(f\"SELECT COUNT(*) AS n, COALESCE(SUM(('x'||substr(md5(t::text),1,8))::bit(32)::bigint), 0) AS ck FROM {table} t\")).first",
+        "line": 68
+      },
+      {
+        "in": "app/infra/resync.py::StateResynchronizer._table_signature",
+        "call": "session.execute",
+        "line": 68
+      },
+      {
+        "in": "app/infra/resync.py::StateResynchronizer.compare_active_and_standby",
+        "call": "PrimarySession",
+        "line": 80
+      },
+      {
+        "in": "app/infra/resync.py::StateResynchronizer.compare_active_and_standby",
+        "call": "ReplicaSession",
+        "line": 80
+      },
+      {
+        "in": "app/infra/resync.py::StateResynchronizer._evict_diverged_cache",
+        "call": "table.rstrip",
+        "line": 96
+      },
+      {
+        "in": "app/infra/resync.py::StateResynchronizer._evict_diverged_cache",
+        "call": "self._cache._redis.scan_iter",
+        "line": 98
+      },
+      {
+        "in": "app/infra/resync.py::StateResynchronizer._evict_diverged_cache",
+        "call": "logger.warning",
+        "line": 102
+      },
+      {
+        "in": "app/infra/resync.py::StateResynchronizer._evict_diverged_cache",
+        "call": "self._cache._redis.delete",
+        "line": 99
+      },
+      {
+        "in": "app/infra/resync.py::StateResynchronizer.run_once",
+        "call": "logger.warning",
+        "line": 123
+      },
+      {
+        "in": "app/infra/resync.py::StateResynchronizer.run_once",
+        "call": "logger.error",
+        "line": 113
+      },
+      {
+        "in": "app/repositories/repositories.py::SQLAlchemyRepository.get_for_update",
+        "call": "self.session.execute(stmt).scalar_one_or_none",
+        "line": 39
+      },
+      {
+        "in": "app/repositories/repositories.py::SQLAlchemyRepository.list",
+        "call": "self.session.execute(stmt).scalars",
+        "line": 43
+      },
+      {
+        "in": "app/repositories/repositories.py::SQLAlchemyRepository.count",
+        "call": "self.session.execute(select(func.count()).select_from(self.model)).scalar_one",
+        "line": 46
+      },
+      {
+        "in": "app/repositories/repositories.py::CustomerRepository.get_active",
+        "call": "self.session.execute(stmt).scalar_one_or_none",
+        "line": 55
+      },
+      {
+        "in": "app/repositories/repositories.py::CustomerRepository.get_active",
+        "call": "Customer.deleted.is_",
+        "line": 54
+      },
+      {
+        "in": "app/repositories/repositories.py::CustomerRepository.order_history",
+        "call": "self.session.execute(stmt).scalars",
+        "line": 64
+      },
+      {
+        "in": "app/repositories/repositories.py::CustomerRepository.order_history",
+        "call": "Order.created_at.desc",
+        "line": 61
+      },
+      {
+        "in": "app/repositories/repositories.py::ProductRepository.get_many",
+        "call": "Product.id.in_",
+        "line": 74
+      },
+      {
+        "in": "app/repositories/repositories.py::ProductRepository.get_many",
+        "call": "self.session.execute(stmt).scalars",
+        "line": 75
+      },
+      {
+        "in": "app/repositories/repositories.py::OrderRepository.by_status",
+        "call": "self.session.execute(stmt).scalars",
+        "line": 87
+      },
+      {
+        "in": "app/repositories/repositories.py::InvoiceRepository.get_by_order",
+        "call": "self.session.execute(stmt).scalar_one_or_none",
+        "line": 95
+      },
+      {
+        "in": "app/repositories/repositories.py::InvoiceRepository.overdue_before",
+        "call": "self.session.execute(stmt).scalars",
+        "line": 99
+      },
+      {
+        "in": "app/repositories/repositories.py::PaymentRepository.get_by_order",
+        "call": "self.session.execute(stmt).scalars",
+        "line": 107
+      },
+      {
+        "in": "app/repositories/repositories.py::PaymentRepository.has_settled_payment",
+        "call": "Payment.status.in_",
+        "line": 112
+      },
+      {
+        "in": "app/repositories/repositories.py::PaymentRepository.has_settled_payment",
+        "call": "self.session.execute(stmt).scalar_one",
+        "line": 114
+      },
+      {
+        "in": "app/services/services.py::BaseService._cached_read",
+        "call": "feature_registry.is_available",
+        "line": 80
+      },
+      {
+        "in": "app/services/services.py::BaseService._cached_read",
+        "call": "feature_registry.is_available",
+        "line": 88
+      },
+      {
+        "in": "app/services/services.py::BaseService._cached_read",
+        "call": "loader",
+        "line": 86
+      },
+      {
+        "in": "app/services/services.py::CustomerService.get",
+        "call": "CustomerRead.model_validate",
+        "line": 142
+      },
+      {
+        "in": "app/services/services.py::CustomerService.get",
+        "call": "self._to_read(row, history).model_dump",
+        "line": 140
+      },
+      {
+        "in": "app/services/services.py::CustomerService.get",
+        "call": "feature_registry.is_available",
+        "line": 137
+      },
+      {
+        "in": "app/services/services.py::ProductService.get",
+        "call": "ProductRead.model_validate",
+        "line": 178
+      },
+      {
+        "in": "app/services/services.py::ProductService.get",
+        "call": "self._to_read(row).model_dump",
+        "line": 176
+      },
+      {
+        "in": "app/services/services.py::OrderService.create",
+        "call": "session.flush",
+        "line": 260
+      },
+      {
+        "in": "app/services/services.py::OrderService.create",
+        "call": "session.refresh",
+        "line": 261
+      },
+      {
+        "in": "app/services/services.py::OrderService.get",
+        "call": "OrderRead.model_validate",
+        "line": 272
+      },
+      {
+        "in": "app/services/services.py::OrderService.get",
+        "call": "self._to_read(row).model_dump",
+        "line": 270
+      },
+      {
+        "in": "app/services/services.py::OrderService.transition",
+        "call": "session.flush",
+        "line": 295
+      },
+      {
+        "in": "app/services/services.py::InvoiceService.create",
+        "call": "session.flush",
+        "line": 365
+      },
+      {
+        "in": "app/services/services.py::InvoiceService.get",
+        "call": "InvoiceRead.model_validate",
+        "line": 380
+      },
+      {
+        "in": "app/services/services.py::InvoiceService.get",
+        "call": "self._to_read(row).model_dump",
+        "line": 378
+      },
+      {
+        "in": "app/services/services.py::PaymentService.create",
+        "call": "session.flush",
+        "line": 455
+      },
+      {
+        "in": "app/services/services.py::PaymentService.get",
+        "call": "PaymentRead.model_validate",
+        "line": 470
+      },
+      {
+        "in": "app/services/services.py::PaymentService.get",
+        "call": "self._to_read(row).model_dump",
+        "line": 468
+      },
+      {
+        "in": "app/services/services.py::PaymentService.verify",
+        "call": "session.flush",
+        "line": 501
+      },
+      {
+        "in": "app/api/v1/customers.py::create_customer",
+        "call": "router.post",
+        "line": 15
+      },
+      {
+        "in": "app/api/v1/customers.py::create_customer",
+        "call": "service.create",
+        "line": 23
+      },
+      {
+        "in": "app/api/v1/customers.py::get_customer",
+        "call": "router.get",
+        "line": 26
+      },
+      {
+        "in": "app/api/v1/customers.py::get_customer",
+        "call": "service.get",
+        "line": 33
+      },
+      {
+        "in": "app/api/v1/invoices.py::create_invoice",
+        "call": "router.post",
+        "line": 15
+      },
+      {
+        "in": "app/api/v1/invoices.py::create_invoice",
+        "call": "service.create",
+        "line": 27
+      },
+      {
+        "in": "app/api/v1/invoices.py::get_invoice",
+        "call": "router.get",
+        "line": 30
+      },
+      {
+        "in": "app/api/v1/invoices.py::get_invoice",
+        "call": "service.get",
+        "line": 37
+      },
+      {
+        "in": "app/api/v1/ops.py::health",
+        "call": "router.get",
+        "line": 20
+      },
+      {
+        "in": "app/api/v1/ops.py::readiness",
+        "call": "router.get",
+        "line": 25
+      },
+      {
+        "in": "app/api/v1/ops.py::readiness",
+        "call": "factory",
+        "line": 32
+      },
+      {
+        "in": "app/api/v1/ops.py::readiness",
+        "call": "session.execute",
+        "line": 33
+      },
+      {
+        "in": "app/api/v1/ops.py::nfr_status",
+        "call": "router.get",
+        "line": 49
+      },
+      {
+        "in": "app/api/v1/ops.py::nfr_status",
+        "call": "feature_registry.status",
+        "line": 67
+      },
+      {
+        "in": "app/api/v1/ops.py::nfr_status",
+        "call": "resync.last_report.as_dict",
+        "line": 69
+      },
+      {
+        "in": "app/api/v1/ops.py::force_resync",
+        "call": "router.post",
+        "line": 74
+      },
+      {
+        "in": "app/api/v1/ops.py::force_resync",
+        "call": "report.as_dict",
+        "line": 77
+      },
+      {
+        "in": "app/api/v1/ops.py::degrade",
+        "call": "router.post",
+        "line": 80
+      },
+      {
+        "in": "app/api/v1/ops.py::degrade",
+        "call": "feature_registry.status",
+        "line": 87
+      },
+      {
+        "in": "app/api/v1/ops.py::degrade",
+        "call": "feature_registry.shed",
+        "line": 84
+      },
+      {
+        "in": "app/api/v1/ops.py::restore",
+        "call": "router.post",
+        "line": 90
+      },
+      {
+        "in": "app/api/v1/ops.py::restore",
+        "call": "feature_registry.restore",
+        "line": 92
+      },
+      {
+        "in": "app/api/v1/ops.py::restore",
+        "call": "feature_registry.status",
+        "line": 93
+      },
+      {
+        "in": "app/api/v1/orders.py::create_order",
+        "call": "router.post",
+        "line": 16
+      },
+      {
+        "in": "app/api/v1/orders.py::create_order",
+        "call": "service.create",
+        "line": 28
+      },
+      {
+        "in": "app/api/v1/orders.py::get_order",
+        "call": "router.get",
+        "line": 31
+      },
+      {
+        "in": "app/api/v1/orders.py::get_order",
+        "call": "service.get",
+        "line": 38
+      },
+      {
+        "in": "app/api/v1/orders.py::update_order_status",
+        "call": "router.patch",
+        "line": 41
+      },
+      {
+        "in": "app/api/v1/orders.py::update_order_status",
+        "call": "service.transition",
+        "line": 54
+      },
+      {
+        "in": "app/api/v1/orders.py::accept_order",
+        "call": "router.post",
+        "line": 57
+      },
+      {
+        "in": "app/api/v1/orders.py::accept_order",
+        "call": "service.transition",
+        "line": 64
+      },
+      {
+        "in": "app/api/v1/orders.py::ship_order",
+        "call": "router.post",
+        "line": 67
+      },
+      {
+        "in": "app/api/v1/orders.py::ship_order",
+        "call": "service.transition",
+        "line": 74
+      },
+      {
+        "in": "app/api/v1/orders.py::close_order",
+        "call": "router.post",
+        "line": 77
+      },
+      {
+        "in": "app/api/v1/orders.py::close_order",
+        "call": "service.transition",
+        "line": 84
+      },
+      {
+        "in": "app/api/v1/orders.py::cancel_order",
+        "call": "router.post",
+        "line": 87
+      },
+      {
+        "in": "app/api/v1/orders.py::cancel_order",
+        "call": "service.transition",
+        "line": 94
+      },
+      {
+        "in": "app/api/v1/payments.py::create_payment",
+        "call": "router.post",
+        "line": 16
+      },
+      {
+        "in": "app/api/v1/payments.py::create_payment",
+        "call": "service.create",
+        "line": 28
+      },
+      {
+        "in": "app/api/v1/payments.py::get_payment",
+        "call": "router.get",
+        "line": 31
+      },
+      {
+        "in": "app/api/v1/payments.py::get_payment",
+        "call": "service.get",
+        "line": 38
+      },
+      {
+        "in": "app/api/v1/payments.py::verify_payment",
+        "call": "router.patch",
+        "line": 41
+      },
+      {
+        "in": "app/api/v1/payments.py::verify_payment",
+        "call": "service.verify",
+        "line": 54
+      },
+      {
+        "in": "app/api/v1/payments.py::verify_payment_shorthand",
+        "call": "router.post",
+        "line": 57
+      },
+      {
+        "in": "app/api/v1/payments.py::verify_payment_shorthand",
+        "call": "service.verify",
+        "line": 64
+      },
+      {
+        "in": "app/api/v1/products.py::create_product",
+        "call": "router.post",
+        "line": 15
+      },
+      {
+        "in": "app/api/v1/products.py::create_product",
+        "call": "service.create",
+        "line": 23
+      },
+      {
+        "in": "app/api/v1/products.py::get_product",
+        "call": "router.get",
+        "line": 26
+      },
+      {
+        "in": "app/api/v1/products.py::get_product",
+        "call": "service.get",
+        "line": 33
+      }
+    ],
+    "frameworkEntrypoints": [
+      "app/api/v1/customers.py::create_customer",
+      "app/api/v1/customers.py::get_customer",
+      "app/api/v1/invoices.py::create_invoice",
+      "app/api/v1/invoices.py::get_invoice",
+      "app/api/v1/ops.py::degrade",
+      "app/api/v1/ops.py::force_resync",
+      "app/api/v1/ops.py::health",
+      "app/api/v1/ops.py::nfr_status",
+      "app/api/v1/ops.py::readiness",
+      "app/api/v1/ops.py::restore",
+      "app/api/v1/orders.py::accept_order",
+      "app/api/v1/orders.py::cancel_order",
+      "app/api/v1/orders.py::close_order",
+      "app/api/v1/orders.py::create_order",
+      "app/api/v1/orders.py::get_order",
+      "app/api/v1/orders.py::ship_order",
+      "app/api/v1/orders.py::update_order_status",
+      "app/api/v1/payments.py::create_payment",
+      "app/api/v1/payments.py::get_payment",
+      "app/api/v1/payments.py::verify_payment",
+      "app/api/v1/payments.py::verify_payment_shorthand",
+      "app/api/v1/products.py::create_product",
+      "app/api/v1/products.py::get_product",
+      "app/core/config.py::get_settings",
+      "app/core/errors.py::DomainError.__init__",
+      "app/domain/models.py::InvoiceCreate._due_not_before_issue",
+      "app/domain/models.py::InvoiceRead._ser_date",
+      "app/domain/models.py::InvoiceRead._ser_total",
+      "app/domain/models.py::LineItemRead._ser_snapshot",
+      "app/domain/models.py::OrderCreate._no_duplicate_products",
+      "app/domain/models.py::OrderRead._ser_total",
+      "app/domain/models.py::PaymentRead._ser_amount",
+      "app/domain/models.py::Price._currency_supported",
+      "app/domain/models.py::Price._ser_amount",
+      "app/infra/cache.py::EntityCache.__init__",
+      "app/infra/cache.py::EntityCache._key",
+      "app/infra/cache.py::EntityCache.get",
+      "app/infra/cache.py::EntityCache.invalidate",
+      "app/infra/cache.py::EntityCache.set",
+      "app/infra/cache.py::EntityCache.stats",
+      "app/infra/database.py::read_session",
+      "app/infra/database.py::unit_of_work",
+      "app/infra/resync.py::ResyncReport.as_dict",
+      "app/main.py::domain_error_handler",
+      "app/main.py::lifespan",
+      "app/main.py::validation_error_handler",
+      "app/services/services.py::CustomerService._to_read",
+      "app/services/services.py::CustomerService.create",
+      "app/services/services.py::CustomerService.get",
+      "app/services/services.py::InvoiceService._to_read",
+      "app/services/services.py::InvoiceService.create",
+      "app/services/services.py::InvoiceService.get",
+      "app/services/services.py::InvoiceService.mark_overdue",
+      "app/services/services.py::OrderService._to_read",
+      "app/services/services.py::OrderService.create",
+      "app/services/services.py::OrderService.get",
+      "app/services/services.py::OrderService.transition",
+      "app/services/services.py::PaymentService._to_read",
+      "app/services/services.py::PaymentService.create",
+      "app/services/services.py::PaymentService.get",
+      "app/services/services.py::PaymentService.verify",
+      "app/services/services.py::ProductService._to_read",
+      "app/services/services.py::ProductService.create",
+      "app/services/services.py::ProductService.get"
+    ]
+  },
+  "repoRoot": "F:\\swelab\\llmagent4code\\method_pipeline_v2\\generated\\claude",
+  "language": "python",
+  "sourceRoots": [
+    "app"
+  ]
+}

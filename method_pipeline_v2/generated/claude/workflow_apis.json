@@ -1,0 +1,32 @@
+{
+  "acceptOrder": {
+    "method": "POST",
+    "pathTemplate": "/api/v1/orders/{id}/accept",
+    "precondition": "PLACED"
+  },
+  "createInvoice": {
+    "method": "POST",
+    "pathTemplate": "/api/v1/invoices",
+    "precondition": "ACCEPTED"
+  },
+  "payInvoice": {
+    "method": "POST",
+    "pathTemplate": "/api/v1/payments",
+    "precondition": "INVOICED"
+  },
+  "verifyPayment": {
+    "method": "POST",
+    "pathTemplate": "/api/v1/payments/{id}/verify",
+    "precondition": "PENDING"
+  },
+  "shipOrder": {
+    "method": "POST",
+    "pathTemplate": "/api/v1/orders/{id}/ship",
+    "precondition": "VERIFIED"
+  },
+  "closeOrder": {
+    "method": "POST",
+    "pathTemplate": "/api/v1/orders/{id}/close",
+    "precondition": "SHIPPED"
+  }
+}

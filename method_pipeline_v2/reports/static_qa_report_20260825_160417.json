@@ -1,0 +1,761 @@
+{
+  "generated_at": "2026-08-25T16:04:17",
+  "trace_file": "F:\\swelab\\llmagent4code\\method_pipeline_v2\\generated\\chatdev-qwen35-v2\\code_workspace\\nfr-trace.json",
+  "repo_root": "F:\\swelab\\llmagent4code\\method_pipeline_v2\\generated\\chatdev-qwen35-v2\\code_workspace",
+  "scoring_summary": {
+    "overall_score": 0.9584,
+    "score3": {
+      "performance": 1.0,
+      "availability": 0.9167
+    },
+    "score2": {
+      "Throttling": 1.0,
+      "Maintain Multiple Copies": 1.0,
+      "Detect Faults": 1.0,
+      "Graceful Degradation": 0.6667,
+      "Resynchronize State": 1.0,
+      "Atomicity": 1.0
+    },
+    "score1": {
+      "Throttling": {
+        "oms/infrastructure/event/rate_limiter.py::RateLimiter.is_allowed": 1.0,
+        "oms/controller/customer_controller.py::create_customer": 1.0,
+        "oms/controller/product_controller.py::create_product": 1.0,
+        "oms/controller/order_controller.py::create_order": 1.0,
+        "oms/controller/payment_controller.py::create_payment": 1.0,
+        "oms/controller/invoice_controller.py::create_invoice": 1.0
+      },
+      "Maintain Multiple Copies": {
+        "oms/infrastructure/cache/memory_cache.py::MemoryCache.get": 1.0,
+        "oms/infrastructure/cache/memory_cache.py::MemoryCache.set": 1.0,
+        "oms/service/customer_service.py::CustomerService.get_by_id": 1.0,
+        "oms/service/product_service.py::ProductService.get_by_id": 1.0,
+        "oms/service/order_service.py::OrderService.get_by_id": 1.0,
+        "oms/service/payment_service.py::PaymentService.get_by_id": 1.0,
+        "oms/service/invoice_service.py::InvoiceService.get_by_id": 1.0
+      },
+      "Detect Faults": {
+        "oms/infrastructure/exceptions.py::oms_exception_handler": 1.0,
+        "oms/infrastructure/exceptions.py::validation_exception_handler": 1.0,
+        "oms/infrastructure/exceptions.py::sqlalchemy_exception_handler": 1.0,
+        "oms/infrastructure/exceptions.py::generic_exception_handler": 1.0,
+        "oms/service/order_service.py::OrderService.create": 1.0
+      },
+      "Graceful Degradation": {
+        "oms/infrastructure/exceptions.py::sqlalchemy_exception_handler": 1.0,
+        "oms/infrastructure/exceptions.py::generic_exception_handler": 1.0,
+        "oms/infrastructure/exceptions.py::ServiceUnavailableException": 0.0
+      },
+      "Resynchronize State": {
+        "oms/infrastructure/cache/memory_cache.py::MemoryCache.get": 1.0,
+        "oms/infrastructure/cache/memory_cache.py::MemoryCache.set": 1.0,
+        "oms/infrastructure/cache/memory_cache.py::MemoryCache.delete": 1.0,
+        "oms/service/customer_service.py::CustomerService.get_by_id": 1.0
+      },
+      "Atomicity": {
+        "oms/infrastructure/database.py::transaction_session": 1.0,
+        "oms/service/order_service.py::OrderService.create": 1.0,
+        "oms/service/payment_service.py::PaymentService.create": 1.0,
+        "oms/service/invoice_service.py::InvoiceService.create": 1.0
+      }
+    }
+  },
+  "tally": {
+    "overall_score": 0.9584,
+    "score3": {
+      "performance": 1.0,
+      "availability": 0.9167
+    },
+    "score2": {
+      "Throttling": 1.0,
+      "Maintain Multiple Copies": 1.0,
+      "Detect Faults": 1.0,
+      "Graceful Degradation": 0.6667,
+      "Resynchronize State": 1.0,
+      "Atomicity": 1.0
+    },
+    "score1": {
+      "Throttling": {
+        "oms/infrastructure/event/rate_limiter.py::RateLimiter.is_allowed": 1.0,
+        "oms/controller/customer_controller.py::create_customer": 1.0,
+        "oms/controller/product_controller.py::create_product": 1.0,
+        "oms/controller/order_controller.py::create_order": 1.0,
+        "oms/controller/payment_controller.py::create_payment": 1.0,
+        "oms/controller/invoice_controller.py::create_invoice": 1.0
+      },
+      "Maintain Multiple Copies": {
+        "oms/infrastructure/cache/memory_cache.py::MemoryCache.get": 1.0,
+        "oms/infrastructure/cache/memory_cache.py::MemoryCache.set": 1.0,
+        "oms/service/customer_service.py::CustomerService.get_by_id": 1.0,
+        "oms/service/product_service.py::ProductService.get_by_id": 1.0,
+        "oms/service/order_service.py::OrderService.get_by_id": 1.0,
+        "oms/service/payment_service.py::PaymentService.get_by_id": 1.0,
+        "oms/service/invoice_service.py::InvoiceService.get_by_id": 1.0
+      },
+      "Detect Faults": {
+        "oms/infrastructure/exceptions.py::oms_exception_handler": 1.0,
+        "oms/infrastructure/exceptions.py::validation_exception_handler": 1.0,
+        "oms/infrastructure/exceptions.py::sqlalchemy_exception_handler": 1.0,
+        "oms/infrastructure/exceptions.py::generic_exception_handler": 1.0,
+        "oms/service/order_service.py::OrderService.create": 1.0
+      },
+      "Graceful Degradation": {
+        "oms/infrastructure/exceptions.py::sqlalchemy_exception_handler": 1.0,
+        "oms/infrastructure/exceptions.py::generic_exception_handler": 1.0,
+        "oms/infrastructure/exceptions.py::ServiceUnavailableException": 0.0
+      },
+      "Resynchronize State": {
+        "oms/infrastructure/cache/memory_cache.py::MemoryCache.get": 1.0,
+        "oms/infrastructure/cache/memory_cache.py::MemoryCache.set": 1.0,
+        "oms/infrastructure/cache/memory_cache.py::MemoryCache.delete": 1.0,
+        "oms/service/customer_service.py::CustomerService.get_by_id": 1.0
+      },
+      "Atomicity": {
+        "oms/infrastructure/database.py::transaction_session": 1.0,
+        "oms/service/order_service.py::OrderService.create": 1.0,
+        "oms/service/payment_service.py::PaymentService.create": 1.0,
+        "oms/service/invoice_service.py::InvoiceService.create": 1.0
+      }
+    },
+    "qa_groups": {
+      "performance": {
+        "score3": 1.0,
+        "tactics": [
+          "Maintain Multiple Copies",
+          "Throttling"
+        ],
+        "nfrs": [
+          {
+            "nfr": "NFR 1.1 Limit Event Response",
+            "tactics": [
+              "Throttling"
+            ],
+            "score2": 1.0,
+            "status": "ABSENT",
+            "functions": [
+              {
+                "ref": "oms/infrastructure/event/rate_limiter.py::RateLimiter.is_allowed",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "oms/controller/customer_controller.py::create_customer",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "oms/controller/product_controller.py::create_product",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "oms/controller/order_controller.py::create_order",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "oms/controller/payment_controller.py::create_payment",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "oms/controller/invoice_controller.py::create_invoice",
+                "status": "PRESENT",
+                "score1": 1.0
+              }
+            ],
+            "libraries": [
+              {
+                "lib": "asyncio",
+                "status": "PRESENT"
+              }
+            ]
+          },
+          {
+            "nfr": "NFR 1.2 Maintain Multiple copies of Data",
+            "tactics": [
+              "Maintain Multiple Copies"
+            ],
+            "score2": 1.0,
+            "status": "ABSENT",
+            "functions": [
+              {
+                "ref": "oms/infrastructure/cache/memory_cache.py::MemoryCache.get",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "oms/infrastructure/cache/memory_cache.py::MemoryCache.set",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "oms/service/customer_service.py::CustomerService.get_by_id",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "oms/service/product_service.py::ProductService.get_by_id",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "oms/service/order_service.py::OrderService.get_by_id",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "oms/service/payment_service.py::PaymentService.get_by_id",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "oms/service/invoice_service.py::InvoiceService.get_by_id",
+                "status": "PRESENT",
+                "score1": 1.0
+              }
+            ],
+            "libraries": [
+              {
+                "lib": "asyncio",
+                "status": "PRESENT"
+              }
+            ]
+          }
+        ]
+      },
+      "availability": {
+        "score3": 0.9167,
+        "tactics": [
+          "Atomicity",
+          "Detect Faults",
+          "Graceful Degradation",
+          "Resynchronize State"
+        ],
+        "nfrs": [
+          {
+            "nfr": "NFR 2.1 Exception detection",
+            "tactics": [
+              "Detect Faults"
+            ],
+            "score2": 1.0,
+            "status": "PRESENT",
+            "functions": [
+              {
+                "ref": "oms/infrastructure/exceptions.py::oms_exception_handler",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "oms/infrastructure/exceptions.py::validation_exception_handler",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "oms/infrastructure/exceptions.py::sqlalchemy_exception_handler",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "oms/infrastructure/exceptions.py::generic_exception_handler",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "oms/service/order_service.py::OrderService.create",
+                "status": "PRESENT",
+                "score1": 1.0
+              }
+            ],
+            "libraries": [
+              {
+                "lib": "fastapi",
+                "status": "PRESENT"
+              },
+              {
+                "lib": "pydantic",
+                "status": "PRESENT"
+              }
+            ]
+          },
+          {
+            "nfr": "NFR 2.2 Graceful Degradation",
+            "tactics": [
+              "Graceful Degradation"
+            ],
+            "score2": 0.6667,
+            "status": "ABSENT",
+            "functions": [
+              {
+                "ref": "oms/infrastructure/exceptions.py::sqlalchemy_exception_handler",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "oms/infrastructure/exceptions.py::generic_exception_handler",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "oms/infrastructure/exceptions.py::ServiceUnavailableException",
+                "status": "ABSENT",
+                "score1": 0.0
+              }
+            ],
+            "libraries": [
+              {
+                "lib": "fastapi",
+                "status": "PRESENT"
+              }
+            ]
+          },
+          {
+            "nfr": "NFR 2.3 State Resynchronization",
+            "tactics": [
+              "Resynchronize State"
+            ],
+            "score2": 1.0,
+            "status": "ABSENT",
+            "functions": [
+              {
+                "ref": "oms/infrastructure/cache/memory_cache.py::MemoryCache.get",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "oms/infrastructure/cache/memory_cache.py::MemoryCache.set",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "oms/infrastructure/cache/memory_cache.py::MemoryCache.delete",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "oms/service/customer_service.py::CustomerService.get_by_id",
+                "status": "PRESENT",
+                "score1": 1.0
+              }
+            ],
+            "libraries": [
+              {
+                "lib": "asyncio",
+                "status": "PRESENT"
+              }
+            ]
+          },
+          {
+            "nfr": "NFR 2.4 Transactions",
+            "tactics": [
+              "Atomicity"
+            ],
+            "score2": 1.0,
+            "status": "PRESENT",
+            "functions": [
+              {
+                "ref": "oms/infrastructure/database.py::transaction_session",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "oms/service/order_service.py::OrderService.create",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "oms/service/payment_service.py::PaymentService.create",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "oms/service/invoice_service.py::InvoiceService.create",
+                "status": "PRESENT",
+                "score1": 1.0
+              }
+            ],
+            "libraries": [
+              {
+                "lib": "sqlalchemy",
+                "status": "PRESENT"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "results": [
+    {
+      "nfr": "NFR 1.1 Limit Event Response",
+      "qa_group": "performance",
+      "status": "ABSENT",
+      "stage": "existence",
+      "score2": 1.0,
+      "evidence": "functions[RateLimiter.is_allowed=PRESENT(s1=1.0); create_customer=PRESENT(s1=1.0); create_product=PRESENT(s1=1.0); create_order=PRESENT(s1=1.0); create_payment=PRESENT(s1=1.0); create_invoice=PRESENT(s1=1.0)] libraries[asyncio=PRESENT] fn-uses-lib[level1=ABSENT; RateLimiter.is_allowed->none; create_customer->none; create_product->none; create_order->none; create_payment->none; create_invoice->none]",
+      "tactics": [
+        "Throttling"
+      ],
+      "functions": [
+        {
+          "ref": "oms/infrastructure/event/rate_limiter.py::RateLimiter.is_allowed",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        },
+        {
+          "ref": "oms/controller/customer_controller.py::create_customer",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        },
+        {
+          "ref": "oms/controller/product_controller.py::create_product",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        },
+        {
+          "ref": "oms/controller/order_controller.py::create_order",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        },
+        {
+          "ref": "oms/controller/payment_controller.py::create_payment",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        },
+        {
+          "ref": "oms/controller/invoice_controller.py::create_invoice",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        }
+      ],
+      "libraries": [
+        {
+          "lib": "asyncio",
+          "status": "PRESENT",
+          "detail": "'asyncio' imported and used"
+        }
+      ]
+    },
+    {
+      "nfr": "NFR 1.2 Maintain Multiple copies of Data",
+      "qa_group": "performance",
+      "status": "ABSENT",
+      "stage": "existence",
+      "score2": 1.0,
+      "evidence": "functions[MemoryCache.get=PRESENT(s1=1.0); MemoryCache.set=PRESENT(s1=1.0); CustomerService.get_by_id=PRESENT(s1=1.0); ProductService.get_by_id=PRESENT(s1=1.0); OrderService.get_by_id=PRESENT(s1=1.0); PaymentService.get_by_id=PRESENT(s1=1.0); InvoiceService.get_by_id=PRESENT(s1=1.0)] libraries[asyncio=PRESENT] fn-uses-lib[level1=ABSENT; MemoryCache.get->none; MemoryCache.set->none; CustomerService.get_by_id->none; ProductService.get_by_id->none; OrderService.get_by_id->none; PaymentService.get_by_id->none; InvoiceService.get_by_id->none]",
+      "tactics": [
+        "Maintain Multiple Copies"
+      ],
+      "functions": [
+        {
+          "ref": "oms/infrastructure/cache/memory_cache.py::MemoryCache.get",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        },
+        {
+          "ref": "oms/infrastructure/cache/memory_cache.py::MemoryCache.set",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        },
+        {
+          "ref": "oms/service/customer_service.py::CustomerService.get_by_id",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        },
+        {
+          "ref": "oms/service/product_service.py::ProductService.get_by_id",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        },
+        {
+          "ref": "oms/service/order_service.py::OrderService.get_by_id",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        },
+        {
+          "ref": "oms/service/payment_service.py::PaymentService.get_by_id",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        },
+        {
+          "ref": "oms/service/invoice_service.py::InvoiceService.get_by_id",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        }
+      ],
+      "libraries": [
+        {
+          "lib": "asyncio",
+          "status": "PRESENT",
+          "detail": "'asyncio' imported and used"
+        }
+      ]
+    },
+    {
+      "nfr": "NFR 2.1 Exception detection",
+      "qa_group": "availability",
+      "status": "PRESENT",
+      "stage": "existence",
+      "score2": 1.0,
+      "evidence": "functions[oms_exception_handler=PRESENT(s1=1.0); validation_exception_handler=PRESENT(s1=1.0); sqlalchemy_exception_handler=PRESENT(s1=1.0); generic_exception_handler=PRESENT(s1=1.0); OrderService.create=PRESENT(s1=1.0)] libraries[fastapi=PRESENT; pydantic=PRESENT] fn-uses-lib[level1=PRESENT; oms_exception_handler->['fastapi']; validation_exception_handler->['fastapi']; sqlalchemy_exception_handler->['fastapi']; generic_exception_handler->['fastapi']; OrderService.create->none]",
+      "tactics": [
+        "Detect Faults"
+      ],
+      "functions": [
+        {
+          "ref": "oms/infrastructure/exceptions.py::oms_exception_handler",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "fastapi"
+          ],
+          "uses_any": true
+        },
+        {
+          "ref": "oms/infrastructure/exceptions.py::validation_exception_handler",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "fastapi"
+          ],
+          "uses_any": true
+        },
+        {
+          "ref": "oms/infrastructure/exceptions.py::sqlalchemy_exception_handler",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "fastapi"
+          ],
+          "uses_any": true
+        },
+        {
+          "ref": "oms/infrastructure/exceptions.py::generic_exception_handler",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "fastapi"
+          ],
+          "uses_any": true
+        },
+        {
+          "ref": "oms/service/order_service.py::OrderService.create",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        }
+      ],
+      "libraries": [
+        {
+          "lib": "fastapi",
+          "status": "PRESENT",
+          "detail": "'fastapi' imported and used"
+        },
+        {
+          "lib": "pydantic",
+          "status": "PRESENT",
+          "detail": "'pydantic' imported and used"
+        }
+      ]
+    },
+    {
+      "nfr": "NFR 2.2 Graceful Degradation",
+      "qa_group": "availability",
+      "status": "ABSENT",
+      "stage": "existence",
+      "score2": 0.6667,
+      "evidence": "functions[sqlalchemy_exception_handler=PRESENT(s1=1.0); generic_exception_handler=PRESENT(s1=1.0); ServiceUnavailableException=ABSENT(s1=0.0)] libraries[fastapi=PRESENT] fn-uses-lib[level1=PRESENT; sqlalchemy_exception_handler->['fastapi']; generic_exception_handler->['fastapi']; ServiceUnavailableException->none]",
+      "tactics": [
+        "Graceful Degradation"
+      ],
+      "functions": [
+        {
+          "ref": "oms/infrastructure/exceptions.py::sqlalchemy_exception_handler",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "fastapi"
+          ],
+          "uses_any": true
+        },
+        {
+          "ref": "oms/infrastructure/exceptions.py::generic_exception_handler",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "fastapi"
+          ],
+          "uses_any": true
+        },
+        {
+          "ref": "oms/infrastructure/exceptions.py::ServiceUnavailableException",
+          "status": "ABSENT",
+          "score1": 0.0,
+          "detail": "function not found",
+          "libraries_used": [],
+          "uses_any": false
+        }
+      ],
+      "libraries": [
+        {
+          "lib": "fastapi",
+          "status": "PRESENT",
+          "detail": "'fastapi' imported and used"
+        }
+      ]
+    },
+    {
+      "nfr": "NFR 2.3 State Resynchronization",
+      "qa_group": "availability",
+      "status": "ABSENT",
+      "stage": "existence",
+      "score2": 1.0,
+      "evidence": "functions[MemoryCache.get=PRESENT(s1=1.0); MemoryCache.set=PRESENT(s1=1.0); MemoryCache.delete=PRESENT(s1=1.0); CustomerService.get_by_id=PRESENT(s1=1.0)] libraries[asyncio=PRESENT] fn-uses-lib[level1=ABSENT; MemoryCache.get->none; MemoryCache.set->none; MemoryCache.delete->none; CustomerService.get_by_id->none]",
+      "tactics": [
+        "Resynchronize State"
+      ],
+      "functions": [
+        {
+          "ref": "oms/infrastructure/cache/memory_cache.py::MemoryCache.get",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        },
+        {
+          "ref": "oms/infrastructure/cache/memory_cache.py::MemoryCache.set",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        },
+        {
+          "ref": "oms/infrastructure/cache/memory_cache.py::MemoryCache.delete",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        },
+        {
+          "ref": "oms/service/customer_service.py::CustomerService.get_by_id",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        }
+      ],
+      "libraries": [
+        {
+          "lib": "asyncio",
+          "status": "PRESENT",
+          "detail": "'asyncio' imported and used"
+        }
+      ]
+    },
+    {
+      "nfr": "NFR 2.4 Transactions",
+      "qa_group": "availability",
+      "status": "PRESENT",
+      "stage": "existence",
+      "score2": 1.0,
+      "evidence": "functions[transaction_session=PRESENT(s1=1.0); OrderService.create=PRESENT(s1=1.0); PaymentService.create=PRESENT(s1=1.0); InvoiceService.create=PRESENT(s1=1.0)] libraries[sqlalchemy=PRESENT] fn-uses-lib[level1=PRESENT; transaction_session->['sqlalchemy']; OrderService.create->none; PaymentService.create->none; InvoiceService.create->none]",
+      "tactics": [
+        "Atomicity"
+      ],
+      "functions": [
+        {
+          "ref": "oms/infrastructure/database.py::transaction_session",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "sqlalchemy"
+          ],
+          "uses_any": true
+        },
+        {
+          "ref": "oms/service/order_service.py::OrderService.create",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        },
+        {
+          "ref": "oms/service/payment_service.py::PaymentService.create",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        },
+        {
+          "ref": "oms/service/invoice_service.py::InvoiceService.create",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        }
+      ],
+      "libraries": [
+        {
+          "lib": "sqlalchemy",
+          "status": "PRESENT",
+          "detail": "'sqlalchemy' imported and used"
+        }
+      ]
+    }
+  ]
+}

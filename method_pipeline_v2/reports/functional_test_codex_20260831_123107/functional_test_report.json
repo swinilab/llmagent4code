@@ -1,0 +1,5467 @@
+{
+  "stage": "functional",
+  "app": "codex",
+  "status": "FAIL",
+  "message": "4 of 147 HTTP test(s) failed (97.3% passed).",
+  "total": 147,
+  "passed": 143,
+  "failed": 4,
+  "pass_rate": "97.3%",
+  "seed_warnings": [
+    "acceptOrder step not declared in workflow_apis.json; inferred POST /api/v1/orders/{id}/accept from the app's own OpenAPI (openapi:action-route). Transition is verified by re-reading the order's status."
+  ],
+  "summary": [
+    {
+      "group": "customer",
+      "total": 50,
+      "passed": 48,
+      "failed": 2,
+      "pass_rate": "96.0%"
+    },
+    {
+      "group": "product",
+      "total": 25,
+      "passed": 25,
+      "failed": 0,
+      "pass_rate": "100.0%"
+    },
+    {
+      "group": "order",
+      "total": 28,
+      "passed": 28,
+      "failed": 0,
+      "pass_rate": "100.0%"
+    },
+    {
+      "group": "payment",
+      "total": 18,
+      "passed": 16,
+      "failed": 2,
+      "pass_rate": "88.9%"
+    },
+    {
+      "group": "invoice",
+      "total": 26,
+      "passed": 26,
+      "failed": 0,
+      "pass_rate": "100.0%"
+    }
+  ],
+  "results": [
+    {
+      "testcase_id": "TC_CUS_ID_01",
+      "result": true,
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/customers/37ab0b97-6a67-4a4e-80e8-ce7ba1ae0bce",
+      "expected_status": 200,
+      "actual_status": 200,
+      "request_body": {},
+      "response_body": {
+        "id": "37ab0b97-6a67-4a4e-80e8-ce7ba1ae0bce",
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER",
+        "orderHistory": [
+          "070e1910-4f66-46e6-8154-624fbfa5c68b",
+          "82bcb4d2-bc82-42ec-b66c-6152536af281",
+          "f746b69e-bf27-4722-a00b-a3c6b356bb48",
+          "47ce1490-5215-4be0-b9ca-0315b0b5490d",
+          "590a1ff3-be81-4ce1-9f6c-bd21cf1b3ea4",
+          "9b100db1-e0b8-4cf3-9e14-800db4cf0903",
+          "5c3baaf8-670e-4bbd-af83-680a7bda3dcd",
+          "91781bf7-785c-4a0c-b0fd-c6d320fe26e9",
+          "a337b616-c47d-4fb2-98f3-69afd7956eac",
+          "dd8b2205-9656-4944-a27d-1e3215412896",
+          "dc773a22-3f5b-4f68-98a8-7437d11efcd5",
+          "6f63984b-2649-485a-95f5-021161c5b333",
+          "2c41f8a6-0bf9-4234-a2e0-eb6d19e9f2bf",
+          "a9e073a2-8ba9-4385-bb92-dfaaf433a9cc",
+          "bef83a66-c042-4ae7-8e28-7acdd3a75bb5",
+          "cb5f6148-102a-403f-959f-69d34bb434a2",
+          "2064a97c-625e-4be9-bd23-d542ccc0cda9",
+          "8bc67259-2191-4da1-b44e-203595bb1c71",
+          "ae74877f-5ff5-4dc0-87de-ab9afd30fecb",
+          "415384e9-55c8-4ea1-b2db-ab9ea11a096d",
+          "8b755b36-7c93-44d7-a0eb-a8764d25075d",
+          "acd91750-bfa0-481d-9a7a-45cb62a7e789",
+          "6b44de60-a9ad-4bca-a70d-cb3741468f16",
+          "a5bf2940-721f-4205-90df-e6403e266715",
+          "cd313178-f46f-4165-9d02-a09cbfce0da5",
+          "fffc1cc2-e41a-4705-93e5-a9f7a7fc2a75",
+          "614dd983-514a-452e-b04c-9bc8fdcaa171",
+          "9b20d6cb-3f0e-48d8-b987-f8e26571addf",
+          "a433dbed-542e-426a-8f76-0d71e1223ddd",
+          "bed65462-eb37-480c-a940-53875fc04cbe",
+          "4b465c76-367d-4938-9e6a-1553b3928bf2",
+          "c0cb0d33-ae68-4c7e-ac01-7396b4286333",
+          "036bcefd-714e-43cb-990c-aea4d6424a3f",
+          "8b3c4d01-b695-4e9e-9744-2a50e2215e8f",
+          "468cf41d-876e-4e6d-abc8-87b5b550578d",
+          "a0f582e3-043e-4a5c-bfc0-70c7887b7913",
+          "a18358f9-5f44-471c-b7a7-7a303a74029f",
+          "9b54dd25-3233-4889-b51d-589a67190c60",
+          "298d3e51-9494-4064-a748-71cbcf19e7be",
+          "4b269a34-dd02-42e6-bd69-3db574bea303",
+          "7389bd5f-29de-4d87-a60c-3228c3281b74",
+          "5034f57c-2cd5-4704-bf10-58d227aa2c8d",
+          "8527aecd-36c0-404a-aecf-c99d2e434068",
+          "bfe7ef32-5609-4edc-ae2e-acedbf8fa4b2",
+          "8914baf0-c0c8-479f-bf78-385424de417d",
+          "31fa16ed-6e54-46b9-8fc9-c89e8134d108",
+          "8f094e2b-52b6-4c43-bdd6-c91e32093faf",
+          "ca6e5999-8e63-4538-99db-a2b722b9d5c6",
+          "aeca8ba6-aaee-486b-a9b5-5035027056b9",
+          "35be9430-b5d1-4e23-a50f-ae24350168b4",
+          "5aa8177e-aaf2-4c0d-8f19-fd6daa66aee1",
+          "708fc75a-1165-4df0-9acf-b2c01cc27f84"
+        ]
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ID_02",
+      "result": true,
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/customers/3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "expected_status": 404,
+      "actual_status": 404,
+      "request_body": {},
+      "response_body": {
+        "error": {
+          "code": "not_found",
+          "message": "Customer '3fa85f64-5717-4562-b3fc-2c963f66afa6' was not found",
+          "requestId": "acba925d-3926-41ce-a192-bb6f5ae6053a"
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ID_03",
+      "result": true,
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/customers/not-a-uuid-123",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {},
+      "response_body": {
+        "error": {
+          "code": "bad_request",
+          "message": "must be a canonical 36-character UUIDv4",
+          "requestId": "c97077f9-ef5a-4111-8f41-b5ed41c360ce"
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ID_04",
+      "result": false,
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/customers/",
+      "expected_status": 405,
+      "actual_status": 400,
+      "request_body": {},
+      "response_body": {
+        "error": {
+          "code": "bad_request",
+          "message": "A UUIDv4 resource identifier is required",
+          "requestId": "74967400-23a2-4852-830e-bc26e9327c27"
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_NAME_01",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "name": "A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "80b1ddb8-4815-4eea-8e62-6155e64b9a60",
+          "details": [
+            {
+              "location": "name",
+              "message": "String should have at least 2 characters",
+              "type": "string_too_short"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_NAME_02",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "name": "An",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "id": "257b8712-f673-4caa-bc3d-877d874d8d8b",
+        "name": "An",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER",
+        "orderHistory": []
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_NAME_03",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "name": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "id": "f32db47b-eacf-4aab-b244-b8e6342388e2",
+        "name": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER",
+        "orderHistory": []
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_NAME_04",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "name": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "cfb16032-2c2e-4d41-b214-c24253b4b80b",
+          "details": [
+            {
+              "location": "name",
+              "message": "String should have at most 100 characters",
+              "type": "string_too_long"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_NAME_05",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "id": "cb501dff-50e5-4871-8dae-35888e85c951",
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER",
+        "orderHistory": []
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_NAME_06",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "name": "Jean-Luc O'Brien",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "id": "ad2a4f6f-e65a-432d-bbad-27ad99a5f461",
+        "name": "Jean-Luc O'Brien",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER",
+        "orderHistory": []
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_NAME_07",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "name": "",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "8da5373b-35ff-40f5-92a8-f9828420c5db",
+          "details": [
+            {
+              "location": "name",
+              "message": "String should have at least 2 characters",
+              "type": "string_too_short"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_NAME_08",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "name": "12345",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "5b049e5d-cdad-4b32-8897-f8188800199a",
+          "details": [
+            {
+              "location": "name",
+              "message": "Value error, contains characters outside the allowed name format",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_NAME_09",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "name": "@#$%^&",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "ab09879a-942c-43a6-bd8b-c52db3a3e572",
+          "details": [
+            {
+              "location": "name",
+              "message": "Value error, contains characters outside the allowed name format",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_NAME_10",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "name": "      ",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "6397db87-56a0-4f10-af80-b4aa9798091f",
+          "details": [
+            {
+              "location": "name",
+              "message": "Value error, must not be blank or whitespace-only",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ADDRESS_01",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "12 A",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "6ecdd412-c24d-4cb4-8b67-138bddea18b6",
+          "details": [
+            {
+              "location": "address",
+              "message": "String should have at least 5 characters",
+              "type": "string_too_short"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ADDRESS_02",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "12345",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "id": "d977f213-f0b5-4808-8c19-7d891bdfc221",
+        "name": "Nguyen Van A",
+        "address": "12345",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER",
+        "orderHistory": []
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ADDRESS_03",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "id": "19aafdad-830c-4829-b35d-ce9a42dc24a2",
+        "name": "Nguyen Van A",
+        "address": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER",
+        "orderHistory": []
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ADDRESS_04",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "b02d61cb-05b4-4c46-9fcc-c22483fab95c",
+          "details": [
+            {
+              "location": "address",
+              "message": "String should have at most 255 characters",
+              "type": "string_too_long"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ADDRESS_05",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "35f1ed21-16bb-49f5-8fc2-f8802acdd3f3",
+          "details": [
+            {
+              "location": "address",
+              "message": "String should have at least 5 characters",
+              "type": "string_too_short"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ADDRESS_06",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "         ",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "4226f461-2dc1-4245-80f7-102fc6a3d304",
+          "details": [
+            {
+              "location": "address",
+              "message": "Value error, must not be blank or whitespace-only",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ADDRESS_07",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "id": "17a80390-ccc3-4127-9c21-8b2823764fc7",
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER",
+        "orderHistory": []
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_PHONE_01",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+8412345",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "2f7ad165-d836-4d93-bbba-b191990b2bb1",
+          "details": [
+            {
+              "location": "phone",
+              "message": "Value error, must match E.164 format with 8 to 15 digits",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_PHONE_02",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "id": "c26f4500-102e-44cb-b7af-cbbc8abe6d0e",
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER",
+        "orderHistory": []
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_PHONE_03",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+841234567890123",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "id": "69d706e7-ab59-4a5c-aedd-735ec55597d2",
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+841234567890123",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER",
+        "orderHistory": []
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_PHONE_04",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+8412345678901234",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "9e358642-f3ca-4814-8b94-ababfbd6ae02",
+          "details": [
+            {
+              "location": "phone",
+              "message": "Value error, must match E.164 format with 8 to 15 digits",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_PHONE_05",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "id": "39213112-682d-41b0-ba95-36df4a9aacd1",
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER",
+        "orderHistory": []
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_PHONE_06",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+849abc45678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "03d96e2c-f8a5-4140-83f9-fdafe4d58235",
+          "details": [
+            {
+              "location": "phone",
+              "message": "Value error, must match E.164 format with 8 to 15 digits",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_PHONE_07",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+8401234567",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "2cfa74d2-2088-45a1-a34f-f0b289c1df57",
+          "details": [
+            {
+              "location": "phone",
+              "message": "Value error, must not start with 0 after the country code",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_PHONE_08",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "578393b3-fb5d-43c6-ace9-a15f4846779f",
+          "details": [
+            {
+              "location": "phone",
+              "message": "Value error, must match E.164 format with 8 to 15 digits",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_BANKACCTNU_01",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "12345",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "7e81bb76-d294-4d53-b33c-500cee2eb7d6",
+          "details": [
+            {
+              "location": "bankingDetails.accountNumber",
+              "message": "String should have at least 6 characters",
+              "type": "string_too_short"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_BANKACCTNU_02",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "123456",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "id": "4e8ca667-a6cf-42bb-ab83-c66da36fa650",
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "123456",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER",
+        "orderHistory": []
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_BANKACCTNU_03",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "11111111111111111111",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "id": "0d54d719-508f-4b5b-84b5-6c94958e7433",
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "11111111111111111111",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER",
+        "orderHistory": []
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_BANKACCTNU_04",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "111111111111111111111",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "93ad944d-5a85-42f6-bde1-02c609891653",
+          "details": [
+            {
+              "location": "bankingDetails.accountNumber",
+              "message": "String should have at most 20 characters",
+              "type": "string_too_long"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_BANKACCTNU_05",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "12ab56",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "b69e502e-a8f9-42f9-9977-e7b5aeccbc5c",
+          "details": [
+            {
+              "location": "bankingDetails.accountNumber",
+              "message": "Value error, must contain 6 to 20 ASCII digits",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_BANKACCTNU_06",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "fd990bda-45eb-49a8-a4cc-d833f3d47f9a",
+          "details": [
+            {
+              "location": "bankingDetails.accountNumber",
+              "message": "String should have at least 6 characters",
+              "type": "string_too_short"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_BANKNAME_01",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "A"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "a4b85e6c-6bf4-4aef-9e3f-df6456fe9022",
+          "details": [
+            {
+              "location": "bankingDetails.bankName",
+              "message": "String should have at least 2 characters",
+              "type": "string_too_short"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_BANKNAME_02",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "VP"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "id": "e422509f-6b0d-4b21-a40b-a92fc2596908",
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "VP"
+        },
+        "role": "CUSTOMER",
+        "orderHistory": []
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_BANKNAME_03",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "id": "ea71abfe-d153-410f-af70-d4560a24a8fd",
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "role": "CUSTOMER",
+        "orderHistory": []
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_BANKNAME_04",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "0a5a1d22-8831-4e72-b539-d7bb62de3850",
+          "details": [
+            {
+              "location": "bankingDetails.bankName",
+              "message": "String should have at most 100 characters",
+              "type": "string_too_long"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_BANKNAME_05",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": ""
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "ac3cfc25-5217-4063-95f0-5793e16982c5",
+          "details": [
+            {
+              "location": "bankingDetails.bankName",
+              "message": "String should have at least 2 characters",
+              "type": "string_too_short"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_BANKNAME_06",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "id": "3f87527d-9db7-4537-afd3-43b34eac6327",
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER",
+        "orderHistory": []
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ROLE_01",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "id": "0b960836-eb1b-49c9-8f62-6a42d0dfa4d2",
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER",
+        "orderHistory": []
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ROLE_02",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "ORDER_STAFF"
+      },
+      "response_body": {
+        "id": "70587422-7ed4-4710-985c-b6592b391ff4",
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "ORDER_STAFF",
+        "orderHistory": []
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ROLE_03",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "ACCOUNTANT"
+      },
+      "response_body": {
+        "id": "a8999db4-32fc-4ef0-826c-7f20d396ec10",
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "ACCOUNTANT",
+        "orderHistory": []
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ROLE_04",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "MANAGER"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "4e55e182-6014-4df0-84e3-ab6294457059",
+          "details": [
+            {
+              "location": "role",
+              "message": "Input should be 'CUSTOMER', 'ORDER_STAFF' or 'ACCOUNTANT'",
+              "type": "enum"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ROLE_05",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "customer"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "57d77744-9e29-4305-a383-562cefb93668",
+          "details": [
+            {
+              "location": "role",
+              "message": "Input should be 'CUSTOMER', 'ORDER_STAFF' or 'ACCOUNTANT'",
+              "type": "enum"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ROLE_06",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": ""
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "36699e8a-b8d7-45ca-ba43-5e775eb9843d",
+          "details": [
+            {
+              "location": "role",
+              "message": "Input should be 'CUSTOMER', 'ORDER_STAFF' or 'ACCOUNTANT'",
+              "type": "enum"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ORDERHIST_01",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 201,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER",
+        "orderHistory": []
+      },
+      "response_body": {
+        "id": "15292ec1-697b-4df0-9f1c-78aa743dbcbb",
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER",
+        "orderHistory": []
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ORDERHIST_02",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER",
+        "orderHistory": [
+          "not-a-uuid"
+        ]
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "a495ef54-26db-462b-b913-dd73e43228fa",
+          "details": [
+            {
+              "location": "orderHistory",
+              "message": "List should have at most 0 items after validation, not 1",
+              "type": "too_long"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ORDERHIST_03",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER",
+        "orderHistory": [
+          "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+        ]
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "75be3510-66a3-46bd-9961-d2067ea70ccc",
+          "details": [
+            {
+              "location": "orderHistory",
+              "message": "List should have at most 0 items after validation, not 1",
+              "type": "too_long"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_ID_01",
+      "result": true,
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/products/ba1ed869-f311-4808-a4d2-4900ed0d87d4",
+      "expected_status": 200,
+      "actual_status": 200,
+      "request_body": {},
+      "response_body": {
+        "id": "ba1ed869-f311-4808-a4d2-4900ed0d87d4",
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_ID_02",
+      "result": true,
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/products/3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "expected_status": 404,
+      "actual_status": 404,
+      "request_body": {},
+      "response_body": {
+        "error": {
+          "code": "not_found",
+          "message": "Product '3fa85f64-5717-4562-b3fc-2c963f66afa6' was not found",
+          "requestId": "3b96b71f-1348-4bc2-8e69-416f3d28409f"
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_ID_03",
+      "result": true,
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/products/prod-123",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {},
+      "response_body": {
+        "error": {
+          "code": "bad_request",
+          "message": "must be a canonical 36-character UUIDv4",
+          "requestId": "d20cf728-9d58-47d8-adc1-fa2d7b8cf618"
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_DESCRIPTIO_01",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "description": "AB",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "8e36817e-ea51-4682-ad76-8ba2abc6148b",
+          "details": [
+            {
+              "location": "description",
+              "message": "String should have at least 3 characters",
+              "type": "string_too_short"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_DESCRIPTIO_02",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "description": "USB",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "response_body": {
+        "id": "91479817-5a91-4179-8147-a2d27124baaf",
+        "description": "USB",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_DESCRIPTIO_03",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "description": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "response_body": {
+        "id": "18cc91e4-8c1a-4dbb-9e95-d83697228d0d",
+        "description": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_DESCRIPTIO_04",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "description": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "6d5ccc52-37f5-45aa-952c-49ebb6345ec3",
+          "details": [
+            {
+              "location": "description",
+              "message": "String should have at most 500 characters",
+              "type": "string_too_long"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_DESCRIPTIO_05",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "description": "",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "a386738d-529d-472f-af99-72639adccc93",
+          "details": [
+            {
+              "location": "description",
+              "message": "String should have at least 3 characters",
+              "type": "string_too_short"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_DESCRIPTIO_06",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "description": "     ",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "39b966d5-8c9a-4ca7-936b-4fd966172739",
+          "details": [
+            {
+              "location": "description",
+              "message": "Value error, must not be blank or whitespace-only",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_DESCRIPTIO_07",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "response_body": {
+        "id": "7c2b2455-a347-417e-a5e0-536dbd895347",
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_PRICEAMT_01",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "0.00",
+          "currency": "USD"
+        }
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "bbf62db3-2688-4520-95b6-e89478f80ae0",
+          "details": [
+            {
+              "location": "price.amount",
+              "message": "Value error, must be between 0.01 and 999999.99",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_PRICEAMT_02",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "0.01",
+          "currency": "USD"
+        }
+      },
+      "response_body": {
+        "id": "d5ee7ce0-b8a5-4351-ad66-78d80c9b0067",
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "0.01",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_PRICEAMT_03",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "999999.99",
+          "currency": "USD"
+        }
+      },
+      "response_body": {
+        "id": "7d778006-ddaf-4b2b-8704-1035110716e2",
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "999999.99",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_PRICEAMT_04",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "1000000.00",
+          "currency": "USD"
+        }
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "9e95f7fc-46df-4013-b2d9-325e24a9c92d",
+          "details": [
+            {
+              "location": "price.amount",
+              "message": "Value error, must contain exactly two decimal places",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_PRICEAMT_05",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "-10.00",
+          "currency": "USD"
+        }
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "f71e7090-57bd-4dc7-8174-bd3d62c16acf",
+          "details": [
+            {
+              "location": "price.amount",
+              "message": "Value error, must contain exactly two decimal places",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_PRICEAMT_06",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "10.999",
+          "currency": "USD"
+        }
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "6a2b1114-9777-438f-b19a-6d74254f8470",
+          "details": [
+            {
+              "location": "price.amount",
+              "message": "Value error, must contain exactly two decimal places",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_PRICEAMT_07",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "abc",
+          "currency": "USD"
+        }
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "66438928-4db9-440d-ab72-8a419827518a",
+          "details": [
+            {
+              "location": "price.amount",
+              "message": "Value error, must contain exactly two decimal places",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_PRICEAMT_08",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "",
+          "currency": "USD"
+        }
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "c8f0aca3-75cb-4ad7-a2a3-5668790c86a5",
+          "details": [
+            {
+              "location": "price.amount",
+              "message": "Value error, must contain exactly two decimal places",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_CURRENCY_01",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "response_body": {
+        "id": "7b7ecc7a-ca8a-4aff-b6de-33b551a7bc98",
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_CURRENCY_02",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "10.00",
+          "currency": "VND"
+        }
+      },
+      "response_body": {
+        "id": "d72a4426-0d8d-4aab-bf24-841bfd66817a",
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "10.00",
+          "currency": "VND"
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_CURRENCY_03",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "10.00",
+          "currency": "EUR"
+        }
+      },
+      "response_body": {
+        "id": "5a088a35-e058-422e-902d-c57f7017db54",
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "10.00",
+          "currency": "EUR"
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_CURRENCY_04",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "10.00",
+          "currency": "US"
+        }
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "7dac0417-3930-45b3-a01d-15ffec30aac5",
+          "details": [
+            {
+              "location": "price.currency",
+              "message": "Input should be 'USD', 'VND' or 'EUR'",
+              "type": "enum"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_CURRENCY_05",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "10.00",
+          "currency": "XYZ"
+        }
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "2966dd1a-0a93-491a-888e-8a2a154f79b7",
+          "details": [
+            {
+              "location": "price.currency",
+              "message": "Input should be 'USD', 'VND' or 'EUR'",
+              "type": "enum"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_CURRENCY_06",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "10.00",
+          "currency": "usd"
+        }
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "9c296195-4bd4-401c-81f5-c345d672f215",
+          "details": [
+            {
+              "location": "price.currency",
+              "message": "Input should be 'USD', 'VND' or 'EUR'",
+              "type": "enum"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_CURRENCY_07",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "10.00",
+          "currency": ""
+        }
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "4ef3fd33-a53a-4078-a9e3-57c5471ff5b2",
+          "details": [
+            {
+              "location": "price.currency",
+              "message": "Input should be 'USD', 'VND' or 'EUR'",
+              "type": "enum"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_CUSTREF_01",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "customerRef": "37ab0b97-6a67-4a4e-80e8-ce7ba1ae0bce",
+        "lineItems": [
+          {
+            "productRef": "ba1ed869-f311-4808-a4d2-4900ed0d87d4",
+            "quantity": 1
+          }
+        ]
+      },
+      "response_body": {
+        "id": "16c8e529-ed92-4298-9783-abeb66ed04d5",
+        "customerRef": "37ab0b97-6a67-4a4e-80e8-ce7ba1ae0bce",
+        "lineItems": [
+          {
+            "productRef": "ba1ed869-f311-4808-a4d2-4900ed0d87d4",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "PLACED",
+        "createdAt": "2026-08-31T05:31:15.954953Z",
+        "updatedAt": "2026-08-31T05:31:15.954953Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_CUSTREF_02",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders",
+      "expected_status": 404,
+      "actual_status": 404,
+      "request_body": {
+        "customerRef": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "lineItems": [
+          {
+            "productRef": "ba1ed869-f311-4808-a4d2-4900ed0d87d4",
+            "quantity": 1
+          }
+        ]
+      },
+      "response_body": {
+        "error": {
+          "code": "not_found",
+          "message": "Customer '3fa85f64-5717-4562-b3fc-2c963f66afa6' was not found",
+          "requestId": "2a0e6876-350f-4d6e-8dd6-3cf03742872d"
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_CUSTREF_03",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "customerRef": "cust-1",
+        "lineItems": [
+          {
+            "productRef": "ba1ed869-f311-4808-a4d2-4900ed0d87d4",
+            "quantity": 1
+          }
+        ]
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "f237b7f2-9ab2-46b3-b889-831afce2e831",
+          "details": [
+            {
+              "location": "customerRef",
+              "message": "Value error, must be a canonical 36-character UUIDv4",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_CUSTREF_04",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "customerRef": null,
+        "lineItems": [
+          {
+            "productRef": "ba1ed869-f311-4808-a4d2-4900ed0d87d4",
+            "quantity": 1
+          }
+        ]
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "135ee17b-3cc4-47d2-bdd8-7ae433910339",
+          "details": [
+            {
+              "location": "customerRef",
+              "message": "Value error, must be a canonical 36-character UUIDv4",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_LINEITEMS_01",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "customerRef": "37ab0b97-6a67-4a4e-80e8-ce7ba1ae0bce",
+        "lineItems": []
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "01540fcf-9701-4cbb-90bf-e1890a3506a0",
+          "details": [
+            {
+              "location": "lineItems",
+              "message": "List should have at least 1 item after validation, not 0",
+              "type": "too_short"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_LINEITEMS_02",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "customerRef": "37ab0b97-6a67-4a4e-80e8-ce7ba1ae0bce",
+        "lineItems": [
+          {
+            "productRef": "ba1ed869-f311-4808-a4d2-4900ed0d87d4",
+            "quantity": 1
+          }
+        ]
+      },
+      "response_body": {
+        "id": "5c58671f-e1f8-4a10-be4d-49c583dc807d",
+        "customerRef": "37ab0b97-6a67-4a4e-80e8-ce7ba1ae0bce",
+        "lineItems": [
+          {
+            "productRef": "ba1ed869-f311-4808-a4d2-4900ed0d87d4",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "PLACED",
+        "createdAt": "2026-08-31T05:31:16.042974Z",
+        "updatedAt": "2026-08-31T05:31:16.042974Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_LINEITEMS_03",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "customerRef": "37ab0b97-6a67-4a4e-80e8-ce7ba1ae0bce",
+        "lineItems": [
+          {
+            "productRef": "898e8631-3265-44c1-a698-1f7e33fc838b",
+            "quantity": 1
+          },
+          {
+            "productRef": "98917e7a-821a-4ff1-9029-e2843a494ae2",
+            "quantity": 1
+          },
+          {
+            "productRef": "749bb2e5-c433-4716-86e2-82532a4000b9",
+            "quantity": 1
+          },
+          {
+            "productRef": "ec176e9e-9f7f-4611-a625-cf035b06851d",
+            "quantity": 1
+          },
+          {
+            "productRef": "9af8ec59-86a6-4ff3-b536-66e4aa65b5a8",
+            "quantity": 1
+          },
+          {
+            "productRef": "f16850bd-bcf0-4c78-9b99-a9ba578cba68",
+            "quantity": 1
+          },
+          {
+            "productRef": "b5e9bc99-938d-454c-89dc-5b5e7f4cbdf8",
+            "quantity": 1
+          },
+          {
+            "productRef": "e5c7c561-8c6e-4c2c-a1c8-233dff58ef5c",
+            "quantity": 1
+          },
+          {
+            "productRef": "62aef716-e490-4466-aa46-fdd45bcfe566",
+            "quantity": 1
+          },
+          {
+            "productRef": "622b5835-e4f3-4ad4-b8a6-86e54bf6947f",
+            "quantity": 1
+          },
+          {
+            "productRef": "1e93709e-81ee-4488-a5fd-8be7cc6bcbd6",
+            "quantity": 1
+          },
+          {
+            "productRef": "9fb64c81-7ad7-4c48-a236-b2964d02d462",
+            "quantity": 1
+          },
+          {
+            "productRef": "be708c0a-0032-42a5-a3ae-7c0ce2fefaba",
+            "quantity": 1
+          },
+          {
+            "productRef": "3e0f863f-980b-417a-804c-386a6008c52c",
+            "quantity": 1
+          },
+          {
+            "productRef": "22d521c4-b831-4701-9a91-26762d3e7f71",
+            "quantity": 1
+          },
+          {
+            "productRef": "32b40d9f-98d8-4f56-a39e-08d9c2306f0a",
+            "quantity": 1
+          },
+          {
+            "productRef": "4d791595-273d-4ca3-9115-9820b140eb65",
+            "quantity": 1
+          },
+          {
+            "productRef": "4a024496-7d36-4234-9ab9-ac74f1a571a8",
+            "quantity": 1
+          },
+          {
+            "productRef": "a324c708-f447-4197-a6f5-21ffd5f49e4a",
+            "quantity": 1
+          },
+          {
+            "productRef": "854c5d72-66e6-44e1-8634-b2cdda0a4e83",
+            "quantity": 1
+          },
+          {
+            "productRef": "377d88fc-ddb5-4557-ab03-207a420f51ad",
+            "quantity": 1
+          },
+          {
+            "productRef": "bd72e412-17c9-4520-ae6c-b57c8d5a0490",
+            "quantity": 1
+          },
+          {
+            "productRef": "8f03b3e1-1774-4d96-aee7-909fd7145580",
+            "quantity": 1
+          },
+          {
+            "productRef": "dcd8fa69-0f84-464e-9d8e-85c0b5d4344c",
+            "quantity": 1
+          },
+          {
+            "productRef": "1247ad16-6b54-463d-839a-e65aa2bbd45b",
+            "quantity": 1
+          },
+          {
+            "productRef": "1d2c0cdb-e6c0-4068-8d5a-bf5365a234a5",
+            "quantity": 1
+          },
+          {
+            "productRef": "9167c612-5a57-4ae6-a97f-1ae795975002",
+            "quantity": 1
+          },
+          {
+            "productRef": "ff2c6f3a-0b6c-4332-b892-b53a27756c16",
+            "quantity": 1
+          },
+          {
+            "productRef": "85d53504-cf3e-4fcd-911e-daae86845601",
+            "quantity": 1
+          },
+          {
+            "productRef": "c2d9df72-f445-449d-b7ae-3bb58c9110aa",
+            "quantity": 1
+          },
+          {
+            "productRef": "ff52321d-85d0-4157-a40f-2865d6ea5c09",
+            "quantity": 1
+          },
+          {
+            "productRef": "0e88bc38-4187-4890-bf9b-bdd854daf977",
+            "quantity": 1
+          },
+          {
+            "productRef": "17252b12-a11f-4f5c-ab76-0ad64d7a5272",
+            "quantity": 1
+          },
+          {
+            "productRef": "2d81dd74-a252-43f0-b537-d8eb0ffb7910",
+            "quantity": 1
+          },
+          {
+            "productRef": "af8fc71f-fe56-4d18-b7bc-10cbb5adacf3",
+            "quantity": 1
+          },
+          {
+            "productRef": "56261cab-9101-40de-9dc6-e922bbd3ef20",
+            "quantity": 1
+          },
+          {
+            "productRef": "4de0a157-849e-45dd-ae4d-ba601178df17",
+            "quantity": 1
+          },
+          {
+            "productRef": "caaa761e-0795-4dfb-8868-b3985e1c3d07",
+            "quantity": 1
+          },
+          {
+            "productRef": "a2fac544-f512-482f-9cfe-5f6cc8d38864",
+            "quantity": 1
+          },
+          {
+            "productRef": "93ae531e-4c1b-4104-9f34-2a01d580c4a9",
+            "quantity": 1
+          },
+          {
+            "productRef": "18ead0aa-d7c1-474c-bd88-1d402517f6a6",
+            "quantity": 1
+          },
+          {
+            "productRef": "fbb2c88b-aefa-4a41-b8ac-d46df7e0fbf1",
+            "quantity": 1
+          },
+          {
+            "productRef": "0d116000-e76f-4b62-93c8-6d4d7e6dd3f4",
+            "quantity": 1
+          },
+          {
+            "productRef": "d46c195d-f866-4aa8-995b-930185ec936d",
+            "quantity": 1
+          },
+          {
+            "productRef": "933fd98a-5173-423b-a0ae-cd73fb55b84f",
+            "quantity": 1
+          },
+          {
+            "productRef": "699872e6-5afb-4fee-a074-6171f96137d3",
+            "quantity": 1
+          },
+          {
+            "productRef": "c6d142fc-3eda-4aee-82bc-6d5fcbf5d50f",
+            "quantity": 1
+          },
+          {
+            "productRef": "0802be26-463c-424a-940c-55f2926c76b5",
+            "quantity": 1
+          },
+          {
+            "productRef": "9a73e0e1-016e-4d3f-a30d-f68564440f50",
+            "quantity": 1
+          },
+          {
+            "productRef": "ebb8dea3-23b5-44e5-9b07-bb8323da25a3",
+            "quantity": 1
+          },
+          {
+            "productRef": "b75fae31-7b5b-4041-8d56-1eb1cf4d3f01",
+            "quantity": 1
+          },
+          {
+            "productRef": "801fb59f-e9c1-4e48-bf71-c91cc88af4c6",
+            "quantity": 1
+          },
+          {
+            "productRef": "b368f366-31e6-4208-bc77-e3e86cb2df48",
+            "quantity": 1
+          },
+          {
+            "productRef": "6499b295-11ed-48c7-b2cc-a0fb8e161c89",
+            "quantity": 1
+          },
+          {
+            "productRef": "bd260f6c-a25e-471d-9bb6-de83efb5f576",
+            "quantity": 1
+          },
+          {
+            "productRef": "ca91035e-1802-43ed-9427-91afa72997a8",
+            "quantity": 1
+          },
+          {
+            "productRef": "f888668c-2df2-43cc-aff3-af69ef3c6ad8",
+            "quantity": 1
+          },
+          {
+            "productRef": "6e997afc-1c4d-44c1-a44f-880293ff9eb2",
+            "quantity": 1
+          },
+          {
+            "productRef": "5d6c45ca-65ef-4b0e-ba5b-6027c5d90b3a",
+            "quantity": 1
+          },
+          {
+            "productRef": "2c08c2a3-cc25-4304-8a03-53ce81c8b72a",
+            "quantity": 1
+          },
+          {
+            "productRef": "5cafb932-2565-4a9c-bae7-d94884006469",
+            "quantity": 1
+          },
+          {
+            "productRef": "8cabd1aa-f165-4dca-ad3d-687444ecbafb",
+            "quantity": 1
+          },
+          {
+            "productRef": "1f6d5a7b-a50b-4c24-b1e1-137134bbe431",
+            "quantity": 1
+          },
+          {
+            "productRef": "2856b429-944a-4209-9e57-7d1b52ed98d1",
+            "quantity": 1
+          },
+          {
+            "productRef": "c1dd3b17-3de7-420e-b674-9b96134c1936",
+            "quantity": 1
+          },
+          {
+            "productRef": "f2bed66d-73a6-4be6-bd9c-072af3b7bc33",
+            "quantity": 1
+          },
+          {
+            "productRef": "28df5f48-99c2-4824-9e2c-3554b79f904d",
+            "quantity": 1
+          },
+          {
+            "productRef": "0958ee04-1898-4866-b83a-17f4af6fbb28",
+            "quantity": 1
+          },
+          {
+            "productRef": "324baf66-0dce-4c6a-b773-82d37f0d2807",
+            "quantity": 1
+          },
+          {
+            "productRef": "65ecb9a4-a67d-4e05-b24c-dbaefcc6aef0",
+            "quantity": 1
+          },
+          {
+            "productRef": "027c5188-affa-4d5b-98a9-1d7c5b667678",
+            "quantity": 1
+          },
+          {
+            "productRef": "e3922669-4911-4cae-8af9-74d8badae0a5",
+            "quantity": 1
+          },
+          {
+            "productRef": "fb96c8a2-6781-404e-b7da-0946bffa0b2e",
+            "quantity": 1
+          },
+          {
+            "productRef": "07327667-0126-4c8a-9734-1b139db42b6c",
+            "quantity": 1
+          },
+          {
+            "productRef": "c19233be-793a-4672-83e2-5e0d987863d2",
+            "quantity": 1
+          },
+          {
+            "productRef": "a1a6edcb-675a-4426-9b2a-2f872c5be6e7",
+            "quantity": 1
+          },
+          {
+            "productRef": "7ed06bee-02e7-4105-8bfa-367301e4caeb",
+            "quantity": 1
+          },
+          {
+            "productRef": "947e25fe-2868-4e59-929a-6bf87d10c391",
+            "quantity": 1
+          },
+          {
+            "productRef": "30b4a8c7-ff04-49fa-a36c-b7254392a39d",
+            "quantity": 1
+          },
+          {
+            "productRef": "d64e6b2e-0773-430c-996f-0732a0ab5972",
+            "quantity": 1
+          },
+          {
+            "productRef": "bba31d55-a3c4-4449-9bf4-3173dfbaf4fe",
+            "quantity": 1
+          },
+          {
+            "productRef": "e3d00b71-49f1-4ce7-b4ba-da712772dc09",
+            "quantity": 1
+          },
+          {
+            "productRef": "d5cd6a44-17cc-40b2-9dad-f11dbf5c294f",
+            "quantity": 1
+          },
+          {
+            "productRef": "4da57cec-4219-4c5c-be01-4fc832b168db",
+            "quantity": 1
+          },
+          {
+            "productRef": "0dc5e299-4d7c-49ff-a41d-011a3468b55e",
+            "quantity": 1
+          },
+          {
+            "productRef": "23388dad-a6a8-47d8-b189-cbd7e8c9fb04",
+            "quantity": 1
+          },
+          {
+            "productRef": "7216cdc9-1980-44b8-bbd3-4b5118c4db94",
+            "quantity": 1
+          },
+          {
+            "productRef": "84ae27b5-04aa-417c-85f4-8aa6885e6af2",
+            "quantity": 1
+          },
+          {
+            "productRef": "e1d231eb-5be2-4e6e-ba2f-4bdbe31137e5",
+            "quantity": 1
+          },
+          {
+            "productRef": "14dee9e1-f86b-4323-b632-5c7914928700",
+            "quantity": 1
+          },
+          {
+            "productRef": "44936524-8e1f-41a3-affb-135427dce23b",
+            "quantity": 1
+          },
+          {
+            "productRef": "2046f54e-6f77-4924-9923-d3eedf3cfbb5",
+            "quantity": 1
+          },
+          {
+            "productRef": "f52068a5-9574-49da-a2ad-e1df1c1e2fac",
+            "quantity": 1
+          },
+          {
+            "productRef": "4b01299d-5fb3-4479-89b9-a41b395decb4",
+            "quantity": 1
+          },
+          {
+            "productRef": "41bd3849-a45d-4fb1-99b5-8937e0bb08dc",
+            "quantity": 1
+          },
+          {
+            "productRef": "f9147491-5b5c-433d-875a-d0680d469fe2",
+            "quantity": 1
+          },
+          {
+            "productRef": "396b10dd-3255-4dc2-8ad1-5f46601636af",
+            "quantity": 1
+          },
+          {
+            "productRef": "f73c05a7-d82b-4907-bc49-583808557ee3",
+            "quantity": 1
+          },
+          {
+            "productRef": "3ddde899-b2f2-4dc2-bea1-8a10b11457d1",
+            "quantity": 1
+          },
+          {
+            "productRef": "2f680663-cef0-4298-8b02-c5532d043306",
+            "quantity": 1
+          }
+        ]
+      },
+      "response_body": {
+        "id": "ebe1b627-1b3c-418e-b993-8bcd3365d812",
+        "customerRef": "37ab0b97-6a67-4a4e-80e8-ce7ba1ae0bce",
+        "lineItems": [
+          {
+            "productRef": "898e8631-3265-44c1-a698-1f7e33fc838b",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "98917e7a-821a-4ff1-9029-e2843a494ae2",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "749bb2e5-c433-4716-86e2-82532a4000b9",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "ec176e9e-9f7f-4611-a625-cf035b06851d",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "9af8ec59-86a6-4ff3-b536-66e4aa65b5a8",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "f16850bd-bcf0-4c78-9b99-a9ba578cba68",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "b5e9bc99-938d-454c-89dc-5b5e7f4cbdf8",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "e5c7c561-8c6e-4c2c-a1c8-233dff58ef5c",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "62aef716-e490-4466-aa46-fdd45bcfe566",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "622b5835-e4f3-4ad4-b8a6-86e54bf6947f",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "1e93709e-81ee-4488-a5fd-8be7cc6bcbd6",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "9fb64c81-7ad7-4c48-a236-b2964d02d462",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "be708c0a-0032-42a5-a3ae-7c0ce2fefaba",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "3e0f863f-980b-417a-804c-386a6008c52c",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "22d521c4-b831-4701-9a91-26762d3e7f71",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "32b40d9f-98d8-4f56-a39e-08d9c2306f0a",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "4d791595-273d-4ca3-9115-9820b140eb65",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "4a024496-7d36-4234-9ab9-ac74f1a571a8",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "a324c708-f447-4197-a6f5-21ffd5f49e4a",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "854c5d72-66e6-44e1-8634-b2cdda0a4e83",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "377d88fc-ddb5-4557-ab03-207a420f51ad",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "bd72e412-17c9-4520-ae6c-b57c8d5a0490",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "8f03b3e1-1774-4d96-aee7-909fd7145580",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "dcd8fa69-0f84-464e-9d8e-85c0b5d4344c",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "1247ad16-6b54-463d-839a-e65aa2bbd45b",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "1d2c0cdb-e6c0-4068-8d5a-bf5365a234a5",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "9167c612-5a57-4ae6-a97f-1ae795975002",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "ff2c6f3a-0b6c-4332-b892-b53a27756c16",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "85d53504-cf3e-4fcd-911e-daae86845601",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "c2d9df72-f445-449d-b7ae-3bb58c9110aa",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "ff52321d-85d0-4157-a40f-2865d6ea5c09",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "0e88bc38-4187-4890-bf9b-bdd854daf977",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "17252b12-a11f-4f5c-ab76-0ad64d7a5272",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "2d81dd74-a252-43f0-b537-d8eb0ffb7910",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "af8fc71f-fe56-4d18-b7bc-10cbb5adacf3",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "56261cab-9101-40de-9dc6-e922bbd3ef20",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "4de0a157-849e-45dd-ae4d-ba601178df17",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "caaa761e-0795-4dfb-8868-b3985e1c3d07",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "a2fac544-f512-482f-9cfe-5f6cc8d38864",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "93ae531e-4c1b-4104-9f34-2a01d580c4a9",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "18ead0aa-d7c1-474c-bd88-1d402517f6a6",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "fbb2c88b-aefa-4a41-b8ac-d46df7e0fbf1",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "0d116000-e76f-4b62-93c8-6d4d7e6dd3f4",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "d46c195d-f866-4aa8-995b-930185ec936d",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "933fd98a-5173-423b-a0ae-cd73fb55b84f",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "699872e6-5afb-4fee-a074-6171f96137d3",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "c6d142fc-3eda-4aee-82bc-6d5fcbf5d50f",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "0802be26-463c-424a-940c-55f2926c76b5",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "9a73e0e1-016e-4d3f-a30d-f68564440f50",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "ebb8dea3-23b5-44e5-9b07-bb8323da25a3",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "b75fae31-7b5b-4041-8d56-1eb1cf4d3f01",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "801fb59f-e9c1-4e48-bf71-c91cc88af4c6",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "b368f366-31e6-4208-bc77-e3e86cb2df48",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "6499b295-11ed-48c7-b2cc-a0fb8e161c89",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "bd260f6c-a25e-471d-9bb6-de83efb5f576",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "ca91035e-1802-43ed-9427-91afa72997a8",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "f888668c-2df2-43cc-aff3-af69ef3c6ad8",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "6e997afc-1c4d-44c1-a44f-880293ff9eb2",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "5d6c45ca-65ef-4b0e-ba5b-6027c5d90b3a",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "2c08c2a3-cc25-4304-8a03-53ce81c8b72a",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "5cafb932-2565-4a9c-bae7-d94884006469",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "8cabd1aa-f165-4dca-ad3d-687444ecbafb",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "1f6d5a7b-a50b-4c24-b1e1-137134bbe431",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "2856b429-944a-4209-9e57-7d1b52ed98d1",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "c1dd3b17-3de7-420e-b674-9b96134c1936",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "f2bed66d-73a6-4be6-bd9c-072af3b7bc33",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "28df5f48-99c2-4824-9e2c-3554b79f904d",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "0958ee04-1898-4866-b83a-17f4af6fbb28",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "324baf66-0dce-4c6a-b773-82d37f0d2807",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "65ecb9a4-a67d-4e05-b24c-dbaefcc6aef0",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "027c5188-affa-4d5b-98a9-1d7c5b667678",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "e3922669-4911-4cae-8af9-74d8badae0a5",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "fb96c8a2-6781-404e-b7da-0946bffa0b2e",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "07327667-0126-4c8a-9734-1b139db42b6c",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "c19233be-793a-4672-83e2-5e0d987863d2",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "a1a6edcb-675a-4426-9b2a-2f872c5be6e7",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "7ed06bee-02e7-4105-8bfa-367301e4caeb",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "947e25fe-2868-4e59-929a-6bf87d10c391",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "30b4a8c7-ff04-49fa-a36c-b7254392a39d",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "d64e6b2e-0773-430c-996f-0732a0ab5972",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "bba31d55-a3c4-4449-9bf4-3173dfbaf4fe",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "e3d00b71-49f1-4ce7-b4ba-da712772dc09",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "d5cd6a44-17cc-40b2-9dad-f11dbf5c294f",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "4da57cec-4219-4c5c-be01-4fc832b168db",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "0dc5e299-4d7c-49ff-a41d-011a3468b55e",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "23388dad-a6a8-47d8-b189-cbd7e8c9fb04",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "7216cdc9-1980-44b8-bbd3-4b5118c4db94",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "84ae27b5-04aa-417c-85f4-8aa6885e6af2",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "e1d231eb-5be2-4e6e-ba2f-4bdbe31137e5",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "14dee9e1-f86b-4323-b632-5c7914928700",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "44936524-8e1f-41a3-affb-135427dce23b",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "2046f54e-6f77-4924-9923-d3eedf3cfbb5",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "f52068a5-9574-49da-a2ad-e1df1c1e2fac",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "4b01299d-5fb3-4479-89b9-a41b395decb4",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "41bd3849-a45d-4fb1-99b5-8937e0bb08dc",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "f9147491-5b5c-433d-875a-d0680d469fe2",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "396b10dd-3255-4dc2-8ad1-5f46601636af",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "f73c05a7-d82b-4907-bc49-583808557ee3",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "3ddde899-b2f2-4dc2-bea1-8a10b11457d1",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          },
+          {
+            "productRef": "2f680663-cef0-4298-8b02-c5532d043306",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "1000.00",
+        "status": "PLACED",
+        "createdAt": "2026-08-31T05:31:16.081033Z",
+        "updatedAt": "2026-08-31T05:31:16.081033Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_LINEITEMS_04",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "customerRef": "37ab0b97-6a67-4a4e-80e8-ce7ba1ae0bce",
+        "lineItems": [
+          {
+            "productRef": "898e8631-3265-44c1-a698-1f7e33fc838b",
+            "quantity": 1
+          },
+          {
+            "productRef": "98917e7a-821a-4ff1-9029-e2843a494ae2",
+            "quantity": 1
+          },
+          {
+            "productRef": "749bb2e5-c433-4716-86e2-82532a4000b9",
+            "quantity": 1
+          },
+          {
+            "productRef": "ec176e9e-9f7f-4611-a625-cf035b06851d",
+            "quantity": 1
+          },
+          {
+            "productRef": "9af8ec59-86a6-4ff3-b536-66e4aa65b5a8",
+            "quantity": 1
+          },
+          {
+            "productRef": "f16850bd-bcf0-4c78-9b99-a9ba578cba68",
+            "quantity": 1
+          },
+          {
+            "productRef": "b5e9bc99-938d-454c-89dc-5b5e7f4cbdf8",
+            "quantity": 1
+          },
+          {
+            "productRef": "e5c7c561-8c6e-4c2c-a1c8-233dff58ef5c",
+            "quantity": 1
+          },
+          {
+            "productRef": "62aef716-e490-4466-aa46-fdd45bcfe566",
+            "quantity": 1
+          },
+          {
+            "productRef": "622b5835-e4f3-4ad4-b8a6-86e54bf6947f",
+            "quantity": 1
+          },
+          {
+            "productRef": "1e93709e-81ee-4488-a5fd-8be7cc6bcbd6",
+            "quantity": 1
+          },
+          {
+            "productRef": "9fb64c81-7ad7-4c48-a236-b2964d02d462",
+            "quantity": 1
+          },
+          {
+            "productRef": "be708c0a-0032-42a5-a3ae-7c0ce2fefaba",
+            "quantity": 1
+          },
+          {
+            "productRef": "3e0f863f-980b-417a-804c-386a6008c52c",
+            "quantity": 1
+          },
+          {
+            "productRef": "22d521c4-b831-4701-9a91-26762d3e7f71",
+            "quantity": 1
+          },
+          {
+            "productRef": "32b40d9f-98d8-4f56-a39e-08d9c2306f0a",
+            "quantity": 1
+          },
+          {
+            "productRef": "4d791595-273d-4ca3-9115-9820b140eb65",
+            "quantity": 1
+          },
+          {
+            "productRef": "4a024496-7d36-4234-9ab9-ac74f1a571a8",
+            "quantity": 1
+          },
+          {
+            "productRef": "a324c708-f447-4197-a6f5-21ffd5f49e4a",
+            "quantity": 1
+          },
+          {
+            "productRef": "854c5d72-66e6-44e1-8634-b2cdda0a4e83",
+            "quantity": 1
+          },
+          {
+            "productRef": "377d88fc-ddb5-4557-ab03-207a420f51ad",
+            "quantity": 1
+          },
+          {
+            "productRef": "bd72e412-17c9-4520-ae6c-b57c8d5a0490",
+            "quantity": 1
+          },
+          {
+            "productRef": "8f03b3e1-1774-4d96-aee7-909fd7145580",
+            "quantity": 1
+          },
+          {
+            "productRef": "dcd8fa69-0f84-464e-9d8e-85c0b5d4344c",
+            "quantity": 1
+          },
+          {
+            "productRef": "1247ad16-6b54-463d-839a-e65aa2bbd45b",
+            "quantity": 1
+          },
+          {
+            "productRef": "1d2c0cdb-e6c0-4068-8d5a-bf5365a234a5",
+            "quantity": 1
+          },
+          {
+            "productRef": "9167c612-5a57-4ae6-a97f-1ae795975002",
+            "quantity": 1
+          },
+          {
+            "productRef": "ff2c6f3a-0b6c-4332-b892-b53a27756c16",
+            "quantity": 1
+          },
+          {
+            "productRef": "85d53504-cf3e-4fcd-911e-daae86845601",
+            "quantity": 1
+          },
+          {
+            "productRef": "c2d9df72-f445-449d-b7ae-3bb58c9110aa",
+            "quantity": 1
+          },
+          {
+            "productRef": "ff52321d-85d0-4157-a40f-2865d6ea5c09",
+            "quantity": 1
+          },
+          {
+            "productRef": "0e88bc38-4187-4890-bf9b-bdd854daf977",
+            "quantity": 1
+          },
+          {
+            "productRef": "17252b12-a11f-4f5c-ab76-0ad64d7a5272",
+            "quantity": 1
+          },
+          {
+            "productRef": "2d81dd74-a252-43f0-b537-d8eb0ffb7910",
+            "quantity": 1
+          },
+          {
+            "productRef": "af8fc71f-fe56-4d18-b7bc-10cbb5adacf3",
+            "quantity": 1
+          },
+          {
+            "productRef": "56261cab-9101-40de-9dc6-e922bbd3ef20",
+            "quantity": 1
+          },
+          {
+            "productRef": "4de0a157-849e-45dd-ae4d-ba601178df17",
+            "quantity": 1
+          },
+          {
+            "productRef": "caaa761e-0795-4dfb-8868-b3985e1c3d07",
+            "quantity": 1
+          },
+          {
+            "productRef": "a2fac544-f512-482f-9cfe-5f6cc8d38864",
+            "quantity": 1
+          },
+          {
+            "productRef": "93ae531e-4c1b-4104-9f34-2a01d580c4a9",
+            "quantity": 1
+          },
+          {
+            "productRef": "18ead0aa-d7c1-474c-bd88-1d402517f6a6",
+            "quantity": 1
+          },
+          {
+            "productRef": "fbb2c88b-aefa-4a41-b8ac-d46df7e0fbf1",
+            "quantity": 1
+          },
+          {
+            "productRef": "0d116000-e76f-4b62-93c8-6d4d7e6dd3f4",
+            "quantity": 1
+          },
+          {
+            "productRef": "d46c195d-f866-4aa8-995b-930185ec936d",
+            "quantity": 1
+          },
+          {
+            "productRef": "933fd98a-5173-423b-a0ae-cd73fb55b84f",
+            "quantity": 1
+          },
+          {
+            "productRef": "699872e6-5afb-4fee-a074-6171f96137d3",
+            "quantity": 1
+          },
+          {
+            "productRef": "c6d142fc-3eda-4aee-82bc-6d5fcbf5d50f",
+            "quantity": 1
+          },
+          {
+            "productRef": "0802be26-463c-424a-940c-55f2926c76b5",
+            "quantity": 1
+          },
+          {
+            "productRef": "9a73e0e1-016e-4d3f-a30d-f68564440f50",
+            "quantity": 1
+          },
+          {
+            "productRef": "ebb8dea3-23b5-44e5-9b07-bb8323da25a3",
+            "quantity": 1
+          },
+          {
+            "productRef": "b75fae31-7b5b-4041-8d56-1eb1cf4d3f01",
+            "quantity": 1
+          },
+          {
+            "productRef": "801fb59f-e9c1-4e48-bf71-c91cc88af4c6",
+            "quantity": 1
+          },
+          {
+            "productRef": "b368f366-31e6-4208-bc77-e3e86cb2df48",
+            "quantity": 1
+          },
+          {
+            "productRef": "6499b295-11ed-48c7-b2cc-a0fb8e161c89",
+            "quantity": 1
+          },
+          {
+            "productRef": "bd260f6c-a25e-471d-9bb6-de83efb5f576",
+            "quantity": 1
+          },
+          {
+            "productRef": "ca91035e-1802-43ed-9427-91afa72997a8",
+            "quantity": 1
+          },
+          {
+            "productRef": "f888668c-2df2-43cc-aff3-af69ef3c6ad8",
+            "quantity": 1
+          },
+          {
+            "productRef": "6e997afc-1c4d-44c1-a44f-880293ff9eb2",
+            "quantity": 1
+          },
+          {
+            "productRef": "5d6c45ca-65ef-4b0e-ba5b-6027c5d90b3a",
+            "quantity": 1
+          },
+          {
+            "productRef": "2c08c2a3-cc25-4304-8a03-53ce81c8b72a",
+            "quantity": 1
+          },
+          {
+            "productRef": "5cafb932-2565-4a9c-bae7-d94884006469",
+            "quantity": 1
+          },
+          {
+            "productRef": "8cabd1aa-f165-4dca-ad3d-687444ecbafb",
+            "quantity": 1
+          },
+          {
+            "productRef": "1f6d5a7b-a50b-4c24-b1e1-137134bbe431",
+            "quantity": 1
+          },
+          {
+            "productRef": "2856b429-944a-4209-9e57-7d1b52ed98d1",
+            "quantity": 1
+          },
+          {
+            "productRef": "c1dd3b17-3de7-420e-b674-9b96134c1936",
+            "quantity": 1
+          },
+          {
+            "productRef": "f2bed66d-73a6-4be6-bd9c-072af3b7bc33",
+            "quantity": 1
+          },
+          {
+            "productRef": "28df5f48-99c2-4824-9e2c-3554b79f904d",
+            "quantity": 1
+          },
+          {
+            "productRef": "0958ee04-1898-4866-b83a-17f4af6fbb28",
+            "quantity": 1
+          },
+          {
+            "productRef": "324baf66-0dce-4c6a-b773-82d37f0d2807",
+            "quantity": 1
+          },
+          {
+            "productRef": "65ecb9a4-a67d-4e05-b24c-dbaefcc6aef0",
+            "quantity": 1
+          },
+          {
+            "productRef": "027c5188-affa-4d5b-98a9-1d7c5b667678",
+            "quantity": 1
+          },
+          {
+            "productRef": "e3922669-4911-4cae-8af9-74d8badae0a5",
+            "quantity": 1
+          },
+          {
+            "productRef": "fb96c8a2-6781-404e-b7da-0946bffa0b2e",
+            "quantity": 1
+          },
+          {
+            "productRef": "07327667-0126-4c8a-9734-1b139db42b6c",
+            "quantity": 1
+          },
+          {
+            "productRef": "c19233be-793a-4672-83e2-5e0d987863d2",
+            "quantity": 1
+          },
+          {
+            "productRef": "a1a6edcb-675a-4426-9b2a-2f872c5be6e7",
+            "quantity": 1
+          },
+          {
+            "productRef": "7ed06bee-02e7-4105-8bfa-367301e4caeb",
+            "quantity": 1
+          },
+          {
+            "productRef": "947e25fe-2868-4e59-929a-6bf87d10c391",
+            "quantity": 1
+          },
+          {
+            "productRef": "30b4a8c7-ff04-49fa-a36c-b7254392a39d",
+            "quantity": 1
+          },
+          {
+            "productRef": "d64e6b2e-0773-430c-996f-0732a0ab5972",
+            "quantity": 1
+          },
+          {
+            "productRef": "bba31d55-a3c4-4449-9bf4-3173dfbaf4fe",
+            "quantity": 1
+          },
+          {
+            "productRef": "e3d00b71-49f1-4ce7-b4ba-da712772dc09",
+            "quantity": 1
+          },
+          {
+            "productRef": "d5cd6a44-17cc-40b2-9dad-f11dbf5c294f",
+            "quantity": 1
+          },
+          {
+            "productRef": "4da57cec-4219-4c5c-be01-4fc832b168db",
+            "quantity": 1
+          },
+          {
+            "productRef": "0dc5e299-4d7c-49ff-a41d-011a3468b55e",
+            "quantity": 1
+          },
+          {
+            "productRef": "23388dad-a6a8-47d8-b189-cbd7e8c9fb04",
+            "quantity": 1
+          },
+          {
+            "productRef": "7216cdc9-1980-44b8-bbd3-4b5118c4db94",
+            "quantity": 1
+          },
+          {
+            "productRef": "84ae27b5-04aa-417c-85f4-8aa6885e6af2",
+            "quantity": 1
+          },
+          {
+            "productRef": "e1d231eb-5be2-4e6e-ba2f-4bdbe31137e5",
+            "quantity": 1
+          },
+          {
+            "productRef": "14dee9e1-f86b-4323-b632-5c7914928700",
+            "quantity": 1
+          },
+          {
+            "productRef": "44936524-8e1f-41a3-affb-135427dce23b",
+            "quantity": 1
+          },
+          {
+            "productRef": "2046f54e-6f77-4924-9923-d3eedf3cfbb5",
+            "quantity": 1
+          },
+          {
+            "productRef": "f52068a5-9574-49da-a2ad-e1df1c1e2fac",
+            "quantity": 1
+          },
+          {
+            "productRef": "4b01299d-5fb3-4479-89b9-a41b395decb4",
+            "quantity": 1
+          },
+          {
+            "productRef": "41bd3849-a45d-4fb1-99b5-8937e0bb08dc",
+            "quantity": 1
+          },
+          {
+            "productRef": "f9147491-5b5c-433d-875a-d0680d469fe2",
+            "quantity": 1
+          },
+          {
+            "productRef": "396b10dd-3255-4dc2-8ad1-5f46601636af",
+            "quantity": 1
+          },
+          {
+            "productRef": "f73c05a7-d82b-4907-bc49-583808557ee3",
+            "quantity": 1
+          },
+          {
+            "productRef": "3ddde899-b2f2-4dc2-bea1-8a10b11457d1",
+            "quantity": 1
+          },
+          {
+            "productRef": "2f680663-cef0-4298-8b02-c5532d043306",
+            "quantity": 1
+          },
+          {
+            "productRef": "ba1ed869-f311-4808-a4d2-4900ed0d87d4",
+            "quantity": 1
+          }
+        ]
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "80437c91-2bcd-4793-9b2a-4a5c255cf2f2",
+          "details": [
+            {
+              "location": "lineItems",
+              "message": "List should have at most 100 items after validation, not 101",
+              "type": "too_long"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_LINEITEMS_05",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders",
+      "expected_status": 404,
+      "actual_status": 404,
+      "request_body": {
+        "customerRef": "37ab0b97-6a67-4a4e-80e8-ce7ba1ae0bce",
+        "lineItems": [
+          {
+            "productRef": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+            "quantity": 1
+          }
+        ]
+      },
+      "response_body": {
+        "error": {
+          "code": "not_found",
+          "message": "Product '3fa85f64-5717-4562-b3fc-2c963f66afa6' was not found",
+          "requestId": "640f400f-beae-47c7-9c86-c63c1e279f41"
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_LINEITEMS_06",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "customerRef": "37ab0b97-6a67-4a4e-80e8-ce7ba1ae0bce",
+        "lineItems": null
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "3b7a08ca-2564-4bf9-a651-8d2776de7fe7",
+          "details": [
+            {
+              "location": "lineItems",
+              "message": "Input should be a valid list",
+              "type": "list_type"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_LINEITEMS_07",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "customerRef": "37ab0b97-6a67-4a4e-80e8-ce7ba1ae0bce",
+        "lineItems": [
+          {
+            "productRef": "ba1ed869-f311-4808-a4d2-4900ed0d87d4",
+            "quantity": 1
+          },
+          {
+            "productRef": "ba1ed869-f311-4808-a4d2-4900ed0d87d4",
+            "quantity": 2
+          }
+        ]
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "08b857e2-ad47-4e5c-9652-69927f568b61",
+          "details": [
+            {
+              "location": "lineItems",
+              "message": "Value error, duplicate productRef values are not allowed",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_QTY_01",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "customerRef": "37ab0b97-6a67-4a4e-80e8-ce7ba1ae0bce",
+        "lineItems": [
+          {
+            "productRef": "ba1ed869-f311-4808-a4d2-4900ed0d87d4",
+            "quantity": 0
+          }
+        ]
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "1c7ab5d5-e9c6-4b5f-a5c9-e30b994924d2",
+          "details": [
+            {
+              "location": "lineItems.0.quantity",
+              "message": "Input should be greater than or equal to 1",
+              "type": "greater_than_equal"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_QTY_02",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "customerRef": "37ab0b97-6a67-4a4e-80e8-ce7ba1ae0bce",
+        "lineItems": [
+          {
+            "productRef": "ba1ed869-f311-4808-a4d2-4900ed0d87d4",
+            "quantity": 1
+          }
+        ]
+      },
+      "response_body": {
+        "id": "1310d70f-dd25-475a-9201-411968570910",
+        "customerRef": "37ab0b97-6a67-4a4e-80e8-ce7ba1ae0bce",
+        "lineItems": [
+          {
+            "productRef": "ba1ed869-f311-4808-a4d2-4900ed0d87d4",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "PLACED",
+        "createdAt": "2026-08-31T05:31:16.218648Z",
+        "updatedAt": "2026-08-31T05:31:16.218648Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_QTY_03",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "customerRef": "37ab0b97-6a67-4a4e-80e8-ce7ba1ae0bce",
+        "lineItems": [
+          {
+            "productRef": "ba1ed869-f311-4808-a4d2-4900ed0d87d4",
+            "quantity": 1000
+          }
+        ]
+      },
+      "response_body": {
+        "id": "6a0f495f-cdf9-4365-a487-0d2c804fbd0b",
+        "customerRef": "37ab0b97-6a67-4a4e-80e8-ce7ba1ae0bce",
+        "lineItems": [
+          {
+            "productRef": "ba1ed869-f311-4808-a4d2-4900ed0d87d4",
+            "quantity": 1000,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10000.00",
+        "status": "PLACED",
+        "createdAt": "2026-08-31T05:31:16.249492Z",
+        "updatedAt": "2026-08-31T05:31:16.249492Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_QTY_04",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "customerRef": "37ab0b97-6a67-4a4e-80e8-ce7ba1ae0bce",
+        "lineItems": [
+          {
+            "productRef": "ba1ed869-f311-4808-a4d2-4900ed0d87d4",
+            "quantity": 1001
+          }
+        ]
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "1cfd32e1-3991-4e61-b4c3-b83518c26bec",
+          "details": [
+            {
+              "location": "lineItems.0.quantity",
+              "message": "Input should be less than or equal to 1000",
+              "type": "less_than_equal"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_QTY_05",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "customerRef": "37ab0b97-6a67-4a4e-80e8-ce7ba1ae0bce",
+        "lineItems": [
+          {
+            "productRef": "ba1ed869-f311-4808-a4d2-4900ed0d87d4",
+            "quantity": -5
+          }
+        ]
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "76448a4c-7468-4719-99d6-cb9bd9ecbee1",
+          "details": [
+            {
+              "location": "lineItems.0.quantity",
+              "message": "Input should be greater than or equal to 1",
+              "type": "greater_than_equal"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_QTY_06",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "customerRef": "37ab0b97-6a67-4a4e-80e8-ce7ba1ae0bce",
+        "lineItems": [
+          {
+            "productRef": "ba1ed869-f311-4808-a4d2-4900ed0d87d4",
+            "quantity": 1.5
+          }
+        ]
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "6740c3f8-fd3c-47e0-93d6-cc7e6886a362",
+          "details": [
+            {
+              "location": "lineItems.0.quantity",
+              "message": "Input should be a valid integer",
+              "type": "int_type"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_QTY_07",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "customerRef": "37ab0b97-6a67-4a4e-80e8-ce7ba1ae0bce",
+        "lineItems": [
+          {
+            "productRef": "ba1ed869-f311-4808-a4d2-4900ed0d87d4",
+            "quantity": "abc"
+          }
+        ]
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "efc326fd-36be-493a-ab12-198490f84a3d",
+          "details": [
+            {
+              "location": "lineItems.0.quantity",
+              "message": "Input should be a valid integer",
+              "type": "int_type"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_UNITPRICE_01",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "customerRef": "37ab0b97-6a67-4a4e-80e8-ce7ba1ae0bce",
+        "lineItems": [
+          {
+            "productRef": "ba1ed869-f311-4808-a4d2-4900ed0d87d4",
+            "quantity": 1
+          }
+        ]
+      },
+      "response_body": {
+        "id": "92b14219-0be0-434f-bf11-ac9f6a85fd66",
+        "customerRef": "37ab0b97-6a67-4a4e-80e8-ce7ba1ae0bce",
+        "lineItems": [
+          {
+            "productRef": "ba1ed869-f311-4808-a4d2-4900ed0d87d4",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "PLACED",
+        "createdAt": "2026-08-31T05:31:16.331551Z",
+        "updatedAt": "2026-08-31T05:31:16.331551Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_UNITPRICE_02",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "customerRef": "37ab0b97-6a67-4a4e-80e8-ce7ba1ae0bce",
+        "lineItems": [
+          {
+            "productRef": "ba1ed869-f311-4808-a4d2-4900ed0d87d4",
+            "quantity": 1,
+            "unitPriceSnapshot": "0.01"
+          }
+        ]
+      },
+      "response_body": {
+        "error": {
+          "code": "bad_request",
+          "message": "unitPriceSnapshot for product 'ba1ed869-f311-4808-a4d2-4900ed0d87d4' does not match its current price",
+          "requestId": "a72a44a2-cf9f-4a19-82d1-f072c0648667"
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_TOTALAMT_01",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "customerRef": "37ab0b97-6a67-4a4e-80e8-ce7ba1ae0bce",
+        "lineItems": [
+          {
+            "productRef": "ba1ed869-f311-4808-a4d2-4900ed0d87d4",
+            "quantity": 1
+          }
+        ]
+      },
+      "response_body": {
+        "id": "92762f3b-286a-434c-bbc4-cda2cc494c8d",
+        "customerRef": "37ab0b97-6a67-4a4e-80e8-ce7ba1ae0bce",
+        "lineItems": [
+          {
+            "productRef": "ba1ed869-f311-4808-a4d2-4900ed0d87d4",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "PLACED",
+        "createdAt": "2026-08-31T05:31:16.390171Z",
+        "updatedAt": "2026-08-31T05:31:16.390171Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_TOTALAMT_02",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "customerRef": "37ab0b97-6a67-4a4e-80e8-ce7ba1ae0bce",
+        "lineItems": [
+          {
+            "productRef": "ba1ed869-f311-4808-a4d2-4900ed0d87d4",
+            "quantity": 1
+          }
+        ],
+        "totalAmount": "999999.99"
+      },
+      "response_body": {
+        "error": {
+          "code": "bad_request",
+          "message": "Supplied totalAmount does not match the calculated order total",
+          "requestId": "5d69127e-2f85-406a-b148-519ecdbe39d9"
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_STATUS_01",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "customerRef": "37ab0b97-6a67-4a4e-80e8-ce7ba1ae0bce",
+        "lineItems": [
+          {
+            "productRef": "ba1ed869-f311-4808-a4d2-4900ed0d87d4",
+            "quantity": 1
+          }
+        ]
+      },
+      "response_body": {
+        "id": "0bf78de3-964e-4126-903f-562bc02a26f1",
+        "customerRef": "37ab0b97-6a67-4a4e-80e8-ce7ba1ae0bce",
+        "lineItems": [
+          {
+            "productRef": "ba1ed869-f311-4808-a4d2-4900ed0d87d4",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "PLACED",
+        "createdAt": "2026-08-31T05:31:16.451762Z",
+        "updatedAt": "2026-08-31T05:31:16.451762Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_STATUS_02",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "customerRef": "37ab0b97-6a67-4a4e-80e8-ce7ba1ae0bce",
+        "lineItems": [
+          {
+            "productRef": "ba1ed869-f311-4808-a4d2-4900ed0d87d4",
+            "quantity": 1
+          }
+        ],
+        "status": "SHIPPED"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "8741b125-b66b-4c6d-8a89-7c340e393456",
+          "details": [
+            {
+              "location": "status",
+              "message": "Value error, an order must be created with status PLACED",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_STATUS_03",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "customerRef": "37ab0b97-6a67-4a4e-80e8-ce7ba1ae0bce",
+        "lineItems": [
+          {
+            "productRef": "ba1ed869-f311-4808-a4d2-4900ed0d87d4",
+            "quantity": 1
+          }
+        ],
+        "status": "DONE"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "be179af8-f050-484f-95dc-88877220deb5",
+          "details": [
+            {
+              "location": "status",
+              "message": "Input should be 'PLACED', 'ACCEPTED', 'INVOICED', 'PAID', 'VERIFIED', 'SHIPPED', 'CLOSED' or 'CANCELLED'",
+              "type": "enum"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_INVREF_01",
+      "result": true,
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/orders/708fc75a-1165-4df0-9acf-b2c01cc27f84",
+      "expected_status": 200,
+      "actual_status": 200,
+      "request_body": {},
+      "response_body": {
+        "id": "708fc75a-1165-4df0-9acf-b2c01cc27f84",
+        "customerRef": "37ab0b97-6a67-4a4e-80e8-ce7ba1ae0bce",
+        "lineItems": [
+          {
+            "productRef": "ba1ed869-f311-4808-a4d2-4900ed0d87d4",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "PLACED",
+        "createdAt": "2026-08-31T05:31:09.869023Z",
+        "updatedAt": "2026-08-31T05:31:09.869023Z",
+        "invoiceRef": null
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_INVREF_02",
+      "result": true,
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/orders/5aa8177e-aaf2-4c0d-8f19-fd6daa66aee1",
+      "expected_status": 200,
+      "actual_status": 200,
+      "request_body": {},
+      "response_body": {
+        "id": "5aa8177e-aaf2-4c0d-8f19-fd6daa66aee1",
+        "customerRef": "37ab0b97-6a67-4a4e-80e8-ce7ba1ae0bce",
+        "lineItems": [
+          {
+            "productRef": "ba1ed869-f311-4808-a4d2-4900ed0d87d4",
+            "quantity": 1,
+            "unitPriceSnapshot": "10.00"
+          }
+        ],
+        "totalAmount": "10.00",
+        "status": "INVOICED",
+        "createdAt": "2026-08-31T05:31:09.905649Z",
+        "updatedAt": "2026-08-31T05:31:10.103035Z",
+        "invoiceRef": "ab3b43c9-96b8-4c73-8874-40094b4a656b"
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_INVREF_03",
+      "result": true,
+      "method": "GET",
+      "url": "http://localhost:8000/api/v1/orders/5aa8177e-aaf2-4c0d-8f19-fd6daa66aee1",
+      "expected_status": 404,
+      "actual_status": 404,
+      "request_body": {},
+      "response_body": {
+        "error": {
+          "code": "not_found",
+          "message": "Invoice '3fa85f64-5717-4562-b3fc-2c963f66afa6' was not found",
+          "requestId": "fef14a47-c1f9-420f-80a1-4a233bfcaf10"
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_PAY_ORDERREF_01",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/payments",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "orderRef": "35be9430-b5d1-4e23-a50f-ae24350168b4",
+        "amount": "10.00",
+        "method": "CREDIT_CARD"
+      },
+      "response_body": {
+        "id": "b807ea26-5c4e-47ab-9f73-cbdc0dcc5821",
+        "orderRef": "35be9430-b5d1-4e23-a50f-ae24350168b4",
+        "amount": "10.00",
+        "timestamp": "2026-08-31T05:31:16.580295Z",
+        "status": "PENDING",
+        "method": "CREDIT_CARD"
+      }
+    },
+    {
+      "testcase_id": "TC_PAY_ORDERREF_02",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/payments",
+      "expected_status": 409,
+      "actual_status": 409,
+      "request_body": {
+        "orderRef": "708fc75a-1165-4df0-9acf-b2c01cc27f84",
+        "amount": "10.00",
+        "method": "CREDIT_CARD"
+      },
+      "response_body": {
+        "error": {
+          "code": "state_conflict",
+          "message": "Order '708fc75a-1165-4df0-9acf-b2c01cc27f84' is PLACED; payment requires INVOICED",
+          "requestId": "4554256e-9005-4b4e-adfe-1b8b2e1cb220"
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_PAY_ORDERREF_03",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/payments",
+      "expected_status": 404,
+      "actual_status": 404,
+      "request_body": {
+        "orderRef": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "amount": "10.00",
+        "method": "CREDIT_CARD"
+      },
+      "response_body": {
+        "error": {
+          "code": "not_found",
+          "message": "Order '3fa85f64-5717-4562-b3fc-2c963f66afa6' was not found",
+          "requestId": "67461227-9611-4e44-a59e-c8730da05faf"
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_PAY_ORDERREF_04",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/payments",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "orderRef": "order-1",
+        "amount": "10.00",
+        "method": "CREDIT_CARD"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "50b6bc25-2825-42af-b6a5-15b134fdc802",
+          "details": [
+            {
+              "location": "orderRef",
+              "message": "Value error, must be a canonical 36-character UUIDv4",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_PAY_AMOUNT_01",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/payments",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "orderRef": "31fa16ed-6e54-46b9-8fc9-c89e8134d108",
+        "amount": "10.00",
+        "method": "CREDIT_CARD"
+      },
+      "response_body": {
+        "id": "65453219-4419-439e-ab8d-aaf035dc360d",
+        "orderRef": "31fa16ed-6e54-46b9-8fc9-c89e8134d108",
+        "amount": "10.00",
+        "timestamp": "2026-08-31T05:31:16.656532Z",
+        "status": "PENDING",
+        "method": "CREDIT_CARD"
+      }
+    },
+    {
+      "testcase_id": "TC_PAY_AMOUNT_02",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/payments",
+      "expected_status": 409,
+      "actual_status": 400,
+      "request_body": {
+        "orderRef": "8914baf0-c0c8-479f-bf78-385424de417d",
+        "amount": "9.99",
+        "method": "CREDIT_CARD"
+      },
+      "response_body": {
+        "error": {
+          "code": "bad_request",
+          "message": "Payment amount must exactly equal the invoice totalAmount",
+          "requestId": "38fc3a5b-1044-4724-83b3-e0256d8c3a8d"
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_PAY_AMOUNT_03",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/payments",
+      "expected_status": 409,
+      "actual_status": 400,
+      "request_body": {
+        "orderRef": "bfe7ef32-5609-4edc-ae2e-acedbf8fa4b2",
+        "amount": "10.01",
+        "method": "CREDIT_CARD"
+      },
+      "response_body": {
+        "error": {
+          "code": "bad_request",
+          "message": "Payment amount must exactly equal the invoice totalAmount",
+          "requestId": "42e61200-4988-461a-8986-736d321b1cf4"
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_PAY_AMOUNT_04",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/payments",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "orderRef": "8527aecd-36c0-404a-aecf-c99d2e434068",
+        "amount": "0.00",
+        "method": "CREDIT_CARD"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "d3f47eba-4080-4056-9a1c-5c7aece55dc5",
+          "details": [
+            {
+              "location": "amount",
+              "message": "Value error, must be between 0.01 and 99999999.99",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_PAY_AMOUNT_05",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/payments",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "orderRef": "5034f57c-2cd5-4704-bf10-58d227aa2c8d",
+        "amount": "-50.00",
+        "method": "CREDIT_CARD"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "204899d8-3c7e-4cce-9941-d0be6b37b5f0",
+          "details": [
+            {
+              "location": "amount",
+              "message": "Value error, must contain exactly two decimal places",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_PAY_AMOUNT_06",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/payments",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "orderRef": "7389bd5f-29de-4d87-a60c-3228c3281b74",
+        "amount": null,
+        "method": "CREDIT_CARD"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "8c13c81a-877b-47b6-8234-fb062ec8ba81",
+          "details": [
+            {
+              "location": "amount",
+              "message": "Value error, must be a string containing exactly two decimal places",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_PAY_STATUS_01",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/payments",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "orderRef": "4b269a34-dd02-42e6-bd69-3db574bea303",
+        "amount": "10.00",
+        "method": "CREDIT_CARD"
+      },
+      "response_body": {
+        "id": "430ae79c-1146-4fba-a74e-8f8de787bc1d",
+        "orderRef": "4b269a34-dd02-42e6-bd69-3db574bea303",
+        "amount": "10.00",
+        "timestamp": "2026-08-31T05:31:16.779557Z",
+        "status": "PENDING",
+        "method": "CREDIT_CARD"
+      }
+    },
+    {
+      "testcase_id": "TC_PAY_STATUS_02",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/payments",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "orderRef": "298d3e51-9494-4064-a748-71cbcf19e7be",
+        "amount": "10.00",
+        "method": "CREDIT_CARD",
+        "status": "VERIFIED"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "19946cf0-0d9a-4a66-9a10-cb88002ab4bd",
+          "details": [
+            {
+              "location": "status",
+              "message": "Value error, a payment must be created with status PENDING",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_PAY_STATUS_03",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/payments",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "orderRef": "9b54dd25-3233-4889-b51d-589a67190c60",
+        "amount": "10.00",
+        "method": "CREDIT_CARD",
+        "status": "DONE"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "ed478473-00e2-42ac-b38f-44277ee06184",
+          "details": [
+            {
+              "location": "status",
+              "message": "Input should be 'PENDING', 'VERIFIED' or 'REJECTED'",
+              "type": "enum"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_PAY_METHOD_01",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/payments",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "orderRef": "a18358f9-5f44-471c-b7a7-7a303a74029f",
+        "amount": "10.00",
+        "method": "CREDIT_CARD"
+      },
+      "response_body": {
+        "id": "6bea0844-4197-490d-865e-30484959447f",
+        "orderRef": "a18358f9-5f44-471c-b7a7-7a303a74029f",
+        "amount": "10.00",
+        "timestamp": "2026-08-31T05:31:16.841398Z",
+        "status": "PENDING",
+        "method": "CREDIT_CARD"
+      }
+    },
+    {
+      "testcase_id": "TC_PAY_METHOD_02",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/payments",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "orderRef": "a0f582e3-043e-4a5c-bfc0-70c7887b7913",
+        "amount": "10.00",
+        "method": "BANK_TRANSFER"
+      },
+      "response_body": {
+        "id": "00038be7-bb84-4884-9751-23444d13c807",
+        "orderRef": "a0f582e3-043e-4a5c-bfc0-70c7887b7913",
+        "amount": "10.00",
+        "timestamp": "2026-08-31T05:31:16.853353Z",
+        "status": "PENDING",
+        "method": "BANK_TRANSFER"
+      }
+    },
+    {
+      "testcase_id": "TC_PAY_METHOD_03",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/payments",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "orderRef": "468cf41d-876e-4e6d-abc8-87b5b550578d",
+        "amount": "10.00",
+        "method": "E_WALLET"
+      },
+      "response_body": {
+        "id": "3f1ddaad-6a1b-4d09-8f9e-bbb66dd0af75",
+        "orderRef": "468cf41d-876e-4e6d-abc8-87b5b550578d",
+        "amount": "10.00",
+        "timestamp": "2026-08-31T05:31:16.887981Z",
+        "status": "PENDING",
+        "method": "E_WALLET"
+      }
+    },
+    {
+      "testcase_id": "TC_PAY_METHOD_04",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/payments",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "orderRef": "8b3c4d01-b695-4e9e-9744-2a50e2215e8f",
+        "amount": "10.00",
+        "method": "CASH"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "2f40c28f-9d8e-4008-812f-74cc850bb13c",
+          "details": [
+            {
+              "location": "method",
+              "message": "Input should be 'CREDIT_CARD', 'BANK_TRANSFER' or 'E_WALLET'",
+              "type": "enum"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_PAY_METHOD_05",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/payments",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "orderRef": "036bcefd-714e-43cb-990c-aea4d6424a3f",
+        "amount": "10.00",
+        "method": null
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "0f534f08-15ad-411b-8c97-48c9c302915e",
+          "details": [
+            {
+              "location": "method",
+              "message": "Input should be 'CREDIT_CARD', 'BANK_TRANSFER' or 'E_WALLET'",
+              "type": "enum"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_INV_ORDERREF_01",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/invoices",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "orderRef": "bed65462-eb37-480c-a940-53875fc04cbe",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026"
+      },
+      "response_body": {
+        "id": "ca21e550-652e-484c-a8d4-5ec85db05007",
+        "orderRef": "bed65462-eb37-480c-a940-53875fc04cbe",
+        "billingInfo": {
+          "name": "Nguyen Van A",
+          "address": "123 Nguyen Trai, Thanh Xuan, Hanoi"
+        },
+        "totalAmount": "10.00",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026",
+        "status": "ISSUED"
+      }
+    },
+    {
+      "testcase_id": "TC_INV_ORDERREF_02",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/invoices",
+      "expected_status": 409,
+      "actual_status": 409,
+      "request_body": {
+        "orderRef": "708fc75a-1165-4df0-9acf-b2c01cc27f84",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026"
+      },
+      "response_body": {
+        "error": {
+          "code": "state_conflict",
+          "message": "Order '708fc75a-1165-4df0-9acf-b2c01cc27f84' is PLACED; invoicing requires ACCEPTED",
+          "requestId": "7d3e5097-b2f4-4885-a530-25384a472504"
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_INV_ORDERREF_03",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/invoices",
+      "expected_status": 404,
+      "actual_status": 404,
+      "request_body": {
+        "orderRef": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026"
+      },
+      "response_body": {
+        "error": {
+          "code": "not_found",
+          "message": "Order '3fa85f64-5717-4562-b3fc-2c963f66afa6' was not found",
+          "requestId": "f522a22e-b024-4a90-bb1d-8662f2b157cb"
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_INV_ORDERREF_04",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/invoices",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "orderRef": "order-1",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "6e0ef46d-cb27-4eab-ba5b-371ca64f4f14",
+          "details": [
+            {
+              "location": "orderRef",
+              "message": "Value error, must be a canonical 36-character UUIDv4",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_INV_BILLNAME_01",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/invoices",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "orderRef": "fffc1cc2-e41a-4705-93e5-a9f7a7fc2a75",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026",
+        "billingInfo": {
+          "name": "A"
+        }
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "7530468f-62cd-413e-ac37-174ebe80d2ef",
+          "details": [
+            {
+              "location": "billingInfo.name",
+              "message": "String should have at least 2 characters",
+              "type": "string_too_short"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_INV_BILLNAME_02",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/invoices",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "orderRef": "cd313178-f46f-4165-9d02-a09cbfce0da5",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026",
+        "billingInfo": {
+          "name": "An"
+        }
+      },
+      "response_body": {
+        "error": {
+          "code": "bad_request",
+          "message": "billingInfo.name must match the customer snapshot",
+          "requestId": "2cd2ced6-1ecb-4363-a0da-10ac168fb0bb"
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_INV_BILLNAME_03",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/invoices",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "orderRef": "a5bf2940-721f-4205-90df-e6403e266715",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026",
+        "billingInfo": {
+          "name": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        }
+      },
+      "response_body": {
+        "error": {
+          "code": "bad_request",
+          "message": "billingInfo.name must match the customer snapshot",
+          "requestId": "e7f404b7-401d-43d1-82e4-ef0a65ae4eb5"
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_INV_BILLNAME_04",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/invoices",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "orderRef": "6b44de60-a9ad-4bca-a70d-cb3741468f16",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026",
+        "billingInfo": {
+          "name": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        }
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "5b8f3e4c-9a13-4813-ae13-23439decec89",
+          "details": [
+            {
+              "location": "billingInfo.name",
+              "message": "String should have at most 100 characters",
+              "type": "string_too_long"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_INV_TOTALAMT_01",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/invoices",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "orderRef": "acd91750-bfa0-481d-9a7a-45cb62a7e789",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026"
+      },
+      "response_body": {
+        "id": "7f3ab5f3-f5a3-496e-8e25-0debc19a154d",
+        "orderRef": "acd91750-bfa0-481d-9a7a-45cb62a7e789",
+        "billingInfo": {
+          "name": "Nguyen Van A",
+          "address": "123 Nguyen Trai, Thanh Xuan, Hanoi"
+        },
+        "totalAmount": "10.00",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026",
+        "status": "ISSUED"
+      }
+    },
+    {
+      "testcase_id": "TC_INV_TOTALAMT_02",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/invoices",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "orderRef": "8b755b36-7c93-44d7-a0eb-a8764d25075d",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026",
+        "totalAmount": "0.01"
+      },
+      "response_body": {
+        "error": {
+          "code": "bad_request",
+          "message": "Supplied totalAmount does not match the order total",
+          "requestId": "b976dda8-f3b6-455f-9641-289f44927df0"
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_INV_TOTALAMT_03",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/invoices",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "orderRef": "415384e9-55c8-4ea1-b2db-ab9ea11a096d",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026",
+        "totalAmount": "0.00"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "08e2feaf-f70a-4e52-8d75-109ac1a44846",
+          "details": [
+            {
+              "location": "totalAmount",
+              "message": "Value error, must be between 0.01 and 99999999.99",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_INV_ISSUEDATE_01",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/invoices",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "orderRef": "ae74877f-5ff5-4dc0-87de-ab9afd30fecb",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026"
+      },
+      "response_body": {
+        "id": "86984303-68ad-425d-b076-8c3d78223e03",
+        "orderRef": "ae74877f-5ff5-4dc0-87de-ab9afd30fecb",
+        "billingInfo": {
+          "name": "Nguyen Van A",
+          "address": "123 Nguyen Trai, Thanh Xuan, Hanoi"
+        },
+        "totalAmount": "10.00",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026",
+        "status": "ISSUED"
+      }
+    },
+    {
+      "testcase_id": "TC_INV_ISSUEDATE_02",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/invoices",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "orderRef": "8bc67259-2191-4da1-b44e-203595bb1c71",
+        "issueDate": "23-07-2026",
+        "dueDate": "30/07/2026"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "8b6fe054-c271-4f42-8995-49ef860b2431",
+          "details": [
+            {
+              "location": "issueDate",
+              "message": "Value error, must use dd/MM/yyyy format",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_INV_ISSUEDATE_03",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/invoices",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "orderRef": "2064a97c-625e-4be9-bd23-d542ccc0cda9",
+        "issueDate": "2026/07/23",
+        "dueDate": "30/07/2026"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "939c0fda-7514-4958-af29-9616505947cf",
+          "details": [
+            {
+              "location": "issueDate",
+              "message": "Value error, must use dd/MM/yyyy format",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_INV_ISSUEDATE_04",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/invoices",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "orderRef": "cb5f6148-102a-403f-959f-69d34bb434a2",
+        "issueDate": "31/02/2026",
+        "dueDate": "30/07/2026"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "043817f9-79dc-4816-8668-bf804cd78a38",
+          "details": [
+            {
+              "location": "issueDate",
+              "message": "Value error, must be a real calendar date",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_INV_ISSUEDATE_05",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/invoices",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "orderRef": "bef83a66-c042-4ae7-8e28-7acdd3a75bb5",
+        "issueDate": "30/02/2026",
+        "dueDate": "30/07/2026"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "3cc2f1de-34cc-48c1-b8b1-f2f3e6de252c",
+          "details": [
+            {
+              "location": "issueDate",
+              "message": "Value error, must be a real calendar date",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_INV_ISSUEDATE_06",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/invoices",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "orderRef": "a9e073a2-8ba9-4385-bb92-dfaaf433a9cc",
+        "issueDate": "23/00/2026",
+        "dueDate": "30/07/2026"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "9adf033e-322b-4164-bb43-4beeb3096b01",
+          "details": [
+            {
+              "location": "issueDate",
+              "message": "Value error, must be a real calendar date",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_INV_ISSUEDATE_07",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/invoices",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "orderRef": "2c41f8a6-0bf9-4234-a2e0-eb6d19e9f2bf",
+        "issueDate": "23/13/2026",
+        "dueDate": "30/07/2026"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "a3646639-8ac0-40c8-b7de-d789e8f93d5c",
+          "details": [
+            {
+              "location": "issueDate",
+              "message": "Value error, must be a real calendar date",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_INV_DUEDATE_01",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/invoices",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "orderRef": "6f63984b-2649-485a-95f5-021161c5b333",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026"
+      },
+      "response_body": {
+        "id": "c0ceede3-1393-4320-9a97-f97ab370839e",
+        "orderRef": "6f63984b-2649-485a-95f5-021161c5b333",
+        "billingInfo": {
+          "name": "Nguyen Van A",
+          "address": "123 Nguyen Trai, Thanh Xuan, Hanoi"
+        },
+        "totalAmount": "10.00",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026",
+        "status": "ISSUED"
+      }
+    },
+    {
+      "testcase_id": "TC_INV_DUEDATE_02",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/invoices",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "orderRef": "dc773a22-3f5b-4f68-98a8-7437d11efcd5",
+        "issueDate": "23/07/2026",
+        "dueDate": "23/07/2026"
+      },
+      "response_body": {
+        "id": "dbdc65ac-e65c-4093-b1c5-1c6f174fd57e",
+        "orderRef": "dc773a22-3f5b-4f68-98a8-7437d11efcd5",
+        "billingInfo": {
+          "name": "Nguyen Van A",
+          "address": "123 Nguyen Trai, Thanh Xuan, Hanoi"
+        },
+        "totalAmount": "10.00",
+        "issueDate": "23/07/2026",
+        "dueDate": "23/07/2026",
+        "status": "ISSUED"
+      }
+    },
+    {
+      "testcase_id": "TC_INV_DUEDATE_03",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/invoices",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "orderRef": "dd8b2205-9656-4944-a27d-1e3215412896",
+        "issueDate": "23/07/2026",
+        "dueDate": "22/07/2026"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "d013fbfb-6c8a-496a-b91b-1c82af422b80",
+          "details": [
+            {
+              "location": "",
+              "message": "Value error, dueDate must be greater than or equal to issueDate",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_INV_DUEDATE_04",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/invoices",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "orderRef": "a337b616-c47d-4fb2-98f3-69afd7956eac",
+        "issueDate": "23/07/2026",
+        "dueDate": "2026-07-30"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "55e6bb60-0125-4053-b1a9-3346ba7e400e",
+          "details": [
+            {
+              "location": "dueDate",
+              "message": "Value error, must use dd/MM/yyyy format",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_INV_DUEDATE_05",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/invoices",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "orderRef": "91781bf7-785c-4a0c-b0fd-c6d320fe26e9",
+        "issueDate": "23/07/2026",
+        "dueDate": "31/04/2026"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "fd3440dc-8b38-4151-8e63-74c870fff733",
+          "details": [
+            {
+              "location": "dueDate",
+              "message": "Value error, must be a real calendar date",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_INV_STATUS_01",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/invoices",
+      "expected_status": 201,
+      "actual_status": 201,
+      "request_body": {
+        "orderRef": "5c3baaf8-670e-4bbd-af83-680a7bda3dcd",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026"
+      },
+      "response_body": {
+        "id": "ff1abca3-48cd-4909-bb17-cc4078e534af",
+        "orderRef": "5c3baaf8-670e-4bbd-af83-680a7bda3dcd",
+        "billingInfo": {
+          "name": "Nguyen Van A",
+          "address": "123 Nguyen Trai, Thanh Xuan, Hanoi"
+        },
+        "totalAmount": "10.00",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026",
+        "status": "ISSUED"
+      }
+    },
+    {
+      "testcase_id": "TC_INV_STATUS_02",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/invoices",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "orderRef": "9b100db1-e0b8-4cf3-9e14-800db4cf0903",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026",
+        "status": "PAID"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "24e63a99-447e-46aa-bd0b-3005e95cf8ef",
+          "details": [
+            {
+              "location": "status",
+              "message": "Value error, an invoice must be created with status ISSUED",
+              "type": "value_error"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "testcase_id": "TC_INV_STATUS_03",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/invoices",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "orderRef": "590a1ff3-be81-4ce1-9f6c-bd21cf1b3ea4",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026",
+        "status": "DRAFT"
+      },
+      "response_body": {
+        "error": {
+          "code": "validation_error",
+          "message": "Request validation failed",
+          "requestId": "e64b76e8-8480-48af-a2cf-10a318db0b2f",
+          "details": [
+            {
+              "location": "status",
+              "message": "Input should be 'ISSUED', 'PAID', 'OVERDUE' or 'CANCELLED'",
+              "type": "enum"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

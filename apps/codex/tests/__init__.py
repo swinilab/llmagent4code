@@ -1,2 +1,0 @@
-"""OMS automated verification suite."""
-
