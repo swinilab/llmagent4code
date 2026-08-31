@@ -1,0 +1,22 @@
+PIPELINE REPORT — 2026-08-31 13:23:07
+
+GENERATION
+model: None
+code: generated/chatdev-qwen35-v1/code_workspace
+
+VALIDATION
+  ❌ workflow : 12 of 19 workflow check(s) failed (36.8% passed).
+    12/19 failed (7 passed, 36.8% pass rate)
+    - capability : 0/7 failed (100.0% pass rate)
+    - happy_path : 7/7 failed (0.0% pass rate)
+    - precondition : 5/5 failed (0.0% pass rate)
+    transition accept : POST /api/v1/orders/{id}/accept [openapi:action-route]
+    transition ship : POST /api/v1/orders/{id}/ship [openapi:action-route]
+    transition close : POST /api/v1/orders/{id}/close [openapi:action-route]
+    transition verify : POST /api/v1/payments/{id}/verify [openapi:action-route]
+    full report : reports\workflow_test_chatdev-qwen35-v1_20260831_132307\workflow_test_report.json
+
+RESULT
+  ❌ pipeline failed
+  blocking stage : workflow
+  error          : 12 of 19 workflow check(s) failed (36.8% passed).

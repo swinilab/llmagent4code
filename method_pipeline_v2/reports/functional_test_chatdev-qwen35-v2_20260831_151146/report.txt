@@ -1,0 +1,21 @@
+PIPELINE REPORT — 2026-08-31 15:16:27
+
+GENERATION
+model: None
+code: generated/chatdev-qwen35-v2/code_workspace
+
+VALIDATION
+  ❌ functional : 145 of 147 HTTP test(s) failed (1.4% passed).
+    145/147 failed (2 passed, 1.4% pass rate)
+    - customer : 50/50 failed (0.0% pass rate)
+    - product : 23/25 failed (8.0% pass rate)
+    - order : 28/28 failed (0.0% pass rate)
+    - payment : 18/18 failed (0.0% pass rate)
+    - invoice : 26/26 failed (0.0% pass rate)
+    full report : reports\functional_test_chatdev-qwen35-v2_20260831_151146\functional_test_report.json
+    seed context log : reports\functional_test_chatdev-qwen35-v2_20260831_151146\seed_context_log.json
+
+RESULT
+  ❌ pipeline failed
+  blocking stage : functional
+  error          : 145 of 147 HTTP test(s) failed (1.4% passed).

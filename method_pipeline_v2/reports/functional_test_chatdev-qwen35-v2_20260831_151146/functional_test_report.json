@@ -1,0 +1,3779 @@
+{
+  "stage": "functional",
+  "app": "chatdev-qwen35-v2",
+  "status": "FAIL",
+  "message": "145 of 147 HTTP test(s) failed (1.4% passed).",
+  "total": 147,
+  "passed": 2,
+  "failed": 145,
+  "pass_rate": "1.4%",
+  "seed_warnings": [
+    "seed customer creation failed: 500 {'error': 'INTERNAL_ERROR', 'message': 'An unexpected error occurred', 'path': '/api/v1/customers'}"
+  ],
+  "summary": [
+    {
+      "group": "customer",
+      "total": 50,
+      "passed": 0,
+      "failed": 50,
+      "pass_rate": "0.0%"
+    },
+    {
+      "group": "product",
+      "total": 25,
+      "passed": 2,
+      "failed": 23,
+      "pass_rate": "8.0%"
+    },
+    {
+      "group": "order",
+      "total": 28,
+      "passed": 0,
+      "failed": 28,
+      "pass_rate": "0.0%"
+    },
+    {
+      "group": "payment",
+      "total": 18,
+      "passed": 0,
+      "failed": 18,
+      "pass_rate": "0.0%"
+    },
+    {
+      "group": "invoice",
+      "total": 26,
+      "passed": 0,
+      "failed": 26,
+      "pass_rate": "0.0%"
+    }
+  ],
+  "results": [
+    {
+      "testcase_id": "TC_CUS_ID_01",
+      "result": false,
+      "method": "GET",
+      "url": "http://localhost:8080/api/v1/customers/",
+      "expected_status": 200,
+      "actual_status": 503,
+      "request_body": {},
+      "response_body": {
+        "error": "DATABASE_ERROR",
+        "message": "Database temporarily unavailable",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ID_02",
+      "result": false,
+      "method": "GET",
+      "url": "http://localhost:8080/api/v1/customers/3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "expected_status": 404,
+      "actual_status": 503,
+      "request_body": {},
+      "response_body": {
+        "error": "DATABASE_ERROR",
+        "message": "Database temporarily unavailable",
+        "path": "/api/v1/customers/3fa85f64-5717-4562-b3fc-2c963f66afa6"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ID_03",
+      "result": false,
+      "method": "GET",
+      "url": "http://localhost:8080/api/v1/customers/not-a-uuid-123",
+      "expected_status": 400,
+      "actual_status": 503,
+      "request_body": {},
+      "response_body": {
+        "error": "DATABASE_ERROR",
+        "message": "Database temporarily unavailable",
+        "path": "/api/v1/customers/not-a-uuid-123"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ID_04",
+      "result": false,
+      "method": "GET",
+      "url": "http://localhost:8080/api/v1/customers/",
+      "expected_status": 405,
+      "actual_status": 503,
+      "request_body": {},
+      "response_body": {
+        "error": "DATABASE_ERROR",
+        "message": "Database temporarily unavailable",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_NAME_01",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "name": "A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_NAME_02",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 201,
+      "actual_status": 500,
+      "request_body": {
+        "name": "An",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_NAME_03",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 201,
+      "actual_status": 500,
+      "request_body": {
+        "name": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_NAME_04",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "name": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_NAME_05",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 201,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_NAME_06",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 201,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Jean-Luc O'Brien",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_NAME_07",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "name": "",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_NAME_08",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "name": "12345",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_NAME_09",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "name": "@#$%^&",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_NAME_10",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "name": "      ",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ADDRESS_01",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "12 A",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ADDRESS_02",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 201,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "12345",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ADDRESS_03",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 201,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ADDRESS_04",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ADDRESS_05",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ADDRESS_06",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "         ",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ADDRESS_07",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 201,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_PHONE_01",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+8412345",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_PHONE_02",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 201,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_PHONE_03",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 201,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+841234567890123",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_PHONE_04",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+8412345678901234",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_PHONE_05",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 201,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_PHONE_06",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+849abc45678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_PHONE_07",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+8401234567",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_PHONE_08",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_BANKACCTNU_01",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "12345",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_BANKACCTNU_02",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 201,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "123456",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_BANKACCTNU_03",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 201,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "11111111111111111111",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_BANKACCTNU_04",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "111111111111111111111",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_BANKACCTNU_05",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "12ab56",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_BANKACCTNU_06",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_BANKNAME_01",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "A"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_BANKNAME_02",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 201,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "VP"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_BANKNAME_03",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 201,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_BANKNAME_04",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_BANKNAME_05",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": ""
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_BANKNAME_06",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 201,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ROLE_01",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 201,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ROLE_02",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 201,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "ORDER_STAFF"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ROLE_03",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 201,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "ACCOUNTANT"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ROLE_04",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "MANAGER"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ROLE_05",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "customer"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ROLE_06",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": ""
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ORDERHIST_01",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER",
+        "orderHistory": []
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ORDERHIST_02",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER",
+        "orderHistory": [
+          "not-a-uuid"
+        ]
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_CUS_ORDERHIST_03",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER",
+        "orderHistory": [
+          "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+        ]
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_ID_01",
+      "result": false,
+      "method": "GET",
+      "url": "http://localhost:8080/api/v1/products/<seed: existing product id>",
+      "expected_status": 200,
+      "actual_status": 503,
+      "request_body": {},
+      "response_body": {
+        "error": "DATABASE_ERROR",
+        "message": "Database temporarily unavailable",
+        "path": "/api/v1/products/<seed: existing product id>"
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_ID_02",
+      "result": false,
+      "method": "GET",
+      "url": "http://localhost:8080/api/v1/products/3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "expected_status": 404,
+      "actual_status": 503,
+      "request_body": {},
+      "response_body": {
+        "error": "DATABASE_ERROR",
+        "message": "Database temporarily unavailable",
+        "path": "/api/v1/products/3fa85f64-5717-4562-b3fc-2c963f66afa6"
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_ID_03",
+      "result": false,
+      "method": "GET",
+      "url": "http://localhost:8080/api/v1/products/prod-123",
+      "expected_status": 400,
+      "actual_status": 503,
+      "request_body": {},
+      "response_body": {
+        "error": "DATABASE_ERROR",
+        "message": "Database temporarily unavailable",
+        "path": "/api/v1/products/prod-123"
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_DESCRIPTIO_01",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "description": "AB",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/products"
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_DESCRIPTIO_02",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "expected_status": 201,
+      "actual_status": 500,
+      "request_body": {
+        "description": "USB",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/products"
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_DESCRIPTIO_03",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "expected_status": 201,
+      "actual_status": 500,
+      "request_body": {
+        "description": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/products"
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_DESCRIPTIO_04",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "description": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/products"
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_DESCRIPTIO_05",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "description": "",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/products"
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_DESCRIPTIO_06",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "description": "     ",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/products"
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_DESCRIPTIO_07",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "expected_status": 201,
+      "actual_status": 500,
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/products"
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_PRICEAMT_01",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "0.00",
+          "currency": "USD"
+        }
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/products"
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_PRICEAMT_02",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "expected_status": 201,
+      "actual_status": 500,
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "0.01",
+          "currency": "USD"
+        }
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/products"
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_PRICEAMT_03",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "expected_status": 201,
+      "actual_status": 500,
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "999999.99",
+          "currency": "USD"
+        }
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/products"
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_PRICEAMT_04",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "1000000.00",
+          "currency": "USD"
+        }
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/products"
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_PRICEAMT_05",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "-10.00",
+          "currency": "USD"
+        }
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/products"
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_PRICEAMT_06",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "10.999",
+          "currency": "USD"
+        }
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/products"
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_PRICEAMT_07",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "abc",
+          "currency": "USD"
+        }
+      },
+      "response_body": {
+        "error": "VALIDATION_ERROR",
+        "message": "Request validation failed",
+        "details": [
+          {
+            "type": "decimal_parsing",
+            "loc": [
+              "body",
+              "price",
+              "amount"
+            ],
+            "msg": "Input should be a valid decimal",
+            "input": "abc"
+          }
+        ],
+        "path": "/api/v1/products"
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_PRICEAMT_08",
+      "result": true,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "expected_status": 400,
+      "actual_status": 400,
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "",
+          "currency": "USD"
+        }
+      },
+      "response_body": {
+        "error": "VALIDATION_ERROR",
+        "message": "Request validation failed",
+        "details": [
+          {
+            "type": "decimal_parsing",
+            "loc": [
+              "body",
+              "price",
+              "amount"
+            ],
+            "msg": "Input should be a valid decimal",
+            "input": ""
+          }
+        ],
+        "path": "/api/v1/products"
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_CURRENCY_01",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "expected_status": 201,
+      "actual_status": 500,
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/products"
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_CURRENCY_02",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "expected_status": 201,
+      "actual_status": 500,
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "10.00",
+          "currency": "VND"
+        }
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/products"
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_CURRENCY_03",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "expected_status": 201,
+      "actual_status": 500,
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "10.00",
+          "currency": "EUR"
+        }
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/products"
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_CURRENCY_04",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "10.00",
+          "currency": "US"
+        }
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/products"
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_CURRENCY_05",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "10.00",
+          "currency": "XYZ"
+        }
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/products"
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_CURRENCY_06",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "10.00",
+          "currency": "usd"
+        }
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/products"
+      }
+    },
+    {
+      "testcase_id": "TC_PRO_CURRENCY_07",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "10.00",
+          "currency": ""
+        }
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/products"
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_CUSTREF_01",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "expected_status": 201,
+      "actual_status": 500,
+      "request_body": {
+        "customerRef": "<seed: existing customer id>",
+        "lineItems": [
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          }
+        ]
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/orders"
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_CUSTREF_02",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "expected_status": 404,
+      "actual_status": 500,
+      "request_body": {
+        "customerRef": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "lineItems": [
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          }
+        ]
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/orders"
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_CUSTREF_03",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "customerRef": "cust-1",
+        "lineItems": [
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          }
+        ]
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/orders"
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_CUSTREF_04",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "customerRef": null,
+        "lineItems": [
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          }
+        ]
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/orders"
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_LINEITEMS_01",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "customerRef": "<seed: existing customer id>",
+        "lineItems": []
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/orders"
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_LINEITEMS_02",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "expected_status": 201,
+      "actual_status": 500,
+      "request_body": {
+        "customerRef": "<seed: existing customer id>",
+        "lineItems": [
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          }
+        ]
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/orders"
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_LINEITEMS_03",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "expected_status": 201,
+      "actual_status": 500,
+      "request_body": {
+        "customerRef": "<seed: existing customer id>",
+        "lineItems": [
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          }
+        ]
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/orders"
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_LINEITEMS_04",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "customerRef": "<seed: existing customer id>",
+        "lineItems": [
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          }
+        ]
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/orders"
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_LINEITEMS_05",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "expected_status": 404,
+      "actual_status": 500,
+      "request_body": {
+        "customerRef": "<seed: existing customer id>",
+        "lineItems": [
+          {
+            "productRef": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+            "quantity": 1
+          }
+        ]
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/orders"
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_LINEITEMS_06",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "customerRef": "<seed: existing customer id>",
+        "lineItems": null
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/orders"
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_LINEITEMS_07",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "customerRef": "<seed: existing customer id>",
+        "lineItems": [
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          },
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 2
+          }
+        ]
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/orders"
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_QTY_01",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "customerRef": "<seed: existing customer id>",
+        "lineItems": [
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 0
+          }
+        ]
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/orders"
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_QTY_02",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "expected_status": 201,
+      "actual_status": 500,
+      "request_body": {
+        "customerRef": "<seed: existing customer id>",
+        "lineItems": [
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          }
+        ]
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/orders"
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_QTY_03",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "expected_status": 201,
+      "actual_status": 500,
+      "request_body": {
+        "customerRef": "<seed: existing customer id>",
+        "lineItems": [
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1000
+          }
+        ]
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/orders"
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_QTY_04",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "customerRef": "<seed: existing customer id>",
+        "lineItems": [
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1001
+          }
+        ]
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/orders"
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_QTY_05",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "customerRef": "<seed: existing customer id>",
+        "lineItems": [
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": -5
+          }
+        ]
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/orders"
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_QTY_06",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "customerRef": "<seed: existing customer id>",
+        "lineItems": [
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1.5
+          }
+        ]
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/orders"
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_QTY_07",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "customerRef": "<seed: existing customer id>",
+        "lineItems": [
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": "abc"
+          }
+        ]
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/orders"
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_UNITPRICE_01",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "expected_status": 201,
+      "actual_status": 500,
+      "request_body": {
+        "customerRef": "<seed: existing customer id>",
+        "lineItems": [
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          }
+        ]
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/orders"
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_UNITPRICE_02",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "customerRef": "<seed: existing customer id>",
+        "lineItems": [
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1,
+            "unitPriceSnapshot": "0.01"
+          }
+        ]
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/orders"
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_TOTALAMT_01",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "expected_status": 201,
+      "actual_status": 500,
+      "request_body": {
+        "customerRef": "<seed: existing customer id>",
+        "lineItems": [
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          }
+        ]
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/orders"
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_TOTALAMT_02",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "customerRef": "<seed: existing customer id>",
+        "lineItems": [
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          }
+        ],
+        "totalAmount": "999999.99"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/orders"
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_STATUS_01",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "expected_status": 201,
+      "actual_status": 500,
+      "request_body": {
+        "customerRef": "<seed: existing customer id>",
+        "lineItems": [
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          }
+        ]
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/orders"
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_STATUS_02",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "customerRef": "<seed: existing customer id>",
+        "lineItems": [
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          }
+        ],
+        "status": "SHIPPED"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/orders"
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_STATUS_03",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/orders",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "customerRef": "<seed: existing customer id>",
+        "lineItems": [
+          {
+            "productRef": "<seed: existing product id>",
+            "quantity": 1
+          }
+        ],
+        "status": "DONE"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/orders"
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_INVREF_01",
+      "result": false,
+      "method": "GET",
+      "url": "http://localhost:8080/api/v1/orders/<seed: order status=PLACED>",
+      "expected_status": 200,
+      "actual_status": 503,
+      "request_body": {},
+      "response_body": {
+        "error": "DATABASE_ERROR",
+        "message": "Database temporarily unavailable",
+        "path": "/api/v1/orders/<seed: order status=PLACED>"
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_INVREF_02",
+      "result": false,
+      "method": "GET",
+      "url": "http://localhost:8080/api/v1/orders/<seed: order status=ACCEPTED, invoiceRef set>",
+      "expected_status": 200,
+      "actual_status": 503,
+      "request_body": {},
+      "response_body": {
+        "error": "DATABASE_ERROR",
+        "message": "Database temporarily unavailable",
+        "path": "/api/v1/orders/<seed: order status=ACCEPTED, invoiceRef set>"
+      }
+    },
+    {
+      "testcase_id": "TC_ORD_INVREF_03",
+      "result": false,
+      "method": "GET",
+      "url": "http://localhost:8080/api/v1/orders/<seed: order status=ACCEPTED, invoiceRef set>",
+      "expected_status": 404,
+      "actual_status": 503,
+      "request_body": {},
+      "response_body": {
+        "error": "DATABASE_ERROR",
+        "message": "Database temporarily unavailable",
+        "path": "/api/v1/invoices/3fa85f64-5717-4562-b3fc-2c963f66afa6"
+      }
+    },
+    {
+      "testcase_id": "TC_PAY_ORDERREF_01",
+      "result": false,
+      "method": "",
+      "url": "",
+      "expected_status": 201,
+      "actual_status": 0,
+      "request_body": null,
+      "response_body": "seed data unavailable: no dedicated INVOICED order left in the bulk queue (see seed_context.py warnings)"
+    },
+    {
+      "testcase_id": "TC_PAY_ORDERREF_02",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/payments",
+      "expected_status": 409,
+      "actual_status": 500,
+      "request_body": {
+        "orderRef": "<seed: order status=PLACED>",
+        "amount": "100.00",
+        "method": "CREDIT_CARD"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/payments"
+      }
+    },
+    {
+      "testcase_id": "TC_PAY_ORDERREF_03",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/payments",
+      "expected_status": 404,
+      "actual_status": 500,
+      "request_body": {
+        "orderRef": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "amount": "100.00",
+        "method": "CREDIT_CARD"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/payments"
+      }
+    },
+    {
+      "testcase_id": "TC_PAY_ORDERREF_04",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/payments",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "orderRef": "order-1",
+        "amount": "100.00",
+        "method": "CREDIT_CARD"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/payments"
+      }
+    },
+    {
+      "testcase_id": "TC_PAY_AMOUNT_01",
+      "result": false,
+      "method": "",
+      "url": "",
+      "expected_status": 201,
+      "actual_status": 0,
+      "request_body": null,
+      "response_body": "seed data unavailable: no dedicated INVOICED order left in the bulk queue (see seed_context.py warnings)"
+    },
+    {
+      "testcase_id": "TC_PAY_AMOUNT_02",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/payments",
+      "expected_status": 409,
+      "actual_status": 500,
+      "request_body": {
+        "orderRef": "<seed: order status=INVOICED>",
+        "amount": "99.99",
+        "method": "CREDIT_CARD"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/payments"
+      }
+    },
+    {
+      "testcase_id": "TC_PAY_AMOUNT_03",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/payments",
+      "expected_status": 409,
+      "actual_status": 500,
+      "request_body": {
+        "orderRef": "<seed: order status=INVOICED>",
+        "amount": "100.01",
+        "method": "CREDIT_CARD"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/payments"
+      }
+    },
+    {
+      "testcase_id": "TC_PAY_AMOUNT_04",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/payments",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "orderRef": "<seed: order status=INVOICED>",
+        "amount": "0.00",
+        "method": "CREDIT_CARD"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/payments"
+      }
+    },
+    {
+      "testcase_id": "TC_PAY_AMOUNT_05",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/payments",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "orderRef": "<seed: order status=INVOICED>",
+        "amount": "-50.00",
+        "method": "CREDIT_CARD"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/payments"
+      }
+    },
+    {
+      "testcase_id": "TC_PAY_AMOUNT_06",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/payments",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "orderRef": "<seed: order status=INVOICED>",
+        "amount": null,
+        "method": "CREDIT_CARD"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/payments"
+      }
+    },
+    {
+      "testcase_id": "TC_PAY_STATUS_01",
+      "result": false,
+      "method": "",
+      "url": "",
+      "expected_status": 201,
+      "actual_status": 0,
+      "request_body": null,
+      "response_body": "seed data unavailable: no dedicated INVOICED order left in the bulk queue (see seed_context.py warnings)"
+    },
+    {
+      "testcase_id": "TC_PAY_STATUS_02",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/payments",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "orderRef": "<seed: order status=INVOICED>",
+        "amount": "100.00",
+        "method": "CREDIT_CARD",
+        "status": "VERIFIED"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/payments"
+      }
+    },
+    {
+      "testcase_id": "TC_PAY_STATUS_03",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/payments",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "orderRef": "<seed: order status=INVOICED>",
+        "amount": "100.00",
+        "method": "CREDIT_CARD",
+        "status": "DONE"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/payments"
+      }
+    },
+    {
+      "testcase_id": "TC_PAY_METHOD_01",
+      "result": false,
+      "method": "",
+      "url": "",
+      "expected_status": 201,
+      "actual_status": 0,
+      "request_body": null,
+      "response_body": "seed data unavailable: no dedicated INVOICED order left in the bulk queue (see seed_context.py warnings)"
+    },
+    {
+      "testcase_id": "TC_PAY_METHOD_02",
+      "result": false,
+      "method": "",
+      "url": "",
+      "expected_status": 201,
+      "actual_status": 0,
+      "request_body": null,
+      "response_body": "seed data unavailable: no dedicated INVOICED order left in the bulk queue (see seed_context.py warnings)"
+    },
+    {
+      "testcase_id": "TC_PAY_METHOD_03",
+      "result": false,
+      "method": "",
+      "url": "",
+      "expected_status": 201,
+      "actual_status": 0,
+      "request_body": null,
+      "response_body": "seed data unavailable: no dedicated INVOICED order left in the bulk queue (see seed_context.py warnings)"
+    },
+    {
+      "testcase_id": "TC_PAY_METHOD_04",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/payments",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "orderRef": "<seed: order status=INVOICED>",
+        "amount": "100.00",
+        "method": "CASH"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/payments"
+      }
+    },
+    {
+      "testcase_id": "TC_PAY_METHOD_05",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/payments",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "orderRef": "<seed: order status=INVOICED>",
+        "amount": "100.00",
+        "method": null
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/payments"
+      }
+    },
+    {
+      "testcase_id": "TC_INV_ORDERREF_01",
+      "result": false,
+      "method": "",
+      "url": "",
+      "expected_status": 201,
+      "actual_status": 0,
+      "request_body": null,
+      "response_body": "seed data unavailable: no dedicated ACCEPTED order left in the bulk queue (see seed_context.py warnings)"
+    },
+    {
+      "testcase_id": "TC_INV_ORDERREF_02",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/invoices",
+      "expected_status": 409,
+      "actual_status": 500,
+      "request_body": {
+        "orderRef": "<seed: order status=PLACED>",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/invoices"
+      }
+    },
+    {
+      "testcase_id": "TC_INV_ORDERREF_03",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/invoices",
+      "expected_status": 404,
+      "actual_status": 500,
+      "request_body": {
+        "orderRef": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/invoices"
+      }
+    },
+    {
+      "testcase_id": "TC_INV_ORDERREF_04",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/invoices",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "orderRef": "order-1",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/invoices"
+      }
+    },
+    {
+      "testcase_id": "TC_INV_BILLNAME_01",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/invoices",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "orderRef": "<seed: order status=ACCEPTED>",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026",
+        "billingInfo": {
+          "name": "A"
+        }
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/invoices"
+      }
+    },
+    {
+      "testcase_id": "TC_INV_BILLNAME_02",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/invoices",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "orderRef": "<seed: order status=ACCEPTED>",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026",
+        "billingInfo": {
+          "name": "An"
+        }
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/invoices"
+      }
+    },
+    {
+      "testcase_id": "TC_INV_BILLNAME_03",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/invoices",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "orderRef": "<seed: order status=ACCEPTED>",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026",
+        "billingInfo": {
+          "name": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        }
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/invoices"
+      }
+    },
+    {
+      "testcase_id": "TC_INV_BILLNAME_04",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/invoices",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "orderRef": "<seed: order status=ACCEPTED>",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026",
+        "billingInfo": {
+          "name": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        }
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/invoices"
+      }
+    },
+    {
+      "testcase_id": "TC_INV_TOTALAMT_01",
+      "result": false,
+      "method": "",
+      "url": "",
+      "expected_status": 201,
+      "actual_status": 0,
+      "request_body": null,
+      "response_body": "seed data unavailable: no dedicated ACCEPTED order left in the bulk queue (see seed_context.py warnings)"
+    },
+    {
+      "testcase_id": "TC_INV_TOTALAMT_02",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/invoices",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "orderRef": "<seed: order status=ACCEPTED>",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026",
+        "totalAmount": "0.01"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/invoices"
+      }
+    },
+    {
+      "testcase_id": "TC_INV_TOTALAMT_03",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/invoices",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "orderRef": "<seed: order status=ACCEPTED>",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026",
+        "totalAmount": "0.00"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/invoices"
+      }
+    },
+    {
+      "testcase_id": "TC_INV_ISSUEDATE_01",
+      "result": false,
+      "method": "",
+      "url": "",
+      "expected_status": 201,
+      "actual_status": 0,
+      "request_body": null,
+      "response_body": "seed data unavailable: no dedicated ACCEPTED order left in the bulk queue (see seed_context.py warnings)"
+    },
+    {
+      "testcase_id": "TC_INV_ISSUEDATE_02",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/invoices",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "orderRef": "<seed: order status=ACCEPTED>",
+        "issueDate": "23-07-2026",
+        "dueDate": "30/07/2026"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/invoices"
+      }
+    },
+    {
+      "testcase_id": "TC_INV_ISSUEDATE_03",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/invoices",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "orderRef": "<seed: order status=ACCEPTED>",
+        "issueDate": "2026/07/23",
+        "dueDate": "30/07/2026"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/invoices"
+      }
+    },
+    {
+      "testcase_id": "TC_INV_ISSUEDATE_04",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/invoices",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "orderRef": "<seed: order status=ACCEPTED>",
+        "issueDate": "31/02/2026",
+        "dueDate": "30/07/2026"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/invoices"
+      }
+    },
+    {
+      "testcase_id": "TC_INV_ISSUEDATE_05",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/invoices",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "orderRef": "<seed: order status=ACCEPTED>",
+        "issueDate": "30/02/2026",
+        "dueDate": "30/07/2026"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/invoices"
+      }
+    },
+    {
+      "testcase_id": "TC_INV_ISSUEDATE_06",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/invoices",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "orderRef": "<seed: order status=ACCEPTED>",
+        "issueDate": "23/00/2026",
+        "dueDate": "30/07/2026"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/invoices"
+      }
+    },
+    {
+      "testcase_id": "TC_INV_ISSUEDATE_07",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/invoices",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "orderRef": "<seed: order status=ACCEPTED>",
+        "issueDate": "23/13/2026",
+        "dueDate": "30/07/2026"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/invoices"
+      }
+    },
+    {
+      "testcase_id": "TC_INV_DUEDATE_01",
+      "result": false,
+      "method": "",
+      "url": "",
+      "expected_status": 201,
+      "actual_status": 0,
+      "request_body": null,
+      "response_body": "seed data unavailable: no dedicated ACCEPTED order left in the bulk queue (see seed_context.py warnings)"
+    },
+    {
+      "testcase_id": "TC_INV_DUEDATE_02",
+      "result": false,
+      "method": "",
+      "url": "",
+      "expected_status": 201,
+      "actual_status": 0,
+      "request_body": null,
+      "response_body": "seed data unavailable: no dedicated ACCEPTED order left in the bulk queue (see seed_context.py warnings)"
+    },
+    {
+      "testcase_id": "TC_INV_DUEDATE_03",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/invoices",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "orderRef": "<seed: order status=ACCEPTED>",
+        "issueDate": "23/07/2026",
+        "dueDate": "22/07/2026"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/invoices"
+      }
+    },
+    {
+      "testcase_id": "TC_INV_DUEDATE_04",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/invoices",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "orderRef": "<seed: order status=ACCEPTED>",
+        "issueDate": "23/07/2026",
+        "dueDate": "2026-07-30"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/invoices"
+      }
+    },
+    {
+      "testcase_id": "TC_INV_DUEDATE_05",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/invoices",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "orderRef": "<seed: order status=ACCEPTED>",
+        "issueDate": "23/07/2026",
+        "dueDate": "31/04/2026"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/invoices"
+      }
+    },
+    {
+      "testcase_id": "TC_INV_STATUS_01",
+      "result": false,
+      "method": "",
+      "url": "",
+      "expected_status": 201,
+      "actual_status": 0,
+      "request_body": null,
+      "response_body": "seed data unavailable: no dedicated ACCEPTED order left in the bulk queue (see seed_context.py warnings)"
+    },
+    {
+      "testcase_id": "TC_INV_STATUS_02",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/invoices",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "orderRef": "<seed: order status=ACCEPTED>",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026",
+        "status": "PAID"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/invoices"
+      }
+    },
+    {
+      "testcase_id": "TC_INV_STATUS_03",
+      "result": false,
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/invoices",
+      "expected_status": 400,
+      "actual_status": 500,
+      "request_body": {
+        "orderRef": "<seed: order status=ACCEPTED>",
+        "issueDate": "23/07/2026",
+        "dueDate": "30/07/2026",
+        "status": "DRAFT"
+      },
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/invoices"
+      }
+    }
+  ]
+}

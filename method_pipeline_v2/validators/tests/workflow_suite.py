@@ -293,6 +293,38 @@ def _advance_to(report: WorkflowReport, base_url: str, api_paths: dict[str, str]
             and _order_status(report, base_url, api_paths, order_id, timeout) == "INVOICED")
 
 
+# Precondition cases: (check id, order state to stage, description, action).
+NEGATIVE_CASES = [
+    ("WF_P_01_INVOICE_FROM_PLACED", "PLACED",
+     "create invoice for a PLACED order", "invoice"),
+    ("WF_P_02_PAY_FROM_ACCEPTED", "ACCEPTED",
+     "pay an ACCEPTED (not INVOICED) order", "pay"),
+    ("WF_P_03_SHIP_FROM_INVOICED", "INVOICED",
+     "ship an INVOICED (not VERIFIED) order", "ship"),
+    ("WF_P_04_CLOSE_FROM_ACCEPTED", "ACCEPTED",
+     "close an ACCEPTED (not SHIPPED) order", "close"),
+    ("WF_P_05_ACCEPT_TWICE", "ACCEPTED",
+     "accept an already ACCEPTED order", "accept"),
+]
+
+
+def _emit_unrun(report: WorkflowReport, reason: str) -> None:
+    """Record every happy-path and precondition check that never got to run,
+    as a failure carrying the reason. Keeps the check set - and so the
+    denominator - identical for every app."""
+    for index, (step, label, target) in enumerate(LIFECYCLE, start=1):
+        report.add(WorkflowCheck(
+            check_id=f"WF_H_{index:02d}_{step.upper()}", category="happy_path",
+            description=f"{label} -> {target}", result=False,
+            expected=target, actual=f"not run: {reason}",
+        ))
+    for check_id, _state, description, _action in NEGATIVE_CASES:
+        report.add(WorkflowCheck(
+            check_id=check_id, category="precondition", description=description,
+            result=False, expected=409, actual=f"not run: {reason}",
+        ))
+
+
 def run_workflow_suite(base_url: str, api_paths: dict[str, str],
                        workflow_api_paths: dict[str, Any] | None,
                        timeout: float = 10.0) -> WorkflowReport:
@@ -334,10 +366,15 @@ def run_workflow_suite(base_url: str, api_paths: dict[str, str],
                          prod._body(), timeout)
     product_id = body.get("id") if status == 201 and isinstance(body, dict) else None
     if not (customer_id and product_id):
-        report.warnings.append(
-            "could not create the customer/product the workflow needs; "
-            "happy-path and precondition checks were not run"
-        )
+        reason = ("could not create the customer/product the workflow needs "
+                  "(the app rejected or failed the create request)")
+        report.warnings.append(reason)
+        # Emit the remaining checks as failures rather than returning early.
+        # Returning here would leave only the 7 capability checks, and an app
+        # whose every request 500s would score 7/7 = 100% - a fabricated pass.
+        # The denominator has to stay the same across apps for the numbers to
+        # be comparable at all.
+        _emit_unrun(report, reason)
         return report
 
     # ---- A. happy path -------------------------------------------------
@@ -402,19 +439,7 @@ def run_workflow_suite(base_url: str, api_paths: dict[str, str],
 
     # ---- B. precondition enforcement -----------------------------------
     # Each case gets its own order, so a rejected call cannot disturb another.
-    negatives = [
-        ("WF_P_01_INVOICE_FROM_PLACED", "PLACED",
-         "create invoice for a PLACED order", "invoice"),
-        ("WF_P_02_PAY_FROM_ACCEPTED", "ACCEPTED",
-         "pay an ACCEPTED (not INVOICED) order", "pay"),
-        ("WF_P_03_SHIP_FROM_INVOICED", "INVOICED",
-         "ship an INVOICED (not VERIFIED) order", "ship"),
-        ("WF_P_04_CLOSE_FROM_ACCEPTED", "ACCEPTED",
-         "close an ACCEPTED (not SHIPPED) order", "close"),
-        ("WF_P_05_ACCEPT_TWICE", "ACCEPTED",
-         "accept an already ACCEPTED order", "accept"),
-    ]
-    for check_id, from_state, description, action in negatives:
+    for check_id, from_state, description, action in NEGATIVE_CASES:
         oid = _make_order(report, base_url, api_paths, customer_id, product_id, timeout)
         if oid is None or not _advance_to(report, base_url, api_paths, transitions,
                                           oid, from_state, timeout):

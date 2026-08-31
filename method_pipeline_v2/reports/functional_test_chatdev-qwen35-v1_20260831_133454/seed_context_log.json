@@ -1,0 +1,2518 @@
+{
+  "base_url": "http://localhost:8000",
+  "api_paths": {
+    "customer": "/api/v1/customers",
+    "product": "/api/v1/products",
+    "order": "/api/v1/orders",
+    "payment": "/api/v1/payments",
+    "invoice": "/api/v1/invoices"
+  },
+  "seed_ids": {
+    "customer_id": "c6fc6e42-74df-4bb2-8dd9-ce775135d675",
+    "product_id": "96946add-a0ee-489b-a971-7c1268bcdd14",
+    "bulk_product_ids": [
+      "b28cb931-e0f4-4ee9-be10-e1d61438172c",
+      "cfdb5c24-9ef3-4910-a7b6-4cbeb512bdf8",
+      "bff302a1-9359-4a62-8488-dac26bb9011b",
+      "a51b549a-169d-41c7-978c-e3773b67b16e",
+      "f4e28a38-0661-48ae-87ff-cb4510c1baab",
+      "ad54168b-5a23-48ca-abce-635d6de99f17",
+      "397f16ee-2bef-4c90-a32f-b841e70eb97b",
+      "bea7e0ff-e25a-4011-8ed2-20f47d4a1771",
+      "8807e8a2-7d9e-4c0d-be6b-42ab40e2df97",
+      "0cd86b1d-cb84-49bb-89a2-93e786a74868",
+      "58ee7782-072d-4b5e-be8e-e187a9404732",
+      "314ad80e-fb0d-406a-9f5f-a5fc244768a0",
+      "0ab1e3f9-170c-4944-be7e-d5f1c2293bb9",
+      "630bc82c-2ee0-4e5b-8297-9095de85305d",
+      "84647468-9e55-4171-9390-db1a31b9b11d",
+      "f4873ccd-2491-427b-8213-c517f1a6456d",
+      "83b7f922-4a38-4002-a717-2bc39b15ad04",
+      "cf3f3f95-a668-4a62-ac34-0b7d14ffcb21",
+      "5aba6f64-7176-4878-9220-18ef28c860de",
+      "97354264-2d99-4710-af1e-427d5d893d62",
+      "f74a43bb-46e7-4174-b0f0-a1d02680244b",
+      "4ad7d467-1bd9-4d3b-9219-4c8a890c8860",
+      "060d6e44-666e-4eaf-bca1-1e17891b82b6",
+      "16470a05-4438-4280-864c-13aebdc38694",
+      "eb24f7b8-556d-44c5-8fb0-164ac0522bc7",
+      "4e7dad38-7b41-4e69-8251-540a7f8eb30a",
+      "7fffe55b-bfe4-4a1d-8ffd-ea2a959df8c7",
+      "2cc88673-f0b6-481b-a706-7e9456091c43",
+      "f8e4f50f-59b2-40a9-bf56-d8f8788eb886",
+      "42c5f2a5-93f9-44f5-9e49-bf27f6eb6b82",
+      "23dc20b2-3e62-49c7-b07a-f9b2a4f5f9bc",
+      "6a269718-524b-4121-93d9-d6ce6291bf2a",
+      "93acb4de-bbba-4bb8-aa7f-e7ed8c507b48",
+      "dffeadd8-4b63-42ae-8984-a793ca4eee9a",
+      "50e13e6d-e155-4304-9cab-78f4bfac3556",
+      "0933e49e-2ee9-409b-aa8d-7ac2c0cd49e3",
+      "b57f9224-92fa-4bfb-aae5-00995388f2fc",
+      "7f5b26f8-f94d-4699-94d7-aa3696302587",
+      "c06b57c9-7f8f-4148-9f48-ccd2501c22bb",
+      "67fd3739-5138-4321-b0fa-f9dca446bd16",
+      "54edab86-aeed-40aa-af23-b1d657802929",
+      "a8d3f89a-9872-4419-90f4-6a4747c087d4",
+      "bfe1928f-07c8-4bff-a742-c6adad5c968b",
+      "7c241b4e-7434-4687-85dd-9a3f05ae07a5",
+      "4e0c1e87-821c-4d4d-a306-bc52bce304a9",
+      "e5383fc7-7543-44eb-9de7-10b940e2ebee",
+      "fc294f62-e21d-4332-8f80-342cc9aaa111",
+      "9937d421-5844-4448-bae8-72db551fe5a7",
+      "0fb231d6-3f86-4335-9279-79b2161b5e54",
+      "f331ffd8-31de-430c-90b1-1ef13420f703",
+      "9c509247-b910-40d8-8e0a-0c9bbb101d1b",
+      "b2643037-1e46-461f-accd-6935b1f31383",
+      "b0f9969b-c1f3-4659-ae23-b235d2c57c41",
+      "0974170e-6b77-4733-83f6-28d86e79717d",
+      "a61fcad5-bf52-480b-9fd0-0c223e18ed1e",
+      "3c741525-a023-4d98-ad38-4f875eb7facd",
+      "389aae06-06b2-41ae-9072-e2732eb616b7",
+      "4aa09a08-300b-4f9a-88b5-d77ec403caa4",
+      "c85245b3-b8ff-4613-86de-2f6c0d7e5396",
+      "74ede9ae-61bb-41d9-9677-b8ce76db7123",
+      "e3adca1a-b8ec-4733-85d8-0192f9241cc4",
+      "40495cbf-e722-45ca-bb74-63b52a505c16",
+      "5bb79a93-9a1c-4d7f-b5b8-0a70830fc6b8",
+      "87d0aa8b-c6d5-4402-b022-2b2f75923080",
+      "428f731c-fe17-4190-bffb-7e8c81820b95",
+      "f88ea232-ae3d-42b8-abf2-d2b57a5b6bce",
+      "3d1f7018-3850-4bb7-9e67-92094f9bb68c",
+      "163dc96d-953d-4fcd-8ff7-82f711ba153f",
+      "9287b695-966e-43c5-8295-391e5b8e9170",
+      "19dc6309-a4fd-4481-bc70-9c1eed1a115c",
+      "e452d409-6929-4b58-84ae-1546f1a09051",
+      "9fd2cef1-f822-4b0e-bbd3-11e743c01cd5",
+      "bf6a60c3-d1cc-47af-8a58-fadcb720ea13",
+      "44cafcae-9d95-4e69-b88c-85ce3592d178",
+      "f0624edb-01f4-4a55-85bf-edadd294ae9e",
+      "b4ad31ac-465e-4ea9-8952-d1e888be93a9",
+      "f83f172b-cd2b-4a85-bae5-177618d197ea",
+      "57f794c5-7cdd-4d1b-8f51-17f59fb84229",
+      "1489d362-edd5-4933-a107-ba5e8f88d084",
+      "176717a3-ec53-4e20-a344-dfe35bde7ea4",
+      "41ed8a8f-5ed0-4ac0-b1c8-5e2ae718409e",
+      "ae2f35a6-4551-441f-bbec-a4905ebe4a86",
+      "3138cbb8-3958-41b5-ade4-6e158e71c0e6",
+      "ccb171a4-b1d1-44da-a77c-b479b95f0d8d",
+      "e02ede2c-1835-425b-94fa-cb6935fd4208",
+      "3bbaa27c-6b85-4859-9a6e-77941a718a45",
+      "12678831-1bb1-4880-92f9-3edfa7b07636",
+      "a3e2d88d-d9c9-4d2b-86a9-d90610248dea",
+      "d93c9a12-4a0f-41fe-8211-af4552f8d188",
+      "887b9b0f-faa5-4c17-ba2b-265cde3ce51b",
+      "acdaffd6-afb2-423b-b31a-442f328e1595",
+      "ef62ed39-81a9-4b70-801c-ee617efc3122",
+      "3b11be62-7fe7-4853-b0ec-d4bcd1109487",
+      "a91fba11-59d3-4c84-86b6-1d790fc36169",
+      "e2fa052f-acc9-4ced-9410-3a6d86c2af49",
+      "4740f58c-1f5c-40db-a9de-ad9ada02f8a6",
+      "2fd94ef7-14cc-4667-bc7b-b26b2da2bbf4",
+      "67cb1a9b-9174-4a8b-9c6a-1bc5d86c5e2f",
+      "70ceb12a-a872-489a-abb8-fa9d6f117a8b",
+      "f8a4a143-cb37-4591-9dfa-94a482ec80d1"
+    ],
+    "order_placed_id": null,
+    "order_accepted_id": null,
+    "order_invoiced_id": null,
+    "invoice_id": null,
+    "order_total_amount": null,
+    "invoice_total_amount": null,
+    "bulk_invoiced_orders": [],
+    "bulk_accepted_order_ids": []
+  },
+  "warnings": [
+    "seed PLACED order creation failed: 422 {'detail': [{'type': 'value_error', 'loc': ['body', 'lineItems'], 'msg': 'Value error, lineItems[0]: productRef: Must be a string', 'input': [{'productRef': '96946add-a0ee-489b-a971-7c1268bcdd14', 'quantity': 1}], 'ctx': {'error': {}}}]}"
+  ],
+  "calls": [
+    {
+      "step": "create_customer",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/customers",
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "status": 201,
+      "response_body": {
+        "id": "c6fc6e42-74df-4bb2-8dd9-ce775135d675",
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER",
+        "orderHistory": [],
+        "createdAt": "2026-08-31T06:34:54.695820",
+        "updatedAt": "2026-08-31T06:34:54.695827"
+      }
+    },
+    {
+      "step": "create_product",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "96946add-a0ee-489b-a971-7c1268bcdd14",
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:54.802153",
+        "updatedAt": "2026-08-31T06:34:54.802160"
+      }
+    },
+    {
+      "step": "create_bulk_product_001",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #1)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "b28cb931-e0f4-4ee9-be10-e1d61438172c",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #1)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:54.828696",
+        "updatedAt": "2026-08-31T06:34:54.828704"
+      }
+    },
+    {
+      "step": "create_bulk_product_002",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #2)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "cfdb5c24-9ef3-4910-a7b6-4cbeb512bdf8",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #2)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:54.847474",
+        "updatedAt": "2026-08-31T06:34:54.847479"
+      }
+    },
+    {
+      "step": "create_bulk_product_003",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #3)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "bff302a1-9359-4a62-8488-dac26bb9011b",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #3)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:54.864803",
+        "updatedAt": "2026-08-31T06:34:54.864810"
+      }
+    },
+    {
+      "step": "create_bulk_product_004",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #4)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "a51b549a-169d-41c7-978c-e3773b67b16e",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #4)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:54.893673",
+        "updatedAt": "2026-08-31T06:34:54.893680"
+      }
+    },
+    {
+      "step": "create_bulk_product_005",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #5)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "f4e28a38-0661-48ae-87ff-cb4510c1baab",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #5)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:54.913253",
+        "updatedAt": "2026-08-31T06:34:54.913261"
+      }
+    },
+    {
+      "step": "create_bulk_product_006",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #6)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "ad54168b-5a23-48ca-abce-635d6de99f17",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #6)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:54.930910",
+        "updatedAt": "2026-08-31T06:34:54.930917"
+      }
+    },
+    {
+      "step": "create_bulk_product_007",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #7)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "397f16ee-2bef-4c90-a32f-b841e70eb97b",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #7)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:54.949052",
+        "updatedAt": "2026-08-31T06:34:54.949061"
+      }
+    },
+    {
+      "step": "create_bulk_product_008",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #8)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "bea7e0ff-e25a-4011-8ed2-20f47d4a1771",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #8)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:54.987393",
+        "updatedAt": "2026-08-31T06:34:54.987400"
+      }
+    },
+    {
+      "step": "create_bulk_product_009",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #9)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "8807e8a2-7d9e-4c0d-be6b-42ab40e2df97",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #9)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:55.019480",
+        "updatedAt": "2026-08-31T06:34:55.019486"
+      }
+    },
+    {
+      "step": "create_bulk_product_010",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #10)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "0cd86b1d-cb84-49bb-89a2-93e786a74868",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #10)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:55.039886",
+        "updatedAt": "2026-08-31T06:34:55.039891"
+      }
+    },
+    {
+      "step": "create_bulk_product_011",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #11)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "58ee7782-072d-4b5e-be8e-e187a9404732",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #11)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:55.056926",
+        "updatedAt": "2026-08-31T06:34:55.056931"
+      }
+    },
+    {
+      "step": "create_bulk_product_012",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #12)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "314ad80e-fb0d-406a-9f5f-a5fc244768a0",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #12)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:55.095796",
+        "updatedAt": "2026-08-31T06:34:55.095800"
+      }
+    },
+    {
+      "step": "create_bulk_product_013",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #13)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "0ab1e3f9-170c-4944-be7e-d5f1c2293bb9",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #13)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:55.127716",
+        "updatedAt": "2026-08-31T06:34:55.127722"
+      }
+    },
+    {
+      "step": "create_bulk_product_014",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #14)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "630bc82c-2ee0-4e5b-8297-9095de85305d",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #14)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:55.159350",
+        "updatedAt": "2026-08-31T06:34:55.159354"
+      }
+    },
+    {
+      "step": "create_bulk_product_015",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #15)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "84647468-9e55-4171-9390-db1a31b9b11d",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #15)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:55.191105",
+        "updatedAt": "2026-08-31T06:34:55.191109"
+      }
+    },
+    {
+      "step": "create_bulk_product_016",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #16)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "f4873ccd-2491-427b-8213-c517f1a6456d",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #16)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:55.222243",
+        "updatedAt": "2026-08-31T06:34:55.222248"
+      }
+    },
+    {
+      "step": "create_bulk_product_017",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #17)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "83b7f922-4a38-4002-a717-2bc39b15ad04",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #17)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:55.253594",
+        "updatedAt": "2026-08-31T06:34:55.253598"
+      }
+    },
+    {
+      "step": "create_bulk_product_018",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #18)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "cf3f3f95-a668-4a62-ac34-0b7d14ffcb21",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #18)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:55.267090",
+        "updatedAt": "2026-08-31T06:34:55.267095"
+      }
+    },
+    {
+      "step": "create_bulk_product_019",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #19)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "5aba6f64-7176-4878-9220-18ef28c860de",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #19)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:55.280807",
+        "updatedAt": "2026-08-31T06:34:55.280815"
+      }
+    },
+    {
+      "step": "create_bulk_product_020",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #20)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "97354264-2d99-4710-af1e-427d5d893d62",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #20)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:55.296133",
+        "updatedAt": "2026-08-31T06:34:55.296137"
+      }
+    },
+    {
+      "step": "create_bulk_product_021",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #21)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "f74a43bb-46e7-4174-b0f0-a1d02680244b",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #21)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:55.330416",
+        "updatedAt": "2026-08-31T06:34:55.330420"
+      }
+    },
+    {
+      "step": "create_bulk_product_022",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #22)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "4ad7d467-1bd9-4d3b-9219-4c8a890c8860",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #22)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:55.361316",
+        "updatedAt": "2026-08-31T06:34:55.361320"
+      }
+    },
+    {
+      "step": "create_bulk_product_023",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #23)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "060d6e44-666e-4eaf-bca1-1e17891b82b6",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #23)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:55.392745",
+        "updatedAt": "2026-08-31T06:34:55.392749"
+      }
+    },
+    {
+      "step": "create_bulk_product_024",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #24)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "16470a05-4438-4280-864c-13aebdc38694",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #24)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:55.423897",
+        "updatedAt": "2026-08-31T06:34:55.423901"
+      }
+    },
+    {
+      "step": "create_bulk_product_025",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #25)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "eb24f7b8-556d-44c5-8fb0-164ac0522bc7",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #25)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:55.436642",
+        "updatedAt": "2026-08-31T06:34:55.436646"
+      }
+    },
+    {
+      "step": "create_bulk_product_026",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #26)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "4e7dad38-7b41-4e69-8251-540a7f8eb30a",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #26)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:55.470853",
+        "updatedAt": "2026-08-31T06:34:55.470857"
+      }
+    },
+    {
+      "step": "create_bulk_product_027",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #27)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "7fffe55b-bfe4-4a1d-8ffd-ea2a959df8c7",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #27)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:55.503400",
+        "updatedAt": "2026-08-31T06:34:55.503404"
+      }
+    },
+    {
+      "step": "create_bulk_product_028",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #28)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "2cc88673-f0b6-481b-a706-7e9456091c43",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #28)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:55.533698",
+        "updatedAt": "2026-08-31T06:34:55.533707"
+      }
+    },
+    {
+      "step": "create_bulk_product_029",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #29)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "f8e4f50f-59b2-40a9-bf56-d8f8788eb886",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #29)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:55.566098",
+        "updatedAt": "2026-08-31T06:34:55.566102"
+      }
+    },
+    {
+      "step": "create_bulk_product_030",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #30)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "42c5f2a5-93f9-44f5-9e49-bf27f6eb6b82",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #30)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:55.597358",
+        "updatedAt": "2026-08-31T06:34:55.597361"
+      }
+    },
+    {
+      "step": "create_bulk_product_031",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #31)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "23dc20b2-3e62-49c7-b07a-f9b2a4f5f9bc",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #31)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:55.628442",
+        "updatedAt": "2026-08-31T06:34:55.628446"
+      }
+    },
+    {
+      "step": "create_bulk_product_032",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #32)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "6a269718-524b-4121-93d9-d6ce6291bf2a",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #32)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:55.659638",
+        "updatedAt": "2026-08-31T06:34:55.659642"
+      }
+    },
+    {
+      "step": "create_bulk_product_033",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #33)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "93acb4de-bbba-4bb8-aa7f-e7ed8c507b48",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #33)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:55.690708",
+        "updatedAt": "2026-08-31T06:34:55.690712"
+      }
+    },
+    {
+      "step": "create_bulk_product_034",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #34)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "dffeadd8-4b63-42ae-8984-a793ca4eee9a",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #34)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:55.722144",
+        "updatedAt": "2026-08-31T06:34:55.722148"
+      }
+    },
+    {
+      "step": "create_bulk_product_035",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #35)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "50e13e6d-e155-4304-9cab-78f4bfac3556",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #35)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:55.753576",
+        "updatedAt": "2026-08-31T06:34:55.753579"
+      }
+    },
+    {
+      "step": "create_bulk_product_036",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #36)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "0933e49e-2ee9-409b-aa8d-7ac2c0cd49e3",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #36)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:55.783856",
+        "updatedAt": "2026-08-31T06:34:55.783860"
+      }
+    },
+    {
+      "step": "create_bulk_product_037",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #37)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "b57f9224-92fa-4bfb-aae5-00995388f2fc",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #37)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:55.814242",
+        "updatedAt": "2026-08-31T06:34:55.814247"
+      }
+    },
+    {
+      "step": "create_bulk_product_038",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #38)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "7f5b26f8-f94d-4699-94d7-aa3696302587",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #38)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:55.843947",
+        "updatedAt": "2026-08-31T06:34:55.843952"
+      }
+    },
+    {
+      "step": "create_bulk_product_039",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #39)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "c06b57c9-7f8f-4148-9f48-ccd2501c22bb",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #39)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:55.874823",
+        "updatedAt": "2026-08-31T06:34:55.874828"
+      }
+    },
+    {
+      "step": "create_bulk_product_040",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #40)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "67fd3739-5138-4321-b0fa-f9dca446bd16",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #40)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:55.888605",
+        "updatedAt": "2026-08-31T06:34:55.888610"
+      }
+    },
+    {
+      "step": "create_bulk_product_041",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #41)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "54edab86-aeed-40aa-af23-b1d657802929",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #41)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:55.901120",
+        "updatedAt": "2026-08-31T06:34:55.901125"
+      }
+    },
+    {
+      "step": "create_bulk_product_042",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #42)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "a8d3f89a-9872-4419-90f4-6a4747c087d4",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #42)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:55.914782",
+        "updatedAt": "2026-08-31T06:34:55.914786"
+      }
+    },
+    {
+      "step": "create_bulk_product_043",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #43)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "bfe1928f-07c8-4bff-a742-c6adad5c968b",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #43)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:55.937054",
+        "updatedAt": "2026-08-31T06:34:55.937058"
+      }
+    },
+    {
+      "step": "create_bulk_product_044",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #44)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "7c241b4e-7434-4687-85dd-9a3f05ae07a5",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #44)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:55.968395",
+        "updatedAt": "2026-08-31T06:34:55.968397"
+      }
+    },
+    {
+      "step": "create_bulk_product_045",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #45)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "4e0c1e87-821c-4d4d-a306-bc52bce304a9",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #45)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:55.999737",
+        "updatedAt": "2026-08-31T06:34:55.999740"
+      }
+    },
+    {
+      "step": "create_bulk_product_046",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #46)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "e5383fc7-7543-44eb-9de7-10b940e2ebee",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #46)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.030933",
+        "updatedAt": "2026-08-31T06:34:56.030937"
+      }
+    },
+    {
+      "step": "create_bulk_product_047",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #47)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "fc294f62-e21d-4332-8f80-342cc9aaa111",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #47)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.039485",
+        "updatedAt": "2026-08-31T06:34:56.039488"
+      }
+    },
+    {
+      "step": "create_bulk_product_048",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #48)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "9937d421-5844-4448-bae8-72db551fe5a7",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #48)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.062065",
+        "updatedAt": "2026-08-31T06:34:56.062068"
+      }
+    },
+    {
+      "step": "create_bulk_product_049",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #49)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "0fb231d6-3f86-4335-9279-79b2161b5e54",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #49)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.092826",
+        "updatedAt": "2026-08-31T06:34:56.092829"
+      }
+    },
+    {
+      "step": "create_bulk_product_050",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #50)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "f331ffd8-31de-430c-90b1-1ef13420f703",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #50)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.101525",
+        "updatedAt": "2026-08-31T06:34:56.101528"
+      }
+    },
+    {
+      "step": "create_bulk_product_051",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #51)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "9c509247-b910-40d8-8e0a-0c9bbb101d1b",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #51)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.124360",
+        "updatedAt": "2026-08-31T06:34:56.124364"
+      }
+    },
+    {
+      "step": "create_bulk_product_052",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #52)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "b2643037-1e46-461f-accd-6935b1f31383",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #52)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.155501",
+        "updatedAt": "2026-08-31T06:34:56.155505"
+      }
+    },
+    {
+      "step": "create_bulk_product_053",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #53)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "b0f9969b-c1f3-4659-ae23-b235d2c57c41",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #53)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.186238",
+        "updatedAt": "2026-08-31T06:34:56.186242"
+      }
+    },
+    {
+      "step": "create_bulk_product_054",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #54)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "0974170e-6b77-4733-83f6-28d86e79717d",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #54)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.217235",
+        "updatedAt": "2026-08-31T06:34:56.217239"
+      }
+    },
+    {
+      "step": "create_bulk_product_055",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #55)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "a61fcad5-bf52-480b-9fd0-0c223e18ed1e",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #55)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.248956",
+        "updatedAt": "2026-08-31T06:34:56.248960"
+      }
+    },
+    {
+      "step": "create_bulk_product_056",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #56)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "3c741525-a023-4d98-ad38-4f875eb7facd",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #56)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.280989",
+        "updatedAt": "2026-08-31T06:34:56.280993"
+      }
+    },
+    {
+      "step": "create_bulk_product_057",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #57)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "389aae06-06b2-41ae-9072-e2732eb616b7",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #57)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.311164",
+        "updatedAt": "2026-08-31T06:34:56.311168"
+      }
+    },
+    {
+      "step": "create_bulk_product_058",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #58)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "4aa09a08-300b-4f9a-88b5-d77ec403caa4",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #58)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.341362",
+        "updatedAt": "2026-08-31T06:34:56.341367"
+      }
+    },
+    {
+      "step": "create_bulk_product_059",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #59)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "c85245b3-b8ff-4613-86de-2f6c0d7e5396",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #59)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.355859",
+        "updatedAt": "2026-08-31T06:34:56.355863"
+      }
+    },
+    {
+      "step": "create_bulk_product_060",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #60)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "74ede9ae-61bb-41d9-9677-b8ce76db7123",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #60)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.388142",
+        "updatedAt": "2026-08-31T06:34:56.388147"
+      }
+    },
+    {
+      "step": "create_bulk_product_061",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #61)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "e3adca1a-b8ec-4733-85d8-0192f9241cc4",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #61)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.418776",
+        "updatedAt": "2026-08-31T06:34:56.418780"
+      }
+    },
+    {
+      "step": "create_bulk_product_062",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #62)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "40495cbf-e722-45ca-bb74-63b52a505c16",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #62)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.449246",
+        "updatedAt": "2026-08-31T06:34:56.449250"
+      }
+    },
+    {
+      "step": "create_bulk_product_063",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #63)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "5bb79a93-9a1c-4d7f-b5b8-0a70830fc6b8",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #63)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.481642",
+        "updatedAt": "2026-08-31T06:34:56.481646"
+      }
+    },
+    {
+      "step": "create_bulk_product_064",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #64)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "87d0aa8b-c6d5-4402-b022-2b2f75923080",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #64)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.513366",
+        "updatedAt": "2026-08-31T06:34:56.513372"
+      }
+    },
+    {
+      "step": "create_bulk_product_065",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #65)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "428f731c-fe17-4190-bffb-7e8c81820b95",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #65)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.529134",
+        "updatedAt": "2026-08-31T06:34:56.529138"
+      }
+    },
+    {
+      "step": "create_bulk_product_066",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #66)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "f88ea232-ae3d-42b8-abf2-d2b57a5b6bce",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #66)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.545352",
+        "updatedAt": "2026-08-31T06:34:56.545357"
+      }
+    },
+    {
+      "step": "create_bulk_product_067",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #67)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "3d1f7018-3850-4bb7-9e67-92094f9bb68c",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #67)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.562389",
+        "updatedAt": "2026-08-31T06:34:56.562395"
+      }
+    },
+    {
+      "step": "create_bulk_product_068",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #68)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "163dc96d-953d-4fcd-8ff7-82f711ba153f",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #68)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.578654",
+        "updatedAt": "2026-08-31T06:34:56.578659"
+      }
+    },
+    {
+      "step": "create_bulk_product_069",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #69)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "9287b695-966e-43c5-8295-391e5b8e9170",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #69)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.604896",
+        "updatedAt": "2026-08-31T06:34:56.604901"
+      }
+    },
+    {
+      "step": "create_bulk_product_070",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #70)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "19dc6309-a4fd-4481-bc70-9c1eed1a115c",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #70)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.636123",
+        "updatedAt": "2026-08-31T06:34:56.636128"
+      }
+    },
+    {
+      "step": "create_bulk_product_071",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #71)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "e452d409-6929-4b58-84ae-1546f1a09051",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #71)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.666953",
+        "updatedAt": "2026-08-31T06:34:56.666958"
+      }
+    },
+    {
+      "step": "create_bulk_product_072",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #72)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "9fd2cef1-f822-4b0e-bbd3-11e743c01cd5",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #72)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.680558",
+        "updatedAt": "2026-08-31T06:34:56.680563"
+      }
+    },
+    {
+      "step": "create_bulk_product_073",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #73)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "bf6a60c3-d1cc-47af-8a58-fadcb720ea13",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #73)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.694158",
+        "updatedAt": "2026-08-31T06:34:56.694162"
+      }
+    },
+    {
+      "step": "create_bulk_product_074",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #74)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "44cafcae-9d95-4e69-b88c-85ce3592d178",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #74)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.706801",
+        "updatedAt": "2026-08-31T06:34:56.706806"
+      }
+    },
+    {
+      "step": "create_bulk_product_075",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #75)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "f0624edb-01f4-4a55-85bf-edadd294ae9e",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #75)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.743986",
+        "updatedAt": "2026-08-31T06:34:56.743990"
+      }
+    },
+    {
+      "step": "create_bulk_product_076",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #76)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "b4ad31ac-465e-4ea9-8952-d1e888be93a9",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #76)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.774464",
+        "updatedAt": "2026-08-31T06:34:56.774468"
+      }
+    },
+    {
+      "step": "create_bulk_product_077",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #77)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "f83f172b-cd2b-4a85-bae5-177618d197ea",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #77)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.804670",
+        "updatedAt": "2026-08-31T06:34:56.804676"
+      }
+    },
+    {
+      "step": "create_bulk_product_078",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #78)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "57f794c5-7cdd-4d1b-8f51-17f59fb84229",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #78)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.818214",
+        "updatedAt": "2026-08-31T06:34:56.818218"
+      }
+    },
+    {
+      "step": "create_bulk_product_079",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #79)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "1489d362-edd5-4933-a107-ba5e8f88d084",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #79)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.833567",
+        "updatedAt": "2026-08-31T06:34:56.833571"
+      }
+    },
+    {
+      "step": "create_bulk_product_080",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #80)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "176717a3-ec53-4e20-a344-dfe35bde7ea4",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #80)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.866434",
+        "updatedAt": "2026-08-31T06:34:56.866440"
+      }
+    },
+    {
+      "step": "create_bulk_product_081",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #81)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "41ed8a8f-5ed0-4ac0-b1c8-5e2ae718409e",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #81)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.898164",
+        "updatedAt": "2026-08-31T06:34:56.898173"
+      }
+    },
+    {
+      "step": "create_bulk_product_082",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #82)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "ae2f35a6-4551-441f-bbec-a4905ebe4a86",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #82)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.915872",
+        "updatedAt": "2026-08-31T06:34:56.915879"
+      }
+    },
+    {
+      "step": "create_bulk_product_083",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #83)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "3138cbb8-3958-41b5-ade4-6e158e71c0e6",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #83)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.945432",
+        "updatedAt": "2026-08-31T06:34:56.945437"
+      }
+    },
+    {
+      "step": "create_bulk_product_084",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #84)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "ccb171a4-b1d1-44da-a77c-b479b95f0d8d",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #84)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:56.975618",
+        "updatedAt": "2026-08-31T06:34:56.975623"
+      }
+    },
+    {
+      "step": "create_bulk_product_085",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #85)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "e02ede2c-1835-425b-94fa-cb6935fd4208",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #85)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:57.007283",
+        "updatedAt": "2026-08-31T06:34:57.007288"
+      }
+    },
+    {
+      "step": "create_bulk_product_086",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #86)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "3bbaa27c-6b85-4859-9a6e-77941a718a45",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #86)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:57.023811",
+        "updatedAt": "2026-08-31T06:34:57.023818"
+      }
+    },
+    {
+      "step": "create_bulk_product_087",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #87)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "12678831-1bb1-4880-92f9-3edfa7b07636",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #87)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:57.037782",
+        "updatedAt": "2026-08-31T06:34:57.037786"
+      }
+    },
+    {
+      "step": "create_bulk_product_088",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #88)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "a3e2d88d-d9c9-4d2b-86a9-d90610248dea",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #88)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:57.070837",
+        "updatedAt": "2026-08-31T06:34:57.070842"
+      }
+    },
+    {
+      "step": "create_bulk_product_089",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #89)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "d93c9a12-4a0f-41fe-8211-af4552f8d188",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #89)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:57.102523",
+        "updatedAt": "2026-08-31T06:34:57.102527"
+      }
+    },
+    {
+      "step": "create_bulk_product_090",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #90)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "887b9b0f-faa5-4c17-ba2b-265cde3ce51b",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #90)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:57.113380",
+        "updatedAt": "2026-08-31T06:34:57.113384"
+      }
+    },
+    {
+      "step": "create_bulk_product_091",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #91)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "acdaffd6-afb2-423b-b31a-442f328e1595",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #91)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:57.123599",
+        "updatedAt": "2026-08-31T06:34:57.123603"
+      }
+    },
+    {
+      "step": "create_bulk_product_092",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #92)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "ef62ed39-81a9-4b70-801c-ee617efc3122",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #92)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:57.150178",
+        "updatedAt": "2026-08-31T06:34:57.150182"
+      }
+    },
+    {
+      "step": "create_bulk_product_093",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #93)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "3b11be62-7fe7-4853-b0ec-d4bcd1109487",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #93)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:57.181488",
+        "updatedAt": "2026-08-31T06:34:57.181492"
+      }
+    },
+    {
+      "step": "create_bulk_product_094",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #94)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "a91fba11-59d3-4c84-86b6-1d790fc36169",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #94)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:57.213243",
+        "updatedAt": "2026-08-31T06:34:57.213247"
+      }
+    },
+    {
+      "step": "create_bulk_product_095",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #95)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "e2fa052f-acc9-4ced-9410-3a6d86c2af49",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #95)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:57.244242",
+        "updatedAt": "2026-08-31T06:34:57.244246"
+      }
+    },
+    {
+      "step": "create_bulk_product_096",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #96)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "4740f58c-1f5c-40db-a9de-ad9ada02f8a6",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #96)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:57.275802",
+        "updatedAt": "2026-08-31T06:34:57.275805"
+      }
+    },
+    {
+      "step": "create_bulk_product_097",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #97)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "2fd94ef7-14cc-4667-bc7b-b26b2da2bbf4",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #97)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:57.307937",
+        "updatedAt": "2026-08-31T06:34:57.307941"
+      }
+    },
+    {
+      "step": "create_bulk_product_098",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #98)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "67cb1a9b-9174-4a8b-9c6a-1bc5d86c5e2f",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #98)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:57.319009",
+        "updatedAt": "2026-08-31T06:34:57.319013"
+      }
+    },
+    {
+      "step": "create_bulk_product_099",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #99)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "70ceb12a-a872-489a-abb8-fa9d6f117a8b",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #99)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:57.339874",
+        "updatedAt": "2026-08-31T06:34:57.339879"
+      }
+    },
+    {
+      "step": "create_bulk_product_100",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse (bulk seed #100)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 201,
+      "response_body": {
+        "id": "f8a4a143-cb37-4591-9dfa-94a482ec80d1",
+        "description": "Logitech M185 Wireless Mouse (bulk seed #100)",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        },
+        "createdAt": "2026-08-31T06:34:57.353186",
+        "updatedAt": "2026-08-31T06:34:57.353191"
+      }
+    },
+    {
+      "step": "create_placed_order",
+      "method": "POST",
+      "url": "http://localhost:8000/api/v1/orders",
+      "request_body": {
+        "customerRef": "c6fc6e42-74df-4bb2-8dd9-ce775135d675",
+        "lineItems": [
+          {
+            "productRef": "96946add-a0ee-489b-a971-7c1268bcdd14",
+            "quantity": 1
+          }
+        ]
+      },
+      "status": 422,
+      "response_body": {
+        "detail": [
+          {
+            "type": "value_error",
+            "loc": [
+              "body",
+              "lineItems"
+            ],
+            "msg": "Value error, lineItems[0]: productRef: Must be a string",
+            "input": [
+              {
+                "productRef": "96946add-a0ee-489b-a971-7c1268bcdd14",
+                "quantity": 1
+              }
+            ],
+            "ctx": {
+              "error": {}
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

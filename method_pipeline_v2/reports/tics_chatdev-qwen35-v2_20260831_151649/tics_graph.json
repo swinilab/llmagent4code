@@ -1,0 +1,4202 @@
+{
+  "nodes": [
+    {
+      "ref": "oms/app.py::create_app",
+      "file": "oms/app.py",
+      "qualname": "create_app",
+      "lineno": 19,
+      "className": null
+    },
+    {
+      "ref": "oms/server.py::run",
+      "file": "oms/server.py",
+      "qualname": "run",
+      "lineno": 13,
+      "className": null
+    },
+    {
+      "ref": "oms/controller/customer_controller.py::get_customer_service",
+      "file": "oms/controller/customer_controller.py",
+      "qualname": "get_customer_service",
+      "lineno": 19,
+      "className": null
+    },
+    {
+      "ref": "oms/controller/customer_controller.py::list_customers",
+      "file": "oms/controller/customer_controller.py",
+      "qualname": "list_customers",
+      "lineno": 24,
+      "className": null
+    },
+    {
+      "ref": "oms/controller/customer_controller.py::get_customer",
+      "file": "oms/controller/customer_controller.py",
+      "qualname": "get_customer",
+      "lineno": 31,
+      "className": null
+    },
+    {
+      "ref": "oms/controller/customer_controller.py::create_customer",
+      "file": "oms/controller/customer_controller.py",
+      "qualname": "create_customer",
+      "lineno": 42,
+      "className": null
+    },
+    {
+      "ref": "oms/controller/customer_controller.py::update_customer",
+      "file": "oms/controller/customer_controller.py",
+      "qualname": "update_customer",
+      "lineno": 61,
+      "className": null
+    },
+    {
+      "ref": "oms/controller/customer_controller.py::delete_customer",
+      "file": "oms/controller/customer_controller.py",
+      "qualname": "delete_customer",
+      "lineno": 70,
+      "className": null
+    },
+    {
+      "ref": "oms/controller/invoice_controller.py::get_invoice_service",
+      "file": "oms/controller/invoice_controller.py",
+      "qualname": "get_invoice_service",
+      "lineno": 17,
+      "className": null
+    },
+    {
+      "ref": "oms/controller/invoice_controller.py::list_invoices",
+      "file": "oms/controller/invoice_controller.py",
+      "qualname": "list_invoices",
+      "lineno": 22,
+      "className": null
+    },
+    {
+      "ref": "oms/controller/invoice_controller.py::get_invoice",
+      "file": "oms/controller/invoice_controller.py",
+      "qualname": "get_invoice",
+      "lineno": 29,
+      "className": null
+    },
+    {
+      "ref": "oms/controller/invoice_controller.py::get_invoice_by_order",
+      "file": "oms/controller/invoice_controller.py",
+      "qualname": "get_invoice_by_order",
+      "lineno": 37,
+      "className": null
+    },
+    {
+      "ref": "oms/controller/invoice_controller.py::create_invoice",
+      "file": "oms/controller/invoice_controller.py",
+      "qualname": "create_invoice",
+      "lineno": 45,
+      "className": null
+    },
+    {
+      "ref": "oms/controller/invoice_controller.py::update_invoice_status",
+      "file": "oms/controller/invoice_controller.py",
+      "qualname": "update_invoice_status",
+      "lineno": 65,
+      "className": null
+    },
+    {
+      "ref": "oms/controller/invoice_controller.py::delete_invoice",
+      "file": "oms/controller/invoice_controller.py",
+      "qualname": "delete_invoice",
+      "lineno": 77,
+      "className": null
+    },
+    {
+      "ref": "oms/controller/order_controller.py::get_order_service",
+      "file": "oms/controller/order_controller.py",
+      "qualname": "get_order_service",
+      "lineno": 17,
+      "className": null
+    },
+    {
+      "ref": "oms/controller/order_controller.py::list_orders",
+      "file": "oms/controller/order_controller.py",
+      "qualname": "list_orders",
+      "lineno": 22,
+      "className": null
+    },
+    {
+      "ref": "oms/controller/order_controller.py::get_order",
+      "file": "oms/controller/order_controller.py",
+      "qualname": "get_order",
+      "lineno": 29,
+      "className": null
+    },
+    {
+      "ref": "oms/controller/order_controller.py::get_orders_by_customer",
+      "file": "oms/controller/order_controller.py",
+      "qualname": "get_orders_by_customer",
+      "lineno": 37,
+      "className": null
+    },
+    {
+      "ref": "oms/controller/order_controller.py::get_orders_by_status",
+      "file": "oms/controller/order_controller.py",
+      "qualname": "get_orders_by_status",
+      "lineno": 45,
+      "className": null
+    },
+    {
+      "ref": "oms/controller/order_controller.py::create_order",
+      "file": "oms/controller/order_controller.py",
+      "qualname": "create_order",
+      "lineno": 53,
+      "className": null
+    },
+    {
+      "ref": "oms/controller/order_controller.py::update_order_status",
+      "file": "oms/controller/order_controller.py",
+      "qualname": "update_order_status",
+      "lineno": 73,
+      "className": null
+    },
+    {
+      "ref": "oms/controller/order_controller.py::delete_order",
+      "file": "oms/controller/order_controller.py",
+      "qualname": "delete_order",
+      "lineno": 85,
+      "className": null
+    },
+    {
+      "ref": "oms/controller/payment_controller.py::get_payment_service",
+      "file": "oms/controller/payment_controller.py",
+      "qualname": "get_payment_service",
+      "lineno": 17,
+      "className": null
+    },
+    {
+      "ref": "oms/controller/payment_controller.py::list_payments",
+      "file": "oms/controller/payment_controller.py",
+      "qualname": "list_payments",
+      "lineno": 22,
+      "className": null
+    },
+    {
+      "ref": "oms/controller/payment_controller.py::get_payment",
+      "file": "oms/controller/payment_controller.py",
+      "qualname": "get_payment",
+      "lineno": 29,
+      "className": null
+    },
+    {
+      "ref": "oms/controller/payment_controller.py::get_payments_by_order",
+      "file": "oms/controller/payment_controller.py",
+      "qualname": "get_payments_by_order",
+      "lineno": 37,
+      "className": null
+    },
+    {
+      "ref": "oms/controller/payment_controller.py::create_payment",
+      "file": "oms/controller/payment_controller.py",
+      "qualname": "create_payment",
+      "lineno": 45,
+      "className": null
+    },
+    {
+      "ref": "oms/controller/payment_controller.py::verify_payment",
+      "file": "oms/controller/payment_controller.py",
+      "qualname": "verify_payment",
+      "lineno": 65,
+      "className": null
+    },
+    {
+      "ref": "oms/controller/payment_controller.py::delete_payment",
+      "file": "oms/controller/payment_controller.py",
+      "qualname": "delete_payment",
+      "lineno": 77,
+      "className": null
+    },
+    {
+      "ref": "oms/controller/product_controller.py::get_product_service",
+      "file": "oms/controller/product_controller.py",
+      "qualname": "get_product_service",
+      "lineno": 16,
+      "className": null
+    },
+    {
+      "ref": "oms/controller/product_controller.py::list_products",
+      "file": "oms/controller/product_controller.py",
+      "qualname": "list_products",
+      "lineno": 21,
+      "className": null
+    },
+    {
+      "ref": "oms/controller/product_controller.py::get_product",
+      "file": "oms/controller/product_controller.py",
+      "qualname": "get_product",
+      "lineno": 28,
+      "className": null
+    },
+    {
+      "ref": "oms/controller/product_controller.py::create_product",
+      "file": "oms/controller/product_controller.py",
+      "qualname": "create_product",
+      "lineno": 36,
+      "className": null
+    },
+    {
+      "ref": "oms/controller/product_controller.py::update_product",
+      "file": "oms/controller/product_controller.py",
+      "qualname": "update_product",
+      "lineno": 55,
+      "className": null
+    },
+    {
+      "ref": "oms/controller/product_controller.py::delete_product",
+      "file": "oms/controller/product_controller.py",
+      "qualname": "delete_product",
+      "lineno": 64,
+      "className": null
+    },
+    {
+      "ref": "oms/domain/models.py::validate_uuid_format",
+      "file": "oms/domain/models.py",
+      "qualname": "validate_uuid_format",
+      "lineno": 54,
+      "className": null
+    },
+    {
+      "ref": "oms/domain/models.py::validate_name",
+      "file": "oms/domain/models.py",
+      "qualname": "validate_name",
+      "lineno": 64,
+      "className": null
+    },
+    {
+      "ref": "oms/domain/models.py::validate_address",
+      "file": "oms/domain/models.py",
+      "qualname": "validate_address",
+      "lineno": 76,
+      "className": null
+    },
+    {
+      "ref": "oms/domain/models.py::validate_phone",
+      "file": "oms/domain/models.py",
+      "qualname": "validate_phone",
+      "lineno": 84,
+      "className": null
+    },
+    {
+      "ref": "oms/domain/models.py::validate_account_number",
+      "file": "oms/domain/models.py",
+      "qualname": "validate_account_number",
+      "lineno": 93,
+      "className": null
+    },
+    {
+      "ref": "oms/domain/models.py::validate_bank_name",
+      "file": "oms/domain/models.py",
+      "qualname": "validate_bank_name",
+      "lineno": 99,
+      "className": null
+    },
+    {
+      "ref": "oms/domain/models.py::validate_product_description",
+      "file": "oms/domain/models.py",
+      "qualname": "validate_product_description",
+      "lineno": 110,
+      "className": null
+    },
+    {
+      "ref": "oms/domain/models.py::validate_amount",
+      "file": "oms/domain/models.py",
+      "qualname": "validate_amount",
+      "lineno": 118,
+      "className": null
+    },
+    {
+      "ref": "oms/domain/models.py::validate_currency",
+      "file": "oms/domain/models.py",
+      "qualname": "validate_currency",
+      "lineno": 138,
+      "className": null
+    },
+    {
+      "ref": "oms/domain/models.py::validate_date_ddmmyyyy",
+      "file": "oms/domain/models.py",
+      "qualname": "validate_date_ddmmyyyy",
+      "lineno": 147,
+      "className": null
+    },
+    {
+      "ref": "oms/domain/models.py::validate_quantity",
+      "file": "oms/domain/models.py",
+      "qualname": "validate_quantity",
+      "lineno": 159,
+      "className": null
+    },
+    {
+      "ref": "oms/domain/models.py::BankingDetails.validate_account_number",
+      "file": "oms/domain/models.py",
+      "qualname": "BankingDetails.validate_account_number",
+      "lineno": 174,
+      "className": "BankingDetails"
+    },
+    {
+      "ref": "oms/domain/models.py::BankingDetails.validate_bank_name",
+      "file": "oms/domain/models.py",
+      "qualname": "BankingDetails.validate_bank_name",
+      "lineno": 179,
+      "className": "BankingDetails"
+    },
+    {
+      "ref": "oms/domain/models.py::Price.validate_amount",
+      "file": "oms/domain/models.py",
+      "qualname": "Price.validate_amount",
+      "lineno": 189,
+      "className": "Price"
+    },
+    {
+      "ref": "oms/domain/models.py::Price.validate_currency",
+      "file": "oms/domain/models.py",
+      "qualname": "Price.validate_currency",
+      "lineno": 194,
+      "className": "Price"
+    },
+    {
+      "ref": "oms/domain/models.py::LineItem.validate_product_ref",
+      "file": "oms/domain/models.py",
+      "qualname": "LineItem.validate_product_ref",
+      "lineno": 205,
+      "className": "LineItem"
+    },
+    {
+      "ref": "oms/domain/models.py::LineItem.validate_quantity",
+      "file": "oms/domain/models.py",
+      "qualname": "LineItem.validate_quantity",
+      "lineno": 210,
+      "className": "LineItem"
+    },
+    {
+      "ref": "oms/domain/models.py::Customer.validate_name",
+      "file": "oms/domain/models.py",
+      "qualname": "Customer.validate_name",
+      "lineno": 227,
+      "className": "Customer"
+    },
+    {
+      "ref": "oms/domain/models.py::Customer.validate_address",
+      "file": "oms/domain/models.py",
+      "qualname": "Customer.validate_address",
+      "lineno": 232,
+      "className": "Customer"
+    },
+    {
+      "ref": "oms/domain/models.py::Customer.validate_phone",
+      "file": "oms/domain/models.py",
+      "qualname": "Customer.validate_phone",
+      "lineno": 237,
+      "className": "Customer"
+    },
+    {
+      "ref": "oms/domain/models.py::CustomerCreate.validate_name",
+      "file": "oms/domain/models.py",
+      "qualname": "CustomerCreate.validate_name",
+      "lineno": 250,
+      "className": "CustomerCreate"
+    },
+    {
+      "ref": "oms/domain/models.py::CustomerCreate.validate_address",
+      "file": "oms/domain/models.py",
+      "qualname": "CustomerCreate.validate_address",
+      "lineno": 255,
+      "className": "CustomerCreate"
+    },
+    {
+      "ref": "oms/domain/models.py::CustomerCreate.validate_phone",
+      "file": "oms/domain/models.py",
+      "qualname": "CustomerCreate.validate_phone",
+      "lineno": 260,
+      "className": "CustomerCreate"
+    },
+    {
+      "ref": "oms/domain/models.py::Product.validate_description",
+      "file": "oms/domain/models.py",
+      "qualname": "Product.validate_description",
+      "lineno": 273,
+      "className": "Product"
+    },
+    {
+      "ref": "oms/domain/models.py::ProductCreate.validate_description",
+      "file": "oms/domain/models.py",
+      "qualname": "ProductCreate.validate_description",
+      "lineno": 283,
+      "className": "ProductCreate"
+    },
+    {
+      "ref": "oms/domain/models.py::Order.validate_customer_ref",
+      "file": "oms/domain/models.py",
+      "qualname": "Order.validate_customer_ref",
+      "lineno": 301,
+      "className": "Order"
+    },
+    {
+      "ref": "oms/domain/models.py::Order.validate_invoice_ref",
+      "file": "oms/domain/models.py",
+      "qualname": "Order.validate_invoice_ref",
+      "lineno": 306,
+      "className": "Order"
+    },
+    {
+      "ref": "oms/domain/models.py::OrderCreate.validate_customer_ref",
+      "file": "oms/domain/models.py",
+      "qualname": "OrderCreate.validate_customer_ref",
+      "lineno": 317,
+      "className": "OrderCreate"
+    },
+    {
+      "ref": "oms/domain/models.py::OrderCreate.validate_line_items_count",
+      "file": "oms/domain/models.py",
+      "qualname": "OrderCreate.validate_line_items_count",
+      "lineno": 321,
+      "className": "OrderCreate"
+    },
+    {
+      "ref": "oms/domain/models.py::Payment.validate_order_ref",
+      "file": "oms/domain/models.py",
+      "qualname": "Payment.validate_order_ref",
+      "lineno": 346,
+      "className": "Payment"
+    },
+    {
+      "ref": "oms/domain/models.py::PaymentCreate.validate_order_ref",
+      "file": "oms/domain/models.py",
+      "qualname": "PaymentCreate.validate_order_ref",
+      "lineno": 357,
+      "className": "PaymentCreate"
+    },
+    {
+      "ref": "oms/domain/models.py::PaymentCreate.validate_amount",
+      "file": "oms/domain/models.py",
+      "qualname": "PaymentCreate.validate_amount",
+      "lineno": 362,
+      "className": "PaymentCreate"
+    },
+    {
+      "ref": "oms/domain/models.py::Invoice.validate_order_ref",
+      "file": "oms/domain/models.py",
+      "qualname": "Invoice.validate_order_ref",
+      "lineno": 383,
+      "className": "Invoice"
+    },
+    {
+      "ref": "oms/domain/models.py::Invoice.validate_issue_date",
+      "file": "oms/domain/models.py",
+      "qualname": "Invoice.validate_issue_date",
+      "lineno": 388,
+      "className": "Invoice"
+    },
+    {
+      "ref": "oms/domain/models.py::Invoice.validate_due_date",
+      "file": "oms/domain/models.py",
+      "qualname": "Invoice.validate_due_date",
+      "lineno": 393,
+      "className": "Invoice"
+    },
+    {
+      "ref": "oms/domain/models.py::InvoiceCreate.validate_order_ref",
+      "file": "oms/domain/models.py",
+      "qualname": "InvoiceCreate.validate_order_ref",
+      "lineno": 404,
+      "className": "InvoiceCreate"
+    },
+    {
+      "ref": "oms/domain/models.py::InvoiceCreate.validate_issue_date",
+      "file": "oms/domain/models.py",
+      "qualname": "InvoiceCreate.validate_issue_date",
+      "lineno": 409,
+      "className": "InvoiceCreate"
+    },
+    {
+      "ref": "oms/domain/models.py::InvoiceCreate.validate_due_date",
+      "file": "oms/domain/models.py",
+      "qualname": "InvoiceCreate.validate_due_date",
+      "lineno": 416,
+      "className": "InvoiceCreate"
+    },
+    {
+      "ref": "oms/infrastructure/database.py::init_db",
+      "file": "oms/infrastructure/database.py",
+      "qualname": "init_db",
+      "lineno": 127,
+      "className": null
+    },
+    {
+      "ref": "oms/infrastructure/database.py::get_async_session",
+      "file": "oms/infrastructure/database.py",
+      "qualname": "get_async_session",
+      "lineno": 137,
+      "className": null
+    },
+    {
+      "ref": "oms/infrastructure/database.py::transaction_session",
+      "file": "oms/infrastructure/database.py",
+      "qualname": "transaction_session",
+      "lineno": 144,
+      "className": null
+    },
+    {
+      "ref": "oms/infrastructure/database.py::DecimalEncoder.default",
+      "file": "oms/infrastructure/database.py",
+      "qualname": "DecimalEncoder.default",
+      "lineno": 24,
+      "className": "DecimalEncoder"
+    },
+    {
+      "ref": "oms/infrastructure/database.py::BaseRepository.__init__",
+      "file": "oms/infrastructure/database.py",
+      "qualname": "BaseRepository.__init__",
+      "lineno": 167,
+      "className": "BaseRepository"
+    },
+    {
+      "ref": "oms/infrastructure/database.py::BaseRepository.get_by_id",
+      "file": "oms/infrastructure/database.py",
+      "qualname": "BaseRepository.get_by_id",
+      "lineno": 173,
+      "className": "BaseRepository"
+    },
+    {
+      "ref": "oms/infrastructure/database.py::BaseRepository.get_all",
+      "file": "oms/infrastructure/database.py",
+      "qualname": "BaseRepository.get_all",
+      "lineno": 178,
+      "className": "BaseRepository"
+    },
+    {
+      "ref": "oms/infrastructure/database.py::BaseRepository.create",
+      "file": "oms/infrastructure/database.py",
+      "qualname": "BaseRepository.create",
+      "lineno": 183,
+      "className": "BaseRepository"
+    },
+    {
+      "ref": "oms/infrastructure/database.py::BaseRepository.update",
+      "file": "oms/infrastructure/database.py",
+      "qualname": "BaseRepository.update",
+      "lineno": 190,
+      "className": "BaseRepository"
+    },
+    {
+      "ref": "oms/infrastructure/database.py::BaseRepository.delete",
+      "file": "oms/infrastructure/database.py",
+      "qualname": "BaseRepository.delete",
+      "lineno": 197,
+      "className": "BaseRepository"
+    },
+    {
+      "ref": "oms/infrastructure/database.py::BaseRepository.commit",
+      "file": "oms/infrastructure/database.py",
+      "qualname": "BaseRepository.commit",
+      "lineno": 206,
+      "className": "BaseRepository"
+    },
+    {
+      "ref": "oms/infrastructure/database.py::BaseRepository.rollback",
+      "file": "oms/infrastructure/database.py",
+      "qualname": "BaseRepository.rollback",
+      "lineno": 210,
+      "className": "BaseRepository"
+    },
+    {
+      "ref": "oms/infrastructure/database.py::CustomerRepository.__init__",
+      "file": "oms/infrastructure/database.py",
+      "qualname": "CustomerRepository.__init__",
+      "lineno": 219,
+      "className": "CustomerRepository"
+    },
+    {
+      "ref": "oms/infrastructure/database.py::CustomerRepository.add_to_order_history",
+      "file": "oms/infrastructure/database.py",
+      "qualname": "CustomerRepository.add_to_order_history",
+      "lineno": 222,
+      "className": "CustomerRepository"
+    },
+    {
+      "ref": "oms/infrastructure/database.py::ProductRepository.__init__",
+      "file": "oms/infrastructure/database.py",
+      "qualname": "ProductRepository.__init__",
+      "lineno": 238,
+      "className": "ProductRepository"
+    },
+    {
+      "ref": "oms/infrastructure/database.py::OrderRepository.__init__",
+      "file": "oms/infrastructure/database.py",
+      "qualname": "OrderRepository.__init__",
+      "lineno": 244,
+      "className": "OrderRepository"
+    },
+    {
+      "ref": "oms/infrastructure/database.py::OrderRepository.get_by_customer",
+      "file": "oms/infrastructure/database.py",
+      "qualname": "OrderRepository.get_by_customer",
+      "lineno": 247,
+      "className": "OrderRepository"
+    },
+    {
+      "ref": "oms/infrastructure/database.py::OrderRepository.get_by_status",
+      "file": "oms/infrastructure/database.py",
+      "qualname": "OrderRepository.get_by_status",
+      "lineno": 254,
+      "className": "OrderRepository"
+    },
+    {
+      "ref": "oms/infrastructure/database.py::PaymentRepository.__init__",
+      "file": "oms/infrastructure/database.py",
+      "qualname": "PaymentRepository.__init__",
+      "lineno": 264,
+      "className": "PaymentRepository"
+    },
+    {
+      "ref": "oms/infrastructure/database.py::PaymentRepository.get_by_order",
+      "file": "oms/infrastructure/database.py",
+      "qualname": "PaymentRepository.get_by_order",
+      "lineno": 267,
+      "className": "PaymentRepository"
+    },
+    {
+      "ref": "oms/infrastructure/database.py::InvoiceRepository.__init__",
+      "file": "oms/infrastructure/database.py",
+      "qualname": "InvoiceRepository.__init__",
+      "lineno": 277,
+      "className": "InvoiceRepository"
+    },
+    {
+      "ref": "oms/infrastructure/database.py::InvoiceRepository.get_by_order",
+      "file": "oms/infrastructure/database.py",
+      "qualname": "InvoiceRepository.get_by_order",
+      "lineno": 280,
+      "className": "InvoiceRepository"
+    },
+    {
+      "ref": "oms/infrastructure/exceptions.py::oms_exception_handler",
+      "file": "oms/infrastructure/exceptions.py",
+      "qualname": "oms_exception_handler",
+      "lineno": 54,
+      "className": null
+    },
+    {
+      "ref": "oms/infrastructure/exceptions.py::validation_exception_handler",
+      "file": "oms/infrastructure/exceptions.py",
+      "qualname": "validation_exception_handler",
+      "lineno": 66,
+      "className": null
+    },
+    {
+      "ref": "oms/infrastructure/exceptions.py::sqlalchemy_exception_handler",
+      "file": "oms/infrastructure/exceptions.py",
+      "qualname": "sqlalchemy_exception_handler",
+      "lineno": 79,
+      "className": null
+    },
+    {
+      "ref": "oms/infrastructure/exceptions.py::generic_exception_handler",
+      "file": "oms/infrastructure/exceptions.py",
+      "qualname": "generic_exception_handler",
+      "lineno": 92,
+      "className": null
+    },
+    {
+      "ref": "oms/infrastructure/exceptions.py::OMSException.__init__",
+      "file": "oms/infrastructure/exceptions.py",
+      "qualname": "OMSException.__init__",
+      "lineno": 15,
+      "className": "OMSException"
+    },
+    {
+      "ref": "oms/infrastructure/exceptions.py::ValidationException.__init__",
+      "file": "oms/infrastructure/exceptions.py",
+      "qualname": "ValidationException.__init__",
+      "lineno": 26,
+      "className": "ValidationException"
+    },
+    {
+      "ref": "oms/infrastructure/exceptions.py::NotFoundException.__init__",
+      "file": "oms/infrastructure/exceptions.py",
+      "qualname": "NotFoundException.__init__",
+      "lineno": 31,
+      "className": "NotFoundException"
+    },
+    {
+      "ref": "oms/infrastructure/exceptions.py::ConflictException.__init__",
+      "file": "oms/infrastructure/exceptions.py",
+      "qualname": "ConflictException.__init__",
+      "lineno": 36,
+      "className": "ConflictException"
+    },
+    {
+      "ref": "oms/infrastructure/exceptions.py::TransactionException.__init__",
+      "file": "oms/infrastructure/exceptions.py",
+      "qualname": "TransactionException.__init__",
+      "lineno": 41,
+      "className": "TransactionException"
+    },
+    {
+      "ref": "oms/infrastructure/exceptions.py::RateLimitExceededException.__init__",
+      "file": "oms/infrastructure/exceptions.py",
+      "qualname": "RateLimitExceededException.__init__",
+      "lineno": 46,
+      "className": "RateLimitExceededException"
+    },
+    {
+      "ref": "oms/infrastructure/exceptions.py::ServiceUnavailableException.__init__",
+      "file": "oms/infrastructure/exceptions.py",
+      "qualname": "ServiceUnavailableException.__init__",
+      "lineno": 51,
+      "className": "ServiceUnavailableException"
+    },
+    {
+      "ref": "oms/repository/customer_repository.py::CustomerRepository.__init__",
+      "file": "oms/repository/customer_repository.py",
+      "qualname": "CustomerRepository.__init__",
+      "lineno": 16,
+      "className": "CustomerRepository"
+    },
+    {
+      "ref": "oms/repository/customer_repository.py::CustomerRepository.get_by_id",
+      "file": "oms/repository/customer_repository.py",
+      "qualname": "CustomerRepository.get_by_id",
+      "lineno": 20,
+      "className": "CustomerRepository"
+    },
+    {
+      "ref": "oms/repository/customer_repository.py::CustomerRepository.get_all",
+      "file": "oms/repository/customer_repository.py",
+      "qualname": "CustomerRepository.get_all",
+      "lineno": 30,
+      "className": "CustomerRepository"
+    },
+    {
+      "ref": "oms/repository/customer_repository.py::CustomerRepository.create",
+      "file": "oms/repository/customer_repository.py",
+      "qualname": "CustomerRepository.create",
+      "lineno": 36,
+      "className": "CustomerRepository"
+    },
+    {
+      "ref": "oms/repository/customer_repository.py::CustomerRepository.update",
+      "file": "oms/repository/customer_repository.py",
+      "qualname": "CustomerRepository.update",
+      "lineno": 52,
+      "className": "CustomerRepository"
+    },
+    {
+      "ref": "oms/repository/customer_repository.py::CustomerRepository.delete",
+      "file": "oms/repository/customer_repository.py",
+      "qualname": "CustomerRepository.delete",
+      "lineno": 69,
+      "className": "CustomerRepository"
+    },
+    {
+      "ref": "oms/repository/customer_repository.py::CustomerRepository.add_to_order_history",
+      "file": "oms/repository/customer_repository.py",
+      "qualname": "CustomerRepository.add_to_order_history",
+      "lineno": 78,
+      "className": "CustomerRepository"
+    },
+    {
+      "ref": "oms/repository/customer_repository.py::CustomerRepository._get_model",
+      "file": "oms/repository/customer_repository.py",
+      "qualname": "CustomerRepository._get_model",
+      "lineno": 92,
+      "className": "CustomerRepository"
+    },
+    {
+      "ref": "oms/repository/customer_repository.py::CustomerRepository._to_domain",
+      "file": "oms/repository/customer_repository.py",
+      "qualname": "CustomerRepository._to_domain",
+      "lineno": 99,
+      "className": "CustomerRepository"
+    },
+    {
+      "ref": "oms/repository/invoice_repository.py::InvoiceRepository.__init__",
+      "file": "oms/repository/invoice_repository.py",
+      "qualname": "InvoiceRepository.__init__",
+      "lineno": 18,
+      "className": "InvoiceRepository"
+    },
+    {
+      "ref": "oms/repository/invoice_repository.py::InvoiceRepository.get_by_id",
+      "file": "oms/repository/invoice_repository.py",
+      "qualname": "InvoiceRepository.get_by_id",
+      "lineno": 22,
+      "className": "InvoiceRepository"
+    },
+    {
+      "ref": "oms/repository/invoice_repository.py::InvoiceRepository.get_all",
+      "file": "oms/repository/invoice_repository.py",
+      "qualname": "InvoiceRepository.get_all",
+      "lineno": 32,
+      "className": "InvoiceRepository"
+    },
+    {
+      "ref": "oms/repository/invoice_repository.py::InvoiceRepository.get_by_order",
+      "file": "oms/repository/invoice_repository.py",
+      "qualname": "InvoiceRepository.get_by_order",
+      "lineno": 38,
+      "className": "InvoiceRepository"
+    },
+    {
+      "ref": "oms/repository/invoice_repository.py::InvoiceRepository.create",
+      "file": "oms/repository/invoice_repository.py",
+      "qualname": "InvoiceRepository.create",
+      "lineno": 48,
+      "className": "InvoiceRepository"
+    },
+    {
+      "ref": "oms/repository/invoice_repository.py::InvoiceRepository.update_status",
+      "file": "oms/repository/invoice_repository.py",
+      "qualname": "InvoiceRepository.update_status",
+      "lineno": 72,
+      "className": "InvoiceRepository"
+    },
+    {
+      "ref": "oms/repository/invoice_repository.py::InvoiceRepository.delete",
+      "file": "oms/repository/invoice_repository.py",
+      "qualname": "InvoiceRepository.delete",
+      "lineno": 83,
+      "className": "InvoiceRepository"
+    },
+    {
+      "ref": "oms/repository/invoice_repository.py::InvoiceRepository._get_model",
+      "file": "oms/repository/invoice_repository.py",
+      "qualname": "InvoiceRepository._get_model",
+      "lineno": 92,
+      "className": "InvoiceRepository"
+    },
+    {
+      "ref": "oms/repository/invoice_repository.py::InvoiceRepository._to_domain",
+      "file": "oms/repository/invoice_repository.py",
+      "qualname": "InvoiceRepository._to_domain",
+      "lineno": 99,
+      "className": "InvoiceRepository"
+    },
+    {
+      "ref": "oms/repository/order_repository.py::OrderRepository.__init__",
+      "file": "oms/repository/order_repository.py",
+      "qualname": "OrderRepository.__init__",
+      "lineno": 18,
+      "className": "OrderRepository"
+    },
+    {
+      "ref": "oms/repository/order_repository.py::OrderRepository.get_by_id",
+      "file": "oms/repository/order_repository.py",
+      "qualname": "OrderRepository.get_by_id",
+      "lineno": 22,
+      "className": "OrderRepository"
+    },
+    {
+      "ref": "oms/repository/order_repository.py::OrderRepository.get_all",
+      "file": "oms/repository/order_repository.py",
+      "qualname": "OrderRepository.get_all",
+      "lineno": 32,
+      "className": "OrderRepository"
+    },
+    {
+      "ref": "oms/repository/order_repository.py::OrderRepository.get_by_customer",
+      "file": "oms/repository/order_repository.py",
+      "qualname": "OrderRepository.get_by_customer",
+      "lineno": 38,
+      "className": "OrderRepository"
+    },
+    {
+      "ref": "oms/repository/order_repository.py::OrderRepository.get_by_status",
+      "file": "oms/repository/order_repository.py",
+      "qualname": "OrderRepository.get_by_status",
+      "lineno": 46,
+      "className": "OrderRepository"
+    },
+    {
+      "ref": "oms/repository/order_repository.py::OrderRepository.create",
+      "file": "oms/repository/order_repository.py",
+      "qualname": "OrderRepository.create",
+      "lineno": 54,
+      "className": "OrderRepository"
+    },
+    {
+      "ref": "oms/repository/order_repository.py::OrderRepository.update_status",
+      "file": "oms/repository/order_repository.py",
+      "qualname": "OrderRepository.update_status",
+      "lineno": 79,
+      "className": "OrderRepository"
+    },
+    {
+      "ref": "oms/repository/order_repository.py::OrderRepository.set_invoice_ref",
+      "file": "oms/repository/order_repository.py",
+      "qualname": "OrderRepository.set_invoice_ref",
+      "lineno": 92,
+      "className": "OrderRepository"
+    },
+    {
+      "ref": "oms/repository/order_repository.py::OrderRepository.delete",
+      "file": "oms/repository/order_repository.py",
+      "qualname": "OrderRepository.delete",
+      "lineno": 105,
+      "className": "OrderRepository"
+    },
+    {
+      "ref": "oms/repository/order_repository.py::OrderRepository._get_model",
+      "file": "oms/repository/order_repository.py",
+      "qualname": "OrderRepository._get_model",
+      "lineno": 114,
+      "className": "OrderRepository"
+    },
+    {
+      "ref": "oms/repository/order_repository.py::OrderRepository._to_domain",
+      "file": "oms/repository/order_repository.py",
+      "qualname": "OrderRepository._to_domain",
+      "lineno": 121,
+      "className": "OrderRepository"
+    },
+    {
+      "ref": "oms/repository/payment_repository.py::PaymentRepository.__init__",
+      "file": "oms/repository/payment_repository.py",
+      "qualname": "PaymentRepository.__init__",
+      "lineno": 18,
+      "className": "PaymentRepository"
+    },
+    {
+      "ref": "oms/repository/payment_repository.py::PaymentRepository.get_by_id",
+      "file": "oms/repository/payment_repository.py",
+      "qualname": "PaymentRepository.get_by_id",
+      "lineno": 22,
+      "className": "PaymentRepository"
+    },
+    {
+      "ref": "oms/repository/payment_repository.py::PaymentRepository.get_all",
+      "file": "oms/repository/payment_repository.py",
+      "qualname": "PaymentRepository.get_all",
+      "lineno": 32,
+      "className": "PaymentRepository"
+    },
+    {
+      "ref": "oms/repository/payment_repository.py::PaymentRepository.get_by_order",
+      "file": "oms/repository/payment_repository.py",
+      "qualname": "PaymentRepository.get_by_order",
+      "lineno": 38,
+      "className": "PaymentRepository"
+    },
+    {
+      "ref": "oms/repository/payment_repository.py::PaymentRepository.create",
+      "file": "oms/repository/payment_repository.py",
+      "qualname": "PaymentRepository.create",
+      "lineno": 46,
+      "className": "PaymentRepository"
+    },
+    {
+      "ref": "oms/repository/payment_repository.py::PaymentRepository.update_status",
+      "file": "oms/repository/payment_repository.py",
+      "qualname": "PaymentRepository.update_status",
+      "lineno": 60,
+      "className": "PaymentRepository"
+    },
+    {
+      "ref": "oms/repository/payment_repository.py::PaymentRepository.delete",
+      "file": "oms/repository/payment_repository.py",
+      "qualname": "PaymentRepository.delete",
+      "lineno": 71,
+      "className": "PaymentRepository"
+    },
+    {
+      "ref": "oms/repository/payment_repository.py::PaymentRepository._get_model",
+      "file": "oms/repository/payment_repository.py",
+      "qualname": "PaymentRepository._get_model",
+      "lineno": 80,
+      "className": "PaymentRepository"
+    },
+    {
+      "ref": "oms/repository/payment_repository.py::PaymentRepository._to_domain",
+      "file": "oms/repository/payment_repository.py",
+      "qualname": "PaymentRepository._to_domain",
+      "lineno": 87,
+      "className": "PaymentRepository"
+    },
+    {
+      "ref": "oms/repository/product_repository.py::ProductRepository.__init__",
+      "file": "oms/repository/product_repository.py",
+      "qualname": "ProductRepository.__init__",
+      "lineno": 17,
+      "className": "ProductRepository"
+    },
+    {
+      "ref": "oms/repository/product_repository.py::ProductRepository.get_by_id",
+      "file": "oms/repository/product_repository.py",
+      "qualname": "ProductRepository.get_by_id",
+      "lineno": 21,
+      "className": "ProductRepository"
+    },
+    {
+      "ref": "oms/repository/product_repository.py::ProductRepository.get_all",
+      "file": "oms/repository/product_repository.py",
+      "qualname": "ProductRepository.get_all",
+      "lineno": 31,
+      "className": "ProductRepository"
+    },
+    {
+      "ref": "oms/repository/product_repository.py::ProductRepository.create",
+      "file": "oms/repository/product_repository.py",
+      "qualname": "ProductRepository.create",
+      "lineno": 37,
+      "className": "ProductRepository"
+    },
+    {
+      "ref": "oms/repository/product_repository.py::ProductRepository.update",
+      "file": "oms/repository/product_repository.py",
+      "qualname": "ProductRepository.update",
+      "lineno": 49,
+      "className": "ProductRepository"
+    },
+    {
+      "ref": "oms/repository/product_repository.py::ProductRepository.delete",
+      "file": "oms/repository/product_repository.py",
+      "qualname": "ProductRepository.delete",
+      "lineno": 63,
+      "className": "ProductRepository"
+    },
+    {
+      "ref": "oms/repository/product_repository.py::ProductRepository._get_model",
+      "file": "oms/repository/product_repository.py",
+      "qualname": "ProductRepository._get_model",
+      "lineno": 72,
+      "className": "ProductRepository"
+    },
+    {
+      "ref": "oms/repository/product_repository.py::ProductRepository._to_domain",
+      "file": "oms/repository/product_repository.py",
+      "qualname": "ProductRepository._to_domain",
+      "lineno": 79,
+      "className": "ProductRepository"
+    },
+    {
+      "ref": "oms/service/customer_service.py::CustomerService.__init__",
+      "file": "oms/service/customer_service.py",
+      "qualname": "CustomerService.__init__",
+      "lineno": 19,
+      "className": "CustomerService"
+    },
+    {
+      "ref": "oms/service/customer_service.py::CustomerService.get_by_id",
+      "file": "oms/service/customer_service.py",
+      "qualname": "CustomerService.get_by_id",
+      "lineno": 24,
+      "className": "CustomerService"
+    },
+    {
+      "ref": "oms/service/customer_service.py::CustomerService.get_all",
+      "file": "oms/service/customer_service.py",
+      "qualname": "CustomerService.get_all",
+      "lineno": 40,
+      "className": "CustomerService"
+    },
+    {
+      "ref": "oms/service/customer_service.py::CustomerService.create",
+      "file": "oms/service/customer_service.py",
+      "qualname": "CustomerService.create",
+      "lineno": 44,
+      "className": "CustomerService"
+    },
+    {
+      "ref": "oms/service/customer_service.py::CustomerService.update",
+      "file": "oms/service/customer_service.py",
+      "qualname": "CustomerService.update",
+      "lineno": 54,
+      "className": "CustomerService"
+    },
+    {
+      "ref": "oms/service/customer_service.py::CustomerService.delete",
+      "file": "oms/service/customer_service.py",
+      "qualname": "CustomerService.delete",
+      "lineno": 70,
+      "className": "CustomerService"
+    },
+    {
+      "ref": "oms/service/customer_service.py::CustomerService.add_to_order_history",
+      "file": "oms/service/customer_service.py",
+      "qualname": "CustomerService.add_to_order_history",
+      "lineno": 76,
+      "className": "CustomerService"
+    },
+    {
+      "ref": "oms/service/invoice_service.py::InvoiceService.__init__",
+      "file": "oms/service/invoice_service.py",
+      "qualname": "InvoiceService.__init__",
+      "lineno": 24,
+      "className": "InvoiceService"
+    },
+    {
+      "ref": "oms/service/invoice_service.py::InvoiceService.get_by_id",
+      "file": "oms/service/invoice_service.py",
+      "qualname": "InvoiceService.get_by_id",
+      "lineno": 31,
+      "className": "InvoiceService"
+    },
+    {
+      "ref": "oms/service/invoice_service.py::InvoiceService.get_all",
+      "file": "oms/service/invoice_service.py",
+      "qualname": "InvoiceService.get_all",
+      "lineno": 47,
+      "className": "InvoiceService"
+    },
+    {
+      "ref": "oms/service/invoice_service.py::InvoiceService.get_by_order",
+      "file": "oms/service/invoice_service.py",
+      "qualname": "InvoiceService.get_by_order",
+      "lineno": 51,
+      "className": "InvoiceService"
+    },
+    {
+      "ref": "oms/service/invoice_service.py::InvoiceService.create",
+      "file": "oms/service/invoice_service.py",
+      "qualname": "InvoiceService.create",
+      "lineno": 58,
+      "className": "InvoiceService"
+    },
+    {
+      "ref": "oms/service/invoice_service.py::InvoiceService.update_status",
+      "file": "oms/service/invoice_service.py",
+      "qualname": "InvoiceService.update_status",
+      "lineno": 131,
+      "className": "InvoiceService"
+    },
+    {
+      "ref": "oms/service/invoice_service.py::InvoiceService.delete",
+      "file": "oms/service/invoice_service.py",
+      "qualname": "InvoiceService.delete",
+      "lineno": 162,
+      "className": "InvoiceService"
+    },
+    {
+      "ref": "oms/service/order_service.py::OrderService.__init__",
+      "file": "oms/service/order_service.py",
+      "qualname": "OrderService.__init__",
+      "lineno": 36,
+      "className": "OrderService"
+    },
+    {
+      "ref": "oms/service/order_service.py::OrderService.get_by_id",
+      "file": "oms/service/order_service.py",
+      "qualname": "OrderService.get_by_id",
+      "lineno": 43,
+      "className": "OrderService"
+    },
+    {
+      "ref": "oms/service/order_service.py::OrderService.get_by_status",
+      "file": "oms/service/order_service.py",
+      "qualname": "OrderService.get_by_status",
+      "lineno": 55,
+      "className": "OrderService"
+    },
+    {
+      "ref": "oms/service/order_service.py::OrderService.create",
+      "file": "oms/service/order_service.py",
+      "qualname": "OrderService.create",
+      "lineno": 71,
+      "className": "OrderService"
+    },
+    {
+      "ref": "oms/service/order_service.py::OrderService.get_all",
+      "file": "oms/service/order_service.py",
+      "qualname": "OrderService.get_all",
+      "lineno": 63,
+      "className": "OrderService"
+    },
+    {
+      "ref": "oms/service/order_service.py::OrderService.get_by_customer",
+      "file": "oms/service/order_service.py",
+      "qualname": "OrderService.get_by_customer",
+      "lineno": 67,
+      "className": "OrderService"
+    },
+    {
+      "ref": "oms/service/order_service.py::OrderService.update_status",
+      "file": "oms/service/order_service.py",
+      "qualname": "OrderService.update_status",
+      "lineno": 138,
+      "className": "OrderService"
+    },
+    {
+      "ref": "oms/service/order_service.py::OrderService.set_invoice_ref",
+      "file": "oms/service/order_service.py",
+      "qualname": "OrderService.set_invoice_ref",
+      "lineno": 168,
+      "className": "OrderService"
+    },
+    {
+      "ref": "oms/service/order_service.py::OrderService.delete",
+      "file": "oms/service/order_service.py",
+      "qualname": "OrderService.delete",
+      "lineno": 185,
+      "className": "OrderService"
+    },
+    {
+      "ref": "oms/service/order_service.py::OrderService._validate_state_transition",
+      "file": "oms/service/order_service.py",
+      "qualname": "OrderService._validate_state_transition",
+      "lineno": 196,
+      "className": "OrderService"
+    },
+    {
+      "ref": "oms/service/payment_service.py::PaymentService.__init__",
+      "file": "oms/service/payment_service.py",
+      "qualname": "PaymentService.__init__",
+      "lineno": 22,
+      "className": "PaymentService"
+    },
+    {
+      "ref": "oms/service/payment_service.py::PaymentService.get_by_id",
+      "file": "oms/service/payment_service.py",
+      "qualname": "PaymentService.get_by_id",
+      "lineno": 29,
+      "className": "PaymentService"
+    },
+    {
+      "ref": "oms/service/payment_service.py::PaymentService.get_all",
+      "file": "oms/service/payment_service.py",
+      "qualname": "PaymentService.get_all",
+      "lineno": 45,
+      "className": "PaymentService"
+    },
+    {
+      "ref": "oms/service/payment_service.py::PaymentService.get_by_order",
+      "file": "oms/service/payment_service.py",
+      "qualname": "PaymentService.get_by_order",
+      "lineno": 49,
+      "className": "PaymentService"
+    },
+    {
+      "ref": "oms/service/payment_service.py::PaymentService.create",
+      "file": "oms/service/payment_service.py",
+      "qualname": "PaymentService.create",
+      "lineno": 53,
+      "className": "PaymentService"
+    },
+    {
+      "ref": "oms/service/payment_service.py::PaymentService.verify_payment",
+      "file": "oms/service/payment_service.py",
+      "qualname": "PaymentService.verify_payment",
+      "lineno": 92,
+      "className": "PaymentService"
+    },
+    {
+      "ref": "oms/service/payment_service.py::PaymentService.delete",
+      "file": "oms/service/payment_service.py",
+      "qualname": "PaymentService.delete",
+      "lineno": 122,
+      "className": "PaymentService"
+    },
+    {
+      "ref": "oms/service/product_service.py::ProductService.__init__",
+      "file": "oms/service/product_service.py",
+      "qualname": "ProductService.__init__",
+      "lineno": 19,
+      "className": "ProductService"
+    },
+    {
+      "ref": "oms/service/product_service.py::ProductService.get_by_id",
+      "file": "oms/service/product_service.py",
+      "qualname": "ProductService.get_by_id",
+      "lineno": 24,
+      "className": "ProductService"
+    },
+    {
+      "ref": "oms/service/product_service.py::ProductService.get_all",
+      "file": "oms/service/product_service.py",
+      "qualname": "ProductService.get_all",
+      "lineno": 40,
+      "className": "ProductService"
+    },
+    {
+      "ref": "oms/service/product_service.py::ProductService.create",
+      "file": "oms/service/product_service.py",
+      "qualname": "ProductService.create",
+      "lineno": 44,
+      "className": "ProductService"
+    },
+    {
+      "ref": "oms/service/product_service.py::ProductService.update",
+      "file": "oms/service/product_service.py",
+      "qualname": "ProductService.update",
+      "lineno": 54,
+      "className": "ProductService"
+    },
+    {
+      "ref": "oms/service/product_service.py::ProductService.delete",
+      "file": "oms/service/product_service.py",
+      "qualname": "ProductService.delete",
+      "lineno": 70,
+      "className": "ProductService"
+    },
+    {
+      "ref": "oms/infrastructure/cache/memory_cache.py::MemoryCache.__init__",
+      "file": "oms/infrastructure/cache/memory_cache.py",
+      "qualname": "MemoryCache.__init__",
+      "lineno": 20,
+      "className": "MemoryCache"
+    },
+    {
+      "ref": "oms/infrastructure/cache/memory_cache.py::MemoryCache.get_instance",
+      "file": "oms/infrastructure/cache/memory_cache.py",
+      "qualname": "MemoryCache.get_instance",
+      "lineno": 24,
+      "className": "MemoryCache"
+    },
+    {
+      "ref": "oms/infrastructure/cache/memory_cache.py::MemoryCache.get",
+      "file": "oms/infrastructure/cache/memory_cache.py",
+      "qualname": "MemoryCache.get",
+      "lineno": 30,
+      "className": "MemoryCache"
+    },
+    {
+      "ref": "oms/infrastructure/cache/memory_cache.py::MemoryCache.set",
+      "file": "oms/infrastructure/cache/memory_cache.py",
+      "qualname": "MemoryCache.set",
+      "lineno": 45,
+      "className": "MemoryCache"
+    },
+    {
+      "ref": "oms/infrastructure/cache/memory_cache.py::MemoryCache.delete",
+      "file": "oms/infrastructure/cache/memory_cache.py",
+      "qualname": "MemoryCache.delete",
+      "lineno": 55,
+      "className": "MemoryCache"
+    },
+    {
+      "ref": "oms/infrastructure/cache/memory_cache.py::MemoryCache.clear",
+      "file": "oms/infrastructure/cache/memory_cache.py",
+      "qualname": "MemoryCache.clear",
+      "lineno": 65,
+      "className": "MemoryCache"
+    },
+    {
+      "ref": "oms/infrastructure/cache/memory_cache.py::MemoryCache.invalidate_pattern",
+      "file": "oms/infrastructure/cache/memory_cache.py",
+      "qualname": "MemoryCache.invalidate_pattern",
+      "lineno": 69,
+      "className": "MemoryCache"
+    },
+    {
+      "ref": "oms/infrastructure/event/rate_limiter.py::RateLimiter.__init__",
+      "file": "oms/infrastructure/event/rate_limiter.py",
+      "qualname": "RateLimiter.__init__",
+      "lineno": 20,
+      "className": "RateLimiter"
+    },
+    {
+      "ref": "oms/infrastructure/event/rate_limiter.py::RateLimiter.get_instance",
+      "file": "oms/infrastructure/event/rate_limiter.py",
+      "qualname": "RateLimiter.get_instance",
+      "lineno": 25,
+      "className": "RateLimiter"
+    },
+    {
+      "ref": "oms/infrastructure/event/rate_limiter.py::RateLimiter.is_allowed",
+      "file": "oms/infrastructure/event/rate_limiter.py",
+      "qualname": "RateLimiter.is_allowed",
+      "lineno": 31,
+      "className": "RateLimiter"
+    },
+    {
+      "ref": "oms/infrastructure/event/rate_limiter.py::RateLimiter.get_remaining",
+      "file": "oms/infrastructure/event/rate_limiter.py",
+      "qualname": "RateLimiter.get_remaining",
+      "lineno": 58,
+      "className": "RateLimiter"
+    },
+    {
+      "ref": "oms/infrastructure/event/rate_limiter.py::RateLimiter.reset",
+      "file": "oms/infrastructure/event/rate_limiter.py",
+      "qualname": "RateLimiter.reset",
+      "lineno": 75,
+      "className": "RateLimiter"
+    }
+  ],
+  "edges": [
+    {
+      "src": "oms/app.py::create_app",
+      "dst": "oms/infrastructure/exceptions.py::OMSException.__init__",
+      "kind": "REGISTERED",
+      "detail": "OMSException"
+    },
+    {
+      "src": "oms/app.py::create_app",
+      "dst": "oms/infrastructure/exceptions.py::oms_exception_handler",
+      "kind": "REGISTERED",
+      "detail": "oms_exception_handler"
+    },
+    {
+      "src": "oms/app.py::create_app",
+      "dst": "oms/infrastructure/exceptions.py::validation_exception_handler",
+      "kind": "REGISTERED",
+      "detail": "validation_exception_handler"
+    },
+    {
+      "src": "oms/app.py::create_app",
+      "dst": "oms/infrastructure/exceptions.py::sqlalchemy_exception_handler",
+      "kind": "REGISTERED",
+      "detail": "sqlalchemy_exception_handler"
+    },
+    {
+      "src": "oms/app.py::create_app",
+      "dst": "oms/infrastructure/exceptions.py::generic_exception_handler",
+      "kind": "REGISTERED",
+      "detail": "generic_exception_handler"
+    },
+    {
+      "src": "oms/server.py::run",
+      "dst": "oms/infrastructure/cache/memory_cache.py::MemoryCache.__init__",
+      "kind": "REGISTERED",
+      "detail": "MemoryCache"
+    },
+    {
+      "src": "oms/server.py::run",
+      "dst": "oms/infrastructure/event/rate_limiter.py::RateLimiter.__init__",
+      "kind": "REGISTERED",
+      "detail": "RateLimiter"
+    },
+    {
+      "src": "oms/server.py::run",
+      "dst": "oms/infrastructure/cache/memory_cache.py::MemoryCache.get_instance",
+      "kind": "CALLS",
+      "detail": "MemoryCache.get_instance"
+    },
+    {
+      "src": "oms/server.py::run",
+      "dst": "oms/infrastructure/event/rate_limiter.py::RateLimiter.get_instance",
+      "kind": "CALLS",
+      "detail": "RateLimiter.get_instance"
+    },
+    {
+      "src": "oms/server.py::run",
+      "dst": "oms/infrastructure/database.py::init_db",
+      "kind": "CALLS",
+      "detail": "init_db"
+    },
+    {
+      "src": "oms/controller/customer_controller.py::get_customer_service",
+      "dst": "oms/service/customer_service.py::CustomerService.__init__",
+      "kind": "REGISTERED",
+      "detail": "CustomerService"
+    },
+    {
+      "src": "oms/controller/customer_controller.py::get_customer_service",
+      "dst": "oms/infrastructure/database.py::get_async_session",
+      "kind": "REGISTERED",
+      "detail": "get_async_session"
+    },
+    {
+      "src": "oms/controller/customer_controller.py::get_customer_service",
+      "dst": "oms/service/customer_service.py::CustomerService.__init__",
+      "kind": "CALLS",
+      "detail": "CustomerService"
+    },
+    {
+      "src": "oms/controller/customer_controller.py::list_customers",
+      "dst": "oms/service/customer_service.py::CustomerService.__init__",
+      "kind": "REGISTERED",
+      "detail": "CustomerService"
+    },
+    {
+      "src": "oms/controller/customer_controller.py::list_customers",
+      "dst": "oms/controller/customer_controller.py::get_customer_service",
+      "kind": "REGISTERED",
+      "detail": "get_customer_service"
+    },
+    {
+      "src": "oms/controller/customer_controller.py::list_customers",
+      "dst": "oms/service/customer_service.py::CustomerService.get_all",
+      "kind": "CALLS",
+      "detail": "service.get_all"
+    },
+    {
+      "src": "oms/controller/customer_controller.py::get_customer",
+      "dst": "oms/service/customer_service.py::CustomerService.__init__",
+      "kind": "REGISTERED",
+      "detail": "CustomerService"
+    },
+    {
+      "src": "oms/controller/customer_controller.py::get_customer",
+      "dst": "oms/controller/customer_controller.py::get_customer_service",
+      "kind": "REGISTERED",
+      "detail": "get_customer_service"
+    },
+    {
+      "src": "oms/controller/customer_controller.py::get_customer",
+      "dst": "oms/infrastructure/exceptions.py::NotFoundException.__init__",
+      "kind": "REGISTERED",
+      "detail": "NotFoundException"
+    },
+    {
+      "src": "oms/controller/customer_controller.py::get_customer",
+      "dst": "oms/service/customer_service.py::CustomerService.get_by_id",
+      "kind": "CALLS",
+      "detail": "service.get_by_id"
+    },
+    {
+      "src": "oms/controller/customer_controller.py::create_customer",
+      "dst": "oms/service/customer_service.py::CustomerService.__init__",
+      "kind": "REGISTERED",
+      "detail": "CustomerService"
+    },
+    {
+      "src": "oms/controller/customer_controller.py::create_customer",
+      "dst": "oms/controller/customer_controller.py::get_customer_service",
+      "kind": "REGISTERED",
+      "detail": "get_customer_service"
+    },
+    {
+      "src": "oms/controller/customer_controller.py::create_customer",
+      "dst": "oms/infrastructure/event/rate_limiter.py::RateLimiter.__init__",
+      "kind": "REGISTERED",
+      "detail": "RateLimiter"
+    },
+    {
+      "src": "oms/controller/customer_controller.py::create_customer",
+      "dst": "oms/infrastructure/event/rate_limiter.py::RateLimiter.get_instance",
+      "kind": "CALLS",
+      "detail": "RateLimiter.get_instance"
+    },
+    {
+      "src": "oms/controller/customer_controller.py::create_customer",
+      "dst": "oms/service/customer_service.py::CustomerService.create",
+      "kind": "CALLS",
+      "detail": "service.create"
+    },
+    {
+      "src": "oms/controller/customer_controller.py::update_customer",
+      "dst": "oms/service/customer_service.py::CustomerService.__init__",
+      "kind": "REGISTERED",
+      "detail": "CustomerService"
+    },
+    {
+      "src": "oms/controller/customer_controller.py::update_customer",
+      "dst": "oms/controller/customer_controller.py::get_customer_service",
+      "kind": "REGISTERED",
+      "detail": "get_customer_service"
+    },
+    {
+      "src": "oms/controller/customer_controller.py::update_customer",
+      "dst": "oms/service/customer_service.py::CustomerService.update",
+      "kind": "CALLS",
+      "detail": "service.update"
+    },
+    {
+      "src": "oms/controller/customer_controller.py::delete_customer",
+      "dst": "oms/service/customer_service.py::CustomerService.__init__",
+      "kind": "REGISTERED",
+      "detail": "CustomerService"
+    },
+    {
+      "src": "oms/controller/customer_controller.py::delete_customer",
+      "dst": "oms/controller/customer_controller.py::get_customer_service",
+      "kind": "REGISTERED",
+      "detail": "get_customer_service"
+    },
+    {
+      "src": "oms/controller/customer_controller.py::delete_customer",
+      "dst": "oms/service/customer_service.py::CustomerService.delete",
+      "kind": "CALLS",
+      "detail": "service.delete"
+    },
+    {
+      "src": "oms/controller/customer_controller.py::delete_customer",
+      "dst": "oms/infrastructure/exceptions.py::NotFoundException.__init__",
+      "kind": "CALLS",
+      "detail": "NotFoundException"
+    },
+    {
+      "src": "oms/controller/invoice_controller.py::get_invoice_service",
+      "dst": "oms/service/invoice_service.py::InvoiceService.__init__",
+      "kind": "REGISTERED",
+      "detail": "InvoiceService"
+    },
+    {
+      "src": "oms/controller/invoice_controller.py::get_invoice_service",
+      "dst": "oms/infrastructure/database.py::get_async_session",
+      "kind": "REGISTERED",
+      "detail": "get_async_session"
+    },
+    {
+      "src": "oms/controller/invoice_controller.py::get_invoice_service",
+      "dst": "oms/service/invoice_service.py::InvoiceService.__init__",
+      "kind": "CALLS",
+      "detail": "InvoiceService"
+    },
+    {
+      "src": "oms/controller/invoice_controller.py::list_invoices",
+      "dst": "oms/service/invoice_service.py::InvoiceService.__init__",
+      "kind": "REGISTERED",
+      "detail": "InvoiceService"
+    },
+    {
+      "src": "oms/controller/invoice_controller.py::list_invoices",
+      "dst": "oms/controller/invoice_controller.py::get_invoice_service",
+      "kind": "REGISTERED",
+      "detail": "get_invoice_service"
+    },
+    {
+      "src": "oms/controller/invoice_controller.py::list_invoices",
+      "dst": "oms/service/invoice_service.py::InvoiceService.get_all",
+      "kind": "CALLS",
+      "detail": "service.get_all"
+    },
+    {
+      "src": "oms/controller/invoice_controller.py::get_invoice",
+      "dst": "oms/service/invoice_service.py::InvoiceService.__init__",
+      "kind": "REGISTERED",
+      "detail": "InvoiceService"
+    },
+    {
+      "src": "oms/controller/invoice_controller.py::get_invoice",
+      "dst": "oms/controller/invoice_controller.py::get_invoice_service",
+      "kind": "REGISTERED",
+      "detail": "get_invoice_service"
+    },
+    {
+      "src": "oms/controller/invoice_controller.py::get_invoice",
+      "dst": "oms/service/invoice_service.py::InvoiceService.get_by_id",
+      "kind": "CALLS",
+      "detail": "service.get_by_id"
+    },
+    {
+      "src": "oms/controller/invoice_controller.py::get_invoice_by_order",
+      "dst": "oms/service/invoice_service.py::InvoiceService.__init__",
+      "kind": "REGISTERED",
+      "detail": "InvoiceService"
+    },
+    {
+      "src": "oms/controller/invoice_controller.py::get_invoice_by_order",
+      "dst": "oms/controller/invoice_controller.py::get_invoice_service",
+      "kind": "REGISTERED",
+      "detail": "get_invoice_service"
+    },
+    {
+      "src": "oms/controller/invoice_controller.py::get_invoice_by_order",
+      "dst": "oms/service/invoice_service.py::InvoiceService.get_by_order",
+      "kind": "CALLS",
+      "detail": "service.get_by_order"
+    },
+    {
+      "src": "oms/controller/invoice_controller.py::create_invoice",
+      "dst": "oms/service/invoice_service.py::InvoiceService.__init__",
+      "kind": "REGISTERED",
+      "detail": "InvoiceService"
+    },
+    {
+      "src": "oms/controller/invoice_controller.py::create_invoice",
+      "dst": "oms/controller/invoice_controller.py::get_invoice_service",
+      "kind": "REGISTERED",
+      "detail": "get_invoice_service"
+    },
+    {
+      "src": "oms/controller/invoice_controller.py::create_invoice",
+      "dst": "oms/infrastructure/event/rate_limiter.py::RateLimiter.__init__",
+      "kind": "REGISTERED",
+      "detail": "RateLimiter"
+    },
+    {
+      "src": "oms/controller/invoice_controller.py::create_invoice",
+      "dst": "oms/infrastructure/event/rate_limiter.py::RateLimiter.get_instance",
+      "kind": "CALLS",
+      "detail": "RateLimiter.get_instance"
+    },
+    {
+      "src": "oms/controller/invoice_controller.py::create_invoice",
+      "dst": "oms/service/invoice_service.py::InvoiceService.create",
+      "kind": "CALLS",
+      "detail": "service.create"
+    },
+    {
+      "src": "oms/controller/invoice_controller.py::update_invoice_status",
+      "dst": "oms/service/invoice_service.py::InvoiceService.__init__",
+      "kind": "REGISTERED",
+      "detail": "InvoiceService"
+    },
+    {
+      "src": "oms/controller/invoice_controller.py::update_invoice_status",
+      "dst": "oms/controller/invoice_controller.py::get_invoice_service",
+      "kind": "REGISTERED",
+      "detail": "get_invoice_service"
+    },
+    {
+      "src": "oms/controller/invoice_controller.py::update_invoice_status",
+      "dst": "oms/service/invoice_service.py::InvoiceService.update_status",
+      "kind": "CALLS",
+      "detail": "service.update_status"
+    },
+    {
+      "src": "oms/controller/invoice_controller.py::delete_invoice",
+      "dst": "oms/service/invoice_service.py::InvoiceService.__init__",
+      "kind": "REGISTERED",
+      "detail": "InvoiceService"
+    },
+    {
+      "src": "oms/controller/invoice_controller.py::delete_invoice",
+      "dst": "oms/controller/invoice_controller.py::get_invoice_service",
+      "kind": "REGISTERED",
+      "detail": "get_invoice_service"
+    },
+    {
+      "src": "oms/controller/invoice_controller.py::delete_invoice",
+      "dst": "oms/service/invoice_service.py::InvoiceService.delete",
+      "kind": "CALLS",
+      "detail": "service.delete"
+    },
+    {
+      "src": "oms/controller/invoice_controller.py::delete_invoice",
+      "dst": "oms/infrastructure/exceptions.py::NotFoundException.__init__",
+      "kind": "CALLS",
+      "detail": "NotFoundException"
+    },
+    {
+      "src": "oms/controller/order_controller.py::get_order_service",
+      "dst": "oms/service/order_service.py::OrderService.__init__",
+      "kind": "REGISTERED",
+      "detail": "OrderService"
+    },
+    {
+      "src": "oms/controller/order_controller.py::get_order_service",
+      "dst": "oms/infrastructure/database.py::get_async_session",
+      "kind": "REGISTERED",
+      "detail": "get_async_session"
+    },
+    {
+      "src": "oms/controller/order_controller.py::get_order_service",
+      "dst": "oms/service/order_service.py::OrderService.__init__",
+      "kind": "CALLS",
+      "detail": "OrderService"
+    },
+    {
+      "src": "oms/controller/order_controller.py::list_orders",
+      "dst": "oms/service/order_service.py::OrderService.__init__",
+      "kind": "REGISTERED",
+      "detail": "OrderService"
+    },
+    {
+      "src": "oms/controller/order_controller.py::list_orders",
+      "dst": "oms/controller/order_controller.py::get_order_service",
+      "kind": "REGISTERED",
+      "detail": "get_order_service"
+    },
+    {
+      "src": "oms/controller/order_controller.py::list_orders",
+      "dst": "oms/service/order_service.py::OrderService.get_all",
+      "kind": "CALLS",
+      "detail": "service.get_all"
+    },
+    {
+      "src": "oms/controller/order_controller.py::get_order",
+      "dst": "oms/service/order_service.py::OrderService.__init__",
+      "kind": "REGISTERED",
+      "detail": "OrderService"
+    },
+    {
+      "src": "oms/controller/order_controller.py::get_order",
+      "dst": "oms/controller/order_controller.py::get_order_service",
+      "kind": "REGISTERED",
+      "detail": "get_order_service"
+    },
+    {
+      "src": "oms/controller/order_controller.py::get_order",
+      "dst": "oms/service/order_service.py::OrderService.get_by_id",
+      "kind": "CALLS",
+      "detail": "service.get_by_id"
+    },
+    {
+      "src": "oms/controller/order_controller.py::get_orders_by_customer",
+      "dst": "oms/service/order_service.py::OrderService.__init__",
+      "kind": "REGISTERED",
+      "detail": "OrderService"
+    },
+    {
+      "src": "oms/controller/order_controller.py::get_orders_by_customer",
+      "dst": "oms/controller/order_controller.py::get_order_service",
+      "kind": "REGISTERED",
+      "detail": "get_order_service"
+    },
+    {
+      "src": "oms/controller/order_controller.py::get_orders_by_customer",
+      "dst": "oms/service/order_service.py::OrderService.get_by_customer",
+      "kind": "CALLS",
+      "detail": "service.get_by_customer"
+    },
+    {
+      "src": "oms/controller/order_controller.py::get_orders_by_status",
+      "dst": "oms/service/order_service.py::OrderService.__init__",
+      "kind": "REGISTERED",
+      "detail": "OrderService"
+    },
+    {
+      "src": "oms/controller/order_controller.py::get_orders_by_status",
+      "dst": "oms/controller/order_controller.py::get_order_service",
+      "kind": "REGISTERED",
+      "detail": "get_order_service"
+    },
+    {
+      "src": "oms/controller/order_controller.py::get_orders_by_status",
+      "dst": "oms/service/order_service.py::OrderService.get_by_status",
+      "kind": "CALLS",
+      "detail": "service.get_by_status"
+    },
+    {
+      "src": "oms/controller/order_controller.py::create_order",
+      "dst": "oms/service/order_service.py::OrderService.__init__",
+      "kind": "REGISTERED",
+      "detail": "OrderService"
+    },
+    {
+      "src": "oms/controller/order_controller.py::create_order",
+      "dst": "oms/controller/order_controller.py::get_order_service",
+      "kind": "REGISTERED",
+      "detail": "get_order_service"
+    },
+    {
+      "src": "oms/controller/order_controller.py::create_order",
+      "dst": "oms/infrastructure/event/rate_limiter.py::RateLimiter.__init__",
+      "kind": "REGISTERED",
+      "detail": "RateLimiter"
+    },
+    {
+      "src": "oms/controller/order_controller.py::create_order",
+      "dst": "oms/infrastructure/event/rate_limiter.py::RateLimiter.get_instance",
+      "kind": "CALLS",
+      "detail": "RateLimiter.get_instance"
+    },
+    {
+      "src": "oms/controller/order_controller.py::create_order",
+      "dst": "oms/service/order_service.py::OrderService.create",
+      "kind": "CALLS",
+      "detail": "service.create"
+    },
+    {
+      "src": "oms/controller/order_controller.py::update_order_status",
+      "dst": "oms/service/order_service.py::OrderService.__init__",
+      "kind": "REGISTERED",
+      "detail": "OrderService"
+    },
+    {
+      "src": "oms/controller/order_controller.py::update_order_status",
+      "dst": "oms/controller/order_controller.py::get_order_service",
+      "kind": "REGISTERED",
+      "detail": "get_order_service"
+    },
+    {
+      "src": "oms/controller/order_controller.py::update_order_status",
+      "dst": "oms/service/order_service.py::OrderService.update_status",
+      "kind": "CALLS",
+      "detail": "service.update_status"
+    },
+    {
+      "src": "oms/controller/order_controller.py::delete_order",
+      "dst": "oms/service/order_service.py::OrderService.__init__",
+      "kind": "REGISTERED",
+      "detail": "OrderService"
+    },
+    {
+      "src": "oms/controller/order_controller.py::delete_order",
+      "dst": "oms/controller/order_controller.py::get_order_service",
+      "kind": "REGISTERED",
+      "detail": "get_order_service"
+    },
+    {
+      "src": "oms/controller/order_controller.py::delete_order",
+      "dst": "oms/service/order_service.py::OrderService.delete",
+      "kind": "CALLS",
+      "detail": "service.delete"
+    },
+    {
+      "src": "oms/controller/order_controller.py::delete_order",
+      "dst": "oms/infrastructure/exceptions.py::NotFoundException.__init__",
+      "kind": "CALLS",
+      "detail": "NotFoundException"
+    },
+    {
+      "src": "oms/controller/payment_controller.py::get_payment_service",
+      "dst": "oms/service/payment_service.py::PaymentService.__init__",
+      "kind": "REGISTERED",
+      "detail": "PaymentService"
+    },
+    {
+      "src": "oms/controller/payment_controller.py::get_payment_service",
+      "dst": "oms/infrastructure/database.py::get_async_session",
+      "kind": "REGISTERED",
+      "detail": "get_async_session"
+    },
+    {
+      "src": "oms/controller/payment_controller.py::get_payment_service",
+      "dst": "oms/service/payment_service.py::PaymentService.__init__",
+      "kind": "CALLS",
+      "detail": "PaymentService"
+    },
+    {
+      "src": "oms/controller/payment_controller.py::list_payments",
+      "dst": "oms/service/payment_service.py::PaymentService.__init__",
+      "kind": "REGISTERED",
+      "detail": "PaymentService"
+    },
+    {
+      "src": "oms/controller/payment_controller.py::list_payments",
+      "dst": "oms/controller/payment_controller.py::get_payment_service",
+      "kind": "REGISTERED",
+      "detail": "get_payment_service"
+    },
+    {
+      "src": "oms/controller/payment_controller.py::list_payments",
+      "dst": "oms/service/payment_service.py::PaymentService.get_all",
+      "kind": "CALLS",
+      "detail": "service.get_all"
+    },
+    {
+      "src": "oms/controller/payment_controller.py::get_payment",
+      "dst": "oms/service/payment_service.py::PaymentService.__init__",
+      "kind": "REGISTERED",
+      "detail": "PaymentService"
+    },
+    {
+      "src": "oms/controller/payment_controller.py::get_payment",
+      "dst": "oms/controller/payment_controller.py::get_payment_service",
+      "kind": "REGISTERED",
+      "detail": "get_payment_service"
+    },
+    {
+      "src": "oms/controller/payment_controller.py::get_payment",
+      "dst": "oms/service/payment_service.py::PaymentService.get_by_id",
+      "kind": "CALLS",
+      "detail": "service.get_by_id"
+    },
+    {
+      "src": "oms/controller/payment_controller.py::get_payments_by_order",
+      "dst": "oms/service/payment_service.py::PaymentService.__init__",
+      "kind": "REGISTERED",
+      "detail": "PaymentService"
+    },
+    {
+      "src": "oms/controller/payment_controller.py::get_payments_by_order",
+      "dst": "oms/controller/payment_controller.py::get_payment_service",
+      "kind": "REGISTERED",
+      "detail": "get_payment_service"
+    },
+    {
+      "src": "oms/controller/payment_controller.py::get_payments_by_order",
+      "dst": "oms/service/payment_service.py::PaymentService.get_by_order",
+      "kind": "CALLS",
+      "detail": "service.get_by_order"
+    },
+    {
+      "src": "oms/controller/payment_controller.py::create_payment",
+      "dst": "oms/service/payment_service.py::PaymentService.__init__",
+      "kind": "REGISTERED",
+      "detail": "PaymentService"
+    },
+    {
+      "src": "oms/controller/payment_controller.py::create_payment",
+      "dst": "oms/controller/payment_controller.py::get_payment_service",
+      "kind": "REGISTERED",
+      "detail": "get_payment_service"
+    },
+    {
+      "src": "oms/controller/payment_controller.py::create_payment",
+      "dst": "oms/infrastructure/event/rate_limiter.py::RateLimiter.__init__",
+      "kind": "REGISTERED",
+      "detail": "RateLimiter"
+    },
+    {
+      "src": "oms/controller/payment_controller.py::create_payment",
+      "dst": "oms/infrastructure/event/rate_limiter.py::RateLimiter.get_instance",
+      "kind": "CALLS",
+      "detail": "RateLimiter.get_instance"
+    },
+    {
+      "src": "oms/controller/payment_controller.py::create_payment",
+      "dst": "oms/service/payment_service.py::PaymentService.create",
+      "kind": "CALLS",
+      "detail": "service.create"
+    },
+    {
+      "src": "oms/controller/payment_controller.py::verify_payment",
+      "dst": "oms/service/payment_service.py::PaymentService.__init__",
+      "kind": "REGISTERED",
+      "detail": "PaymentService"
+    },
+    {
+      "src": "oms/controller/payment_controller.py::verify_payment",
+      "dst": "oms/controller/payment_controller.py::get_payment_service",
+      "kind": "REGISTERED",
+      "detail": "get_payment_service"
+    },
+    {
+      "src": "oms/controller/payment_controller.py::verify_payment",
+      "dst": "oms/service/payment_service.py::PaymentService.verify_payment",
+      "kind": "CALLS",
+      "detail": "service.verify_payment"
+    },
+    {
+      "src": "oms/controller/payment_controller.py::delete_payment",
+      "dst": "oms/service/payment_service.py::PaymentService.__init__",
+      "kind": "REGISTERED",
+      "detail": "PaymentService"
+    },
+    {
+      "src": "oms/controller/payment_controller.py::delete_payment",
+      "dst": "oms/controller/payment_controller.py::get_payment_service",
+      "kind": "REGISTERED",
+      "detail": "get_payment_service"
+    },
+    {
+      "src": "oms/controller/payment_controller.py::delete_payment",
+      "dst": "oms/service/payment_service.py::PaymentService.delete",
+      "kind": "CALLS",
+      "detail": "service.delete"
+    },
+    {
+      "src": "oms/controller/payment_controller.py::delete_payment",
+      "dst": "oms/infrastructure/exceptions.py::NotFoundException.__init__",
+      "kind": "CALLS",
+      "detail": "NotFoundException"
+    },
+    {
+      "src": "oms/controller/product_controller.py::get_product_service",
+      "dst": "oms/service/product_service.py::ProductService.__init__",
+      "kind": "REGISTERED",
+      "detail": "ProductService"
+    },
+    {
+      "src": "oms/controller/product_controller.py::get_product_service",
+      "dst": "oms/infrastructure/database.py::get_async_session",
+      "kind": "REGISTERED",
+      "detail": "get_async_session"
+    },
+    {
+      "src": "oms/controller/product_controller.py::get_product_service",
+      "dst": "oms/service/product_service.py::ProductService.__init__",
+      "kind": "CALLS",
+      "detail": "ProductService"
+    },
+    {
+      "src": "oms/controller/product_controller.py::list_products",
+      "dst": "oms/service/product_service.py::ProductService.__init__",
+      "kind": "REGISTERED",
+      "detail": "ProductService"
+    },
+    {
+      "src": "oms/controller/product_controller.py::list_products",
+      "dst": "oms/controller/product_controller.py::get_product_service",
+      "kind": "REGISTERED",
+      "detail": "get_product_service"
+    },
+    {
+      "src": "oms/controller/product_controller.py::list_products",
+      "dst": "oms/service/product_service.py::ProductService.get_all",
+      "kind": "CALLS",
+      "detail": "service.get_all"
+    },
+    {
+      "src": "oms/controller/product_controller.py::get_product",
+      "dst": "oms/service/product_service.py::ProductService.__init__",
+      "kind": "REGISTERED",
+      "detail": "ProductService"
+    },
+    {
+      "src": "oms/controller/product_controller.py::get_product",
+      "dst": "oms/controller/product_controller.py::get_product_service",
+      "kind": "REGISTERED",
+      "detail": "get_product_service"
+    },
+    {
+      "src": "oms/controller/product_controller.py::get_product",
+      "dst": "oms/service/product_service.py::ProductService.get_by_id",
+      "kind": "CALLS",
+      "detail": "service.get_by_id"
+    },
+    {
+      "src": "oms/controller/product_controller.py::create_product",
+      "dst": "oms/service/product_service.py::ProductService.__init__",
+      "kind": "REGISTERED",
+      "detail": "ProductService"
+    },
+    {
+      "src": "oms/controller/product_controller.py::create_product",
+      "dst": "oms/controller/product_controller.py::get_product_service",
+      "kind": "REGISTERED",
+      "detail": "get_product_service"
+    },
+    {
+      "src": "oms/controller/product_controller.py::create_product",
+      "dst": "oms/infrastructure/event/rate_limiter.py::RateLimiter.__init__",
+      "kind": "REGISTERED",
+      "detail": "RateLimiter"
+    },
+    {
+      "src": "oms/controller/product_controller.py::create_product",
+      "dst": "oms/infrastructure/event/rate_limiter.py::RateLimiter.get_instance",
+      "kind": "CALLS",
+      "detail": "RateLimiter.get_instance"
+    },
+    {
+      "src": "oms/controller/product_controller.py::create_product",
+      "dst": "oms/service/product_service.py::ProductService.create",
+      "kind": "CALLS",
+      "detail": "service.create"
+    },
+    {
+      "src": "oms/controller/product_controller.py::update_product",
+      "dst": "oms/service/product_service.py::ProductService.__init__",
+      "kind": "REGISTERED",
+      "detail": "ProductService"
+    },
+    {
+      "src": "oms/controller/product_controller.py::update_product",
+      "dst": "oms/controller/product_controller.py::get_product_service",
+      "kind": "REGISTERED",
+      "detail": "get_product_service"
+    },
+    {
+      "src": "oms/controller/product_controller.py::update_product",
+      "dst": "oms/service/product_service.py::ProductService.update",
+      "kind": "CALLS",
+      "detail": "service.update"
+    },
+    {
+      "src": "oms/controller/product_controller.py::delete_product",
+      "dst": "oms/service/product_service.py::ProductService.__init__",
+      "kind": "REGISTERED",
+      "detail": "ProductService"
+    },
+    {
+      "src": "oms/controller/product_controller.py::delete_product",
+      "dst": "oms/controller/product_controller.py::get_product_service",
+      "kind": "REGISTERED",
+      "detail": "get_product_service"
+    },
+    {
+      "src": "oms/controller/product_controller.py::delete_product",
+      "dst": "oms/service/product_service.py::ProductService.delete",
+      "kind": "CALLS",
+      "detail": "service.delete"
+    },
+    {
+      "src": "oms/controller/product_controller.py::delete_product",
+      "dst": "oms/infrastructure/exceptions.py::NotFoundException.__init__",
+      "kind": "CALLS",
+      "detail": "NotFoundException"
+    },
+    {
+      "src": "oms/domain/models.py::BankingDetails.validate_account_number",
+      "dst": "oms/domain/models.py::validate_account_number",
+      "kind": "CALLS",
+      "detail": "validate_account_number"
+    },
+    {
+      "src": "oms/domain/models.py::BankingDetails.validate_bank_name",
+      "dst": "oms/domain/models.py::validate_bank_name",
+      "kind": "CALLS",
+      "detail": "validate_bank_name"
+    },
+    {
+      "src": "oms/domain/models.py::Price.validate_amount",
+      "dst": "oms/domain/models.py::validate_amount",
+      "kind": "CALLS",
+      "detail": "validate_amount"
+    },
+    {
+      "src": "oms/domain/models.py::Price.validate_currency",
+      "dst": "oms/domain/models.py::validate_currency",
+      "kind": "CALLS",
+      "detail": "validate_currency"
+    },
+    {
+      "src": "oms/domain/models.py::LineItem.validate_product_ref",
+      "dst": "oms/domain/models.py::validate_uuid_format",
+      "kind": "CALLS",
+      "detail": "validate_uuid_format"
+    },
+    {
+      "src": "oms/domain/models.py::LineItem.validate_quantity",
+      "dst": "oms/domain/models.py::validate_quantity",
+      "kind": "CALLS",
+      "detail": "validate_quantity"
+    },
+    {
+      "src": "oms/domain/models.py::Customer.validate_name",
+      "dst": "oms/domain/models.py::validate_name",
+      "kind": "CALLS",
+      "detail": "validate_name"
+    },
+    {
+      "src": "oms/domain/models.py::Customer.validate_address",
+      "dst": "oms/domain/models.py::validate_address",
+      "kind": "CALLS",
+      "detail": "validate_address"
+    },
+    {
+      "src": "oms/domain/models.py::Customer.validate_phone",
+      "dst": "oms/domain/models.py::validate_phone",
+      "kind": "CALLS",
+      "detail": "validate_phone"
+    },
+    {
+      "src": "oms/domain/models.py::CustomerCreate.validate_name",
+      "dst": "oms/domain/models.py::validate_name",
+      "kind": "CALLS",
+      "detail": "validate_name"
+    },
+    {
+      "src": "oms/domain/models.py::CustomerCreate.validate_address",
+      "dst": "oms/domain/models.py::validate_address",
+      "kind": "CALLS",
+      "detail": "validate_address"
+    },
+    {
+      "src": "oms/domain/models.py::CustomerCreate.validate_phone",
+      "dst": "oms/domain/models.py::validate_phone",
+      "kind": "CALLS",
+      "detail": "validate_phone"
+    },
+    {
+      "src": "oms/domain/models.py::Product.validate_description",
+      "dst": "oms/domain/models.py::validate_product_description",
+      "kind": "CALLS",
+      "detail": "validate_product_description"
+    },
+    {
+      "src": "oms/domain/models.py::ProductCreate.validate_description",
+      "dst": "oms/domain/models.py::validate_product_description",
+      "kind": "CALLS",
+      "detail": "validate_product_description"
+    },
+    {
+      "src": "oms/domain/models.py::Order.validate_customer_ref",
+      "dst": "oms/domain/models.py::validate_uuid_format",
+      "kind": "CALLS",
+      "detail": "validate_uuid_format"
+    },
+    {
+      "src": "oms/domain/models.py::Order.validate_invoice_ref",
+      "dst": "oms/domain/models.py::validate_uuid_format",
+      "kind": "CALLS",
+      "detail": "validate_uuid_format"
+    },
+    {
+      "src": "oms/domain/models.py::OrderCreate.validate_customer_ref",
+      "dst": "oms/domain/models.py::validate_uuid_format",
+      "kind": "CALLS",
+      "detail": "validate_uuid_format"
+    },
+    {
+      "src": "oms/domain/models.py::Payment.validate_order_ref",
+      "dst": "oms/domain/models.py::validate_uuid_format",
+      "kind": "CALLS",
+      "detail": "validate_uuid_format"
+    },
+    {
+      "src": "oms/domain/models.py::PaymentCreate.validate_order_ref",
+      "dst": "oms/domain/models.py::validate_uuid_format",
+      "kind": "CALLS",
+      "detail": "validate_uuid_format"
+    },
+    {
+      "src": "oms/domain/models.py::PaymentCreate.validate_amount",
+      "dst": "oms/domain/models.py::validate_amount",
+      "kind": "CALLS",
+      "detail": "validate_amount"
+    },
+    {
+      "src": "oms/domain/models.py::Invoice.validate_order_ref",
+      "dst": "oms/domain/models.py::validate_uuid_format",
+      "kind": "CALLS",
+      "detail": "validate_uuid_format"
+    },
+    {
+      "src": "oms/domain/models.py::Invoice.validate_issue_date",
+      "dst": "oms/domain/models.py::validate_date_ddmmyyyy",
+      "kind": "CALLS",
+      "detail": "validate_date_ddmmyyyy"
+    },
+    {
+      "src": "oms/domain/models.py::Invoice.validate_due_date",
+      "dst": "oms/domain/models.py::validate_date_ddmmyyyy",
+      "kind": "CALLS",
+      "detail": "validate_date_ddmmyyyy"
+    },
+    {
+      "src": "oms/domain/models.py::InvoiceCreate.validate_order_ref",
+      "dst": "oms/domain/models.py::validate_uuid_format",
+      "kind": "CALLS",
+      "detail": "validate_uuid_format"
+    },
+    {
+      "src": "oms/domain/models.py::InvoiceCreate.validate_issue_date",
+      "dst": "oms/domain/models.py::validate_date_ddmmyyyy",
+      "kind": "CALLS",
+      "detail": "validate_date_ddmmyyyy"
+    },
+    {
+      "src": "oms/domain/models.py::InvoiceCreate.validate_due_date",
+      "dst": "oms/domain/models.py::validate_date_ddmmyyyy",
+      "kind": "CALLS",
+      "detail": "validate_date_ddmmyyyy"
+    },
+    {
+      "src": "oms/infrastructure/database.py::BaseRepository.delete",
+      "dst": "oms/infrastructure/database.py::BaseRepository.get_by_id",
+      "kind": "CALLS",
+      "detail": "self.get_by_id"
+    },
+    {
+      "src": "oms/infrastructure/database.py::CustomerRepository.add_to_order_history",
+      "dst": "oms/infrastructure/database.py::BaseRepository.get_by_id",
+      "kind": "CALLS",
+      "detail": "self.get_by_id"
+    },
+    {
+      "src": "oms/infrastructure/exceptions.py::oms_exception_handler",
+      "dst": "oms/infrastructure/exceptions.py::OMSException.__init__",
+      "kind": "REGISTERED",
+      "detail": "OMSException"
+    },
+    {
+      "src": "oms/repository/customer_repository.py::CustomerRepository.get_by_id",
+      "dst": "oms/repository/customer_repository.py::CustomerRepository._to_domain",
+      "kind": "CALLS",
+      "detail": "self._to_domain"
+    },
+    {
+      "src": "oms/repository/customer_repository.py::CustomerRepository.get_all",
+      "dst": "oms/repository/customer_repository.py::CustomerRepository._to_domain",
+      "kind": "CALLS",
+      "detail": "self._to_domain"
+    },
+    {
+      "src": "oms/repository/customer_repository.py::CustomerRepository.create",
+      "dst": "oms/repository/customer_repository.py::CustomerRepository._to_domain",
+      "kind": "CALLS",
+      "detail": "self._to_domain"
+    },
+    {
+      "src": "oms/repository/customer_repository.py::CustomerRepository.update",
+      "dst": "oms/repository/customer_repository.py::CustomerRepository._to_domain",
+      "kind": "CALLS",
+      "detail": "self._to_domain"
+    },
+    {
+      "src": "oms/repository/customer_repository.py::CustomerRepository.update",
+      "dst": "oms/repository/customer_repository.py::CustomerRepository._get_model",
+      "kind": "CALLS",
+      "detail": "self._get_model"
+    },
+    {
+      "src": "oms/repository/customer_repository.py::CustomerRepository.delete",
+      "dst": "oms/repository/customer_repository.py::CustomerRepository._get_model",
+      "kind": "CALLS",
+      "detail": "self._get_model"
+    },
+    {
+      "src": "oms/repository/customer_repository.py::CustomerRepository.add_to_order_history",
+      "dst": "oms/repository/customer_repository.py::CustomerRepository._get_model",
+      "kind": "CALLS",
+      "detail": "self._get_model"
+    },
+    {
+      "src": "oms/repository/invoice_repository.py::InvoiceRepository.get_by_id",
+      "dst": "oms/repository/invoice_repository.py::InvoiceRepository._to_domain",
+      "kind": "CALLS",
+      "detail": "self._to_domain"
+    },
+    {
+      "src": "oms/repository/invoice_repository.py::InvoiceRepository.get_all",
+      "dst": "oms/repository/invoice_repository.py::InvoiceRepository._to_domain",
+      "kind": "CALLS",
+      "detail": "self._to_domain"
+    },
+    {
+      "src": "oms/repository/invoice_repository.py::InvoiceRepository.get_by_order",
+      "dst": "oms/repository/invoice_repository.py::InvoiceRepository._to_domain",
+      "kind": "CALLS",
+      "detail": "self._to_domain"
+    },
+    {
+      "src": "oms/repository/invoice_repository.py::InvoiceRepository.create",
+      "dst": "oms/repository/invoice_repository.py::InvoiceRepository._to_domain",
+      "kind": "CALLS",
+      "detail": "self._to_domain"
+    },
+    {
+      "src": "oms/repository/invoice_repository.py::InvoiceRepository.update_status",
+      "dst": "oms/repository/invoice_repository.py::InvoiceRepository._to_domain",
+      "kind": "CALLS",
+      "detail": "self._to_domain"
+    },
+    {
+      "src": "oms/repository/invoice_repository.py::InvoiceRepository.update_status",
+      "dst": "oms/repository/invoice_repository.py::InvoiceRepository._get_model",
+      "kind": "CALLS",
+      "detail": "self._get_model"
+    },
+    {
+      "src": "oms/repository/invoice_repository.py::InvoiceRepository.delete",
+      "dst": "oms/repository/invoice_repository.py::InvoiceRepository._get_model",
+      "kind": "CALLS",
+      "detail": "self._get_model"
+    },
+    {
+      "src": "oms/repository/order_repository.py::OrderRepository.get_by_id",
+      "dst": "oms/repository/order_repository.py::OrderRepository._to_domain",
+      "kind": "CALLS",
+      "detail": "self._to_domain"
+    },
+    {
+      "src": "oms/repository/order_repository.py::OrderRepository.get_all",
+      "dst": "oms/repository/order_repository.py::OrderRepository._to_domain",
+      "kind": "CALLS",
+      "detail": "self._to_domain"
+    },
+    {
+      "src": "oms/repository/order_repository.py::OrderRepository.get_by_customer",
+      "dst": "oms/repository/order_repository.py::OrderRepository._to_domain",
+      "kind": "CALLS",
+      "detail": "self._to_domain"
+    },
+    {
+      "src": "oms/repository/order_repository.py::OrderRepository.get_by_status",
+      "dst": "oms/repository/order_repository.py::OrderRepository._to_domain",
+      "kind": "CALLS",
+      "detail": "self._to_domain"
+    },
+    {
+      "src": "oms/repository/order_repository.py::OrderRepository.create",
+      "dst": "oms/repository/order_repository.py::OrderRepository._to_domain",
+      "kind": "CALLS",
+      "detail": "self._to_domain"
+    },
+    {
+      "src": "oms/repository/order_repository.py::OrderRepository.update_status",
+      "dst": "oms/repository/order_repository.py::OrderRepository._get_model",
+      "kind": "CALLS",
+      "detail": "self._get_model"
+    },
+    {
+      "src": "oms/repository/order_repository.py::OrderRepository.update_status",
+      "dst": "oms/repository/order_repository.py::OrderRepository._to_domain",
+      "kind": "CALLS",
+      "detail": "self._to_domain"
+    },
+    {
+      "src": "oms/repository/order_repository.py::OrderRepository.set_invoice_ref",
+      "dst": "oms/repository/order_repository.py::OrderRepository._get_model",
+      "kind": "CALLS",
+      "detail": "self._get_model"
+    },
+    {
+      "src": "oms/repository/order_repository.py::OrderRepository.set_invoice_ref",
+      "dst": "oms/repository/order_repository.py::OrderRepository._to_domain",
+      "kind": "CALLS",
+      "detail": "self._to_domain"
+    },
+    {
+      "src": "oms/repository/order_repository.py::OrderRepository.delete",
+      "dst": "oms/repository/order_repository.py::OrderRepository._get_model",
+      "kind": "CALLS",
+      "detail": "self._get_model"
+    },
+    {
+      "src": "oms/repository/payment_repository.py::PaymentRepository.get_by_id",
+      "dst": "oms/repository/payment_repository.py::PaymentRepository._to_domain",
+      "kind": "CALLS",
+      "detail": "self._to_domain"
+    },
+    {
+      "src": "oms/repository/payment_repository.py::PaymentRepository.get_all",
+      "dst": "oms/repository/payment_repository.py::PaymentRepository._to_domain",
+      "kind": "CALLS",
+      "detail": "self._to_domain"
+    },
+    {
+      "src": "oms/repository/payment_repository.py::PaymentRepository.get_by_order",
+      "dst": "oms/repository/payment_repository.py::PaymentRepository._to_domain",
+      "kind": "CALLS",
+      "detail": "self._to_domain"
+    },
+    {
+      "src": "oms/repository/payment_repository.py::PaymentRepository.create",
+      "dst": "oms/repository/payment_repository.py::PaymentRepository._to_domain",
+      "kind": "CALLS",
+      "detail": "self._to_domain"
+    },
+    {
+      "src": "oms/repository/payment_repository.py::PaymentRepository.update_status",
+      "dst": "oms/repository/payment_repository.py::PaymentRepository._to_domain",
+      "kind": "CALLS",
+      "detail": "self._to_domain"
+    },
+    {
+      "src": "oms/repository/payment_repository.py::PaymentRepository.update_status",
+      "dst": "oms/repository/payment_repository.py::PaymentRepository._get_model",
+      "kind": "CALLS",
+      "detail": "self._get_model"
+    },
+    {
+      "src": "oms/repository/payment_repository.py::PaymentRepository.delete",
+      "dst": "oms/repository/payment_repository.py::PaymentRepository._get_model",
+      "kind": "CALLS",
+      "detail": "self._get_model"
+    },
+    {
+      "src": "oms/repository/product_repository.py::ProductRepository.get_by_id",
+      "dst": "oms/repository/product_repository.py::ProductRepository._to_domain",
+      "kind": "CALLS",
+      "detail": "self._to_domain"
+    },
+    {
+      "src": "oms/repository/product_repository.py::ProductRepository.get_all",
+      "dst": "oms/repository/product_repository.py::ProductRepository._to_domain",
+      "kind": "CALLS",
+      "detail": "self._to_domain"
+    },
+    {
+      "src": "oms/repository/product_repository.py::ProductRepository.create",
+      "dst": "oms/repository/product_repository.py::ProductRepository._to_domain",
+      "kind": "CALLS",
+      "detail": "self._to_domain"
+    },
+    {
+      "src": "oms/repository/product_repository.py::ProductRepository.update",
+      "dst": "oms/repository/product_repository.py::ProductRepository._to_domain",
+      "kind": "CALLS",
+      "detail": "self._to_domain"
+    },
+    {
+      "src": "oms/repository/product_repository.py::ProductRepository.update",
+      "dst": "oms/repository/product_repository.py::ProductRepository._get_model",
+      "kind": "CALLS",
+      "detail": "self._get_model"
+    },
+    {
+      "src": "oms/repository/product_repository.py::ProductRepository.delete",
+      "dst": "oms/repository/product_repository.py::ProductRepository._get_model",
+      "kind": "CALLS",
+      "detail": "self._get_model"
+    },
+    {
+      "src": "oms/service/customer_service.py::CustomerService.__init__",
+      "dst": "oms/infrastructure/cache/memory_cache.py::MemoryCache.__init__",
+      "kind": "REGISTERED",
+      "detail": "MemoryCache"
+    },
+    {
+      "src": "oms/service/customer_service.py::CustomerService.__init__",
+      "dst": "oms/repository/customer_repository.py::CustomerRepository.__init__",
+      "kind": "CALLS",
+      "detail": "CustomerRepository"
+    },
+    {
+      "src": "oms/service/customer_service.py::CustomerService.__init__",
+      "dst": "oms/infrastructure/cache/memory_cache.py::MemoryCache.get_instance",
+      "kind": "CALLS",
+      "detail": "MemoryCache.get_instance"
+    },
+    {
+      "src": "oms/service/customer_service.py::CustomerService.get_by_id",
+      "dst": "oms/repository/customer_repository.py::CustomerRepository.get_by_id",
+      "kind": "CALLS",
+      "detail": "self.repository.get_by_id"
+    },
+    {
+      "src": "oms/service/customer_service.py::CustomerService.get_by_id",
+      "dst": "oms/infrastructure/exceptions.py::NotFoundException.__init__",
+      "kind": "CALLS",
+      "detail": "NotFoundException"
+    },
+    {
+      "src": "oms/service/customer_service.py::CustomerService.get_all",
+      "dst": "oms/repository/customer_repository.py::CustomerRepository.get_all",
+      "kind": "CALLS",
+      "detail": "self.repository.get_all"
+    },
+    {
+      "src": "oms/service/customer_service.py::CustomerService.create",
+      "dst": "oms/infrastructure/database.py::transaction_session",
+      "kind": "CALLS",
+      "detail": "transaction_session"
+    },
+    {
+      "src": "oms/service/customer_service.py::CustomerService.create",
+      "dst": "oms/repository/customer_repository.py::CustomerRepository.__init__",
+      "kind": "CALLS",
+      "detail": "CustomerRepository"
+    },
+    {
+      "src": "oms/service/customer_service.py::CustomerService.create",
+      "dst": "oms/repository/customer_repository.py::CustomerRepository.create",
+      "kind": "CALLS",
+      "detail": "customer_repo.create"
+    },
+    {
+      "src": "oms/service/customer_service.py::CustomerService.update",
+      "dst": "oms/infrastructure/database.py::transaction_session",
+      "kind": "CALLS",
+      "detail": "transaction_session"
+    },
+    {
+      "src": "oms/service/customer_service.py::CustomerService.update",
+      "dst": "oms/repository/customer_repository.py::CustomerRepository.__init__",
+      "kind": "CALLS",
+      "detail": "CustomerRepository"
+    },
+    {
+      "src": "oms/service/customer_service.py::CustomerService.update",
+      "dst": "oms/repository/customer_repository.py::CustomerRepository.update",
+      "kind": "CALLS",
+      "detail": "customer_repo.update"
+    },
+    {
+      "src": "oms/service/customer_service.py::CustomerService.update",
+      "dst": "oms/infrastructure/exceptions.py::NotFoundException.__init__",
+      "kind": "CALLS",
+      "detail": "NotFoundException"
+    },
+    {
+      "src": "oms/service/customer_service.py::CustomerService.delete",
+      "dst": "oms/repository/customer_repository.py::CustomerRepository.delete",
+      "kind": "CALLS",
+      "detail": "self.repository.delete"
+    },
+    {
+      "src": "oms/service/customer_service.py::CustomerService.add_to_order_history",
+      "dst": "oms/repository/customer_repository.py::CustomerRepository.add_to_order_history",
+      "kind": "CALLS",
+      "detail": "self.repository.add_to_order_history"
+    },
+    {
+      "src": "oms/service/invoice_service.py::InvoiceService.__init__",
+      "dst": "oms/infrastructure/cache/memory_cache.py::MemoryCache.__init__",
+      "kind": "REGISTERED",
+      "detail": "MemoryCache"
+    },
+    {
+      "src": "oms/service/invoice_service.py::InvoiceService.__init__",
+      "dst": "oms/repository/invoice_repository.py::InvoiceRepository.__init__",
+      "kind": "CALLS",
+      "detail": "InvoiceRepository"
+    },
+    {
+      "src": "oms/service/invoice_service.py::InvoiceService.__init__",
+      "dst": "oms/repository/order_repository.py::OrderRepository.__init__",
+      "kind": "CALLS",
+      "detail": "OrderRepository"
+    },
+    {
+      "src": "oms/service/invoice_service.py::InvoiceService.__init__",
+      "dst": "oms/repository/customer_repository.py::CustomerRepository.__init__",
+      "kind": "CALLS",
+      "detail": "CustomerRepository"
+    },
+    {
+      "src": "oms/service/invoice_service.py::InvoiceService.__init__",
+      "dst": "oms/infrastructure/cache/memory_cache.py::MemoryCache.get_instance",
+      "kind": "CALLS",
+      "detail": "MemoryCache.get_instance"
+    },
+    {
+      "src": "oms/service/invoice_service.py::InvoiceService.get_by_id",
+      "dst": "oms/repository/invoice_repository.py::InvoiceRepository.get_by_id",
+      "kind": "CALLS",
+      "detail": "self.repository.get_by_id"
+    },
+    {
+      "src": "oms/service/invoice_service.py::InvoiceService.get_by_id",
+      "dst": "oms/infrastructure/exceptions.py::NotFoundException.__init__",
+      "kind": "CALLS",
+      "detail": "NotFoundException"
+    },
+    {
+      "src": "oms/service/invoice_service.py::InvoiceService.get_all",
+      "dst": "oms/repository/invoice_repository.py::InvoiceRepository.get_all",
+      "kind": "CALLS",
+      "detail": "self.repository.get_all"
+    },
+    {
+      "src": "oms/service/invoice_service.py::InvoiceService.get_by_order",
+      "dst": "oms/repository/invoice_repository.py::InvoiceRepository.get_by_order",
+      "kind": "CALLS",
+      "detail": "self.repository.get_by_order"
+    },
+    {
+      "src": "oms/service/invoice_service.py::InvoiceService.get_by_order",
+      "dst": "oms/infrastructure/exceptions.py::NotFoundException.__init__",
+      "kind": "CALLS",
+      "detail": "NotFoundException"
+    },
+    {
+      "src": "oms/service/invoice_service.py::InvoiceService.create",
+      "dst": "oms/infrastructure/database.py::transaction_session",
+      "kind": "CALLS",
+      "detail": "transaction_session"
+    },
+    {
+      "src": "oms/service/invoice_service.py::InvoiceService.create",
+      "dst": "oms/repository/invoice_repository.py::InvoiceRepository.__init__",
+      "kind": "CALLS",
+      "detail": "InvoiceRepository"
+    },
+    {
+      "src": "oms/service/invoice_service.py::InvoiceService.create",
+      "dst": "oms/repository/order_repository.py::OrderRepository.__init__",
+      "kind": "CALLS",
+      "detail": "OrderRepository"
+    },
+    {
+      "src": "oms/service/invoice_service.py::InvoiceService.create",
+      "dst": "oms/repository/customer_repository.py::CustomerRepository.__init__",
+      "kind": "CALLS",
+      "detail": "CustomerRepository"
+    },
+    {
+      "src": "oms/service/invoice_service.py::InvoiceService.create",
+      "dst": "oms/repository/order_repository.py::OrderRepository.get_by_id",
+      "kind": "CALLS",
+      "detail": "order_repo.get_by_id"
+    },
+    {
+      "src": "oms/service/invoice_service.py::InvoiceService.create",
+      "dst": "oms/infrastructure/exceptions.py::NotFoundException.__init__",
+      "kind": "CALLS",
+      "detail": "NotFoundException"
+    },
+    {
+      "src": "oms/service/invoice_service.py::InvoiceService.create",
+      "dst": "oms/infrastructure/exceptions.py::ConflictException.__init__",
+      "kind": "CALLS",
+      "detail": "ConflictException"
+    },
+    {
+      "src": "oms/service/invoice_service.py::InvoiceService.create",
+      "dst": "oms/repository/invoice_repository.py::InvoiceRepository.get_by_order",
+      "kind": "CALLS",
+      "detail": "invoice_repo.get_by_order"
+    },
+    {
+      "src": "oms/service/invoice_service.py::InvoiceService.create",
+      "dst": "oms/infrastructure/exceptions.py::ConflictException.__init__",
+      "kind": "CALLS",
+      "detail": "ConflictException"
+    },
+    {
+      "src": "oms/service/invoice_service.py::InvoiceService.create",
+      "dst": "oms/repository/customer_repository.py::CustomerRepository.get_by_id",
+      "kind": "CALLS",
+      "detail": "customer_repo.get_by_id"
+    },
+    {
+      "src": "oms/service/invoice_service.py::InvoiceService.create",
+      "dst": "oms/infrastructure/exceptions.py::NotFoundException.__init__",
+      "kind": "CALLS",
+      "detail": "NotFoundException"
+    },
+    {
+      "src": "oms/service/invoice_service.py::InvoiceService.create",
+      "dst": "oms/infrastructure/exceptions.py::ConflictException.__init__",
+      "kind": "CALLS",
+      "detail": "ConflictException"
+    },
+    {
+      "src": "oms/service/invoice_service.py::InvoiceService.create",
+      "dst": "oms/repository/invoice_repository.py::InvoiceRepository.create",
+      "kind": "CALLS",
+      "detail": "invoice_repo.create"
+    },
+    {
+      "src": "oms/service/invoice_service.py::InvoiceService.create",
+      "dst": "oms/repository/order_repository.py::OrderRepository.set_invoice_ref",
+      "kind": "CALLS",
+      "detail": "order_repo.set_invoice_ref"
+    },
+    {
+      "src": "oms/service/invoice_service.py::InvoiceService.create",
+      "dst": "oms/repository/order_repository.py::OrderRepository.update_status",
+      "kind": "CALLS",
+      "detail": "order_repo.update_status"
+    },
+    {
+      "src": "oms/service/invoice_service.py::InvoiceService.update_status",
+      "dst": "oms/infrastructure/database.py::transaction_session",
+      "kind": "CALLS",
+      "detail": "transaction_session"
+    },
+    {
+      "src": "oms/service/invoice_service.py::InvoiceService.update_status",
+      "dst": "oms/repository/invoice_repository.py::InvoiceRepository.__init__",
+      "kind": "CALLS",
+      "detail": "InvoiceRepository"
+    },
+    {
+      "src": "oms/service/invoice_service.py::InvoiceService.update_status",
+      "dst": "oms/repository/invoice_repository.py::InvoiceRepository.get_by_id",
+      "kind": "CALLS",
+      "detail": "invoice_repo.get_by_id"
+    },
+    {
+      "src": "oms/service/invoice_service.py::InvoiceService.update_status",
+      "dst": "oms/infrastructure/exceptions.py::NotFoundException.__init__",
+      "kind": "CALLS",
+      "detail": "NotFoundException"
+    },
+    {
+      "src": "oms/service/invoice_service.py::InvoiceService.update_status",
+      "dst": "oms/infrastructure/exceptions.py::ConflictException.__init__",
+      "kind": "CALLS",
+      "detail": "ConflictException"
+    },
+    {
+      "src": "oms/service/invoice_service.py::InvoiceService.update_status",
+      "dst": "oms/repository/invoice_repository.py::InvoiceRepository.update_status",
+      "kind": "CALLS",
+      "detail": "invoice_repo.update_status"
+    },
+    {
+      "src": "oms/service/invoice_service.py::InvoiceService.delete",
+      "dst": "oms/repository/invoice_repository.py::InvoiceRepository.get_by_id",
+      "kind": "CALLS",
+      "detail": "self.repository.get_by_id"
+    },
+    {
+      "src": "oms/service/invoice_service.py::InvoiceService.delete",
+      "dst": "oms/repository/invoice_repository.py::InvoiceRepository.delete",
+      "kind": "CALLS",
+      "detail": "self.repository.delete"
+    },
+    {
+      "src": "oms/service/order_service.py::OrderService.__init__",
+      "dst": "oms/infrastructure/cache/memory_cache.py::MemoryCache.__init__",
+      "kind": "REGISTERED",
+      "detail": "MemoryCache"
+    },
+    {
+      "src": "oms/service/order_service.py::OrderService.__init__",
+      "dst": "oms/repository/order_repository.py::OrderRepository.__init__",
+      "kind": "CALLS",
+      "detail": "OrderRepository"
+    },
+    {
+      "src": "oms/service/order_service.py::OrderService.__init__",
+      "dst": "oms/repository/customer_repository.py::CustomerRepository.__init__",
+      "kind": "CALLS",
+      "detail": "CustomerRepository"
+    },
+    {
+      "src": "oms/service/order_service.py::OrderService.__init__",
+      "dst": "oms/repository/product_repository.py::ProductRepository.__init__",
+      "kind": "CALLS",
+      "detail": "ProductRepository"
+    },
+    {
+      "src": "oms/service/order_service.py::OrderService.__init__",
+      "dst": "oms/infrastructure/cache/memory_cache.py::MemoryCache.get_instance",
+      "kind": "CALLS",
+      "detail": "MemoryCache.get_instance"
+    },
+    {
+      "src": "oms/service/order_service.py::OrderService.get_by_id",
+      "dst": "oms/repository/order_repository.py::OrderRepository.get_by_id",
+      "kind": "CALLS",
+      "detail": "self.repository.get_by_id"
+    },
+    {
+      "src": "oms/service/order_service.py::OrderService.get_by_id",
+      "dst": "oms/infrastructure/exceptions.py::NotFoundException.__init__",
+      "kind": "CALLS",
+      "detail": "NotFoundException"
+    },
+    {
+      "src": "oms/service/order_service.py::OrderService.get_by_status",
+      "dst": "oms/repository/order_repository.py::OrderRepository.get_by_status",
+      "kind": "CALLS",
+      "detail": "self.repository.get_by_status"
+    },
+    {
+      "src": "oms/service/order_service.py::OrderService.get_all",
+      "dst": "oms/repository/order_repository.py::OrderRepository.get_all",
+      "kind": "CALLS",
+      "detail": "self.repository.get_all"
+    },
+    {
+      "src": "oms/service/order_service.py::OrderService.get_by_customer",
+      "dst": "oms/repository/order_repository.py::OrderRepository.get_by_customer",
+      "kind": "CALLS",
+      "detail": "self.repository.get_by_customer"
+    },
+    {
+      "src": "oms/service/order_service.py::OrderService.create",
+      "dst": "oms/infrastructure/database.py::transaction_session",
+      "kind": "CALLS",
+      "detail": "transaction_session"
+    },
+    {
+      "src": "oms/service/order_service.py::OrderService.create",
+      "dst": "oms/repository/order_repository.py::OrderRepository.__init__",
+      "kind": "CALLS",
+      "detail": "OrderRepository"
+    },
+    {
+      "src": "oms/service/order_service.py::OrderService.create",
+      "dst": "oms/repository/customer_repository.py::CustomerRepository.__init__",
+      "kind": "CALLS",
+      "detail": "CustomerRepository"
+    },
+    {
+      "src": "oms/service/order_service.py::OrderService.create",
+      "dst": "oms/repository/product_repository.py::ProductRepository.__init__",
+      "kind": "CALLS",
+      "detail": "ProductRepository"
+    },
+    {
+      "src": "oms/service/order_service.py::OrderService.create",
+      "dst": "oms/infrastructure/exceptions.py::ValidationException.__init__",
+      "kind": "CALLS",
+      "detail": "ValidationException"
+    },
+    {
+      "src": "oms/service/order_service.py::OrderService.create",
+      "dst": "oms/infrastructure/exceptions.py::ValidationException.__init__",
+      "kind": "CALLS",
+      "detail": "ValidationException"
+    },
+    {
+      "src": "oms/service/order_service.py::OrderService.create",
+      "dst": "oms/repository/customer_repository.py::CustomerRepository.get_by_id",
+      "kind": "CALLS",
+      "detail": "customer_repo.get_by_id"
+    },
+    {
+      "src": "oms/service/order_service.py::OrderService.create",
+      "dst": "oms/infrastructure/exceptions.py::NotFoundException.__init__",
+      "kind": "CALLS",
+      "detail": "NotFoundException"
+    },
+    {
+      "src": "oms/service/order_service.py::OrderService.create",
+      "dst": "oms/infrastructure/exceptions.py::ValidationException.__init__",
+      "kind": "CALLS",
+      "detail": "ValidationException"
+    },
+    {
+      "src": "oms/service/order_service.py::OrderService.create",
+      "dst": "oms/repository/order_repository.py::OrderRepository.create",
+      "kind": "CALLS",
+      "detail": "order_repo.create"
+    },
+    {
+      "src": "oms/service/order_service.py::OrderService.create",
+      "dst": "oms/repository/customer_repository.py::CustomerRepository.add_to_order_history",
+      "kind": "CALLS",
+      "detail": "customer_repo.add_to_order_history"
+    },
+    {
+      "src": "oms/service/order_service.py::OrderService.create",
+      "dst": "oms/infrastructure/exceptions.py::ValidationException.__init__",
+      "kind": "CALLS",
+      "detail": "ValidationException"
+    },
+    {
+      "src": "oms/service/order_service.py::OrderService.create",
+      "dst": "oms/repository/product_repository.py::ProductRepository.get_by_id",
+      "kind": "CALLS",
+      "detail": "product_repo.get_by_id"
+    },
+    {
+      "src": "oms/service/order_service.py::OrderService.create",
+      "dst": "oms/infrastructure/exceptions.py::NotFoundException.__init__",
+      "kind": "CALLS",
+      "detail": "NotFoundException"
+    },
+    {
+      "src": "oms/service/order_service.py::OrderService.update_status",
+      "dst": "oms/infrastructure/database.py::transaction_session",
+      "kind": "CALLS",
+      "detail": "transaction_session"
+    },
+    {
+      "src": "oms/service/order_service.py::OrderService.update_status",
+      "dst": "oms/repository/order_repository.py::OrderRepository.__init__",
+      "kind": "CALLS",
+      "detail": "OrderRepository"
+    },
+    {
+      "src": "oms/service/order_service.py::OrderService.update_status",
+      "dst": "oms/repository/order_repository.py::OrderRepository.get_by_id",
+      "kind": "CALLS",
+      "detail": "order_repo.get_by_id"
+    },
+    {
+      "src": "oms/service/order_service.py::OrderService.update_status",
+      "dst": "oms/infrastructure/exceptions.py::NotFoundException.__init__",
+      "kind": "CALLS",
+      "detail": "NotFoundException"
+    },
+    {
+      "src": "oms/service/order_service.py::OrderService.update_status",
+      "dst": "oms/infrastructure/exceptions.py::ConflictException.__init__",
+      "kind": "CALLS",
+      "detail": "ConflictException"
+    },
+    {
+      "src": "oms/service/order_service.py::OrderService.update_status",
+      "dst": "oms/repository/order_repository.py::OrderRepository.update_status",
+      "kind": "CALLS",
+      "detail": "order_repo.update_status"
+    },
+    {
+      "src": "oms/service/order_service.py::OrderService.set_invoice_ref",
+      "dst": "oms/infrastructure/database.py::transaction_session",
+      "kind": "CALLS",
+      "detail": "transaction_session"
+    },
+    {
+      "src": "oms/service/order_service.py::OrderService.set_invoice_ref",
+      "dst": "oms/repository/order_repository.py::OrderRepository.__init__",
+      "kind": "CALLS",
+      "detail": "OrderRepository"
+    },
+    {
+      "src": "oms/service/order_service.py::OrderService.set_invoice_ref",
+      "dst": "oms/repository/order_repository.py::OrderRepository.get_by_id",
+      "kind": "CALLS",
+      "detail": "order_repo.get_by_id"
+    },
+    {
+      "src": "oms/service/order_service.py::OrderService.set_invoice_ref",
+      "dst": "oms/infrastructure/exceptions.py::NotFoundException.__init__",
+      "kind": "CALLS",
+      "detail": "NotFoundException"
+    },
+    {
+      "src": "oms/service/order_service.py::OrderService.set_invoice_ref",
+      "dst": "oms/repository/order_repository.py::OrderRepository.set_invoice_ref",
+      "kind": "CALLS",
+      "detail": "order_repo.set_invoice_ref"
+    },
+    {
+      "src": "oms/service/order_service.py::OrderService.delete",
+      "dst": "oms/repository/order_repository.py::OrderRepository.get_by_id",
+      "kind": "CALLS",
+      "detail": "self.repository.get_by_id"
+    },
+    {
+      "src": "oms/service/order_service.py::OrderService.delete",
+      "dst": "oms/repository/order_repository.py::OrderRepository.delete",
+      "kind": "CALLS",
+      "detail": "self.repository.delete"
+    },
+    {
+      "src": "oms/service/payment_service.py::PaymentService.__init__",
+      "dst": "oms/infrastructure/cache/memory_cache.py::MemoryCache.__init__",
+      "kind": "REGISTERED",
+      "detail": "MemoryCache"
+    },
+    {
+      "src": "oms/service/payment_service.py::PaymentService.__init__",
+      "dst": "oms/repository/payment_repository.py::PaymentRepository.__init__",
+      "kind": "CALLS",
+      "detail": "PaymentRepository"
+    },
+    {
+      "src": "oms/service/payment_service.py::PaymentService.__init__",
+      "dst": "oms/repository/order_repository.py::OrderRepository.__init__",
+      "kind": "CALLS",
+      "detail": "OrderRepository"
+    },
+    {
+      "src": "oms/service/payment_service.py::PaymentService.__init__",
+      "dst": "oms/repository/invoice_repository.py::InvoiceRepository.__init__",
+      "kind": "CALLS",
+      "detail": "InvoiceRepository"
+    },
+    {
+      "src": "oms/service/payment_service.py::PaymentService.__init__",
+      "dst": "oms/infrastructure/cache/memory_cache.py::MemoryCache.get_instance",
+      "kind": "CALLS",
+      "detail": "MemoryCache.get_instance"
+    },
+    {
+      "src": "oms/service/payment_service.py::PaymentService.get_by_id",
+      "dst": "oms/repository/payment_repository.py::PaymentRepository.get_by_id",
+      "kind": "CALLS",
+      "detail": "self.repository.get_by_id"
+    },
+    {
+      "src": "oms/service/payment_service.py::PaymentService.get_by_id",
+      "dst": "oms/infrastructure/exceptions.py::NotFoundException.__init__",
+      "kind": "CALLS",
+      "detail": "NotFoundException"
+    },
+    {
+      "src": "oms/service/payment_service.py::PaymentService.get_all",
+      "dst": "oms/repository/payment_repository.py::PaymentRepository.get_all",
+      "kind": "CALLS",
+      "detail": "self.repository.get_all"
+    },
+    {
+      "src": "oms/service/payment_service.py::PaymentService.get_by_order",
+      "dst": "oms/repository/payment_repository.py::PaymentRepository.get_by_order",
+      "kind": "CALLS",
+      "detail": "self.repository.get_by_order"
+    },
+    {
+      "src": "oms/service/payment_service.py::PaymentService.create",
+      "dst": "oms/infrastructure/database.py::transaction_session",
+      "kind": "CALLS",
+      "detail": "transaction_session"
+    },
+    {
+      "src": "oms/service/payment_service.py::PaymentService.create",
+      "dst": "oms/repository/payment_repository.py::PaymentRepository.__init__",
+      "kind": "CALLS",
+      "detail": "PaymentRepository"
+    },
+    {
+      "src": "oms/service/payment_service.py::PaymentService.create",
+      "dst": "oms/repository/order_repository.py::OrderRepository.__init__",
+      "kind": "CALLS",
+      "detail": "OrderRepository"
+    },
+    {
+      "src": "oms/service/payment_service.py::PaymentService.create",
+      "dst": "oms/repository/invoice_repository.py::InvoiceRepository.__init__",
+      "kind": "CALLS",
+      "detail": "InvoiceRepository"
+    },
+    {
+      "src": "oms/service/payment_service.py::PaymentService.create",
+      "dst": "oms/repository/order_repository.py::OrderRepository.get_by_id",
+      "kind": "CALLS",
+      "detail": "order_repo.get_by_id"
+    },
+    {
+      "src": "oms/service/payment_service.py::PaymentService.create",
+      "dst": "oms/infrastructure/exceptions.py::NotFoundException.__init__",
+      "kind": "CALLS",
+      "detail": "NotFoundException"
+    },
+    {
+      "src": "oms/service/payment_service.py::PaymentService.create",
+      "dst": "oms/infrastructure/exceptions.py::ConflictException.__init__",
+      "kind": "CALLS",
+      "detail": "ConflictException"
+    },
+    {
+      "src": "oms/service/payment_service.py::PaymentService.create",
+      "dst": "oms/repository/invoice_repository.py::InvoiceRepository.get_by_order",
+      "kind": "CALLS",
+      "detail": "invoice_repo.get_by_order"
+    },
+    {
+      "src": "oms/service/payment_service.py::PaymentService.create",
+      "dst": "oms/infrastructure/exceptions.py::ConflictException.__init__",
+      "kind": "CALLS",
+      "detail": "ConflictException"
+    },
+    {
+      "src": "oms/service/payment_service.py::PaymentService.create",
+      "dst": "oms/infrastructure/exceptions.py::ValidationException.__init__",
+      "kind": "CALLS",
+      "detail": "ValidationException"
+    },
+    {
+      "src": "oms/service/payment_service.py::PaymentService.create",
+      "dst": "oms/repository/payment_repository.py::PaymentRepository.create",
+      "kind": "CALLS",
+      "detail": "payment_repo.create"
+    },
+    {
+      "src": "oms/service/payment_service.py::PaymentService.verify_payment",
+      "dst": "oms/infrastructure/database.py::transaction_session",
+      "kind": "CALLS",
+      "detail": "transaction_session"
+    },
+    {
+      "src": "oms/service/payment_service.py::PaymentService.verify_payment",
+      "dst": "oms/repository/payment_repository.py::PaymentRepository.__init__",
+      "kind": "CALLS",
+      "detail": "PaymentRepository"
+    },
+    {
+      "src": "oms/service/payment_service.py::PaymentService.verify_payment",
+      "dst": "oms/repository/payment_repository.py::PaymentRepository.get_by_id",
+      "kind": "CALLS",
+      "detail": "payment_repo.get_by_id"
+    },
+    {
+      "src": "oms/service/payment_service.py::PaymentService.verify_payment",
+      "dst": "oms/infrastructure/exceptions.py::NotFoundException.__init__",
+      "kind": "CALLS",
+      "detail": "NotFoundException"
+    },
+    {
+      "src": "oms/service/payment_service.py::PaymentService.verify_payment",
+      "dst": "oms/infrastructure/exceptions.py::ConflictException.__init__",
+      "kind": "CALLS",
+      "detail": "ConflictException"
+    },
+    {
+      "src": "oms/service/payment_service.py::PaymentService.verify_payment",
+      "dst": "oms/infrastructure/exceptions.py::ValidationException.__init__",
+      "kind": "CALLS",
+      "detail": "ValidationException"
+    },
+    {
+      "src": "oms/service/payment_service.py::PaymentService.verify_payment",
+      "dst": "oms/repository/payment_repository.py::PaymentRepository.update_status",
+      "kind": "CALLS",
+      "detail": "payment_repo.update_status"
+    },
+    {
+      "src": "oms/service/payment_service.py::PaymentService.delete",
+      "dst": "oms/repository/payment_repository.py::PaymentRepository.get_by_id",
+      "kind": "CALLS",
+      "detail": "self.repository.get_by_id"
+    },
+    {
+      "src": "oms/service/payment_service.py::PaymentService.delete",
+      "dst": "oms/repository/payment_repository.py::PaymentRepository.delete",
+      "kind": "CALLS",
+      "detail": "self.repository.delete"
+    },
+    {
+      "src": "oms/service/product_service.py::ProductService.__init__",
+      "dst": "oms/infrastructure/cache/memory_cache.py::MemoryCache.__init__",
+      "kind": "REGISTERED",
+      "detail": "MemoryCache"
+    },
+    {
+      "src": "oms/service/product_service.py::ProductService.__init__",
+      "dst": "oms/repository/product_repository.py::ProductRepository.__init__",
+      "kind": "CALLS",
+      "detail": "ProductRepository"
+    },
+    {
+      "src": "oms/service/product_service.py::ProductService.__init__",
+      "dst": "oms/infrastructure/cache/memory_cache.py::MemoryCache.get_instance",
+      "kind": "CALLS",
+      "detail": "MemoryCache.get_instance"
+    },
+    {
+      "src": "oms/service/product_service.py::ProductService.get_by_id",
+      "dst": "oms/repository/product_repository.py::ProductRepository.get_by_id",
+      "kind": "CALLS",
+      "detail": "self.repository.get_by_id"
+    },
+    {
+      "src": "oms/service/product_service.py::ProductService.get_by_id",
+      "dst": "oms/infrastructure/exceptions.py::NotFoundException.__init__",
+      "kind": "CALLS",
+      "detail": "NotFoundException"
+    },
+    {
+      "src": "oms/service/product_service.py::ProductService.get_all",
+      "dst": "oms/repository/product_repository.py::ProductRepository.get_all",
+      "kind": "CALLS",
+      "detail": "self.repository.get_all"
+    },
+    {
+      "src": "oms/service/product_service.py::ProductService.create",
+      "dst": "oms/infrastructure/database.py::transaction_session",
+      "kind": "CALLS",
+      "detail": "transaction_session"
+    },
+    {
+      "src": "oms/service/product_service.py::ProductService.create",
+      "dst": "oms/repository/product_repository.py::ProductRepository.__init__",
+      "kind": "CALLS",
+      "detail": "ProductRepository"
+    },
+    {
+      "src": "oms/service/product_service.py::ProductService.create",
+      "dst": "oms/repository/product_repository.py::ProductRepository.create",
+      "kind": "CALLS",
+      "detail": "product_repo.create"
+    },
+    {
+      "src": "oms/service/product_service.py::ProductService.update",
+      "dst": "oms/infrastructure/database.py::transaction_session",
+      "kind": "CALLS",
+      "detail": "transaction_session"
+    },
+    {
+      "src": "oms/service/product_service.py::ProductService.update",
+      "dst": "oms/repository/product_repository.py::ProductRepository.__init__",
+      "kind": "CALLS",
+      "detail": "ProductRepository"
+    },
+    {
+      "src": "oms/service/product_service.py::ProductService.update",
+      "dst": "oms/repository/product_repository.py::ProductRepository.update",
+      "kind": "CALLS",
+      "detail": "product_repo.update"
+    },
+    {
+      "src": "oms/service/product_service.py::ProductService.update",
+      "dst": "oms/infrastructure/exceptions.py::NotFoundException.__init__",
+      "kind": "CALLS",
+      "detail": "NotFoundException"
+    },
+    {
+      "src": "oms/service/product_service.py::ProductService.delete",
+      "dst": "oms/repository/product_repository.py::ProductRepository.delete",
+      "kind": "CALLS",
+      "detail": "self.repository.delete"
+    },
+    {
+      "src": "oms/infrastructure/cache/memory_cache.py::MemoryCache.get_instance",
+      "dst": "oms/infrastructure/cache/memory_cache.py::MemoryCache.__init__",
+      "kind": "CALLS",
+      "detail": "MemoryCache"
+    },
+    {
+      "src": "oms/infrastructure/cache/memory_cache.py::MemoryCache.get",
+      "dst": "oms/infrastructure/cache/memory_cache.py::MemoryCache.delete",
+      "kind": "CALLS",
+      "detail": "self.delete"
+    },
+    {
+      "src": "oms/infrastructure/event/rate_limiter.py::RateLimiter.get_instance",
+      "dst": "oms/infrastructure/event/rate_limiter.py::RateLimiter.__init__",
+      "kind": "CALLS",
+      "detail": "RateLimiter"
+    }
+  ],
+  "diagnostics": {
+    "externalCalls": 370,
+    "nodelessCalls": 24,
+    "unresolvedCalls": 142,
+    "unresolvedSamples": [
+      {
+        "in": "oms/server.py::run",
+        "call": "asyncio.run",
+        "line": 24
+      },
+      {
+        "in": "oms/server.py::run",
+        "call": "setup",
+        "line": 24
+      },
+      {
+        "in": "oms/controller/customer_controller.py::list_customers",
+        "call": "router.get",
+        "line": 23
+      },
+      {
+        "in": "oms/controller/customer_controller.py::get_customer",
+        "call": "router.get",
+        "line": 30
+      },
+      {
+        "in": "oms/controller/customer_controller.py::create_customer",
+        "call": "router.post",
+        "line": 41
+      },
+      {
+        "in": "oms/controller/customer_controller.py::create_customer",
+        "call": "rate_limiter.is_allowed",
+        "line": 52
+      },
+      {
+        "in": "oms/controller/customer_controller.py::update_customer",
+        "call": "router.put",
+        "line": 60
+      },
+      {
+        "in": "oms/controller/customer_controller.py::delete_customer",
+        "call": "router.delete",
+        "line": 69
+      },
+      {
+        "in": "oms/controller/invoice_controller.py::list_invoices",
+        "call": "router.get",
+        "line": 21
+      },
+      {
+        "in": "oms/controller/invoice_controller.py::get_invoice",
+        "call": "router.get",
+        "line": 28
+      },
+      {
+        "in": "oms/controller/invoice_controller.py::get_invoice_by_order",
+        "call": "router.get",
+        "line": 36
+      },
+      {
+        "in": "oms/controller/invoice_controller.py::create_invoice",
+        "call": "router.post",
+        "line": 44
+      },
+      {
+        "in": "oms/controller/invoice_controller.py::create_invoice",
+        "call": "rate_limiter.is_allowed",
+        "line": 56
+      },
+      {
+        "in": "oms/controller/invoice_controller.py::update_invoice_status",
+        "call": "router.put",
+        "line": 64
+      },
+      {
+        "in": "oms/controller/invoice_controller.py::delete_invoice",
+        "call": "router.delete",
+        "line": 76
+      },
+      {
+        "in": "oms/controller/order_controller.py::list_orders",
+        "call": "router.get",
+        "line": 21
+      },
+      {
+        "in": "oms/controller/order_controller.py::get_order",
+        "call": "router.get",
+        "line": 28
+      },
+      {
+        "in": "oms/controller/order_controller.py::get_orders_by_customer",
+        "call": "router.get",
+        "line": 36
+      },
+      {
+        "in": "oms/controller/order_controller.py::get_orders_by_status",
+        "call": "router.get",
+        "line": 44
+      },
+      {
+        "in": "oms/controller/order_controller.py::create_order",
+        "call": "router.post",
+        "line": 52
+      },
+      {
+        "in": "oms/controller/order_controller.py::create_order",
+        "call": "rate_limiter.is_allowed",
+        "line": 64
+      },
+      {
+        "in": "oms/controller/order_controller.py::update_order_status",
+        "call": "router.put",
+        "line": 72
+      },
+      {
+        "in": "oms/controller/order_controller.py::delete_order",
+        "call": "router.delete",
+        "line": 84
+      },
+      {
+        "in": "oms/controller/payment_controller.py::list_payments",
+        "call": "router.get",
+        "line": 21
+      },
+      {
+        "in": "oms/controller/payment_controller.py::get_payment",
+        "call": "router.get",
+        "line": 28
+      },
+      {
+        "in": "oms/controller/payment_controller.py::get_payments_by_order",
+        "call": "router.get",
+        "line": 36
+      },
+      {
+        "in": "oms/controller/payment_controller.py::create_payment",
+        "call": "router.post",
+        "line": 44
+      },
+      {
+        "in": "oms/controller/payment_controller.py::create_payment",
+        "call": "rate_limiter.is_allowed",
+        "line": 56
+      },
+      {
+        "in": "oms/controller/payment_controller.py::verify_payment",
+        "call": "router.put",
+        "line": 64
+      },
+      {
+        "in": "oms/controller/payment_controller.py::delete_payment",
+        "call": "router.delete",
+        "line": 76
+      },
+      {
+        "in": "oms/controller/product_controller.py::list_products",
+        "call": "router.get",
+        "line": 20
+      },
+      {
+        "in": "oms/controller/product_controller.py::get_product",
+        "call": "router.get",
+        "line": 27
+      },
+      {
+        "in": "oms/controller/product_controller.py::create_product",
+        "call": "router.post",
+        "line": 35
+      },
+      {
+        "in": "oms/controller/product_controller.py::create_product",
+        "call": "rate_limiter.is_allowed",
+        "line": 46
+      },
+      {
+        "in": "oms/controller/product_controller.py::update_product",
+        "call": "router.put",
+        "line": 54
+      },
+      {
+        "in": "oms/controller/product_controller.py::delete_product",
+        "call": "router.delete",
+        "line": 63
+      },
+      {
+        "in": "oms/infrastructure/database.py::init_db",
+        "call": "conn.run_sync",
+        "line": 135
+      },
+      {
+        "in": "oms/infrastructure/database.py::get_async_session",
+        "call": "_async_session_maker",
+        "line": 139
+      },
+      {
+        "in": "oms/infrastructure/database.py::transaction_session",
+        "call": "_async_session_maker",
+        "line": 150
+      },
+      {
+        "in": "oms/infrastructure/database.py::transaction_session",
+        "call": "session.commit",
+        "line": 153
+      },
+      {
+        "in": "oms/infrastructure/database.py::transaction_session",
+        "call": "session.rollback",
+        "line": 155
+      },
+      {
+        "in": "oms/infrastructure/database.py::BaseRepository.get_by_id",
+        "call": "result.scalar_one_or_none",
+        "line": 176
+      },
+      {
+        "in": "oms/infrastructure/database.py::BaseRepository.get_all",
+        "call": "result.scalars().all",
+        "line": 181
+      },
+      {
+        "in": "oms/infrastructure/database.py::BaseRepository.get_all",
+        "call": "result.scalars",
+        "line": 181
+      },
+      {
+        "in": "oms/infrastructure/database.py::OrderRepository.get_by_customer",
+        "call": "result.scalars().all",
+        "line": 252
+      },
+      {
+        "in": "oms/infrastructure/database.py::OrderRepository.get_by_customer",
+        "call": "result.scalars",
+        "line": 252
+      },
+      {
+        "in": "oms/infrastructure/database.py::OrderRepository.get_by_status",
+        "call": "result.scalars().all",
+        "line": 259
+      },
+      {
+        "in": "oms/infrastructure/database.py::OrderRepository.get_by_status",
+        "call": "result.scalars",
+        "line": 259
+      },
+      {
+        "in": "oms/infrastructure/database.py::PaymentRepository.get_by_order",
+        "call": "result.scalars().all",
+        "line": 272
+      },
+      {
+        "in": "oms/infrastructure/database.py::PaymentRepository.get_by_order",
+        "call": "result.scalars",
+        "line": 272
+      },
+      {
+        "in": "oms/infrastructure/database.py::InvoiceRepository.get_by_order",
+        "call": "result.scalar_one_or_none",
+        "line": 285
+      },
+      {
+        "in": "oms/infrastructure/exceptions.py::oms_exception_handler",
+        "call": "logger.error",
+        "line": 56
+      },
+      {
+        "in": "oms/infrastructure/exceptions.py::validation_exception_handler",
+        "call": "logger.error",
+        "line": 68
+      },
+      {
+        "in": "oms/infrastructure/exceptions.py::sqlalchemy_exception_handler",
+        "call": "logger.error",
+        "line": 81
+      },
+      {
+        "in": "oms/infrastructure/exceptions.py::generic_exception_handler",
+        "call": "logger.error",
+        "line": 94
+      },
+      {
+        "in": "oms/repository/customer_repository.py::CustomerRepository.get_by_id",
+        "call": "result.scalar_one_or_none",
+        "line": 25
+      },
+      {
+        "in": "oms/repository/customer_repository.py::CustomerRepository.get_all",
+        "call": "result.scalars().all",
+        "line": 33
+      },
+      {
+        "in": "oms/repository/customer_repository.py::CustomerRepository.get_all",
+        "call": "result.scalars",
+        "line": 33
+      },
+      {
+        "in": "oms/repository/customer_repository.py::CustomerRepository.add_to_order_history",
+        "call": "json.loads",
+        "line": 85
+      },
+      {
+        "in": "oms/repository/customer_repository.py::CustomerRepository.add_to_order_history",
+        "call": "history.append",
+        "line": 87
+      },
+      {
+        "in": "oms/repository/customer_repository.py::CustomerRepository.add_to_order_history",
+        "call": "json.dumps",
+        "line": 88
+      },
+      {
+        "in": "oms/repository/customer_repository.py::CustomerRepository._get_model",
+        "call": "result.scalar_one_or_none",
+        "line": 97
+      },
+      {
+        "in": "oms/repository/customer_repository.py::CustomerRepository._to_domain",
+        "call": "CustomerRole",
+        "line": 112
+      },
+      {
+        "in": "oms/repository/customer_repository.py::CustomerRepository._to_domain",
+        "call": "json.loads",
+        "line": 113
+      },
+      {
+        "in": "oms/repository/invoice_repository.py::InvoiceRepository.get_by_id",
+        "call": "result.scalar_one_or_none",
+        "line": 27
+      },
+      {
+        "in": "oms/repository/invoice_repository.py::InvoiceRepository.get_all",
+        "call": "result.scalars().all",
+        "line": 35
+      },
+      {
+        "in": "oms/repository/invoice_repository.py::InvoiceRepository.get_all",
+        "call": "result.scalars",
+        "line": 35
+      },
+      {
+        "in": "oms/repository/invoice_repository.py::InvoiceRepository.get_by_order",
+        "call": "result.scalar_one_or_none",
+        "line": 43
+      },
+      {
+        "in": "oms/repository/invoice_repository.py::InvoiceRepository._get_model",
+        "call": "result.scalar_one_or_none",
+        "line": 97
+      },
+      {
+        "in": "oms/repository/order_repository.py::OrderRepository.get_by_id",
+        "call": "result.scalar_one_or_none",
+        "line": 27
+      },
+      {
+        "in": "oms/repository/order_repository.py::OrderRepository.get_all",
+        "call": "result.scalars().all",
+        "line": 35
+      },
+      {
+        "in": "oms/repository/order_repository.py::OrderRepository.get_all",
+        "call": "result.scalars",
+        "line": 35
+      },
+      {
+        "in": "oms/repository/order_repository.py::OrderRepository.get_by_customer",
+        "call": "result.scalars().all",
+        "line": 43
+      },
+      {
+        "in": "oms/repository/order_repository.py::OrderRepository.get_by_customer",
+        "call": "result.scalars",
+        "line": 43
+      },
+      {
+        "in": "oms/repository/order_repository.py::OrderRepository.get_by_status",
+        "call": "result.scalars().all",
+        "line": 51
+      },
+      {
+        "in": "oms/repository/order_repository.py::OrderRepository.get_by_status",
+        "call": "result.scalars",
+        "line": 51
+      },
+      {
+        "in": "oms/repository/order_repository.py::OrderRepository._get_model",
+        "call": "result.scalar_one_or_none",
+        "line": 119
+      },
+      {
+        "in": "oms/repository/order_repository.py::OrderRepository._to_domain",
+        "call": "result.scalars().all",
+        "line": 127
+      },
+      {
+        "in": "oms/repository/order_repository.py::OrderRepository._to_domain",
+        "call": "result.scalars",
+        "line": 127
+      },
+      {
+        "in": "oms/repository/order_repository.py::OrderRepository._to_domain",
+        "call": "model.created_at.isoformat",
+        "line": 144
+      },
+      {
+        "in": "oms/repository/order_repository.py::OrderRepository._to_domain",
+        "call": "model.updated_at.isoformat",
+        "line": 145
+      },
+      {
+        "in": "oms/repository/payment_repository.py::PaymentRepository.get_by_id",
+        "call": "result.scalar_one_or_none",
+        "line": 27
+      },
+      {
+        "in": "oms/repository/payment_repository.py::PaymentRepository.get_all",
+        "call": "result.scalars().all",
+        "line": 35
+      },
+      {
+        "in": "oms/repository/payment_repository.py::PaymentRepository.get_all",
+        "call": "result.scalars",
+        "line": 35
+      },
+      {
+        "in": "oms/repository/payment_repository.py::PaymentRepository.get_by_order",
+        "call": "result.scalars().all",
+        "line": 43
+      },
+      {
+        "in": "oms/repository/payment_repository.py::PaymentRepository.get_by_order",
+        "call": "result.scalars",
+        "line": 43
+      },
+      {
+        "in": "oms/repository/payment_repository.py::PaymentRepository._get_model",
+        "call": "result.scalar_one_or_none",
+        "line": 85
+      },
+      {
+        "in": "oms/repository/payment_repository.py::PaymentRepository._to_domain",
+        "call": "model.timestamp.isoformat",
+        "line": 93
+      },
+      {
+        "in": "oms/repository/product_repository.py::ProductRepository.get_by_id",
+        "call": "result.scalar_one_or_none",
+        "line": 26
+      },
+      {
+        "in": "oms/repository/product_repository.py::ProductRepository.get_all",
+        "call": "result.scalars().all",
+        "line": 34
+      },
+      {
+        "in": "oms/repository/product_repository.py::ProductRepository.get_all",
+        "call": "result.scalars",
+        "line": 34
+      },
+      {
+        "in": "oms/repository/product_repository.py::ProductRepository._get_model",
+        "call": "result.scalar_one_or_none",
+        "line": 77
+      },
+      {
+        "in": "oms/service/customer_service.py::CustomerService.get_by_id",
+        "call": "self.cache.get",
+        "line": 27
+      },
+      {
+        "in": "oms/service/customer_service.py::CustomerService.get_by_id",
+        "call": "self.cache.set",
+        "line": 37
+      },
+      {
+        "in": "oms/service/customer_service.py::CustomerService.get_by_id",
+        "call": "customer.model_dump",
+        "line": 37
+      },
+      {
+        "in": "oms/service/customer_service.py::CustomerService.create",
+        "call": "self.cache.set",
+        "line": 51
+      },
+      {
+        "in": "oms/service/customer_service.py::CustomerService.create",
+        "call": "created.model_dump",
+        "line": 51
+      },
+      {
+        "in": "oms/service/customer_service.py::CustomerService.update",
+        "call": "self.cache.delete",
+        "line": 60
+      },
+      {
+        "in": "oms/service/customer_service.py::CustomerService.update",
+        "call": "self.cache.set",
+        "line": 67
+      },
+      {
+        "in": "oms/service/customer_service.py::CustomerService.update",
+        "call": "updated.model_dump",
+        "line": 67
+      },
+      {
+        "in": "oms/service/customer_service.py::CustomerService.delete",
+        "call": "self.cache.delete",
+        "line": 73
+      },
+      {
+        "in": "oms/service/customer_service.py::CustomerService.add_to_order_history",
+        "call": "self.cache.delete",
+        "line": 80
+      },
+      {
+        "in": "oms/service/invoice_service.py::InvoiceService.get_by_id",
+        "call": "self.cache.get",
+        "line": 34
+      },
+      {
+        "in": "oms/service/invoice_service.py::InvoiceService.get_by_id",
+        "call": "self.cache.set",
+        "line": 44
+      },
+      {
+        "in": "oms/service/invoice_service.py::InvoiceService.get_by_id",
+        "call": "invoice.model_dump",
+        "line": 44
+      },
+      {
+        "in": "oms/service/invoice_service.py::InvoiceService.create",
+        "call": "self.cache.set",
+        "line": 126
+      },
+      {
+        "in": "oms/service/invoice_service.py::InvoiceService.create",
+        "call": "self.cache.delete",
+        "line": 127
+      },
+      {
+        "in": "oms/service/invoice_service.py::InvoiceService.create",
+        "call": "created.model_dump",
+        "line": 126
+      },
+      {
+        "in": "oms/service/invoice_service.py::InvoiceService.update_status",
+        "call": "valid_transitions.get",
+        "line": 150
+      },
+      {
+        "in": "oms/service/invoice_service.py::InvoiceService.update_status",
+        "call": "self.cache.delete",
+        "line": 158
+      },
+      {
+        "in": "oms/service/invoice_service.py::InvoiceService.delete",
+        "call": "self.cache.delete",
+        "line": 169
+      },
+      {
+        "in": "oms/service/order_service.py::OrderService.get_by_id",
+        "call": "self.cache.get",
+        "line": 46
+      },
+      {
+        "in": "oms/service/order_service.py::OrderService.create",
+        "call": "self.cache.set",
+        "line": 60
+      },
+      {
+        "in": "oms/service/order_service.py::OrderService.create",
+        "call": "order.model_dump",
+        "line": 60
+      },
+      {
+        "in": "oms/service/order_service.py::OrderService.create",
+        "call": "line_items_with_price.append",
+        "line": 117
+      },
+      {
+        "in": "oms/service/order_service.py::OrderService.create",
+        "call": "self.cache.set",
+        "line": 133
+      },
+      {
+        "in": "oms/service/order_service.py::OrderService.create",
+        "call": "self.cache.delete",
+        "line": 134
+      },
+      {
+        "in": "oms/service/order_service.py::OrderService.create",
+        "call": "created.model_dump",
+        "line": 133
+      },
+      {
+        "in": "oms/service/order_service.py::OrderService.update_status",
+        "call": "self.VALID_TRANSITIONS.get",
+        "line": 155
+      },
+      {
+        "in": "oms/service/order_service.py::OrderService.update_status",
+        "call": "self.cache.delete",
+        "line": 164
+      },
+      {
+        "in": "oms/service/order_service.py::OrderService.set_invoice_ref",
+        "call": "self.cache.delete",
+        "line": 181
+      },
+      {
+        "in": "oms/service/order_service.py::OrderService.delete",
+        "call": "self.cache.delete",
+        "line": 192
+      },
+      {
+        "in": "oms/service/order_service.py::OrderService._validate_state_transition",
+        "call": "self.VALID_TRANSITIONS.get",
+        "line": 198
+      },
+      {
+        "in": "oms/service/payment_service.py::PaymentService.get_by_id",
+        "call": "self.cache.get",
+        "line": 32
+      },
+      {
+        "in": "oms/service/payment_service.py::PaymentService.get_by_id",
+        "call": "self.cache.set",
+        "line": 42
+      },
+      {
+        "in": "oms/service/payment_service.py::PaymentService.get_by_id",
+        "call": "payment.model_dump",
+        "line": 42
+      },
+      {
+        "in": "oms/service/payment_service.py::PaymentService.create",
+        "call": "self.cache.set",
+        "line": 88
+      },
+      {
+        "in": "oms/service/payment_service.py::PaymentService.create",
+        "call": "created.model_dump",
+        "line": 88
+      },
+      {
+        "in": "oms/service/payment_service.py::PaymentService.verify_payment",
+        "call": "self.cache.delete",
+        "line": 118
+      },
+      {
+        "in": "oms/service/payment_service.py::PaymentService.delete",
+        "call": "self.cache.delete",
+        "line": 129
+      },
+      {
+        "in": "oms/service/product_service.py::ProductService.get_by_id",
+        "call": "self.cache.get",
+        "line": 27
+      },
+      {
+        "in": "oms/service/product_service.py::ProductService.get_by_id",
+        "call": "self.cache.set",
+        "line": 37
+      },
+      {
+        "in": "oms/service/product_service.py::ProductService.get_by_id",
+        "call": "product.model_dump",
+        "line": 37
+      },
+      {
+        "in": "oms/service/product_service.py::ProductService.create",
+        "call": "self.cache.set",
+        "line": 51
+      },
+      {
+        "in": "oms/service/product_service.py::ProductService.create",
+        "call": "created.model_dump",
+        "line": 51
+      },
+      {
+        "in": "oms/service/product_service.py::ProductService.update",
+        "call": "self.cache.delete",
+        "line": 60
+      },
+      {
+        "in": "oms/service/product_service.py::ProductService.update",
+        "call": "self.cache.set",
+        "line": 67
+      },
+      {
+        "in": "oms/service/product_service.py::ProductService.update",
+        "call": "updated.model_dump",
+        "line": 67
+      },
+      {
+        "in": "oms/service/product_service.py::ProductService.delete",
+        "call": "self.cache.delete",
+        "line": 73
+      },
+      {
+        "in": "oms/infrastructure/cache/memory_cache.py::MemoryCache.invalidate_pattern",
+        "call": "re.compile",
+        "line": 75
+      },
+      {
+        "in": "oms/infrastructure/cache/memory_cache.py::MemoryCache.invalidate_pattern",
+        "call": "compiled.match",
+        "line": 76
+      },
+      {
+        "in": "oms/infrastructure/event/rate_limiter.py::RateLimiter.is_allowed",
+        "call": "self._events[key].append",
+        "line": 55
+      }
+    ],
+    "frameworkEntrypoints": [
+      "oms/controller/customer_controller.py::create_customer",
+      "oms/controller/customer_controller.py::delete_customer",
+      "oms/controller/customer_controller.py::get_customer",
+      "oms/controller/customer_controller.py::list_customers",
+      "oms/controller/customer_controller.py::update_customer",
+      "oms/controller/invoice_controller.py::create_invoice",
+      "oms/controller/invoice_controller.py::delete_invoice",
+      "oms/controller/invoice_controller.py::get_invoice",
+      "oms/controller/invoice_controller.py::get_invoice_by_order",
+      "oms/controller/invoice_controller.py::list_invoices",
+      "oms/controller/invoice_controller.py::update_invoice_status",
+      "oms/controller/order_controller.py::create_order",
+      "oms/controller/order_controller.py::delete_order",
+      "oms/controller/order_controller.py::get_order",
+      "oms/controller/order_controller.py::get_orders_by_customer",
+      "oms/controller/order_controller.py::get_orders_by_status",
+      "oms/controller/order_controller.py::list_orders",
+      "oms/controller/order_controller.py::update_order_status",
+      "oms/controller/payment_controller.py::create_payment",
+      "oms/controller/payment_controller.py::delete_payment",
+      "oms/controller/payment_controller.py::get_payment",
+      "oms/controller/payment_controller.py::get_payments_by_order",
+      "oms/controller/payment_controller.py::list_payments",
+      "oms/controller/payment_controller.py::verify_payment",
+      "oms/controller/product_controller.py::create_product",
+      "oms/controller/product_controller.py::delete_product",
+      "oms/controller/product_controller.py::get_product",
+      "oms/controller/product_controller.py::list_products",
+      "oms/controller/product_controller.py::update_product",
+      "oms/domain/models.py::BankingDetails.validate_account_number",
+      "oms/domain/models.py::BankingDetails.validate_bank_name",
+      "oms/domain/models.py::Customer.validate_address",
+      "oms/domain/models.py::Customer.validate_name",
+      "oms/domain/models.py::Customer.validate_phone",
+      "oms/domain/models.py::CustomerCreate.validate_address",
+      "oms/domain/models.py::CustomerCreate.validate_name",
+      "oms/domain/models.py::CustomerCreate.validate_phone",
+      "oms/domain/models.py::Invoice.validate_due_date",
+      "oms/domain/models.py::Invoice.validate_issue_date",
+      "oms/domain/models.py::Invoice.validate_order_ref",
+      "oms/domain/models.py::InvoiceCreate.validate_due_date",
+      "oms/domain/models.py::InvoiceCreate.validate_issue_date",
+      "oms/domain/models.py::InvoiceCreate.validate_order_ref",
+      "oms/domain/models.py::LineItem.validate_product_ref",
+      "oms/domain/models.py::LineItem.validate_quantity",
+      "oms/domain/models.py::Order.validate_customer_ref",
+      "oms/domain/models.py::Order.validate_invoice_ref",
+      "oms/domain/models.py::OrderCreate.validate_customer_ref",
+      "oms/domain/models.py::OrderCreate.validate_line_items_count",
+      "oms/domain/models.py::Payment.validate_order_ref",
+      "oms/domain/models.py::PaymentCreate.validate_amount",
+      "oms/domain/models.py::PaymentCreate.validate_order_ref",
+      "oms/domain/models.py::Price.validate_amount",
+      "oms/domain/models.py::Price.validate_currency",
+      "oms/domain/models.py::Product.validate_description",
+      "oms/domain/models.py::ProductCreate.validate_description",
+      "oms/infrastructure/cache/memory_cache.py::MemoryCache.__init__",
+      "oms/infrastructure/cache/memory_cache.py::MemoryCache.clear",
+      "oms/infrastructure/cache/memory_cache.py::MemoryCache.delete",
+      "oms/infrastructure/cache/memory_cache.py::MemoryCache.get",
+      "oms/infrastructure/cache/memory_cache.py::MemoryCache.get_instance",
+      "oms/infrastructure/cache/memory_cache.py::MemoryCache.invalidate_pattern",
+      "oms/infrastructure/cache/memory_cache.py::MemoryCache.set",
+      "oms/infrastructure/database.py::transaction_session",
+      "oms/infrastructure/event/rate_limiter.py::RateLimiter.__init__",
+      "oms/infrastructure/event/rate_limiter.py::RateLimiter.get_instance",
+      "oms/infrastructure/event/rate_limiter.py::RateLimiter.get_remaining",
+      "oms/infrastructure/event/rate_limiter.py::RateLimiter.is_allowed",
+      "oms/infrastructure/event/rate_limiter.py::RateLimiter.reset",
+      "oms/infrastructure/exceptions.py::NotFoundException.__init__",
+      "oms/infrastructure/exceptions.py::OMSException.__init__",
+      "oms/service/customer_service.py::CustomerService.__init__",
+      "oms/service/customer_service.py::CustomerService.add_to_order_history",
+      "oms/service/customer_service.py::CustomerService.create",
+      "oms/service/customer_service.py::CustomerService.delete",
+      "oms/service/customer_service.py::CustomerService.get_all",
+      "oms/service/customer_service.py::CustomerService.get_by_id",
+      "oms/service/customer_service.py::CustomerService.update",
+      "oms/service/invoice_service.py::InvoiceService.__init__",
+      "oms/service/invoice_service.py::InvoiceService.create",
+      "oms/service/invoice_service.py::InvoiceService.delete",
+      "oms/service/invoice_service.py::InvoiceService.get_all",
+      "oms/service/invoice_service.py::InvoiceService.get_by_id",
+      "oms/service/invoice_service.py::InvoiceService.get_by_order",
+      "oms/service/invoice_service.py::InvoiceService.update_status",
+      "oms/service/order_service.py::OrderService.__init__",
+      "oms/service/order_service.py::OrderService._validate_state_transition",
+      "oms/service/order_service.py::OrderService.create",
+      "oms/service/order_service.py::OrderService.delete",
+      "oms/service/order_service.py::OrderService.get_all",
+      "oms/service/order_service.py::OrderService.get_by_customer",
+      "oms/service/order_service.py::OrderService.get_by_id",
+      "oms/service/order_service.py::OrderService.get_by_status",
+      "oms/service/order_service.py::OrderService.set_invoice_ref",
+      "oms/service/order_service.py::OrderService.update_status",
+      "oms/service/payment_service.py::PaymentService.__init__",
+      "oms/service/payment_service.py::PaymentService.create",
+      "oms/service/payment_service.py::PaymentService.delete",
+      "oms/service/payment_service.py::PaymentService.get_all",
+      "oms/service/payment_service.py::PaymentService.get_by_id",
+      "oms/service/payment_service.py::PaymentService.get_by_order",
+      "oms/service/payment_service.py::PaymentService.verify_payment",
+      "oms/service/product_service.py::ProductService.__init__",
+      "oms/service/product_service.py::ProductService.create",
+      "oms/service/product_service.py::ProductService.delete",
+      "oms/service/product_service.py::ProductService.get_all",
+      "oms/service/product_service.py::ProductService.get_by_id",
+      "oms/service/product_service.py::ProductService.update"
+    ]
+  },
+  "repoRoot": "F:\\swelab\\llmagent4code\\method_pipeline_v2\\generated\\chatdev-qwen35-v2\\code_workspace",
+  "language": "python",
+  "sourceRoots": [
+    "oms"
+  ]
+}

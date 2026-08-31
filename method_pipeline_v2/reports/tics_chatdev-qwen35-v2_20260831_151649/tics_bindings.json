@@ -1,0 +1,310 @@
+{
+  "schemaVersion": "1.0",
+  "repoRoot": "F:\\swelab\\llmagent4code\\method_pipeline_v2\\generated\\chatdev-qwen35-v2\\code_workspace",
+  "bindings": [
+    {
+      "nfr_id": "NFR 1.1",
+      "function_ref": "oms/infrastructure/event/rate_limiter.py::RateLimiter.is_allowed",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 1.1",
+      "function_ref": "oms/controller/customer_controller.py::create_customer",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 1.1",
+      "function_ref": "oms/controller/product_controller.py::create_product",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 1.1",
+      "function_ref": "oms/controller/order_controller.py::create_order",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 1.1",
+      "function_ref": "oms/controller/payment_controller.py::create_payment",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 1.1",
+      "function_ref": "oms/controller/invoice_controller.py::create_invoice",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 1.2",
+      "function_ref": "oms/infrastructure/cache/memory_cache.py::MemoryCache.get",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 1.2",
+      "function_ref": "oms/infrastructure/cache/memory_cache.py::MemoryCache.set",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 1.2",
+      "function_ref": "oms/service/customer_service.py::CustomerService.get_by_id",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 1.2",
+      "function_ref": "oms/service/product_service.py::ProductService.get_by_id",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 1.2",
+      "function_ref": "oms/service/order_service.py::OrderService.get_by_id",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 1.2",
+      "function_ref": "oms/service/payment_service.py::PaymentService.get_by_id",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 1.2",
+      "function_ref": "oms/service/invoice_service.py::InvoiceService.get_by_id",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 2.1",
+      "function_ref": "oms/infrastructure/exceptions.py::oms_exception_handler",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "fastapi"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 2.1",
+      "function_ref": "oms/infrastructure/exceptions.py::validation_exception_handler",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "fastapi"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 2.1",
+      "function_ref": "oms/infrastructure/exceptions.py::sqlalchemy_exception_handler",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "fastapi"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 2.1",
+      "function_ref": "oms/infrastructure/exceptions.py::generic_exception_handler",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "fastapi"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 2.1",
+      "function_ref": "oms/service/order_service.py::OrderService.create",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 2.2",
+      "function_ref": "oms/infrastructure/exceptions.py::sqlalchemy_exception_handler",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "fastapi"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 2.2",
+      "function_ref": "oms/infrastructure/exceptions.py::generic_exception_handler",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "fastapi"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 2.2",
+      "function_ref": "oms/infrastructure/exceptions.py::ServiceUnavailableException",
+      "s": 0.0,
+      "evidence": {
+        "status": "ABSENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 2.3",
+      "function_ref": "oms/infrastructure/cache/memory_cache.py::MemoryCache.get",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 2.3",
+      "function_ref": "oms/infrastructure/cache/memory_cache.py::MemoryCache.set",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 2.3",
+      "function_ref": "oms/infrastructure/cache/memory_cache.py::MemoryCache.delete",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 2.3",
+      "function_ref": "oms/service/customer_service.py::CustomerService.get_by_id",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 2.4",
+      "function_ref": "oms/infrastructure/database.py::transaction_session",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "sqlalchemy"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 2.4",
+      "function_ref": "oms/service/order_service.py::OrderService.create",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 2.4",
+      "function_ref": "oms/service/payment_service.py::PaymentService.create",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 2.4",
+      "function_ref": "oms/service/invoice_service.py::InvoiceService.create",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    }
+  ]
+}

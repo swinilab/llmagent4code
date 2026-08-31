@@ -1,0 +1,568 @@
+{
+  "generated_at": "2026-08-31T13:35:24",
+  "trace_file": "generated\\chatdev-qwen35-v1\\code_workspace\\nfr-trace.json",
+  "repo_root": "generated\\chatdev-qwen35-v1\\code_workspace",
+  "scoring_summary": {
+    "overall_score": 1.0,
+    "score3": {
+      "performance": 1.0,
+      "availability": 1.0
+    },
+    "score2": {
+      "Rate Limiting": 1.0,
+      "Caching": 1.0,
+      "Exception Detection": 1.0,
+      "Graceful Degradation": 1.0,
+      "State Resynchronization": 1.0,
+      "Transactions": 1.0
+    },
+    "score1": {
+      "Rate Limiting": {
+        "oms_backend/utils/rate_limiter.py::RateLimiter.is_allowed": 1.0,
+        "oms_backend/utils/rate_limiter.py::RateLimiter._in_memory_check": 1.0
+      },
+      "Caching": {
+        "oms_backend/utils/cache.py::CacheManager.get": 1.0,
+        "oms_backend/utils/cache.py::CacheManager.set": 1.0,
+        "oms_backend/repository/base.py::BaseRepository.get_by_id": 1.0
+      },
+      "Exception Detection": {
+        "oms_backend/utils/exceptions.py::OMSException.__init__": 1.0,
+        "oms_backend/utils/exceptions.py::TimeoutException.__init__": 1.0,
+        "oms_backend/utils/retry.py::execute_with_retry": 1.0
+      },
+      "Graceful Degradation": {
+        "oms_backend/utils/cache.py::CacheManager.get": 1.0,
+        "oms_backend/utils/cache.py::CacheManager.set": 1.0,
+        "oms_backend/utils/rate_limiter.py::RateLimiter.is_allowed": 1.0
+      },
+      "State Resynchronization": {
+        "oms_backend/utils/retry.py::synchronize_state": 1.0,
+        "oms_backend/repository/base.py::BaseRepository.resynchronize": 1.0
+      },
+      "Transactions": {
+        "oms_backend/infrastructure/database.py::TransactionManager.__enter__": 1.0,
+        "oms_backend/infrastructure/database.py::TransactionManager.__exit__": 1.0,
+        "oms_backend/service/order_service.py::OrderService.create_order": 1.0
+      }
+    }
+  },
+  "tally": {
+    "overall_score": 1.0,
+    "score3": {
+      "performance": 1.0,
+      "availability": 1.0
+    },
+    "score2": {
+      "Rate Limiting": 1.0,
+      "Caching": 1.0,
+      "Exception Detection": 1.0,
+      "Graceful Degradation": 1.0,
+      "State Resynchronization": 1.0,
+      "Transactions": 1.0
+    },
+    "score1": {
+      "Rate Limiting": {
+        "oms_backend/utils/rate_limiter.py::RateLimiter.is_allowed": 1.0,
+        "oms_backend/utils/rate_limiter.py::RateLimiter._in_memory_check": 1.0
+      },
+      "Caching": {
+        "oms_backend/utils/cache.py::CacheManager.get": 1.0,
+        "oms_backend/utils/cache.py::CacheManager.set": 1.0,
+        "oms_backend/repository/base.py::BaseRepository.get_by_id": 1.0
+      },
+      "Exception Detection": {
+        "oms_backend/utils/exceptions.py::OMSException.__init__": 1.0,
+        "oms_backend/utils/exceptions.py::TimeoutException.__init__": 1.0,
+        "oms_backend/utils/retry.py::execute_with_retry": 1.0
+      },
+      "Graceful Degradation": {
+        "oms_backend/utils/cache.py::CacheManager.get": 1.0,
+        "oms_backend/utils/cache.py::CacheManager.set": 1.0,
+        "oms_backend/utils/rate_limiter.py::RateLimiter.is_allowed": 1.0
+      },
+      "State Resynchronization": {
+        "oms_backend/utils/retry.py::synchronize_state": 1.0,
+        "oms_backend/repository/base.py::BaseRepository.resynchronize": 1.0
+      },
+      "Transactions": {
+        "oms_backend/infrastructure/database.py::TransactionManager.__enter__": 1.0,
+        "oms_backend/infrastructure/database.py::TransactionManager.__exit__": 1.0,
+        "oms_backend/service/order_service.py::OrderService.create_order": 1.0
+      }
+    },
+    "qa_groups": {
+      "performance": {
+        "score3": 1.0,
+        "tactics": [
+          "Caching",
+          "Rate Limiting"
+        ],
+        "nfrs": [
+          {
+            "nfr": "NFR 1.1 Limit Event Response",
+            "tactics": [
+              "Rate Limiting"
+            ],
+            "score2": 1.0,
+            "status": "PRESENT",
+            "functions": [
+              {
+                "ref": "oms_backend/utils/rate_limiter.py::RateLimiter.is_allowed",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "oms_backend/utils/rate_limiter.py::RateLimiter._in_memory_check",
+                "status": "PRESENT",
+                "score1": 1.0
+              }
+            ],
+            "libraries": [
+              {
+                "lib": "redis",
+                "status": "PRESENT"
+              }
+            ]
+          },
+          {
+            "nfr": "NFR 1.2 Maintain Multiple copies of Data",
+            "tactics": [
+              "Caching"
+            ],
+            "score2": 1.0,
+            "status": "PRESENT",
+            "functions": [
+              {
+                "ref": "oms_backend/utils/cache.py::CacheManager.get",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "oms_backend/utils/cache.py::CacheManager.set",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "oms_backend/repository/base.py::BaseRepository.get_by_id",
+                "status": "PRESENT",
+                "score1": 1.0
+              }
+            ],
+            "libraries": [
+              {
+                "lib": "redis",
+                "status": "PRESENT"
+              }
+            ]
+          }
+        ]
+      },
+      "availability": {
+        "score3": 1.0,
+        "tactics": [
+          "Exception Detection",
+          "Graceful Degradation",
+          "State Resynchronization",
+          "Transactions"
+        ],
+        "nfrs": [
+          {
+            "nfr": "NFR 2.1 Exception detection",
+            "tactics": [
+              "Exception Detection"
+            ],
+            "score2": 1.0,
+            "status": "PRESENT",
+            "functions": [
+              {
+                "ref": "oms_backend/utils/exceptions.py::OMSException.__init__",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "oms_backend/utils/exceptions.py::TimeoutException.__init__",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "oms_backend/utils/retry.py::execute_with_retry",
+                "status": "PRESENT",
+                "score1": 1.0
+              }
+            ],
+            "libraries": [
+              {
+                "lib": "tenacity",
+                "status": "PRESENT"
+              }
+            ]
+          },
+          {
+            "nfr": "NFR 2.2 Graceful Degradation",
+            "tactics": [
+              "Graceful Degradation"
+            ],
+            "score2": 1.0,
+            "status": "ABSENT",
+            "functions": [
+              {
+                "ref": "oms_backend/utils/cache.py::CacheManager.get",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "oms_backend/utils/cache.py::CacheManager.set",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "oms_backend/utils/rate_limiter.py::RateLimiter.is_allowed",
+                "status": "PRESENT",
+                "score1": 1.0
+              }
+            ],
+            "libraries": [
+              {
+                "lib": "redis",
+                "status": "PRESENT"
+              },
+              {
+                "lib": "tenacity",
+                "status": "ABSENT"
+              }
+            ]
+          },
+          {
+            "nfr": "NFR 2.3 State Resynchronization",
+            "tactics": [
+              "State Resynchronization"
+            ],
+            "score2": 1.0,
+            "status": "PRESENT",
+            "functions": [
+              {
+                "ref": "oms_backend/utils/retry.py::synchronize_state",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "oms_backend/repository/base.py::BaseRepository.resynchronize",
+                "status": "PRESENT",
+                "score1": 1.0
+              }
+            ],
+            "libraries": [
+              {
+                "lib": "tenacity",
+                "status": "PRESENT"
+              }
+            ]
+          },
+          {
+            "nfr": "NFR 2.4 Transactions",
+            "tactics": [
+              "Transactions"
+            ],
+            "score2": 1.0,
+            "status": "ABSENT",
+            "functions": [
+              {
+                "ref": "oms_backend/infrastructure/database.py::TransactionManager.__enter__",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "oms_backend/infrastructure/database.py::TransactionManager.__exit__",
+                "status": "PRESENT",
+                "score1": 1.0
+              },
+              {
+                "ref": "oms_backend/service/order_service.py::OrderService.create_order",
+                "status": "PRESENT",
+                "score1": 1.0
+              }
+            ],
+            "libraries": [
+              {
+                "lib": "sqlalchemy",
+                "status": "PRESENT"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "results": [
+    {
+      "nfr": "NFR 1.1 Limit Event Response",
+      "qa_group": "performance",
+      "status": "PRESENT",
+      "stage": "existence",
+      "score2": 1.0,
+      "evidence": "functions[RateLimiter.is_allowed=PRESENT(s1=1.0); RateLimiter._in_memory_check=PRESENT(s1=1.0)] libraries[redis=PRESENT] fn-uses-lib[level1=PRESENT; RateLimiter.is_allowed->['redis']; RateLimiter._in_memory_check->none]",
+      "tactics": [
+        "Rate Limiting"
+      ],
+      "functions": [
+        {
+          "ref": "oms_backend/utils/rate_limiter.py::RateLimiter.is_allowed",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "redis"
+          ],
+          "uses_any": true
+        },
+        {
+          "ref": "oms_backend/utils/rate_limiter.py::RateLimiter._in_memory_check",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        }
+      ],
+      "libraries": [
+        {
+          "lib": "redis",
+          "status": "PRESENT",
+          "detail": "'redis' imported and used"
+        }
+      ]
+    },
+    {
+      "nfr": "NFR 1.2 Maintain Multiple copies of Data",
+      "qa_group": "performance",
+      "status": "PRESENT",
+      "stage": "existence",
+      "score2": 1.0,
+      "evidence": "functions[CacheManager.get=PRESENT(s1=1.0); CacheManager.set=PRESENT(s1=1.0); BaseRepository.get_by_id=PRESENT(s1=1.0)] libraries[redis=PRESENT] fn-uses-lib[level1=PRESENT; CacheManager.get->['redis']; CacheManager.set->['redis']; BaseRepository.get_by_id->none]",
+      "tactics": [
+        "Caching"
+      ],
+      "functions": [
+        {
+          "ref": "oms_backend/utils/cache.py::CacheManager.get",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "redis"
+          ],
+          "uses_any": true
+        },
+        {
+          "ref": "oms_backend/utils/cache.py::CacheManager.set",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "redis"
+          ],
+          "uses_any": true
+        },
+        {
+          "ref": "oms_backend/repository/base.py::BaseRepository.get_by_id",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        }
+      ],
+      "libraries": [
+        {
+          "lib": "redis",
+          "status": "PRESENT",
+          "detail": "'redis' imported and used"
+        }
+      ]
+    },
+    {
+      "nfr": "NFR 2.1 Exception detection",
+      "qa_group": "availability",
+      "status": "PRESENT",
+      "stage": "existence",
+      "score2": 1.0,
+      "evidence": "functions[OMSException.__init__=PRESENT(s1=1.0); TimeoutException.__init__=PRESENT(s1=1.0); execute_with_retry=PRESENT(s1=1.0)] libraries[tenacity=PRESENT] fn-uses-lib[level1=PRESENT; OMSException.__init__->none; TimeoutException.__init__->none; execute_with_retry->['tenacity']]",
+      "tactics": [
+        "Exception Detection"
+      ],
+      "functions": [
+        {
+          "ref": "oms_backend/utils/exceptions.py::OMSException.__init__",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        },
+        {
+          "ref": "oms_backend/utils/exceptions.py::TimeoutException.__init__",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        },
+        {
+          "ref": "oms_backend/utils/retry.py::execute_with_retry",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "tenacity"
+          ],
+          "uses_any": true
+        }
+      ],
+      "libraries": [
+        {
+          "lib": "tenacity",
+          "status": "PRESENT",
+          "detail": "'tenacity' imported and used"
+        }
+      ]
+    },
+    {
+      "nfr": "NFR 2.2 Graceful Degradation",
+      "qa_group": "availability",
+      "status": "ABSENT",
+      "stage": "existence",
+      "score2": 1.0,
+      "evidence": "functions[CacheManager.get=PRESENT(s1=1.0); CacheManager.set=PRESENT(s1=1.0); RateLimiter.is_allowed=PRESENT(s1=1.0)] libraries[redis=PRESENT; tenacity=ABSENT] fn-uses-lib[level1=PRESENT; CacheManager.get->['redis']; CacheManager.set->['redis']; RateLimiter.is_allowed->['redis']]",
+      "tactics": [
+        "Graceful Degradation"
+      ],
+      "functions": [
+        {
+          "ref": "oms_backend/utils/cache.py::CacheManager.get",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "redis"
+          ],
+          "uses_any": true
+        },
+        {
+          "ref": "oms_backend/utils/cache.py::CacheManager.set",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "redis"
+          ],
+          "uses_any": true
+        },
+        {
+          "ref": "oms_backend/utils/rate_limiter.py::RateLimiter.is_allowed",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "redis"
+          ],
+          "uses_any": true
+        }
+      ],
+      "libraries": [
+        {
+          "lib": "redis",
+          "status": "PRESENT",
+          "detail": "'redis' imported and used"
+        },
+        {
+          "lib": "tenacity",
+          "status": "ABSENT",
+          "detail": "'tenacity' not imported in any claimed file"
+        }
+      ]
+    },
+    {
+      "nfr": "NFR 2.3 State Resynchronization",
+      "qa_group": "availability",
+      "status": "PRESENT",
+      "stage": "existence",
+      "score2": 1.0,
+      "evidence": "functions[synchronize_state=PRESENT(s1=1.0); BaseRepository.resynchronize=PRESENT(s1=1.0)] libraries[tenacity=PRESENT] fn-uses-lib[level1=PRESENT; synchronize_state->['tenacity']; BaseRepository.resynchronize->none]",
+      "tactics": [
+        "State Resynchronization"
+      ],
+      "functions": [
+        {
+          "ref": "oms_backend/utils/retry.py::synchronize_state",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [
+            "tenacity"
+          ],
+          "uses_any": true
+        },
+        {
+          "ref": "oms_backend/repository/base.py::BaseRepository.resynchronize",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        }
+      ],
+      "libraries": [
+        {
+          "lib": "tenacity",
+          "status": "PRESENT",
+          "detail": "'tenacity' imported and used"
+        }
+      ]
+    },
+    {
+      "nfr": "NFR 2.4 Transactions",
+      "qa_group": "availability",
+      "status": "ABSENT",
+      "stage": "existence",
+      "score2": 1.0,
+      "evidence": "functions[TransactionManager.__enter__=PRESENT(s1=1.0); TransactionManager.__exit__=PRESENT(s1=1.0); OrderService.create_order=PRESENT(s1=1.0)] libraries[sqlalchemy=PRESENT] fn-uses-lib[level1=ABSENT; TransactionManager.__enter__->none; TransactionManager.__exit__->none; OrderService.create_order->none]",
+      "tactics": [
+        "Transactions"
+      ],
+      "functions": [
+        {
+          "ref": "oms_backend/infrastructure/database.py::TransactionManager.__enter__",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        },
+        {
+          "ref": "oms_backend/infrastructure/database.py::TransactionManager.__exit__",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        },
+        {
+          "ref": "oms_backend/service/order_service.py::OrderService.create_order",
+          "status": "PRESENT",
+          "score1": 1.0,
+          "detail": "non-trivial body",
+          "libraries_used": [],
+          "uses_any": false
+        }
+      ],
+      "libraries": [
+        {
+          "lib": "sqlalchemy",
+          "status": "PRESENT",
+          "detail": "'sqlalchemy' imported and used"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "schemaVersion": "1.0",
+  "repoRoot": "F:\\swelab\\llmagent4code\\method_pipeline_v2\\generated\\chatdev-qwen35-v1\\code_workspace",
+  "bindings": [
+    {
+      "nfr_id": "NFR 1.1",
+      "function_ref": "oms_backend/utils/rate_limiter.py::RateLimiter.is_allowed",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "redis"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 1.1",
+      "function_ref": "oms_backend/utils/rate_limiter.py::RateLimiter._in_memory_check",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 1.2",
+      "function_ref": "oms_backend/utils/cache.py::CacheManager.get",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "redis"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 1.2",
+      "function_ref": "oms_backend/utils/cache.py::CacheManager.set",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "redis"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 1.2",
+      "function_ref": "oms_backend/repository/base.py::BaseRepository.get_by_id",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 2.1",
+      "function_ref": "oms_backend/utils/exceptions.py::OMSException.__init__",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 2.1",
+      "function_ref": "oms_backend/utils/exceptions.py::TimeoutException.__init__",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 2.1",
+      "function_ref": "oms_backend/utils/retry.py::execute_with_retry",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "tenacity"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 2.2",
+      "function_ref": "oms_backend/utils/cache.py::CacheManager.get",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "redis"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 2.2",
+      "function_ref": "oms_backend/utils/cache.py::CacheManager.set",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "redis"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 2.2",
+      "function_ref": "oms_backend/utils/rate_limiter.py::RateLimiter.is_allowed",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "redis"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 2.3",
+      "function_ref": "oms_backend/utils/retry.py::synchronize_state",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "tenacity"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 2.3",
+      "function_ref": "oms_backend/repository/base.py::BaseRepository.resynchronize",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 2.4",
+      "function_ref": "oms_backend/infrastructure/database.py::TransactionManager.__enter__",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 2.4",
+      "function_ref": "oms_backend/infrastructure/database.py::TransactionManager.__exit__",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 2.4",
+      "function_ref": "oms_backend/service/order_service.py::OrderService.create_order",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    }
+  ]
+}

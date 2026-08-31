@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-25T16:04:17",
-  "trace_file": "F:\\swelab\\llmagent4code\\method_pipeline_v2\\generated\\chatdev-qwen35-v2\\code_workspace\\nfr-trace.json",
-  "repo_root": "F:\\swelab\\llmagent4code\\method_pipeline_v2\\generated\\chatdev-qwen35-v2\\code_workspace",
+  "generated_at": "2026-08-31T15:16:44",
+  "trace_file": "generated\\chatdev-qwen35-v2\\code_workspace\\nfr-trace.json",
+  "repo_root": "generated\\chatdev-qwen35-v2\\code_workspace",
   "scoring_summary": {
     "overall_score": 0.9584,
     "score3": {

@@ -1,22 +1,22 @@
 {
   "schemaVersion": "1.0",
-  "repoRoot": "F:\\swelab\\llmagent4code\\apps\\codex",
+  "repoRoot": "F:\\swelab\\llmagent4code\\method_pipeline_v2\\generated\\chatdev-qwen35-v1\\code_workspace",
   "bindings": [
     {
       "nfr_id": "NFR 1.1",
-      "function_ref": "app/workers/outbox.py::OutboxDispatcher.__init__",
+      "function_ref": "oms_backend/utils/rate_limiter.py::RateLimiter.is_allowed",
       "s": 1.0,
       "evidence": {
         "status": "PRESENT",
         "librariesUsed": [
-          "aiolimiter"
+          "redis"
         ],
         "usesAny": true
       }
     },
     {
       "nfr_id": "NFR 1.1",
-      "function_ref": "app/workers/outbox.py::OutboxDispatcher.dispatch_pending_events",
+      "function_ref": "oms_backend/utils/rate_limiter.py::RateLimiter._in_memory_check",
       "s": 1.0,
       "evidence": {
         "status": "PRESENT",
@@ -26,7 +26,7 @@
     },
     {
       "nfr_id": "NFR 1.2",
-      "function_ref": "app/infrastructure/cache.py::EntityCache.get_json",
+      "function_ref": "oms_backend/utils/cache.py::CacheManager.get",
       "s": 1.0,
       "evidence": {
         "status": "PRESENT",
@@ -38,7 +38,7 @@
     },
     {
       "nfr_id": "NFR 1.2",
-      "function_ref": "app/infrastructure/cache.py::EntityCache.set_json",
+      "function_ref": "oms_backend/utils/cache.py::CacheManager.set",
       "s": 1.0,
       "evidence": {
         "status": "PRESENT",
@@ -49,93 +49,8 @@
       }
     },
     {
-      "nfr_id": "NFR 2.1",
-      "function_ref": "app/core/resilience.py::run_with_timeout",
-      "s": 1.0,
-      "evidence": {
-        "status": "PRESENT",
-        "librariesUsed": [
-          "asyncio"
-        ],
-        "usesAny": true
-      }
-    },
-    {
-      "nfr_id": "NFR 2.1",
-      "function_ref": "app/core/errors.py::install_exception_handlers",
-      "s": 1.0,
-      "evidence": {
-        "status": "PRESENT",
-        "librariesUsed": [
-          "fastapi",
-          "sqlalchemy"
-        ],
-        "usesAny": true
-      }
-    },
-    {
-      "nfr_id": "NFR 2.1",
-      "function_ref": "app/services/health_service.py::HealthService.check",
-      "s": 1.0,
-      "evidence": {
-        "status": "PRESENT",
-        "librariesUsed": [
-          "sqlalchemy"
-        ],
-        "usesAny": true
-      }
-    },
-    {
-      "nfr_id": "NFR 2.2",
-      "function_ref": "app/infrastructure/cache.py::EntityCache.get_json",
-      "s": 1.0,
-      "evidence": {
-        "status": "PRESENT",
-        "librariesUsed": [
-          "redis"
-        ],
-        "usesAny": true
-      }
-    },
-    {
-      "nfr_id": "NFR 2.2",
-      "function_ref": "app/infrastructure/cache.py::EntityCache.set_json",
-      "s": 1.0,
-      "evidence": {
-        "status": "PRESENT",
-        "librariesUsed": [
-          "redis"
-        ],
-        "usesAny": true
-      }
-    },
-    {
-      "nfr_id": "NFR 2.2",
-      "function_ref": "app/workers/outbox.py::OutboxDispatcher.dispatch_pending_events",
-      "s": 1.0,
-      "evidence": {
-        "status": "PRESENT",
-        "librariesUsed": [
-          "redis"
-        ],
-        "usesAny": true
-      }
-    },
-    {
-      "nfr_id": "NFR 2.3",
-      "function_ref": "app/workers/state_sync.py::StateSynchronizer.resynchronize_once",
-      "s": 1.0,
-      "evidence": {
-        "status": "PRESENT",
-        "librariesUsed": [
-          "sqlalchemy"
-        ],
-        "usesAny": true
-      }
-    },
-    {
-      "nfr_id": "NFR 2.3",
-      "function_ref": "app/workers/state_sync.py::StateSynchronizer.run_forever",
+      "nfr_id": "NFR 1.2",
+      "function_ref": "oms_backend/repository/base.py::BaseRepository.get_by_id",
       "s": 1.0,
       "evidence": {
         "status": "PRESENT",
@@ -144,8 +59,64 @@
       }
     },
     {
-      "nfr_id": "NFR 2.3",
-      "function_ref": "app/infrastructure/cache.py::EntityCache.get_envelope",
+      "nfr_id": "NFR 2.1",
+      "function_ref": "oms_backend/utils/exceptions.py::OMSException.__init__",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 2.1",
+      "function_ref": "oms_backend/utils/exceptions.py::TimeoutException.__init__",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 2.1",
+      "function_ref": "oms_backend/utils/retry.py::execute_with_retry",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "tenacity"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 2.2",
+      "function_ref": "oms_backend/utils/cache.py::CacheManager.get",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "redis"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 2.2",
+      "function_ref": "oms_backend/utils/cache.py::CacheManager.set",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [
+          "redis"
+        ],
+        "usesAny": true
+      }
+    },
+    {
+      "nfr_id": "NFR 2.2",
+      "function_ref": "oms_backend/utils/rate_limiter.py::RateLimiter.is_allowed",
       "s": 1.0,
       "evidence": {
         "status": "PRESENT",
@@ -157,31 +128,19 @@
     },
     {
       "nfr_id": "NFR 2.3",
-      "function_ref": "app/infrastructure/cache.py::EntityCache.set_json",
+      "function_ref": "oms_backend/utils/retry.py::synchronize_state",
       "s": 1.0,
       "evidence": {
         "status": "PRESENT",
         "librariesUsed": [
-          "redis"
+          "tenacity"
         ],
         "usesAny": true
       }
     },
     {
-      "nfr_id": "NFR 2.4",
-      "function_ref": "app/infrastructure/unit_of_work.py::SqlAlchemyUnitOfWork.transaction",
-      "s": 1.0,
-      "evidence": {
-        "status": "PRESENT",
-        "librariesUsed": [
-          "sqlalchemy"
-        ],
-        "usesAny": true
-      }
-    },
-    {
-      "nfr_id": "NFR 2.4",
-      "function_ref": "app/repositories/outbox_repository.py::OutboxRepository.add",
+      "nfr_id": "NFR 2.3",
+      "function_ref": "oms_backend/repository/base.py::BaseRepository.resynchronize",
       "s": 1.0,
       "evidence": {
         "status": "PRESENT",
@@ -191,14 +150,32 @@
     },
     {
       "nfr_id": "NFR 2.4",
-      "function_ref": "app/repositories/outbox_repository.py::OutboxRepository.claim_batch",
+      "function_ref": "oms_backend/infrastructure/database.py::TransactionManager.__enter__",
       "s": 1.0,
       "evidence": {
         "status": "PRESENT",
-        "librariesUsed": [
-          "sqlalchemy"
-        ],
-        "usesAny": true
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 2.4",
+      "function_ref": "oms_backend/infrastructure/database.py::TransactionManager.__exit__",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
+      }
+    },
+    {
+      "nfr_id": "NFR 2.4",
+      "function_ref": "oms_backend/service/order_service.py::OrderService.create_order",
+      "s": 1.0,
+      "evidence": {
+        "status": "PRESENT",
+        "librariesUsed": [],
+        "usesAny": false
       }
     }
   ]

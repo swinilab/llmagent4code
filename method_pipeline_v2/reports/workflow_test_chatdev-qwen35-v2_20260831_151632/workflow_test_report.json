@@ -1,0 +1,342 @@
+{
+  "stage": "workflow",
+  "app": "chatdev-qwen35-v2",
+  "status": "FAIL",
+  "message": "12 of 19 workflow check(s) failed (36.8% passed).",
+  "total": 19,
+  "passed": 7,
+  "failed": 12,
+  "pass_rate": "36.8%",
+  "transitions_used": {
+    "accept": {
+      "method": "PUT",
+      "pathTemplate": "/api/v1/orders/{id}/status",
+      "body": {
+        "status": "ACCEPTED"
+      },
+      "source": "openapi:status-route"
+    },
+    "ship": {
+      "method": "PUT",
+      "pathTemplate": "/api/v1/orders/{id}/status",
+      "body": {
+        "status": "SHIPPED"
+      },
+      "source": "openapi:status-route"
+    },
+    "close": {
+      "method": "PUT",
+      "pathTemplate": "/api/v1/orders/{id}/status",
+      "body": {
+        "status": "CLOSED"
+      },
+      "source": "openapi:status-route"
+    },
+    "verify": {
+      "method": "PUT",
+      "pathTemplate": "/api/v1/payments/{id}/verify",
+      "source": "openapi:action-route"
+    }
+  },
+  "warnings": [
+    "could not create the customer/product the workflow needs (the app rejected or failed the create request)"
+  ],
+  "summary": [
+    {
+      "category": "capability",
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "pass_rate": "100.0%"
+    },
+    {
+      "category": "happy_path",
+      "total": 7,
+      "passed": 0,
+      "failed": 7,
+      "pass_rate": "0.0%"
+    },
+    {
+      "category": "precondition",
+      "total": 5,
+      "passed": 0,
+      "failed": 5,
+      "pass_rate": "0.0%"
+    }
+  ],
+  "checks": [
+    {
+      "check_id": "WF_C_PLACE",
+      "category": "capability",
+      "description": "app publishes a route for lifecycle step 'place'",
+      "result": true,
+      "expected": "route published",
+      "actual": "/api/v1/orders",
+      "method": "",
+      "url": "",
+      "detail": null
+    },
+    {
+      "check_id": "WF_C_ACCEPT",
+      "category": "capability",
+      "description": "app publishes a route for lifecycle step 'accept'",
+      "result": true,
+      "expected": "route published",
+      "actual": "/api/v1/orders/{id}/status",
+      "method": "",
+      "url": "",
+      "detail": {
+        "method": "PUT",
+        "pathTemplate": "/api/v1/orders/{id}/status",
+        "body": {
+          "status": "ACCEPTED"
+        },
+        "source": "openapi:status-route"
+      }
+    },
+    {
+      "check_id": "WF_C_INVOICE",
+      "category": "capability",
+      "description": "app publishes a route for lifecycle step 'invoice'",
+      "result": true,
+      "expected": "route published",
+      "actual": "/api/v1/invoices",
+      "method": "",
+      "url": "",
+      "detail": null
+    },
+    {
+      "check_id": "WF_C_PAY",
+      "category": "capability",
+      "description": "app publishes a route for lifecycle step 'pay'",
+      "result": true,
+      "expected": "route published",
+      "actual": "/api/v1/payments",
+      "method": "",
+      "url": "",
+      "detail": null
+    },
+    {
+      "check_id": "WF_C_VERIFY",
+      "category": "capability",
+      "description": "app publishes a route for lifecycle step 'verify'",
+      "result": true,
+      "expected": "route published",
+      "actual": "/api/v1/payments/{id}/verify",
+      "method": "",
+      "url": "",
+      "detail": {
+        "method": "PUT",
+        "pathTemplate": "/api/v1/payments/{id}/verify",
+        "source": "openapi:action-route"
+      }
+    },
+    {
+      "check_id": "WF_C_SHIP",
+      "category": "capability",
+      "description": "app publishes a route for lifecycle step 'ship'",
+      "result": true,
+      "expected": "route published",
+      "actual": "/api/v1/orders/{id}/status",
+      "method": "",
+      "url": "",
+      "detail": {
+        "method": "PUT",
+        "pathTemplate": "/api/v1/orders/{id}/status",
+        "body": {
+          "status": "SHIPPED"
+        },
+        "source": "openapi:status-route"
+      }
+    },
+    {
+      "check_id": "WF_C_CLOSE",
+      "category": "capability",
+      "description": "app publishes a route for lifecycle step 'close'",
+      "result": true,
+      "expected": "route published",
+      "actual": "/api/v1/orders/{id}/status",
+      "method": "",
+      "url": "",
+      "detail": {
+        "method": "PUT",
+        "pathTemplate": "/api/v1/orders/{id}/status",
+        "body": {
+          "status": "CLOSED"
+        },
+        "source": "openapi:status-route"
+      }
+    },
+    {
+      "check_id": "WF_H_01_PLACE",
+      "category": "happy_path",
+      "description": "Customer places order -> PLACED",
+      "result": false,
+      "expected": "PLACED",
+      "actual": "not run: could not create the customer/product the workflow needs (the app rejected or failed the create request)",
+      "method": "",
+      "url": "",
+      "detail": null
+    },
+    {
+      "check_id": "WF_H_02_ACCEPT",
+      "category": "happy_path",
+      "description": "Order Staff accepts order -> ACCEPTED",
+      "result": false,
+      "expected": "ACCEPTED",
+      "actual": "not run: could not create the customer/product the workflow needs (the app rejected or failed the create request)",
+      "method": "",
+      "url": "",
+      "detail": null
+    },
+    {
+      "check_id": "WF_H_03_INVOICE",
+      "category": "happy_path",
+      "description": "Accountant creates invoice -> INVOICED",
+      "result": false,
+      "expected": "INVOICED",
+      "actual": "not run: could not create the customer/product the workflow needs (the app rejected or failed the create request)",
+      "method": "",
+      "url": "",
+      "detail": null
+    },
+    {
+      "check_id": "WF_H_04_PAY",
+      "category": "happy_path",
+      "description": "Customer pays invoice -> PAID",
+      "result": false,
+      "expected": "PAID",
+      "actual": "not run: could not create the customer/product the workflow needs (the app rejected or failed the create request)",
+      "method": "",
+      "url": "",
+      "detail": null
+    },
+    {
+      "check_id": "WF_H_05_VERIFY",
+      "category": "happy_path",
+      "description": "Accountant verifies payment -> VERIFIED",
+      "result": false,
+      "expected": "VERIFIED",
+      "actual": "not run: could not create the customer/product the workflow needs (the app rejected or failed the create request)",
+      "method": "",
+      "url": "",
+      "detail": null
+    },
+    {
+      "check_id": "WF_H_06_SHIP",
+      "category": "happy_path",
+      "description": "Order Staff ships order -> SHIPPED",
+      "result": false,
+      "expected": "SHIPPED",
+      "actual": "not run: could not create the customer/product the workflow needs (the app rejected or failed the create request)",
+      "method": "",
+      "url": "",
+      "detail": null
+    },
+    {
+      "check_id": "WF_H_07_CLOSE",
+      "category": "happy_path",
+      "description": "Order Staff closes order -> CLOSED",
+      "result": false,
+      "expected": "CLOSED",
+      "actual": "not run: could not create the customer/product the workflow needs (the app rejected or failed the create request)",
+      "method": "",
+      "url": "",
+      "detail": null
+    },
+    {
+      "check_id": "WF_P_01_INVOICE_FROM_PLACED",
+      "category": "precondition",
+      "description": "create invoice for a PLACED order",
+      "result": false,
+      "expected": 409,
+      "actual": "not run: could not create the customer/product the workflow needs (the app rejected or failed the create request)",
+      "method": "",
+      "url": "",
+      "detail": null
+    },
+    {
+      "check_id": "WF_P_02_PAY_FROM_ACCEPTED",
+      "category": "precondition",
+      "description": "pay an ACCEPTED (not INVOICED) order",
+      "result": false,
+      "expected": 409,
+      "actual": "not run: could not create the customer/product the workflow needs (the app rejected or failed the create request)",
+      "method": "",
+      "url": "",
+      "detail": null
+    },
+    {
+      "check_id": "WF_P_03_SHIP_FROM_INVOICED",
+      "category": "precondition",
+      "description": "ship an INVOICED (not VERIFIED) order",
+      "result": false,
+      "expected": 409,
+      "actual": "not run: could not create the customer/product the workflow needs (the app rejected or failed the create request)",
+      "method": "",
+      "url": "",
+      "detail": null
+    },
+    {
+      "check_id": "WF_P_04_CLOSE_FROM_ACCEPTED",
+      "category": "precondition",
+      "description": "close an ACCEPTED (not SHIPPED) order",
+      "result": false,
+      "expected": 409,
+      "actual": "not run: could not create the customer/product the workflow needs (the app rejected or failed the create request)",
+      "method": "",
+      "url": "",
+      "detail": null
+    },
+    {
+      "check_id": "WF_P_05_ACCEPT_TWICE",
+      "category": "precondition",
+      "description": "accept an already ACCEPTED order",
+      "result": false,
+      "expected": 409,
+      "actual": "not run: could not create the customer/product the workflow needs (the app rejected or failed the create request)",
+      "method": "",
+      "url": "",
+      "detail": null
+    }
+  ],
+  "calls": [
+    {
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/customers",
+      "request_body": {
+        "name": "Nguyen Van A",
+        "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+        "phone": "+84912345678",
+        "bankingDetails": {
+          "accountNumber": "1234567890",
+          "bankName": "Vietcombank"
+        },
+        "role": "CUSTOMER"
+      },
+      "status": 500,
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/customers"
+      }
+    },
+    {
+      "method": "POST",
+      "url": "http://localhost:8080/api/v1/products",
+      "request_body": {
+        "description": "Logitech M185 Wireless Mouse",
+        "price": {
+          "amount": "10.00",
+          "currency": "USD"
+        }
+      },
+      "status": 500,
+      "response_body": {
+        "error": "INTERNAL_ERROR",
+        "message": "An unexpected error occurred",
+        "path": "/api/v1/products"
+      }
+    }
+  ]
+}

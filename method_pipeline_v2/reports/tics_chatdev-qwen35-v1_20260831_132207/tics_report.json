@@ -1,0 +1,266 @@
+{
+  "generatedAt": "2026-08-31T13:22:07",
+  "repoRoot": "F:\\swelab\\llmagent4code\\method_pipeline_v2\\generated\\chatdev-qwen35-v1\\code_workspace",
+  "language": "python",
+  "degraded": false,
+  "score": {
+    "tics": 0.2293,
+    "conformance": 0.3611,
+    "applicableMass": 0.1481,
+    "implementationByNfr": {
+      "NFR 1.1": 0.0,
+      "NFR 1.2": 0.3333,
+      "NFR 2.1": 0.6667,
+      "NFR 2.2": 0.0,
+      "NFR 2.3": 0.5,
+      "NFR 2.4": 0.6667
+    },
+    "breadth": 0.2273,
+    "intensity": 0.6499,
+    "coverage": 0.2308,
+    "medianConflictDistance": 2,
+    "proximityLift": 1.5,
+    "meanPair": 0.7338,
+    "maxPair": 1.0
+  },
+  "baseline": {
+    "medianDistance": 3,
+    "meanDistance": 3.077,
+    "reachableFraction": 0.1558,
+    "sampleSize": 3985
+  },
+  "graph": {
+    "nodes": 226,
+    "edges": {
+      "CALLS": 175
+    },
+    "externalCalls": 484,
+    "nodelessCalls": 7,
+    "unresolvedCalls": 205,
+    "dumpPath": "reports\\tics_chatdev-qwen35-v1_20260831_132207\\tics_graph.json"
+  },
+  "trace": {
+    "claimedFunctions": 13,
+    "missingFromGraph": [],
+    "unclaimedNfrs": []
+  },
+  "pairs": [
+    {
+      "pair": [
+        "NFR 1.1",
+        "NFR 1.2"
+      ],
+      "weight": 0.25,
+      "score": 0.0,
+      "distance": null,
+      "functionA": null,
+      "functionB": null,
+      "path": [],
+      "edgeKinds": []
+    },
+    {
+      "pair": [
+        "NFR 1.1",
+        "NFR 2.1"
+      ],
+      "weight": 0.25,
+      "score": 0.0,
+      "distance": null,
+      "functionA": null,
+      "functionB": null,
+      "path": [],
+      "edgeKinds": []
+    },
+    {
+      "pair": [
+        "NFR 1.1",
+        "NFR 2.2"
+      ],
+      "weight": 0.25,
+      "score": 1.0,
+      "distance": 0,
+      "functionA": "oms_backend/utils/rate_limiter.py::RateLimiter.is_allowed",
+      "functionB": "oms_backend/utils/rate_limiter.py::RateLimiter.is_allowed",
+      "path": [
+        "oms_backend/utils/rate_limiter.py::RateLimiter.is_allowed"
+      ],
+      "edgeKinds": []
+    },
+    {
+      "pair": [
+        "NFR 1.1",
+        "NFR 2.3"
+      ],
+      "weight": 0.5,
+      "score": 0.0,
+      "distance": null,
+      "functionA": null,
+      "functionB": null,
+      "path": [],
+      "edgeKinds": []
+    },
+    {
+      "pair": [
+        "NFR 1.1",
+        "NFR 2.4"
+      ],
+      "weight": 0.75,
+      "score": 0.0,
+      "distance": null,
+      "functionA": null,
+      "functionB": null,
+      "path": [],
+      "edgeKinds": []
+    },
+    {
+      "pair": [
+        "NFR 1.2",
+        "NFR 2.1"
+      ],
+      "weight": 0.25,
+      "score": 0.0,
+      "distance": null,
+      "functionA": null,
+      "functionB": null,
+      "path": [],
+      "edgeKinds": []
+    },
+    {
+      "pair": [
+        "NFR 1.2",
+        "NFR 2.3"
+      ],
+      "weight": 0.5,
+      "score": 0.7047,
+      "distance": 2,
+      "functionA": "oms_backend/repository/base.py::BaseRepository.get_by_id",
+      "functionB": "oms_backend/repository/base.py::BaseRepository.resynchronize",
+      "path": [
+        "oms_backend/repository/base.py::BaseRepository.get_by_id",
+        "oms_backend/repository/base.py::BaseRepository._get_cache_key",
+        "oms_backend/repository/base.py::BaseRepository.resynchronize"
+      ],
+      "edgeKinds": [
+        "CALLS",
+        "CALLS"
+      ]
+    },
+    {
+      "pair": [
+        "NFR 1.2",
+        "NFR 2.4"
+      ],
+      "weight": 1.0,
+      "score": 0.0,
+      "distance": null,
+      "functionA": null,
+      "functionB": null,
+      "path": [],
+      "edgeKinds": []
+    },
+    {
+      "pair": [
+        "NFR 2.1",
+        "NFR 2.2"
+      ],
+      "weight": 0.25,
+      "score": 0.0,
+      "distance": null,
+      "functionA": null,
+      "functionB": null,
+      "path": [],
+      "edgeKinds": []
+    },
+    {
+      "pair": [
+        "NFR 2.1",
+        "NFR 2.3"
+      ],
+      "weight": 0.25,
+      "score": 0.0,
+      "distance": null,
+      "functionA": null,
+      "functionB": null,
+      "path": [],
+      "edgeKinds": []
+    },
+    {
+      "pair": [
+        "NFR 2.1",
+        "NFR 2.4"
+      ],
+      "weight": 0.75,
+      "score": 0.4966,
+      "distance": 3,
+      "functionA": "oms_backend/utils/exceptions.py::OMSException.__init__",
+      "functionB": "oms_backend/service/order_service.py::OrderService.create_order",
+      "path": [
+        "oms_backend/utils/exceptions.py::OMSException.__init__",
+        "oms_backend/controller/customer_controller.py::get_customer",
+        "oms_backend/utils/exceptions.py::NotFoundException.__init__",
+        "oms_backend/service/order_service.py::OrderService.create_order"
+      ],
+      "edgeKinds": [
+        "REGISTERED",
+        "REGISTERED",
+        "CALLS"
+      ]
+    },
+    {
+      "pair": [
+        "NFR 2.2",
+        "NFR 2.4"
+      ],
+      "weight": 1.0,
+      "score": 0.0,
+      "distance": null,
+      "functionA": null,
+      "functionB": null,
+      "path": [],
+      "edgeKinds": []
+    },
+    {
+      "pair": [
+        "NFR 2.3",
+        "NFR 2.4"
+      ],
+      "weight": 0.6,
+      "score": 0.0,
+      "distance": null,
+      "functionA": null,
+      "functionB": null,
+      "path": [],
+      "edgeKinds": []
+    }
+  ],
+  "synergyPairs": [
+    {
+      "pair": [
+        "NFR 1.2",
+        "NFR 2.2"
+      ],
+      "weight": 0.0,
+      "score": 1.0,
+      "distance": 0,
+      "functionA": "oms_backend/utils/cache.py::CacheManager.get",
+      "functionB": "oms_backend/utils/cache.py::CacheManager.get",
+      "path": [
+        "oms_backend/utils/cache.py::CacheManager.get"
+      ],
+      "edgeKinds": []
+    },
+    {
+      "pair": [
+        "NFR 2.2",
+        "NFR 2.3"
+      ],
+      "weight": 0.0,
+      "score": 0.0,
+      "distance": null,
+      "functionA": null,
+      "functionB": null,
+      "path": [],
+      "edgeKinds": []
+    }
+  ]
+}
