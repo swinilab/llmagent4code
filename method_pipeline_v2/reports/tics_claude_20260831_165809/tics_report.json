@@ -1,0 +1,257 @@
+{
+  "generatedAt": "2026-08-31T16:58:09",
+  "repoRoot": "F:\\swelab\\llmagent4code\\method_pipeline_v2\\generated\\claude",
+  "language": "python",
+  "degraded": false,
+  "score": {
+    "tics": 0.1664,
+    "pairsFound": 5,
+    "pairsScored": 13
+  },
+  "graph": {
+    "nodes": 128,
+    "edges": {
+      "CALLS": 144
+    },
+    "externalCalls": 240,
+    "nodelessCalls": 15,
+    "unresolvedCalls": 135,
+    "dumpPath": "reports\\tics_claude_20260831_165809\\tics_graph.json"
+  },
+  "trace": {
+    "claimedFunctions": 23,
+    "missingFromGraph": [],
+    "unclaimedNfrs": []
+  },
+  "pairs": [
+    {
+      "pair": [
+        "NFR 1.1",
+        "NFR 1.2"
+      ],
+      "weight": 0.25,
+      "score": 0.0,
+      "distance": null,
+      "functionA": null,
+      "functionB": null,
+      "path": [],
+      "edgeKinds": []
+    },
+    {
+      "pair": [
+        "NFR 1.1",
+        "NFR 2.1"
+      ],
+      "weight": 0.25,
+      "score": 0.0,
+      "distance": null,
+      "functionA": null,
+      "functionB": null,
+      "path": [],
+      "edgeKinds": []
+    },
+    {
+      "pair": [
+        "NFR 1.1",
+        "NFR 2.2"
+      ],
+      "weight": 0.25,
+      "score": 0.0,
+      "distance": null,
+      "functionA": null,
+      "functionB": null,
+      "path": [],
+      "edgeKinds": []
+    },
+    {
+      "pair": [
+        "NFR 1.1",
+        "NFR 2.3"
+      ],
+      "weight": 0.5,
+      "score": 0.0,
+      "distance": null,
+      "functionA": null,
+      "functionB": null,
+      "path": [],
+      "edgeKinds": []
+    },
+    {
+      "pair": [
+        "NFR 1.1",
+        "NFR 2.4"
+      ],
+      "weight": 0.75,
+      "score": 0.0,
+      "distance": null,
+      "functionA": null,
+      "functionB": null,
+      "path": [],
+      "edgeKinds": []
+    },
+    {
+      "pair": [
+        "NFR 1.2",
+        "NFR 2.1"
+      ],
+      "weight": 0.25,
+      "score": 1.0,
+      "distance": 0,
+      "functionA": "app/infra/cache.py::EntityCache.get",
+      "functionB": "app/infra/cache.py::EntityCache.get",
+      "path": [
+        "app/infra/cache.py::EntityCache.get"
+      ],
+      "edgeKinds": []
+    },
+    {
+      "pair": [
+        "NFR 1.2",
+        "NFR 2.3"
+      ],
+      "weight": 0.5,
+      "score": 0.0,
+      "distance": null,
+      "functionA": null,
+      "functionB": null,
+      "path": [],
+      "edgeKinds": []
+    },
+    {
+      "pair": [
+        "NFR 1.2",
+        "NFR 2.4"
+      ],
+      "weight": 1.0,
+      "score": 0.3333,
+      "distance": 2,
+      "functionA": "app/infra/cache.py::EntityCache.invalidate",
+      "functionB": "app/services/services.py::InvoiceService.create",
+      "path": [
+        "app/infra/cache.py::EntityCache.invalidate",
+        "app/services/services.py::BaseService._invalidate",
+        "app/services/services.py::InvoiceService.create"
+      ],
+      "edgeKinds": [
+        "CALLS",
+        "CALLS"
+      ]
+    },
+    {
+      "pair": [
+        "NFR 2.1",
+        "NFR 2.2"
+      ],
+      "weight": 0.25,
+      "score": 0.3536,
+      "distance": 1,
+      "functionA": "app/infra/cache.py::EntityCache.get",
+      "functionB": "app/services/services.py::BaseService._cached_read",
+      "path": [
+        "app/infra/cache.py::EntityCache.get",
+        "app/services/services.py::BaseService._cached_read"
+      ],
+      "edgeKinds": [
+        "CALLS"
+      ]
+    },
+    {
+      "pair": [
+        "NFR 2.1",
+        "NFR 2.3"
+      ],
+      "weight": 0.25,
+      "score": 0.0,
+      "distance": null,
+      "functionA": null,
+      "functionB": null,
+      "path": [],
+      "edgeKinds": []
+    },
+    {
+      "pair": [
+        "NFR 2.1",
+        "NFR 2.4"
+      ],
+      "weight": 0.75,
+      "score": 0.3333,
+      "distance": 2,
+      "functionA": "app/core/middleware.py::ExceptionDetectionMiddleware.dispatch",
+      "functionB": "app/services/services.py::InvoiceService.create",
+      "path": [
+        "app/core/middleware.py::ExceptionDetectionMiddleware.dispatch",
+        "app/core/errors.py::DomainError.__init__",
+        "app/services/services.py::InvoiceService.create"
+      ],
+      "edgeKinds": [
+        "REGISTERED",
+        "CALLS"
+      ]
+    },
+    {
+      "pair": [
+        "NFR 2.2",
+        "NFR 2.4"
+      ],
+      "weight": 1.0,
+      "score": 0.1768,
+      "distance": 3,
+      "functionA": "app/services/services.py::BaseService._cached_read",
+      "functionB": "app/services/services.py::InvoiceService.create",
+      "path": [
+        "app/services/services.py::BaseService._cached_read",
+        "app/services/services.py::CustomerService.get",
+        "app/repositories/repositories.py::SQLAlchemyRepository.__init__",
+        "app/services/services.py::InvoiceService.create"
+      ],
+      "edgeKinds": [
+        "CALLS",
+        "CALLS",
+        "CALLS"
+      ]
+    },
+    {
+      "pair": [
+        "NFR 2.3",
+        "NFR 2.4"
+      ],
+      "weight": 0.6,
+      "score": 0.0,
+      "distance": null,
+      "functionA": null,
+      "functionB": null,
+      "path": [],
+      "edgeKinds": []
+    }
+  ],
+  "synergyPairs": [
+    {
+      "pair": [
+        "NFR 1.2",
+        "NFR 2.2"
+      ],
+      "weight": 0.0,
+      "score": 0.5,
+      "distance": 0,
+      "functionA": "app/services/services.py::BaseService._cached_read",
+      "functionB": "app/services/services.py::BaseService._cached_read",
+      "path": [
+        "app/services/services.py::BaseService._cached_read"
+      ],
+      "edgeKinds": []
+    },
+    {
+      "pair": [
+        "NFR 2.2",
+        "NFR 2.3"
+      ],
+      "weight": 0.0,
+      "score": 0.0,
+      "distance": null,
+      "functionA": null,
+      "functionB": null,
+      "path": [],
+      "edgeKinds": []
+    }
+  ]
+}

@@ -20,17 +20,18 @@ Run:  pytest validators/tics/test_oracle_codex.py -v
 from __future__ import annotations
 
 import importlib.util
-import math
 from pathlib import Path
 
 import pytest
 
-REPO_ROOT = Path(__file__).resolve().parents[3] / "apps" / "codex"
+# The corpus moved from apps/ to method_pipeline_v2/generated/ ; the old path
+# left every case in this file silently skipped.
+REPO_ROOT = Path(__file__).resolve().parents[2] / "generated" / "codex"
 
-# Decay used by the oracle: score = sqrt(S1*S2) * exp(-LAMBDA * (d - 1)) for d >= 1,
-# and sqrt(S1*S2) for the same-function case. Kept here so a change to LAMBDA
-# shows up as a deliberate oracle edit rather than a silent drift.
-LAMBDA = 0.35
+# The oracle states the formula independently of the code under test:
+#   score = sqrt(S1*S2) / (1 + d),  so d=0 -> 1.0, d=1 -> 0.5, d=3 -> 0.25.
+# Restating it here means a change to the proximity function shows up as a
+# deliberate oracle edit rather than a silent drift.
 TOL = 0.02
 
 pytestmark = pytest.mark.skipif(
@@ -38,8 +39,10 @@ pytestmark = pytest.mark.skipif(
 )
 
 
-def decay(distance: int) -> float:
-    return 1.0 if distance <= 0 else math.exp(-LAMBDA * (distance - 1))
+def proximity(distance: int) -> float:
+    """1/(1+d) — the agreed hyperbolic form, kept here so the oracle states
+    its own expectation rather than importing the code under test."""
+    return 1.0 / (1.0 + distance)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -66,7 +69,7 @@ CASE_1 = {
     "f_b": "app/repositories/outbox_repository.py::OutboxRepository.claim_batch",
     "edge": "CALLS",
     "distance": 1,
-    "expected_c": 1.00,   # decay(1) == 1.0
+    "expected_c": 0.50,   # proximity(1) == 1/2
 }
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -91,14 +94,14 @@ CASE_2 = {
     "f_b": "app/infrastructure/unit_of_work.py::SqlAlchemyUnitOfWork.transaction",
     "edge": "CALLS",
     "distance": 3,
-    "expected_c": 0.50,   # exp(-0.35 * 2) == 0.4966
+    "expected_c": 0.25,   # proximity(3) == 1/4
 }
 
 # ─────────────────────────────────────────────────────────────────────────────
 #  Case 3 — NFR 1.2 Multiple Copies  ↔  NFR 2.3 State Resync   (w = 0.50)
 #
 #  `EntityCache.set_json` is listed under BOTH NFR 1.2 and NFR 2.3 in
-#  nfr-trace.json. Same function, distance 0, no decay.
+#  nfr-trace.json. Same function, distance 0, so proximity is 1.
 # ─────────────────────────────────────────────────────────────────────────────
 CASE_3 = {
     "pair": ("NFR 1.2", "NFR 2.3"),
@@ -106,7 +109,7 @@ CASE_3 = {
     "f_b": "app/infrastructure/cache.py::EntityCache.set_json",
     "edge": "SAME_FUNCTION",
     "distance": 0,
-    "expected_c": 1.00,
+    "expected_c": 1.00,   # proximity(0) == 1
 }
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -207,8 +210,8 @@ def test_shortest_path_matches_oracle(case):
 @needs_phase1
 @pytest.mark.parametrize("case", [CASE_1, CASE_2, CASE_3], ids=lambda c: "-".join(c["pair"]))
 def test_pair_score_matches_oracle(case):
-    """With S pinned to 1.0 the pair score is exactly its distance decay, which
-    isolates the graph from the confidence model while the latter is still open."""
+    """With S pinned to 1.0 the pair score is exactly its proximity 1/(1+d),
+    which isolates the graph from the confidence model."""
     from validators.tics.contract import TraceOnlyBindingProvider
     from validators.tics.extractors.python_extractor import PythonExtractor
     from validators.tics.scoring import pair_score

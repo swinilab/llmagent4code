@@ -9,18 +9,14 @@ each other. It answers "where do these conflicts materialise in this code", not
 invalidation next to a transaction is correct design; the score locates it so
 that ADR and runtime evidence can say whether the agent knew.
 
-Two numbers are reported side by side and never combined:
-
-    TICS         conflict among what the repository actually built. HIGH IS BAD.
-    conformance  how much of the fixed tactic set is substantively present.
-                 HIGH IS GOOD.
-
-Both are needed because they can be gamed in opposite directions. TICS is
-conditioned on implementation — a pair leaves the calculation when either tactic
-is absent — so building less no longer buys a good score; and conformance is
-never folded in, so a thin implementation cannot pass as a clean architecture.
-On the first sample the agent with the lowest TICS also had the worst
-conformance, and reading TICS alone would have called it the best design.
+TICS is one number, reported beside — never combined with — stage 3's
+conformance. TICS says how entangled the conflicting tactics are; conformance
+says how much of the tactic set exists at all. Read alone, TICS flatters an
+agent that built almost nothing, because tactics that do not exist cannot
+collide: on the first sample the agent with the lowest TICS also had the worst
+conformance. The count of conflicting pairs that meet anywhere is reported with
+it for the same reason — TICS is dominated by that count, and a reader who
+cannot see it may mistake coverage for intensity.
 
 The stage refuses to score a repository whose nfr-trace.json describes a
 different NFR set. Ids alone are not a safe join: earlier prompt generations
@@ -110,10 +106,7 @@ class TICSValidator:
 
         message = (
             f"TICS {result.tics:.3f} (high=worse) | "
-            f"conformance {result.conformance:.3f} (high=better) | "
-            f"{sum(1 for p in result.scoring_pairs if p.found)}/"
-            f"{len(result.scoring_pairs)} pairs interacting, "
-            f"{result.applicable_mass:.0%} of ground truth applicable"
+            f"{result.pairs_found}/{len(result.scoring_pairs)} conflicting pairs meet"
         )
         if degraded:
             message += f"  [DEGRADED: S=1.0 for every function ({provider_note}), not publishable]"
@@ -138,13 +131,8 @@ class TICSValidator:
             message=message,
             details={
                 "tics": round(result.tics, 4),
-                "conformance": round(result.conformance, 4),
-                "applicableMass": round(result.applicable_mass, 4),
-                "implementation": {k: round(v, 4) for k, v in result.implementation.items()},
-                "breadth": round(result.breadth, 4),
-                "intensity": round(result.intensity, 4),
-                "coverage": round(result.coverage, 4),
-                "proximityLift": result.proximity_lift,
+                "pairsFound": result.pairs_found,
+                "pairsScored": len(result.scoring_pairs),
                 "degraded": degraded,
                 "claimedFunctionsMissingFromGraph": missing,
                 # All three are written every run and named here rather than only
@@ -187,27 +175,9 @@ class TICSValidator:
             "degraded": degraded,
             "score": {
                 "tics": round(result.tics, 4),
-                "conformance": round(result.conformance, 4),
-                "applicableMass": round(result.applicable_mass, 4),
-                "implementationByNfr": {k: round(v, 4) for k, v in result.implementation.items()},
-                "breadth": round(result.breadth, 4),
-                "intensity": round(result.intensity, 4),
-                "coverage": round(result.coverage, 4),
-                "medianConflictDistance": result.median_conflict_distance,
-                "proximityLift": result.proximity_lift,
-                "meanPair": round(result.mean_pair, 4),
-                "maxPair": round(result.max_pair, 4),
+                "pairsFound": result.pairs_found,
+                "pairsScored": len(result.scoring_pairs),
             },
-            "baseline": (
-                {
-                    "medianDistance": result.baseline.median_distance,
-                    "meanDistance": round(result.baseline.mean_distance, 3),
-                    "reachableFraction": round(result.baseline.reachable_fraction, 4),
-                    "sampleSize": result.baseline.sample_size,
-                }
-                if result.baseline
-                else None
-            ),
             "graph": {
                 "nodes": len(graph),
                 "edges": {CALLS: len(graph.edges_of_kind(CALLS))},

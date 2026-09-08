@@ -7,7 +7,7 @@ fallback that pins every confidence to 1.0.
 The join needs no translation: stage 3 already emits function references in the
 `path/to/file.py::Class.method` form TICS addresses nodes by, and carries the
 NFR label the trace used. Only the shape of the report is coupled here, so a
-change to how stage 3 computes score1 is picked up with no edit — which is the
+change to how stage 3 computes score_func is picked up with no edit — which is the
 whole reason TICS depends on an interface rather than calling into it.
 """
 
@@ -69,7 +69,9 @@ class StaticQABindingProvider(ITacticBindingProvider):
                     continue
                 # A claim stage 3 could not verify arrives as 0.0 and is kept, not
                 # dropped: TICS needs it to report coverage honestly.
-                score = function.get("score1")
+                # "score1" is the pre-rename key: reports written before the
+                # rename stay readable, so no stage 3 re-run is needed.
+                score = function.get("score_func", function.get("score1"))
                 out.append(
                     TacticBinding(
                         nfr_id=nfr_id,

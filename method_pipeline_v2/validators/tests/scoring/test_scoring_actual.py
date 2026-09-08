@@ -6,7 +6,7 @@ Driver for StaticQualityAttributeValidator.
 
 Location: <root>/validators/tests/scoring/test_scoring_actual.py
 Runs the Stage-3 static NFR-trace validator against a generated-code repo,
-prints the score1/score2/score3 hierarchy, and dumps the full result as JSON
+prints the score_func/score_tactic/score_qa hierarchy, and dumps the full result as JSON
 into ./output/.
 
 The repo must contain:
@@ -58,21 +58,21 @@ def print_summary(result) -> None:
     print("=" * 70)
     print(f"\noverall_score : {tally.get('overall_score')}")
 
-    print("\nscore3 (per QA):")
-    for qa, s3 in (tally.get("score3") or {}).items():
+    print("\nscore_qa (per QA):")
+    for qa, s3 in (tally.get("score_qa") or {}).items():
         print(f"  {qa:<14} {s3}")
 
-    print("\nscore2 (per tactic):")
-    for tactic, s2 in (tally.get("score2") or {}).items():
+    print("\nscore_tactic (per tactic):")
+    for tactic, s2 in (tally.get("score_tactic") or {}).items():
         print(f"  {tactic:<40} {s2}")
 
     print("\nper-NFR:")
     for qa, bucket in (tally.get("qa_groups") or {}).items():
-        print(f"  [{qa}] score3={bucket.get('score3')}")
+        print(f"  [{qa}] score_qa={bucket.get('score_qa')}")
         for nfr in bucket.get("nfrs", []):
-            print(f"    {nfr['nfr']:<10} status={nfr['status']:<14} score2={nfr['score2']}")
+            print(f"    {nfr['nfr']:<10} status={nfr['status']:<14} score_tactic={nfr['score_tactic']}")
             for fn in nfr.get("functions", []):
-                print(f"        fn {fn['ref']:<45} {fn['status']:<8} s1={fn['score1']}")
+                print(f"        fn {fn['ref']:<45} {fn['status']:<8} score_func={fn['score_func']}")
             for lib in nfr.get("libraries", []):
                 print(f"        lib {lib['lib']:<44} {lib['status']}")
 

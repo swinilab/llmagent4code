@@ -1,0 +1,14 @@
+PIPELINE REPORT — 2026-08-31 16:58:09
+
+GENERATION
+model: None
+code: generated/claude
+
+VALIDATION
+  ✅ tics : TICS 0.166 (high=worse) | 5/13 conflicting pairs meet
+    graph    reports\tics_claude_20260831_165809\tics_graph.json  (128 nodes, 169 edges, 135 unresolved calls)
+    report   reports\tics_claude_20260831_165809\tics_report.json
+    bindings reports\tics_claude_20260831_165809\tics_bindings.json
+
+RESULT
+  ✅ all checks passed — check QA manually

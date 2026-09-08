@@ -1,0 +1,14 @@
+PIPELINE REPORT — 2026-08-31 16:58:01
+
+GENERATION
+model: None
+code: generated/chatdev-qwen35-v2/code_workspace
+
+VALIDATION
+  ✅ tics : TICS 0.240 (high=worse) | 11/13 conflicting pairs meet
+    graph    reports\tics_chatdev-qwen35-v2_20260831_165801\tics_graph.json  (202 nodes, 325 edges, 142 unresolved calls)
+    report   reports\tics_chatdev-qwen35-v2_20260831_165801\tics_report.json
+    bindings reports\tics_chatdev-qwen35-v2_20260831_165801\tics_bindings.json
+
+RESULT
+  ✅ all checks passed — check QA manually

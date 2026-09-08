@@ -236,10 +236,41 @@ def _call_base_name(value):
         func = func.value
     return func.id if isinstance(func, ast.Name) else None
 
+def _init_param_library_map(classdef, libs, tree):
+    """param name -> claimed lib, read off the type annotations of __init__.
+
+    Constructor injection is how the generated apps normally reach a library:
+    `def __init__(self, redis: Redis)` followed by `self._redis = redis`. The
+    assignment carries no library name at all - only the annotation does - so
+    without this the whole class looks library-free and every one of its methods
+    is scored 0.5 for a claim it does honour. That penalises dependency
+    injection relative to constructing the client inline, which is a coding
+    style, not a difference in conformance.
+    """
+    param_map = {}
+    for item in classdef.body:
+        if not (isinstance(item, (ast.FunctionDef, ast.AsyncFunctionDef))
+                and item.name == "__init__"):
+            continue
+        args = item.args
+        for arg in (list(getattr(args, "posonlyargs", [])) + list(args.args)
+                    + list(args.kwonlyargs)):
+            if arg.annotation is None:
+                continue
+            annotated = _names_in_node(arg.annotation)
+            for lib in libs:
+                if annotated & _library_bindings(lib, tree):
+                    param_map[arg.arg] = lib
+                    break
+    return param_map
+
+
 def _class_attr_library_map(classdef, libs, tree):
     """For one ClassDef, map self.<attr> -> claimed lib, from assignments like
-    `self._queue = asyncio.Queue(...)` (Assign and AnnAssign)."""
+    `self._queue = asyncio.Queue(...)` (Assign and AnnAssign), and from
+    constructor injection (`self._redis = redis` where `redis: Redis`)."""
     attr_map = {}
+    param_libs = _init_param_library_map(classdef, libs, tree)
     for node in ast.walk(classdef):
         target = value = None
         if isinstance(node, ast.Assign) and len(node.targets) == 1:
@@ -251,11 +282,20 @@ def _class_attr_library_map(classdef, libs, tree):
             continue
         base = _call_base_name(value)
         if base is None:
+            # `self._redis = redis` - no call to inspect; the library is named
+            # only by the constructor parameter's annotation.
+            if isinstance(value, ast.Name) and value.id in param_libs:
+                attr_map[target.attr] = param_libs[value.id]
             continue
         for lib in libs:
             if base in _library_bindings(lib, tree):
                 attr_map[target.attr] = lib
                 break
+        else:
+            # `self._session = session_factory()` where the factory itself was
+            # injected: fall back to the parameter annotation.
+            if base in param_libs:
+                attr_map[target.attr] = param_libs[base]
     return attr_map
 
 
@@ -270,13 +310,20 @@ def _self_attrs_used(func_node):
 
 
 def _method_class_index(tree):
-    """method-name -> its enclosing ClassDef (first match wins)."""
+    """method name -> its enclosing ClassDef (first match wins).
+
+    Keyed under both the bare name ('get') and the qualified name
+    ('EntityCache.get'), matching `_function_defs`. Traces address methods in
+    the qualified form, so a bare-name-only index made every qualified lookup
+    miss and silently disabled the `self.<attr>` credit below it.
+    """
     index = {}
     for cls in ast.walk(tree):
         if isinstance(cls, ast.ClassDef):
             for item in cls.body:
                 if isinstance(item, (ast.FunctionDef, ast.AsyncFunctionDef)):
                     index.setdefault(item.name, cls)
+                    index.setdefault(f"{cls.name}.{item.name}", cls)
     return index
 
 
@@ -307,6 +354,7 @@ def _check_function_uses_library(entry, located):
         rel, _, func = ref.partition("::")
         if rel not in located or func not in located[rel][1]:
             per_function.append({"ref": ref, "libs_used": [], "uses_any": False,
+                                 "lib_claimed": bool(libs),
                                  "note": "function not found"})
             continue
         node = located[rel][1][func]
@@ -327,7 +375,8 @@ def _check_function_uses_library(entry, located):
         if used_here:
             any_link = True
         per_function.append({"ref": ref, "libs_used": used_here,
-                             "uses_any": bool(used_here), "note": ""})
+                             "uses_any": bool(used_here),
+                             "lib_claimed": bool(libs), "note": ""})
 
     level1 = PRESENT if any_link else (ABSENT if libs and entry.get("functionNames") else PRESENT)
     return per_function, level1
@@ -342,66 +391,77 @@ def _combine(statuses):
 # ─────────────────────────────────────────────────────────────────────────────
 #  Scoring Engine (Mapped to plan.md Part 3: validate qa: static)
 #
-#  plan.md specification:
+#  plan.md specification. plan.md calls these score1 / score2 / score3; the code
+#  names each after what it scores, and the mapping is one-to-one:
 #    3. validate qa: static
 #       . ind-score: qa/ tactic @duc @hai
-#         . score1(tactic, function)
+#         . score1 -> score_func(tactic, function)
 #           . nfr-trace-> absent (0)/present (1)
 #           [] . check lib code template: from (doc) -- code gen: similarity score 
-#         . score2(tactic, function-in-trace) = % sum(score1)/num-functions
-#         . score3(qa, tacticset) = avg(score2-by-qa)
+#         . score2 -> score_tactic(tactic, function-in-trace) = % sum(score_func)/num-functions
+#         . score3 -> score_qa(qa, tacticset) = avg(score_tactic-by-qa)
 #
-#  1. score1(tactic, function):
-#     - Evaluates static existence & implementation quality of a function implementing a tactic.
-#     - PRESENT (non-trivial function body): score1 = 1.0
-#     - WEAK (empty stub: pass / ... / NotImplementedError / docstring only / return None): score1 = 0.0
-#     - ABSENT (function not found in parsed file or file missing): score1 = 0.0
+#  1. score_func(tactic, function)  - three levels, not binary:
+#     - 1.0  PRESENT (non-trivial body) AND the function actually references a
+#            library the trace claims for this NFR - the claim is corroborated
+#            inside the function that makes it.
+#     - 0.5  PRESENT but no claimed library is referenced anywhere in the body:
+#            code exists, the library claim is unsupported at this call site.
+#     - 0.0  WEAK (empty stub: pass / ... / NotImplementedError / docstring only /
+#            return None) or ABSENT (function or file not found).
+#     An entry that claims no library at all has nothing to corroborate, so its
+#     functions are judged on the body alone and stay at 1.0 rather than being
+#     docked for a claim they never made.
+#     Rationale: the binary form saturated - 100/101 functions across the four
+#     generated apps scored 1.0, so score_tactic/score_qa could not separate any
+#     two apps.
 #
-#  2. score2(tactic, function-in-trace):
+#  2. score_tactic(tactic, function-in-trace):
 #     - Percentage / ratio of valid functions implementing the tactic:
-#       score2(tactic) = sum(score1(tactic, f) for f in functions_of_tactic) / len(functions_of_tactic)
-#     - If no functions are claimed for this tactic, score2(tactic) = 0.0.
+#       score_tactic(t) = sum(score_func(t, f) for f in functions_of(t)) / len(functions_of(t))
+#     - If no functions are claimed for this tactic, score_tactic(t) = 0.0.
 #
-#  3. score3(qa, tacticset):
-#     - Arithmetic mean of score2 across all tactics under that Quality Attribute:
-#       score3(qa) = sum(score2(t) for t in tactics_of_qa) / len(tactics_of_qa)
+#  3. score_qa(qa, tacticset):
+#     - Arithmetic mean of score_tactic across all tactics under that Quality Attribute:
+#       score_qa(qa) = sum(score_tactic(t) for t in tactics_of(qa)) / len(tactics_of(qa))
 #     - QA categorization is mapped strictly by NFR ID prefix:
 #       "1.x" -> "performance"
 #       "2.x" -> "availability"
 #       other -> "other"
 # ─────────────────────────────────────────────────────────────────────────────
 
-def compute_score1(status: str) -> float:
-    """Mapped to plan.md: score1(tactic, function) -> absent (0)/present (1).
-    
-    Strict binary scoring:
-      - PRESENT -> 1.0 (non-trivial implementation exists)
-      - WEAK (stub) -> 0.0 (placeholder stub only)
-      - ABSENT -> 0.0 (function not found)
-    """
-    return 1.0 if status == PRESENT else 0.0
+def score_func(status: str, library_corroborated: bool = True) -> float:
+    """plan.md's score1(tactic, function), graded 0 / 0.5 / 1.
 
+      - PRESENT + library_corroborated -> 1.0
+      - PRESENT, not corroborated      -> 0.5 (body exists, library claim unsupported)
+      - WEAK (stub) / ABSENT           -> 0.0
 
-def compute_score2(score1_list: list[float]) -> float:
-    """Mapped to plan.md: score2(tactic, function-in-trace) = % sum(score1)/num-functions.
-    
-    Calculates the completion ratio of implementing functions for a given tactic.
-    Returns 0.0 if the tactic has no claimed functions.
+    `library_corroborated` defaults to True so a caller holding only a status -
+    and any record predating this field - keeps the original binary behaviour
+    instead of being silently downgraded to 0.5.
     """
-    if not score1_list:
+    if status != PRESENT:
         return 0.0
-    return sum(score1_list) / len(score1_list)
+    return 1.0 if library_corroborated else 0.5
 
 
-def compute_score3(score2_list: list[float]) -> float:
-    """Mapped to plan.md: score3(qa, tacticset) = avg(score2-by-qa).
-    
-    Calculates the average score2 across all tactics associated with a Quality Attribute.
-    Returns 0.0 if no tactics exist under the QA.
+def score_tactic(func_scores: list[float]) -> float:
+    """plan.md's score2 - the mean of score_func over the functions claimed for
+    one tactic. Returns 0.0 if the tactic has no claimed functions.
     """
-    if not score2_list:
+    if not func_scores:
         return 0.0
-    return sum(score2_list) / len(score2_list)
+    return sum(func_scores) / len(func_scores)
+
+
+def score_qa(tactic_scores: list[float]) -> float:
+    """plan.md's score3 - the mean of score_tactic over the tactics under one
+    Quality Attribute. Returns 0.0 if no tactics exist under the QA.
+    """
+    if not tactic_scores:
+        return 0.0
+    return sum(tactic_scores) / len(tactic_scores)
 
 
 def _tactic_group(nfr_name: str) -> str:
@@ -417,14 +477,14 @@ def _tactic_group(nfr_name: str) -> str:
 
 
 def build_scoring_hierarchy(results: list[dict]) -> dict:
-    """Aggregates hierarchical scores (score1 -> score2 -> score3) across all NFR entries.
-    
+    """Aggregates score_func -> score_tactic -> score_qa across all NFR entries.
+
     Returns:
       {
-        "score1": { tactic_name: { function_ref: float } },
-        "score2": { tactic_name: float },
-        "score3": { qa_name: float },
-        "qa_tactics": { qa_name: [tactic_names] },
+        "score_func":    { tactic_name: { function_ref: float } },
+        "score_tactic":  { tactic_name: float },
+        "score_qa":      { qa_name: float },
+        "qa_tactics":    { qa_name: [tactic_names] },
         "overall_score": float
       }
     """
@@ -443,27 +503,34 @@ def build_scoring_hierarchy(results: list[dict]) -> dict:
             tactic_fn_scores.setdefault(t, {})
             for fn in functions:
                 ref = fn["ref"]
-                s1 = fn.get("score1", compute_score1(fn.get("status", ABSENT)))
-                tactic_fn_scores[t][ref] = s1
+                # "score1" is the pre-rename key: a report written before the
+                # rename still aggregates correctly, with no re-run.
+                sf = fn.get("score_func", fn.get("score1"))
+                if sf is None:
+                    sf = score_func(
+                        fn.get("status", ABSENT),
+                        fn.get("uses_any", False) or not fn.get("lib_claimed", True),
+                    )
+                tactic_fn_scores[t][ref] = sf
 
-    score2_map: dict[str, float] = {}
+    tactic_scores: dict[str, float] = {}
     for t, fn_map in tactic_fn_scores.items():
-        s1_vals = list(fn_map.values())
-        score2_map[t] = round(compute_score2(s1_vals), 4)
+        tactic_scores[t] = round(score_tactic(list(fn_map.values())), 4)
 
-    score3_map: dict[str, float] = {}
+    qa_scores: dict[str, float] = {}
     for qa, t_set in qa_tactics_map.items():
-        s2_vals = [score2_map[t] for t in t_set if t in score2_map]
-        score3_map[qa] = round(compute_score3(s2_vals), 4)
+        qa_scores[qa] = round(
+            score_qa([tactic_scores[t] for t in t_set if t in tactic_scores]), 4
+        )
 
     overall = round(
-        sum(score3_map.values()) / len(score3_map) if score3_map else 0.0, 4
+        sum(qa_scores.values()) / len(qa_scores) if qa_scores else 0.0, 4
     )
 
     return {
-        "score1": tactic_fn_scores,
-        "score2": score2_map,
-        "score3": score3_map,
+        "score_func": tactic_fn_scores,
+        "score_tactic": tactic_scores,
+        "score_qa": qa_scores,
         "qa_tactics": {qa: sorted(list(ts)) for qa, ts in qa_tactics_map.items()},
         "overall_score": overall,
     }
@@ -476,7 +543,8 @@ class StaticQualityAttributeValidator(IStaticQualityValidator):
     - Verifies EXISTENCE only (no behavior): tactics resolve against the
       catalog, claimed files/functions exist and are non-trivial, and claimed
       libraries are imported and used
-    - Computes 3-tier scoring hierarchy (score1, score2, score3) mapped to plan.md Part 3
+    - Computes the 3-tier hierarchy score_func -> score_tactic -> score_qa
+      (plan.md Part 3's score1 / score2 / score3)
     """
 
     def __init__(self, config: dict | None = None) -> None:
@@ -522,9 +590,10 @@ class StaticQualityAttributeValidator(IStaticQualityValidator):
             qa_group = _tactic_group(entry.get("nfr", ""))
             r_status, r_ev, tactics = self._resolve(entry, known_tactics)
             if r_status != OK:
-                # Functions claimed but unresolved -> ABSENT (score1=0.0)
+                # Functions claimed but unresolved -> ABSENT (score_func=0.0)
                 functions = [
-                    {"ref": ref, "status": ABSENT, "score1": 0.0, "detail": "tactic out-of-catalog"}
+                    {"ref": ref, "status": ABSENT, "score_func": 0.0,
+                     "detail": "tactic out-of-catalog"}
                     for ref in entry.get("functionNames", [])
                 ]
                 results.append({
@@ -532,7 +601,7 @@ class StaticQualityAttributeValidator(IStaticQualityValidator):
                     "qa_group": qa_group,
                     "status": r_status,
                     "stage": "resolve",
-                    "score2": 0.0,
+                    "score_tactic": 0.0,
                     "evidence": r_ev,
                     "tactics": tactics,
                     "functions": functions,
@@ -542,9 +611,9 @@ class StaticQualityAttributeValidator(IStaticQualityValidator):
 
             l_status, l_ev, located = self._locate(entry, repo_root)
             if l_status != OK:
-                # Functions claimed but files missing -> ABSENT (score1=0.0)
+                # Functions claimed but files missing -> ABSENT (score_func=0.0)
                 functions = [
-                    {"ref": ref, "status": ABSENT, "score1": 0.0, "detail": l_ev}
+                    {"ref": ref, "status": ABSENT, "score_func": 0.0, "detail": l_ev}
                     for ref in entry.get("functionNames", [])
                 ]
                 results.append({
@@ -552,7 +621,7 @@ class StaticQualityAttributeValidator(IStaticQualityValidator):
                     "qa_group": qa_group,
                     "status": l_status,
                     "stage": "locate",
-                    "score2": 0.0,
+                    "score_tactic": 0.0,
                     "evidence": l_ev,
                     "tactics": tactics,
                     "functions": functions,
@@ -569,24 +638,31 @@ class StaticQualityAttributeValidator(IStaticQualityValidator):
 
             link_by_ref = {i["ref"]: i for i in fn_lib}
             functions = []
-            entry_score1_list = []
+            entry_func_scores = []
             for r, s, e in fn_details:
                 link = link_by_ref.get(r, {})
-                s1 = compute_score1(s)
-                entry_score1_list.append(s1)
+                # No library claimed for this NFR -> nothing to corroborate, so the
+                # function is not docked to 0.5 for a claim it never made.
+                corroborated = link.get("uses_any", False) or not link.get("lib_claimed", True)
+                sf = score_func(s, corroborated)
+                entry_func_scores.append(sf)
                 functions.append({
                     "ref": r,
                     "status": s,
-                    "score1": s1,
+                    "score_func": sf,
                     "detail": e,
                     "libraries_used": link.get("libs_used", []),
                     "uses_any": link.get("uses_any", False),
+                    "lib_claimed": link.get("lib_claimed", False),
                 })
 
-            # score2 for this entry: sum(score1) / num_functions
-            entry_score2 = compute_score2(entry_score1_list)
+            # score_tactic for this entry: sum(score_func) / num_functions
+            entry_tactic_score = score_tactic(entry_func_scores)
 
-            fn_str = "; ".join(f"{ref.split('::')[-1]}={st}(s1={compute_score1(st)})" for ref, st, _ in fn_details)
+            fn_str = "; ".join(
+                f"{f['ref'].split('::')[-1]}={f['status']}(score_func={f['score_func']})"
+                for f in functions
+            )
             lib_str = "; ".join(f"{lib}={st}" for lib, st, _ in lib_details)
             link_str = "; ".join(f"{i['ref'].split('::')[-1]}->{i['libs_used'] or 'none'}" for i in fn_lib)
             evidence = f"functions[{fn_str}] libraries[{lib_str}] fn-uses-lib[level1={level1}; {link_str}]"
@@ -596,7 +672,7 @@ class StaticQualityAttributeValidator(IStaticQualityValidator):
                 "qa_group": qa_group,
                 "status": combined,
                 "stage": "existence",
-                "score2": round(entry_score2, 4),
+                "score_tactic": round(entry_tactic_score, 4),
                 "evidence": evidence,
                 "tactics": tactics,
                 "functions": functions,
@@ -631,9 +707,9 @@ class StaticQualityAttributeValidator(IStaticQualityValidator):
             "repo_root": str(repo_root),
             "scoring_summary": {
                 "overall_score": counts.get("overall_score"),
-                "score3": counts.get("score3"),
-                "score2": counts.get("score2"),
-                "score1": counts.get("score1"),
+                "score_qa": counts.get("score_qa"),
+                "score_tactic": counts.get("score_tactic"),
+                "score_func": counts.get("score_func"),
             },
             "tally": counts,
             "results": results,
@@ -666,15 +742,15 @@ class StaticQualityAttributeValidator(IStaticQualityValidator):
         known_tactics = self._load_known_tactics()
         results = self._verify(trace, repo_root, known_tactics)
 
-        # Build hierarchical scores (score1, score2, score3) mapped to plan.md Part 3
+        # Build the hierarchy score_func -> score_tactic -> score_qa (plan.md Part 3)
         scoring = build_scoring_hierarchy(results)
 
         # Structure detailed tally by QA category
         tally: dict[str, dict] = {
             "overall_score": scoring["overall_score"],
-            "score3": scoring["score3"],
-            "score2": scoring["score2"],
-            "score1": scoring["score1"],
+            "score_qa": scoring["score_qa"],
+            "score_tactic": scoring["score_tactic"],
+            "score_func": scoring["score_func"],
             "qa_groups": {},
         }
 
@@ -683,7 +759,7 @@ class StaticQualityAttributeValidator(IStaticQualityValidator):
             bucket = tally["qa_groups"].setdefault(
                 g,
                 {
-                    "score3": scoring["score3"].get(g, 0.0),
+                    "score_qa": scoring["score_qa"].get(g, 0.0),
                     "tactics": scoring["qa_tactics"].get(g, []),
                     "nfrs": [],
                 },
@@ -691,10 +767,11 @@ class StaticQualityAttributeValidator(IStaticQualityValidator):
             bucket["nfrs"].append({
                 "nfr": r["nfr"],
                 "tactics": r.get("tactics", []),
-                "score2": r.get("score2", 0.0),
+                "score_tactic": r.get("score_tactic", 0.0),
                 "status": r.get("status"),
                 "functions": [
-                    {"ref": f["ref"], "status": f["status"], "score1": f.get("score1", 0.0)}
+                    {"ref": f["ref"], "status": f["status"],
+                     "score_func": f.get("score_func", 0.0)}
                     for f in r.get("functions", [])
                 ],
                 "libraries": [
@@ -704,11 +781,11 @@ class StaticQualityAttributeValidator(IStaticQualityValidator):
             })
 
         # Informational pass: Status.PASS if trace is valid and scored,
-        # embedding all score1/score2/score3 metrics in details for pipeline evaluation.
+        # embedding every score_func/score_tactic/score_qa metric in details.
         status = Status.PASS
         message = (
             f"Static QA trace verified and scored: "
-            f"overall={scoring['overall_score']}, score3={scoring['score3']}"
+            f"overall={scoring['overall_score']}, score_qa={scoring['score_qa']}"
         )
 
         report_path = self._write_json_report(trace_path, repo_root, results, tally)
